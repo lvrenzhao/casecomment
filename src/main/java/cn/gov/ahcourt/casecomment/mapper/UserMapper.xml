@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.UserBean">
+		<id column="yhid" property="yhid" />
+		<result column="zh" property="zh" />
+		<result column="mm" property="mm" />
+		<result column="jsid" property="jsid" />
+		<result column="zzid" property="zzid" />
+		<result column="dzyx" property="dzyx" />
+		<result column="dh" property="dh" />
+		<result column="sj" property="sj" />
+		<result column="xm" property="xm" />
+		<result column="tx" property="tx" />
+		<result column="zhzt" property="zhzt" />
+		<result column="ygid" property="ygid" />
+		<result column="ygxm" property="ygxm" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+		<result column="zzjgid" property="zzjgid" />
+		<result column="zzjgmc" property="zzjgmc" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		yhid,zh,mm,jsid,zzid,dzyx,dh,sj,xm,zhzt,ygid,ygxm,tx,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+	<select id="selectuserlist" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		select
+		a.yhid,a.xm,a.zh,a.dzyx,a.sj,b.zzjgmc as zzid
+		FROM sd_user a
+		inner JOIN sd_organization b on a.zzid = b.zzjgid
+		<where>
+			<if test="zzid != null and zzid != '' ">
+				zzjgid IN (
+				SELECT
+				a.id
+				FROM(SELECT so.zzjgid id FROM sd_organization so WHERE FIND_IN_SET( so.zzjgid, fn_get_childs (#{zzid}))) a)
+			</if>
+		</where>
+		order by a.create_date desc
+	</select>
+	<select id="selectList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		select
+		a.yhid,a.zh,a.mm,a.jsid,a.zzid,a.dzyx,a.dh,a.sj,a.xm,a.zhzt,a.ygid,a.ygxm,a.create_by,a.create_date,a.update_by,
+		a.update_date,a.remarks,a.flag,a.tx,a.zzid as zzjgid,b.zzjgmc from sd_user a
+		LEFT JOIN sd_organization b on a.zzid = b.zzjgid
+		<where>
+			<if test="zh != null and zh != '' ">
+				and a.zh = #{zh}
+			</if>
+			<if test="zzid != null and zzid != '' ">
+				and a.zzid in
+				<foreach item="zzid" index="index" collection="zzids" open="(" separator="," close=")">
+					#{zzid}
+				</foreach>
+			</if>
+			<if test="xm != null and xm != '' ">
+				and a.xm = #{xm}
+			</if>
+			<if test="zhzt != null and zhzt != '' ">
+				and a.zhzt = #{zhzt}
+			</if>
+			<if test="zhlx == '1'.toString()">
+				and a.ygid != ''
+			</if>
+			<if test="zhlx == '2'.toString()">
+				and a.ygid = ''
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOne" resultMap="BaseResultMap" parameterType="string">
+		select yhid,zh,mm,jsid,zzid,dzyx,dh,sj,xm,zhzt,ygid,ygxm,tx,create_by,create_date,update_by,update_date,remarks,flag
+		from sd_user where yhid = #{0}
+	</select>
+<!--
+	<select id="selectByGh" resultMap="BaseResultMap" parameterType="string">
+		SELECT su.* FROM sd_user su INNER JOIN bd_oa_staff boa ON su.ygid = boa.ygid
+		WHERE su.flag = '1' AND boa.gh = #{0}
+	</select>
+-->
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		insert into sd_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="yhid != null and yhid != '' ">
+				yhid,
+			</if>
+			<if test="zh != null and zh != '' ">
+				zh,
+			</if>
+			<if test="mm != null and mm != '' ">
+				mm,
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				jsid,
+			</if>
+			<if test="zzid != null and zzid != '' ">
+				zzid,
+			</if>
+			<if test="dzyx != null and dzyx != '' ">
+				dzyx,
+			</if>
+			<if test="dh != null and dh != '' ">
+				dh,
+			</if>
+			<if test="sj != null and sj != '' ">
+				sj,
+			</if>
+			<if test="xm != null and xm != '' ">
+				xm,
+			</if>
+			<if test="zhzt != null and zhzt != '' ">
+				zhzt,
+			</if>
+			<if test="ygid != null and ygid != '' ">
+				ygid,
+			</if>
+			<if test="ygxm != null and ygxm != '' ">
+				ygxm,
+			</if>
+			<if test="tx != null and tx != '' ">
+				tx,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+			create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+			update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="yhid != null and yhid != '' ">
+				#{yhid},
+			</if>
+			<if test="zh != null and zh != '' ">
+				#{zh},
+			</if>
+			<if test="mm != null and mm != '' ">
+				#{mm},
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				#{jsid},
+			</if>
+			<if test="zzid != null and zzid != '' ">
+				#{zzid},
+			</if>
+			<if test="dzyx != null and dzyx != '' ">
+				#{dzyx},
+			</if>
+			<if test="dh != null and dh != '' ">
+				#{dh},
+			</if>
+			<if test="sj != null and sj != '' ">
+				#{sj},
+			</if>
+			<if test="xm != null and xm != '' ">
+				#{xm},
+			</if>
+			<if test="zhzt != null and zhzt != '' ">
+				#{zhzt},
+			</if>
+			<if test="ygid != null and ygid != '' ">
+				#{ygid},
+			</if>
+			<if test="ygxm != null and ygxm != '' ">
+				#{ygxm},
+			</if>
+			<if test="tx != null and tx != '' ">
+				#{tx},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		update sd_user
+		<set>
+			<if test="zh != null and zh != '' ">
+				zh = #{zh},
+			</if>
+			<if test="mm != null and mm != '' ">
+				mm = #{mm},
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				jsid = #{jsid},
+			</if>
+			<if test="zzid != null and zzid != '' ">
+				zzid = #{zzid},
+			</if>
+			<if test="dzyx != null and dzyx != '' ">
+				dzyx = #{dzyx},
+			</if>
+			<if test="dh != null and dh != '' ">
+				dh = #{dh},
+			</if>
+			<if test="sj != null and sj != '' ">
+				sj = #{sj},
+			</if>
+			<if test="xm != null and xm != '' ">
+				xm = #{xm},
+			</if>
+			<if test="zhzt != null and zhzt != '' ">
+				zhzt = #{zhzt},
+			</if>
+			<if test="ygid != null and ygid != '' ">
+				ygid = #{ygid},
+			</if>
+			<if test="ygxm != null and ygxm != '' ">
+				ygxm = #{ygxm},
+			</if>
+			<if test="tx != null and tx != '' ">
+				tx = #{tx},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			update_date = now(),
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where yhid = #{yhid}
+	</update>
+
+	<delete id="deleteSelective" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		delete from sd_user
+		<where>
+			<if test="yhid != null and yhid != '' ">
+				and yhid = #{yhid},
+			</if>
+			<if test="zh != null and zh != '' ">
+				and zh = #{zh},
+			</if>
+			<if test="mm != null and mm != '' ">
+				and mm = #{mm},
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				and jsid = #{jsid},
+			</if>
+			<if test="zzid != null and zzid != '' ">
+				and zzid = #{zzid},
+			</if>
+			<if test="dzyx != null and dzyx != '' ">
+				and dzyx = #{dzyx},
+			</if>
+			<if test="dh != null and dh != '' ">
+				and dh = #{dh},
+			</if>
+			<if test="sj != null and sj != '' ">
+				and sj = #{sj},
+			</if>
+			<if test="xm != null and xm != '' ">
+				and xm = #{xm},
+			</if>
+			<if test="zhzt != null and zhzt != '' ">
+				and zhzt = #{zhzt},
+			</if>
+			<if test="ygid != null and ygid != '' ">
+				and ygid = #{ygid},
+			</if>
+
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag},
+			</if>
+		</where>
+	</delete>
+
+	<select id="getById" parameterType="string" resultMap="BaseResultMap">
+		select a.yhid,a.zh,mm,a.jsid,a.zzid,b.zzjgmc,a.dzyx,a.dh,a.sj,a.xm,a.zhzt,a.ygid,a.tx
+		from sd_user a
+		left join sd_organization b on a.zzid = b.zzjgid
+		where yhid = #{yhid}
+	</select>
+
+	<select id="select" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+		SELECT su1.yhid,su1.xm,so.zzjgmc zzid FROM sd_user su1 
+		LEFT JOIN sd_organization so ON su1.zzid = so.zzjgid
+		where 1=1
+		<if test="xm !=null and xm != '' ">
+			and su1.xm like concat('%',#{xm},'%')
+		</if>
+		<if test="sfyzdw !=null and sfyzdw != '' ">
+			and so.sfyzdw = #{sfyzdw}
+		</if>
+		ORDER BY 	
+		<if test="yhid !=null and yhid != '' ">
+			so.zzjgid = (SELECT su2.zzid FROM sd_user su2 WHERE su2.yhid = #{yhid}) desc,
+		</if>
+		su1.zzid
+	</select>
+	<select id="selectzzids" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean" resultMap="BaseResultMap">
+		select zzjgid
+		FROM
+		sd_organization
+		WHERE
+		zzjgid IN (
+		SELECT
+		a.id
+		FROM(SELECT so.zzjgid id FROM sd_organization so WHERE FIND_IN_SET( so.zzjgid, fn_get_childs (#{zzjgid}))) a)
+	</select>
+	<select id="getUser" parameterType="string" resultMap="BaseResultMap">
+		select a.yhid,a.ygid,a.zh,fn_get_rolename(a.jsid) as jsid,b.zzjgmc as zzid,a.tx from sd_user a
+		LEFT JOIN sd_organization b on a.zzid = b.zzjgid
+		where a.yhid = #{yhid}
+	</select>
+	<select id="zhgllist" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+	select a.yhid,a.zh,a.mm,fn_get_rolename(a.jsid) as jsid,c.zzjgmc as zzid,a.dzyx,a.dh,a.sj,a.xm,a.zhzt,a.ygid,a.ygxm,a.tx  from sd_user a
+	LEFT JOIN sd_organization c on a.zzid = c.zzjgid LEFT JOIN sd_role d on a.jsid=d.id
+	<where>
+	<if test="xm !=null and xm != '' ">
+		and a.xm like concat('%',#{xm},'%')
+	</if>
+	<if test="zh !=null and zh != '' ">
+		and a.zh like concat('%',#{zh},'%')
+	</if>
+	<if test="zzid != null and zzid != '' ">
+		and a.zzid in
+		<foreach item="zzid" index="index" collection="zzids" open="(" separator="," close=")">
+			#{zzid}
+		</foreach>
+	</if>
+	<if test="zhzt != null and zhzt != '' ">
+		and a.zhzt = #{zhzt}
+	</if>
+	<choose>
+	<when test="zhlx=='1'.toString()">
+		and a.ygid !=  ''
+	</when>
+	<when test="zhlx=='2'.toString()">
+		and a.ygid = ''
+	</when>
+	<otherwise>
+	</otherwise> 
+	</choose>
+	</where>
+	</select>
+	<select id="getlistbyzzjgid" resultMap="BaseResultMap" parameterType="string">
+	select a.* from sd_user a 
+	LEFT JOIN sd_organization b on a.zzid=b.zzjgid 
+	<where>
+		<if test="zzjgid != null and zzjgid != '' ">
+			b.zzjgid=#{zzjgid}
+		</if>
+	</where>
+	</select>
+	
+	<select id="getlistbyzzjgids" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
+	select a.* from sd_user a 
+	<where>
+		<if test="zzids !=null and zzids.length  > 0">
+			and a.zzid in
+			<foreach item="zzid" index="index" collection="zzids" open="(" separator="," close=")">
+				#{zzid}
+			</foreach>
+		</if>
+	</where>
+	</select>
+</mapper>

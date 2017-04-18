@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.DictMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.DictBean">
+		<id column="zdbh" property="zdbh" />
+		<result column="zdmc" property="zdmc" />
+		<result column="sjzdbh" property="sjzdbh" />
+		<result column="sort" property="sort" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		zdbh,zdmc,sjzdbh,sort,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="getName" resultType="string" parameterType="string">
+		SELECT fn_get_dict(#{0})
+	</select>
+
+	<select id="selectListByGroup" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from sd_dict
+		where 1=0
+		<if test="zdbh != null and zdbh != '' ">
+			or zdbh = #{zdbh}
+		</if>
+	</select>
+
+	<select id="selectListByParents" resultMap="BaseResultMap" parameterType="string">
+		select <include refid="Base_Column_List" /> from sd_dict
+		WHERE FIND_IN_SET(sjzdbh,#{0}) ORDER BY sjzdbh,sort
+	</select>
+
+	<select id="selectBhByNameSet" resultType="string" parameterType="string">
+		SELECT REPLACE(GROUP_CONCAT(zdbh),',',';') FROM sd_dict where FIND_IN_SET(sjzdbh,#{0}) AND FIND_IN_SET(zdmc,REPLACE(#{1},'，',','))
+	</select>
+
+	<select id="selectByName" resultMap="BaseResultMap" parameterType="string">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM sd_dict where sjzdbh = #{0} AND zdmc = #{1}
+	</select>
+
+	<select id="getNextId" resultType="string" parameterType="string">
+		SELECT
+		MAX(zdbh)+1 zdbh FROM sd_dict WHERE sjzdbh = #{0};
+	</select>
+
+	<select id="selectList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_dict
+		<where>
+			<if test="zdbh != null and zdbh != '' ">
+				and zdbh = #{zdbh}
+			</if>
+			<if test="zdmc != null and zdmc != '' ">
+				and zdmc like concat('%',#{zdmc},'%')
+			</if>
+			<if test="sjzdbh != null and sjzdbh != '' ">
+				and sjzdbh = #{sjzdbh}
+			</if>
+			<if test="sort != null and sort != '' ">
+				and sort = #{sort}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean">
+		insert into sd_dict
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="zdbh != null and zdbh != '' ">
+				zdbh,
+			</if>
+			<if test="zdmc != null and zdmc != '' ">
+				zdmc,
+			</if>
+			<if test="sjzdbh != null and sjzdbh != '' ">
+				sjzdbh,
+			</if>
+				sort,
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date,
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date,
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="zdbh != null and zdbh != '' ">
+				#{zdbh},
+			</if>
+			<if test="zdmc != null and zdmc != '' ">
+				#{zdmc},
+			</if>
+			<if test="sjzdbh != null and sjzdbh != '' ">
+				#{sjzdbh},
+			</if>
+			<if test="sort != null and sort != '' ">
+				#{sort},
+			</if>
+			<if test="sort == null or sort == ''.toString()">
+				(SELECT if(MAX(sort) is null,1,MAX(sort)+1) FROM sd_dict sd WHERE sd.sjzdbh = #{sjzdbh}),
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				#{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				#{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean">
+		update sd_dict
+		<set>
+			<if test="zdmc != null and zdmc != '' ">
+				zdmc = #{zdmc},
+			</if>
+			<if test="sjzdbh != null and sjzdbh != '' ">
+				sjzdbh = #{sjzdbh},
+			</if>
+			<if test="sort != null and sort != '' ">
+				sort = #{sort},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where zdbh = #{zdbh}
+	</update>
+
+	<delete id="deleteSelective" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean">
+		delete from sd_dict where 1=0
+		<if test="zdbh != null and zdbh != '' ">
+			or zdbh like concat(#{zdbh},'%')
+		</if>
+	</delete>
+
+	<select id="selectListByP" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean">
+		select a.zdbh,a.zdmc,b.xm as create_by,a.create_date,
+		(select CONCAT(if(xmjl = #{1},'@项目经理','') ,if(xmfzr = #{1},'@项目负责人','')) from bd_business_project where xmid = #{2}) as qx
+		from sd_dict a
+		left join sd_user b on a.create_by = b.yhid
+		where a.sjzdbh = #{0} and a.flag = '1'
+		order by sort
+	</select>
+	<select id="getRegion" parameterType="string" resultType="string">
+		select REPLACE(fn_get_region(#{gcdz}),',','')
+	</select>
+	<select id="getBl" parameterType="cn.gov.ahcourt.casecomment.bean.DictBean" resultType="string">
+		select zdmc from sd_dict where sjzdbh = #{sjzdbh} and flag='2'
+		<if test="'10000'.toString() >= ssje  ">
+			and sort >= #{ssje}
+			ORDER BY sort asc
+		</if>
+		<if test="ssje > '10000'.toString()">
+			and #{ssje} >= sort
+			ORDER BY sort desc
+		</if>
+		LIMIT 1
+	</select>
+</mapper>

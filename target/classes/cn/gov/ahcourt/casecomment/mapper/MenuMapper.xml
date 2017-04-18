@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.MenuMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		<result column="cdid" property="cdid" />
+		<result column="cdmc" property="cdmc" />
+		<result column="sjcdid" property="sjcdid" />
+		<result column="cdurl" property="cdurl" />
+		<result column="tb" property="tb" />
+		<result column="px" property="px" />
+		<result column="ymgd" property="ymgd" />
+		<result column="ymkd" property="ymkd" />
+		<result column="bz" property="bz" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		cdid,cdmc,sjcdid,cdurl,tb,px,ymgd,ymkd,bz,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="selectTreeList" resultMap="BaseResultMap">
+		select DISTINCT a.cdid as id,a.cdmc as name,a.sjcdid as pId,IF(b.cdid
+		is NOT null,'true','false') as checked, 'true' as open,a.px from sd_menu a
+		LEFT JOIN sd_role_menu b on a.cdid = b.cdid
+		<if test="jsid !=null and jsid !='' ">
+			and b.jsid = #{jsid}
+		</if>
+		order by px
+	</select>
+
+	<select id="getById" parameterType="string" resultMap="BaseResultMap">
+		select
+		a.cdid,a.cdmc,b.cdmc as sjcdid,a.cdurl,a.tb,a.ymgd,a.ymkd,a.bz,a.px
+		from sd_menu a
+		left join sd_menu b on a.sjcdid = b.cdid
+		where a.cdid =
+		#{cdid}
+	</select>
+
+	<select id="selectList" resultMap="BaseResultMap"
+		parameterType="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_menu
+		<where>
+			<if test="cdid != null and cdid != '' ">
+				and cdid = #{cdid}
+			</if>
+			<if test="cdmc != null and cdmc != '' ">
+				and cdmc = #{cdmc}
+			</if>
+			<if test="sjcdid != null and sjcdid != '' ">
+				and sjcdid = #{sjcdid}
+			</if>
+			<if test="cdurl != null and cdurl != '' ">
+				and cdurl = #{cdurl}
+			</if>
+			<if test="tb != null and tb != '' ">
+				and tb = #{tb}
+			</if>
+			<if test="px != null and px != '' ">
+				and px = #{px}
+			</if>
+			<if test="ymgd != null and ymgd != '' ">
+				and ymgd = #{ymgd}
+			</if>
+			<if test="ymkd != null and ymkd != '' ">
+				and ymkd = #{ymkd}
+			</if>
+			<if test="bz != null and bz != '' ">
+				and bz = #{bz}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		insert into sd_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cdid != null and cdid != '' ">
+				cdid,
+			</if>
+			<if test="cdmc != null and cdmc != '' ">
+				cdmc,
+			</if>
+			<if test="sjcdid != null and sjcdid != '' ">
+				sjcdid,
+			</if>
+			<if test="cdurl != null and cdurl != '' ">
+				cdurl,
+			</if>
+			<if test="tb != null and tb != '' ">
+				tb,
+			</if>
+			<if test="px != null and px != '' ">
+				px,
+			</if>
+			<if test="ymgd != null and ymgd != '' ">
+				ymgd,
+			</if>
+			<if test="ymkd != null and ymkd != '' ">
+				ymkd,
+			</if>
+			<if test="bz != null and bz != '' ">
+				bz,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+			create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+			update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="cdid != null and cdid != '' ">
+				#{cdid},
+			</if>
+			<if test="cdmc != null and cdmc != '' ">
+				#{cdmc},
+			</if>
+			<if test="sjcdid != null and sjcdid != '' ">
+				#{sjcdid},
+			</if>
+			<if test="cdurl != null and cdurl != '' ">
+				#{cdurl},
+			</if>
+			<if test="tb != null and tb != '' ">
+				#{tb},
+			</if>
+			<if test="px != null and px != '' ">
+				#{px},
+			</if>
+			<if test="ymgd != null and ymgd != '' ">
+				#{ymgd},
+			</if>
+			<if test="ymkd != null and ymkd != '' ">
+				#{ymkd},
+			</if>
+			<if test="bz != null and bz != '' ">
+				#{bz},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		update sd_menu
+		<set>
+			<if test="cdmc != null and cdmc != '' ">
+				cdmc = #{cdmc},
+			</if>
+			<if test="sjcdid != null and sjcdid != '' ">
+				sjcdid = #{sjcdid},
+			</if>
+			<if test="cdurl != null and cdurl != '' ">
+				cdurl = #{cdurl},
+			</if>
+			<if test="tb != null and tb != '' ">
+				tb = #{tb},
+			</if>
+			<if test="px != null and px != '' ">
+				px = #{px},
+			</if>
+			<if test="ymgd != null and ymgd != '' ">
+				ymgd = #{ymgd},
+			</if>
+			<if test="ymkd != null and ymkd != '' ">
+				ymkd = #{ymkd},
+			</if>
+			<if test="bz != null and bz != '' ">
+				bz = #{bz},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where cdid = #{cdid}
+	</update>
+
+	<delete id="deleteById">
+		delete from sd_menu where cdid in
+		<foreach item="cdid" index="index" collection="array" open="("
+			separator="," close=")">
+			#{cdid}
+		</foreach>
+	</delete>
+	<select id="getIds" parameterType="string" resultType="string">
+		select
+		fn_get_childs_menu(#{cdid})
+	</select>
+
+	<select id="getMenusByParentID" resultType="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		select
+		<include refid="Base_Column_List" />
+		from
+		sd_menu sdm
+		where
+		sdm.cdid in (select DISTINCT cdid from sd_role_menu sdrm where #{roleid} like
+		concat('%',sdrm.jsid,'%')) and sdm.sjcdid = #{parentid}
+		order by
+		px
+	</select>
+
+	<select id="getMenusByParentName" resultType="cn.gov.ahcourt.casecomment.bean.MenuBean">
+		select
+		<include refid="Base_Column_List" />
+		from
+		sd_menu sdm
+		where
+		sdm.cdid in (select DISTINCT cdid from sd_role_menu sdrm where #{roleid} like
+		concat('%',sdrm.jsid,'%'))
+		and sdm.sjcdid = (select m.cdid from sd_menu m where m.cdmc =
+		#{parentname} )
+		order by px
+	</select>
+
+	<update id="updateMove" parameterType="string">
+		UPDATE sd_menu sm1 LEFT JOIN sd_menu sm2 ON sm2.cdid = #{targetid}
+		<if test="type == 'prev'.toString() ">
+			LEFT JOIN sd_menu sm3 ON sm2.sjcdid = sm3.sjcdid
+			AND sm3.px >= sm2.px AND sm3.cdid &lt;&gt; sm1.cdid
+		</if>
+		<if test="type == 'inner'.toString() ">
+			LEFT JOIN sd_menu sm3 ON sm2.cdid = sm3.sjcdid
+		</if>
+		<if test="type == 'next'.toString() ">
+			LEFT JOIN sd_menu sm3 ON sm2.sjcdid = sm3.sjcdid
+			AND sm3.px > sm2.px
+		</if>
+		<set>
+			<if test="type == 'prev'.toString() ">
+				sm1.sjcdid = sm2.sjcdid,
+				sm1.px = sm2.px,
+				sm3.px = sm3.px+1,
+			</if>
+			<if test="type == 'inner'.toString() ">
+				sm1.sjcdid = sm2.cdid,
+				sm1.px = sm3.px+1,
+			</if>
+			<if test="type == 'next'.toString() ">
+				sm1.sjcdid = sm2.sjcdid,
+				sm1.px = sm2.px+1,
+				sm3.px = sm3.px+1,
+			</if>
+			sm1.update_date = NOW(),
+			sm1.update_by = #{yhid},
+		</set>
+		WHERE sm1.cdid = #{thisid}
+	</update>
+
+</mapper>

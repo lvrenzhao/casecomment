@@ -1,0 +1,252 @@
+
+#idx-header{
+    height: 60px;
+    background-color: #f3f3f4;
+    border-bottom: 1px solid #e7eaec;
+}
+
+#idx-main{
+    /*background-color: #00B83F;*/
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+#idx-main-nav{
+    width:220px;
+    float: left;
+    background-color: #0088CC;
+    height: 100%;
+}
+
+#idx-main-page{
+    width: 100%;
+    padding-left: 220px;
+    /*background-color: #1a7bb9;*/
+    height: 100%;
+}
+
+
+
+/**头部***********/
+.header-nav{
+    height:100%;
+
+}
+.header-nav li{
+    display: inline-block;
+    height:100%;
+}
+
+.header-nav li a{
+    display: block;
+    height:100%;
+    width: 100%;
+    line-height: 60px;
+    font-size: 14px;
+    font-weight: 200;
+    padding: 0px 10px;
+
+}
+
+.header-nav li a:hover{
+    background: #e0e0e0;
+
+}
+
+
+
+/**菜单导航栏样式**********/
+.nav > li > a {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 14px 10px 14px 25px;
+}
+
+.nav li>a {
+    display: block;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: #336699;
+    color: white;
+}
+
+.nav > li > a i {
+    margin-right: 6px;
+    width: 18px;
+}
+
+.nav > li.active {
+    background: #336699;
+}
+
+.nav.nav-second-level > li.active {
+    border: none;
+}
+
+.nav.nav-second-level.collapse[style] {
+    height: auto !important;
+}
+
+.arrow {
+    float: right;
+    margin-top: 2px;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.nav-second-level li,
+.nav-third-level li {
+    border-bottom: none !important;
+}
+
+.nav-second-level li a {
+    padding: 7px 10px 7px 10px;
+    padding-left: 52px;
+}
+
+.nav-third-level li a {
+    padding-left: 82px;
+}
+
+.nav-second-level li:last-child {
+    margin-bottom: 10px;
+}
+
+
+
+/**选项卡******************/
+
+.content-tabs {
+    position: relative;
+    height: 46px;
+    background: #fafafa;
+    line-height: 44px;
+}
+
+.content-tabs .roll-nav,
+.page-tabs-list {
+    position: absolute;
+    width: 40px;
+    height: 44px;
+    text-align: center;
+    color: #999;
+    z-index: 2;
+    top: 0;
+}
+
+.content-tabs .roll-left {
+    left: 0;
+    border-right: solid 1px #eee;
+}
+
+.content-tabs .roll-right {
+    right: 0;
+    border-left: solid 1px #eee;
+}
+
+.content-tabs button {
+    background: #fff;
+    border: 0;
+    height: 44px;
+    width: 40px;
+    outline: none;
+}
+
+.content-tabs button:hover {
+    background: #fafafa;
+}
+
+nav.page-tabs {
+    margin-left: 40px;
+    width: 100000px;
+    height: 44px;
+    overflow: hidden;
+}
+
+nav.page-tabs .page-tabs-content {
+    float: left;
+}
+
+.page-tabs a {
+    display: block;
+    float: left;
+    border-right: solid 1px #eee;
+    padding: 0 15px;
+    height: 44px;
+}
+
+.page-tabs a i:hover {
+    color: #c00;
+}
+
+.page-tabs a:hover,
+.content-tabs .roll-nav:hover {
+    color: #777;
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.roll-right.J_tabRight {
+    right: 140px;
+}
+
+.roll-right.btn-group {
+    right: 60px;
+    width: 80px;
+    padding: 0;
+}
+
+.roll-right.btn-group button {
+    width: 80px;
+}
+
+.roll-right.J_tabExit {
+    background: #fff;
+    height: 44px;
+    width: 60px;
+    outline: none;
+}
+
+.dropdown-menu-right {
+    left: auto;
+}
+
+
+#content-main{
+    height:100%;
+    overflow: hidden;
+    padding-bottom: 46px;
+}
+
+.content-tabs {
+    border-bottom: solid 2px #0088cc;
+}
+.page-tabs a {
+    color: #999;
+}
+
+.page-tabs a i {
+    color: #ccc;
+}
+
+.page-tabs a.active {
+    background: #0088CC;
+    color: #ffffff;
+}
+
+.page-tabs a.active:hover,
+.page-tabs a.active i:hover {
+    background: #0088cc;
+    color: #fff;
+}
+
+
+

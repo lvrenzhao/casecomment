@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.FlowConfigRoleMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		<id column="id" property="id" />
+		<result column="lcpzid" property="lcpzid" />
+		<result column="lczdid" property="lczdid" />
+		<result column="ysfs" property="ysfs" />
+		<result column="value1" property="value1" />
+		<result column="value2" property="value2" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,lcpzid,lczdid,ysfs,value1,value2,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_config_role
+		where id = #{id}
+	</select>
+
+	<select id="selectList" resultMap="BaseResultMap"
+		parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_config_role
+		<where>
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				and lcpzid = #{lcpzid}
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				and lczdid = #{lczdid}
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				and ysfs = #{ysfs}
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				and value1 = #{value1}
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				and value2 = #{value2}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectCount" resultType="int"
+		parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		select count(0)
+		from sd_flow_config_role
+		<where>
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				and lcpzid = #{lcpzid}
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				and lczdid = #{lczdid}
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				and ysfs = #{ysfs}
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				and value1 = #{value1}
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				and value2 = #{value2}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		insert into sd_flow_config_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				id,
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				lcpzid,
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				lczdid,
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				ysfs,
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				value1,
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				value2,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+			create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+			update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				#{id},
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				#{lcpzid},
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				#{lczdid},
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				#{ysfs},
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				#{value1},
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				#{value2},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByKeySelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		update sd_flow_config_role
+		<set>
+			<if test="lcpzid != null and lcpzid != '' ">
+				lcpzid = #{lcpzid},
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				lczdid = #{lczdid},
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				ysfs = #{ysfs},
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				value1 = #{value1},
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				value2 = #{value2},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			update_date = now(),
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteByPrimaryKey" parameterType="string">
+		delete from sd_flow_config_role where id = #{id}
+	</delete>
+	
+	<delete id="deleteSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigRoleBean">
+		delete from sd_flow_config_role
+		<where>
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				and lcpzid = #{lcpzid}
+			</if>
+			<if test="lczdid != null and lczdid != '' ">
+				and lczdid = #{lczdid}
+			</if>
+			<if test="ysfs != null and ysfs != '' ">
+				and ysfs = #{ysfs}
+			</if>
+			<if test="value1 != null and value1 != '' ">
+				and value1 = #{value1}
+			</if>
+			<if test="value2 != null and value2 != '' ">
+				and value2 = #{value2}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</delete>
+</mapper>

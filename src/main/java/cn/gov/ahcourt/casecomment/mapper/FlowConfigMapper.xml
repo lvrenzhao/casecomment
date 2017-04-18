@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.FlowConfigMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		<id column="id" property="id" />
+		<result column="lcmk" property="lcmk" />
+		<result column="hjmc" property="hjmc" />
+		<result column="lcbb" property="lcbb" />
+		<result column="lcqyrq" property="lcqyrq" />
+		<result column="bzxh" property="bzxh" />
+		<result column="ztlx" property="ztlx" />
+		<result column="ztid" property="ztid" />
+		<result column="ztmc" property="ztmc" />
+		<result column="btgthz" property="btgthz" />
+		<result column="zyfw" property="zyfw" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+	
+	<resultMap id="flowTxMap" type="cn.gov.ahcourt.casecomment.bean.FlowConfigTxBean">
+		<id column="txid" property="txid" />
+		<result column="lcmk" property="lcmk" />
+		<result column="lcbb" property="lcbb" />
+		<result column="txnr" property="txnr" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,lcmk,hjmc,lcbb,date(lcqyrq) as
+		lcqyrq,bzxh,ztlx,ztid,btgthz,zyfw,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="selectList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_config
+		<where>
+			flag = '1'
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				and lcmk = #{lcmk}
+			</if>
+			<if test="hjmc != null and hjmc != '' ">
+				and hjmc = #{hjmc}
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				and lcbb = #{lcbb}
+			</if>
+			<if test="lcqyrq != null and lcqyrq != '' ">
+				and lcqyrq &lt; #{lcqyrq}
+			</if>
+			<if test="bzxh != null and bzxh != '' ">
+				and bzxh = #{bzxh}
+			</if>
+			<if test="ztlx != null and ztlx != '' ">
+				and ztlx = #{ztlx}
+			</if>
+			<if test="ztid != null and ztid != '' ">
+				and ztid = #{ztid}
+			</if>
+			<if test="btgthz != null and btgthz != '' ">
+				and btgthz = #{btgthz}
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				and zyfw = #{zyfw}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectTxList" resultMap="flowTxMap" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigTxBean">
+		select
+		*
+		from sd_flow_config_tx
+		<where>
+			flag = '1'
+			<if test="txid != null and txid != '' ">
+				and txid = #{txid}
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				and lcmk = #{lcmk}
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				and lcbb = #{lcbb}
+			</if>
+			<if test="txnr != null and txnr != '' ">
+				and txnr = #{txnr}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectOne" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_config
+		where flag = '1'
+		<if test="id != null and id != '' ">
+			and id = #{id}
+		</if>
+		<if test="lcmk != null and lcmk != '' ">
+			and lcmk = #{lcmk}
+		</if>
+		<if test="lcbb != null and lcbb != '' ">
+			and lcbb = #{lcbb}
+		</if>
+		<if test="lcqyrq != null and lcqyrq != '' ">
+			and lcqyrq &lt; #{lcqyrq}
+		</if>
+		<if test="bzxh != null and bzxh != '' ">
+			and bzxh = #{bzxh}
+		</if>
+		ORDER BY lcbb DESC,bzxh ASC LIMIT 1
+	</select>
+
+	<select id="selectView" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		SELECT sfc.id,sfc.lcmk,sfc.hjmc,sfc.lcbb,date(sfc.lcqyrq) as lcqyrq,sfc.bzxh,sfc.ztlx,sfc.ztid,sfc.btgthz,sfc.zyfw,sfc.create_by,sfc.create_date,sfc.update_by,sfc.update_date,sfc.remarks,sfc.flag,
+		IF(sfc.ztlx = '1',sr.jsmc,IF(sfc.ztlx = '2',fn_get_username(sfc.ztid),fn_get_dict(sfc.ztid))) ztmc
+		FROM sd_flow_config sfc
+		LEFT JOIN sd_role sr ON sr.id = sfc.ztid
+		<where>
+			<if test="lcmk != null and lcmk != '' ">
+				and lcmk = #{lcmk}
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				and lcbb = #{lcbb}
+			</if>
+		</where>
+		ORDER BY sfc.bzxh ASC
+	</select>
+
+	<select id="selectGroup" resultMap="BaseResultMap" parameterType="string">
+		SELECT DISTINCT lcbb,date(lcqyrq) lcqyrq FROM sd_flow_config WHERE lcmk = #{lcmk} ORDER BY lcbb DESC
+	</select>
+
+	<select id="getNextVersion" resultType="int" parameterType="string">
+		SELECT IF(ISNULL(lcbb),1,MAX(lcbb)+1) FROM `sd_flow_config` WHERE
+		lcmk=#{0}
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		insert into sd_flow_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				id,
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				lcmk,
+			</if>
+			<if test="hjmc != null and hjmc != '' ">
+				hjmc,
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				lcbb,
+			</if>
+			<if test="lcqyrq != null and lcqyrq != '' ">
+				lcqyrq,
+			</if>
+			<if test="bzxh != null and bzxh != '' ">
+				bzxh,
+			</if>
+			<if test="ztlx != null and ztlx != '' ">
+				ztlx,
+			</if>
+			<if test="ztid != null and ztid != '' ">
+				ztid,
+			</if>
+			<if test="btgthz != null and btgthz != '' ">
+				btgthz,
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				zyfw,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+				create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+				update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				#{id},
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				#{lcmk},
+			</if>
+			<if test="hjmc != null and hjmc != '' ">
+				#{hjmc},
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				#{lcbb},
+			</if>
+			<if test="lcqyrq != null and lcqyrq != '' ">
+				#{lcqyrq},
+			</if>
+			<if test="bzxh != null and bzxh != '' ">
+				#{bzxh},
+			</if>
+			<if test="ztlx != null and ztlx != '' ">
+				#{ztlx},
+			</if>
+			<if test="ztid != null and ztid != '' ">
+				#{ztid},
+			</if>
+			<if test="btgthz != null and btgthz != '' ">
+				#{btgthz},
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				#{zyfw},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+		</trim>
+	</insert>
+	
+	
+	<insert id="insertFlowConfigTx" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigTxBean">
+		insert into sd_flow_config_tx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="txid != null and txid != '' ">
+				txid,
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				lcmk,
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				lcbb,
+			</if>
+			<if test="txnr != null and txnr != '' ">
+				txnr,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+				create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+				update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="txid != null and txid != '' ">
+				#{txid},
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				#{lcmk},
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				#{lcbb},
+			</if>
+			<if test="txnr != null and txnr != '' ">
+				#{txnr},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+		</trim>
+	</insert>
+	
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		update sd_flow_config
+		<set>
+			<if test="lcmk != null and lcmk != '' ">
+				lcmk = #{lcmk},
+			</if>
+			<if test="hjmc != null and hjmc != '' ">
+				hjmc = #{hjmc},
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				lcbb = #{lcbb},
+			</if>
+			<if test="lcqyrq != null and lcqyrq != '' ">
+				lcqyrq = #{lcqyrq},
+			</if>
+			<if test="bzxh != null and bzxh != '' ">
+				bzxh = #{bzxh},
+			</if>
+			<if test="ztlx != null and ztlx != '' ">
+				ztlx = #{ztlx},
+			</if>
+			<if test="ztid != null and ztid != '' ">
+				ztid = #{ztid},
+			</if>
+			<if test="btgthz != null and btgthz != '' ">
+				btgthz = #{btgthz},
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				zyfw = #{zyfw},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+				update_date = now(),
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowConfigBean">
+		delete from sd_flow_config
+		<where>
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				and lcmk = #{lcmk}
+			</if>
+			<if test="hjmc != null and hjmc != '' ">
+				and hjmc = #{hjmc}
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				and lcbb = #{lcbb}
+			</if>
+			<if test="lcqyrq != null and lcqyrq != '' ">
+				and lcqyrq = #{lcqyrq}
+			</if>
+			<if test="bzxh != null and bzxh != '' ">
+				and bzxh = #{bzxh}
+			</if>
+			<if test="ztlx != null and ztlx != '' ">
+				and ztlx = #{ztlx}
+			</if>
+			<if test="ztid != null and ztid != '' ">
+				and ztid = #{ztid}
+			</if>
+			<if test="btgthz != null and btgthz != '' ">
+				and btgthz = #{btgthz}
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				and zyfw = #{zyfw}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</delete>
+	
+	<select id="selectCountByLcmk" parameterType="string" resultType="int">
+		select count(*) from sd_flow_config where lcmk = #{lcmk}
+	</select>
+	
+	<select id="selectDqbb" parameterType="string" resultType="int">
+		SELECT max(sfc.lcbb) FROM sd_flow_config sfc WHERE sfc.lcmk=#{lcmk} AND sfc.lcqyrq &lt; now()
+	</select>
+	
+	<select id="selectPrev" parameterType="string" resultMap="BaseResultMap" >
+		SELECT sfc2.* FROM sd_flow_config sfc1 LEFT JOIN sd_flow_config sfc2 on sfc1.lcbb = sfc2.lcbb AND sfc1.lcmk = sfc2.lcmk
+		WHERE sfc1.id = #{0} AND sfc2.bzxh = sfc1.btgthz
+	</select>
+	
+	<select id="selectNext" parameterType="string" resultMap="BaseResultMap" >
+		SELECT sfc2.* FROM sd_flow_config sfc1 LEFT JOIN sd_flow_config sfc2 on sfc1.lcbb = sfc2.lcbb AND sfc1.lcmk = sfc2.lcmk
+		WHERE sfc1.id = #{0} AND sfc2.bzxh = sfc1.bzxh+1
+	</select>
+	
+	<select id="selectByXh"  resultMap="BaseResultMap" >
+		SELECT * FROM sd_flow_config WHERE lcmk = #{0} AND lcbb = #{1} AND bzxh = #{2}
+	</select>
+	
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.RoleMenuMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.RoleMenuBean">
+		<result column="cdid" property="cdid" />
+		<result column="jsid" property="jsid" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		cdid,jsid,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="selectList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.RoleMenuBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_role_menu
+		<where>
+			<if test="cdid != null and cdid != '' ">
+				and cdid = #{cdid}
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				and jsid = #{jsid}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="java.util.List">
+		insert into sd_role_menu (cdid,jsid,create_by,create_date,update_by,update_date,remarks)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.cdid},
+			#{item.jsid},
+			#{item.create_by},
+			now(),
+			#{item.update_by},
+			now(),
+			#{item.remarks})
+		</foreach>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.RoleMenuBean">
+		update sd_role_menu
+		<set>
+			<if test="cdid != null and cdid != '' ">
+				cdid = #{cdid},
+			</if>
+			<if test="jsid != null and jsid != '' ">
+				jsid = #{jsid},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+
+	</update>
+	<delete id="deleteSelective" parameterType="string">
+		delete from sd_role_menu where jsid=#{jsid}
+	</delete>
+</mapper>

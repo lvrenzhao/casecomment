@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.OrganizationMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		<id column="zzjgid" property="zzjgid" />
+		<result column="zzjgmc" property="zzjgmc" />
+		<result column="sjzzjgid" property="sjzzjgid" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+		<result column="sfyzdw" property="sfyzdw" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		zzjgid,zzjgmc,sjzzjgid,create_by,create_date,update_by,update_date,remarks,flag,sfyzdw
+	</sql>
+
+	<select id="selectList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_organization
+		<where>
+			<if test="zzjgid != null and zzjgid != '' ">
+				and zzjgid = #{zzjgid}
+			</if>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				and zzjgmc = #{zzjgmc}
+			</if>
+			<if test="sjzzjgid != null and sjzzjgid != '' ">
+				and sjzzjgid = #{sjzzjgid}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+			<if test="sfyzdw != null and sfyzdw != '' ">
+				and sfyzdw = #{sfyzdw}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		insert into sd_organization
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="zzjgid != null and zzjgid != '' ">
+				zzjgid,
+			</if>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				zzjgmc,
+			</if>
+			<if test="sjzzjgid != null and sjzzjgid != '' ">
+				sjzzjgid,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+			create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+			update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+			<if test="sfyzdw != null and sfyzdw != '' ">
+				sfyzdw,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="zzjgid != null and zzjgid != '' ">
+				#{zzjgid},
+			</if>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				#{zzjgmc},
+			</if>
+			<if test="sjzzjgid != null and sjzzjgid != '' ">
+				#{sjzzjgid},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+			now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+			now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+			<if test="sfyzdw != null and sfyzdw != '' ">
+				#{sfyzdw},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		update sd_organization
+		<set>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				zzjgmc = #{zzjgmc},
+			</if>
+			<if test="sjzzjgid != null and sjzzjgid != '' ">
+				sjzzjgid = #{sjzzjgid},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where zzjgid = #{zzjgid}
+	</update>
+
+	<delete id="deleteSelective" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		delete from sd_organization
+		<where>
+			<if test="zzjgid != null and zzjgid != '' ">
+				and zzjgid = #{zzjgid}
+			</if>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				and zzjgmc = #{zzjgmc}
+			</if>
+			<if test="sjzzjgid != null and sjzzjgid != '' ">
+				and sjzzjgid = #{sjzzjgid}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</delete>
+	<select id="getlist" resultMap="BaseResultMap">
+		select zzjgid as id,zzjgmc as name, sjzzjgid as pId,'true' as open from sd_organization
+	</select>
+	<select id="getorglist" resultMap="BaseResultMap">
+		select zzjgid as id,zzjgmc as name, sjzzjgid as pId,'true' as open from sd_organization
+	</select>
+		<select id="getorglisttype" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		select zzjgid as id,zzjgmc as name, sjzzjgid as pId,'true' as open from sd_organization
+		<where>
+			<if test="sfyzdw != null and sfyzdw != '' ">
+				and sfyzdw=#{sfyzdw}
+			</if>
+		</where>
+	</select>
+	<delete id="delorg" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		DELETE
+		FROM
+		sd_organization
+		WHERE
+		zzjgid IN (
+		SELECT
+		a.id
+		FROM(SELECT so.zzjgid id FROM sd_organization so WHERE FIND_IN_SET( so.zzjgid, fn_get_childs (#{zzjgid}))) a)
+	</delete>
+	<update id="updateorg" parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean">
+		update sd_organization
+		<set>
+			<if test="zzjgmc != null and zzjgmc != '' ">
+				zzjgmc = #{zzjgmc},
+			</if>
+				update_date=now()
+		</set>
+		where zzjgid=#{zzjgid}
+	</update>
+	<select id="selectbyid" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from sd_organization where  zzjgid = #{zzjgid}
+	</select>
+	<select id="getNameById" parameterType="string" resultType="string">
+		select zzjgmc from sd_organization where zzjgid =#{zzjgid}
+	</select>
+	
+	<select id="insertzzjgziji"  parameterType="cn.gov.ahcourt.casecomment.bean.OrganizationBean" resultType="int">
+	insert INTO sd_organization(zzjgid,zzjgmc,sjzzjgid,create_by,create_date,update_by,update_date,remarks,sfyzdw) 
+	SELECT #{zzjgid},#{zzjgmc},#{sjzzjgid},#{create_by},now(),#{update_by},now(),#{remarks}, sfyzdw FROM sd_organization where zzjgid=#{sjzzjgid}
+	</select>
+</mapper>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.FlowJobMapper">
+	<resultMap id="BaseResultMap"
+		type="cn.gov.ahcourt.casecomment.bean.FlowJobBean">
+		<id column="id" property="id" />
+		<result column="lcmk" property="lcmk" />
+		<result column="lcpzid" property="lcpzid" />
+		<result column="shnrid" property="shnrid" />
+		<result column="dqbz" property="dqbz" />
+		<result column="dqbzmc" property="dqbzmc" />
+		<result column="shbtgthbz" property="shbtgthbz" />
+		<result column="shztlx" property="shztlx" />
+		<result column="shztid" property="shztid" />
+		<result column="zyfw" property="zyfw" />
+		<result column="lcbb" property="lcbb" />
+		<result column="sfzhyb" property="sfzhyb" />
+		<result column="sqr" property="sqr" />
+		<result column="create_by" property="create_by" />
+		<result column="create_date" property="create_date" />
+		<result column="update_by" property="update_by" />
+		<result column="update_date" property="update_date" />
+		<result column="remarks" property="remarks" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,lcmk,lcpzid,shnrid,dqbz,dqbzmc,shbtgthbz,shztlx,shztid,zyfw,lcbb,sfzhyb,sqr,create_by,create_date,update_by,update_date,remarks,flag
+	</sql>
+
+	<select id="selectById" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_job
+		where id = #{id}
+	</select>
+
+	<insert id="insertbyRw" parameterType="cn.gov.ahcourt.casecomment.bean.FlowJobBean">
+		INSERT INTO
+		sd_flow_job(id,lcmk,shnrid,dqbz,dqbzmc,shbtgthbz,shztlx,shztid,lcbb,sfzhyb,sqr,create_by,create_date,update_by,update_date)
+		(SELECT
+		#{id},#{lcmk},#{shnrid},#{dqbz},#{dqbzmc},#{shbtgthbz},#{shztlx},bbp.xmjl,#{lcbb},#{sfzhyb},bpt.gcs,#{create_by},now(),#{update_by},now()
+		FROM bd_project_task bpt INNER JOIN bd_business_project bbp ON
+		bbp.xmid = bpt.xmid WHERE bpt.rwid = #{shnrid})
+	</insert>
+
+	<select id="selectList" resultMap="BaseResultMap"
+		parameterType="cn.gov.ahcourt.casecomment.bean.FlowJobBean">
+		select
+		<include refid="Base_Column_List" />
+		from sd_flow_job
+		<where>
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				and lcmk = #{lcmk}
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				and lcpzid = #{lcpzid}
+			</if>
+			<if test="shnrid != null and shnrid != '' ">
+				and shnrid = #{shnrid}
+			</if>
+			<if test="dqbz != null and dqbz != '' ">
+				and dqbz = #{dqbz}
+			</if>
+			<if test="dqbzmc != null and dqbzmc != '' ">
+				and dqbzmc = #{dqbzmc}
+			</if>
+			<if test="shbtgthbz != null and shbtgthbz != '' ">
+				and shbtgthbz = #{shbtgthbz}
+			</if>
+			<if test="shztlx != null and shztlx != '' ">
+				and shztlx = #{shztlx}
+			</if>
+			<if test="shztid != null and shztid != '' ">
+				and shztid = #{shztid}
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				and zyfw = #{zyfw}
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				and lcbb = #{lcbb}
+			</if>
+			<if test="sfzhyb != null and sfzhyb != '' ">
+				and sfzhyb = #{sfzhyb}
+			</if>
+			<if test="sqr != null and sqr != '' ">
+				and sqr = #{sqr}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by}
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				and create_date = #{create_date}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by}
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				and update_date = #{update_date}
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				and remarks = #{remarks}
+			</if>
+			<if test="flag != null and flag != '' ">
+				and flag = #{flag}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowJobBean">
+		insert into sd_flow_job
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				id,
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				lcmk,
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				lcpzid,
+			</if>
+			<if test="shnrid != null and shnrid != '' ">
+				shnrid,
+			</if>
+			<if test="dqbz != null and dqbz != '' ">
+				dqbz,
+			</if>
+			<if test="dqbzmc != null and dqbzmc != '' ">
+				dqbzmc,
+			</if>
+			<if test="shbtgthbz != null and shbtgthbz != '' ">
+				shbtgthbz,
+			</if>
+			<if test="shztlx != null and shztlx != '' ">
+				shztlx,
+			</if>
+			<if test="shztid != null and shztid != '' ">
+				shztid,
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				zyfw,
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				lcbb,
+			</if>
+			<if test="sfzhyb != null and sfzhyb != '' ">
+				sfzhyb,
+			</if>
+			<if test="sqr != null and sqr != '' ">
+				sqr,
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by,
+			</if>
+				create_date,
+			<if test="update_by != null and update_by != '' ">
+				update_by,
+			</if>
+				update_date,
+			<if test="remarks != null and remarks != '' ">
+				remarks,
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				#{id},
+			</if>
+			<if test="lcmk != null and lcmk != '' ">
+				#{lcmk},
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				#{lcpzid},
+			</if>
+			<if test="shnrid != null and shnrid != '' ">
+				#{shnrid},
+			</if>
+			<if test="dqbz != null and dqbz != '' ">
+				#{dqbz},
+			</if>
+			<if test="dqbzmc != null and dqbzmc != '' ">
+				#{dqbzmc},
+			</if>
+			<if test="shbtgthbz != null and shbtgthbz != '' ">
+				#{shbtgthbz},
+			</if>
+			<if test="shztlx != null and shztlx != '' ">
+				#{shztlx},
+			</if>
+			<if test="shztid != null and shztid != '' ">
+				#{shztid},
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				#{zyfw},
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				#{lcbb},
+			</if>
+			<if test="sfzhyb != null and sfzhyb != '' ">
+				#{sfzhyb},
+			</if>
+			<if test="sqr != null and sqr != '' ">
+				#{sqr},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				#{create_by},
+			</if>
+				now(),
+			<if test="update_by != null and update_by != '' ">
+				#{update_by},
+			</if>
+				now(),
+			<if test="remarks != null and remarks != '' ">
+				#{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				#{flag},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByIdSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FlowJobBean">
+		update sd_flow_job
+		<set>
+			<if test="lcmk != null and lcmk != '' ">
+				lcmk = #{lcmk},
+			</if>
+			<if test="lcpzid != null and lcpzid != '' ">
+				lcpzid = #{lcpzid},
+			</if>
+			<if test="shnrid != null and shnrid != '' ">
+				shnrid = #{shnrid},
+			</if>
+			<if test="dqbz != null and dqbz != '' ">
+				dqbz = #{dqbz},
+			</if>
+			<if test="dqbzmc != null and dqbzmc != '' ">
+				dqbzmc = #{dqbzmc},
+			</if>
+			<if test="shbtgthbz != null and shbtgthbz != '' ">
+				shbtgthbz = #{shbtgthbz},
+			</if>
+			<if test="shztlx != null and shztlx != '' ">
+				shztlx = #{shztlx},
+			</if>
+			<if test="shztid != null and shztid != '' ">
+				shztid = #{shztid},
+			</if>
+			<if test="zyfw != null and zyfw != '' ">
+				zyfw = #{zyfw},
+			</if>
+			<if test="lcbb != null and lcbb != '' ">
+				lcbb = #{lcbb},
+			</if>
+			<if test="sfzhyb != null and sfzhyb != '' ">
+				sfzhyb = #{sfzhyb},
+			</if>
+			<if test="sqr != null and sqr != '' ">
+				sqr = #{sqr},
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				create_by = #{create_by},
+			</if>
+			<if test="create_date != null and create_date != '' ">
+				create_date = #{create_date},
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				update_by = #{update_by},
+			</if>
+			<if test="update_date != null and update_date != '' ">
+				update_date = #{update_date},
+			</if>
+			<if test="remarks != null and remarks != '' ">
+				remarks = #{remarks},
+			</if>
+			<if test="flag != null and flag != '' ">
+				flag = #{flag},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="string">
+		delete from sd_flow_job where
+		id = #{id}
+	</delete>
+
+	<delete id="deleteByshnrid" parameterType="string">
+		delete from
+		sd_flow_job where shnrid = #{shnrid}
+	</delete>
+</mapper>

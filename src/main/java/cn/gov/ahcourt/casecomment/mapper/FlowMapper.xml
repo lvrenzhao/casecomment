@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.FlowMapper">
+
+	<select id="getsfzhyb" resultType="int">
+		select fn_get_sfzhyb(#{0},#{1},#{2})
+	</select>
+
+	<insert id="insertJob">
+		INSERT INTO sd_flow_job (id,lcmk,lcpzid,shnrid,dqbz,dqbzmc,shbtgthbz,shztlx,shztid,zyfw,lcbb,sfzhyb,sqr,create_by,create_date,update_by,update_date)
+		values (get_uuid(),#{config.lcmk},#{config.id},#{shnrid},#{config.bzxh},#{config.hjmc},#{config.btgthz},#{config.ztlx},#{config.ztid},#{config.zyfw},#{config.lcbb},fn_get_sfzhyb(#{config.lcmk},#{config.lcbb},1),#{yhid},#{yhid},now(),#{yhid},now())
+	</insert>
+	
+	<update id="updateJob">
+		UPDATE sd_flow_job sfj
+		SET sfj.dqbz = #{config.bzxh},
+		sfj.lcpzid = #{config.id},
+		sfj.dqbzmc = #{config.hjmc},
+		sfj.shbtgthbz = #{config.btgthz},
+		sfj.shztlx = #{config.ztlx},
+		sfj.shztid = #{config.ztid},
+		sfj.zyfw = #{config.zyfw},
+		sfj.sfzhyb = fn_get_sfzhyb (#{config.lcmk}, #{config.lcbb}, #{config.bzxh}),
+		sfj.update_by = #{updateby},
+		sfj.update_date = NOW()
+		WHERE sfj.id = #{jobid}
+	</update>
+	
+	<select id="getzj" resultType="string">
+		select fn_get_professional(#{0})
+	</select>
+	
+	<update id="updatenextcgsh">
+		UPDATE sd_flow_job SET
+		dqbz = 3,
+		dqbzmc = '三审',
+		sfzhyb = '1',
+		shztid = #{1},
+		update_by = #{2},
+		update_date = NOW()
+		WHERE lcmk = 'lc001'
+		AND shnrid = #{0}
+	</update>
+
+	<delete id="deleteOld">
+		delete from sd_flow_job where
+		shnrid = #{0} and lcmk = #{1}
+	</delete>
+	
+	<select id="selectFlowRole" resultType="map" parameterType="string">
+		SELECT sfcf.id,sfcr.ysfs,sfcr.value1,sfcr.value2,sfcf.lcmk,sfcf.zdmc,sfcf.zdlx FROM sd_flow_config_role sfcr LEFT JOIN sd_flow_config_field sfcf ON sfcf.id = sfcr.lczdid
+		WHERE sfcr.lcpzid = #{0}
+	</select>
+	
+	<select id="checkFlowConfig" resultType="int">
+		select count(0) 
+		<if test="lcmk == '10301'.toString()">
+			from bd_customer		
+		</if>
+		<if test="lcmk == '10302'.toString()">
+			from bd_business		
+		</if>
+		<if test="lcmk == '10303'.toString()">
+			from bd_business_bid		
+		</if>
+		<if test="lcmk == '10304'.toString()">
+			from bd_business_contract		
+		</if>
+		<if test="lcmk == '10306'.toString()">
+			from bd_office_leave		
+		</if>
+		<if test="lcmk == '10307'.toString()">
+			from bd_office_notice		
+		</if>
+		<if test="lcmk == '10308'.toString()">
+			from bd_office_resignation		
+		</if>
+		<if test="lcmk == '10311'.toString()">
+			from bd_office_usecar		
+		</if>
+		<where>
+			flag = '1'
+		<if test="shnrid != null and shnrid != '' ">
+			<if test="lcmk == '10301'.toString()">
+				and khid = #{shnrid}
+			</if>
+			<if test="lcmk == '10302'.toString()">
+				and ywid = #{shnrid}
+			</if>
+			<if test="lcmk == '10303'.toString()">
+				and ccid = #{shnrid}
+			</if>
+			<if test="lcmk == '10304'.toString()">
+				and htid = #{shnrid}
+			</if>
+			<if test="lcmk == '10306'.toString()">
+				and qjid = #{shnrid}
+			</if>
+			<if test="lcmk == '10307'.toString()">
+				and id = #{shnrid}
+			</if>
+			<if test="lcmk == '10308'.toString()">
+				and lzid = #{shnrid}
+			</if>
+			<if test="lcmk == '10311'.toString()">
+				and id = #{shnrid}
+			</if>
+		</if>
+		<foreach collection="list" item="item" index="index" >
+			<choose>
+			<when test="item.id == '1'.toString() ">and <if test="item.ysfs == '18706'.toString()">not</if> FIND_IN_SET((SELECT so.zzjgid FROM sd_user su LEFT JOIN sd_organization so ON su.zzid = so.zzjgid WHERE su.yhid = #{sqr}),#{item.value1})</when>
+			<when test="item.id == '2'.toString() ">and <if test="item.ysfs == '18706'.toString()">not</if> fn_get_contain((SELECT su.jsid FROM sd_user su WHERE su.yhid = #{sqr}),#{item.value1})</when>
+			<when test="item.id == '3'.toString() ">and <if test="item.ysfs == '18706'.toString()">not</if> fn_get_contain((SELECT bos.gw FROM sd_user su LEFT JOIN bd_oa_staff bos ON su.ygid = bos.ygid WHERE su.yhid = #{sqr}),#{item.value1})</when>
+			<otherwise>
+				<if test="item.ysfs == '18701'.toString()">and ${item.zdmc} &gt; #{item.value1}</if>
+				<if test="item.ysfs == '18702'.toString()">and ${item.zdmc} &lt; #{item.value1}</if>
+				<if test="item.ysfs == '18703'.toString()">and FIND_IN_SET(${item.zdmc},#{item.value1})</if>
+				<if test="item.ysfs == '18704'.toString()">and ${item.zdmc} &gt;= #{item.value1}</if>
+				<if test="item.ysfs == '18705'.toString()">and ${item.zdmc} &lt;= #{item.value1}</if>
+				<if test="item.ysfs == '18706'.toString()">and FIND_IN_SET(${item.zdmc},#{item.value1}) = 0</if>
+				<if test="item.ysfs == '18707'.toString()">and ${item.zdmc} like CONCAT('%',#{item.value1},'%')</if>
+				<if test="item.ysfs == '18708'.toString()">and ${item.zdmc} BETWEEN #{item.value1} and #{item.value2}</if>
+			</otherwise>
+			</choose>
+		</foreach>
+		</where>
+	</select>
+</mapper>

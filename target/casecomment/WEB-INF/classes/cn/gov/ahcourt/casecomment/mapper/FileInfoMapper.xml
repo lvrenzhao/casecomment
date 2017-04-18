@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.FileInfoMapper">
+	<resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.FileBean">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="user_id" jdbcType="VARCHAR" property="user_id" />
+		<result column="is_pub" jdbcType="VARCHAR" property="is_pub" />
+		<result column="file_name" jdbcType="VARCHAR" property="file_name" />
+		<result column="save_name" jdbcType="VARCHAR" property="save_name" />
+		<result column="directory" jdbcType="VARCHAR" property="directory" />
+		<result column="file_type" jdbcType="VARCHAR" property="file_type" />
+		<result column="file_size" jdbcType="INTEGER" property="file_size" />
+		<result column="md5" jdbcType="VARCHAR" property="md5" />
+		<result column="keywords" jdbcType="VARCHAR" property="keywords" />
+		<result column="download_count" jdbcType="INTEGER" property="download_count" />
+		<result column="create_by" jdbcType="VARCHAR" property="create_by" />
+		<result column="create_time" jdbcType="VARCHAR" property="create_time" />
+		<result column="update_by" jdbcType="VARCHAR" property="update_by" />
+		<result column="update_time" jdbcType="VARCHAR" property="update_time" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="del_flag" jdbcType="VARCHAR" property="del_flag" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_id, is_pub, file_name, save_name, directory, file_type,
+		file_size, md5,
+		keywords, download_count, create_by, create_time,
+		update_by, update_time,
+		remark,
+		del_flag
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sd_file
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<select id="selectTypes" resultType="java.lang.String"> 
+		SELECT file_type FROM `sd_file` GROUP BY file_type
+	</select>
+	<select id="selectByMD5" parameterType="java.lang.String" resultMap="BaseResultMap"> 
+		SELECT * FROM sd_file where md5 = #{md5} and del_flag = '0' limit 1
+	</select>
+	<select id="select" parameterType="cn.gov.ahcourt.casecomment.bean.FileBean"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sd_file
+		<where>
+			del_flag = '0'
+			<if test="id != null and id != '' ">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="user_id != null and user_id != '' ">
+				and user_id = #{user_id,jdbcType=VARCHAR}
+			</if>
+			<if test="is_pub != null and is_pub != '' ">
+				and is_pub = #{is_pub,jdbcType=VARCHAR}
+			</if>
+			<if test="file_name != null and file_name != '' ">
+				and file_name like
+				concat('%',#{file_name,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="save_name != null and save_name != '' ">
+				and save_name = #{save_name,jdbcType=VARCHAR}
+			</if>
+			<if test="file_type != null and file_type != '' ">
+				and file_type = #{file_type,jdbcType=VARCHAR}
+			</if>
+			<if test="file_size != null and file_size != '' ">
+				and file_size = #{file_size,jdbcType=INTEGER}
+			</if>
+			<if test="md5 != null and md5 != '' ">
+				and md5 = #{md5,jdbcType=VARCHAR}
+			</if>
+			<if test="keywords != null and keywords != '' ">
+				and keywords like
+				concat('%',#{keywords,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="download_count != null and download_count != '' ">
+				and download_count = #{download_count,jdbcType=INTEGER}
+			</if>
+			<if test="create_by != null and create_by != '' ">
+				and create_by = #{create_by,jdbcType=VARCHAR}
+			</if>
+			<if test="update_by != null and update_by != '' ">
+				and update_by = #{update_by,jdbcType=VARCHAR}
+			</if>
+			<if test="remark != null and remark != '' ">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.FileBean">
+		insert into sd_file
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="user_id != null">
+				user_id,
+			</if>
+			<if test="is_pub != null">
+				is_pub,
+			</if>
+			<if test="file_name != null">
+				file_name,
+			</if>
+			<if test="save_name != null">
+				save_name,
+			</if>
+			<if test="directory != null">
+				directory,
+			</if>
+			<if test="file_type != null">
+				file_type,
+			</if>
+			<if test="file_size != null">
+				file_size,
+			</if>
+			<if test="md5 != null">
+				md5,
+			</if>
+			<if test="keywords != null">
+				keywords,
+			</if>
+			<if test="download_count != null">
+				download_count,
+			</if>
+			<if test="create_by != null">
+				create_by,
+			</if>
+			create_time,
+			<if test="update_by != null">
+				update_by,
+			</if>
+			update_time,
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="del_flag != null">
+				del_flag,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null">
+				#{user_id,jdbcType=VARCHAR},
+			</if>
+			<if test="is_pub != null">
+				#{is_pub,jdbcType=VARCHAR},
+			</if>
+			<if test="file_name != null">
+				#{file_name,jdbcType=VARCHAR},
+			</if>
+			<if test="save_name != null">
+				#{save_name,jdbcType=VARCHAR},
+			</if>
+			<if test="directory != null">
+				#{directory,jdbcType=VARCHAR},
+			</if>
+			<if test="file_type != null">
+				#{file_type,jdbcType=VARCHAR},
+			</if>
+			<if test="file_size != null">
+				#{file_size,jdbcType=INTEGER},
+			</if>
+			<if test="md5 != null">
+				#{md5,jdbcType=VARCHAR},
+			</if>
+			<if test="keywords != null">
+				#{keywords,jdbcType=VARCHAR},
+			</if>
+			<if test="download_count != null">
+				#{download_count,jdbcType=INTEGER},
+			</if>
+			<if test="create_by != null">
+				#{create_by,jdbcType=VARCHAR},
+			</if>
+			now(),
+			<if test="update_by != null">
+				#{update_by,jdbcType=VARCHAR},
+			</if>
+			now(),
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="del_flag != null">
+				#{del_flag,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateDownloadCount" parameterType="cn.gov.ahcourt.casecomment.bean.FileBean">
+		update sd_file set
+		<![CDATA[ download_count = download_count + 1,]]>
+		update_time = now()
+		<where>
+			<if test="id !=null and id !='' ">
+				AND id = #{id}
+			</if>
+			<if test="save_name !=null and save_name !='' ">
+				AND save_name = #{save_name}
+			</if>
+			<if test="user_id !=null and user_id !='' ">
+				AND user_id = #{user_id}
+			</if>
+		</where>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.gov.ahcourt.casecomment.bean.FileBean">
+		update sd_file
+		<set>
+			<if test="user_id != null">
+				user_id = #{user_id,jdbcType=VARCHAR},
+			</if>
+			<if test="is_pub != null">
+				is_pub = #{is_pub,jdbcType=VARCHAR},
+			</if>
+			<if test="file_name != null">
+				file_name = #{file_name,jdbcType=VARCHAR},
+			</if>
+			<if test="save_name != null">
+				save_name = #{save_name,jdbcType=VARCHAR},
+			</if>
+			<if test="directory != null">
+				directory = #{directory,jdbcType=VARCHAR},
+			</if>
+			<if test="file_type != null">
+				file_type = #{file_type,jdbcType=VARCHAR},
+			</if>
+			<if test="file_size != null">
+				file_size = #{file_size,jdbcType=INTEGER},
+			</if>
+			<if test="md5 != null">
+				md5 = #{md5,jdbcType=VARCHAR},
+			</if>
+			<if test="keywords != null">
+				keywords = #{keywords,jdbcType=VARCHAR},
+			</if>
+			<if test="download_count != null">
+				download_count = #{download_count,jdbcType=INTEGER},
+			</if>
+			<if test="create_by != null">
+				create_by = #{create_by,jdbcType=VARCHAR},
+			</if>
+			<if test="create_time != null">
+				create_time = #{create_time,jdbcType=VARCHAR},
+			</if>
+			<if test="update_by != null">
+				update_by = #{update_by,jdbcType=VARCHAR},
+			</if>
+			update_time = now(),
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="del_flag != null">
+				del_flag = #{del_flag,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<select id="download" resultType="cn.gov.ahcourt.casecomment.bean.FileBean" parameterType="list">
+	select id,save_name,file_name,file_size,file_type,`directory`,`directory` as entrydic from sd_file	where id in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			 '${item}'
+		</foreach>
+	</select>
+</mapper>
