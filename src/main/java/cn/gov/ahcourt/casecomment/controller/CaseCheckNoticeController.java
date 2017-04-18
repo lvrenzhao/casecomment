@@ -1,6 +1,7 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,9 +13,10 @@ public class CaseCheckNoticeController {
 	public String verify() {
 		return "casecheck/notice/verify";
 	}
-	@RequestMapping(value = "/verifyact", method = { RequestMethod.GET, RequestMethod.POST })
-	public String verifyact() {
-		return "casecheck/notice/verifyact";
+	@RequestMapping(value = "/caselist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String caselist(ModelMap model, String mode , String ggid) {
+		model.addAttribute("mode", mode);
+		return "casecheck/notice/case_list";
 	}
 	@RequestMapping(value = "/handle", method = { RequestMethod.GET, RequestMethod.POST })
 	public String handle() {
