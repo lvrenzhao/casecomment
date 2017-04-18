@@ -56,7 +56,7 @@
             url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
             datatype : "json",
             mtype : "post",
-            height : gridHeight()-65,
+            height : gridHeight() - 65,
             width : gridWidth(),
             rownumbers : true,
             shrinkToFit : true,
