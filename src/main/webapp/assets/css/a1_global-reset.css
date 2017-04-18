@@ -62,7 +62,6 @@ a:focus {
 }
 video {
     width: 100% !important;
-    height: auto !important;
 }
 textarea{
 	resize: none;

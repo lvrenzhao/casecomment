@@ -28,6 +28,7 @@
   </div>
 <script>
   $(function(){
+      //设定支持的上传格式只能是:doc/docx/pdf/mp4/ 千万不能是zip,rar等。
       $("#inputimage").fileinput({
           language : 'zh',
           uploadUrl : ahcourt.ctx + '/setting/file/fileupload.do',
@@ -66,7 +67,7 @@
           },{
               label : '操作',
               name : 'ggid',
-              width : 100,
+              width : 180,
               align : 'center',
               sortable : false,
               formatter : formatoption1
@@ -94,7 +95,8 @@
   })
 
   function formatoption1(cellvalue, options, rowObject) {
-      return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="删除"><i class="fa fa-trash"></i> 删除</button>';
+      return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="删除"><i class="fa fa-trash"></i> 删除</button>'
+          +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i> 下载</button>';
   }
   function gridWidth() {
       return $('body').width() - 22;

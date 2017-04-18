@@ -32,6 +32,11 @@ public class IndexController {
         return "../index";
     }
 
+    @RequestMapping("/player")
+    public String player(String vid){
+        return "casecheck/check/player";
+    }
+
     public void initMenusByRole(List<MenuBean> menus,UserBean user){
         for(int i = 0 ; menus!=null && i< menus.size(); i++){
             if(StringUtils.isEmpty(menus.get(i).getCdurl())){

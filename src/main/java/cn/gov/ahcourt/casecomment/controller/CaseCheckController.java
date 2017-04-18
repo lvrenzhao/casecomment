@@ -19,7 +19,6 @@ public class CaseCheckController {
 		model.addAttribute("mode", mode);
 		return "casecheck/check/check";
 	}
-
 	@RequestMapping(value = "/history", method = { RequestMethod.GET, RequestMethod.POST })
 	public String history() {
 		return "casecheck/check/history";
