@@ -10,31 +10,7 @@
   <jsp:include page="/header.jsp?libs=jqgrid;layer" />
 </head>
 <body>
-<div id="search_box1" class="form_center clearfix">
-  <div class="form_item wb25 fl">
-    <label>公告标题</label>
-    <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
-  </div>
-  <div class="form_item wb15 fl">
-    <label>评查类型</label>
-    <select class="form-control input-sm">
-      <option value="">--请选择--</option>
-      <option value="">常规评查</option>
-    </select>
-  </div>
-  <div class="form_item wb35 fl">
-    <label>发布日期</label>
-    <div>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
-      <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
-    </div>
 
-  </div>
-  <div class="form_item wb10 fl">
-    <button id="" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
-  </div>
-</div>
 <div class="clearfix pd10">
   <table id="table1" class="table table-striped"></table>
   <div id="pager1"></div>
@@ -108,7 +84,7 @@
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -95;
+        return $('body').height() -30;
     }
 
     function initChildGrid1(parentRowID, parentRowKey) {

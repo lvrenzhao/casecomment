@@ -108,6 +108,12 @@
           <td>简要点评</td>
           <td colspan="5" height="100"><input type="text" style="border: none;width: 100%;height: 100%;"></td>
         </tr>
+
+        <tr >
+          <td>总分</td>
+          <td colspan="4"></td>
+          <td>89</td>
+        </tr>
         </tbody>
       </table>
 
