@@ -43,12 +43,12 @@
         </div>
     </div>
     <div class="clearfix pd10">
-        <table id="table2" class="table table-striped"></table>
-        <div id="pager2"></div>
+        <table id="table1" class="table table-striped"></table>
+        <div id="pager1"></div>
     </div>
 <script>
     $(function(){
-        $("#table2").jqGrid({
+        $("#table1").jqGrid({
             url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
             datatype : "json",
             mtype : "post",
@@ -63,6 +63,13 @@
                 name : 'ggid',
                 hidden : true,
                 key : true
+            },{
+                label : '操作',
+                name : 'ggid',
+                width : 80,
+                align : 'center',
+                sortable : false,
+                formatter : formatter_grid1_opts
             }, {
                 label : '公告标题',
                 name : 'ggbt',
@@ -97,104 +104,34 @@
                 label : '审核意见',
                 name : 'shyj',
                 width : 200,
-                formatter:formatoption3
+                formatter:formatter_grid1_shyj
             }],
-            pager : '#pager2',
-            subGrid : true,
-            subGridRowExpanded : initChildGrid1,
-            subGridOptions : {
-                "plusicon" : "fa fa-plus",
-                "minusicon" : "fa fa-minus",
-                "expandOnLoad" : false
-            }
-
+            pager : '#pager1'
+            ,viewrecords: true
         });
     })
 
-    function formatoption2(cellvalue, options, rowObject) {
-        //###评查信息包含：评查结果，评分，文档资料？案件基本信息。
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="评查信息"><i class="fa fa-info-circle"></i> 评查信息</button>';
-    }
-    function formatoption3(cellvalue, options, rowObject) {
+    function formatter_grid1_shyj(cellvalue, options, rowObject) {
         return '<a href="javascript:void(0)">...</a>';
     }
-
-    function initChildGrid1(parentRowID, parentRowKey) {
-        var tabid = parentRowID + "_table";
-        $('#' + parentRowID).append('<table id="' + tabid + '"></table>');
-        $("#" + tabid).jqGrid({
-            postData : {
-                "ggid" : parentRowKey
-            },
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
-            datatype : "json",
-            mtype : "post",
-            height : 200,
-            width : gridWidth() - 100,
-            rownumbers : true,
-            shrinkToFit : true,
-            rowNum : 1000000,
-            colModel : [ {
-                label : 'ajid',
-                name : 'ajid',
-                hidden : true,
-                key : true
-            }, {
-                label : 'ggid',
-                name : 'ggid',
-                hidden : true,
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 100,
-                align : 'center',
-                sortable : false,
-                formatter : formatoption2
-            },{
-                label : '案号',
-                name : 'xmmc',
-                frozen : true,
-                width : 100
-            }, {
-                label : '归属法院',
-                name : 'xmzt',
-                width : 150
-            }, {
-                label : '承办部门',
-                name : 'htmc',
-                width : 100
-            }, {
-                label : '承办人',
-                name : 'xmlxmc',
-                width : 80
-            }, {
-                label : '案件类型',
-                name : 'zylbmc',
-                width : 80
-            }, {
-                label : '案由',
-                name : 'xmfzrmc',
-                width : 150
-            }, {
-                label : '结案方式',
-                name : 'xmjlmc',
-                width : 80
-            }, {
-                label : '结案时间',
-                name : 'xmcymc',
-                width : 80
-            }, {
-                label : '评查专家',
-                name : 'yqgq',
-                width : 100
-            } , {
-                label : '质量等级',
-                name : 'yqgq',
-                width : 100
-            }]
-        })
+    function formatter_grid1_opts(cellvalue, options, rowObject) {
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
     }
 
+    function openCases(mode,ggid) {
+        layer.open({
+            type : 2,
+            shift : 5,
+            title : mode==1?"查看案件详细列表":"审核评查公告",
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '95%', '90%' ],
+            content : ahcourt.ctx + '/casecheck/notice/caselist.do?mode='+mode+'&ggid=' + ggid,
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    }
     function gridWidth() {
         return $('body').width() - 22;
     }
