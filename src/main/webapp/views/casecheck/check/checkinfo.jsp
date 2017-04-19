@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-<div class="bmbox_layout">
+<div class="bmbox_layout title_fixed">
   <div class="bmbox_title home-righttab">
     <ul class="nav nav-tabs navs-3">
       <li class="active">
@@ -217,7 +217,7 @@
             url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
             datatype : "json",
             mtype : "post",
-            height : gridHeight(),
+            height : 300,
             width : gridWidth(),
             shrinkToFit : true,
             rowNum : 100000,
@@ -272,9 +272,6 @@
     }
     function gridWidth() {
         return $('body').width() -22;
-    }
-    function gridHeight() {
-        return $('body').height() -330;
     }
 </script>
 </body>

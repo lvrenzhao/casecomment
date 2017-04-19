@@ -94,8 +94,8 @@
 
 
     function formatoption(cellvalue, options, rowObject) {
-        return '<button class="btn btn-white btn-xs " type="button" onclick="addItem()" title="编辑"><i class="fa fa-edit"></i></button>&nbsp;&nbsp;'+
-            '<button class="btn btn-white btn-xs " type="button" onclick="deleteItem()" title="删除"><i class="fa fa-trash"></i></button>';
+        return '<button class="btn btn-white btn-xs " type="button" onclick="" title="删除"><i class="fa fa-trash"></i> 删除</button>'+
+            '<button class="btn btn-white btn-xs " type="button" onclick="deleteItem()" title="编辑"><i class="fa fa-edit"></i> 编辑</button>';
     }
 
     function deleteItem () {

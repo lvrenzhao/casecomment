@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verifyact.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/controller/CaseCheckNoticeController.class" afterPath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/controller/CaseCheckNoticeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/controller/CaseCheckNoticeController.class" afterPath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/controller/CaseCheckNoticeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/controller/IndexController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/css/a1_global-reset.css" afterPath="$PROJECT_DIR$/target/casecomment/assets/css/a1_global-reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" afterPath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/handle.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/handle.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/history.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/history.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/list.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/mylist.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/mylist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/upload.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/upload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/list.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/mylist.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/mylist.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -126,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/verifyact.jsp" />
         <option value="$PROJECT_DIR$/.idea/vcs.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckNoticeController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/upload.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/a1_global-reset.css" />
@@ -135,18 +125,19 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/check.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckConfigController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/config/score.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/verify.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/mylist.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/handle.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/list.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/todo.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/mylist.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp" />
       </list>
     </option>
   </component>
@@ -355,10 +346,6 @@
               <option name="myItemId" value="casecheck" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -387,6 +374,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="casecheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -467,36 +458,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -521,36 +482,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1169,7 +1100,7 @@
       <workItem from="1492492471475" duration="1393000" />
       <workItem from="1492495566497" duration="14925000" />
       <workItem from="1492571714519" duration="121000" />
-      <workItem from="1492572213843" duration="7662000" />
+      <workItem from="1492572213843" duration="8256000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1492493720830</created>
@@ -1220,11 +1151,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492581420103</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="test">
+      <created>1492586470598</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1492586470598</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121377000" />
+    <option name="totallyTimeSpent" value="121971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1523,13 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="182" column="61" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="182" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckConfigController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1543,17 +1474,6 @@
         <state relative-caret-position="261">
           <caret line="34" column="6" lean-forward="false" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="54" column="42" lean-forward="false" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <marker date="1492581037000" expanded="true" signature="2851:2857" ph="&amp;nbsp;" />
-            <marker date="1492581037000" expanded="true" signature="2857:2863" ph="&amp;nbsp;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1597,42 +1517,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/mylist.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="149" column="26" lean-forward="true" selection-start-line="149" selection-start-column="26" selection-end-line="149" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseCheckController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="92" column="30" lean-forward="false" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/verify.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="187" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="229" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1653,41 +1541,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="233" column="15" lean-forward="false" selection-start-line="233" selection-start-column="15" selection-end-line="233" selection-end-column="15" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#8;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#8;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#4;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#5;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#6;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#7;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#8;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#9;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#10;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#11;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#12;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#13;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/check.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="174" column="5" lean-forward="true" selection-start-line="161" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/verify.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-282">
+          <caret line="171" column="30" lean-forward="true" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="166" column="120" lean-forward="false" selection-start-line="166" selection-start-column="120" selection-end-line="166" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/config/level.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="96" column="77" lean-forward="false" selection-start-line="96" selection-start-column="77" selection-end-line="96" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/mylist.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="165" column="6" lean-forward="true" selection-start-line="165" selection-start-column="6" selection-end-line="178" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="213" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
           <folding />
         </state>
       </provider>
