@@ -123,6 +123,7 @@
                 width : 100
             } ],
             pager : '#pager1'
+            ,viewrecords: true
 
         });
 
@@ -183,8 +184,9 @@
                 name : 'shyj',
                 width : 200,
                 formatter:formatter_grid2_shyj
-            }]
-
+            }],
+            pager : '#pager2'
+            ,viewrecords: true
         });
 
 

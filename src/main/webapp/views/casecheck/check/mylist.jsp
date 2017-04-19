@@ -147,7 +147,8 @@
                ,{label : '评查时间',name : 'pcsj',width : 80}
                ,{label : '质量等级',name : 'yqgq',width : 80}
               ],
-              pager:"#pager1"
+              pager:"#pager1",
+              viewrecords: true
           });
       });
       function gridWidth() {

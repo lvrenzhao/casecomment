@@ -111,6 +111,7 @@
                 formatter:formatter_grid1_shyj
             }],
             pager : '#pager1'
+            ,viewrecords: true
         });
     })
 

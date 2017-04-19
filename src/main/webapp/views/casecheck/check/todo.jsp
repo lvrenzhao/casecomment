@@ -66,6 +66,7 @@
                 width : 100
             }],
             pager : '#pager1'
+            ,viewrecords: true
             ,subGrid : true,
             subGridRowExpanded : initChildGrid1,
             subGridOptions : {
