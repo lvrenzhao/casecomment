@@ -24,7 +24,7 @@ public class IndexController {
     	if(user == null || StringUtils.isEmpty(user.getZh())){
     		return "redirect:/login.do";
     	}
-    	//加载菜单
+    	//加载菜单(递归)
         List<MenuBean> menus = menuService.getMenusByParentID("0", user.getJsid());
         initMenusByRole(menus,user);
         httpSession.setAttribute("menus", menus);
