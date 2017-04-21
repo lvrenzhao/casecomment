@@ -33,7 +33,7 @@
 
 
             <div class="form_item wb45 fl">
-              <label>案件性质</label>
+              <label>案件性质<span style="color: red;">*</span></label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">
                   <label class="default_radio">
@@ -81,7 +81,7 @@
             </div>
 
             <div class="form_item wb12_0 fl">
-              <label>归属法院</label>
+              <label>归属法院<span style="color: red;">*</span></label>
               <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
             </div>
             <div class="form_item wb12_0 fl">
@@ -98,7 +98,7 @@
             </div>
 
             <div class="form_item wb23 fl">
-              <label>结案日期</label>
+              <label>结案日期<span style="color: red;">*</span></label>
               <div>
                 <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
                 <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;">~</span>
@@ -118,7 +118,21 @@
           </div>
         </div>
         <div id="tab-2" class="tab-pane">
-
+          <div id="search_box2" class="form_center clearfix">
+            <div class="form_item wb50 fl">
+              <label>评查活动标题</label>
+              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+            </div>
+            <div class="form_item wb50 fl">
+              <button id="" class="btn btn-success btn-sm " type="button" style="margin-top:30px;">发起常规评查</button>
+              <button id="" class="btn btn-info btn-sm " type="button" style="margin-top:30px;">发起专项评查</button>
+              <button id="" class="btn btn-warning btn-sm " type="button" style="margin-top:30px;">发起重点评查</button>
+            </div>
+          </div>
+          <div class="clearfix pd10">
+            <table id="table2" class="table table-striped"></table>
+            <div id="pager2"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -198,6 +212,76 @@
             pager:"#pager1",
             viewrecords: true
         });
+
+
+
+
+        $("#table2").jqGrid({
+            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            datatype : "json",
+            mtype : "post",
+            height : $('body').height() -190,
+            width : gridWidth(),
+            rownumbers : true,
+            shrinkToFit : true,
+            rowNum : 1000000,
+            colModel : [ {
+                label : 'ajid',
+                name : 'ajid',
+                hidden : true,
+                key : true,
+                frozen : true
+            }, {
+                label : 'ggid',
+                name : 'ggid',
+                hidden : true,
+                frozen : true
+            },{
+                label : '操作',
+                name : 'ggid',
+                width : 100,
+                align : 'center',
+                sortable : false,
+                formatter :formatter_grid2_opt_1 ,
+                frozen : true
+            },{
+                label : '案号',
+                name : 'xmmc',
+                frozen : true,
+                width : 100
+            }, {
+                label : '归属法院',
+                name : 'xmzt',
+                width : 150
+            }, {
+                label : '承办部门',
+                name : 'htmc',
+                width : 100
+            }, {
+                label : '承办人',
+                name : 'xmlxmc',
+                width : 80
+            }, {
+                label : '案件性质',
+                name : 'zylbmc',
+                width : 80
+            }, {
+                label : '案由',
+                name : 'xmfzrmc',
+                width : 120
+            }, {
+                label : '结案方式',
+                name : 'xmjlmc',
+                width : 80
+            }, {
+                label : '结案时间',
+                name : 'xmcymc',
+                width : 80
+            }
+            ],
+            pager:"#pager2",
+            viewrecords: true
+        });
     });
     function gridWidth() {
         return $('body').width() - 22;
@@ -208,6 +292,9 @@
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="添加"><i class="fa fa-cart-plus"></i> 添加到已抽取</button>';
+    }
+    function formatter_grid2_opt_1(cellvalue, options, rowObject) {
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="移除"><i class="fa fa-trash"></i> 移除</button>';
     }
   </script>
   </body>

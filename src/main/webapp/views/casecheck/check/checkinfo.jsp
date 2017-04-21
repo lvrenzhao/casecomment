@@ -19,17 +19,17 @@
     <ul class="nav nav-tabs navs-3">
       <li class="active">
         <a data-toggle="tab" href="#tab-1">
-          <i class="fa fa-balance-scale"></i> 评查信息
+          <i class="fa fa-balance-scale"></i> 评查分数
         </a>
       </li>
       <li class="">
         <a data-toggle="tab" href="#tab-2">
-          <i class="fa fa-user"></i> 专家信息
+          <i class="fa fa-user"></i> 评查文件
         </a>
       </li>
       <li class="">
         <a data-toggle="tab" href="#tab-3">
-          <i class="fa fa-info-circle"></i> 案件信息
+          <i class="fa fa-info-circle"></i> 专家信息
         </a>
       </li>
     </ul>
@@ -117,32 +117,9 @@
           </tbody>
         </table>
       </div>
-      <div id="tab-2" class="tab-pane">
-        <div class="form_center  clearfix" style="padding: 15px 0;">
-          <div class="form_item wb100 fl">
-            <label>专家姓名:</label>
-            <span style="color: #ac2925;">张三</span>
-          </div>
-          <div class="form_item wb100 fl">
-            <label>专家来自:</label>
-            <span style="color: #ac2925;">安徽省高级人民法院</span>
-          </div>
-          <div class="form_item wb100 fl">
-            <label>头衔:</label>
-            <span style="color: #ac2925;">法官</span>
-          </div>
-          <div class="form_item wb100 fl">
-            <label>可评查案件类型:</label>
-            <span style="color: #ac2925;">刑事；民事</span>
-          </div>
-          <div class="form_item wb100 fl">
-          <label>介绍:</label>
-          <p style="color: #ac2925;">张三法官是安徽省高级人民的资深法官，层审判过多起重大刑事案件...</p>
-        </div>
-        </div>
-      </div>
-      <div id="tab-3" class="tab-pane pd10">
-        <div class="form_center  clearfix">
+
+      <div id="tab-2" class="tab-pane pd10">
+        <!--<div class="form_center  clearfix">
           <div class="form_item wb25 fl">
             <label>案号:</label>
             <span style="color: #ac2925;"></span>
@@ -176,10 +153,34 @@
             <label>结案方式:</label>
             <span style="color: #ac2925;">判决</span>
           </div>
-        </div>
+        </div>-->
 
         <table id="table1" style=""></table>
 
+      </div>
+      <div id="tab-3" class="tab-pane">
+        <div class="form_center  clearfix" style="padding: 15px 0;">
+          <div class="form_item wb100 fl">
+            <label>专家姓名:</label>
+            <span style="color: #ac2925;">张三</span>
+          </div>
+          <div class="form_item wb100 fl">
+            <label>专家来自:</label>
+            <span style="color: #ac2925;">安徽省高级人民法院</span>
+          </div>
+          <div class="form_item wb100 fl">
+            <label>头衔:</label>
+            <span style="color: #ac2925;">法官</span>
+          </div>
+          <div class="form_item wb100 fl">
+            <label>可评查案件类型:</label>
+            <span style="color: #ac2925;">刑事；民事</span>
+          </div>
+          <div class="form_item wb100 fl">
+            <label>介绍:</label>
+            <p style="color: #ac2925;">张三法官是安徽省高级人民的资深法官，层审判过多起重大刑事案件...</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -193,7 +194,7 @@
             url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
             datatype : "json",
             mtype : "post",
-            height : 300,
+            height : $('body').height()-95,
             width : gridWidth(),
             shrinkToFit : true,
             rowNum : 100000,
@@ -232,8 +233,8 @@
                 label : '上传时间',
                 name : 'lxrmc',
                 width : 100
-            }],
-            caption:"案件资料"
+            }]
+            //, caption:"案件资料"
         });
 
     });
