@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=icheck" />
+    <jsp:include page="/header.jsp?libs=icheck;jqgrid" />
   </head>
   <body>
   <div class="bmbox_layout">
@@ -112,6 +112,10 @@
               <button id="" class="btn btn-white btn-sm " type="button" style="margin-top: 30px;">添加到已抽取</button>
             </div>
           </div>
+          <div class="clearfix pd10">
+            <table id="table1" class="table table-striped"></table>
+            <div id="pager1"></div>
+          </div>
         </div>
         <div id="tab-2" class="tab-pane">
 
@@ -125,7 +129,86 @@
             radioClass : 'iradio_square-green',
             checkboxClass : 'icheckbox_square-green',
         });
-    })
+
+
+        $("#table1").jqGrid({
+            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            datatype : "json",
+            mtype : "post",
+            multiselect : true,
+            height : gridHeight(),
+            width : gridWidth(),
+            rownumbers : true,
+            shrinkToFit : true,
+            rowNum : 1000000,
+            colModel : [ {
+                label : 'ajid',
+                name : 'ajid',
+                hidden : true,
+                key : true,
+                frozen : true
+            }, {
+                label : 'ggid',
+                name : 'ggid',
+                hidden : true,
+                frozen : true
+            },{
+                label : '操作',
+                name : 'ggid',
+                width : 100,
+                align : 'center',
+                sortable : false,
+                formatter :formatter_grid1_opt_1 ,
+                frozen : true
+            },{
+                label : '案号',
+                name : 'xmmc',
+                frozen : true,
+                width : 100
+            }, {
+                label : '归属法院',
+                name : 'xmzt',
+                width : 150
+            }, {
+                label : '承办部门',
+                name : 'htmc',
+                width : 100
+            }, {
+                label : '承办人',
+                name : 'xmlxmc',
+                width : 80
+            }, {
+                label : '案件性质',
+                name : 'zylbmc',
+                width : 80
+            }, {
+                label : '案由',
+                name : 'xmfzrmc',
+                width : 120
+            }, {
+                label : '结案方式',
+                name : 'xmjlmc',
+                width : 80
+            }, {
+                label : '结案时间',
+                name : 'xmcymc',
+                width : 80
+            }
+            ],
+            pager:"#pager1",
+            viewrecords: true
+        });
+    });
+    function gridWidth() {
+        return $('body').width() - 22;
+    }
+    function gridHeight() {
+        return $('body').height() -270;
+    }
+
+    function formatter_grid1_opt_1(cellvalue, options, rowObject) {
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="添加"><i class="fa fa-cart-plus"></i> 添加到已抽取</button>';
+    }
   </script>
   </body>
 </html>

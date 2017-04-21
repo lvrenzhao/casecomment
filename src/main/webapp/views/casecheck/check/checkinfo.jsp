@@ -148,20 +148,12 @@
             <span style="color: #ac2925;"></span>
           </div>
           <div class="form_item wb25 fl">
-            <label>案件名称:</label>
-            <span style="color: #ac2925;"></span>
-          </div>
-          <div class="form_item wb25 fl">
-            <label>案件类型:</label>
+            <label>案件性质:</label>
             <span style="color: #ac2925;">民事</span>
           </div>
-          <div class="form_item wb25 fl">
+          <div class="form_item wb50 fl">
             <label>案由:</label>
             <span style="color: #ac2925;">经济纠纷</span>
-          </div>
-          <div class="form_item wb100 fl">
-            <label>当事人:</label>
-            <span style="color: #ac2925;">申请人：对对对 被申请人：错错错</span>
           </div>
           <div class="form_item wb25 fl">
             <label>归属法院:</label>
@@ -171,27 +163,11 @@
             <label>承办部门:</label>
             <span style="color: #ac2925;">刑事一庭</span>
           </div>
-          <div class="form_item wb25 fl">
+          <div class="form_item wb50 fl">
             <label>承办人:</label>
             <span style="color: #ac2925;">王五</span>
           </div>
-          <div class="form_item wb25 fl">
-            <label>书记员:</label>
-            <span style="color: #ac2925;">王五</span>
-          </div>
 
-          <div class="form_item wb25 fl">
-            <label>立案时间:</label>
-            <span style="color: #ac2925;">2016-01-01</span>
-          </div>
-          <div class="form_item wb25 fl">
-            <label>法定审限:</label>
-            <span style="color: #ac2925;">90</span>
-          </div>
-          <div class="form_item wb50 fl">
-            <label>实际审理天数:</label>
-            <span style="color: #ac2925;">30</span>
-          </div>
           <div class="form_item wb25 fl">
             <label>结案时间:</label>
             <span style="color: #ac2925;">2016-01-01</span>
