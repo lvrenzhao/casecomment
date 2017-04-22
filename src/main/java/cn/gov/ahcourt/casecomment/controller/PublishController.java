@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PublishController {
 
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
-	public String input() {
+	public String input(ModelMap model, String mode , String ggid) {
+		model.addAttribute("mode", mode);
 		return "publish/input";
 	}
 
