@@ -116,6 +116,10 @@
                   name : 'xmzt',
                   width : 150
               }, {
+                  label : '公告标题',
+                  name : 'xmzt',
+                  width : 150
+              }, {
                   label : '承办部门',
                   name : 'htmc',
                   width : 100

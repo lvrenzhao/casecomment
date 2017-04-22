@@ -52,7 +52,7 @@
   </div>
 
   <div class="form_item wb15 fl">
-    <label>案由</label>
+    <label>发布人</label>
     <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
   </div>
 
@@ -118,6 +118,10 @@
                 width : 100
             }, {
                 label : '归属法院',
+                name : 'xmzt',
+                width : 150
+            }, {
+                label : '公告标题',
                 name : 'xmzt',
                 width : 150
             }, {

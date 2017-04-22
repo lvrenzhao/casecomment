@@ -184,7 +184,7 @@
                 name : 'xmcymc',
                 width : 80
             } , {
-                label : '评选分数',
+                label : '得分',
                 name : 'xmcymc',
                 width : 80
             }]
