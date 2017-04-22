@@ -21,6 +21,12 @@ public class CaseChosenNoticeController {
 		return "casechosen/notice/mylist";
 	}
 
+	@RequestMapping(value = "/caselist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String caselist(ModelMap model, String mode , String ggid) {
+		model.addAttribute("mode", mode);
+		return "casechosen/notice/case_list";
+	}
+
 	@RequestMapping(value = "/verify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String verify() {
 		return "casechosen/notice/verify";

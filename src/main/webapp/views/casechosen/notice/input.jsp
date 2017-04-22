@@ -15,7 +15,7 @@
       <label>三精评选公告标题</label>
       <input type="text" class="form-control" placeholder="请输入三精评选公告的标题"/>
     </div>
-    <div class="form_item wb30 fl">
+    <div class="form_item wb28 fl">
       <label>标题颜色</label>
       <div class="i-checkslayout">
         <div class="radio i-checks">
@@ -31,6 +31,22 @@
     <div class="form_item wb20 fl">
       <label>上传截止日期</label>
       <input type="text" class="form-control" placeholder=""/>
+    </div>
+    <div class="form_item wb50 fl">
+      <label>三精评选类型</label>
+      <div class="i-checkslayout">
+        <div class="radio i-checks">
+          <label class="default_radio">
+            <input type="radio" value="1" name="lx" checked style="position: absolute; opacity: 0;"> <i></i> 案件评选
+          </label>
+          <label>
+            <input type="radio" value="2" name="lx" style="position: absolute; opacity: 0;"> <i></i> 庭审影像评选
+          </label>
+          <label>
+            <input type="radio" value="2" name="lx" style="position: absolute; opacity: 0;"> <i></i> 裁判文书评选
+          </label>
+        </div>
+      </div>
     </div>
     <div class="form_item wb100 fl">
       <label>短信提醒</label>

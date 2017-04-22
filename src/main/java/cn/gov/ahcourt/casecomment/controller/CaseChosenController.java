@@ -14,6 +14,18 @@ public class CaseChosenController {
 		return "/casechosen/chosen/todo";
 	}
 
+
+	@RequestMapping(value = "/chosen", method = { RequestMethod.GET, RequestMethod.POST })
+	public String chosen(ModelMap model, String mode ) {
+		model.addAttribute("mode", mode);
+		return "casechosen/chosen/chosen";
+	}
+	@RequestMapping(value = "/choseninfo", method = { RequestMethod.GET, RequestMethod.POST })
+	public String choseninfo(ModelMap model, String mode ) {
+		model.addAttribute("mode", mode);
+		return "casechosen/chosen/choseninfo";
+	}
+
 	@RequestMapping(value = "/history", method = { RequestMethod.GET, RequestMethod.POST })
 	public String history() {
 		return "/casechosen/chosen/history";
