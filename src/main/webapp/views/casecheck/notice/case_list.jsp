@@ -30,6 +30,7 @@
         </div>
         <div class="bmbox_content clearfix">
           <table id="table1" class="table table-striped"></table>
+          <div id="pager1"></div>
         </div>
       </div>
 
@@ -162,15 +163,17 @@
             width : gridWidth(),
             rownumbers : true,
             shrinkToFit : true,
-            rowNum : 1000000,
-            colModel : cols
+            rowNum : 20,
+            colModel : cols,
+            pager:"#pager1",
+            viewrecords: true
         });
     });
     function gridWidth() {
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -145;
+        return $('body').height() -175;
     }
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {
