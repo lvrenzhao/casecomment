@@ -21,6 +21,11 @@ public class UserService {
 		return bean.toMap(userMapper.selectList(bean));
 	}
 
+
+	public List<UserBean> select(UserBean bean) {
+		return userMapper.select(bean);
+	}
+
 	public List<UserBean> selectList(UserBean bean) {
 		return userMapper.selectList(bean);
 	}

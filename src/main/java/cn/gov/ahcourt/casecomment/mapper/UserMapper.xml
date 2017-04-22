@@ -310,7 +310,7 @@
 	</select>
 
 	<select id="select" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.UserBean">
-		SELECT su1.yhid,su1.xm,so.zzjgmc zzid FROM sd_user su1 
+		SELECT su1.yhid,su1.xm,so.zzjgmc zzid FROM sd_user su1
 		LEFT JOIN sd_organization so ON su1.zzid = so.zzjgid
 		where 1=1
 		<if test="xm !=null and xm != '' ">
@@ -319,7 +319,7 @@
 		<if test="sfyzdw !=null and sfyzdw != '' ">
 			and so.sfyzdw = #{sfyzdw}
 		</if>
-		ORDER BY 	
+		ORDER BY
 		<if test="yhid !=null and yhid != '' ">
 			so.zzjgid = (SELECT su2.zzid FROM sd_user su2 WHERE su2.yhid = #{yhid}) desc,
 		</if>

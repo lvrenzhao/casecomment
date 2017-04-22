@@ -5,18 +5,27 @@ import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.MenuBean;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.mapper.UserMapper;
 import cn.gov.ahcourt.casecomment.service.MenuService;
+import cn.gov.ahcourt.casecomment.service.UserService;
+import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class IndexController {
 
     @Resource
     private MenuService menuService;
+    @Resource
+    private UserService userService;
+
 
     @RequestMapping("/index")
     public String index(HttpSession httpSession){
@@ -45,6 +54,13 @@ public class IndexController {
                 initMenusByRole(submenus,user);
             }
         }
+    }
+
+    @RequestMapping(value = "/userlist", method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Map userlist(@SessionScope("user") UserBean yh, UserBean user) {
+        user.setYhid(yh.getYhid());
+        Map map = user.toMap(userService.select(user));
+        return map;
     }
 
 }
