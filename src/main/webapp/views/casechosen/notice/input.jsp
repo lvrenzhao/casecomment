@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=icheck;layer" />
+    <jsp:include page="/header.jsp?libs=icheck;layer;summernote" />
   </head>
   <body>
   <div class="form_center clearfix" style="padding: 15px 0;">
@@ -36,11 +36,18 @@
       <label>短信提醒</label>
       <div class="input-group">
         <input type="hidden" id="user_id" />
-        <input type="text" class="form-control" id="user_name">
+        <input type="text" class="form-control" readonly id="user_name">
         <span class="input-group-btn">
           <button type="button" id="selectuser" class="btn btn-primary">添加通知人员</button>
         </span>
       </div>
+    </div>
+    <div class="form_item wb100 fl">
+      <label>公告内容</label>
+      <div class="summernote" style="">
+
+      </div>
+
     </div>
   </div>
   <script>
@@ -50,10 +57,14 @@
             checkboxClass : 'icheckbox_square-green',
         });
 
+        $('.summernote').summernote({
+            lang: 'zh-CN'
+        });
+
         $('#selectuser').click(function() {
             layer.open({
                 type : 2,
-                title : '添加要通知的人员',
+                title : '添加要提醒的人员',
                 shadeClose : false,
                 shade : 0.3,
                 area : [ '500px', '300px' ],
