@@ -12,7 +12,8 @@ public class CaseChosenNoticeController {
 
 
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
-	public String input() {
+	public String input(ModelMap model, String mode , String ggid) {
+		model.addAttribute("mode", mode);
 		return "casechosen/notice/input";
 	}
 
@@ -36,7 +37,13 @@ public class CaseChosenNoticeController {
 	public String handle() {
 		return "casechosen/notice/handle";
 	}
-	
+
+	@RequestMapping(value = "/addcase", method = { RequestMethod.GET, RequestMethod.POST })
+	public String addcase() {
+		return "casechosen/notice/addcase";
+	}
+
+
 	@RequestMapping(value = "/history", method = { RequestMethod.GET, RequestMethod.POST })
 	public String history() {
 		return "casechosen/notice/history";
