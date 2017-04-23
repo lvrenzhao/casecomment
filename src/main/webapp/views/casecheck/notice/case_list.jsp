@@ -177,7 +177,8 @@
     }
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails()" title="评查信息"><i class="fa fa-info-circle"></i> 评查信息</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails()" title="评查信息"><i class="fa fa-info-circle"></i> 评查信息</button>'
+            +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(\'' + rowObject.ggid + '\')" title="更换专家"><i class="fa fa-exchange"></i> 更换专家</button>';
     }
     function formatter_grid1_opt_2(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(\'' + rowObject.ggid + '\')" title="删除"><i class="fa fa-trash"></i> 删除</button>'

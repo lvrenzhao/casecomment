@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/addcase.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/addcase.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,31 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="handle.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp">
+      <file leaf-file-name="case_list.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1764">
-              <caret line="84" column="38" lean-forward="false" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addcase.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/addcase.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="28" column="100" lean-forward="false" selection-start-line="28" selection-start-column="100" selection-end-line="28" selection-end-column="100" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="input.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="61">
+              <caret line="130" column="12" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -124,7 +101,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/a2_global-class.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/staticsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/LogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/CaseChosenConfigController.java" />
@@ -170,6 +146,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/addcase.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp" />
       </list>
     </option>
   </component>
@@ -1067,7 +1044,7 @@
       <workItem from="1492744314560" duration="433000" />
       <workItem from="1492748411707" duration="14683000" />
       <workItem from="1492824433533" duration="19988000" />
-      <workItem from="1492913325036" duration="9689000" />
+      <workItem from="1492913325036" duration="10013000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1492493720830</created>
@@ -1321,11 +1298,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492933627822</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="test222">
+      <created>1492934041457</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1492934041457</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168597000" />
+    <option name="totallyTimeSpent" value="168921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1465,14 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="85" selection-end-line="31" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="122" column="10" lean-forward="false" selection-start-line="89" selection-start-column="10" selection-end-line="122" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1837,10 +1813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1764">
-          <caret line="84" column="38" lean-forward="false" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+        <state relative-caret-position="9">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1853,10 +1829,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/publish/input.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casechosen/notice/handle.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state relative-caret-position="1764">
+          <caret line="84" column="38" lean-forward="false" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/case_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="130" column="12" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
           <folding />
         </state>
       </provider>
