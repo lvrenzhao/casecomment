@@ -153,11 +153,11 @@
           layer.open({
               type : 2,
               shift : 5,
-              title : '评查信息',
+              title : '详细评查报告',
               shadeClose : false,
               shade : 0.3,
               area : [ '90%', '90%' ],
-              content : ahcourt.ctx + "/casecheck/check/checkinfo.do",
+              content : ahcourt.ctx + "/statics/checkreportitem.do",
               cancel : function(index) {
                   layer.close(index);
               }

@@ -13,6 +13,11 @@ public class staticsController {
 		return "statics/checkreport";
 	}
 
+	@RequestMapping(value = "/checkreportitem", method = { RequestMethod.GET, RequestMethod.POST })
+	public String checkreportitem() {
+		return "statics/checkreport_item";
+	}
+
 	@RequestMapping(value = "/checktop", method = { RequestMethod.GET, RequestMethod.POST })
 	public String checktop() {
 		return "statics/checktop";
@@ -36,6 +41,11 @@ public class staticsController {
 	@RequestMapping(value = "/chosendata", method = { RequestMethod.GET, RequestMethod.POST })
 	public String chosendata() {
 		return "statics/chosendata";
+	}
+
+	@RequestMapping(value = "/chosenreportitem", method = { RequestMethod.GET, RequestMethod.POST })
+	public String chosenreportitem() {
+		return "statics/chosenreport_item";
 	}
 
 }
