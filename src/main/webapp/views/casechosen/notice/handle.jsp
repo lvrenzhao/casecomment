@@ -82,7 +82,7 @@
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -135;
+        return $('body').height() -100;
     }
 
     function addcase(){

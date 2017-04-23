@@ -24,9 +24,9 @@
 
       <div class="bmbox_layout  clearfix">
         <div class="bmbox_title">
-          <h5>已上传案例</h5>
+          <h5>已填报案例</h5>
           <div class="bmbox_tool">
-            <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 添加案例</button>
+            <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 填报案例</button>
           </div>
         </div>
         <div class="bmbox_content clearfix">
