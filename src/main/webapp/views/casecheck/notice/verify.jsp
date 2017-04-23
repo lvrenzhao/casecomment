@@ -15,12 +15,12 @@
         <ul class="nav nav-tabs navs-3">
             <li class="active">
                 <a data-toggle="tab" href="#tab-1">
-                   <i class="fa fa-bell"></i> 待办理评查公告
+                   <i class="fa fa-bell"></i> 待审核评查公告
                 </a>
             </li>
             <li class="">
                 <a data-toggle="tab" href="#tab-2">
-                    <i class="fa fa-history"></i> 已办理评查公告
+                    <i class="fa fa-history"></i> 已审核评查公告
                 </a>
             </li>
         </ul>
