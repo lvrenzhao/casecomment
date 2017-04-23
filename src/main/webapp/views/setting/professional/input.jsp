@@ -62,6 +62,26 @@
           <input type="text" class="form-control" placeholder=""/>
         </div>
 
+        <div class="form_item wb60 fl">
+          <label>专家标签</label>
+          <div class="i-checkslayout">
+            <div class="checkbox i-checks">
+              <label class="default_radio">
+                <input type="checkbox" value="1" name="service" style="position: absolute; opacity: 0;"> <i></i> 人大代表
+              </label>
+              <label>
+                <input type="checkbox" value="2" name="service" style="position: absolute; opacity: 0;"> <i></i> 政协委员
+              </label>
+              <label>
+                <input type="checkbox" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 资深检察官
+              </label>
+              <label>
+                <input type="checkbox" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 专业学者
+              </label>
+            </div>
+          </div>
+        </div>
+
         <div class="form_item wb100 fl">
           <label>专家介绍</label>
           <textarea rows="10"></textarea>
