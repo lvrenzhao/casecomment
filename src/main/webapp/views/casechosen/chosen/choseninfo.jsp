@@ -173,7 +173,7 @@
             <span style="color: #ac2925;">法官</span>
           </div>
           <div class="form_item wb100 fl">
-            <label>可评查案件类型:</label>
+            <label>专业:</label>
             <span style="color: #ac2925;">刑事；民事</span>
           </div>
           <div class="form_item wb100 fl">

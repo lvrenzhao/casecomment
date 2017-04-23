@@ -41,7 +41,7 @@ function acountlistgrid() {
 		width : gridWidth(),
 		height : gridHeight(),
 		rownumbers : true,
-		shrinkToFit : false,
+		shrinkToFit : true,
 		rowNum : 20,
 		rowList : [   10,15,20,30 ],
 		colModel : [ {
@@ -54,37 +54,27 @@ function acountlistgrid() {
 			label : '操作',
 			name : 'operations',
 			align : 'center',
-			width : 200,
+			width : 180,
 			sortable : false,
 			formatter : gridmenu,
 			frozen : true
 		}, {
-			label : '姓名',
+			label : '专家姓名',
 			name : 'xm',
 			width : 100
 		}, {
-			label : '账户状态',
-			name : 'zhzt',
-			align : 'center',
-			width : 80,
-			formatter : acountstate
-		}, {
-			label : '帐号',
-			name : 'zh',
-			width : 80
-		}, {
-			label : '密码',
-			name : 'mm',
-			width : 80
-		}, {
-			label : '角色',
-			name : 'jsid',
-			width : 150
-		}, {
-			label : '组织机构',
-			name : 'zzid',
-			width : 150
-		}, {
+            label : '组织机构',
+            name : 'zzid',
+            width : 150
+        }, {
+            label : '头衔',
+            name : 'jsid1',
+            width : 100
+        },  {
+            label : '专业',
+            name : 'jsid1',
+            width : 150
+        }, {
 			label : '邮件',
 			name : 'dzyx',
 			width : 120
@@ -98,63 +88,24 @@ function acountlistgrid() {
 			name : 'sj',
 			align : 'center',
 			width : 120
-		}, ],
+		}, {
+            label : '介绍',
+            name : 'sssj',
+            formatter:formatter_grid2_shyj,
+            width : 200
+        }],
 		pager : "#acounttable_page"
         ,viewrecords: true
 	}).jqGrid('setFrozenColumns');
 	function gridmenu(cellvalue, options, rowObject) {
-		var edit = '<button class="btn btn-white btn-xs mr5" type="button" onclick="editstaff(\'' + rowObject.yhid + '\')"><i class="fa fa-edit"></i>&nbsp;编辑</button>&nbsp;';
-		var enable = '<button class="btn btn-white btn-xs mr5" type="button" onclick="enablestate(\'' + rowObject.yhid + '\',\'' + 1 + '\')"><i class="fa fa-play"></i>&nbsp;启用</button>';
-		var disable = '<button class="btn btn-white btn-xs" type="button" onclick="enablestate(\'' + rowObject.yhid + '\',\'' + 2 + '\')"><i class="fa fa-pause"></i>&nbsp;禁用</button>';
-		return edit + enable + disable;
+		var btn_edit = '<button class="btn btn-white btn-xs mr5" type="button" onclick=""><i class="fa fa-edit"></i>&nbsp;编辑</button>&nbsp;';
+		var btn_delete = '<button class="btn btn-white btn-xs mr5" type="button" onclick=""><i class="fa fa-trash"></i>&nbsp;删除</button>';
+		return btn_edit + btn_delete ;
 	};
-	function acountstate(cellvalue, options, rowObject) {
-		var label_types = {
-			"1" : "label-success",
-			"2" : "label-danger",
-		};
-		var label_texts = {
-			"1" : "启用",
-			"2" : "禁用",
-		};
-		var imageHtml;
-		imageHtml = "<span class=\"label " + label_types[cellvalue] + "\">" + label_texts[cellvalue] + "</span>";
-		return imageHtml;
-	};
-	function staffstate(cellvalue, options, rowObject) {
-		var imageHtml = "";
-		if (cellvalue != null && cellvalue != '') {
-			var label_types = {
-				"实习期" : "label-primary",
-				"试用期" : "label-danger",
-				"正式员工" : "label-success",
-				"离职员工" : "label-info",
-			};
-			
-			imageHtml = "<span class=\"label " + label_types[cellvalue] + "\">" + cellvalue + "</span>";
-		}
-		return imageHtml;
-	}
-	function stafflink(cellvalue, options, rowObject) {
-		var strlink = '<button class="btn btn-link btn-xs color_green" type="button" onclick="viewstaffinfo(\'' + rowObject.ygid + '\')">' + '查看简历' + '</button>';
-		return strlink;
-	}
-}
-// 编辑账号
-function editstaff(id) {
-	layer.open({
-		type : 2,
-		shift : 5,
-		title : '编辑用户账号',
-		shadeClose : false,
-		shade : 0.3,
-		area : [ '90%', '85%' ],
-		content : ahcourt.ctx + '/setting/user/input.do?id='+id+"&mode=edit",
-		end : function(index) {
-//			layer.close(index);
-			$("#acounttable_grid").jqGrid().trigger("reloadGrid")
-		}
-	});
+
+    function formatter_grid2_shyj(cellvalue, options, rowObject) {
+        return '<a href="javascript:void(0)">...</a>';
+    }
 }
 
 
@@ -162,11 +113,11 @@ function newstaff(id) {
     layer.open({
         type : 2,
         shift : 5,
-        title : '新建用户账号',
+        title : '添加专家',
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '85%' ],
-        content : ahcourt.ctx + '/setting/user/input.do?&mode=new',
+        content : ahcourt.ctx + '/setting/professional/input.do?&mode=new',
         end : function(index) {
 //			layer.close(index);
             $("#acounttable_grid").jqGrid().trigger("reloadGrid")
@@ -174,21 +125,7 @@ function newstaff(id) {
     });
 }
 
-// 查看简历
-function viewstaffinfo(id) {
-	layer.open({
-		type : 2,
-		shift : 5,
-		title : '查看简历详情',
-		shadeClose : false,
-		shade : 0.3,
-		area : [ '95%', '90%' ],
-		content : ahcourt.ctx + '/office/hrjoin/addStaff.do?id='+id+'&&mode=view',
-		cancel : function(index) {
-			layer.close(index);
-		}
-	});
-}
+
 var setting = {
 	check : {
 		enable : true,
@@ -259,23 +196,4 @@ function gridWidth() {
 
 function gridHeight() {
 	return $(".acountlist").outerHeight() - 85 - 80;
-}
-
-function enablestate(id, state) {
-	$.ajax({
-		type : 'POST',
-		url : ahcourt.ctx + "/setting/user/update.do",
-		datatype : 'json',
-		data : {
-			yhid : id,
-			zhzt : state,
-		},
-		success : function(data) {
-			if (data > 0) {
-
-				$("#acounttable_grid").jqGrid().trigger("reloadGrid");
-			} else
-				layer.msg('修改失败');
-		}
-	});
 }

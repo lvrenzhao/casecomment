@@ -13,4 +13,9 @@ public class ProfessionalController {
 		return "/setting/professional/list";
 	}
 
+	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
+	public String input() {
+		return "/setting/professional/input";
+	}
+
 }

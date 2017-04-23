@@ -49,8 +49,8 @@
 	    				</select>
 	    			</div>
 					<div class="form_item wb20 fl pdt_30 " style="text-align: right">
-						<button type="button" id="serch" class="btn btn-primary btn-sm "><i class="fa fa-search mr5"></i>搜索</button>
-						<button type="button" id="new" class="btn btn-defualt btn-sm " onclick="newstaff()"><i class="fa fa-search mr5"></i>新建用户</button>
+						<button type="button" id="serch" class="btn btn-primary btn-sm "><i class="fa fa-search mr5"></i>查询</button>
+						<button type="button" id="new" class="btn btn-defualt btn-sm " onclick="newstaff()"><i class="fa fa-plus mr5"></i>新建用户</button>
 					</div>
     			</div>
     			<div class="acount_table pdt_10">
