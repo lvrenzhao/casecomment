@@ -239,7 +239,7 @@
             },{
                 label : '操作',
                 name : 'ggid',
-                width : 100,
+                width : 170,
                 align : 'center',
                 sortable : false,
                 formatter :formatter_grid2_opt_1 ,
@@ -277,6 +277,10 @@
                 label : '结案时间',
                 name : 'xmcymc',
                 width : 80
+            }, {
+                label : '分配专家',
+                name : 'xmcymc',
+                width : 80
             }
             ],
             pager:"#pager2",
@@ -294,7 +298,8 @@
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="添加"><i class="fa fa-cart-plus"></i> 添加到已抽取</button>';
     }
     function formatter_grid2_opt_1(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="移除"><i class="fa fa-trash"></i> 移除</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="更换专家"><i class="fa fa-exchange"></i> 更换专家</button>'
+            +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="移除"><i class="fa fa-trash"></i> 移除</button>';
     }
   </script>
   </body>
