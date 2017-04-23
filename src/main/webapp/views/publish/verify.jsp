@@ -215,7 +215,7 @@
         layer.open({
             type : 2,
             shift : 5,
-            title : "审核",
+            title :  mode==1?"查看":"审核",
             shadeClose : false,
             shade : 0.3,
             area : [ '95%', '90%' ],
