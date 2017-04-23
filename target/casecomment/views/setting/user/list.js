@@ -100,6 +100,7 @@ function acountlistgrid() {
 			width : 120
 		}, ],
 		pager : "#acounttable_page"
+        ,viewrecords: true
 	}).jqGrid('setFrozenColumns');
 	function gridmenu(cellvalue, options, rowObject) {
 		var edit = '<button class="btn btn-white btn-xs mr5" type="button" onclick="editstaff(\'' + rowObject.yhid + '\')"><i class="fa fa-edit"></i>&nbsp;编辑</button>&nbsp;';

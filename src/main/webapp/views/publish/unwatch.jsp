@@ -53,7 +53,7 @@
                 align : 'center',
                 width : 100
             }, {
-                label : '发起人',
+                label : '发布人',
                 name : 'lxrmc',
                 width : 100
             }, {
