@@ -176,6 +176,8 @@
             <label>专业:</label>
             <span style="color: #ac2925;">刑事；民事</span>
           </div>
+          <label>专家标签:</label>
+          <span style="color: #ac2925;">人大代表；资深检察官</span>
           <div class="form_item wb100 fl">
             <label>介绍:</label>
             <p style="color: #ac2925;">张三法官是安徽省高级人民的资深法官，层审判过多起重大刑事案件...</p>
