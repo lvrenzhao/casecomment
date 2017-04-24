@@ -91,7 +91,7 @@
             width : gridWidth(),
             rownumbers : true,
             shrinkToFit : true,
-            rowNum : 1000000,
+            rowNum : 20,
             colModel : [ {
                 label : 'ajid',
                 name : 'ajid',
