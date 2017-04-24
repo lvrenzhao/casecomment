@@ -6,7 +6,7 @@
 <generatorConfiguration>
     <properties resource="sysconfig.properties"/>
     <classPathEntry location="/Users/lvrenzhao/IdeaProjects/casecomment/target/casecomment/WEB-INF/lib/mysql-connector-java-5.1.30.jar"/>
-    <context id="my" targetRuntime="MyBatis3">
+    <context id="my" targetRuntime="MyBatis3Simple">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
@@ -29,12 +29,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-
-        <table tableName="bd_test" domainObjectName="BdTest"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
+        <!--<table tableName="" domainObjectName=""></table>-->
 
     </context>
 </generatorConfiguration>
