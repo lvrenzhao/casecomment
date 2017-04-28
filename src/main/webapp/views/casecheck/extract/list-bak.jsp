@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=icheck;jqgrid;ztree" />
-    <style>
-      .moreview{ display: none;}
-    </style>
+    <jsp:include page="/header.jsp?libs=icheck;jqgrid" />
   </head>
   <body>
   <div class="bmbox_layout">
@@ -31,25 +28,11 @@
     <div class="bmbox_content">
       <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
-          <div class="backdrop"></div>
-          <div id="search_box1" class=" business_search form_center clearfix">
-            <div class="form_item wb100 fl pdt_10" >
-              <span style="font-size: 14px;font-weight: 800;line-height: 26px" class="pull-left moreview"><i class="fa fa-sliders"></i> 配置抽取规则</span>
+          <div id="search_box1" class="form_center clearfix">
 
-              <button id="btn-endextract" class="btn btn-white  fr mr5" type="button" style="display: none;">收起 <i class="fa fa-arrow-up "></i></button>
-              <button id="btn-open" class="btn btn-white  fr mr5" type="button" style="display: none;">展开 <i class="fa fa-arrow-down "></i></button>
 
-              <button id="btn-extract-checked" class="btn btn-primary fr mr10" type="button" style="display: none;"><i class="fa fa-cart-plus"></i> 抽取选中案件</button>
-              <div id="btn-extract-group" class="input-group fr mr10" style="width:200px;display: none;">
-                <input type="text" class="form-control" placeholder="案件数">
-                <span class="input-group-btn">
-                  <button class="btn btn-primary" type="button"><i class="fa fa-cart-plus"></i> 系统随机抽取</button>
-                </span>
-              </div>
 
-              <button id="btn-beginextract" class="btn btn-white fr mr5" type="button">开始抽取案件 <i class="fa fa-arrow-down "></i></button>
-            </div>
-            <div class="form_item wb100 fl moreview">
+            <div class="form_item wb45 fl">
               <label>案件性质<span style="color: red;">*</span></label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">
@@ -74,8 +57,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="form_item wb100 fl moreview">
+            <div class="form_item wb55 fl">
               <label>案件类型</label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">
@@ -98,63 +80,37 @@
               </div>
             </div>
 
-            <div class="form_item wb40 fl moreview">
+            <div class="form_item wb12_0 fl">
               <label>归属法院<span style="color: red;">*</span></label>
-              <div style="position: relative;">
-                <div class="input-group">
-                  <input id="zzid" value="${bean.zzid }" type="hidden" /> <input type="text" class="form-control input-sm bmrequire" retype="text" readonly id="citySel" value="${bean.zzjgmc }"> <span class="input-group-btn">
-								<button type="button" class="btn btn-primary btn-sm" id="menuBtn">选择</button>
-							</span>
-                </div>
-                <div id="menuContent" class="menuContent">
-                  <ul id="treeDemo" class="ztree"></ul>
-                </div>
-              </div>
+              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
             </div>
-            <div class="form_item wb60 fl moreview" >
-              <label>&nbsp;</label>
-              <div class="i-checkslayout">
-                <div class="checkbox i-checks">
-                  <label class="default_radio">
-                    <input type="checkbox" value="1" name="service" style="position: absolute; opacity: 0;"> <i></i> 是否包含下级法院案件
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="form_item wb15 fl moreview">
+            <div class="form_item wb12_0 fl">
               <label>承办部门</label>
               <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
             </div>
-            <div class="form_item wb15 fl moreview">
+            <div class="form_item wb12_0 fl">
               <label>承办人</label>
               <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
             </div>
-
-            <div class="form_item wb15 fl moreview">
+            <div class="form_item wb12_0 fl">
               <label>案号</label>
-              <input type="text" id="khmc" class="form-control input-sm"  placeholder="" maxlength="255" />
-            </div>
-
-            <div class="form_item wb20 fl moreview">
-              <label>案由</label>
               <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
             </div>
 
-            <div class="form_item wb25 fl moreview">
+            <div class="form_item wb23 fl">
               <label>结案日期<span style="color: red;">*</span></label>
               <div>
                 <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
-                <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;"> ~ </span>
+                <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;">~</span>
                 <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
               </div>
 
             </div>
-
-            <div class="form_item wb10 fl moreview">
-              <button id="" class="btn btn-primary btn-sm " type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+            <div class="form_item wb27 fl">
+              <button id="" class="btn btn-danger btn-sm " type="button" style="margin-top: 30px;">远程抽取</button>
+              <button id="" class="btn btn-white btn-sm " type="button" style="margin-top: 30px;">本地查询</button>
+              <button id="" class="btn btn-white btn-sm " type="button" style="margin-top: 30px;">添加到已抽取</button>
             </div>
-
           </div>
           <div class="clearfix pd10">
             <table id="table1" class="table table-striped"></table>
@@ -182,49 +138,7 @@
     </div>
   </div>
   <script>
-    var mode, zNodes;
     $(function(){
-
-        $.ajax({
-            type : 'POST',
-            url : ahcourt.ctx + "/setting/organization/getlist.do",
-            datatype : 'json',
-            async : false,
-            success : function(data) {
-                zNodes = data;
-            }
-        });
-
-        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-        $("#menuBtn").click(function() {
-            showMenu();
-            return false;
-        });
-
-
-        $("#btn-beginextract").click(function() {
-            $(".moreview").show();
-            $(this).hide();
-            $("#btn-endextract").show();
-            $("#btn-extract-group").show();
-            $("#btn-extract-checked").show();
-            $('#table1').setGridHeight($('body').height()-445);
-        });
-        $("#btn-endextract").click(function() {
-            $(".moreview").hide();
-            $(this).hide();
-            $("#btn-open").show();
-            $('#table1').setGridHeight($('body').height()-185);
-        });
-
-        $("#btn-open").click(function() {
-            $(".moreview").show();
-            $(this).hide();
-            $("#btn-endextract").show();
-            $('#table1').setGridHeight($('body').height()-445);
-        });
-
-
         $('.i-checks').iCheck({
             radioClass : 'iradio_square-green',
             checkboxClass : 'icheckbox_square-green',
@@ -377,7 +291,7 @@
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -185;
+        return $('body').height() -270;
     }
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {
@@ -387,50 +301,6 @@
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="更换专家"><i class="fa fa-exchange"></i> 更换专家</button>'
             +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="移除"><i class="fa fa-trash"></i> 移除</button>';
     }
-
-    // 选择组织机构
-    var setting = {
-        view : {
-            dblClickExpand : false
-        },
-        data : {
-            simpleData : {
-                enable : true
-            }
-        },
-        callback : {
-            onClick : onClick
-        }
-    };
-    function onClick(e, treeId, treeNode) {
-        var zTree = $.fn.zTree.getZTreeObj("treeDemo"), nodes = zTree.getSelectedNodes(), v = "", zzid = "";
-        nodes.sort(function compare(a, b) {
-            return a.id - b.id;
-        });
-        v += nodes[0].name;
-        zzid = nodes[0].id;
-        if (v.length > 0)
-            v = v.substring(0, v.length);
-        var cityObj = $("#citySel");
-        cityObj.val(v);
-        $("#zzid").val(zzid);
-        cityObj.removeClass("border-red");
-        hideMenu();
-    }
-    function showMenu() {
-        $("#menuContent").slideDown("fast");
-        $("body").bind("mousedown", onBodyDown);
-    }
-    function hideMenu() {
-        $("#menuContent").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-    function onBodyDown(event) {
-        if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
-            hideMenu();
-        }
-    }
-
   </script>
   </body>
 </html>
