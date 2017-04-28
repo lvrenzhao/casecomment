@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list-bak.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/verify.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +24,8 @@
       <file leaf-file-name="list.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="147" column="100" lean-forward="true" selection-start-line="147" selection-start-column="100" selection-end-line="147" selection-end-column="100" />
+            <state relative-caret-position="249">
+              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1056,14 +1054,7 @@
       <workItem from="1492913325036" duration="25199000" />
       <workItem from="1493085464308" duration="6047000" />
       <workItem from="1493186039234" duration="1138000" />
-      <workItem from="1493358118031" duration="9336000" />
-    </task>
-    <task id="LOCAL-00005" summary="test">
-      <created>1492522262064</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1492522262064</updated>
+      <workItem from="1493358118031" duration="9432000" />
     </task>
     <task id="LOCAL-00006" summary="test">
       <created>1492578568264</created>
@@ -1401,11 +1392,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493338813752</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="test222">
+      <created>1493376924589</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1493376924590</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200628000" />
+    <option name="totallyTimeSpent" value="200724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1895,8 +1893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="147" column="100" lean-forward="true" selection-start-line="147" selection-start-column="100" selection-end-line="147" selection-end-column="100" />
+        <state relative-caret-position="249">
+          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
