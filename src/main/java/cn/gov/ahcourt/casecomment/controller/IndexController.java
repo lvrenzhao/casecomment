@@ -55,7 +55,7 @@ public class IndexController {
     @RequestMapping(value = "splayer", method = RequestMethod.GET)
     public void splayer(final HttpServletRequest request,final HttpServletResponse response) throws IOException {
 
-        String filename = request.getSession().getServletContext().getRealPath("/assets/movie.mp4");
+        String filename = request.getSession().getServletContext().getRealPath("/assets/v1.mp4");
         File file = new File(filename);
 
         int length = (int)file.length();
@@ -70,7 +70,7 @@ public class IndexController {
         response.reset();
         response.setBufferSize(4 * 1024);
         response.setHeader("Content-Disposition",
-                String.format("inline;filename=\"%s\"", "movie.mp4"));
+                String.format("inline;filename=\"%s\"", "v1.mp4"));
         response.setHeader("Accept-Ranges", "bytes");
         response.setContentType("video/mp4");
         response.setHeader("Content-Range",
