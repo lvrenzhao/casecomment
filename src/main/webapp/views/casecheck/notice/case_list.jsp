@@ -15,8 +15,8 @@
       <h5>2016年3月份案件评查	<small>&nbsp;&nbsp;<i class="fa fa-gg"></i> 常规评查</small>&nbsp;&nbsp;<small><i class="fa fa-user"></i> 吕仁钊</small>&nbsp;&nbsp;<small><i class="fa fa-clock-o"></i> 2016-03-01</small></h5>
       <div class="bmbox_tool">
 
-        <button id="btn_pass" style="display: none;" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 通过</button>
-        <button id="btn_reject" style="display: none;" class="btn btn-danger btn-sm btn-smx" type="button"><i class="fa fa-close"></i> 不通过</button>
+        <button id="btn_pass" style="display: none;" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 同意</button>
+        <button id="btn_reject" style="display: none;" class="btn btn-danger btn-sm btn-smx" type="button"><i class="fa fa-close"></i> 不同意</button>
       </div>
     </div>
     <div class="bmbox_content clearfix pd10">

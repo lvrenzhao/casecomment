@@ -16,8 +16,8 @@
     <h5>发布信息</h5>
     <div class="bmbox_tool">
       <button id="btn_submit" style="display: none" class="btn btn-primary  btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
-      <button id="btn_pass" style="display: none;" class="btn btn-primary btn-smx" type="button"><i class="fa fa-check"></i> 通过</button>
-      <button id="btn_reject" style="display: none;" class="btn btn-danger btn-smx" type="button"><i class="fa fa-close"></i> 不通过</button>
+      <button id="btn_pass" style="display: none;" class="btn btn-primary btn-smx" type="button"><i class="fa fa-check"></i> 同意</button>
+      <button id="btn_reject" style="display: none;" class="btn btn-danger btn-smx" type="button"><i class="fa fa-close"></i> 不同意</button>
     </div>
   </div>
   <div class="bmbox_content clearfix">

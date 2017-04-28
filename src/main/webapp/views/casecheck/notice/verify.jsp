@@ -44,8 +44,8 @@
                         <select class="form-control input-sm">
                             <option value="">--请选择--</option>
                             <option value="">待审核</option>
-                            <option value="">通过</option>
-                            <option value="">不通过</option>
+                            <option value="">同意</option>
+                            <option value="">不同意</option>
                         </select>
                     </div>
                     <div class="form_item wb15 fl">
