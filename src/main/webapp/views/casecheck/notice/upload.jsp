@@ -17,7 +17,7 @@
     <div class="bmbox_title ">
       <h5>文件列表</h5>
       <div class="bmbox_tool">
-        <input id="inputimage" type="file" name="file">
+        <%--<input id="inputimage" type="file" name="file">--%>
       </div>
     </div>
     <div class="bmbox_content clearfix ofh">
@@ -28,27 +28,27 @@
   </div>
 <script>
   $(function(){
-      //设定支持的上传格式只能是:doc/docx/pdf/mp4/ 千万不能是zip,rar等。
-      $("#inputimage").fileinput({
-          language : 'zh',
-          uploadUrl : ahcourt.ctx + '/setting/file/fileupload.do',
-          enctype : 'multipart/form-data',
-          mainClass : 'file-caption-main',
-          maxFileCount : 1,
-          showPreview : false,
-          autoReplace : true,
-          showUpload : false,
-          showCaption : false,
-          browseIcon:'<i class="glyphicon glyphicon-folder-open"></i> 点击上传',
-          showRemove : false,
-          msgFilesTooMany : "选择上传的文件数量 超过允许的最大数值！"
-      }).on("fileuploaded", function(event, data, previewId, index) {
-          var result = data.response;
-          //console.log("load completed..");
-      }).on("filebatchselected", function(event, files) {
-          $(this).fileinput("upload");
-          //console.log("load begin..");
-      })
+//      //设定支持的上传格式只能是:doc/docx/pdf/mp4/ 千万不能是zip,rar等。
+//      $("#inputimage").fileinput({
+//          language : 'zh',
+//          uploadUrl : ahcourt.ctx + '/setting/file/fileupload.do',
+//          enctype : 'multipart/form-data',
+//          mainClass : 'file-caption-main',
+//          maxFileCount : 1,
+//          showPreview : false,
+//          autoReplace : true,
+//          showUpload : false,
+//          showCaption : false,
+//          browseIcon:'<i class="glyphicon glyphicon-folder-open"></i> 点击上传',
+//          showRemove : false,
+//          msgFilesTooMany : "选择上传的文件数量 超过允许的最大数值！"
+//      }).on("fileuploaded", function(event, data, previewId, index) {
+//          var result = data.response;
+//          //console.log("load completed..");
+//      }).on("filebatchselected", function(event, files) {
+//          $(this).fileinput("upload");
+//          //console.log("load begin..");
+//      })
 
       $("#table1").jqGrid({
           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
@@ -67,7 +67,7 @@
           },{
               label : '操作',
               name : 'ggid',
-              width : 180,
+              width : 60,
               align : 'center',
               sortable : false,
               formatter : formatoption1
@@ -94,10 +94,21 @@
 
   })
 
+//  function formatoption1(cellvalue, options, rowObject) {
+//      return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="删除"><i class="fa fa-trash"></i> 删除</button>'
+//          +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i> 下载</button>';
+//  }
+
   function formatoption1(cellvalue, options, rowObject) {
-      return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="删除"><i class="fa fa-trash"></i> 删除</button>'
-          +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i> 下载</button>';
+      if(rowObject.fmt == "video"){
+          //return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i></button>';
+          return '<a class="btn btn-link btn-xs " target="_blank" href="${ctx}/player.do" title="播放"><i class="fa fa-play"></i></a>';
+      }else{
+          return '<a class="btn btn-link btn-xs " target="_blank" href="${ctx}/assets/1.pdf" title="打开"><i class="fa fa-file-pdf-o"></i></a>';
+      }
+
   }
+
   function gridWidth() {
       return $('body').width() - 22;
   }

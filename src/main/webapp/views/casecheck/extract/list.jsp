@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=icheck;jqgrid;ztree" />
+    <jsp:include page="/header.jsp?libs=icheck;jqgrid;ztree;layer" />
     <style>
       .moreview,.viewmore2{ display: none;}
 
@@ -468,8 +468,9 @@
                 frozen : true
             },{
                 label : '案号',
-                name : 'xmmc',
+                name : 'ah',
                 frozen : true,
+                formatter:formatter_grid2_opt_2,
                 width : 100
             }, {
                 label : '归属法院',
@@ -522,6 +523,26 @@
     function formatter_grid2_opt_1(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="更换专家"><i class="fa fa-exchange"></i> 更换专家</button>'
             +'<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="移除"><i class="fa fa-trash"></i> 移除</button>';
+    }
+
+    function formatter_grid2_opt_2(cellvalue, options, rowObject) {
+        return '<i class="fa fa-warning" style="color:#ff6600;"></i>'+'<a href="javascript:;" onclick="viewupload()">'+cellvalue+'</a>';
+    }
+
+
+    function viewupload() {
+        layer.open({
+            type : 2,
+            shift : 5,
+            title : '查看案件资料',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '60%', '80%' ],
+            content : ahcourt.ctx + '/casecheck/notice/upload.do?ggid=',
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
     }
 
     // 选择组织机构

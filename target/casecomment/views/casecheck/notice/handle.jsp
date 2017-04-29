@@ -10,6 +10,8 @@
     <jsp:include page="/header.jsp?libs=jqgrid;layer" />
 </head>
 <body>
+
+<div class="alert alert-warning" role="alert">请点击公告标题前的<i class="fa fa-plus"></i>号查看要被评查的案件 ，如案件名前面有<i class="fa fa-warning"></i>标志，则表示案件资料不全，请务必到【通达海系统】补全资料以免影响评查分数。 </div>
 <div class="clearfix pd10">
     <table id="table1" class="table table-striped"></table>
     <div id="pager1"></div>
@@ -31,13 +33,6 @@
                 name : 'ggid',
                 hidden : true,
                 key : true
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 100,
-                align : 'center',
-                sortable : false,
-                formatter : formatoption1
             }, {
                 label : '公告标题',
                 name : 'ggbt',
@@ -124,13 +119,6 @@
                 label : 'ggid',
                 name : 'ggid',
                 hidden : true,
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 100,
-                align : 'center',
-                sortable : false,
-                formatter : formatoption2
             },{
                 label : '案号',
                 name : 'xmmc',

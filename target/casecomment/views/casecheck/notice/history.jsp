@@ -140,13 +140,6 @@
                 name : 'ggid',
                 hidden : true,
             },{
-                label : '操作',
-                name : 'ggid',
-                width : 120,
-                align : 'center',
-                sortable : false,
-                formatter : formatoption2
-            },{
                 label : '案号',
                 name : 'xmmc',
                 frozen : true,
