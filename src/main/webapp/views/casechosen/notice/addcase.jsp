@@ -58,7 +58,7 @@
           },{
               label : '操作',
               name : 'ggid',
-              width : 100,
+              width : 180,
               align : 'center',
               sortable : false
               ,formatter : formatter_grid1_opts
@@ -100,14 +100,19 @@
               label : '结案时间',
               name : 'xmcymc',
               width : 80
-          }, ]
+          },{
+              label : '推荐理由',
+              name : 'xmcymc',
+              width : 80
+          } ]
           ,viewrecords: true
 
       });
   })
 
   function formatter_grid1_opts(cellvalue, options, rowObject) {
-      return '<button class="btn btn-link btn-xs " type="button" onclick="upload()" title="上传资料"><i class="fa fa-upload"></i> 上传资料</button>';
+      return '<button class="btn btn-link btn-xs " type="button" onclick="upload()" title="上传资料"><i class="fa fa-upload"></i> 上传资料</button>'
+      +'<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-trash"></i> 删除</button>';
   }
 
   function gridWidth() {

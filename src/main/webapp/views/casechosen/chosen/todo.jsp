@@ -10,7 +10,7 @@
   <jsp:include page="/header.jsp?libs=jqgrid;layer" />
 </head>
 <body>
-
+<div class="alert alert-warning" role="alert">填写完【寄语】后才视为完成一次评选活动。</div>
 <div class="clearfix pd10">
   <table id="table1" class="table table-striped"></table>
   <div id="pager1"></div>
@@ -85,7 +85,7 @@
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -30;
+        return $('body').height() -75;
     }
 
     function initChildGrid1(parentRowID, parentRowKey) {

@@ -243,9 +243,10 @@
 
     function formatoption1(cellvalue, options, rowObject) {
         if(rowObject.fmt == "video"){
-            return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i></button>';
+            //return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="下载"><i class="fa fa-download"></i></button>';
+            return '<a class="btn btn-link btn-xs " target="_blank" href="${ctx}/player.do" title="播放"><i class="fa fa-play"></i></a>';
         }else{
-            return '<a class="btn btn-link btn-xs _myproject_list_btn_view_busPro" target="_blank" href="${ctx}/player.do" title="下载"><i class="fa fa-play"></i></a>';
+            return '<a class="btn btn-link btn-xs " target="_blank" href="${ctx}/assets/1.pdf" title="打开"><i class="fa fa-file-pdf-o"></i></a>';
         }
 
     }

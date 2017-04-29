@@ -11,7 +11,7 @@
   </head>
   <body>
     <video width="100%" height="100%" controls>
-    <source src="${ctx}/assets/movie.mp4" type="video/mp4">
+    <source src="${ctx}/assets/v1.mp4" type="video/mp4">
     您的浏览器不支持 HTML5 video 标签。
     </video>
   <script>
