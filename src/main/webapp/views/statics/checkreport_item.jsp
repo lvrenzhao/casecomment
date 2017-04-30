@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+    <jsp:include page="/header.jsp?libs=jqgrid;layer;ztree" />
     <style>
       #table_score th{text-align: center;vertical-align: middle}
       #table_score td{vertical-align: middle}
@@ -36,6 +36,11 @@
         <li>
           <a data-toggle="tab" href="#tab-4">
             质量情况
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#tab-5">
+            评查排名
           </a>
         </li>
       </ul>
@@ -497,6 +502,50 @@
             </tbody>
           </table>
         </div>
+        <div id="tab-5" class="tab-pane">
+
+          <div id="search_box1" class=" form_center clearfix">
+            <div class="form_item wb30 fl moreview">
+              <label>归属法院</label>
+              <div style="position: relative;">
+                <div class="input-group">
+                  <input id="zzid" value="${bean.zzid }" type="hidden" /> <input type="text" class="form-control input-sm bmrequire" retype="text" readonly id="citySel" value="${bean.zzjgmc }"> <span class="input-group-btn">
+                                  <button type="button" class="btn btn-primary btn-sm" id="menuBtn">选择</button>
+                              </span>
+
+                </div>
+                <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="">清空</button>
+                <div id="menuContent" class="menuContent">
+                  <ul id="treeDemo" class="ztree"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="form_item wb20 fl moreview" style="padding-left: 60px;">
+              <label>案件性质</label>
+              <select class="form-control input-sm">
+                <option>--请选择--</option>
+                <option>民事</option>
+              </select>
+            </div>
+
+            <div class="form_item wb20 fl moreview">
+              <label>排名依据</label>
+              <select class="form-control input-sm">
+                <option>总分</option>
+                <option>审理程序</option>
+                <option>事实证据与实体处理	</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="clearfix pd10">
+            <table id="table2" class="table table-striped"></table>
+            <div id="pager2"></div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -505,6 +554,25 @@
 
   <script>
     $(function () {
+
+
+        //#####此处根据用户所在机构加载所在机构及以下机构。
+        $.ajax({
+            type : 'POST',
+            url : ahcourt.ctx + "/setting/organization/getlist.do",
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                zNodes = data;
+            }
+        });
+
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        $("#menuBtn").click(function() {
+            showMenu();
+            return false;
+        });
+
         $("#table1").jqGrid({
             url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
             datatype : "json",
@@ -545,10 +613,88 @@
             }
             ],
             pager:"#pager1"
-            //,viewrecords: true
+            ,viewrecords: true
         });
+
+        $("#table2").jqGrid({
+            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            datatype : "json",
+            mtype : "post",
+            height : $('body').height()-200,
+            width : $('body').width()-22,
+            rownumbers : true,
+            shrinkToFit : true,
+            rowNum : 1000000,
+            colModel : [ {
+                label : '案号',
+                name : 'xmmc',
+                frozen : true,
+                width : 100
+            },{
+                label : '归属法院',
+                name : 'xmmc',
+                frozen : true,
+                width : 150
+            },{
+                label : '案件性质',
+                name : 'xmmc',
+                frozen : true,
+                width : 100
+            },{
+                label : '得分',
+                name : 'xmmc',
+                frozen : true,
+                width : 80
+            }
+            ],
+            pager:"#pager2"
+            ,viewrecords: true
+        });
+
     })
 
+    // 选择组织机构
+    var setting = {
+        view : {
+            dblClickExpand : false
+        },
+        data : {
+            simpleData : {
+                enable : true
+            }
+        },
+        callback : {
+            onClick : onClick
+        }
+    };
+    function onClick(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"), nodes = zTree.getSelectedNodes(), v = "", zzid = "";
+        nodes.sort(function compare(a, b) {
+            return a.id - b.id;
+        });
+        v += nodes[0].name;
+        zzid = nodes[0].id;
+        if (v.length > 0)
+            v = v.substring(0, v.length);
+        var cityObj = $("#citySel");
+        cityObj.val(v);
+        $("#zzid").val(zzid);
+        cityObj.removeClass("border-red");
+        hideMenu();
+    }
+    function showMenu() {
+        $("#menuContent").slideDown("fast");
+        $("body").bind("mousedown", onBodyDown);
+    }
+    function hideMenu() {
+        $("#menuContent").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+    function onBodyDown(event) {
+        if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
+            hideMenu();
+        }
+    }
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title="专家介绍"><i class="fa fa-info-circle"></i></button>';

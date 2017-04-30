@@ -107,12 +107,13 @@
 								<button type="button" class="btn btn-primary btn-sm" id="menuBtn">选择</button>
 							</span>
                 </div>
+                <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="">清空</button>
                 <div id="menuContent" class="menuContent">
                   <ul id="treeDemo" class="ztree"></ul>
                 </div>
               </div>
             </div>
-            <div class="form_item wb60 fl moreview" >
+            <div class="form_item wb60 fl moreview" style="padding-left: 60px;" >
               <label>&nbsp;</label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">

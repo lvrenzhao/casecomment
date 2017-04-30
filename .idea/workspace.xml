@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" afterPath="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/handle.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/handle.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/history.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/history.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/upload.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/upload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" afterPath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/handle.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/handle.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/history.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/history.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/upload.jsp" afterPath="$PROJECT_DIR$/target/casecomment/views/casecheck/notice/upload.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,7 +21,22 @@
     <favorites_list name="casecomment" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="checkreport_item.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="628" column="29" lean-forward="true" selection-start-line="628" selection-start-column="29" selection-end-line="628" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -115,7 +123,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/setting/professional/input.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/staticsController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checktop.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosentop.jsp" />
@@ -140,11 +147,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/casechosen/chosen/choseninfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/player.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/upload.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/check/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/notice/handle.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
       </list>
     </option>
   </component>
@@ -310,6 +318,36 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="statics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -338,6 +376,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="casecheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extract" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1010,14 +1082,7 @@
       <workItem from="1493085464308" duration="6047000" />
       <workItem from="1493186039234" duration="1138000" />
       <workItem from="1493358118031" duration="16084000" />
-      <workItem from="1493449842024" duration="3048000" />
-    </task>
-    <task id="LOCAL-00009" summary="test">
-      <created>1492748677847</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1492748677847</updated>
+      <workItem from="1493449842024" duration="4593000" />
     </task>
     <task id="LOCAL-00010" summary="test">
       <created>1492748745742</created>
@@ -1355,14 +1420,22 @@
       <option name="project" value="LOCAL" />
       <updated>1493473772555</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="test222">
+      <created>1493476958631</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1493476958631</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210424000" />
+    <option name="totallyTimeSpent" value="211969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1389,7 +1462,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26121634" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25892857" sideWeight="0.4890017" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25892857" sideWeight="0.4890017" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1574,13 +1647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="441" column="18" lean-forward="true" selection-start-line="249" selection-start-column="10" selection-end-line="441" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -1706,6 +1772,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="19" column="129" lean-forward="false" selection-start-line="19" selection-start-column="129" selection-end-line="19" selection-end-column="129" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1799,19 +1866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="536" column="27" lean-forward="false" selection-start-line="536" selection-start-column="27" selection-end-line="536" selection-end-column="27" />
-          <folding>
-            <marker date="1493475027000" expanded="false" signature="14371:14387" ph="..." />
-            <marker date="1493475027000" expanded="false" signature="14483:14499" ph="..." />
-            <marker date="1493475027000" expanded="false" signature="14598:14614" ph="..." />
-            <marker date="1493475027000" expanded="true" signature="21697:21711" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/check/checkinfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -1865,6 +1919,33 @@
         <state relative-caret-position="2961">
           <caret line="141" column="13" lean-forward="false" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/casecheck/extract/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="115" column="78" lean-forward="false" selection-start-line="115" selection-start-column="78" selection-end-line="115" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1493477991000" expanded="false" signature="14545:14561" ph="..." />
+            <marker date="1493477991000" expanded="false" signature="14657:14673" ph="..." />
+            <marker date="1493477991000" expanded="false" signature="14772:14788" ph="..." />
+            <marker date="1493477991000" expanded="true" signature="21871:21885" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="628" column="29" lean-forward="true" selection-start-line="628" selection-start-column="29" selection-end-line="628" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
