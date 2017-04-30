@@ -250,7 +250,11 @@
             name : 'xmlxmc',
             width : 80
         }, {
-            label : '案件性质',
+            label : '性质',
+            name : 'zylbmc',
+            width : 80
+        },{
+            label : '类型',
             name : 'zylbmc',
             width : 80
         }, {

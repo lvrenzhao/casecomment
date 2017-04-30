@@ -15,10 +15,16 @@
       <label>公告标题</label>
       <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
     </div>
+
     <div class="form_item wb15 fl">
-      <label>案号</label>
-      <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+      <label>评查类型</label>
+      <select class="form-control input-sm">
+        <option value="">--请选择--</option>
+        <option value="">常规评查</option>
+      </select>
     </div>
+
+
     <div class="form_item wb15 fl">
       <label>归属法院</label>
       <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
@@ -32,18 +38,22 @@
       <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
     </div>
     <div class="form_item wb15 fl">
-      <label>评查类型</label>
-      <select class="form-control input-sm">
-        <option value="">--请选择--</option>
-        <option value="">待审核</option>
-      </select>
+      <label>案号</label>
+      <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
     </div>
 
-    <div class="form_item wb15 fl">
-      <label>案件类型</label>
+    <div class="form_item wb10 fl">
+      <label>案件性质</label>
       <select class="form-control input-sm">
         <option value="">--请选择--</option>
         <option value="">民事</option>
+      </select>
+    </div>
+    <div class="form_item wb10 fl">
+      <label>案件类型</label>
+      <select class="form-control input-sm">
+        <option value="">--请选择--</option>
+        <option value="">抗诉</option>
       </select>
     </div>
     <div class="form_item wb20 fl">
@@ -51,7 +61,7 @@
       <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
     </div>
 
-    <div class="form_item wb35 fl">
+    <div class="form_item wb30 fl">
       <label>发布日期</label>
       <div>
         <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
@@ -128,7 +138,11 @@
                   name : 'xmlxmc',
                   width : 80
               }, {
-                  label : '案件性质',
+                  label : '性质',
+                  name : 'zylbmc',
+                  width : 80
+              }, {
+                  label : '类型',
                   name : 'zylbmc',
                   width : 80
               }, {

@@ -157,7 +157,11 @@
                 name : 'xmlxmc',
                 width : 80
             }, {
-                label : '案件类型',
+                label : '性质',
+                name : 'zylbmc',
+                width : 80
+            },{
+                label : '类型',
                 name : 'zylbmc',
                 width : 80
             }, {
