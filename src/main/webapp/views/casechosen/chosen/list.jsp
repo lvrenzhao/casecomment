@@ -40,7 +40,7 @@
   </div>
 
   <div class="form_item wb15 fl">
-    <label>案件类型</label>
+    <label>案件性质</label>
     <select class="form-control input-sm">
       <option value="">--请选择--</option>
       <option value="">民事</option>
