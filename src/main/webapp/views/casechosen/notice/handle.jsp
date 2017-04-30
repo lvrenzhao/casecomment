@@ -35,7 +35,7 @@
             },{
                 label : '操作',
                 name : 'ggid',
-                width : 50,
+                width : 120,
                 align : 'center',
                 sortable : false,
                 formatter : formatter_grid1_opts
@@ -75,7 +75,8 @@
 
 
     function formatter_grid1_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="addcase()" title="办理"><i class="fa fa-hand-grab-o"></i> 办理</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="" title=""><i class="fa fa-info-circle"></i> 查看 </button>'+
+        '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="addcase()" title="办理"><i class="fa fa-hand-grab-o"></i> 办理</button>';
     }
 
     function gridWidth() {

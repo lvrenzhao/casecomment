@@ -144,22 +144,11 @@
                 name : 'ggid',
                 hidden : true,
             },{
-                label : '操作',
-                name : 'ggid',
-                width : 120,
-                align : 'center',
-                sortable : false,
-                formatter : formatoption2
-            },{
                 label : '案号',
                 name : 'xmmc',
                 frozen : true,
                 width : 120
-            }, {
-                label : '已上传',
-                name : 'xmzt',
-                width : 80
-            }, {
+            } ,{
                 label : '承办部门',
                 name : 'htmc',
                 width : 100

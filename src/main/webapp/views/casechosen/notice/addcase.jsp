@@ -16,11 +16,11 @@
       <h5>2015年全省庭审影像精品案例评选&nbsp;&nbsp;<i class="fa fa-gg"></i> 案件评选</small>&nbsp;&nbsp;<small><i class="fa fa-user"></i> 吕仁钊</small>&nbsp;&nbsp;<small><i class="fa fa-clock-o"></i> 2016-03-01</small></h5>
       <div class="bmbox_tool">
         <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 填报完毕</button>
-        <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-bookmark"></i> 暂存</button>
       </div>
     </div>
     <div class="bmbox_content clearfix">
-      <div class="alert alert-warning" role="alert">请各院按照公告内容按时填报三精案列，若无案例填报请直接点击【填报完毕】</div>
+      <div class="alert alert-warning" role="alert">请各院按照公告内容按时填报三精案列，若无案例填报请直接点击【填报完毕】，点击【填报完毕】后将不能继续填报案例，请仔细确认。</div>
+      <div class="alert alert-warning" role="alert">如案件名前面有<i class="fa fa-warning"></i>标志，则表示案件资料不全，请务必到【通达海系统】补全资料以免影响评选分数。 </div>
 
       <div class="bmbox_layout  clearfix">
         <div class="bmbox_title">
@@ -40,6 +40,11 @@
   </div>
 <script>
   $(function () {
+
+      //###点击【填报完毕】按钮进行确认。
+
+      //###案号，可以点击查看接口中获取的文件资料.
+      //###推荐理由可以点击打开。
       $("#table1").jqGrid({
           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
           datatype : "json",
@@ -58,7 +63,7 @@
           },{
               label : '操作',
               name : 'ggid',
-              width : 180,
+              width : 80,
               align : 'center',
               sortable : false
               ,formatter : formatter_grid1_opts
@@ -67,11 +72,6 @@
               name : 'xmmc',
               frozen : true,
               width : 100
-          }, {
-              label : '已上传',
-              name : 'xmmc',
-              frozen : true,
-              width : 80
           },{
               label : '归属法院',
               name : 'xmzt',
@@ -110,16 +110,16 @@
       });
   })
 
+  ////'<button class="btn btn-link btn-xs " type="button" onclick="upload()" title="上传资料"><i class="fa fa-upload"></i> 上传资料</button>'
   function formatter_grid1_opts(cellvalue, options, rowObject) {
-      return '<button class="btn btn-link btn-xs " type="button" onclick="upload()" title="上传资料"><i class="fa fa-upload"></i> 上传资料</button>'
-      +'<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-trash"></i> 删除</button>';
+      return  '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-trash"></i> 删除</button>';
   }
 
   function gridWidth() {
       return $('body').width() - 22;
   }
   function gridHeight() {
-      return $('body').height() -175;
+      return $('body').height() -215;
   }
 
   function upload(ggid) {

@@ -145,9 +145,9 @@
                 frozen : true,
                 width : 120
             }, {
-                label : '已上传',
+                label : '归属法院',
                 name : 'xmzt',
-                width : 80
+                width : 100
             }, {
                 label : '承办部门',
                 name : 'htmc',

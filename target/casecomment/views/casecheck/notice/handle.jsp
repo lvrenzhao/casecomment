@@ -61,7 +61,7 @@
             subGrid : true,
             subGridRowExpanded : initChildGrid1,
             subGridOptions : {
-                "plusicon" : "fa fa-plus",
+                "plusicon" : "fa fa-eye",
                 "minusicon" : "fa fa-minus",
                 "expandOnLoad" : false
             }
@@ -125,7 +125,7 @@
                 frozen : true,
                 width : 150
             }, {
-                label : '已上传文件数',
+                label : '归属法院',
                 name : 'xmzt',
                 width : 100
             }, {
