@@ -23,6 +23,7 @@
     <label>操作类型</label>
     <select class="form-control input-sm">
       <option value="">--请选择--</option>
+      <option value="">登录</option>
       <option value="">删除</option>
       <option value="">增加</option>
       <option value="">修改</option>
