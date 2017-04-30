@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+    <jsp:include page="/header.jsp?libs=jqgrid;layer;icheck" />
+    <style>
+      .moreview,.viewmore2{ display: none;}
+
+    </style>
   </head>
   <body>
   <div class="bmbox_layout  clearfix">
@@ -21,18 +25,136 @@
     </div>
     <div class="bmbox_content clearfix pd10">
 
-      <div class="bmbox_layout  clearfix">
-        <div class="bmbox_title" style="border-top-color: #e0e0e0;">
-          <h5><i class="fa fa-tasks"></i> 本次评查案件列表</h5>
-          <div class="bmbox_tool">
-            <button id="btn_addnewcase" style="display: none;" class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 添加案件</button>
+
+
+          <div id="search_box2" class="form_center clearfix">
+
+
+
+            <div class="form_item wb70 fl ">
+              <label>归属法院占比</label>
+              <div class="i-checkslayout">
+                <div class="checkbox i-checks">
+                  <label class="default_radio">
+                    <input type="radio" value="1" name="service" style="position: absolute; opacity: 0;" checked> <i></i> 全部
+                  </label>
+                  <label>
+                    <input type="radio" value="2" name="service" style="position: absolute; opacity: 0;"> <i></i> 合肥(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 芜湖(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 安庆(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 淮南(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 淮北(20%)
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form_item wb30 fl pdt_10">
+              <button id="btn-endextract2" class="btn btn-white btn-sm  fr mr5" type="button" style="display: none;margin-top: 20px">收起 <i class="fa fa-arrow-up "></i></button>
+              <button id="btn-open2" class="btn btn-white  btn-sm fr mr5" type="button" style="margin-top: 20px">展开 <i class="fa fa-arrow-down "></i></button>
+
+              <button id="btn_addnewcase" style="display: none;margin-top: 20px" class="btn btn-white btn-sm  fr mr5" type="button"><i class="fa fa-plus"></i> 添加案件</button>
+            </div>
+
+            <div class="form_item wb100 fl ">
+              <label>案件性质占比</label>
+              <div class="i-checkslayout">
+                <div class="checkbox i-checks">
+                  <label class="default_radio">
+                    <input type="radio" value="1" checked name="x1" style="position: absolute; opacity: 0;"> <i></i> 全部
+                  </label>
+                  <label class="default_radio">
+                    <input type="radio" value="1" name="x1" style="position: absolute; opacity: 0;"> <i></i> 刑事(18%)
+                  </label>
+                  <label>
+                    <input type="radio" value="2" name="x1" style="position: absolute; opacity: 0;"> <i></i> 民事(22%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="x1" style="position: absolute; opacity: 0;"> <i></i> 行政(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="x1" style="position: absolute; opacity: 0;"> <i></i> 赔偿(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="x1" style="position: absolute; opacity: 0;"> <i></i> 执行(20%)
+                  </label>
+                  <label>
+                    <input type="radio" value="3" name="x1" style="position: absolute; opacity: 0;"> <i></i> 其他(0%)
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form_item wb100 fl viewmore2">
+              <label>案件类型</label>
+              <div class="i-checkslayout">
+                <div class="checkbox i-checks">
+                  <label class="default_radio">
+                    <input type="checkbox" value="1" name="service" style="position: absolute; opacity: 0;"> <i></i> 抗诉
+                  </label>
+                  <label>
+                    <input type="checkbox" value="2" name="service" style="position: absolute; opacity: 0;"> <i></i> 发回改判
+                  </label>
+                  <label>
+                    <input type="checkbox" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 再审
+                  </label>
+                  <label>
+                    <input type="checkbox" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 审理周期超过一年半以上
+                  </label>
+                  <label>
+                    <input type="checkbox" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 执行异议复议
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form_item wb15 fl viewmore2">
+              <label>承办部门</label>
+              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+            </div>
+            <div class="form_item wb15 fl viewmore2">
+              <label>承办人</label>
+              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+            </div>
+
+            <div class="form_item wb15 fl viewmore2">
+              <label>案号</label>
+              <input type="text" id="khmc" class="form-control input-sm"  placeholder="" maxlength="255" />
+            </div>
+
+            <div class="form_item wb20 fl viewmore2">
+              <label>案由</label>
+              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+            </div>
+
+            <div class="form_item wb25 fl viewmore2">
+              <label>结案日期<span style="color: red;"></span></label>
+              <div>
+                <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
+                <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;"> ~ </span>
+                <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
+              </div>
+
+            </div>
+
+            <div class="form_item wb10 fl viewmore2">
+              <button id="" class="btn btn-primary btn-sm " type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+            </div>
+
           </div>
-        </div>
-        <div class="bmbox_content clearfix">
+
           <table id="table1" class="table table-striped"></table>
           <div id="pager1"></div>
-        </div>
-      </div>
+
 
     </div>
   </div>
@@ -64,6 +186,29 @@
   </div>
   <script>
     $(function(){
+
+
+        $('.i-checks').iCheck({
+            radioClass : 'iradio_square-green',
+            checkboxClass : 'icheckbox_square-green',
+        });
+
+
+        $("#btn-endextract2").click(function() {
+            $(".viewmore2").hide();
+            $(this).hide();
+            $("#btn-open2").show();
+
+            $('#table1').setGridHeight($('body').height()-270);
+        });
+
+        $("#btn-open2").click(function() {
+            $(".viewmore2").show();
+            $(this).hide();
+            $("#btn-endextract2").show();
+            $('#table1').setGridHeight($('body').height()-400);
+        });
+
         //获取模式
         var mode = $("#mode").val();
         if(!mode){mode = 1;}
@@ -173,7 +318,7 @@
         return $('body').width() - 22;
     }
     function gridHeight() {
-        return $('body').height() -175;
+        return $('body').height() -270;
     }
 
     function formatter_grid1_opt_1(cellvalue, options, rowObject) {

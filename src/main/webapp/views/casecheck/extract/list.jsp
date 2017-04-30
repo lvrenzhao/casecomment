@@ -168,7 +168,7 @@
 
 
 
-            <div class="form_item wb100 fl ">
+            <div class="form_item wb70 fl ">
               <label>归属法院占比</label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">
@@ -194,7 +194,14 @@
               </div>
             </div>
 
-            <div class="form_item wb80 fl ">
+            <div class="form_item wb30 fl pdt_10">
+
+              <button id="btn-endextract2" class="btn btn-white  fr mr5" type="button" style="display: none;margin-top: 20px">收起 <i class="fa fa-arrow-up "></i></button>
+              <button id="btn-open2" class="btn btn-white  fr mr5" type="button" style="margin-top: 20px">展开 <i class="fa fa-arrow-down "></i></button>
+              <button id="" class="btn btn-primary fr mr5" type="button" style="margin-top: 20px" onclick="openpcgg()">发起评查活动</button>
+            </div>
+
+            <div class="form_item wb100 fl ">
               <label>案件性质占比</label>
               <div class="i-checkslayout">
                 <div class="checkbox i-checks">
@@ -223,10 +230,6 @@
               </div>
             </div>
 
-            <div class="form_item wb20 fl pdt_10">
-              <button id="btn-endextract2" class="btn btn-white  fr mr5" type="button" style="display: none;margin-top: 20px">收起 <i class="fa fa-arrow-up "></i></button>
-              <button id="btn-open2" class="btn btn-white  fr mr5" type="button" style="margin-top: 20px">展开 <i class="fa fa-arrow-down "></i></button>
-            </div>
 
             <div class="form_item wb100 fl viewmore2">
               <label>案件类型</label>
@@ -271,7 +274,7 @@
             </div>
 
             <div class="form_item wb25 fl viewmore2">
-              <label>结案日期<span style="color: red;">*</span></label>
+              <label>结案日期<span style="color: red;"></span></label>
               <div>
                 <input type="text" id="" class="form-control input-sm wb48 fl" placeholder="" maxlength="255" />
                 <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;"> ~ </span>
@@ -284,15 +287,6 @@
               <button id="" class="btn btn-primary btn-sm " type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
             </div>
 
-            <!--<div class="form_item wb50 fl">
-              <label>评查活动标题</label>
-              <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
-            </div>
-            <div class="form_item wb50 fl">
-              <button id="" class="btn btn-success btn-sm " type="button" style="margin-top:30px;">发起常规评查</button>
-              <button id="" class="btn btn-info btn-sm " type="button" style="margin-top:30px;">发起专项评查</button>
-              <button id="" class="btn btn-warning btn-sm " type="button" style="margin-top:30px;">发起重点评查</button>
-            </div>-->
           </div>
           <div class="clearfix pd10">
             <table id="table2" class="table table-striped"></table>
@@ -302,6 +296,52 @@
       </div>
     </div>
   </div>
+
+<div id="fqpchd">
+
+  <div class="alert alert-warning" role="alert">系统将将会自动短信通知各级法院及时查看公告，同时将短信通知各评审专家准备评审。</div>
+  <div class="form_item wb100 fl">
+    <label>评查活动标题</label>
+    <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+  </div>
+
+  <div class="form_item wb100 fl">
+    <label>标题颜色</label>
+    <div class="i-checkslayout">
+      <div class="radio i-checks">
+        <label class="default_radio">
+          <input type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
+        </label>
+        <label>
+          <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form_item wb100 fl">
+    <label>评查类型</label>
+    <div class="i-checkslayout">
+      <div class="radio i-checks">
+        <label class="default_radio">
+          <input type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 常规评查
+        </label>
+        <label>
+          <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 专项评查
+        </label>
+        <label>
+          <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 重点评查
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form_item wb100 fl" style="text-align: center">
+    <button id="" class="btn btn-primary" type="button" style=""> <i class="fa fa-check "></i> 提交</button>
+  </div>
+
+</div>
+
   <script>
     var mode, zNodes;
     $(function(){
@@ -545,6 +585,22 @@
             }
         });
     }
+
+    function openpcgg(){
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '发起评查活动',
+            shadeClose : false,
+            shade : 0.3,
+            area : ['50%', '330px'],
+            content : $("#fqpchd"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    }
+
 
     // 选择组织机构
     var setting = {
