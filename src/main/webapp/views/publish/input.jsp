@@ -25,7 +25,7 @@
     <div class="form_center clearfix" style="padding: 15px 0;">
       <div class="form_item wb100 fl">
         <label>信息标题<span>*</span></label>
-        <input type="text" id="bt" name="bt" class="form-control bmrequire" placeholder="请输入三精评选公告的标题"/>
+        <input type="text" id="bt" name="bt" class="form-control bmrequire" placeholder="请输入三精评选公告的标题" value="${publish.bt}" />
       </div>
       <div class="form_item wb28 fl">
         <label>标题颜色</label>
@@ -43,7 +43,7 @@
       <div class="form_item wb20 fl">
         <label>信息类型<span>*</span></label>
 
-        <select class="form-control bmrequire" id="xxlx" name="xxlx">
+        <select class="form-control bmrequire" id="xxlx" name="xxlx" >
           <option>请选择...</option>
         </select>
 
@@ -62,12 +62,19 @@
 </div>
 
 <input type="hidden" id="mode" name="mode" value="${mode}">
-
 <input type="hidden" id="xxid" value="${publish.xxid}">
+
+<input type="hidden" id="hidxxlx" value="${publish.xxlx}">
+<input type="hidden" id="hidxxnr" value="${publish.xxnr}">
+<input type="hidden" id="hidbtys" value="${publish.btys}">
 
 <script>
     $(function(){
 
+        $('.summernote').summernote({
+            lang: 'zh-CN',
+            height: $('body').height()-280,
+        });
 
         initDictSelect('802', '#xxlx')
 
@@ -75,9 +82,17 @@
         var mode = $("#mode").val();
 
         if(mode == 2){
+            //审核模式
 //            $("#btn_submit").hide();
 //            $("#btn_pass").show();
 //            $("#btn_reject").show();
+        }else if(mode == 3){
+          //查看模式
+            $("#btn_submit").hide();
+            $("#btn_pass").hide();
+            $("#btn_reject").hide();
+            initView();
+
         }else {
             //新建模式
             $("#btn_submit").show();
@@ -90,10 +105,7 @@
             checkboxClass : 'icheckbox_square-green',
         });
 
-        $('.summernote').summernote({
-            lang: 'zh-CN',
-            height: $('body').height()-280,
-    });
+
 
 
         $("#btn_submit").click(function() {
@@ -132,6 +144,26 @@
         });
 
     })
+
+    function initView(){
+        var hidxxlx = $("#hidxxlx").val();
+        if(hidxxlx){
+          $("#xxlx").val(hidxxlx);
+        }
+
+        var hidxxnr = $("#hidxxnr").val();
+        //console.log(hidxxnr);
+        if(hidxxnr){
+            $('.summernote').code(hidxxnr);
+        }
+
+        var hidbtys = $("#hidbtys").val();
+        console.log(hidbtys);
+        if(hidbtys){
+            $(":radio[name='btys'][value='" + hidbtys + "']").prop("checked", "checked");
+        }
+    }
+
 </script>
 
 </body>

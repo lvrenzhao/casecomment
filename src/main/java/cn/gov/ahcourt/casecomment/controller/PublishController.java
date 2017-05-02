@@ -32,8 +32,7 @@ public class PublishController {
 		if (StringUtils.isNoneBlank(xxid)){
 			BdPublish querybean = new BdPublish();
 			querybean.setXxid(xxid);
-			List<BdPublish> ls = bdPublishMapper.selectAll();
-			BdPublish bean =  (ls !=null)?ls.get(0):null;
+			BdPublish bean = bdPublishMapper.selectByPrimaryKey(xxid);
 			modelMap.addAttribute("publish", bean);
 		}
 		return "publish/input";

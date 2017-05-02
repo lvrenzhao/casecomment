@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>双评工作平台</title>
   <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-  <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+  <jsp:include page="/header.jsp?libs=jqgrid;layer;laydate" />
 </head>
 <body>
 <div id="search_box1" class="form_center clearfix">
@@ -24,9 +24,9 @@
   <div class="form_item wb35 fl">
     <label>发布日期</label>
     <div>
-      <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})"  />
       <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-      <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})" />
     </div>
 
   </div>
@@ -81,12 +81,13 @@
             }, {
                 label : '公告标题',
                 name : 'bt',
-                width : 300
+                width : 280,
+                formatter : formatter_bt
             }, {
                 label : '状态',
                 name : 'ztmc',
                 align : 'center',
-                width : 100,
+                width : 80,
                 formatter : formatter_zt
             }, {
                 label : '信息类型',
@@ -96,11 +97,11 @@
             }, {
                 label : '发布人',
                 name : 'createByMC',
-                width : 100
+                width : 80
             }, {
                 label : '发布时间',
                 name : 'createDate',
-                width : 100
+                width : 120
             }, {
                 label : '审核人',
                 name : 'shr',
@@ -112,7 +113,8 @@
             }, {
                 label : '审核意见',
                 name : 'shyj',
-                width : 200,
+                width : 100,
+                align:"center",
                 formatter:formatter_grid2_shyj
             }],
             pager : '#pager1'
@@ -129,14 +131,21 @@
             return '<lable class="label label-default ">待审核</lable>'
         }
     }
+    function formatter_bt(cellvalue, options, rowObject) {
+        return "<span style='color:"+rowObject.btys+"'>"+cellvalue+"</span>";
+    }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="seeXX(3,\'' + rowObject.xxid + '\')" title=""><i class="fa fa-info-circle"></i> 查看</button>';
+    }
+    function formatter_grid2_shyj(cellvalue, options, rowObject) {
+        if(rowObject.shyj){
+          return '<a href="javascript:void(0)" onclick="showintro(\'' + rowObject.shyj + '\')">查看</a>';
+        }else{
+            return '';
+        }
     }
 
-    function formatter_grid2_shyj(cellvalue, options, rowObject) {
-        return '<a href="javascript:void(0)">...</a>';
-    }
     function gridWidth() {
         return $('body').width() - 22;
     }
@@ -144,15 +153,31 @@
         return $('body').height() -100;
     }
 
-    function verify(mode,ggid) {
+
+    function showintro(intro) {
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '查看专家介绍',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '400px', '300px' ],
+            content :intro == undefined?intro:"无",
+            end : function(index) {
+                layer.close(index);
+            }
+        });
+    }
+
+    function seeXX(mode,ggid) {
         layer.open({
             type : 2,
             shift : 5,
-            title : mode==1?"查看":"审核",
+            title : "查看",
             shadeClose : false,
             shade : 0.3,
             area : [ '95%', '90%' ],
-            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&ggid=' + ggid,
+            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&xxid=' + ggid,
             cancel : function(index) {
                 layer.close(index);
             }
