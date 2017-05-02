@@ -1,17 +1,39 @@
 package cn.gov.ahcourt.casecomment.controller;
 
+import cn.gov.ahcourt.casecomment.bean.BdPublish;
+import cn.gov.ahcourt.casecomment.bean.SdProfessional;
+import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.mapper.BdPublishMapper;
+import cn.gov.ahcourt.casecomment.utils.IdGen;
+import cn.gov.ahcourt.casecomment.utils.SessionScope;
+import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/publish")
 public class PublishController {
 
+	@Resource
+	private BdPublishMapper bdPublishMapper;
+
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
-	public String input(ModelMap model, String mode , String ggid) {
-		model.addAttribute("mode", mode);
+	public String input(ModelMap modelMap, String mode , String xxid) {
+		modelMap.addAttribute("mode", mode);
+		if (StringUtils.isNoneBlank(xxid)){
+			BdPublish querybean = new BdPublish();
+			querybean.setXxid(xxid);
+			List<BdPublish> ls = bdPublishMapper.selectAll();
+			BdPublish bean =  (ls !=null)?ls.get(0):null;
+			modelMap.addAttribute("publish", bean);
+		}
 		return "publish/input";
 	}
 
@@ -36,6 +58,18 @@ public class PublishController {
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list() {
 		return "publish/list";
+	}
+
+	@RequestMapping(value = "/save", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody int save(BdPublish bean,@SessionScope("user")UserBean user){
+		if(bean!=null && StringUtils.isNoneBlank(bean.getXxid())){
+			return bdPublishMapper.updateByPrimaryKey(bean);
+		}else{
+			bean.setXxid(IdGen.uuid());
+			bean.setCreateBy(user.getYhid());
+			bean.setCreateDate(new Date());
+			return bdPublishMapper.insert(bean);
+		}
 	}
 
 }

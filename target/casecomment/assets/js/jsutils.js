@@ -375,12 +375,13 @@ function getnowtime() {
 function initDictSelect(parentids, selectid) {
     $.ajax({
         type : 'POST',
-        url : smartec.ctx + '/setting/dict/getByParent.do',
+        url : ahcourt.ctx + '/setting/dict/getByParent.do',
         datatype : 'json',
         data : {
             "parent_id" : parentids
         },
         success : function(data) {
+            //console.log(data);
             if (data && data.length > 0) {
                 $(selectid).each(function() {
                     var initid = $(this).attr('initdata');

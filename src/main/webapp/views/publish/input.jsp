@@ -21,59 +21,65 @@
     </div>
   </div>
   <div class="bmbox_content clearfix">
+    <form class="business_form">
     <div class="form_center clearfix" style="padding: 15px 0;">
       <div class="form_item wb100 fl">
-        <label>信息标题</label>
-        <input type="text" class="form-control" placeholder="请输入三精评选公告的标题"/>
+        <label>信息标题<span>*</span></label>
+        <input type="text" id="bt" name="bt" class="form-control bmrequire" placeholder="请输入三精评选公告的标题"/>
       </div>
       <div class="form_item wb28 fl">
         <label>标题颜色</label>
         <div class="i-checkslayout">
           <div class="radio i-checks">
             <label class="default_radio">
-              <input type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
+              <input type="radio" value="#000000" name="ztys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
             </label>
             <label>
-              <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
+              <input type="radio" value="#a94442" name="ztys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
             </label>
           </div>
         </div>
       </div>
       <div class="form_item wb20 fl">
-        <label>信息类型</label>
+        <label>信息类型<span>*</span></label>
 
-        <select class="form-control">
+        <select class="form-control bmrequire" id="xxlx" name="xxlx">
           <option>请选择...</option>
-          <option>通知通告</option>
-          <option>三精评查结果公示</option>
-          <option>三精评选结果公示</option>
         </select>
 
       </div>
 
       <div class="form_item wb100 fl">
-        <label>公告内容</label>
-        <div class="summernote" style="">
+        <label>公告内容<span>*</span></label>
+        <div class="summernote bmrequire" id="xxnr" name="xxnr" style="">
 
         </div>
 
       </div>
     </div>
+    </form>
   </div>
 </div>
 
+<input type="hidden" id="mode" name="mode" value="${mode}">
 
-
+<input type="hidden" id="xxid" value="${publish.xxid}">
 
 <script>
     $(function(){
+
+
+        initDictSelect('802', '#xxlx')
+
+
         var mode = $("#mode").val();
 
         if(mode == 2){
-            $("#btn_submit").hide();
-            $("#btn_pass").show();
-            $("#btn_reject").show();
+//            $("#btn_submit").hide();
+//            $("#btn_pass").show();
+//            $("#btn_reject").show();
         }else {
+            //新建模式
             $("#btn_submit").show();
             $("#btn_pass").hide();
             $("#btn_reject").hide();
@@ -85,25 +91,48 @@
         });
 
         $('.summernote').summernote({
-            lang: 'zh-CN'
+            lang: 'zh-CN',
+            height: $('body').height()-280,
+    });
+
+
+        $("#btn_submit").click(function() {
+
+            var bt=$("#bt").val();
+            if(!bt){ layer.msg("请填写标题~!");$("#bt").focus();return; }
+
+            var xxlx=$("#xxlx").val();
+            if(!xxlx){ layer.msg("请选择信息类型~!");$("#xxlx").focus();return; }
+
+            var xxnr=$(".summernote").code();
+            if(!xxnr || xxnr.length <= 10){ layer.msg("请填写公告内容,且公告内容至少超过10个字符~!");return; }
+            //console.log(xxnr);
+
+            var ztys = $("input[name='ztys']:checked").val();
+
+                $.ajax({
+                    type : 'POST',
+                    url : ahcourt.ctx + "/publish/save.do",
+                    datatype : 'json',
+                    data : {
+                        bt:bt,xxlx:xxlx,xxnr:xxnr,btys:ztys
+                    },
+                    success : function(data) {
+                        if (data > 0) {
+                            $(".business_form")[0].reset();
+                            $('.summernote').code("");
+                            $("#xxid").val("");
+                            layer.msg("保存成功！");
+                        } else {
+                            layer.msg("保存失败");
+                        }
+                    }
+                });
+
         });
 
-        $('#selectuser').click(function() {
-            layer.open({
-                type : 2,
-                title : '添加要提醒的人员',
-                shadeClose : false,
-                shade : 0.3,
-                area : [ '500px', '300px' ],
-                content : ahcourt.ctx + '/views/basic/select_user.jsp?ele=user_name&hid=user_id&mult=1',
-                cancel : function(index) {
-                    layer.close(index);
-                }
-            });
-        })
     })
 </script>
 
-<input type="hidden" id="mode" name="mode" value="${mode}">
 </body>
 </html>
