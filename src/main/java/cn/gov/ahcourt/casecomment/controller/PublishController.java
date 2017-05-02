@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/publish")
@@ -70,6 +71,12 @@ public class PublishController {
 			bean.setCreateDate(new Date());
 			return bdPublishMapper.insert(bean);
 		}
+	}
+
+	@RequestMapping("/mylistjson")
+	public @ResponseBody
+	Map mylistjson(BdPublish bean) {
+		return bean.toMap(bdPublishMapper.selectAll());
 	}
 
 }

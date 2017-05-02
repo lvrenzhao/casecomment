@@ -17,6 +17,10 @@ public class BdPublish extends  BaseEntity{
 
     private Date createDate;
 
+    private String createdate1;
+
+    private String createdate2;
+
     private String updateBy;
 
     private Date updateDate;
@@ -27,6 +31,22 @@ public class BdPublish extends  BaseEntity{
 
     public String getXxid() {
         return xxid;
+    }
+
+    public String getCreatedate2() {
+        return createdate2;
+    }
+
+    public void setCreatedate2(String createdate2) {
+        this.createdate2 = createdate2;
+    }
+
+    public String getCreatedate1() {
+        return createdate1;
+    }
+
+    public void setCreatedate1(String createdate1) {
+        this.createdate1 = createdate1;
     }
 
     public void setXxid(String xxid) {

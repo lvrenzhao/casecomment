@@ -28,7 +28,7 @@ function listgrid() {
 		rowNum : 20,
 		rowList : [   10,15,20,30 ],
 		colModel : [ {
-			label : 'zjid',
+			label : 'id',
 			name : 'zjid',
 			hidden : true,
 			key : true
@@ -56,10 +56,6 @@ function listgrid() {
             name : 'zy',
             width : 150
         }, {
-            label : '标签',
-            name : 'bq',
-            width : 150
-        },{
 			label : '邮件',
 			name : 'dzyx',
 			width : 120
@@ -92,7 +88,6 @@ function listgrid() {
 }
 
 function gridmenu(cellvalue, options, rowObject) {
-    //console.log(rowObject);
     var btn_edit = '<button class="btn btn-white btn-xs mr5" type="button" onclick="editProfessional(\'' + rowObject.zjid + '\')"><i class="fa fa-edit"></i>&nbsp;编辑</button>&nbsp;';
     var btn_delete = '<button class="btn btn-white btn-xs mr5" type="button" onclick="opendelbox(\'' + rowObject.zjid + '\')"><i class="fa fa-trash"></i>&nbsp;删除</button>';
     return btn_edit + btn_delete ;
@@ -102,7 +97,7 @@ function formatter_grid2_shyj(cellvalue, options, rowObject) {
     return '<a href="javascript:void(0)" onclick="showintro(\'' + rowObject.js + '\')">查看</a>';
 }
 
-function newProfessional() {
+function newProfessional(id) {
     layer.open({
         type : 2,
         shift : 5,
@@ -119,7 +114,6 @@ function newProfessional() {
 }
 
 function editProfessional(zjid){
-    //console.log(zjid)
     layer.open({
         type : 2,
         shift : 5,
@@ -151,7 +145,6 @@ function showintro(intro) {
 }
 
 function opendelbox(id) {
-    //console.log(id)
     layer.confirm('确定删除该专家？', {
         btn : ['确定', '取消'],
         closeBtn : false,

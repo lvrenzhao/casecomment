@@ -13,26 +13,25 @@
 <div id="search_box1" class="form_center clearfix">
   <div class="form_item wb25 fl">
     <label>标题</label>
-    <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
+    <input type="text" id="bt" name="bt" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
   </div>
   <div class="form_item wb15 fl">
     <label>信息类型</label>
-    <select class="form-control input-sm">
+    <select class="form-control input-sm" id="xxlx" name="xxlx">
       <option value="">--请选择--</option>
-      <option value="">通知通告</option>
     </select>
   </div>
   <div class="form_item wb35 fl">
     <label>发布日期</label>
     <div>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
       <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
     </div>
 
   </div>
   <div class="form_item wb10 fl">
-    <button id="" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+    <button id="btn_search" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
   </div>
 </div>
 <div class="clearfix pd10">
@@ -41,8 +40,24 @@
 </div>
 <script>
     $(function(){
+
+        initDictSelect('802', '#xxlx')
+
+        $('#btn_search').click(function() {
+            $("#table1").jqGrid().setGridParam({
+                page:1,
+                postData : {
+                    bt : $('#bt').val(),
+                    xxlx : $('#xxlx').val(),
+                    createdate1 : $('#createdate1').val(),
+                    createdate2 : $('#createdate2').val()
+                }
+            }).trigger("reloadGrid");
+        })
+
+
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/publish/',
             datatype : "json",
             mtype : "post",
             height : gridHeight()-65,
