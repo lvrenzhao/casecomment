@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCasechosenJyMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCasechosenJy" >
+    <id column="sjpxjyid" property="sjpxjyid" jdbcType="VARCHAR" />
+    <result column="xjpxggid" property="xjpxggid" jdbcType="VARCHAR" />
+    <result column="jy" property="jy" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_casechosen_jy
+    where sjpxjyid = #{sjpxjyid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenJy" >
+    insert into bd_casechosen_jy (sjpxjyid, xjpxggid, jy, 
+      create_by, create_date, update_by, 
+      update_date, remarks, flag
+      )
+    values (#{sjpxjyid,jdbcType=VARCHAR}, #{xjpxggid,jdbcType=VARCHAR}, #{jy,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenJy" >
+    update bd_casechosen_jy
+    set xjpxggid = #{xjpxggid,jdbcType=VARCHAR},
+      jy = #{jy,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where sjpxjyid = #{sjpxjyid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select sjpxjyid, xjpxggid, jy, create_by, create_date, update_by, update_date, remarks, 
+    flag
+    from bd_casechosen_jy
+    where sjpxjyid = #{sjpxjyid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select sjpxjyid, xjpxggid, jy, create_by, create_date, update_by, update_date, remarks, 
+    flag
+    from bd_casechosen_jy
+  </select>
+</mapper>

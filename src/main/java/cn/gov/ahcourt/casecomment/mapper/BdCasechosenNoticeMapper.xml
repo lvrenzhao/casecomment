@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCasechosenNoticeMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCasechosenNotice" >
+    <id column="sjpxggid" property="sjpxggid" jdbcType="VARCHAR" />
+    <result column="bt" property="bt" jdbcType="VARCHAR" />
+    <result column="btys" property="btys" jdbcType="VARCHAR" />
+    <result column="pxlx" property="pxlx" jdbcType="VARCHAR" />
+    <result column="scjzrq" property="scjzrq" jdbcType="TIMESTAMP" />
+    <result column="ggnr" property="ggnr" jdbcType="VARCHAR" />
+    <result column="tzry" property="tzry" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_casechosen_notice
+    where sjpxggid = #{sjpxggid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenNotice" >
+    insert into bd_casechosen_notice (sjpxggid, bt, btys, 
+      pxlx, scjzrq, ggnr, 
+      tzry, zt, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag)
+    values (#{sjpxggid,jdbcType=VARCHAR}, #{bt,jdbcType=VARCHAR}, #{btys,jdbcType=VARCHAR}, 
+      #{pxlx,jdbcType=VARCHAR}, #{scjzrq,jdbcType=TIMESTAMP}, #{ggnr,jdbcType=VARCHAR}, 
+      #{tzry,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenNotice" >
+    update bd_casechosen_notice
+    set bt = #{bt,jdbcType=VARCHAR},
+      btys = #{btys,jdbcType=VARCHAR},
+      pxlx = #{pxlx,jdbcType=VARCHAR},
+      scjzrq = #{scjzrq,jdbcType=TIMESTAMP},
+      ggnr = #{ggnr,jdbcType=VARCHAR},
+      tzry = #{tzry,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where sjpxggid = #{sjpxggid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select sjpxggid, bt, btys, pxlx, scjzrq, ggnr, tzry, zt, create_by, create_date, 
+    update_by, update_date, remarks, flag
+    from bd_casechosen_notice
+    where sjpxggid = #{sjpxggid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select sjpxggid, bt, btys, pxlx, scjzrq, ggnr, tzry, zt, create_by, create_date, 
+    update_by, update_date, remarks, flag
+    from bd_casechosen_notice
+  </select>
+</mapper>

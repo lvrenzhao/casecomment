@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.SdProfessionalMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
+    <id column="zjid" property="zjid" jdbcType="VARCHAR" />
+    <result column="zy" property="zy" jdbcType="VARCHAR" />
+    <result column="bq" property="bq" jdbcType="VARCHAR" />
+    <result column="tx" property="tx" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="js" property="js" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="ResultMapWithUser" type="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
+    <id column="zjid" property="zjid" jdbcType="VARCHAR" />
+    <result column="zy" property="zy" jdbcType="VARCHAR" />
+    <result column="bq" property="bq" jdbcType="VARCHAR" />
+    <result column="tx" property="tx" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="js" property="js" jdbcType="VARCHAR" />
+
+    <result column="dzyx" property="dzyx" />
+    <result column="dh" property="dh" />
+    <result column="sj" property="sj" />
+    <result column="xm" property="xm" />
+    <result column="zzjgid" property="zzjgid" />
+    <result column="zzjgmc" property="zzjgmc" />
+  </resultMap>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sd_professional
+    where zjid = #{zjid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
+    insert into sd_professional (zjid, zy, bq, 
+      tx, userid, js)
+    values (#{zjid,jdbcType=VARCHAR}, #{zy,jdbcType=VARCHAR}, #{bq,jdbcType=VARCHAR}, 
+      #{tx,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{js,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
+    update sd_professional
+    set zy = #{zy,jdbcType=VARCHAR},
+      bq = #{bq,jdbcType=VARCHAR},
+      tx = #{tx,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      js = #{js,jdbcType=VARCHAR}
+    where zjid = #{zjid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select zjid, zy, bq, tx, userid, js
+    from sd_professional
+    where zjid = #{zjid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select zjid, zy, bq, tx, userid, js
+    from sd_professional
+  </select>
+
+
+  <select id="select" resultMap="ResultMapWithUser" parameterType="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
+    select zjid, fn_get_dict(zy) zy, fn_get_dict(bq) bq, a.tx, userid, js,b.dh,b.dzyx,b.sj,b.xm,c.zzjgid ,c.zzjgmc
+    from sd_professional a, sd_user b,sd_organization c where a.userid = b.yhid and b.zzid = c.zzjgid
+    <if test="xm != null and xm != '' ">
+      and b.xm like concat('%',#{xm},'%')
+    </if>
+    <if test="zzjgmc != null and zzjgmc != '' ">
+      and c.zzjgmc like concat('%',#{zzjgmc},'%')
+    </if>
+  </select>
+
+</mapper>

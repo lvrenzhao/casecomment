@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdPublishMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+    <id column="xxid" property="xxid" jdbcType="VARCHAR" />
+    <result column="bt" property="bt" jdbcType="VARCHAR" />
+    <result column="btys" property="btys" jdbcType="VARCHAR" />
+    <result column="xxlx" property="xxlx" jdbcType="VARCHAR" />
+    <result column="xxnr" property="xxnr" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_publish
+    where xxid = #{xxid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+    insert into bd_publish (xxid, bt, btys, 
+      xxlx, xxnr, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag)
+    values (#{xxid,jdbcType=VARCHAR}, #{bt,jdbcType=VARCHAR}, #{btys,jdbcType=VARCHAR}, 
+      #{xxlx,jdbcType=VARCHAR}, #{xxnr,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+    update bd_publish
+    set bt = #{bt,jdbcType=VARCHAR},
+      btys = #{btys,jdbcType=VARCHAR},
+      xxlx = #{xxlx,jdbcType=VARCHAR},
+      xxnr = #{xxnr,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where xxid = #{xxid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select xxid, bt, btys, xxlx, xxnr, create_by, create_date, update_by, update_date, 
+    remarks, flag
+    from bd_publish
+    where xxid = #{xxid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select xxid, bt, btys, xxlx, xxnr, create_by, create_date, update_by, update_date, 
+    remarks, flag
+    from bd_publish
+  </select>
+</mapper>

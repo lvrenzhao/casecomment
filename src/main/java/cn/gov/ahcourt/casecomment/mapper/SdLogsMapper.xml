@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.SdLogsMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.SdLogs" >
+    <id column="logid" property="logid" jdbcType="VARCHAR" />
+    <result column="mod" property="mod" jdbcType="VARCHAR" />
+    <result column="czr" property="czr" jdbcType="VARCHAR" />
+    <result column="czlx" property="czlx" jdbcType="VARCHAR" />
+    <result column="czsj" property="czsj" jdbcType="TIMESTAMP" />
+    <result column="xxqk" property="xxqk" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sd_logs
+    where logid = #{logid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.SdLogs" >
+    insert into sd_logs (logid, mod, czr, 
+      czlx, czsj, xxqk)
+    values (#{logid,jdbcType=VARCHAR}, #{mod,jdbcType=VARCHAR}, #{czr,jdbcType=VARCHAR}, 
+      #{czlx,jdbcType=VARCHAR}, #{czsj,jdbcType=TIMESTAMP}, #{xxqk,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.SdLogs" >
+    update sd_logs
+    set mod = #{mod,jdbcType=VARCHAR},
+      czr = #{czr,jdbcType=VARCHAR},
+      czlx = #{czlx,jdbcType=VARCHAR},
+      czsj = #{czsj,jdbcType=TIMESTAMP},
+      xxqk = #{xxqk,jdbcType=VARCHAR}
+    where logid = #{logid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select logid, mod, czr, czlx, czsj, xxqk
+    from sd_logs
+    where logid = #{logid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select logid, mod, czr, czlx, czsj, xxqk
+    from sd_logs
+  </select>
+</mapper>

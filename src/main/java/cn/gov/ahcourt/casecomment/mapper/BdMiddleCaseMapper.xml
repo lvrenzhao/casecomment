@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
+    <id column="ajid" property="ajid" jdbcType="VARCHAR" />
+    <result column="ah" property="ah" jdbcType="VARCHAR" />
+    <result column="gsfy" property="gsfy" jdbcType="VARCHAR" />
+    <result column="cbbm" property="cbbm" jdbcType="VARCHAR" />
+    <result column="cbr" property="cbr" jdbcType="VARCHAR" />
+    <result column="ajxz" property="ajxz" jdbcType="VARCHAR" />
+    <result column="ay" property="ay" jdbcType="VARCHAR" />
+    <result column="jafs" property="jafs" jdbcType="VARCHAR" />
+    <result column="jasj" property="jasj" jdbcType="TIMESTAMP" />
+    <result column="ajlx" property="ajlx" jdbcType="VARCHAR" />
+    <result column="tdhajid" property="tdhajid" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="lasj" property="lasj" jdbcType="TIMESTAMP" />
+    <result column="tsyx" property="tsyx" jdbcType="VARCHAR" />
+    <result column="cpws" property="cpws" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_middle_case
+    where ajid = #{ajid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
+    insert into bd_middle_case (ajid, ah, gsfy, 
+      cbbm, cbr, ajxz, ay, 
+      jafs, jasj, ajlx, 
+      tdhajid, create_by, create_date, 
+      update_by, update_date, remarks, 
+      flag, lasj, tsyx, 
+      cpws)
+    values (#{ajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{gsfy,jdbcType=VARCHAR}, 
+      #{cbbm,jdbcType=VARCHAR}, #{cbr,jdbcType=VARCHAR}, #{ajxz,jdbcType=VARCHAR}, #{ay,jdbcType=VARCHAR}, 
+      #{jafs,jdbcType=VARCHAR}, #{jasj,jdbcType=TIMESTAMP}, #{ajlx,jdbcType=VARCHAR}, 
+      #{tdhajid,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{lasj,jdbcType=TIMESTAMP}, #{tsyx,jdbcType=VARCHAR}, 
+      #{cpws,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
+    update bd_middle_case
+    set ah = #{ah,jdbcType=VARCHAR},
+      gsfy = #{gsfy,jdbcType=VARCHAR},
+      cbbm = #{cbbm,jdbcType=VARCHAR},
+      cbr = #{cbr,jdbcType=VARCHAR},
+      ajxz = #{ajxz,jdbcType=VARCHAR},
+      ay = #{ay,jdbcType=VARCHAR},
+      jafs = #{jafs,jdbcType=VARCHAR},
+      jasj = #{jasj,jdbcType=TIMESTAMP},
+      ajlx = #{ajlx,jdbcType=VARCHAR},
+      tdhajid = #{tdhajid,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      lasj = #{lasj,jdbcType=TIMESTAMP},
+      tsyx = #{tsyx,jdbcType=VARCHAR},
+      cpws = #{cpws,jdbcType=VARCHAR}
+    where ajid = #{ajid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select ajid, ah, gsfy, cbbm, cbr, ajxz, ay, jafs, jasj, ajlx, tdhajid, create_by, 
+    create_date, update_by, update_date, remarks, flag, lasj, tsyx, cpws
+    from bd_middle_case
+    where ajid = #{ajid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ajid, ah, gsfy, cbbm, cbr, ajxz, ay, jafs, jasj, ajlx, tdhajid, create_by, 
+    create_date, update_by, update_date, remarks, flag, lasj, tsyx, cpws
+    from bd_middle_case
+  </select>
+</mapper>

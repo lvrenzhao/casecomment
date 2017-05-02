@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdPublishReadMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdPublishRead" >
+    <id column="xxggydid" property="xxggydid" jdbcType="VARCHAR" />
+    <result column="xxggid" property="xxggid" jdbcType="VARCHAR" />
+    <result column="ydr" property="ydr" jdbcType="VARCHAR" />
+    <result column="ydsj" property="ydsj" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_publish_read
+    where xxggydid = #{xxggydid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublishRead" >
+    insert into bd_publish_read (xxggydid, xxggid, ydr, 
+      ydsj)
+    values (#{xxggydid,jdbcType=VARCHAR}, #{xxggid,jdbcType=VARCHAR}, #{ydr,jdbcType=VARCHAR}, 
+      #{ydsj,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublishRead" >
+    update bd_publish_read
+    set xxggid = #{xxggid,jdbcType=VARCHAR},
+      ydr = #{ydr,jdbcType=VARCHAR},
+      ydsj = #{ydsj,jdbcType=TIMESTAMP}
+    where xxggydid = #{xxggydid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select xxggydid, xxggid, ydr, ydsj
+    from bd_publish_read
+    where xxggydid = #{xxggydid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select xxggydid, xxggid, ydr, ydsj
+    from bd_publish_read
+  </select>
+</mapper>
