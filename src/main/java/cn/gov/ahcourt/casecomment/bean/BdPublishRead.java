@@ -1,6 +1,5 @@
 package cn.gov.ahcourt.casecomment.bean;
 
-import java.util.Date;
 
 public class BdPublishRead extends  BaseEntity{
     private String xxggydid;
@@ -9,7 +8,7 @@ public class BdPublishRead extends  BaseEntity{
 
     private String ydr;
 
-    private Date ydsj;
+    private String ydsj;
 
     public String getXxggydid() {
         return xxggydid;
@@ -35,11 +34,11 @@ public class BdPublishRead extends  BaseEntity{
         this.ydr = ydr == null ? null : ydr.trim();
     }
 
-    public Date getYdsj() {
+    public String getYdsj() {
         return ydsj;
     }
 
-    public void setYdsj(Date ydsj) {
+    public void setYdsj(String ydsj) {
         this.ydsj = ydsj;
     }
 }

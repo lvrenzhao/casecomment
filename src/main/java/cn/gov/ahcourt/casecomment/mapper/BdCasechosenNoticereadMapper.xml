@@ -5,7 +5,7 @@
     <id column="sjpxggydid" property="sjpxggydid" jdbcType="VARCHAR" />
     <result column="sjpxggid" property="sjpxggid" jdbcType="VARCHAR" />
     <result column="ydr" property="ydr" jdbcType="VARCHAR" />
-    <result column="ydsj" property="ydsj" jdbcType="TIMESTAMP" />
+    <result column="ydsj" property="ydsj" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_casechosen_noticeread
@@ -15,13 +15,13 @@
     insert into bd_casechosen_noticeread (sjpxggydid, sjpxggid, ydr, 
       ydsj)
     values (#{sjpxggydid,jdbcType=VARCHAR}, #{sjpxggid,jdbcType=VARCHAR}, #{ydr,jdbcType=VARCHAR}, 
-      #{ydsj,jdbcType=TIMESTAMP})
+      #{ydsj,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenNoticeread" >
     update bd_casechosen_noticeread
     set sjpxggid = #{sjpxggid,jdbcType=VARCHAR},
       ydr = #{ydr,jdbcType=VARCHAR},
-      ydsj = #{ydsj,jdbcType=TIMESTAMP}
+      ydsj = #{ydsj,jdbcType=VARCHAR}
     where sjpxggydid = #{sjpxggydid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >

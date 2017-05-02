@@ -1,6 +1,5 @@
 package cn.gov.ahcourt.casecomment.bean;
 
-import java.util.Date;
 
 public class BdCasechosenNotice  extends BaseEntity{
     private String sjpxggid;
@@ -11,7 +10,7 @@ public class BdCasechosenNotice  extends BaseEntity{
 
     private String pxlx;
 
-    private Date scjzrq;
+    private String scjzrq;
 
     private String ggnr;
 
@@ -21,11 +20,11 @@ public class BdCasechosenNotice  extends BaseEntity{
 
     private String createBy;
 
-    private Date createDate;
+    private String createDate;
 
     private String updateBy;
 
-    private Date updateDate;
+    private String updateDate;
 
     private String remarks;
 
@@ -63,11 +62,11 @@ public class BdCasechosenNotice  extends BaseEntity{
         this.pxlx = pxlx == null ? null : pxlx.trim();
     }
 
-    public Date getScjzrq() {
+    public String getScjzrq() {
         return scjzrq;
     }
 
-    public void setScjzrq(Date scjzrq) {
+    public void setScjzrq(String scjzrq) {
         this.scjzrq = scjzrq;
     }
 
@@ -103,11 +102,11 @@ public class BdCasechosenNotice  extends BaseEntity{
         this.createBy = createBy == null ? null : createBy.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
@@ -119,11 +118,11 @@ public class BdCasechosenNotice  extends BaseEntity{
         this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 

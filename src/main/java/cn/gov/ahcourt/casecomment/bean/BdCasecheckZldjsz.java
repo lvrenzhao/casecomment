@@ -1,6 +1,5 @@
 package cn.gov.ahcourt.casecomment.bean;
 
-import java.util.Date;
 
 public class BdCasecheckZldjsz extends  BaseEntity {
     private String ajzldjid;
@@ -15,11 +14,11 @@ public class BdCasecheckZldjsz extends  BaseEntity {
 
     private String createBy;
 
-    private Date createDate;
+    private String createDate;
 
     private String updateBy;
 
-    private Date updateDate;
+    private String updateDate;
 
     private String remarks;
 
@@ -73,11 +72,11 @@ public class BdCasecheckZldjsz extends  BaseEntity {
         this.createBy = createBy == null ? null : createBy.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
@@ -89,11 +88,11 @@ public class BdCasecheckZldjsz extends  BaseEntity {
         this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 

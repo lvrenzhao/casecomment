@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.math.BigDecimal;
 
-public class BdCasecheckPfsz extends BaseEntity {
+public class BdCasecheckPfsz {
     private String ajpcpfxid;
 
     private Integer px;

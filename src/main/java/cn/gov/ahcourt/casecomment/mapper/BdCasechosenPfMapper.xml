@@ -10,9 +10,9 @@
     <result column="ly" property="ly" jdbcType="VARCHAR" />
     <result column="df" property="df" jdbcType="DECIMAL" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
     <result column="px" property="px" jdbcType="INTEGER" />
@@ -30,8 +30,8 @@
       px, sjpxid)
     values (#{pfid,jdbcType=VARCHAR}, #{psnr,jdbcType=VARCHAR}, #{pfbz,jdbcType=VARCHAR}, 
       #{fz,jdbcType=DECIMAL}, #{kf,jdbcType=DECIMAL}, #{ly,jdbcType=VARCHAR}, #{df,jdbcType=DECIMAL}, 
-      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, 
       #{px,jdbcType=INTEGER}, #{sjpxid,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasechosenPf" >
@@ -43,9 +43,9 @@
       ly = #{ly,jdbcType=VARCHAR},
       df = #{df,jdbcType=DECIMAL},
       create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR},
       px = #{px,jdbcType=INTEGER},

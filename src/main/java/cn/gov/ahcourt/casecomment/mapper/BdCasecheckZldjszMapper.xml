@@ -8,9 +8,9 @@
     <result column="qsfz" property="qsfz" jdbcType="INTEGER" />
     <result column="jsfz" property="jsfz" jdbcType="INTEGER" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
   </resultMap>
@@ -25,7 +25,7 @@
       remarks, flag)
     values (#{ajzldjid,jdbcType=VARCHAR}, #{px,jdbcType=INTEGER}, #{dj,jdbcType=VARCHAR}, 
       #{qsfz,jdbcType=INTEGER}, #{jsfz,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{createDate,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}, 
       #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasecheckZldjsz" >
@@ -35,9 +35,9 @@
       qsfz = #{qsfz,jdbcType=INTEGER},
       jsfz = #{jsfz,jdbcType=INTEGER},
       create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR}
     where ajzldjid = #{ajzldjid,jdbcType=VARCHAR}

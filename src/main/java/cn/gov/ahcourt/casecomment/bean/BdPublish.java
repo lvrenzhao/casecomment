@@ -1,7 +1,5 @@
 package cn.gov.ahcourt.casecomment.bean;
 
-import java.util.Date;
-
 public class BdPublish extends  BaseEntity{
     private String xxid;
 

@@ -10,16 +10,16 @@
     <result column="ajxz" property="ajxz" jdbcType="VARCHAR" />
     <result column="ay" property="ay" jdbcType="VARCHAR" />
     <result column="jafs" property="jafs" jdbcType="VARCHAR" />
-    <result column="jasj" property="jasj" jdbcType="TIMESTAMP" />
+    <result column="jasj" property="jasj" jdbcType="VARCHAR" />
     <result column="ajlx" property="ajlx" jdbcType="VARCHAR" />
     <result column="tdhajid" property="tdhajid" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
-    <result column="lasj" property="lasj" jdbcType="TIMESTAMP" />
+    <result column="lasj" property="lasj" jdbcType="VARCHAR" />
     <result column="tsyx" property="tsyx" jdbcType="VARCHAR" />
     <result column="cpws" property="cpws" jdbcType="VARCHAR" />
   </resultMap>
@@ -37,10 +37,10 @@
       cpws)
     values (#{ajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{gsfy,jdbcType=VARCHAR}, 
       #{cbbm,jdbcType=VARCHAR}, #{cbr,jdbcType=VARCHAR}, #{ajxz,jdbcType=VARCHAR}, #{ay,jdbcType=VARCHAR}, 
-      #{jafs,jdbcType=VARCHAR}, #{jasj,jdbcType=TIMESTAMP}, #{ajlx,jdbcType=VARCHAR}, 
-      #{tdhajid,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{flag,jdbcType=VARCHAR}, #{lasj,jdbcType=TIMESTAMP}, #{tsyx,jdbcType=VARCHAR}, 
+      #{jafs,jdbcType=VARCHAR}, #{jasj,jdbcType=VARCHAR}, #{ajlx,jdbcType=VARCHAR}, 
+      #{tdhajid,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{lasj,jdbcType=VARCHAR}, #{tsyx,jdbcType=VARCHAR}, 
       #{cpws,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
@@ -52,16 +52,16 @@
       ajxz = #{ajxz,jdbcType=VARCHAR},
       ay = #{ay,jdbcType=VARCHAR},
       jafs = #{jafs,jdbcType=VARCHAR},
-      jasj = #{jasj,jdbcType=TIMESTAMP},
+      jasj = #{jasj,jdbcType=VARCHAR},
       ajlx = #{ajlx,jdbcType=VARCHAR},
       tdhajid = #{tdhajid,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR},
-      lasj = #{lasj,jdbcType=TIMESTAMP},
+      lasj = #{lasj,jdbcType=VARCHAR},
       tsyx = #{tsyx,jdbcType=VARCHAR},
       cpws = #{cpws,jdbcType=VARCHAR}
     where ajid = #{ajid,jdbcType=VARCHAR}

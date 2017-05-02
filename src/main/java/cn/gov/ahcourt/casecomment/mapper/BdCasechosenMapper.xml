@@ -6,12 +6,12 @@
     <result column="sjpxggid" property="sjpxggid" jdbcType="VARCHAR" />
     <result column="ajid" property="ajid" jdbcType="VARCHAR" />
     <result column="fpzj" property="fpzj" jdbcType="VARCHAR" />
-    <result column="pssj" property="pssj" jdbcType="TIMESTAMP" />
+    <result column="pssj" property="pssj" jdbcType="VARCHAR" />
     <result column="df" property="df" jdbcType="DECIMAL" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="zt" property="zt" jdbcType="VARCHAR" />
     <result column="jydp" property="jydp" jdbcType="VARCHAR" />
@@ -28,8 +28,8 @@
       remarks, zt, jydp, 
       flag)
     values (#{sjpxid,jdbcType=VARCHAR}, #{sjpxggid,jdbcType=VARCHAR}, #{ajid,jdbcType=VARCHAR}, 
-      #{fpzj,jdbcType=VARCHAR}, #{pssj,jdbcType=TIMESTAMP}, #{df,jdbcType=DECIMAL}, #{createBy,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{fpzj,jdbcType=VARCHAR}, #{pssj,jdbcType=VARCHAR}, #{df,jdbcType=DECIMAL}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}, 
       #{remarks,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{jydp,jdbcType=VARCHAR}, 
       #{flag,jdbcType=VARCHAR})
   </insert>
@@ -38,12 +38,12 @@
     set sjpxggid = #{sjpxggid,jdbcType=VARCHAR},
       ajid = #{ajid,jdbcType=VARCHAR},
       fpzj = #{fpzj,jdbcType=VARCHAR},
-      pssj = #{pssj,jdbcType=TIMESTAMP},
+      pssj = #{pssj,jdbcType=VARCHAR},
       df = #{df,jdbcType=DECIMAL},
       create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=VARCHAR},
       jydp = #{jydp,jdbcType=VARCHAR},

@@ -1,7 +1,5 @@
 package cn.gov.ahcourt.casecomment.bean;
 
-import java.util.Date;
-
 public class BdMiddleCase extends  BaseEntity {
     private String ajid;
 
@@ -19,7 +17,7 @@ public class BdMiddleCase extends  BaseEntity {
 
     private String jafs;
 
-    private Date jasj;
+    private String jasj;
 
     private String ajlx;
 
@@ -27,17 +25,17 @@ public class BdMiddleCase extends  BaseEntity {
 
     private String createBy;
 
-    private Date createDate;
+    private String createDate;
 
     private String updateBy;
 
-    private Date updateDate;
+    private String updateDate;
 
     private String remarks;
 
     private String flag;
 
-    private Date lasj;
+    private String lasj;
 
     private String tsyx;
 
@@ -107,11 +105,11 @@ public class BdMiddleCase extends  BaseEntity {
         this.jafs = jafs == null ? null : jafs.trim();
     }
 
-    public Date getJasj() {
+    public String getJasj() {
         return jasj;
     }
 
-    public void setJasj(Date jasj) {
+    public void setJasj(String jasj) {
         this.jasj = jasj;
     }
 
@@ -139,11 +137,11 @@ public class BdMiddleCase extends  BaseEntity {
         this.createBy = createBy == null ? null : createBy.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
@@ -155,11 +153,11 @@ public class BdMiddleCase extends  BaseEntity {
         this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 
@@ -179,11 +177,11 @@ public class BdMiddleCase extends  BaseEntity {
         this.flag = flag == null ? null : flag.trim();
     }
 
-    public Date getLasj() {
+    public String getLasj() {
         return lasj;
     }
 
-    public void setLasj(Date lasj) {
+    public void setLasj(String lasj) {
         this.lasj = lasj;
     }
 
