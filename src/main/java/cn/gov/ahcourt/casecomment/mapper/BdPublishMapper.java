@@ -12,5 +12,7 @@ public interface BdPublishMapper {
 
     List<BdPublish> selectAll();
 
+    List<BdPublish> selectMyList(BdPublish bean);
+
     int updateByPrimaryKey(BdPublish record);
 }

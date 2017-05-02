@@ -10,12 +10,15 @@ public class BdPublish extends  BaseEntity{
     private String btys;
 
     private String xxlx;
+    private String  xxlxmc;
 
     private String xxnr;
 
     private String createBy;
 
-    private Date createDate;
+    private String createByMC;
+
+    private String createDate;
 
     private String createdate1;
 
@@ -23,11 +26,67 @@ public class BdPublish extends  BaseEntity{
 
     private String updateBy;
 
-    private Date updateDate;
+    private String updateDate;
 
     private String remarks;
 
+    private String ztmc;
+
     private String flag;
+
+    private String shr;
+    private String shyj;
+    private String shsj;
+
+    public String getShyj() {
+        return shyj;
+    }
+
+    public void setShyj(String shyj) {
+        this.shyj = shyj;
+    }
+
+    public String getShsj() {
+
+        return shsj;
+    }
+
+    public String getXxlxmc() {
+        return xxlxmc;
+    }
+
+    public void setXxlxmc(String xxlxmc) {
+        this.xxlxmc = xxlxmc;
+    }
+
+    public void setShsj(String shsj) {
+        this.shsj = shsj;
+    }
+
+    public String getShr() {
+
+        return shr;
+    }
+
+    public void setShr(String shr) {
+        this.shr = shr;
+    }
+
+    public String getZtmc() {
+        return ztmc;
+    }
+
+    public void setZtmc(String ztmc) {
+        this.ztmc = ztmc;
+    }
+
+    public String getCreateByMC() {
+        return createByMC;
+    }
+
+    public void setCreateByMC(String createByMC) {
+        this.createByMC = createByMC;
+    }
 
     public String getXxid() {
         return xxid;
@@ -93,11 +152,11 @@ public class BdPublish extends  BaseEntity{
         this.createBy = createBy == null ? null : createBy.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
@@ -109,11 +168,11 @@ public class BdPublish extends  BaseEntity{
         this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 

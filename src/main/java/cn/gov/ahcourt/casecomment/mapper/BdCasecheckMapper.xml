@@ -6,13 +6,13 @@
     <result column="ajpcggid" property="ajpcggid" jdbcType="VARCHAR" />
     <result column="ajid" property="ajid" jdbcType="VARCHAR" />
     <result column="fpzj" property="fpzj" jdbcType="VARCHAR" />
-    <result column="pssj" property="pssj" jdbcType="TIMESTAMP" />
+    <result column="pssj" property="pssj" jdbcType="VARCHAR" />
     <result column="df" property="df" jdbcType="DECIMAL" />
     <result column="zldj" property="zldj" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="zt" property="zt" jdbcType="VARCHAR" />
     <result column="jydp" property="jydp" jdbcType="VARCHAR" />
@@ -29,9 +29,9 @@
       update_date, remarks, zt, 
       jydp, flag)
     values (#{ajpcid,jdbcType=VARCHAR}, #{ajpcggid,jdbcType=VARCHAR}, #{ajid,jdbcType=VARCHAR}, 
-      #{fpzj,jdbcType=VARCHAR}, #{pssj,jdbcType=TIMESTAMP}, #{df,jdbcType=DECIMAL}, #{zldj,jdbcType=VARCHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, 
+      #{fpzj,jdbcType=VARCHAR}, #{pssj,jdbcType=VARCHAR}, #{df,jdbcType=DECIMAL}, #{zldj,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, 
       #{jydp,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCasecheck" >
@@ -39,13 +39,13 @@
     set ajpcggid = #{ajpcggid,jdbcType=VARCHAR},
       ajid = #{ajid,jdbcType=VARCHAR},
       fpzj = #{fpzj,jdbcType=VARCHAR},
-      pssj = #{pssj,jdbcType=TIMESTAMP},
+      pssj = #{pssj,jdbcType=VARCHAR},
       df = #{df,jdbcType=DECIMAL},
       zldj = #{zldj,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=VARCHAR},
       jydp = #{jydp,jdbcType=VARCHAR},

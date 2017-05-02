@@ -29,24 +29,24 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>
+        <!--<table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>
         <table tableName="bd_casecheck" domainObjectName="BdCasecheck"></table>
         <table tableName="bd_casecheck_jy" domainObjectName="BdCasecheckJy"></table>
         <table tableName="bd_casecheck_notice" domainObjectName="BdCasecheckNotice"></table>
         <table tableName="bd_casecheck_noticeread" domainObjectName="BdCasecheckNoticeread"></table>
-        <table tableName="bd_casecheck_pf" domainObjectName="BdCasecheckPf"></table>
+        <table tableName="bd_casecheck_pf" domainObjectName="BdCasecheckPf"></table>-->
         <table tableName="bd_casecheck_pfsz" domainObjectName="BdCasecheckPfsz"></table>
-        <table tableName="bd_casecheck_zldjsz" domainObjectName="BdCasecheckZldjsz"></table>
+        <!--<table tableName="bd_casecheck_zldjsz" domainObjectName="BdCasecheckZldjsz"></table>
         <table tableName="bd_casechosen" domainObjectName="BdCasechosen"></table>
         <table tableName="bd_casechosen_jy" domainObjectName="BdCasechosenJy"></table>
         <table tableName="bd_casechosen_notice" domainObjectName="BdCasechosenNotice"></table>
         <table tableName="bd_casechosen_noticeread" domainObjectName="BdCasechosenNoticeread"></table>
-        <table tableName="bd_casechosen_pf" domainObjectName="BdCasechosenPf"></table>
+        <table tableName="bd_casechosen_pf" domainObjectName="BdCasechosenPf"></table>-->
         <table tableName="bd_casechosen_pfsz" domainObjectName="BdCasechosenPfsz"></table>
-        <table tableName="bd_publish" domainObjectName="BdPublish"></table>
+        <!--<table tableName="bd_publish" domainObjectName="BdPublish"></table>
         <table tableName="bd_publish_read" domainObjectName="BdPublishRead"></table>
         <table tableName="sd_logs" domainObjectName="SdLogs"></table>
-        <table tableName="sd_professional" domainObjectName="SdProfessional"></table>
+        <table tableName="sd_professional" domainObjectName="SdProfessional"></table>-->
 
     </context>
 </generatorConfiguration>

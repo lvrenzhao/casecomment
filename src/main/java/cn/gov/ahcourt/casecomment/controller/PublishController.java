@@ -7,6 +7,7 @@ import cn.gov.ahcourt.casecomment.mapper.BdPublishMapper;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
+import cn.gov.ahcourt.casecomment.utils.TimeUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,8 +68,9 @@ public class PublishController {
 			return bdPublishMapper.updateByPrimaryKey(bean);
 		}else{
 			bean.setXxid(IdGen.uuid());
+			bean.setRemarks("80301"); //设置状态为待审核。
 			bean.setCreateBy(user.getYhid());
-			bean.setCreateDate(new Date());
+			bean.setCreateDate(TimeUtils.format());
 			return bdPublishMapper.insert(bean);
 		}
 	}
@@ -76,7 +78,7 @@ public class PublishController {
 	@RequestMapping("/mylistjson")
 	public @ResponseBody
 	Map mylistjson(BdPublish bean) {
-		return bean.toMap(bdPublishMapper.selectAll());
+		return bean.toMap(bdPublishMapper.selectMyList(bean));
 	}
 
 }

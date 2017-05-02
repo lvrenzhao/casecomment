@@ -57,7 +57,7 @@
 
 
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/publish/',
+            url : ahcourt.ctx + '/publish/mylistjson.do',
             datatype : "json",
             mtype : "post",
             height : gridHeight()-65,
@@ -67,38 +67,39 @@
             rowNum : 20,
             rowList : [ 10, 20, 30 ],
             colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
+                label : 'xxid',
+                name : 'xxid',
                 hidden : true,
                 key : true
             },{
                 label : '操作',
-                name : 'ggid',
+                name : 'xxid',
                 width : 80,
                 align : 'center',
                 sortable : false,
                 formatter : formatter_grid2_opts
             }, {
                 label : '公告标题',
-                name : 'ggbt',
+                name : 'bt',
                 width : 300
             }, {
                 label : '状态',
-                name : 'ggzt',
+                name : 'ztmc',
                 align : 'center',
-                width : 100
+                width : 100,
+                formatter : formatter_zt
             }, {
                 label : '信息类型',
-                name : 'pclx',
+                name : 'xxlxmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '发布人',
-                name : 'lxrmc',
+                name : 'createByMC',
                 width : 100
             }, {
                 label : '发布时间',
-                name : 'fbsj',
+                name : 'createDate',
                 width : 100
             }, {
                 label : '审核人',
@@ -118,6 +119,16 @@
             ,viewrecords: true
         });
     })
+
+    function formatter_zt(cellvalue, options, rowObject) {
+        if (cellvalue == '审核不通过') {
+            return '<lable class="label label-danger">未过期</lable>'
+        } else if (cellvalue == '审核通过') {
+            return '<lable class="label label-primary">未过期</lable>'
+        } else {
+            return '<lable class="label label-default ">待审核</lable>'
+        }
+    }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
