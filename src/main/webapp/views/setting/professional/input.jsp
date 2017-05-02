@@ -36,22 +36,22 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" value="1" name="zy" style="position: absolute; opacity: 0;"> <i></i> 刑事
+                <input type="checkbox" id="zy1" value="1" name="zy" style="position: absolute; opacity: 0;"> <i></i> 刑事
               </label>
               <label>
-                <input type="checkbox" value="2" name="zy" style="position: absolute; opacity: 0;"> <i></i> 民事
+                <input type="checkbox" id="zy2" value="2" name="zy" style="position: absolute; opacity: 0;"> <i></i> 民事
               </label>
               <label>
-                <input type="checkbox" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 行政
+                <input type="checkbox" id="zy3" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 行政
               </label>
               <label>
-                <input type="checkbox" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 赔偿
+                <input type="checkbox" id="zy4" value="4" name="zy" style="position: absolute; opacity: 0;"> <i></i> 赔偿
               </label>
               <label>
-                <input type="checkbox" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 执行
+                <input type="checkbox" id="zy5" value="5" name="zy" style="position: absolute; opacity: 0;"> <i></i> 执行
               </label>
               <label>
-                <input type="checkbox" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 其他
+                <input type="checkbox" id="zy6" value="6" name="zy" style="position: absolute; opacity: 0;"> <i></i> 其他
               </label>
             </div>
           </div>
@@ -67,16 +67,16 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" value="1" name="bq" style="position: absolute; opacity: 0;"> <i></i> 人大代表
+                <input type="checkbox" id="bq1" value="1" name="bq" style="position: absolute; opacity: 0;"> <i></i> 人大代表
               </label>
               <label>
-                <input type="checkbox" value="2" name="bq" style="position: absolute; opacity: 0;"> <i></i> 政协委员
+                <input type="checkbox" id="bq2" value="2" name="bq" style="position: absolute; opacity: 0;"> <i></i> 政协委员
               </label>
               <label>
-                <input type="checkbox" value="3" name="bq" style="position: absolute; opacity: 0;"> <i></i> 资深检察官
+                <input type="checkbox" id="bq3" value="3" name="bq" style="position: absolute; opacity: 0;"> <i></i> 资深检察官
               </label>
               <label>
-                <input type="checkbox" value="3" name="bq" style="position: absolute; opacity: 0;"> <i></i> 专业学者
+                <input type="checkbox" id="bq4" value="4" name="bq" style="position: absolute; opacity: 0;"> <i></i> 专业学者
               </label>
             </div>
           </div>
@@ -92,6 +92,8 @@
   </div>
   <input type="hidden" id="mode" value="${mode}">
   <input type="hidden" id="zjid" value="${professional.zjid}">
+  <input type="hidden" id="zy" value="${professional.zy}">
+  <input type="hidden" id="bq" value="${professional.bq}">
   <script>
     $(function(){
 
@@ -99,6 +101,23 @@
 
         if(mode == "edit"){
           $("#selectuser").attr("disabled","disabled");
+
+          if($("#zy").val()){
+              $.each($("#zy").val().split(";"),function(index,value){
+                  if(value){
+                    $("#zy"+value).attr("checked","checked");
+                  }
+              });
+          }
+
+            if($("#bq").val()){
+                $.each($("#bq").val().split(";"),function(index,value){
+                    if(value){
+                        $("#bq"+value).attr("checked","checked");
+                    }
+                });
+            }
+
         }
 //        else if (mode == "new"){}
 
@@ -107,7 +126,14 @@
             var state = checkmyform($(".accountbasic"),true);
 
             if (state) {
-                //var str1 = $("#jsid").val() + "";
+                var zy = "",bq="";
+                $('input[name="zy"]:checked').each(function(){
+                    zy += $(this).val()+";";
+                });
+                $('input[name="bq"]:checked').each(function(){
+                    bq += $(this).val()+";";
+                });
+
                 //var jsids = str1.replace(/,/g, ';');
                 $.ajax({
                     type : 'POST',
@@ -115,8 +141,8 @@
                     datatype : 'json',
                     data : {
                         zjid : $("#zjid").val(),
-                        zy :"",
-                        bq : "",
+                        zy :zy,
+                        bq : bq,
                         tx : $("#txt_gztx").val(),
                         userid : $("#user_id").val(),
                         js : $("#txt_js").val()
@@ -149,7 +175,7 @@
                 shadeClose : false,
                 shade : 0.3,
                 area : [ '500px', '300px' ],
-                content : ahcourt.ctx + '/views/basic/select_user.jsp?ele=user_name&hid=user_id&mult=0',
+                content : ahcourt.ctx + '/views/basic/select_user.jsp?ele=user_name&hid=user_id&mult=0&useto=pro',
                 cancel : function(index) {
                     layer.close(index);
                 }

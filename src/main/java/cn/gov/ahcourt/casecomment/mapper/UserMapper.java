@@ -23,6 +23,7 @@ public interface UserMapper {
 	UserBean getById(String yhid);
 
 	List<UserBean> select(UserBean user);
+	List<UserBean> selectwithoutpro(UserBean user);
 	
 	List<UserBean> selectuserlist(UserBean user);
 

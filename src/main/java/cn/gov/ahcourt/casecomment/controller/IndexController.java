@@ -131,6 +131,13 @@ public class IndexController {
         return map;
     }
 
+    @RequestMapping(value = "/userlistpro", method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Map userlistpro(@SessionScope("user") UserBean yh, UserBean user) {
+        user.setYhid(yh.getYhid());
+        Map map = user.toMap(userService.selectwithoutpro(user));
+        return map;
+    }
+
     private void initMenusByRole(List<MenuBean> menus,UserBean user){
         for(int i = 0 ; menus!=null && i< menus.size(); i++){
             if(StringUtils.isEmpty(menus.get(i).getCdurl())){

@@ -26,6 +26,12 @@ public class UserService {
 		return userMapper.select(bean);
 	}
 
+
+	public List<UserBean> selectwithoutpro(UserBean bean) {
+		return userMapper.selectwithoutpro(bean);
+	}
+
+
 	public List<UserBean> selectList(UserBean bean) {
 		return userMapper.selectList(bean);
 	}

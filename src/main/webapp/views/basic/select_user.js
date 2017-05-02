@@ -3,7 +3,8 @@ $(document).ready(function() {
 	var hid = $.getUrlParam('hid');
 	var mult = $.getUrlParam('mult');// mult的值为"0"表示不能多选，为"1"表示能多选
 	var sfyzdw = $.getUrlParam('sfyzdw');
-	Staffgrid(ele, hid, mult,sfyzdw);
+	var useto = $.getUrlParam('useto');
+	Staffgrid(ele, hid, mult,sfyzdw,useto);
 
 	$("#search").click(function() {
 		search();
@@ -27,13 +28,18 @@ function search() {
 }
 
 // 初始化人员jqGrid
-function Staffgrid(ele, hid, mult,_sfyzdw) {
+function Staffgrid(ele, hid, mult,_sfyzdw,useto) {
+    //console.log(useto);
 	if (mult == "0") {
 		/*$(".no-padding").removeClass("wb75");
 		$(".no-padding").addClass("wb100");
 */
+		if(!useto){
+            useto="";
+		}
+		console.log(useto);
 		$("#staff_jqGrid").jqGrid({
-			url : ahcourt.ctx + "/userlist.do",
+			url : ahcourt.ctx + "/userlist"+useto+".do",
 			datatype : "json",
 			mtype : "post",
 			width : gridWidth(),
@@ -107,7 +113,7 @@ function Staffgrid(ele, hid, mult,_sfyzdw) {
 	} else if (mult == "1") {
 //		$("#staff_select").removeClass("hidden");
 		$("#staff_jqGrid").jqGrid({
-			url : ahcourt.ctx + "/userlist.do",
+			url : ahcourt.ctx + "/userlist"+useto+".do",
 
 			datatype : "json",
 			mtype : "post",

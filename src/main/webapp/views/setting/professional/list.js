@@ -151,7 +151,7 @@ function showintro(intro) {
 }
 
 function opendelbox(id) {
-    console.log(id)
+    //console.log(id)
     layer.confirm('确定删除该专家？', {
         btn : ['确定', '取消'],
         closeBtn : false,
