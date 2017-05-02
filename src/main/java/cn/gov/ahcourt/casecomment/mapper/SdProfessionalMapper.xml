@@ -13,7 +13,9 @@
   <resultMap id="ResultMapWithUser" type="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
     <id column="zjid" property="zjid" jdbcType="VARCHAR" />
     <result column="zy" property="zy" jdbcType="VARCHAR" />
+    <result column="zymc" property="zymc" jdbcType="VARCHAR" />
     <result column="bq" property="bq" jdbcType="VARCHAR" />
+    <result column="bqmc" property="bqmc" jdbcType="VARCHAR" />
     <result column="tx" property="tx" jdbcType="VARCHAR" />
     <result column="userid" property="userid" jdbcType="VARCHAR" />
     <result column="js" property="js" jdbcType="VARCHAR" />
@@ -59,8 +61,12 @@
 
 
   <select id="select" resultMap="ResultMapWithUser" parameterType="cn.gov.ahcourt.casecomment.bean.SdProfessional" >
-    select zjid, fn_get_dict(zy) zy, fn_get_dict(bq) bq, a.tx, userid, js,b.dh,b.dzyx,b.sj,b.xm,c.zzjgid ,c.zzjgmc
+    select zjid, zy,fn_get_dict(zy) zymc, bq,fn_get_dict(bq) bqmc, a.tx, userid, js,b.dh,b.dzyx,b.sj,b.xm,c.zzjgid ,c.zzjgmc
     from sd_professional a, sd_user b,sd_organization c where a.userid = b.yhid and b.zzid = c.zzjgid
+
+    <if test="zjid != null and zjid != '' ">
+      and zjid = #{zjid,jdbcType=VARCHAR}
+    </if>
     <if test="xm != null and xm != '' ">
       and b.xm like concat('%',#{xm},'%')
     </if>

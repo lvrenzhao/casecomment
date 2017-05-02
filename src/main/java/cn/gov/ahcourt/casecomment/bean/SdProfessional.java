@@ -5,7 +5,11 @@ public class SdProfessional extends BaseEntity{
 
     private String zy;
 
+    private String zymc;
+
     private String bq;
+
+    private String bqmc;
 
     private String tx;
 
@@ -25,6 +29,21 @@ public class SdProfessional extends BaseEntity{
 
     private String xm;
 
+    public String getZymc() {
+        return zymc;
+    }
+
+    public void setZymc(String zymc) {
+        this.zymc = zymc;
+    }
+
+    public String getBqmc() {
+        return bqmc;
+    }
+
+    public void setBqmc(String bqmc) {
+        this.bqmc = bqmc;
+    }
 
     public String getZzjgmc() {
         return zzjgmc;

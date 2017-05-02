@@ -36,22 +36,22 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" id="zy1" value="1" name="zy" style="position: absolute; opacity: 0;"> <i></i> 刑事
+                <input type="checkbox" id="zy80401" value="80401" name="zy" style="position: absolute; opacity: 0;"> <i></i> 刑事
               </label>
               <label>
-                <input type="checkbox" id="zy2" value="2" name="zy" style="position: absolute; opacity: 0;"> <i></i> 民事
+                <input type="checkbox" id="zy80402" value="80402" name="zy" style="position: absolute; opacity: 0;"> <i></i> 民事
               </label>
               <label>
-                <input type="checkbox" id="zy3" value="3" name="zy" style="position: absolute; opacity: 0;"> <i></i> 行政
+                <input type="checkbox" id="zy80403" value="80403" name="zy" style="position: absolute; opacity: 0;"> <i></i> 行政
               </label>
               <label>
-                <input type="checkbox" id="zy4" value="4" name="zy" style="position: absolute; opacity: 0;"> <i></i> 赔偿
+                <input type="checkbox" id="zy80404" value="80404" name="zy" style="position: absolute; opacity: 0;"> <i></i> 赔偿
               </label>
               <label>
-                <input type="checkbox" id="zy5" value="5" name="zy" style="position: absolute; opacity: 0;"> <i></i> 执行
+                <input type="checkbox" id="zy80405" value="80405" name="zy" style="position: absolute; opacity: 0;"> <i></i> 执行
               </label>
               <label>
-                <input type="checkbox" id="zy6" value="6" name="zy" style="position: absolute; opacity: 0;"> <i></i> 其他
+                <input type="checkbox" id="zy80406" value="80406" name="zy" style="position: absolute; opacity: 0;"> <i></i> 其他
               </label>
             </div>
           </div>
@@ -67,16 +67,16 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" id="bq1" value="1" name="bq" style="position: absolute; opacity: 0;"> <i></i> 人大代表
+                <input type="checkbox" id="bq80501" value="80501" name="bq" style="position: absolute; opacity: 0;"> <i></i> 人大代表
               </label>
               <label>
-                <input type="checkbox" id="bq2" value="2" name="bq" style="position: absolute; opacity: 0;"> <i></i> 政协委员
+                <input type="checkbox" id="bq80502" value="80502" name="bq" style="position: absolute; opacity: 0;"> <i></i> 政协委员
               </label>
               <label>
-                <input type="checkbox" id="bq3" value="3" name="bq" style="position: absolute; opacity: 0;"> <i></i> 资深检察官
+                <input type="checkbox" id="bq80503" value="80503" name="bq" style="position: absolute; opacity: 0;"> <i></i> 资深检察官
               </label>
               <label>
-                <input type="checkbox" id="bq4" value="4" name="bq" style="position: absolute; opacity: 0;"> <i></i> 专业学者
+                <input type="checkbox" id="bq80504" value="80504" name="bq" style="position: absolute; opacity: 0;"> <i></i> 专业学者
               </label>
             </div>
           </div>
@@ -102,6 +102,7 @@
         if(mode == "edit"){
           $("#selectuser").attr("disabled","disabled");
 
+          //console.log($("#zy").val());
           if($("#zy").val()){
               $.each($("#zy").val().split(";"),function(index,value){
                   if(value){

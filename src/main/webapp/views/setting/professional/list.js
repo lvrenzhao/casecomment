@@ -28,7 +28,7 @@ function listgrid() {
 		rowNum : 20,
 		rowList : [   10,15,20,30 ],
 		colModel : [ {
-			label : 'id',
+			label : 'zjid',
 			name : 'zjid',
 			hidden : true,
 			key : true
@@ -53,7 +53,11 @@ function listgrid() {
             width : 100
         },  {
             label : '专业',
-            name : 'zy',
+            name : 'zymc',
+            width : 150
+        },  {
+            label : '标签',
+            name : 'bqmc',
             width : 150
         }, {
 			label : '邮件',
@@ -88,6 +92,7 @@ function listgrid() {
 }
 
 function gridmenu(cellvalue, options, rowObject) {
+    //console.log(rowObject.zjid);
     var btn_edit = '<button class="btn btn-white btn-xs mr5" type="button" onclick="editProfessional(\'' + rowObject.zjid + '\')"><i class="fa fa-edit"></i>&nbsp;编辑</button>&nbsp;';
     var btn_delete = '<button class="btn btn-white btn-xs mr5" type="button" onclick="opendelbox(\'' + rowObject.zjid + '\')"><i class="fa fa-trash"></i>&nbsp;删除</button>';
     return btn_edit + btn_delete ;
@@ -113,7 +118,7 @@ function newProfessional(id) {
     });
 }
 
-function editProfessional(zjid){
+function editProfessional(id){
     layer.open({
         type : 2,
         shift : 5,
@@ -121,7 +126,7 @@ function editProfessional(zjid){
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '85%' ],
-        content : ahcourt.ctx + '/setting/professional/input.do?zjid='+zjid+'&mode=edit',
+        content : ahcourt.ctx + '/setting/professional/input.do?zjid='+id+'&mode=edit',
         end : function(index) {
 //			layer.close(index);
             $("#table1").jqGrid().trigger("reloadGrid")
