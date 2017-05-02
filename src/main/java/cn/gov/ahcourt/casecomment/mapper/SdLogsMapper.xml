@@ -5,7 +5,9 @@
     <id column="logid" property="logid" jdbcType="VARCHAR" />
     <result column="mod" property="mod" jdbcType="VARCHAR" />
     <result column="czr" property="czr" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
     <result column="czlx" property="czlx" jdbcType="VARCHAR" />
+    <result column="czlxmc" property="czlxmc" jdbcType="VARCHAR" />
     <result column="czsj" property="czsj" jdbcType="TIMESTAMP" />
     <result column="xxqk" property="xxqk" jdbcType="VARCHAR" />
   </resultMap>
@@ -37,4 +39,32 @@
     select logid, mod, czr, czlx, czsj, xxqk
     from sd_logs
   </select>
+
+
+  <select id="select" resultMap="BaseResultMap" >
+    select
+      a.logid,a.`mod`,a.czr,b.xm,a.czlx,fn_get_dict(a.czlx) czlxmc,DATE_FORMAT(a.czsj, '%Y/%m/%d %H:%i:%S') czsj,a.xxqk
+    from sd_logs a, sd_user b
+    where a.czr = b.yhid
+    <if test="mod != null and mod != '' ">
+      and a.`mod` like concat('%',#{mod},'%')
+    </if>
+
+    <if test="xm != null and xm != '' ">
+      and b.xm like concat('%',#{xm},'%')
+    </if>
+
+    <if test="czlx != null and czlx != '' ">
+      and a.czlx = #{czlx}
+    </if>
+
+    <if test="czsj1 != null and czsj1 != '' ">
+      and date_format(czsj, '%Y/%m/%d %H:%i:%S') &gt;= #{czsj1}
+    </if>
+    <if test="czsj2 != null and czsj2 != '' ">
+      AND date_format(czsj, '%Y/%m/%d %H:%i:%S') &lt;= #{czsj2}
+    </if>
+
+  </select>
+
 </mapper>

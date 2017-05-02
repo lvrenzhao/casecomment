@@ -12,5 +12,8 @@ public interface SdLogsMapper {
 
     List<SdLogs> selectAll();
 
+    List<SdLogs> select(SdLogs bean);
+
+
     int updateByPrimaryKey(SdLogs record);
 }
