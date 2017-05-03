@@ -113,4 +113,39 @@
 		FROM bd_publish bp INNER JOIN sd_flow_history sfh ON sfh.shnrid = bp.xxid AND sfh.lcmk = '10303' AND sfh.shr = #{shr}
   </select>
 
+  <select id="selectUnwatchedList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+    SELECT
+    bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
+    bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
+    FROM bd_publish bp
+    where bp.xxid not in (select xxggid from bd_publish_read where ydr = #{createBy}) order by bp.create_date desc
+  </select>
+
+
+  <select id="selectWatchedList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+    SELECT
+    bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
+    bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
+    FROM bd_publish bp , bd_publish_read bpr
+    where bp.xxid = bpr.xxggid and ydr = #{createBy}
+    <if test="createBy != null and createBy != '' ">
+      and bp.`create_by` =#{createBy}
+    </if>
+    <if test="bt != null and bt != '' ">
+      and bp.`bt` like concat('%',#{bt},'%')
+    </if>
+
+    <if test="xxlx != null and xxlx != '' ">
+      and bp.xxlx = #{xxlx}
+    </if>
+
+    <if test="createdate1 != null and createdate1 != '' ">
+      and date_format(bp.create_date, '%Y/%m/%d %H:%i:%S') &gt;= #{createdate1}
+    </if>
+    <if test="createdate2 != null and createdate2 != '' ">
+      and date_format(bp.create_date, '%Y/%m/%d %H:%i:%S') &lt;= #{createdate2}
+    </if>
+    order by bp.create_date DESC
+  </select>
+
 </mapper>

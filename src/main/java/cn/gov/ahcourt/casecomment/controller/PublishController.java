@@ -132,4 +132,22 @@ public class PublishController {
 		}
 		return result;
 	}
+
+	@RequestMapping("/unwatchedlistjson")
+	public @ResponseBody Map unwatchedlistjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		bean.setCreateBy(user.getYhid());
+		return bean.toMap(bdPublishMapper.selectUnwatchedList(bean));
+	}
+
+	@RequestMapping("/watchedlistjson")
+	public @ResponseBody Map watchedlistjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		bean.setCreateBy(user.getYhid());
+		return bean.toMap(bdPublishMapper.selectWatchedList(bean));
+	}
 }

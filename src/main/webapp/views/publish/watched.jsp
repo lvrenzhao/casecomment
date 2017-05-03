@@ -7,36 +7,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>双评工作平台</title>
   <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-  <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+  <jsp:include page="/header.jsp?libs=jqgrid;layer;laydate" />
 </head>
 <body>
 <div id="search_box1" class="form_center clearfix">
   <div class="form_item wb25 fl">
     <label>标题</label>
-    <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
+    <input type="text" id="bt" name="bt" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
   </div>
   <div class="form_item wb15 fl">
     <label>信息类型</label>
-    <select class="form-control input-sm">
+    <select class="form-control input-sm" id="xxlx" name="xxlx">
       <option value="">--请选择--</option>
-      <option value="">通知通告</option>
     </select>
   </div>
   <div class="form_item wb15 fl">
     <label>发布人</label>
-    <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+    <input type="text" id="fbr" name="fbr" class="form-control input-sm" placeholder="" maxlength="255" />
   </div>
   <div class="form_item wb35 fl">
     <label>发布日期</label>
     <div>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})" />
       <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-      <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+      <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})" />
     </div>
 
   </div>
   <div class="form_item wb10 fl">
-    <button id="" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+    <button id="btn_search" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
   </div>
 </div>
 <div class="clearfix pd10">
@@ -45,8 +44,23 @@
 </div>
 <script>
     $(function(){
+
+        initDictSelect('802', '#xxlx')
+
+        $('#btn_search').click(function() {
+            $("#table1").jqGrid().setGridParam({
+                page:1,
+                postData : {
+                    bt : $('#bt').val(),
+                    xxlx : $('#xxlx').val(),
+                    createdate1 : $('#createdate1').val(),
+                    createdate2 : $('#createdate2').val()
+                }
+            }).trigger("reloadGrid");
+        })
+
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/publish/watchedlistjson.do',
             datatype : "json",
             mtype : "post",
             height : gridHeight()-65,
@@ -56,44 +70,55 @@
             rowNum : 20,
             rowList : [ 10, 20, 30 ],
             colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
-                hidden : true,
-                key : true
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 80,
-                align : 'center',
-                sortable : false,
-                formatter : formatter_grid2_opts
-            }, {
-                label : '公告标题',
-                name : 'ggbt',
-                width : 300
-            }, {
-                label : '状态',
-                name : 'ggzt',
-                align : 'center',
-                width : 100
-            }, {
-                label : '信息类型',
-                name : 'pclx',
-                align : 'center',
-                width : 100
-            }, {
-                label : '发布人',
-                name : 'lxrmc',
-                width : 100
-            }, {
-                label : '发布时间',
-                name : 'fbsj',
-                width : 100
-            }],
-            pager : '#pager1'
-            ,viewrecords: true
-        });
+              label : 'xxid',
+              name : 'xxid',
+              hidden : true,
+              key : true
+          },{
+              label : '操作',
+              name : 'xxid',
+              width : 80,
+              align : 'center',
+              sortable : false,
+              formatter : formatter_grid2_opts
+          }, {
+              label : '公告标题',
+              name : 'bt',
+              width : 300
+          }, {
+              label : '状态',
+              name : 'ztmc',
+              align : 'center',
+              width : 80,
+              formatter : formatter_zt
+          }, {
+              label : '信息类型',
+              name : 'xxlxmc',
+              align : 'center',
+              width : 100
+          }, {
+              label : '发布人',
+              name : 'createByMC',
+              width : 100
+          }, {
+              label : '发布时间',
+              name : 'createDate',
+              width : 100
+          }],
+              pager : '#pager1'
+              ,viewrecords: true
+          });
     })
+
+    function formatter_zt(cellvalue, options, rowObject) {
+        if (cellvalue == '审核不通过') {
+            return '<lable class="label label-danger">审核不通过</lable>'
+        } else if (cellvalue == '审核通过') {
+            return '<lable class="label label-primary">审核通过</lable>'
+        } else {
+            return '<lable class="label label-default ">待审核</lable>'
+        }
+    }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';

@@ -18,6 +18,12 @@ public interface BdPublishMapper {
 
     List<BdPublish> selectVerifyHistoryList(BdPublish bean);
 
+    List<BdPublish> selectUnwatchedList(BdPublish bean);
+
+    List<BdPublish> selectWatchedList(BdPublish bean);
+
+
+
     int updateByPrimaryKey(BdPublish record);
 
 

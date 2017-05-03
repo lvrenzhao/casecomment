@@ -17,7 +17,7 @@
   <script>
     $(function(){
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/publish/unwatchedlistjson.do',
             datatype : "json",
             mtype : "post",
             height : gridHeight()-65,
@@ -27,44 +27,55 @@
             rowNum : 20,
             rowList : [ 10, 20, 30 ],
             colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
+                label : 'xxid',
+                name : 'xxid',
                 hidden : true,
                 key : true
             },{
                 label : '操作',
-                name : 'ggid',
+                name : 'xxid',
                 width : 80,
                 align : 'center',
                 sortable : false,
                 formatter : formatter_grid2_opts
             }, {
                 label : '公告标题',
-                name : 'ggbt',
+                name : 'bt',
                 width : 300
             }, {
                 label : '状态',
-                name : 'ggzt',
+                name : 'ztmc',
                 align : 'center',
-                width : 100
+                width : 80,
+                formatter : formatter_zt
             }, {
                 label : '信息类型',
-                name : 'pclx',
+                name : 'xxlxmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '发布人',
-                name : 'lxrmc',
+                name : 'createByMC',
                 width : 100
             }, {
                 label : '发布时间',
-                name : 'fbsj',
+                name : 'createDate',
                 width : 100
             }],
             pager : '#pager1'
             ,viewrecords: true
         });
     })
+
+    function formatter_zt(cellvalue, options, rowObject) {
+        if (cellvalue == '审核不通过') {
+            return '<lable class="label label-danger">审核不通过</lable>'
+        } else if (cellvalue == '审核通过') {
+            return '<lable class="label label-primary">审核通过</lable>'
+        } else {
+            return '<lable class="label label-default ">待审核</lable>'
+        }
+    }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 查看</button>';

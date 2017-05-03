@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>双评工作平台</title>
   <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-  <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+  <jsp:include page="/header.jsp?libs=jqgrid;layer;laydate" />
 </head>
 <body>
 <div class="bmbox_layout">
@@ -54,9 +54,9 @@
           <div class="form_item wb35 fl">
             <label>发布日期</label>
             <div>
-              <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+              <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255"  onclick="laydate({istime: true,format: 'YYYY/MM/DD'})"/>
               <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-              <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+              <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})" />
             </div>
 
           </div>
