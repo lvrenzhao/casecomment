@@ -119,7 +119,8 @@
             }, {
                 label : '公告标题',
                 name : 'bt',
-                width : 300
+                width : 300,
+                formatter : formatter_bt
             }, {
                 label : '状态',
                 name : 'ztmc',
@@ -210,6 +211,11 @@
 
 
     })
+
+
+    function formatter_bt(cellvalue, options, rowObject) {
+        return "<span style='color:"+rowObject.btys+"'>"+cellvalue+"</span>";
+    }
 
     function formatter_zt(cellvalue, options, rowObject) {
         if (cellvalue == '审核不通过') {

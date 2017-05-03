@@ -11,6 +11,7 @@ public interface BdPublishReadMapper {
     BdPublishRead selectByPrimaryKey(String xxggydid);
 
     List<BdPublishRead> selectAll();
+    List<BdPublishRead> select(BdPublishRead bean);
 
     int updateByPrimaryKey(BdPublishRead record);
 }

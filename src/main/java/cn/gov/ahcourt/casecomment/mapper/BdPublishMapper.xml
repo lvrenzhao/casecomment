@@ -127,7 +127,7 @@
     bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
     bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
     FROM bd_publish bp , bd_publish_read bpr
-    where bp.xxid = bpr.xxggid and ydr = #{createBy}
+    where bp.xxid = bpr.xxggid and ydr = #{createByMC}
     <if test="createBy != null and createBy != '' ">
       and bp.`create_by` =#{createBy}
     </if>

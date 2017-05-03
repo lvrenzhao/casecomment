@@ -33,4 +33,16 @@
     select xxggydid, xxggid, ydr, ydsj
     from bd_publish_read
   </select>
+
+  <select id="select" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublishRead" >
+    select xxggydid, xxggid, ydr, ydsj
+    from bd_publish_read
+    where 1=1
+    <if test="ydr != null and ydr != '' ">
+      and ydr =#{ydr}
+    </if>
+    <if test="xxggid != null and xxggid != '' ">
+      and xxggid =#{xxggid}
+    </if>
+  </select>
 </mapper>

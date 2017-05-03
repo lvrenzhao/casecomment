@@ -84,7 +84,8 @@
           }, {
               label : '公告标题',
               name : 'bt',
-              width : 300
+              width : 300,
+                formatter : formatter_bt
           }, {
               label : '状态',
               name : 'ztmc',
@@ -110,6 +111,10 @@
           });
     })
 
+
+    function formatter_bt(cellvalue, options, rowObject) {
+        return "<span style='color:"+rowObject.btys+"'>"+cellvalue+"</span>";
+    }
     function formatter_zt(cellvalue, options, rowObject) {
         if (cellvalue == '审核不通过') {
             return '<lable class="label label-danger">审核不通过</lable>'
@@ -121,7 +126,7 @@
     }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(3,\'' + rowObject.xxid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
     }
 
     function formatter_grid2_shyj(cellvalue, options, rowObject) {
@@ -138,11 +143,11 @@
         layer.open({
             type : 2,
             shift : 5,
-            title : mode==1?"查看":"审核",
+            title :"查看公告",
             shadeClose : false,
             shade : 0.3,
             area : [ '95%', '90%' ],
-            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&ggid=' + ggid,
+            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&xxid=' + ggid,
             cancel : function(index) {
                 layer.close(index);
             }

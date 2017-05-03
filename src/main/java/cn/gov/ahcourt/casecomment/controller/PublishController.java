@@ -1,10 +1,8 @@
 package cn.gov.ahcourt.casecomment.controller;
 
-import cn.gov.ahcourt.casecomment.bean.BdPublish;
-import cn.gov.ahcourt.casecomment.bean.FlowResult;
-import cn.gov.ahcourt.casecomment.bean.SdProfessional;
-import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.BdPublishMapper;
+import cn.gov.ahcourt.casecomment.mapper.BdPublishReadMapper;
 import cn.gov.ahcourt.casecomment.service.FlowService;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
@@ -29,10 +27,13 @@ public class PublishController {
 	private BdPublishMapper bdPublishMapper;
 
 	@Resource
+	private BdPublishReadMapper bdPublishReadMapper;
+
+	@Resource
 	private FlowService flowService;
 
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
-	public String input(ModelMap modelMap, String mode , String xxid,String jobid) {
+	public String input(ModelMap modelMap, String mode , String xxid,String jobid,@SessionScope("user")UserBean user) {
 		modelMap.addAttribute("mode", mode);
 		modelMap.addAttribute("jobid", jobid);
 		if (StringUtils.isNoneBlank(xxid)){
@@ -40,6 +41,16 @@ public class PublishController {
 			querybean.setXxid(xxid);
 			BdPublish bean = bdPublishMapper.selectByPrimaryKey(xxid);
 			modelMap.addAttribute("publish", bean);
+
+			BdPublishRead bprbean = new BdPublishRead();
+			bprbean.setYdr(user.getYhid());
+			bprbean.setXxggid(xxid);
+			List<BdPublishRead> bprs = bdPublishReadMapper.select(bprbean);
+			if(bprs ==null || bprs.size() == 0){
+				bprbean.setXxggydid(IdGen.uuid());
+				bprbean.setYdsj(TimeUtils.format());
+				bdPublishReadMapper.insert(bprbean);
+			}
 		}
 		return "publish/input";
 	}
@@ -100,6 +111,14 @@ public class PublishController {
 		return bean.toMap(bdPublishMapper.selectMyList(bean));
 	}
 
+	@RequestMapping("/listjson")
+	public @ResponseBody Map listjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		return bean.toMap(bdPublishMapper.selectMyList(bean));
+	}
+
 
 	@RequestMapping("/verifylistjson")
 	public @ResponseBody Map verifylistjson(BdPublish bean,@SessionScope("user") UserBean user) {
@@ -147,7 +166,7 @@ public class PublishController {
 		if (user == null) {
 			return null;
 		}
-		bean.setCreateBy(user.getYhid());
+		bean.setCreateByMC(user.getYhid());
 		return bean.toMap(bdPublishMapper.selectWatchedList(bean));
 	}
 }
