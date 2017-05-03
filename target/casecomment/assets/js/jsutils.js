@@ -377,6 +377,7 @@ function initDictSelect(parentids, selectid) {
         type : 'POST',
         url : ahcourt.ctx + '/setting/dict/getByParent.do',
         datatype : 'json',
+        async : false,
         data : {
             "parent_id" : parentids
         },
