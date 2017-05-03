@@ -37,6 +37,16 @@ public class BdPublish extends  BaseEntity{
     private String shyj;
     private String shsj;
 
+    private String jobid;
+
+    public String getJobid() {
+        return jobid;
+    }
+
+    public void setJobid(String jobid) {
+        this.jobid = jobid;
+    }
+
     public String getShjg() {
         return shjg;
     }

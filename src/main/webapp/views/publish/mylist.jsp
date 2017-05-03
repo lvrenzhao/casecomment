@@ -124,9 +124,9 @@
 
     function formatter_zt(cellvalue, options, rowObject) {
         if (cellvalue == '审核不通过') {
-            return '<lable class="label label-danger">未过期</lable>'
+            return '<lable class="label label-danger">审核不通过</lable>'
         } else if (cellvalue == '审核通过') {
-            return '<lable class="label label-primary">未过期</lable>'
+            return '<lable class="label label-primary">审核通过</lable>'
         } else {
             return '<lable class="label label-default ">待审核</lable>'
         }
@@ -158,11 +158,11 @@
         layer.open({
             type : 1,
             shift : 5,
-            title : '查看专家介绍',
+            title : '查看审核意见',
             shadeClose : false,
             shade : 0.3,
             area : [ '400px', '300px' ],
-            content :intro == undefined?intro:"无",
+            content :intro == undefined?"无":intro,
             end : function(index) {
                 layer.close(index);
             }

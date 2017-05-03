@@ -32,8 +32,9 @@ public class PublishController {
 	private FlowService flowService;
 
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
-	public String input(ModelMap modelMap, String mode , String xxid) {
+	public String input(ModelMap modelMap, String mode , String xxid,String jobid) {
 		modelMap.addAttribute("mode", mode);
+		modelMap.addAttribute("jobid", jobid);
 		if (StringUtils.isNoneBlank(xxid)){
 			BdPublish querybean = new BdPublish();
 			querybean.setXxid(xxid);
@@ -91,7 +92,11 @@ public class PublishController {
 	}
 
 	@RequestMapping("/mylistjson")
-	public @ResponseBody Map mylistjson(BdPublish bean) {
+	public @ResponseBody Map mylistjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		bean.setCreateBy(user.getYhid());
 		return bean.toMap(bdPublishMapper.selectMyList(bean));
 	}
 
@@ -112,5 +117,19 @@ public class PublishController {
 		}
 		bean.setShr(user.getYhid());
 		return bean.toMap(bdPublishMapper.selectVerifyHistoryList(bean));
+	}
+
+	@RequestMapping("/doverify")
+	public @ResponseBody FlowResult doverify(@SessionScope("user") UserBean user, String jobid, String shjg, String shyj) {
+		FlowResult result = flowService.verify(jobid, shjg, shyj, user);
+		if (result.getResult()) {
+			BdPublish bean = bdPublishMapper.selectByPrimaryKey(result.getJob().getShnrid());
+			if (result.isSfjs()) {
+				bean.setRemarks(shjg);
+			}
+			bean.setUpdateBy(user.getYhid());
+			bdPublishMapper.updateByPrimaryKey(bean);
+		}
+		return result;
 	}
 }

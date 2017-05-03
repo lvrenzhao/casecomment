@@ -20,6 +20,7 @@
     <result column="shjg" property="shjg" jdbcType="VARCHAR" />
     <result column="shyj" property="shyj" jdbcType="VARCHAR" />
     <result column="shsj" property="shsj" jdbcType="VARCHAR" />
+    <result column="jobid" property="jobid" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_publish
@@ -72,6 +73,10 @@
       ,(select DATE_FORMAT(sfh.shsj, '%Y/%m/%d %H:%i:%S') from sd_flow_history sfh where sfh.lcmk='10303' and sfh.shnrid = bp.xxid order by sfh.create_date desc limit 1) shsj
     from bd_publish bp
     where 1=1
+
+    <if test="createBy != null and createBy != '' ">
+      and bp.`create_by` =#{createBy}
+    </if>
     <if test="bt != null and bt != '' ">
       and bp.`bt` like concat('%',#{bt},'%')
     </if>
@@ -102,7 +107,7 @@
   </select>
 
   <select id="selectVerifyHistoryList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
-        SELECT fn_get_dict(sfh.shjg) shjg,sfh.shyj,fn_get_username(sfh.shr) shr,
+        SELECT fn_get_dict(sfh.shjg) shjg,sfh.shyj,fn_get_username(sfh.shr) shr,DATE_FORMAT(sfh.shsj, '%Y/%m/%d %H:%i:%S') shsj,
         bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
         bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
 		FROM bd_publish bp INNER JOIN sd_flow_history sfh ON sfh.shnrid = bp.xxid AND sfh.lcmk = '10303' AND sfh.shr = #{shr}

@@ -32,10 +32,10 @@
         <div class="i-checkslayout">
           <div class="radio i-checks">
             <label class="default_radio">
-              <input type="radio" value="#000000" name="ztys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
+              <input type="radio" id="radblack" value="#000000" name="ztys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
             </label>
             <label>
-              <input type="radio" value="#a94442" name="ztys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
+              <input type="radio" id="radred" value="#a94442" name="ztys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
             </label>
           </div>
         </div>
@@ -62,11 +62,21 @@
 </div>
 
 <input type="hidden" id="mode" name="mode" value="${mode}">
+<input type="hidden" id="jobid" name="jobid" value="${jobid}">
 <input type="hidden" id="xxid" value="${publish.xxid}">
 
 <input type="hidden" id="hidxxlx" value="${publish.xxlx}">
 <input type="hidden" id="hidxxnr" value="${publish.xxnr}">
 <input type="hidden" id="hidbtys" value="${publish.btys}">
+
+<div class="form_center clearfix" style="padding: 15px 0;" id="layerbox">
+  <div class="form_item wb100 fl">
+    <input type="text" id="shyj" name="shyj" class="form-control bmrequire" placeholder="请输入审核意见" />
+  </div>
+  <div class="form_item wb100 fl" style="text-align: center;padding-top: 14px;">
+    <button id="btn_reject_comfirm" class="btn btn-white  btn-smx" type="button"><i class="fa fa-check"></i> 确定</button>
+  </div>
+</div>
 
 <script>
     $(function(){
@@ -83,9 +93,10 @@
 
         if(mode == 2){
             //审核模式
-//            $("#btn_submit").hide();
-//            $("#btn_pass").show();
-//            $("#btn_reject").show();
+            $("#btn_submit").hide();
+            $("#btn_pass").show();
+            $("#btn_reject").show();
+            initView();
         }else if(mode == 3){
           //查看模式
             $("#btn_submit").hide();
@@ -143,6 +154,67 @@
 
         });
 
+        $("#btn_pass").click(function(){
+
+            $.ajax({
+                type : 'POST',
+                url : ahcourt.ctx + "/publish/doverify.do",
+                data : {
+                    jobid : $("#jobid").val(),
+                    shjg : "10501"
+                },
+                datatype : 'json',
+                success : function(data) {
+                    if (data) {
+                        parent.layer.msg("审核成功！");
+                        parent.$("#table1").jqGrid().trigger("reloadGrid");
+                        var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                        parent.layer.close(index);
+                    } else {
+                        layer.msg("审核失败！"+data.errorMsg);
+                    }
+                }
+            });
+
+        });
+
+        $("#btn_reject_comfirm").click(function(){
+            $.ajax({
+                type : 'POST',
+                url : ahcourt.ctx + "/publish/doverify.do",
+                data : {
+                    jobid : $("#jobid").val(),
+                    shjg : "10502",
+                    shyj : $("#shyj").val()
+                },
+                datatype : 'json',
+                success : function(data) {
+                    if (data) {
+                        parent.layer.msg("审核成功！");
+                        parent.$("#table1").jqGrid().trigger("reloadGrid");
+                        var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                        parent.layer.close(index);
+                    } else {
+                        layer.msg("审核失败！"+data.errorMsg);
+                    }
+                }
+            });
+        });
+        $("#btn_reject").click(function(){
+            layer.open({
+                type : 1,
+                shift : 5,
+                title :  "审核意见",
+                shadeClose : false,
+                shade : 0.3,
+                area : [ '300px', '150px' ],
+                content : $("#layerbox"),
+                cancel : function(index) {
+                    layer.close(index);
+                }
+            });
+        });
+
     })
 
     function initView(){
@@ -158,7 +230,11 @@
         }
 
         var hidbtys = $("#hidbtys").val();
-        console.log(hidbtys);
+        if(hidbtys == "#000000"){
+            $("#radblack").iCheck('check')
+        }else{
+            $("#radred").iCheck('check')
+        }
         if(hidbtys){
             $(":radio[name='btys'][value='" + hidbtys + "']").prop("checked", "checked");
         }

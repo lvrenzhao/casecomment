@@ -105,6 +105,11 @@
                 hidden : true,
                 key : true
             },{
+                label : 'jobid',
+                name : 'jobid',
+                hidden : true,
+                key : true
+            },{
                 label : '操作',
                 name : 'xxid',
                 width : 50,
@@ -119,7 +124,8 @@
                 label : '状态',
                 name : 'ztmc',
                 align : 'center',
-                width : 100
+                width : 80,
+                formatter : formatter_zt
             }, {
                 label : '信息类型',
                 name : 'xxlxmc',
@@ -169,7 +175,8 @@
                 label : '状态',
                 name : 'ztmc',
                 align : 'center',
-                width : 100
+                width : 80,
+                formatter : formatter_zt
             }, {
                 label : '信息类型',
                 name : 'xxlxmc',
@@ -204,17 +211,30 @@
 
     })
 
+    function formatter_zt(cellvalue, options, rowObject) {
+        if (cellvalue == '审核不通过') {
+            return '<lable class="label label-danger">审核不通过</lable>'
+        } else if (cellvalue == '审核通过') {
+            return '<lable class="label label-primary">审核通过</lable>'
+        } else {
+            return '<lable class="label label-default ">待审核</lable>'
+        }
+    }
 
     function formatter_grid1_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(2,\'' + rowObject.ggid + '\')" title="审核"><i class="fa fa-eye"></i> 审核</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(2,\'' + rowObject.xxid + '\',\'' + rowObject.jobid + '\')" title="审核"><i class="fa fa-eye"></i> 审核</button>';
     }
 
     function formatter_grid2_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
+        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(3,\'' + rowObject.xxid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
     }
 
     function formatter_grid2_shyj(cellvalue, options, rowObject) {
-        return '<a href="javascript:void(0)">...</a>';
+        if(rowObject.shyj){
+            return '<a href="javascript:void(0)" onclick="showintro(\'' + rowObject.shyj + '\')">查看</a>';
+        }else{
+            return '';
+        }
     }
     function gridWidth() {
         return $('body').width() - 22;
@@ -223,16 +243,33 @@
         return $('body').height() -135;
     }
 
-    function verify(mode,ggid) {
+    function verify(mode,xxid,jobid) {
+        //console.log(jobid);
+
         layer.open({
             type : 2,
             shift : 5,
-            title :  mode==1?"查看":"审核",
+            title :  mode==3?"查看":"审核",
             shadeClose : false,
             shade : 0.3,
             area : [ '95%', '90%' ],
-            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&ggid=' + ggid,
+            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&xxid=' + xxid+"&jobid="+jobid,
             cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    }
+    function showintro(intro) {
+        //console.log(intro)
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '查看审核意见',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '400px', '300px' ],
+            content :intro == undefined?"无":intro,
+            end : function(index) {
                 layer.close(index);
             }
         });
