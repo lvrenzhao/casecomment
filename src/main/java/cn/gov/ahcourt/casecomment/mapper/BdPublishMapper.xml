@@ -17,6 +17,7 @@
     <result column="flag" property="flag" jdbcType="VARCHAR" />
 
     <result column="shr" property="shr" jdbcType="VARCHAR" />
+    <result column="shjg" property="shjg" jdbcType="VARCHAR" />
     <result column="shyj" property="shyj" jdbcType="VARCHAR" />
     <result column="shsj" property="shsj" jdbcType="VARCHAR" />
   </resultMap>
@@ -87,6 +88,24 @@
     </if>
     order by create_date DESC
 
+  </select>
+
+  <select id="selectVerifyList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+        SELECT
+        sfj.id jobid,sfj.shnrid,
+        bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
+        bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
+        FROM bd_publish bp
+        INNER JOIN v_flow_job sfj ON bp.xxid = sfj.shnrid AND bp.remarks &lt;&gt; '10603' AND sfj.lcmk = '10303'
+		WHERE sfj.yhid = #{shr} order by bp.create_date desc
+
+  </select>
+
+  <select id="selectVerifyHistoryList" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdPublish" >
+        SELECT fn_get_dict(sfh.shjg) shjg,sfh.shyj,fn_get_username(sfh.shr) shr,
+        bp.xxid, bp.bt, bp.btys, bp.xxlx,fn_get_dict(bp.xxlx) xxlxmc, bp.xxnr,
+        bp.create_by,fn_get_username(bp.create_by) create_bymc , DATE_FORMAT(bp.create_date, '%Y/%m/%d %H:%i:%S') create_date, bp.remarks,fn_get_dict(bp.remarks) ztmc
+		FROM bd_publish bp INNER JOIN sd_flow_history sfh ON sfh.shnrid = bp.xxid AND sfh.lcmk = '10303' AND sfh.shr = #{shr}
   </select>
 
 </mapper>

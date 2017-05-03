@@ -33,8 +33,17 @@ public class BdPublish extends  BaseEntity{
     private String flag;
 
     private String shr;
+    private String shjg;
     private String shyj;
     private String shsj;
+
+    public String getShjg() {
+        return shjg;
+    }
+
+    public void setShjg(String shjg) {
+        this.shjg = shjg;
+    }
 
     public String getShyj() {
         return shyj;

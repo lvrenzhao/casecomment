@@ -134,9 +134,9 @@
                             $(".business_form")[0].reset();
                             $('.summernote').code("");
                             $("#xxid").val("");
-                            layer.msg("保存成功！");
+                            layer.msg("信息提交成功，等待审核中.");
                         } else {
-                            layer.msg("保存失败");
+                            layer.msg("对不起，提交失败！可能是工作流配置不正确。");
                         }
                     }
                 });

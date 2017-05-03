@@ -37,33 +37,31 @@
         <div id="search_box1" class="form_center clearfix">
           <div class="form_item wb25 fl">
             <label>公告标题</label>
-            <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
+            <input type="text" id="bt" name="bt" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
           </div>
-          <div class="form_item wb15 fl">
+          <!--<div class="form_item wb15 fl">
             <label>状态</label>
-            <select class="form-control input-sm">
+            <select class="form-control input-sm" id="remarks" name="remarks">
               <option value="">--请选择--</option>
-              <option value="">待审核</option>
             </select>
-          </div>
+          </div>-->
           <div class="form_item wb15 fl">
             <label>信息类型</label>
-            <select class="form-control input-sm">
+            <select class="form-control input-sm" id="xxlx" name="xxlx">
               <option value="">--请选择--</option>
-              <option value="">通知通告</option>
             </select>
           </div>
           <div class="form_item wb35 fl">
             <label>发布日期</label>
             <div>
-              <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+              <input type="text" id="createdate1" name="createdate1" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
               <span style="display: inline-block;float: left;padding: 5px 10px 0px 10px;">~</span>
-              <input type="text" id="" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
+              <input type="text" id="createdate2" name="createdate2" class="form-control input-sm wb45 fl" placeholder="" maxlength="255" />
             </div>
 
           </div>
           <div class="form_item wb10 fl">
-            <button id="" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+            <button id="btn_search" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
           </div>
         </div>
         <div class="clearfix pd10">
@@ -77,8 +75,22 @@
 <script type="text/javascript">
     $(function(){
 
+        initDictSelect('802', '#xxlx')
+
+        $('#btn_search').click(function() {
+            $("#table2").jqGrid().setGridParam({
+                page:1,
+                postData : {
+                    bt : $('#bt').val(),
+                    xxlx : $('#xxlx').val(),
+                    createdate1 : $('#createdate1').val(),
+                    createdate2 : $('#createdate2').val()
+                }
+            }).trigger("reloadGrid");
+        })
+
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/publish/verifylistjson.do',
             datatype : "json",
             mtype : "post",
             height : gridHeight(),
@@ -88,38 +100,38 @@
             rowNum : 20,
             rowList : [ 10, 20, 30 ],
             colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
+                label : 'xxid',
+                name : 'xxid',
                 hidden : true,
                 key : true
             },{
                 label : '操作',
-                name : 'ggid',
+                name : 'xxid',
                 width : 50,
                 align : 'center',
                 sortable : false,
                 formatter : formatter_grid1_opts
             }, {
                 label : '公告标题',
-                name : 'ggbt',
+                name : 'bt',
                 width : 300
             }, {
                 label : '状态',
-                name : 'ggzt',
+                name : 'ztmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '信息类型',
-                name : 'pclx',
+                name : 'xxlxmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '发布人',
-                name : 'lxrmc',
+                name : 'createByMC',
                 width : 100
             }, {
                 label : '发布时间',
-                name : 'fbsj',
+                name : 'createDate',
                 width : 100
             } ],
             pager : '#pager1'
@@ -128,7 +140,7 @@
         });
 
         $("#table2").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/publish/verifyhistorylistjson.do',
             datatype : "json",
             mtype : "post",
             height : gridHeight()-65,
@@ -138,38 +150,38 @@
             rowNum : 20,
             rowList : [ 10, 20, 30 ],
             colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
+                label : 'xxid',
+                name : 'xxid',
                 hidden : true,
                 key : true
             },{
                 label : '操作',
-                name : 'ggid',
+                name : 'xxid',
                 width : 80,
                 align : 'center',
                 sortable : false,
                 formatter : formatter_grid2_opts
             }, {
                 label : '公告标题',
-                name : 'ggbt',
+                name : 'bt',
                 width : 300
             }, {
                 label : '状态',
-                name : 'ggzt',
+                name : 'ztmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '信息类型',
-                name : 'pclx',
+                name : 'xxlxmc',
                 align : 'center',
                 width : 100
             }, {
                 label : '发布人',
-                name : 'lxrmc',
+                name : 'createByMC',
                 width : 100
             }, {
                 label : '发布时间',
-                name : 'fbsj',
+                name : 'createDate',
                 width : 100
             }, {
                 label : '审核人',

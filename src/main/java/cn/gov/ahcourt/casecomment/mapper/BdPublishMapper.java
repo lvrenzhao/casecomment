@@ -14,5 +14,11 @@ public interface BdPublishMapper {
 
     List<BdPublish> selectMyList(BdPublish bean);
 
+    List<BdPublish> selectVerifyList(BdPublish bean);
+
+    List<BdPublish> selectVerifyHistoryList(BdPublish bean);
+
     int updateByPrimaryKey(BdPublish record);
+
+
 }

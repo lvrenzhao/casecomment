@@ -1,9 +1,11 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.BdPublish;
+import cn.gov.ahcourt.casecomment.bean.FlowResult;
 import cn.gov.ahcourt.casecomment.bean.SdProfessional;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
 import cn.gov.ahcourt.casecomment.mapper.BdPublishMapper;
+import cn.gov.ahcourt.casecomment.service.FlowService;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
@@ -26,6 +28,9 @@ public class PublishController {
 	@Resource
 	private BdPublishMapper bdPublishMapper;
 
+	@Resource
+	private FlowService flowService;
+
 	@RequestMapping(value = "/input", method = { RequestMethod.GET, RequestMethod.POST })
 	public String input(ModelMap modelMap, String mode , String xxid) {
 		modelMap.addAttribute("mode", mode);
@@ -42,10 +47,12 @@ public class PublishController {
 	public String verify() {
 		return "publish/verify";
 	}
+
 	@RequestMapping(value = "/unwatch", method = { RequestMethod.GET, RequestMethod.POST })
 	public String unwatch() {
 		return "publish/unwatch";
 	}
+
 	@RequestMapping(value = "/watched", method = { RequestMethod.GET, RequestMethod.POST })
 	public String watched() {
 		return "publish/watched";
@@ -66,18 +73,44 @@ public class PublishController {
 		if(bean!=null && StringUtils.isNoneBlank(bean.getXxid())){
 			return bdPublishMapper.updateByPrimaryKey(bean);
 		}else{
-			bean.setXxid(IdGen.uuid());
-			bean.setRemarks("80301"); //设置状态为待审核。
+			String xxid = IdGen.uuid();
+			bean.setXxid(xxid);
+			bean.setRemarks("10601"); //设置状态为待审核。
 			bean.setCreateBy(user.getYhid());
 			bean.setCreateDate(TimeUtils.format());
-			return bdPublishMapper.insert(bean);
+
+			//注册工作流
+			FlowResult result = new FlowResult();
+			result = flowService.firstVerify(xxid, "10303", user);
+			int i = -1;
+			if (result.getResult()) {
+				i = bdPublishMapper.insert(bean);
+			}
+			return i;
 		}
 	}
 
 	@RequestMapping("/mylistjson")
-	public @ResponseBody
-	Map mylistjson(BdPublish bean) {
+	public @ResponseBody Map mylistjson(BdPublish bean) {
 		return bean.toMap(bdPublishMapper.selectMyList(bean));
 	}
 
+
+	@RequestMapping("/verifylistjson")
+	public @ResponseBody Map verifylistjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		bean.setShr(user.getYhid());
+		return bean.toMap(bdPublishMapper.selectVerifyList(bean));
+	}
+
+	@RequestMapping("/verifyhistorylistjson")
+	public @ResponseBody Map verifyhistorylistjson(BdPublish bean,@SessionScope("user") UserBean user) {
+		if (user == null) {
+			return null;
+		}
+		bean.setShr(user.getYhid());
+		return bean.toMap(bdPublishMapper.selectVerifyHistoryList(bean));
+	}
 }
