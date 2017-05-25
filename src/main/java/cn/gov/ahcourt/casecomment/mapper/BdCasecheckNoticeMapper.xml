@@ -52,5 +52,6 @@
     select ajpcggid, bt, zt, lx, create_by, create_date, update_by, update_date, remarks, 
     flag, btys
     from bd_casecheck_notice
+    order by create_date DESC
   </select>
 </mapper>

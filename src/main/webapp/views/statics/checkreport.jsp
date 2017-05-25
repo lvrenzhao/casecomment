@@ -58,14 +58,14 @@
       $(function(){
 
           $("#table1").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : ahcourt.ctx + '/statics/checkreportlist1json.do',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               //rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
+              rowNum : 20,
               colModel : [ {
                   label : '报表',
                   name : 'ggid',
@@ -85,14 +85,14 @@
               //,viewrecords: true
           });
           $("#table2").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : ahcourt.ctx + '/statics/checkreportlist2json.do',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               //rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
+              rowNum : 20,
               colModel : [ {
                   label : '报表',
                   name : 'ggid',
@@ -112,14 +112,14 @@
               //,viewrecords: true
           });
           $("#table3").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : ahcourt.ctx + '/statics/checkreportlist3json.do',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               //rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
+              rowNum : 20,
               colModel : [ {
                   label : '报表',
                   name : 'ggid',
