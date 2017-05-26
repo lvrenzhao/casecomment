@@ -34,6 +34,7 @@ public class OrganizationController {
 
 	@RequestMapping("/getlist")
 	public @ResponseBody List<OrganizationBean> getlist(OrganizationBean bean) {
+//		System.out.println(bean.getRemarks());
 		return organizationService.getlist(bean);
 	}
 	

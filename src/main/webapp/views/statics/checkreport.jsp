@@ -56,7 +56,8 @@
   </div>
   <script>
       $(function(){
-
+          //#####根据用户所在法院加载其法院的数据
+          //###另外，列出下每个活动还未提交评查结果的案件
           $("#table1").jqGrid({
               url : ahcourt.ctx + '/statics/checkreportlist1json.do',
               datatype : "json",
