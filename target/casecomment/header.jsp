@@ -21,6 +21,7 @@
 <c:if test='${fn:indexOf(param["libs"], "jqgrid") >= 0}'><link href="${ctx_assets_3rd}/jqgrid/ui.jqgrid-bootstrap.css?v=${v}" rel="stylesheet"></c:if>
 <c:if test='${fn:indexOf(param["libs"], "ztree") >= 0}'><link href="${ctx_assets_3rd}/ztree/zTreeStyle.css?v=${v}" rel="stylesheet"><link href="${ctx_assets_3rd}/ztree/metroStyle/metroStyle.css?v=${v}" rel="stylesheet"></c:if>
 <c:if test='${fn:indexOf(param["libs"], "summernote") >= 0}'><link href="${ctx_assets_3rd}/summernote/summernote.css?v=${v}" rel="stylesheet"><link href="${ctx_assets_3rd}/summernote/summernote-bs3.css?v=${v}" rel="stylesheet"></c:if>
+<c:if test='${fn:indexOf(param["libs"], "steps") >= 0}'><link href="${ctx_assets_3rd}/steps/jquery.steps.css?v=${v}" rel="stylesheet"></c:if>
 
 
 <!-- mergeTo:style.min.css -->
@@ -50,6 +51,7 @@
 <c:if test='${fn:indexOf(param["libs"], "echarts") >= 0}'><script src="${ctx_assets_3rd}/echarts/echarts.simple.min.js?v=${v}"></script></c:if>
 <c:if test='${fn:indexOf(param["libs"], "metismenu") >= 0}'><script src="${ctx_assets_3rd}/metisMenu/jquery.metisMenu.js?v=${v}"></script></c:if>
 <c:if test='${fn:indexOf(param["libs"], "summernote") >= 0}'><script src="${ctx_assets_3rd}/summernote/summernote.min.js?v=${v}"></script><script src="${ctx_assets_3rd}/summernote/summernote-zh-CN.js?v=${v}"></script></c:if>
+<c:if test='${fn:indexOf(param["libs"], "steps") >= 0}'><script src="${ctx_assets_3rd}/steps/jquery.steps.min.js?v=${v}"></script></c:if>
 
 
 <script src="${ctx_assets}/js/jsutils.js?v=${v}"></script>
