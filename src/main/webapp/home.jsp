@@ -53,6 +53,79 @@
         .bg4 .fa-level-up{color:#12a3f4}
         .fa-level-down{color:#ea394c}
     </style>
+    <script>
+        $(function () {
+            loadGrid1();
+            loadGrid2();
+            loadGrid3();
+        });
+        function loadGrid1() {
+            $("#table1").jqGrid({
+                url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+                datatype : "json",
+                mtype : "post",
+                height : $('body').height()-300,
+                width : $('body').width() * 0.5 -20,
+                rownumbers : true,
+                shrinkToFit : true,
+                rowNum : 20,
+                rowList : [ 10, 20, 30 ],
+                colModel : [
+                    {label : 'ggid',name : 'ggid',hidden : true,key : true },
+                    {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
+                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
+                    {label : '发布人',name : 'lxrmc',width : 100},
+                    {label : '发布时间', name : 'fbsj',width : 100}
+                ],
+                pager : '#pager1'
+                ,viewrecords: true
+            });
+        }
+        function loadGrid2() {
+            $("#table2").jqGrid({
+                url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+                datatype : "json",
+                mtype : "post",
+                height : $('body').height()*0.5-135,
+                width : $('body').width() * 0.5 - 5 ,
+                rownumbers : true,
+                shrinkToFit : true,
+                rowNum : 20,
+                rowList : [ 10, 20, 30 ],
+                colModel : [
+                    {label : 'ggid',name : 'ggid',hidden : true,key : true },
+                    {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
+                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
+                    {label : '发布人',name : 'lxrmc',width : 100},
+                    {label : '发布时间', name : 'fbsj',width : 100}
+                ],
+                pager : '#pager2'
+                ,viewrecords: true
+            });
+        }
+        function loadGrid3() {
+            $("#table3").jqGrid({
+                url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+                datatype : "json",
+                mtype : "post",
+                height : $('body').height()*0.5-125,
+                width : $('body').width() * 0.5 - 5 ,
+                rownumbers : true,
+                shrinkToFit : true,
+                rowNum : 20,
+                rowList : [ 10, 20, 30 ],
+                colModel : [
+                    {label : 'ggid',name : 'ggid',hidden : true,key : true },
+                    {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
+                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
+                    {label : '发布人',name : 'lxrmc',width : 100},
+                    {label : '发布时间', name : 'fbsj',width : 100}
+                ],
+                pager : '#pager3'
+                ,viewrecords: true
+            });
+        }
+    </script>
 </head>
 <body style="overflow: hidden" class="">
 <div class="form_item wb50 fl fullbox no-margins no-padding">
@@ -90,7 +163,8 @@
                 </div>
             </div>
             <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
-
+                <table id="table1"></table>
+                <div id="pager1"></div>
             </div>
         </div>
     </div>
@@ -104,7 +178,8 @@
                 </div>
             </div>
             <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
-
+                <table id="table2"></table>
+                <div id="pager2"></div>
             </div>
         </div>
     </div>
@@ -116,7 +191,8 @@
                 </div>
             </div>
             <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
-
+                <table id="table3"></table>
+                <div id="pager3"></div>
             </div>
         </div>
     </div>
