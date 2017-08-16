@@ -8,97 +8,118 @@
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
     <jsp:include page="/header.jsp?libs=jqgrid;layer" />
-</head>
-<body style="overflow: hidden">
+    <style>
 
-<div style="height: 100%;">
-    <div class="bmbox_layout  clearfix">
-        <div class="bmbox_title">
-            <h5><i class="fa fa-bullhorn"></i> 未阅读的系统信息</h5>
-            <div class="bmbox_tool">
-                <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i></button>
+        body{background-color: #f3f3f4}
+
+        .ibox{
+            clear: both;
+            margin-bottom: 25px;
+            margin-top: 0;
+            padding: 0;
+        }
+        .ibox-content {
+            clear: both;
+            background-color: #fff;
+            color: inherit;
+            padding: 15px;
+            /*padding-bottom: 30px;*/
+            border-color: #e7eaec;
+            border-radius: 5px;
+            -webkit-border-image: none;
+            -o-border-image: none;
+            border-image: none;
+            border-style: solid solid none;
+            border-width: 1px 0;
+        }
+        .bg1{background-color: #12a3f4;}
+        .bg1 h5,.bg1 h1{color:#fff}
+
+        .bg2{background-color:#90c133 }
+        .bg2 h5,.bg2 h1{color:#fff}
+
+        .bg3{background-color:#12a3f4}
+        .bg3 h5,.bg3 h1{color:#fff}
+
+        .bg4{background-color:#90c133 }
+        .bg4 h5,.bg4 h1{color:#fff}
+
+        .ibox-content h1{text-align: center}
+        .subunit{font-size:14px;}
+        .submoney{font-size:14px;}
+        .cnymoney{font-size: 20px}
+        .fa-level-up{color:#a8d925}
+        .bg2 .fa-level-up{color:#12a3f4}
+        .bg4 .fa-level-up{color:#12a3f4}
+        .fa-level-down{color:#ea394c}
+    </style>
+</head>
+<body style="overflow: hidden" class="">
+<div class="form_item wb50 fl fullbox no-margins no-padding">
+    <div class="form_item wb100 no-margins" style="height: 175px; padding: 10px !important; ">
+        <div class="bmbox_layout clearfix" style="overflow: hidden">
+            <div class="bmbox_title">
+                <h5>我的任务</h5>
+                <div class="bmbox_tool">
+                </div>
+            </div>
+            <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
+                <div class="form_item wb50 fl">
+                    <div class="ibox m10" id="countbox1">
+                        <div class="ibox-content bg1">
+                            <h5 style="text-align: center">待评查的案件数</h5>
+                            <h1 class="no-margins"><span id="label_count_1">5</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="form_item wb50 fl">
+                    <div class="ibox m10" id="countbox2">
+                        <div class="ibox-content bg1"> <h5 style="text-align: center">待评选三精案件数</h5>
+                            <h1 class="no-margins"><span id="label_count_2">1111</span></h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="bmbox_content clearfix fullbox">
-            <div class="clearfix pd10">
-                <table id="table1" class="table table-striped"></table>
-                <div id="pager1"></div>
+    </div>
+    <div class="form_item wb100 no-margins " style="height: 100%;padding: 0px 10px 185px 10px !important; ">
+        <div class="bmbox_layout clearfix" style="overflow: hidden">
+            <div class="bmbox_title">
+                <h5>信息公开</h5>
+                <div class="bmbox_tool">
+                </div>
+            </div>
+            <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
+
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(function(){
-        $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
-            datatype : "json",
-            mtype : "post",
-            height : gridHeight()-65,
-            width : gridWidth(),
-            rownumbers : true,
-            shrinkToFit : true,
-            rowNum : 20,
-            rowList : [ 10, 20, 30 ],
-            colModel : [ {
-                label : 'ggid',
-                name : 'ggid',
-                hidden : true,
-                key : true
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 80,
-                align : 'center',
-                sortable : false,
-                formatter : formatter_grid2_opts
-            }, {
-                label : '公告标题',
-                name : 'ggbt',
-                width : 300
-            }, {
-                label : '信息类型',
-                name : 'pclx',
-                align : 'center',
-                width : 100
-            }, {
-                label : '发布人',
-                name : 'lxrmc',
-                width : 100
-            }, {
-                label : '发布时间',
-                name : 'fbsj',
-                width : 100
-            }],
-            pager : '#pager1'
-            ,viewrecords: true
-        });
-    })
+<div class="form_item wb50 fl fullbox no-margins no-padding">
+    <div class="form_item wb100 no-margins " style="padding:10px 10px 10px 0px;height: 50%;">
+        <div class="bmbox_layout clearfix" style="overflow: hidden">
+            <div class="bmbox_title">
+                <h5>最新案件评查公告</h5>
+                <div class="bmbox_tool">
+                </div>
+            </div>
+            <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
 
-    function formatter_grid2_opts(cellvalue, options, rowObject) {
-        return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="verify(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
-    }
+            </div>
+        </div>
+    </div>
+    <div class="form_item wb100 no-margins" style="padding:0px 10px 10px 0px;height: 50%;">
+        <div class="bmbox_layout clearfix" style="overflow: hidden">
+            <div class="bmbox_title">
+                <h5>最新三精评选公告</h5>
+                <div class="bmbox_tool">
+                </div>
+            </div>
+            <div class="bmbox_content fullbox clearfix" style="padding-bottom: 60px">
 
-    function gridWidth() {
-        return $('body').width() - 22;
-    }
-    function gridHeight() {
-        return $('body').height() -70;
-    }
-
-    function verify(mode,ggid) {
-//        layer.open({
-//            type : 2,
-//            shift : 5,
-//            title : mode==1?"查看":"审核",
-//            shadeClose : false,
-//            shade : 0.3,
-//            area : [ '95%', '90%' ],
-//            content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&ggid=' + ggid,
-//            cancel : function(index) {
-//                layer.close(index);
-//            }
-//        });
-    }
-</script>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
