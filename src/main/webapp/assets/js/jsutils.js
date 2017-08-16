@@ -562,12 +562,12 @@ function loadBadges() {
     //badge_xxgk_total = badge_xxgk_xxsh + badge_xxgk_dwck
 
     var badgeObject = {
-        badge_ajpc_pcgg_ggsh:0,
-        badge_ajpc_pcgg_dwbl:0,
-        badge_ajpc_ajpc_dwpc:0,
-        badge_sjpx_pxgg_ggsh:0,
-        badge_sjpx_pxgg_dwbl:0,
-        badge_sjpx_sjpx_dwpx:0,
+        badge_ajpc_sh:0,
+        badge_ajpc_gg:0,
+        badge_ajpc_pc:0,
+        badge_sjpx_sh:0,
+        badge_sjpx_gg:0,
+        badge_sjpx_px:0,
         badge_xxgk_xxsh:0,
         badge_xxgk_dwck:0
     };
@@ -578,14 +578,8 @@ function loadBadges() {
         }
     }
 
-    badgeObject["badge_ajpc_pcgg_total"] = badgeObject["badge_ajpc_pcgg_ggsh"] + badgeObject["badge_ajpc_pcgg_dwbl"];
-    badgeObject["badge_ajpc_ajpc_total"] = badgeObject["badge_ajpc_ajpc_dwpc"]
-    badgeObject["badge_ajpc_total"] = badgeObject["badge_ajpc_pcgg_total"] + badgeObject["badge_ajpc_ajpc_total"];
-
-    badgeObject["badge_sjpx_pxgg_total"] = badgeObject["badge_sjpx_pxgg_ggsh"] + badgeObject["badge_sjpx_pxgg_dwbl"];
-    badgeObject["badge_sjpx_sjpx_total"] = badgeObject["badge_sjpx_sjpx_dwpx"]
-    badgeObject["badge_sjpx_total"] = badgeObject["badge_sjpx_pxgg_total"] + badgeObject["badge_sjpx_sjpx_total"];
-
+    badgeObject["badge_ajpc_total"] = badgeObject["badge_ajpc_sh"] + badgeObject["badge_ajpc_gg"] + badgeObject["badge_ajpc_pc"];
+    badgeObject["badge_sjpx_total"] = badgeObject["badge_sjpx_sh"] + badgeObject["badge_sjpx_gg"] + badgeObject["badge_sjpx_px"];
     badgeObject["badge_xxgk_total"] = badgeObject["badge_xxgk_xxsh"] + badgeObject["badge_xxgk_dwck"];
 
     for(var badgetype in badgeObject){
