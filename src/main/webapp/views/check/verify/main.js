@@ -130,11 +130,11 @@ $(function(){
 
 
 function formatter_grid1_opts(cellvalue, options, rowObject) {
-    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(2,\'' + rowObject.ggid + '\')" title="审核"><i class="fa fa-eye"></i> 审核</button>';
+    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(1,\'' + rowObject.ggid + '\')" title="审核"><i class="fa fa-eye"></i> 审核</button>';
 }
 
 function formatter_grid2_opts(cellvalue, options, rowObject) {
-    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(1,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
+    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
 }
 
 function formatter_grid2_shyj(cellvalue, options, rowObject) {
@@ -151,11 +151,11 @@ function openCases(mode,ggid) {
     layer.open({
         type : 2,
         shift : 5,
-        title : mode==1?"查看案件详细列表":"审核评查公告",
+        title : mode==1?"审核案件评查公告":"查看审核评查公告",
         shadeClose : false,
         shade : 0.3,
         area : [ '95%', '90%' ],
-        content : ahcourt.ctx + '/casecheck/notice/caselist.do?ggid=' + ggid,
+        content : ahcourt.ctx + '/views/check/start/details.jsp?ggid=' + ggid,
         cancel : function(index) {
             layer.close(index);
         }
