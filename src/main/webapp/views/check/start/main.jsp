@@ -148,7 +148,7 @@
 
     <h1>分配案件&nbsp;<span class="label label-warning">0</span></h1>
     <div class="step-content">
-      <div class="wb60 fullbox fl">
+      <div class="wb50 fullbox fl">
         <div class="bmbox_layout clearfix">
           <div class="bmbox_title">
             <h5>待分配案件</h5>
@@ -160,21 +160,21 @@
 
               <div class="form_item wb25 fl">
                 <select class="form-control">
-                  <option value="">按区域分布</option>
+                  <option value="">区域分布</option>
                   <option value="1">合肥(25%)</option>
                 </select>
               </div>
 
               <div class="form_item wb25 fl">
                 <select class="form-control">
-                  <option value="">按案件性质分布</option>
+                  <option value="">案件性质分布</option>
                   <option value="1">民事(25%)</option>
                 </select>
               </div>
 
               <div class="form_item wb25 fl">
                 <select class="form-control">
-                  <option value="">按案件类型分布</option>
+                  <option value="">案件类型分布</option>
                   <option value="1">抗诉(25%)</option>
                 </select>
               </div>
@@ -192,7 +192,7 @@
       <div class="bmboxexchange wb5 fullbox fl" style="text-align: center;padding-top:22%">
         <i class="iexchange fa fa-exchange" style="font-size: 20px;color: #336699;"></i>
       </div>
-      <div class="wb35 fullbox fl">
+      <div class="wb45 fullbox fl">
         <div class="bmbox_layout clearfix">
           <div class="bmbox_title">
             <h5>专家组</h5>
@@ -212,9 +212,9 @@
     <div class="step-content" style="overflow: auto">
       <div class="form_center wb75 clearfix" >
 
-        <div class="alert alert-warning" role="alert">系统将将会自动短信通知各级法院及时查看公告，同时将短信通知各评审专家准备评审。</div>
+        <div class="alert alert-warning" role="alert">系统将会自动短信通知各评审专家准备评审。</div>
         <div class="form_item wb60 fl">
-          <label>评查公告标题</label>
+          <label>评查公告标题<span>*</span></label>
           <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
 
@@ -233,7 +233,7 @@
         </div>
 
         <div class="form_item wb45 fl">
-          <label>评查类型</label>
+          <label>评查类型<span>*</span></label>
           <div class="i-checkslayout">
             <div class="radio i-checks">
               <label class="default_radio">
@@ -250,7 +250,7 @@
         </div>
 
         <div class="form_item wb35 fl">
-          <label>评查任务</label>
+          <label>评查任务<span>*</span></label>
           <div class="i-checkslayout">
             <div class="radio i-checks">
               <label class="default_radio">
@@ -267,7 +267,7 @@
         </div>
 
         <div class="form_item wb20 fl">
-          <label>选择评分表</label>
+          <label>选择评分表<span>*</span></label>
           <select class="form-control">
             <option value="">--请选择--</option>
             <option value="">2017常规评查评分表</option>
