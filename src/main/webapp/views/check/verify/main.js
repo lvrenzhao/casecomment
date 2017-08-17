@@ -7,8 +7,8 @@ $(function(){
         url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
-        height : gridHeight(),
-        width : gridWidth(),
+        height : $('body').height() -135,
+        width : $('body').width() - 22,
         rownumbers : true,
         shrinkToFit : true,
         rowNum : 20,
@@ -24,7 +24,9 @@ $(function(){
             width : 50,
             align : 'center',
             sortable : false,
-            formatter : formatter_grid1_opts
+            formatter : function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(1,\'' + rowObject.ggid + '\')" title="审核"><i class="fa fa-eye"></i> 审核 </button>';
+            }
         }, {
             label : '公告标题',
             name : 'ggbt',
@@ -62,8 +64,8 @@ $(function(){
         url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
-        height : gridHeight()-65,
-        width : gridWidth(),
+        height : $('body').height() -135 -65,
+        width : $('body').width() - 22,
         rownumbers : true,
         shrinkToFit : true,
         rowNum : 20,
@@ -76,10 +78,13 @@ $(function(){
         },{
             label : '操作',
             name : 'ggid',
-            width : 80,
+            width : 260,
             align : 'center',
             sortable : false,
-            formatter : formatter_grid2_opts
+            formatter : function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick="openCases(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 公告详细 </button>'
+                     + '<button class="btn btn-link btn-xs " type="button" ><i class="fa fa-reddit"></i> 评查结果 </button>'
+            }
         }, {
             label : '公告标题',
             name : 'ggbt',
@@ -106,7 +111,7 @@ $(function(){
         }, {
             label : '发布时间',
             name : 'fbsj',
-            width : 100
+            width : 120
         }, {
             label : '审核人',
             name : 'shr',
@@ -114,12 +119,14 @@ $(function(){
         } , {
             label : '审核时间',
             name : 'shsj',
-            width : 100
+            width : 120
         }, {
             label : '审核意见',
             name : 'shyj',
             width : 200,
-            formatter:formatter_grid2_shyj
+            formatter:function(cellvalue, options, rowObject) {
+                return '<a href="javascript:void(0)">...</a>';
+            }
         }],
         pager : '#pager2'
         ,viewrecords: true
@@ -127,25 +134,6 @@ $(function(){
 
 
 });
-
-
-function formatter_grid1_opts(cellvalue, options, rowObject) {
-    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(1,\'' + rowObject.ggid + '\')" title="审核"><i class="fa fa-eye"></i> 审核</button>';
-}
-
-function formatter_grid2_opts(cellvalue, options, rowObject) {
-    return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>';
-}
-
-function formatter_grid2_shyj(cellvalue, options, rowObject) {
-    return '<a href="javascript:void(0)">...</a>';
-}
-function gridWidth() {
-    return $('body').width() - 22;
-}
-function gridHeight() {
-    return $('body').height() -135;
-}
 
 function openCases(mode,ggid) {
     layer.open({

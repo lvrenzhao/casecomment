@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=icheck;jqgrid" />
+    <jsp:include page="/header.jsp?libs=icheck;jqgrid;layer" />
     <script type="text/javascript" src="details.js"></script>
   </head>
-  <body>
+  <body style="overflow: hidden">
   <div class="bmbox_layout">
     <div class="bmbox_title home-righttab">
       <ul class="nav nav-tabs navs-3">
@@ -26,14 +26,53 @@
         </li>
       </ul>
       <div class="bmbox_tool">
-        <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 同意</button>
-        <button class="btn btn-danger btn-sm btn-smx" type="button"><i class="fa fa-close"></i> 不同意</button>
+        <button class="btn btn-primary btn-sm btn-smx" id="btn_pass" type="button"><i class="fa fa-check"></i> 同意</button>
+        <button class="btn btn-danger btn-sm btn-smx" id="btn_reject" type="button"><i class="fa fa-close"></i> 不同意</button>
       </div>
     </div>
     <div class="bmbox_content">
       <div class="tab-content">
-        <div id="tab-1" class="tab-pane active">
-
+        <div id="tab-1" class="tab-pane active pd15">
+          <div class="form_center clearfix" style="">
+            <div class="form_item wb100 fl">
+              <label>公告标题：</label>
+              <span>2007年安徽省高级人民法院案件评查活动相关告示</span>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>评查类型：</label>
+              <span>常规评查</span>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>评查任务：</label>
+              <span>文书</span>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>评分表模板：</label>
+              <a>2007年常规评查评分表</a>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>发布人：</label>
+              <span>张三</span>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>发布部门：</label>
+              <span>省高院</span>
+            </div>
+            <div class="form_item wb33 fl">
+              <label>发布时间：</label>
+              <span>2001/01/01</span>
+            </div>
+          </div>
+          <div class="bmbox_layout  clearfix">
+            <div class="bmbox_title">
+              <h5>公告内容</h5>
+              <div class="bmbox_tool">
+              </div>
+            </div>
+            <div class="bmbox_content clearfix" id="div_noticeconent" style="overflow: auto;padding: 15px;">
+              123
+            </div>
+          </div>
         </div>
         <div id="tab-2" class="tab-pane pd10">
 
@@ -98,6 +137,17 @@
 
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div id="div_reject" style="display: none;padding-top: 20px;">
+    <div class="form_item wb75 fl">
+      <label>&nbsp;</label>
+      <input type="text" class="form-control" placeholder="请输入不同意原因"/>
+    </div>
+    <div class="form_item wb25 fl" style="text-align: right;padding-top: 30px;">
+      <button class="btn btn-primary" type="button" id="">确定</button>
     </div>
   </div>
   </body>

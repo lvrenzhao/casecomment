@@ -6,6 +6,22 @@ $(function () {
     });
     loadGridCase();
     loadGridGroup();
+    $("#div_noticeconent").height($('body').height()-240);
+    
+    $("#btn_reject").click(function () {
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '审核不同意',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '400px', '200px' ],
+            content : $("#div_reject"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    });
 });
 
 function loadGridCase() {
