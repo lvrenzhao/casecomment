@@ -8,7 +8,7 @@
 <c:set var="v" value="1.0.0.1" scope="application" />
 
 <script language="JavaScript" type="text/JavaScript">
-    var ahcourt = {ctx:"${ctx}"}
+    var ahcourt = {ctx:"${ctx}",userid:"${userid}"}
 </script>
 
 <link href="${ctx_assets_3rd}/bootstrap/css/bootstrap.min.css?v=${v}" rel="stylesheet">
