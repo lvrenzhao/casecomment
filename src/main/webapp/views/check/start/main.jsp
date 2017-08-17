@@ -19,7 +19,7 @@
   <div id="wizard" style="padding-top:10px;">
     <h1>设置抽案条件</h1>
     <div class="step-content">
-      <div class="form_center wb70 clearfix" >
+      <div class="form_center wb75 clearfix" >
 
         <div class="form_item wb100 fl ">
           <label>案件性质</label>
@@ -132,12 +132,73 @@
     </div>
     <h1>抽取案件</h1>
     <div class="step-content">
-
+      <div class="form_center clearfix" style="padding-bottom: 10px;">
+        <button id="btn-extract-checked" class="btn btn-primary fr mr10" type="button" ><i class="fa fa-cart-plus"></i> 抽取选中案件</button>
+        <div id="btn-extract-group" class="input-group fr mr10" style="width:200px;">
+          <input type="text" id="txt_radom" class="form-control" placeholder="案件数">
+          <span class="input-group-btn">
+                  <button class="btn btn-primary" id="btn_extract_radom" type="button"><i class="fa fa-cart-plus"></i> 系统随机抽取</button>
+                </span>
+        </div>
+      </div>
+      <table id="table1" class="table table-striped"></table>
+      <div id="pager1"></div>
     </div>
 
     <h1>分配案件&nbsp;<span class="label label-warning">0</span></h1>
     <div class="step-content">
+      <div class="wb60 fullbox fl">
+        <div class="bmbox_layout clearfix">
+          <div class="bmbox_title">
+            <h5>待分配案件</h5>
+            <div class="bmbox_tool">
+            </div>
+          </div>
+          <div class="bmbox_content clearfix">
+            <div class="form_center clearfix" style="padding: 10px 0px;">
 
+              <div class="form_item wb33 fl">
+                <select class="form-control">
+                  <option value="">按区域分布</option>
+                  <option value="1">合肥(25%)</option>
+                </select>
+              </div>
+
+              <div class="form_item wb33 fl">
+                <select class="form-control">
+                  <option value="">按案件性质分布</option>
+                  <option value="1">民事(25%)</option>
+                </select>
+              </div>
+
+              <div class="form_item wb33 fl">
+                <select class="form-control">
+                  <option value="">按案件类型分布</option>
+                  <option value="1">抗诉(25%)</option>
+                </select>
+              </div>
+
+            </div>
+            <table id="table2" class="table table-striped"></table>
+            <div id="pager2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bmboxexchange wb5 fullbox fl" style="text-align: center;padding-top:22%">
+        <i class="iexchange fa fa-exchange" style="font-size: 20px;color: #336699;"></i>
+      </div>
+      <div class="wb35 fullbox fl">
+        <div class="bmbox_layout clearfix">
+          <div class="bmbox_title">
+            <h5>专家组</h5>
+            <div class="bmbox_tool">
+            </div>
+          </div>
+          <div class="bmbox_content clearfix">
+
+          </div>
+        </div>
+      </div>
     </div>
 
     <h1>发布公告</h1>
