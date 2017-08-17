@@ -15,6 +15,14 @@ $(function(){
             hidden : true,
             key : true
         },{
+            label : 'btys',
+            name : 'btys',
+            hidden : true
+        },{
+            label : 'sfyd',
+            name : 'sfyd',
+            hidden : true
+        },{
             label : '操作',
             name : 'ggid',
             width : 80,
@@ -28,7 +36,15 @@ $(function(){
             name : 'ggbt',
             width : 300,
             formatter : function(cellvalue, options, rowObject) {
-                return ''+cellvalue;
+                var style = "";
+                if(rowObject.btys == 2){
+                    style = "color:red"
+                }
+                var remind = "";
+                if(rowObject.sfyd == 2){
+                    remind = "<span class='label label-primary'>未读</span>&nbsp;&nbsp;";
+                }
+                return remind + '<span style="'+style+'">'+cellvalue+'</span>';
             }
         },{
             label : '评查类型',
@@ -62,6 +78,14 @@ $(function(){
     });
 });
 
+function reloadGrid() {
+    $("#table1").jqGrid().setGridParam({
+        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        postData:{
+        },
+        page : 1
+    }).trigger("reloadGrid");
+}
 
 function openCases(mode,ggid) {
     layer.open({
@@ -74,6 +98,8 @@ function openCases(mode,ggid) {
         content : ahcourt.ctx + '/views/check/start/details.jsp?ggid=' + ggid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
-        }
+            reloadGrid();
+        },
+
     });
 }
