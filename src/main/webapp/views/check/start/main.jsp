@@ -19,7 +19,6 @@
   <div id="wizard" style="padding-top:10px;">
     <h1>设置抽案条件</h1>
     <div class="step-content">
-
       <div class="form_center wb70 clearfix" >
 
         <div class="form_item wb100 fl ">
@@ -75,9 +74,11 @@
           <label>归属法院</label>
           <div style="position: relative;">
             <div class="input-group">
-              <input id="zzid" value="${bean.zzid }" type="hidden" /> <input type="text" class="form-control input-sm bmrequire" retype="text" readonly id="citySel" value="${bean.zzjgmc }"> <span class="input-group-btn">
-								<button type="button" class="btn btn-primary btn-sm" id="menuBtn">选择</button>
-							</span>
+              <input id="zzid" value="${bean.zzid }" type="hidden" />
+              <input type="text" class="form-control input-sm bmrequire" retype="text" readonly id="citySel" value="${bean.zzjgmc }">
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary btn-sm" id="menuBtn">选择</button>
+              </span>
             </div>
             <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="btn_clearorgs">清空</button>
             <div id="menuContent" class="menuContent">
@@ -125,11 +126,9 @@
             <span style="display: inline-block;float: left;padding: 5px 0px 0px 0px;"> ~ </span>
             <input type="text" id="txt_jarq2" class="form-control input-sm wb48 fl" placeholder="" maxlength="255"  onclick="laydate({istime: true,format: 'YYYY/MM/DD'})" />
           </div>
-
         </div>
 
       </div>
-
     </div>
     <h1>抽取案件</h1>
     <div class="step-content">
