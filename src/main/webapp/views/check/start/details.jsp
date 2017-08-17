@@ -26,8 +26,8 @@
         </li>
       </ul>
       <div class="bmbox_tool">
-        <button class="btn btn-primary btn-sm btn-smx" id="btn_pass" type="button"><i class="fa fa-check"></i> 同意</button>
-        <button class="btn btn-danger btn-sm btn-smx" id="btn_reject" type="button"><i class="fa fa-close"></i> 不同意</button>
+        <button class="btn btn-primary btn-sm btn-smx" id="btn_pass" type="button" style="display: none;"><i class="fa fa-check"></i> 同意</button>
+        <button class="btn btn-danger btn-sm btn-smx" id="btn_reject" type="button" style="display: none;"><i class="fa fa-close"></i> 不同意</button>
       </div>
     </div>
     <div class="bmbox_content">

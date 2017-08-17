@@ -1,5 +1,13 @@
-
+var ggid,mode;
 $(function () {
+    var ggid = $.getUrlParam("ggid");
+    var mode = $.getUrlParam("mode");
+
+    if(mode == 1){
+        $("#btn_pass").show();
+        $("#btn_reject").show();
+    }
+
     $('.i-checks').iCheck({
         radioClass : 'iradio_square-green',
         checkboxClass : 'icheckbox_square-green'
@@ -31,7 +39,7 @@ function loadGridCase() {
         mtype : "post",
         multiselect : true,
         height : $('body').height() - 175,
-        width : $('body').width() * 0.6-10 ,
+        width : $('body').width() * 0.6-15 ,
         rownumbers : true,
         shrinkToFit : false,
         rowNum : 20,
