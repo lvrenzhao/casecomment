@@ -36,9 +36,9 @@ function loadUnCheckGrid() {
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 if(rowObject.zt == 1){
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="check(\'' + 1 + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="check(\'' + cellvalue + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
                 }else if(rowObject.zt == 2 ){
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="" title="总结"><i class="fa fa-commenting-o"></i> 点评</button>';
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(\'' + cellvalue + '\')" title="总结"><i class="fa fa-commenting-o"></i> 点评</button>';
                 }
                 return '';
             },
@@ -97,4 +97,34 @@ function loadUnCheckGrid() {
         pager : '#pager1'
         ,viewrecords: true
     }).jqGrid('setFrozenColumns');;
+}
+
+function check(ajid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '案件评查',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx + '/views/check/work/check.jsp?ajid=' + ajid,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
+}
+
+function comment(ajid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '案件点评',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?ajid=' + ajid,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
 }
