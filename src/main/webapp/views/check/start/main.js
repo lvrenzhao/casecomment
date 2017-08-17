@@ -33,6 +33,12 @@ $(function () {
     loadGrid2();
     loadGrid3();
 
+    //初始化富文本控件
+    $('.summernote').summernote({
+        lang: 'zh-CN',
+        height:300
+    });
+
 });
 
 
@@ -108,7 +114,7 @@ function loadGrid3() {
         rowNum : 20,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '&nbsp;',name : 'ajid', width : 80,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            {label : '&nbsp;',name : 'ajid', width : 90,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="" title="退回待分配"><i class="fa fa-long-arrow-left"></i> </button>'
                     +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>';
             }},

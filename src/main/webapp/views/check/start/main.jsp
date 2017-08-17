@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=steps;jqgrid;layer;icheck;ztree;laydate" />
+    <jsp:include page="/header.jsp?libs=steps;jqgrid;layer;icheck;ztree;laydate;summernote" />
     <script type="text/javascript" src="main.js"></script>
     <style>
       .wizard > .actions {text-align: center !important; }
@@ -208,9 +208,82 @@
     </div>
 
     <h1>发布公告</h1>
-    <div class="step-content">
+    <div class="step-content" style="overflow: auto">
+      <div class="form_center wb75 clearfix" >
 
+        <div class="alert alert-warning" role="alert">系统将将会自动短信通知各级法院及时查看公告，同时将短信通知各评审专家准备评审。</div>
+        <div class="form_item wb60 fl">
+          <label>评查公告标题</label>
+          <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+        </div>
+
+        <div class="form_item wb40 fl">
+          <label>标题颜色</label>
+          <div class="i-checkslayout">
+            <div class="radio i-checks">
+              <label class="default_radio">
+                <input type="radio" value="1" name="btys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
+              </label>
+              <label>
+                <input type="radio" value="2" name="btys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form_item wb45 fl">
+          <label>评查类型</label>
+          <div class="i-checkslayout">
+            <div class="radio i-checks">
+              <label class="default_radio">
+                <input type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 常规评查
+              </label>
+              <label>
+                <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 专项评查
+              </label>
+              <label>
+                <input type="radio" value="3" name="types" style="position: absolute; opacity: 0;"> <i></i> 重点评查
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form_item wb35 fl">
+          <label>评查任务</label>
+          <div class="i-checkslayout">
+            <div class="radio i-checks">
+              <label class="default_radio">
+                <input type="radio" value="1" name="task" checked style="position: absolute; opacity: 0;"> <i></i> 案件
+              </label>
+              <label>
+                <input type="radio" value="2" name="task" style="position: absolute; opacity: 0;"> <i></i> 文书
+              </label>
+              <label>
+                <input type="radio" value="3" name="task" style="position: absolute; opacity: 0;"> <i></i> 庭审
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form_item wb20 fl">
+          <label>选择评分表</label>
+          <select class="form-control">
+            <option value="">--请选择--</option>
+            <option value="">2017常规评查评分表</option>
+          </select>
+        </div>
+
+        <div class="form_item wb100 fl">
+          <label>公告内容<span>*</span></label>
+          <div class="summernote bmrequire" id="xxnr" name="xxnr" style="">
+
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
+
   </body>
 </html>
