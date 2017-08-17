@@ -3,7 +3,7 @@ $(function () {
         openScoreTable();
     });
 
-    $(".rightslide_close,.backdrop").click(function() {
+    $("#btn_close_score_table").click(function() {
         closerightslide();
     });
     $(document).keyup(function(e) {
@@ -24,7 +24,6 @@ function openScoreTable() {
 }
 // 关闭右边菜单
 function closerightslide() {
-    $(".project_timeline").empty();
     $(".rightslide_menu").css("-webkit-transform", "translate3d(100%, 0px, 0px)");
     $(".warpslide").removeClass("warpslide_active");
     $(".rightslide_menu").removeClass("menu_transitioning");
