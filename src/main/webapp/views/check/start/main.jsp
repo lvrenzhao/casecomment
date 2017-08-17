@@ -157,25 +157,29 @@
           <div class="bmbox_content clearfix">
             <div class="form_center clearfix" style="padding: 10px 0px;">
 
-              <div class="form_item wb33 fl">
+              <div class="form_item wb25 fl">
                 <select class="form-control">
                   <option value="">按区域分布</option>
                   <option value="1">合肥(25%)</option>
                 </select>
               </div>
 
-              <div class="form_item wb33 fl">
+              <div class="form_item wb25 fl">
                 <select class="form-control">
                   <option value="">按案件性质分布</option>
                   <option value="1">民事(25%)</option>
                 </select>
               </div>
 
-              <div class="form_item wb33 fl">
+              <div class="form_item wb25 fl">
                 <select class="form-control">
                   <option value="">按案件类型分布</option>
                   <option value="1">抗诉(25%)</option>
                 </select>
+              </div>
+
+              <div class="form_item wb25 fl" style="text-align: right">
+                <button class="btn btn-white" type="button"><i class="fa fa-long-arrow-right"></i> 分配</button>
               </div>
 
             </div>
@@ -192,10 +196,12 @@
           <div class="bmbox_title">
             <h5>专家组</h5>
             <div class="bmbox_tool">
+              <button class="btn btn-white btn-sm btn-smx pullright" type="button"><i class="fa fa-plus"></i> 新增组</button>
             </div>
           </div>
           <div class="bmbox_content clearfix">
-
+            <table id="table3" class="table table-striped"></table>
+            <div id="pager3"></div>
           </div>
         </div>
       </div>

@@ -31,6 +31,7 @@ $(function () {
 
     loadGrid1();
     loadGrid2();
+    loadGrid3();
 
 });
 
@@ -94,4 +95,28 @@ function loadGrid2() {
         pager:"#pager2",
         viewrecords: true
     }).jqGrid('setFrozenColumns');
+}
+
+function loadGrid3() {
+    $("#table3").jqGrid({
+           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        datatype : "json",
+        mtype : "post",
+        height : $('body').height() - 225,
+        width : $('body').width() * 0.35-10,
+        shrinkToFit : true,
+        rowNum : 20,
+        colModel : [
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : '&nbsp;',name : 'ajid', width : 80,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick="" title="退回待分配"><i class="fa fa-long-arrow-left"></i> </button>'
+                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>';
+            }},
+            {label : '组名',name : 'xmzt',width : 100,sortable:false},
+            {label : '组员',name : 'htmc', width : 200,sortable:false},
+            {label : '评查',name : 'htmc', width : 100,sortable:false}
+        ],
+        pager:"#pager3"
+        // ,viewrecords: true
+    });//.jqGrid('setFrozenColumns');
 }
