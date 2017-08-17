@@ -7,6 +7,7 @@ $(function () {
         $("#btn_pass").show();
         $("#btn_reject").show();
     }
+    //### mode == 3 要记录阅读记录
 
     $('.i-checks').iCheck({
         radioClass : 'iradio_square-green',
