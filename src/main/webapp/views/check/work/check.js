@@ -1,3 +1,5 @@
+var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
+
 $(function () {
     $("#btn_open_score_table").click(function () {
         openScoreTable();
@@ -12,7 +14,31 @@ $(function () {
             closerightslide();
         }
     });
+    initTree();
 });
+
+function initTree() {
+    $.ajax({
+        type: 'POST',
+        url: URL_AJZL,
+        datatype: 'json',
+        async: false,
+        success: function (data) {
+            if (data) {
+                var setting = {
+                    data: {simpleData: {enable: true}},
+                    callback: {onClick: selectCd}
+                };
+                $.fn.zTree.init($("#pTree"), setting, data);
+            }
+        }
+    });
+}
+
+function selectCd() {
+    console.log(123);
+}
+
 
 
 function openScoreTable() {

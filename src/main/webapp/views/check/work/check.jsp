@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=" />
+    <jsp:include page="/header.jsp?libs=layer;ztree" />
     <script type="text/javascript" src="check.js"></script>
 </head>
-<body class="warpslide fullbox">
+<body class="warpslide fullbox" style="overflow: hidden">
 <div class="rightslide_menu">
     <div class="fullbox ">
         <div class="">
@@ -30,14 +30,14 @@
         </div>
     </div>
 </div>
-<div class="bmbox_layout wb30 clearfix fl">
+<div class="bmbox_layout wb30 clearfix fl fullbox">
     <div class="bmbox_title">
         <h5>案件资料</h5>
         <div class="bmbox_tool">
         </div>
     </div>
-    <div class="bmbox_content clearfix">
-
+    <div class="bmbox_content clearfix fullbox" style="padding-bottom: 60px;overflow: auto">
+        <ul id="pTree" class="ztree"></ul>
     </div>
 </div>
 <div class="bmbox_layout wb70 clearfix fl">
