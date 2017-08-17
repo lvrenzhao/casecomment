@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=steps;jqgrid;layer;icheck;ztree;laydate;summernote" />
+    <jsp:include page="/header.jsp?libs=steps;jqgrid;layer;icheck;ztree;laydate;summernote;chosen" />
     <script type="text/javascript" src="main.js"></script>
     <style>
       .wizard > .actions {text-align: center !important; }
       .step-content{padding:0px !important;width:100% !important;height:100% !important;background-color: #fff; }
       .subforms{background: #eee !important;color: #aaa !important;}
+      .chosen-container{width:100% !important;}
     </style>
   </head>
   <body>
@@ -179,7 +180,7 @@
               </div>
 
               <div class="form_item wb25 fl" style="text-align: right">
-                <button class="btn btn-white" type="button"><i class="fa fa-long-arrow-right"></i> 分配</button>
+                <button class="btn btn-white" type="button" id="btn_chooseTo"><i class="fa fa-long-arrow-right"></i> 分配</button>
               </div>
 
             </div>
@@ -196,7 +197,7 @@
           <div class="bmbox_title">
             <h5>专家组</h5>
             <div class="bmbox_tool">
-              <button class="btn btn-white btn-sm btn-smx pullright" type="button"><i class="fa fa-plus"></i> 新增组</button>
+              <button class="btn btn-white btn-sm btn-smx pullright" id="btn_newGroup" type="button"><i class="fa fa-plus"></i> 新增组</button>
             </div>
           </div>
           <div class="bmbox_content clearfix">
@@ -282,6 +283,45 @@
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <div id="div_chooseTo" style="display: none;padding-top: 20px;">
+    <div class="form_item wb75 fl">
+      <label>选则专家组</label>
+      <select class="form-control">
+        <option value="">--请选择--</option>
+        <option value="">刑事组</option>
+      </select>
+    </div>
+    <div class="form_item wb25 fl" style="text-align: right;padding-top: 30px;">
+      <button class="btn btn-primary" type="button" id="">确定</button>
+    </div>
+  </div>
+
+  <div id="div_newGroup" style="display: none;">
+    <div class="form_item wb50 fl">
+      <label>组名</label>
+      <input type="text" class="form-control" placeholder=""/>
+    </div>
+
+    <div class="form_item wb50 fl">
+      <label>组长</label>
+      <select data-placeholder="--选择组长--" class="chosen-select form-control "  id="form_sel_teamleader" style="width: 200px;">
+        <option value="1">张三</option>
+        <option value="2">李四</option>
+      </select>
+    </div>
+
+    <div class="form_item wb80 fl">
+      <label>组员</label>
+      <select data-placeholder="--选择组员--" class="chosen-select form-control " retype="multiselect" multiple id="form_sel_teammate">
+        <option value="1">张三</option>
+        <option value="2">李四</option>
+      </select>
+    </div>
+    <div class="form_item wb20 fl" style="text-align: right;padding-top: 30px;">
+      <button class="btn btn-primary btn-sm" type="button" id="">确定</button>
     </div>
   </div>
 

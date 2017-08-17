@@ -39,6 +39,54 @@ $(function () {
         height:300
     });
 
+    $("#btn_chooseTo").click(function () {
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '将选中案件分配至...',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '400px', '200px' ],
+            content : $("#div_chooseTo"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $("#btn_newGroup").click(function () {
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '新建组',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '600px', '300px' ],
+            content : $("#div_newGroup"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    // $.ajax({
+    //     type : 'POST',
+    //     url : URL_ROLE,
+    //     datatype : 'json',
+    //     async : false,
+    //     success : function(data) {
+    //         if(typeof data == "string"){ data =  $.parseJSON(data);}
+    //         var html="";
+    //         for (var i = 0; i < data.length; i++) {
+    //             html += '<option value="' + data[i].roleid + '" >' + data[i].rolename + '</option>'
+    //         }
+    //         $("#form_sel_js").html(html);
+    //     }
+    // });
+    for ( var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
 });
 
 
@@ -114,9 +162,10 @@ function loadGrid3() {
         rowNum : 20,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '&nbsp;',name : 'ajid', width : 90,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            {label : '&nbsp;',name : 'ajid', width : 135,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="" title="退回待分配"><i class="fa fa-long-arrow-left"></i> </button>'
-                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>';
+                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="编辑"><i class="fa fa-edit"></i> </button>'
+                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>'
             }},
             {label : '组名',name : 'xmzt',width : 100,sortable:false},
             {label : '组员',name : 'htmc', width : 200,sortable:false},
@@ -126,3 +175,20 @@ function loadGrid3() {
         // ,viewrecords: true
     });//.jqGrid('setFrozenColumns');
 }
+
+
+var config = {
+    '.chosen-select' : {},
+    '.chosen-select-deselect' : {
+        allow_single_deselect : true
+    },
+    '.chosen-select-no-single' : {
+        disable_search_threshold : 10
+    },
+    '.chosen-select-no-results' : {
+        no_results_text : 'Oops, nothing found!'
+    },
+    '.chosen-select-width' : {
+        width : "95%"
+    }
+};
