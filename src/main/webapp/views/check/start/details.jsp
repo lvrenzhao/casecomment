@@ -48,7 +48,7 @@
             </div>
             <div class="form_item wb33 fl">
               <label>评分表模板：</label>
-              <a>2007年常规评查评分表</a>
+              <a id="viewTable">2007年常规评查评分表</a>
             </div>
             <div class="form_item wb33 fl">
               <label>发布人：</label>
@@ -141,12 +141,12 @@
   </div>
 
 
-  <div id="div_reject" style="display: none;padding-top: 20px;">
-    <div class="form_item wb75 fl">
+  <div id="div_reject" style="display: none;">
+    <div class="form_item wb100 fl">
       <label>&nbsp;</label>
-      <input type="text" class="form-control" placeholder="请输入不同意原因"/>
+      <textarea class="form-control" placeholder="请输入审核意见" style="height: 100px;"></textarea>
     </div>
-    <div class="form_item wb25 fl" style="text-align: right;padding-top: 30px;">
+    <div class="form_item wb100 fl" style="text-align: center;padding-top: 10px;">
       <button class="btn btn-primary" type="button" id="">确定</button>
     </div>
   </div>

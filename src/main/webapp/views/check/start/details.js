@@ -24,8 +24,23 @@ $(function () {
             title : '审核不同意',
             shadeClose : false,
             shade : 0.3,
-            area : [ '400px', '200px' ],
+            area : [ '480px', '250px' ],
             content : $("#div_reject"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $("#viewTable").click(function () {
+        layer.open({
+            type : 2,
+            shift : 5,
+            title : '查看评分表',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '90%', '90%' ],
+            content : ahcourt.ctx+"/views/check/configscore/view_table.jsp?id=",
             cancel : function(index) {
                 layer.close(index);
             }
@@ -35,7 +50,7 @@ $(function () {
 
 function loadGridCase() {
     $("#table1").jqGrid({
-//            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
         multiselect : true,
@@ -48,6 +63,7 @@ function loadGridCase() {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
+            {label : '关联案件',name : '',frozen : true,width : 80,sortable:false},
             {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
             {label : '承办部门',name : 'htmc', width : 100,sortable:false},
             {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
@@ -55,12 +71,11 @@ function loadGridCase() {
             {label : '类型',name : 'zylbmc',width : 80,sortable:false},
             {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
             {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
-            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false},
-            {label : '关联案件',name : '',frozen : true,width : 80,sortable:false}
+            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
         ],
         pager:"#pager1",
         viewrecords: true
-    }).jqGrid('setFrozenColumns');
+    });//.jqGrid('setFrozenColumns');
 }
 
 function loadGridGroup() {

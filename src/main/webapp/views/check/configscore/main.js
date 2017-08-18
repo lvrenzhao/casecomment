@@ -39,6 +39,7 @@ function loadTables() {
                     btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-trash"></i> </button>';
                     btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-edit"></i> </button>';
                 }
+                btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="viewone()" title=""><i class="fa fa-info-circle"></i> </button>';
                 return btn_str;
             }},
             {label : '模板名称',name : 'ggbt',width : 400},
@@ -48,5 +49,20 @@ function loadTables() {
         ],
         pager : '#pager1'
         ,viewrecords: true
+    });
+}
+
+function viewone(key) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '查看评分表',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx+"/views/check/configscore/view_table.jsp?id="+key,
+        cancel : function(index) {
+            layer.close(index);
+        }
     });
 }

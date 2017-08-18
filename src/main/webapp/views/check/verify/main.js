@@ -83,7 +83,7 @@ $(function(){
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="openCases(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 公告详细 </button>'
-                     + '<button class="btn btn-link btn-xs " type="button" ><i class="fa fa-reddit"></i> 评查结果 </button>'
+                     + '<button class="btn btn-link btn-xs " type="button" onclick="viewByPCID(\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评查结果 </button>'
             }
         }, {
             label : '公告标题',
@@ -144,6 +144,21 @@ function openCases(mode,ggid) {
         shade : 0.3,
         area : [ '95%', '90%' ],
         content : ahcourt.ctx + '/views/check/start/details.jsp?ggid=' + ggid+"&mode="+mode,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
+}
+
+function viewByPCID(pcid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title :"查看评查详细情况",
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '95%', '90%' ],
+        content : ahcourt.ctx + '/views/check/work/view_bypcid.jsp?pcid=' + pcid,
         cancel : function(index) {
             layer.close(index);
         }
