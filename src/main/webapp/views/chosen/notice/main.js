@@ -50,7 +50,7 @@ $(function(){
             label : '已填报案件数',
             name : 'pclx',
             align : 'center',
-            width : 100,
+            width : 120,
             formatter : function(cellvalue, options, rowObject) {
                 return '<a href="javascript:;" onclick="viewCases(1,\'' + rowObject.ggid + '\')">'+cellvalue+'</a>';
             }
@@ -65,6 +65,10 @@ $(function(){
             width : 100
         }, {
             label : '发布时间',
+            name : 'fbsj',
+            width : 100
+        }, {
+            label : '截止时间',
             name : 'fbsj',
             width : 100
         }, {
