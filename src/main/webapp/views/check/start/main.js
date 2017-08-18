@@ -123,7 +123,7 @@ function loadGrid1() {
 
 function loadGrid2() {
     $("#table2").jqGrid({
-//            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
         multiselect : true,
@@ -131,10 +131,16 @@ function loadGrid2() {
         width : $('body').width() * 0.5-10,
         rownumbers : true,
         shrinkToFit : false,
-        rowNum : 20,
+        rowNum : 100000000,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
+            {label : '-',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="fa fa-trash"></i> </button>';
+            }},
+            {label : '检',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+            }},
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
             {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
             {label : '承办部门',name : 'htmc', width : 100,sortable:false},
@@ -145,10 +151,10 @@ function loadGrid2() {
             {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
             {label : '结案时间',name : 'xmcymc', width : 80,sortable:false},
             {label : '关联案件',name : '',frozen : true,width : 80,sortable:false}
-        ],
-        pager:"#pager2",
-        viewrecords: true
-    }).jqGrid('setFrozenColumns');
+        ]
+        // ,pager:"#pager2",
+        // viewrecords: true
+    });//.jqGrid('setFrozenColumns');
 }
 
 function loadGrid3() {

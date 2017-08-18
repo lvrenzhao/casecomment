@@ -156,6 +156,7 @@
             </div>
           </div>
           <div class="bmbox_content clearfix">
+            <div class="alert alert-warning" role="alert">带有 <i class="fa fa-warning"></i> 图表的案件则表示系统检测到有资料缺失，请认真确认。</div>
             <div class="form_center clearfix" style="padding: 10px 0px;">
 
               <div class="form_item wb25 fl">
