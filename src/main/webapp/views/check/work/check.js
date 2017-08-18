@@ -1,6 +1,12 @@
 var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
 
+var ajid , mode;
 $(function () {
+    mode = $.getUrlParam("mode");
+    if(mode == 1){
+        $("#btn_submit").show();
+        $("#btn_save").show();
+    }
     $("#btn_open_score_table").click(function () {
         openScoreTable();
     });

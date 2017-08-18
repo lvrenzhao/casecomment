@@ -25,13 +25,25 @@
     <div class="bmbox_title">
         <h5>点评</h5>
         <div class="bmbox_tool">
-            <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
+            <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_submit" style="display: none;"><i class="fa fa-check"></i> 提交</button>
         </div>
     </div>
     <div class="bmbox_content clearfix">
         <div class="form_item wb100 fl">
             <label>简要点评</label>
             <textarea class="form-control" style="height:120px" placeholder="请输入您的简要点评..."></textarea>
+        </div>
+        <div class="form_item wb33 fl">
+            <label>点评人</label>
+            <span></span>
+        </div>
+        <div class="form_item wb33 fl">
+            <label>点评人部门</label>
+            <span></span>
+        </div>
+        <div class="form_item wb33 fl">
+            <label>点评时间</label>
+            <span></span>
         </div>
     </div>
 </div>
