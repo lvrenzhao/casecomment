@@ -63,7 +63,9 @@ function loadGridCase() {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
-            {label : '关联案件',name : '',frozen : true,width : 80,sortable:false},
+            {label : '关联案件',name : '',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
+                return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
+            }},
             {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
             {label : '承办部门',name : 'htmc', width : 100,sortable:false},
             {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
@@ -97,4 +99,19 @@ function loadGridGroup() {
         pager:"#pager3"
         // ,viewrecords: true
     });//.jqGrid('setFrozenColumns');
+}
+
+function viewRelated(key) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '查看关联案件',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx + '/views/check/start/view_relatedcases.jsp?ajid=' + key,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
 }
