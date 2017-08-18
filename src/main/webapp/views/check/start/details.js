@@ -94,7 +94,8 @@ function loadGridGroup() {
             {label : '组名',name : 'xmzt',width : 100,sortable:false},
             {label : '组长',name : 'xmzt',width : 80,sortable:false},
             {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false}
+            {label : '评查',name : 'htmc', width : 60,sortable:false},
+            {label : '占比',name : 'htmc', width : 60,sortable:false}
         ],
         pager:"#pager3"
         // ,viewrecords: true

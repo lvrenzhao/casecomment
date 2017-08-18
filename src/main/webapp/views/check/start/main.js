@@ -172,7 +172,7 @@ function loadGrid3() {
         rowNum : 20,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '&nbsp;',name : 'ajid', width : 110,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            {label : '&nbsp;',name : 'ajid', width : 120,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="" title="退回待分配"><i class="fa fa-long-arrow-left"></i> </button>'
                     +'<button class="btn btn-link btn-xs " type="button" onclick="" title="编辑"><i class="fa fa-edit"></i> </button>'
                     +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>'
@@ -180,7 +180,8 @@ function loadGrid3() {
             {label : '组名',name : 'xmzt',width : 100,sortable:false},
             {label : '组长',name : 'xmzt',width : 80,sortable:false},
             {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false}
+            {label : '评查',name : 'htmc', width : 60,sortable:false},
+            {label : '占比',name : 'htmc', width : 60,sortable:false}
         ],
         pager:"#pager3"
         // ,viewrecords: true
