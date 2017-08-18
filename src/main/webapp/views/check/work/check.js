@@ -5,7 +5,10 @@ $(function () {
     mode = $.getUrlParam("mode");
     if(mode == 1){
         $("#btn_submit").show();
+    }else if(mode == 3){
+        $("#btn_open_score_table").hide();
     }
+
     $("#btn_open_score_table").click(function () {
         openScoreTable();
     });

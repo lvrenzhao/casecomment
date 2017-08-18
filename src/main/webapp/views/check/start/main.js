@@ -143,7 +143,9 @@ function loadGrid2() {
             {label : '检',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
             }},
-            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
+            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
+                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+cellvalue+'</a>'
+            }},
             {label : '关联案件',name : '',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
                 return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
             }},
@@ -214,6 +216,21 @@ function viewRelated(key) {
         shade : 0.3,
         area : [ '90%', '90%' ],
         content : ahcourt.ctx + '/views/check/start/view_relatedcases.jsp?ajid=' + key,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
+}
+
+function check(mode,ajid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '案件评查',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx + '/views/check/work/check.jsp?ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
