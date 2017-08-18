@@ -74,7 +74,7 @@ $(function(){
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 查看公告 </button>'
-                     + '<button class="btn btn-link btn-xs " type="button" onclick="viewByPCID(\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评选信息 </button>'
+                     + '<button class="btn btn-link btn-xs " type="button" onclick="viewByPXID(\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评选信息 </button>'
             }
         }, {
             label : '公告标题',
@@ -136,7 +136,7 @@ function viewOrVerifyNotice(mode,ggid) {
     });
 }
 
-function viewByPCID(pcid) {
+function viewByPXID(pxid) {
     // layer.open({
     //     type : 2,
     //     shift : 5,

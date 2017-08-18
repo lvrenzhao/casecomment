@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/start/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="150" column="10" lean-forward="false" selection-start-line="139" selection-start-column="7" selection-end-line="150" selection-end-column="10" />
+            <state relative-caret-position="675">
+              <caret line="76" column="94" lean-forward="false" selection-start-line="76" selection-start-column="94" selection-end-line="76" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -1184,14 +1182,7 @@
       <workItem from="1502762258134" duration="6000" />
       <workItem from="1502762267851" duration="45077000" />
       <workItem from="1503038835823" duration="81000" />
-      <workItem from="1503040852144" duration="3349000" />
-    </task>
-    <task id="LOCAL-00085" summary="hooah hooah hooah">
-      <created>1495589897055</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1495589897056</updated>
+      <workItem from="1503040852144" duration="3379000" />
     </task>
     <task id="LOCAL-00086" summary="hooah hooah hooah">
       <created>1495678356117</created>
@@ -1529,11 +1520,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503063160208</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="hooah hooah hooah">
+      <created>1503064279441</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1503064279441</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326358000" />
+    <option name="totallyTimeSpent" value="326388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -2061,8 +2059,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="150" column="10" lean-forward="false" selection-start-line="139" selection-start-column="7" selection-end-line="150" selection-end-column="10" />
+        <state relative-caret-position="675">
+          <caret line="76" column="94" lean-forward="false" selection-start-line="76" selection-start-column="94" selection-end-line="76" selection-end-column="94" />
           <folding />
         </state>
       </provider>
