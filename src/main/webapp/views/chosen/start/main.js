@@ -2,10 +2,18 @@ var mode ;
 $(function(){
     mode = $.getUrlParam("mode");
 
-    if(mode == 2){
+    if(mode == 1){
+        $("#selectuser").attr("disabled","disabled");
+        $("input").attr("disabled","disabled");
         $("#btn_submit").hide();
         $("#btn_pass").show();
         $("#btn_reject").show();
+    }else if(mode == 2){
+        $("#selectuser").attr("disabled","disabled");
+        $("input").attr("disabled","disabled");
+        $("#btn_submit").hide();
+        $("#btn_pass").hide();
+        $("#btn_reject").hide();
     }else {
         $("#btn_submit").show();
         $("#btn_pass").hide();
