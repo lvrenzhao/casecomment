@@ -11,6 +11,29 @@
     <script type="text/javascript" src="comment.js"></script>
 </head>
 <body>
+<div class="bmbox_layout clearfix" style="height:380px;">
+    <div class="bmbox_title">
+        <h5>评分</h5>
+        <div class="bmbox_tool">
+        </div>
+    </div>
+    <div class="bmbox_content clearfix" >
 
+    </div>
+</div>
+<div class="bmbox_layout clearfix" style="height:200px">
+    <div class="bmbox_title">
+        <h5>点评</h5>
+        <div class="bmbox_tool">
+            <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
+        </div>
+    </div>
+    <div class="bmbox_content clearfix">
+        <div class="form_item wb100 fl">
+            <label>简要点评</label>
+            <textarea class="form-control" style="height:120px" placeholder="请输入您的简要点评..."></textarea>
+        </div>
+    </div>
+</div>
 </body>
 </html>
