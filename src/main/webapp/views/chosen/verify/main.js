@@ -74,7 +74,7 @@ $(function(){
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 查看公告 </button>'
-                     + '<button class="btn btn-link btn-xs " type="button" onclick="viewByPXID(\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评选信息 </button>'
+                     + '<button class="btn btn-link btn-xs " type="button" onclick="viewCases(2,\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评选详情 </button>'
             }
         }, {
             label : '公告标题',
@@ -136,17 +136,17 @@ function viewOrVerifyNotice(mode,ggid) {
     });
 }
 
-function viewByPXID(pxid) {
-    // layer.open({
-    //     type : 2,
-    //     shift : 5,
-    //     title :"查看评查详细情况",
-    //     shadeClose : false,
-    //     shade : 0.3,
-    //     area : [ '95%', '90%' ],
-    //     content : ahcourt.ctx + '/views/check/work/view_bypcid.jsp?pcid=' + pcid,
-    //     cancel : function(index) {
-    //         layer.close(index);
-    //     }
-    // });
+function viewCases(mode,ggid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : "评选详情",
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '95%', '90%' ],
+        content : ahcourt.ctx + '/views/chosen/start/view_cases.jsp?ggid=' + ggid+"&mode="+mode,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
 }
