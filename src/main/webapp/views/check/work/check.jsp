@@ -19,8 +19,7 @@
                     <h5>评分表</h5>
                     <div class="bmbox_tool">
                         <button class="btn btn-primary btn-sm btn-smx" id="btn_submit" style="display: none;" type="button"><i class="fa fa-check"></i> 提交</button>
-                        <button class="btn btn-white btn-sm btn-smx" id="btn_save" style="display: none;" type="button"><i class="fa fa-bookmark"></i> 暂存</button>
-                        <button class="btn btn-white btn-sm btn-smx" id="btn_close_score_table" type="button"><i class="fa fa-hand-o-right"></i> 关闭评分表</button>
+                        <button class="btn btn-white btn-sm btn-smx" id="btn_close_score_table" type="button"><i class="fa fa-hand-o-right"></i> 暂存并收起评分表</button>
                     </div>
                 </div>
                 <div class="bmbox_content clearfix">
