@@ -18,7 +18,8 @@ $(function(){
     });
 
     $('.summernote').summernote({
-        lang: 'zh-CN'
+        lang: 'zh-CN',
+        height:300
     });
 
     $('#selectuser').click(function() {
