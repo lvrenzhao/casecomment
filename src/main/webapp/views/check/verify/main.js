@@ -31,12 +31,14 @@ $(function(){
             label : '公告标题',
             name : 'ggbt',
             width : 300
-        }, {
-            label : '状态',
-            name : 'ggzt',
-            align : 'center',
-            width : 100
-        }, {
+        },
+        //     {
+        //     label : '状态',
+        //     name : 'ggzt',
+        //     align : 'center',
+        //     width : 100
+        // },
+            {
             label : '评查类型',
             name : 'pclx',
             align : 'center',
