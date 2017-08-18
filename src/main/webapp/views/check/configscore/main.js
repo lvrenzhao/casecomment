@@ -1,7 +1,10 @@
-
+//#### type为1 是评查模板维护 ， type为2 是评选模板维护
 
 //============================================================
+var type;
 $(function () {
+    //todo here
+    type = $.getUrlParam("type");
     loadTables();
     $("#btn_add").click(function () {
         layer.open({
