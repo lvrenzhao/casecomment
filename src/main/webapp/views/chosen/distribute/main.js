@@ -100,12 +100,12 @@ $(function () {
         },{
             label : '操作',
             name : 'ggid',
-            width : 220,
+            width : 120,
             align : 'center',
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 公告详细</button>'
-                    +      '<button class="btn btn-link btn-xs " type="button" onclick="joinCase(\'' + rowObject.ggid + '\')" title=""><i class="fa fa-random"></i> 查看分配</button>';
+                return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 公告详细</button>';
+                    //+      '<button class="btn btn-link btn-xs " type="button" onclick="joinCase(\'' + rowObject.ggid + '\')" title=""><i class="fa fa-random"></i> 查看分配</button>';
             }
         }, {
             label : '公告标题',
