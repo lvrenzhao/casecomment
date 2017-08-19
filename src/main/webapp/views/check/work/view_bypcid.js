@@ -42,10 +42,10 @@ function loadCheckedGrid() {
             frozen : true,
             width : 150,
             frozen:true
-        }, {
-            label : '所属评查公告',
+        },{
+            label : '评查分数',
             name : '',
-            width : 200
+            width : 100
         },{
             label : '质量等级',
             name : '',
@@ -54,6 +54,14 @@ function loadCheckedGrid() {
             label : '评查时间',
             name : '',
             width : 100
+        },{
+            label : '评查组长',
+            name : 'xmcymc',
+            width : 80
+        },{
+            label : '评查组员',
+            name : 'xmcymc',
+            width : 200
         },{
             label : '归属法院',
             name : 'gsfy',
@@ -86,14 +94,6 @@ function loadCheckedGrid() {
             label : '结案时间',
             name : 'xmcymc',
             width : 80
-        },{
-            label : '评查组长',
-            name : 'xmcymc',
-            width : 80
-        },{
-            label : '评查组员',
-            name : 'xmcymc',
-            width : 200
         }],
         pager : '#pager1'
         ,viewrecords: true

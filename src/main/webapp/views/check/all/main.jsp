@@ -19,9 +19,13 @@
     </div>
     <div class="bmbox_content clearfix">
       <div class="form_center clearfix">
-        <div class="form_item wb30 fl">
-          <label>公告标题</label>
-          <input type="text" id="khmc" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
+        <div class="form_item wb15 fl">
+        <label>公告标题</label>
+        <input type="text" id="" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
+      </div>
+        <div class="form_item wb15 fl">
+          <label>案号</label>
+          <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">
           <label>发布人</label>
@@ -64,7 +68,7 @@
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">
-          <label>评查人</label>
+          <label>评查成员</label>
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">

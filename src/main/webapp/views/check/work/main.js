@@ -130,7 +130,7 @@ function loadCheckedGrid() {
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评查详情</button>'
-                +      '<button class="btn btn-link btn-xs " type="button" onclick="check(2,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
             },
             frozen:true
         },{
@@ -144,6 +144,10 @@ function loadCheckedGrid() {
             name : '',
             width : 200
         },{
+            label : '评查分数',
+            name : '',
+            width : 100
+        },{
             label : '质量等级',
             name : '',
             width : 100
@@ -152,9 +156,17 @@ function loadCheckedGrid() {
             name : '',
             width : 100
         },{
+            label : '评查组长',
+            name : 'xmcymc',
+            width : 80
+        },{
+            label : '评查组员',
+            name : 'xmcymc',
+            width : 200
+        },{
             label : '归属法院',
             name : 'gsfy',
-            width : 100
+            width : 200
         }, {
             label : '承办部门',
             name : 'htmc',
@@ -183,14 +195,6 @@ function loadCheckedGrid() {
             label : '结案时间',
             name : 'xmcymc',
             width : 80
-        },{
-            label : '评查组长',
-            name : 'xmcymc',
-            width : 80
-        },{
-            label : '评查组员',
-            name : 'xmcymc',
-            width : 200
         }],
         pager : '#pager2'
         ,viewrecords: true

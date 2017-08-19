@@ -3,6 +3,7 @@ var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
 var ajid , mode;
 $(function () {
     mode = $.getUrlParam("mode");
+    //### mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
         $("#btn_submit").show();
     }else if(mode == 3){
