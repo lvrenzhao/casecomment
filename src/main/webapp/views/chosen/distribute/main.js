@@ -82,7 +82,7 @@ $(function () {
         url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
-        height : $('body').height() -125,
+        height : $('body').height() -200,
         width : $('body').width() - 22,
         rownumbers : true,
         shrinkToFit : true,
