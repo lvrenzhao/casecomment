@@ -51,24 +51,23 @@ $(function () {
                 return remind + '<span style="'+style+'">'+cellvalue+'</span>';
             }
         },{
-            label : '评查类型',
+            label : '评选类型',
             name : 'pclx',
             align : 'center',
             width : 100
         }, {
-            label : '评查任务',
-            name : 'pclx',
-            align : 'center',
-            width : 100
-        },  {
             label : '发布人',
             name : 'fbsj',
             width : 100
-        }, {
+        },{
             label : '发布时间',
             name : 'fbsj',
             width : 100
         }, {
+            label : '截止时间',
+            name : 'pclx',
+            width : 100
+        },  {
             label : '审核人',
             name : 'shr',
             width : 100
