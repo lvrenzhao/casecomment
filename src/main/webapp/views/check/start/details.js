@@ -1,3 +1,5 @@
+//mode解释：1审核，2：审核后查看，3：公告后查看（需向后台发送阅读记录）
+
 var ggid,mode;
 $(function () {
     var ggid = $.getUrlParam("ggid");
