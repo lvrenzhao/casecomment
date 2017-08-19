@@ -107,7 +107,7 @@ function check(mode,ajid) {
     layer.open({
         type : 2,
         shift : 5,
-        title : '案件评查',
+        title : '案件资料',
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
