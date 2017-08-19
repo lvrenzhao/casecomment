@@ -93,7 +93,7 @@ $(function () {
         height : $('body').height() -200,
         width : $('body').width() - 22,
         rownumbers : true,
-        shrinkToFit : true,
+        shrinkToFit : false,
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [ {
@@ -106,6 +106,14 @@ $(function () {
             name : 'pclx',
             width : 120
         }, {
+            label : '所属评选公告',
+            name : 'pclx',
+            width : 200
+        },{
+            label : '评选类型',
+            name : 'pclx',
+            width : 100
+        },{
             label : '是否被评选',
             name : 'shsj',
             width : 100
@@ -121,20 +129,8 @@ $(function () {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
         },{
-            label : '评查时间',
+            label : '评选时间',
             name : '',
-            width : 100
-        },{
-            label : '归属法院',
-            name : 'lxrmc',
-            width : 100
-        }, {
-            label : '承办部门',
-            name : 'fbsj',
-            width : 100
-        }, {
-            label : '承办人',
-            name : 'fbsj',
             width : 100
         },{
             label : '填报日期',
@@ -147,7 +143,35 @@ $(function () {
             formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
-        } ],
+        } ,{
+            label : '归属法院',
+            name : 'lxrmc',
+            width : 100
+        }, {
+            label : '承办部门',
+            name : 'fbsj',
+            width : 100
+        }, {
+            label : '承办人',
+            name : 'fbsj',
+            width : 100
+        }, {
+            label : '性质',
+            name : 'zylbmc',
+            width : 80
+        },  {
+            label : '案由',
+            name : 'xmfzrmc',
+            width : 150
+        }, {
+            label : '结案方式',
+            name : 'xmjlmc',
+            width : 80
+        }, {
+            label : '结案时间',
+            name : 'xmcymc',
+            width : 80
+        }],
         pager : '#pager2'
         ,viewrecords: true
     });

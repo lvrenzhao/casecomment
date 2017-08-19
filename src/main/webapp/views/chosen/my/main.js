@@ -32,6 +32,10 @@ $(function () {
             width : 120,
             frozen:true
         },{
+            label : '所属评选公告',
+            name : 'pclx',
+            width : 200
+        },{
             label : '是否被评选',
             name : 'shsj',
             width : 100
@@ -69,12 +73,8 @@ $(function () {
             formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
-        } , {
-            label : '所属评选公告',
-            name : 'pclx',
-            width : 200
-        }, {
-            label : '发布人',
+        } ,  {
+            label : '公告发布人',
             name : 'pclx',
             width : 100
         }, {
