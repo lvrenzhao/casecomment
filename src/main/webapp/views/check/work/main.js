@@ -55,6 +55,14 @@ function loadUnCheckGrid() {
             name : '',
             width : 200
         },{
+            label : '评查组长',
+            name : 'xmcymc',
+            width : 80
+        },{
+            label : '评查组员',
+            name : 'xmcymc',
+            width : 200
+        },{
             label : '归属法院',
             name : 'gsfy',
             width : 100
@@ -86,14 +94,6 @@ function loadUnCheckGrid() {
             label : '结案时间',
             name : 'xmcymc',
             width : 80
-        },{
-            label : '评查组长',
-            name : 'xmcymc',
-            width : 80
-        },{
-            label : '评查组员',
-            name : 'xmcymc',
-            width : 200
         }],
         pager : '#pager1'
         ,viewrecords: true

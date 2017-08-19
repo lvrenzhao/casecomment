@@ -45,6 +45,10 @@ function loadGrid() {
             width : 150,
             frozen:true
         },{
+            label : '所属评查公告',
+            name : '',
+            width : 200
+        },{
             label : '评查分数',
             name : '',
             width : 100
@@ -65,11 +69,7 @@ function loadGrid() {
             name : 'xmcymc',
             width : 200
         }, {
-            label : '所属评查公告',
-            name : '',
-            width : 200
-        },{
-            label : '发布人',
+            label : '公告发布人',
             name : 'pclx',
             width : 100
         }, {
