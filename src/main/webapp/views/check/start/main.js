@@ -129,7 +129,7 @@ function loadGrid2() {
         datatype : "json",
         mtype : "post",
         multiselect : true,
-        height : $('body').height() - 285,
+        height : $('body').height() - 305,
         width : $('body').width() * 0.5-10,
         rownumbers : true,
         shrinkToFit : false,

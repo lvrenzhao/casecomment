@@ -156,7 +156,7 @@
             </div>
           </div>
           <div class="bmbox_content clearfix">
-            <div class="alert alert-warning" role="alert">带有 <i class="fa fa-warning"></i> 图表的案件则表示系统检测到有资料缺失，请点击案号查看案件资料并确认。</div>
+            <div class="alert alert-warning" role="alert">带有 <i class="fa fa-warning"></i> 图表的案件则表示系统检测到有资料缺失（点击案号查看卷宗），请联系案件负责人务必在评查前通过【案件管理系统】补齐资料以免影响评查分数。</div>
             <div class="form_center clearfix" style="padding: 10px 0px;">
 
               <div class="form_item wb25 fl">
