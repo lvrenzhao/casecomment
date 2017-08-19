@@ -36,21 +36,10 @@ $(function () {
             name : 'pclx',
             width : 200
         },{
-            label : '是否被评选',
-            name : 'shsj',
-            width : 100
-        }, {
             label : '评选得分',
             name : 'shsj',
             width : 100
         }, {
-            label : '未评选原因',
-            name : 'shsj',
-            width : 100,
-            formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
-            }
-        },{
             label : '评选时间',
             name : 'lxrmc',
             width : 100
