@@ -32,7 +32,7 @@ $(function () {
             align : 'center',
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="openCases(3,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info"></i> 公告详细</button>'
+                return '<button class="btn btn-link btn-xs " type="button" onclick="openCases(4,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info"></i> 公告详细</button>'
                 +      '<button class="btn btn-link btn-xs " type="button" onclick="openComments(\'' + rowObject.ggid + '\',\'' + 'test' + '\')" title="查看公告详细"><i class="fa fa-comment"></i> 审核意见</button>';
             }
         }, {
