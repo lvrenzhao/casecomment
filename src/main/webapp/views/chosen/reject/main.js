@@ -32,7 +32,7 @@ $(function () {
             align : 'center',
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="openCases(3,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info"></i> 公告详细</button>'
+                return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info"></i> 公告详细</button>'
                 +      '<button class="btn btn-link btn-xs " type="button" onclick="openComments(\'' + rowObject.ggid + '\',\'' + 'test' + '\')" title="查看公告详细"><i class="fa fa-comment"></i> 审核意见</button>';
             }
         }, {
@@ -104,6 +104,21 @@ function openCases(mode,ggid) {
             layer.close(index);
         }
 
+    });
+}
+
+function viewOrVerifyNotice(mode,ggid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : mode==1?"审核案件评查公告":"查看审核评查公告",
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '95%', '90%' ],
+        content : ahcourt.ctx + '/views/chosen/start/main.jsp?ggid=' + ggid+"&mode="+mode,
+        cancel : function(index) {
+            layer.close(index);
+        }
     });
 }
 
