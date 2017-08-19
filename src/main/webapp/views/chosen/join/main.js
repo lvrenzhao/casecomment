@@ -132,6 +132,10 @@ $(function () {
             label : '承办人',
             name : 'fbsj',
             width : 100
+        },{
+            label : '填报日期',
+            name : 'fbsj',
+            width : 100
         }, {
             label : '推荐理由',
             name : 'shr',

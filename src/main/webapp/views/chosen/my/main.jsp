@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=jqgrid;layer" />
+    <jsp:include page="/header.jsp?libs=jqgrid;layer;laydate" />
     <script src="main.js"></script>
   </head>
   <body>
