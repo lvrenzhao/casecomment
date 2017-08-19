@@ -201,7 +201,7 @@ function viewCases(mode,ggid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '95%', '90%' ],
-        content : ahcourt.ctx + '/views/chosen/start/view_bypxid.jsp?ggid=' + ggid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/chosen/work/view_bypxid.jsp?ggid=' + ggid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
