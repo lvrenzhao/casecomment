@@ -35,7 +35,7 @@ function loadGrid() {
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评查详情</button>'
-                    +      '<button class="btn btn-link btn-xs " type="button" onclick="check(2,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                    +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
             },
             frozen:true
         },{
@@ -107,7 +107,7 @@ function check(mode,ajid) {
     layer.open({
         type : 2,
         shift : 5,
-        title : '案件评查',
+        title : '案件资料',
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
