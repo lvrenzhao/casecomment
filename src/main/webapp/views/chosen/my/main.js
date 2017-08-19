@@ -31,10 +31,6 @@ $(function () {
             name : 'pclx',
             width : 120,
             frozen:true
-        }, {
-            label : '所属评选公告',
-            name : 'pclx',
-            width : 200
         },{
             label : '是否被评选',
             name : 'shsj',
@@ -51,17 +47,17 @@ $(function () {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
         },{
-            label : '归属法院',
+            label : '评选时间',
             name : 'lxrmc',
             width : 100
-        }, {
-            label : '承办部门',
-            name : 'fbsj',
-            width : 100
-        }, {
-            label : '承办人',
-            name : 'fbsj',
-            width : 100
+        },{
+            label : '评选组长',
+            name : 'xmcymc',
+            width : 80
+        },{
+            label : '评选组员',
+            name : 'xmcymc',
+            width : 200
         },{
             label : '填报日期',
             name : 'fbsj',
@@ -73,7 +69,51 @@ $(function () {
             formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
-        } ],
+        } , {
+            label : '所属评选公告',
+            name : 'pclx',
+            width : 200
+        }, {
+            label : '发布人',
+            name : 'pclx',
+            width : 100
+        }, {
+            label : '发布日期',
+            name : 'pclx',
+            width : 100
+        }, {
+            label : '评选类型',
+            name : 'pclx',
+            width : 100
+        },{
+            label : '归属法院',
+            name : 'lxrmc',
+            width : 100
+        }, {
+            label : '承办部门',
+            name : 'fbsj',
+            width : 100
+        }, {
+            label : '承办人',
+            name : 'fbsj',
+            width : 100
+        }, {
+            label : '性质',
+            name : 'zylbmc',
+            width : 80
+        },  {
+            label : '案由',
+            name : 'xmfzrmc',
+            width : 150
+        }, {
+            label : '结案方式',
+            name : 'xmjlmc',
+            width : 80
+        }, {
+            label : '结案时间',
+            name : 'xmcymc',
+            width : 80
+        }],
         pager : '#pager2'
         ,viewrecords: true
     }).jqGrid('setFrozenColumns');
@@ -84,7 +124,7 @@ function ViewComment(content) {
     layer.open({
         type : 1,
         shift : 5,
-        title : "查看推荐理由",
+        title : "查看详细",
         shadeClose : false,
         shade : 0.3,
         area : [ '400px', '280px' ],

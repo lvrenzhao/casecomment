@@ -121,6 +121,10 @@ $(function () {
                 return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
             }
         },{
+            label : '评查时间',
+            name : '',
+            width : 100
+        },{
             label : '归属法院',
             name : 'lxrmc',
             width : 100
