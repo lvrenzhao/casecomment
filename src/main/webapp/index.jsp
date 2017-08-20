@@ -29,18 +29,18 @@
             <ul class="nav" id="side-menu">
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <li class="<c:if test="${status.index == 0}"> active </c:if> ">
-                        <a class="J_menuItem" href="${menu.cdurl }" data-index="${menu.cdid}"><i class="${menu.tb}"></i><span class="nav-label">${menu.cdmc }</span> <span style="display:inline-block;height:1px;width: 35px;float: right;"><span id="${menu.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></span><c:if test="${not empty menu.submenus}"><span class="fa arrow"></span></c:if></a>
+                        <a class="J_menuItem" id="${menu.bz }" href="${menu.cdurl }" data-index="${menu.cdid}"><i class="${menu.tb}"></i><span class="nav-label">${menu.cdmc }</span> <span style="display:inline-block;height:1px;width: 35px;float: right;"><span id="${menu.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></span><c:if test="${not empty menu.submenus}"><span class="fa arrow"></span></c:if></a>
 
                         <c:if test="${not empty menu.submenus}">
                             <ul class="nav nav-second-level">
                                 <c:forEach var="menu_lv2" items="${menu.submenus}" varStatus="level2_index">
                                         <li>
-                                            <a class="J_menuItem"  href="${menu_lv2.cdurl }" data-index="${menu_lv2.cdid}"><i class="${menu_lv2.tb }"></i><span class="nav-label">${menu_lv2.cdmc }</span> <span style="display:inline-block;height:1px;width: 35px;float: right;"><span id="${menu_lv2.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></span><c:if test="${not empty menu_lv2.submenus}"><span class="fa arrow" style=""></span></c:if></a>
+                                            <a class="J_menuItem" id="${menu_lv2.bz }"  href="${menu_lv2.cdurl }" data-index="${menu_lv2.cdid}"><i class="${menu_lv2.tb }"></i><span class="nav-label">${menu_lv2.cdmc }</span> <span style="display:inline-block;height:1px;width: 35px;float: right;"><span id="${menu_lv2.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></span><c:if test="${not empty menu_lv2.submenus}"><span class="fa arrow" style=""></span></c:if></a>
 
                                             <c:if test="${not empty menu_lv2.submenus}">
                                                 <ul class="nav nav-third-level">
                                                     <c:forEach var="menu_lv3" items="${menu_lv2.submenus}" varStatus="level3_index">
-                                                        <li><a class="J_menuItem"  href="${menu_lv3.cdurl }" data-index="${menu_lv3.cdid}"><i class="${menu_lv3.tb }"></i><span class="nav-label">${menu_lv3.cdmc }</span> <span id="${menu_lv3.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></a></li>
+                                                        <li><a class="J_menuItem" id="${menu_lv3.bz }"  href="${menu_lv3.cdurl }" data-index="${menu_lv3.cdid}"><i class="${menu_lv3.tb }"></i><span class="nav-label">${menu_lv3.cdmc }</span> <span id="${menu_lv3.bz }" class="badge badge-white pull-right" style="font-weight: normal;"></span></a></li>
                                                     </c:forEach>
                                                 </ul>
                                             </c:if>

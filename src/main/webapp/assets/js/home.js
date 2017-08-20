@@ -1,3 +1,7 @@
+//获取任务数
+var URL_TASK = "";
+
+
 $(function () {
     loadGrid1();
     loadGrid2();

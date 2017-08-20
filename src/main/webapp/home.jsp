@@ -16,7 +16,7 @@
     <div class="form_item wb100 no-margins" style="height: 175px; padding: 10px !important; ">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>我的任务</h5>
+                <h5>待办任务</h5>
                 <div class="bmbox_tool">
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <div class="ibox m10" id="countbox1">
                         <div class="ibox-content bg1">
                             <h5 style="text-align: center">待评查的案件数</h5>
-                            <h1 class="no-margins"><span id="label_count_1">5</span></h1>
+                            <h1 class="no-margins"><a href="javascript:;" onclick=""><span id="label_count_1">5</span></a></h1>
                         </div>
                     </div>
                 </div>
