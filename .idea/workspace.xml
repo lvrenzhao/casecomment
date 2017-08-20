@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/home.jsp" afterPath="$PROJECT_DIR$/target/casecomment/home.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,36 +24,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
+      <file leaf-file-name="add_case.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="177" column="78" lean-forward="false" selection-start-line="177" selection-start-column="78" selection-end-line="177" selection-end-column="78" />
+            <state relative-caret-position="0">
+              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/publish/list.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2500">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1493815913000" expanded="true" signature="4790:4796" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="unwatch.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/publish/unwatch.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="105" column="22" lean-forward="false" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="82" />
-              <folding>
-                <marker date="1493815489000" expanded="true" signature="2633:2639" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -161,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/all/main.js" />
@@ -178,6 +152,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" />
       </list>
     </option>
   </component>
@@ -371,36 +346,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="publish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -435,7 +380,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
+              <option name="myItemId" value="join" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1100,14 +1045,7 @@
       <workItem from="1502762258134" duration="6000" />
       <workItem from="1502762267851" duration="45077000" />
       <workItem from="1503038835823" duration="81000" />
-      <workItem from="1503040852144" duration="24561000" />
-    </task>
-    <task id="LOCAL-00127" summary="hooah hooah hooah">
-      <created>1503036284941</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1503036284941</updated>
+      <workItem from="1503040852144" duration="24735000" />
     </task>
     <task id="LOCAL-00128" summary="hooah hooah hooah">
       <created>1503036911972</created>
@@ -1445,11 +1383,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503190179884</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="hooah hooah hooah">
+      <created>1503191330934</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1503191330934</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347570000" />
+    <option name="totallyTimeSpent" value="347744000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1803,14 +1748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -2047,8 +1984,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="177" column="78" lean-forward="false" selection-start-line="177" selection-start-column="78" selection-end-line="177" selection-end-column="78" />
+        <state relative-caret-position="-780">
+          <caret line="164" column="9" lean-forward="true" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
           <folding />
         </state>
       </provider>
