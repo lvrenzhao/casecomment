@@ -124,7 +124,7 @@ $(function () {
             align : 'center',
             width : 120,
             formatter : function(cellvalue, options, rowObject) {
-                return '<a href="javascript:;" onclick="viewCases(1,\'' + rowObject.ggid + '\')">'+cellvalue+'</a>';
+                return '<a href="javascript:;" onclick="viewCases(2,\'' + rowObject.ggid + '\')">'+cellvalue+'</a>';
             }
         }, {
             label : '评选类型',

@@ -10,17 +10,10 @@ $(function () {
 
 
 function loadGridCases() {
-    $("#table1").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
-        datatype : "json",
-        mtype : "post",
-        multiselect : true,
-        height : $('body').height() - 145,
-        width : $('body').width() * 0.65-10,
-        rownumbers : true,
-        shrinkToFit : false,
-        rowNum : 100000000,
-        colModel : [
+    console.log(mode);
+    var cols = [];
+    if(mode == 2){
+        cols = [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
@@ -55,6 +48,46 @@ function loadGridCases() {
             {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
             {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
         ]
+    }else{
+        cols = [
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
+            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
+            {label : '关联案件',name : '',width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
+                return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
+            }},{
+                label : '填报日期',
+                name : 'fbsj',
+                width : 100
+            }, {
+                label : '推荐理由',
+                name : 'shr',
+                width : 300,
+                formatter:function (cellvalue,options,rowObject) {
+                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
+                }
+            },
+            {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
+            {label : '承办部门',name : 'htmc', width : 100,sortable:false},
+            {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
+            {label : '性质',name : 'zylbmc',width : 80 ,sortable:false},
+            {label : '类型',name : 'zylbmc',width : 80,sortable:false},
+            {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
+            {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
+            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
+        ]
+    }
+    $("#table1").jqGrid({
+        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        datatype : "json",
+        mtype : "post",
+        multiselect : true,
+        height : $('body').height() - 145,
+        width : $('body').width() * 0.65-10,
+        rownumbers : true,
+        shrinkToFit : false,
+        rowNum : 100000000,
+        colModel : cols
     }).jqGrid('setFrozenColumns');
 }
 
