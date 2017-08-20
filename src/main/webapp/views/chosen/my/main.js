@@ -22,7 +22,7 @@ $(function () {
             align : 'center',
             sortable : false,
             formatter : function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评选详情</button>'
+                return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评选结果</button>'
                     +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
             },
             frozen:true
