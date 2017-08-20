@@ -42,11 +42,7 @@
         <table tableName="bd_casechosen_notice" domainObjectName="BdCasechosenNotice"></table>
         <table tableName="bd_casechosen_noticeread" domainObjectName="BdCasechosenNoticeread"></table>
         <table tableName="bd_casechosen_pf" domainObjectName="BdCasechosenPf"></table>
-        <table tableName="bd_casechosen_pfsz" domainObjectName="BdCasechosenPfsz"></table>
-        <table tableName="bd_publish" domainObjectName="BdPublish"></table>
-        <table tableName="bd_publish_read" domainObjectName="BdPublishRead"></table>
-        <table tableName="sd_logs" domainObjectName="SdLogs"></table>
-        <table tableName="sd_professional" domainObjectName="SdProfessional"></table>-->
+        <table tableName="bd_casechosen_pfsz" domainObjectName="BdCasechosenPfsz"></table>-->
 
     </context>
 </generatorConfiguration>
