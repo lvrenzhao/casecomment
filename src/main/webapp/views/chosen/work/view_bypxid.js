@@ -4,13 +4,16 @@
 var mode;
 $(function () {
     mode = $.getUrlParam("mode");
+    if(mode == 1){
+        $("#left").hide();
+        $("#right").css("cssText","width:100% !important");
+    }
     loadGridCases();
     loadGridGroup();
 });
 
 
 function loadGridCases() {
-    console.log(mode);
     var cols = [];
     if(mode == 2){
         cols = [
@@ -83,7 +86,7 @@ function loadGridCases() {
         mtype : "post",
         multiselect : true,
         height : $('body').height() - 145,
-        width : $('body').width() * 0.65-10,
+        width : mode == 1 ? ($('body').width() -10) : ($('body').width() * 0.65-10),
         rownumbers : true,
         shrinkToFit : false,
         rowNum : 100000000,

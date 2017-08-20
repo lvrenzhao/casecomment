@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="hooah hooah hooah">
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="view_bypxid.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="648">
+              <caret line="88" column="83" lean-forward="false" selection-start-line="88" selection-start-column="83" selection-end-line="88" selection-end-column="83" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -154,8 +153,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/details.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
       </list>
     </option>
   </component>
@@ -1116,14 +1115,7 @@
       <workItem from="1502762258134" duration="6000" />
       <workItem from="1502762267851" duration="45077000" />
       <workItem from="1503038835823" duration="81000" />
-      <workItem from="1503040852144" duration="22134000" />
-    </task>
-    <task id="LOCAL-00124" summary="hooah hooah hooah">
-      <created>1503034648738</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1503034648738</updated>
+      <workItem from="1503040852144" duration="22645000" />
     </task>
     <task id="LOCAL-00125" summary="hooah hooah hooah">
       <created>1503035892074</created>
@@ -1461,11 +1453,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503187406962</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="hooah hooah hooah">
+      <created>1503188525238</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1503188525238</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345143000" />
+    <option name="totallyTimeSpent" value="345654000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2057,8 +2056,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state relative-caret-position="648">
+          <caret line="88" column="83" lean-forward="false" selection-start-line="88" selection-start-column="83" selection-end-line="88" selection-end-column="83" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
