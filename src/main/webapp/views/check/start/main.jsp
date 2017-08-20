@@ -134,11 +134,11 @@
     <h1>抽取案件</h1>
     <div class="step-content">
       <div class="form_center clearfix" style="padding-bottom: 10px;">
-        <button id="btn-extract-checked" class="btn btn-primary fr mr10" type="button" ><i class="fa fa-cart-plus"></i> 抽取选中案件</button>
+        <button id="btn-extract-checked" class="btn btn-primary fr mr10" type="button" >抽取选中案件</button>
         <div id="btn-extract-group" class="input-group fr mr10" style="width:200px;">
           <input type="text" id="txt_radom" class="form-control" placeholder="案件数">
           <span class="input-group-btn">
-                  <button class="btn btn-primary" id="btn_extract_radom" type="button"><i class="fa fa-cart-plus"></i> 系统随机抽取</button>
+                  <button class="btn btn-primary" id="btn_extract_radom" type="button">系统随机抽取</button>
                 </span>
         </div>
       </div>
