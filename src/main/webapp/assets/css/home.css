@@ -1,0 +1,42 @@
+body{background-color: #f3f3f4}
+
+.ibox{
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 0;
+    padding: 0;
+}
+.ibox-content {
+    clear: both;
+    background-color: #fff;
+    color: inherit;
+    padding: 15px;
+    /*padding-bottom: 30px;*/
+    border-color: #e7eaec;
+    border-radius: 5px;
+    -webkit-border-image: none;
+    -o-border-image: none;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+.bg1{background-color: #12a3f4;}
+.bg1 h5,.bg1 h1{color:#fff}
+
+.bg2{background-color:#90c133 }
+.bg2 h5,.bg2 h1{color:#fff}
+
+.bg3{background-color:#12a3f4}
+.bg3 h5,.bg3 h1{color:#fff}
+
+.bg4{background-color:#90c133 }
+.bg4 h5,.bg4 h1{color:#fff}
+
+.ibox-content h1{text-align: center}
+.subunit{font-size:14px;}
+.submoney{font-size:14px;}
+.cnymoney{font-size: 20px}
+.fa-level-up{color:#a8d925}
+.bg2 .fa-level-up{color:#12a3f4}
+.bg4 .fa-level-up{color:#12a3f4}
+.fa-level-down{color:#ea394c}
