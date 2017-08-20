@@ -1,9 +1,13 @@
-//mode解释：1审核，2：普通查看，3：审核通过后查看（需向后台发送阅读记录，不能显示组员和组长信息）,4:审核不通过查看（需向后台发送阅读记录）
+//mode解释：
+// 1审核，
+// 2：普通查看，
+// 3：审核通过后查看（需向后台发送阅读记录，不能显示组员和组长信息）,
+// 4:审核不通过查看（需向后台发送阅读记录）
 
 var ggid,mode;
 $(function () {
-    var ggid = $.getUrlParam("ggid");
-    var mode = $.getUrlParam("mode");
+    ggid = $.getUrlParam("ggid");
+    mode = $.getUrlParam("mode");
 
     if(mode == 1){
         $("#btn_pass").show();
@@ -83,6 +87,24 @@ function loadGridCase() {
 }
 
 function loadGridGroup() {
+    var cols = [];
+    if(mode == 3){
+        cols = [
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : '组名',name : 'xmzt',width : 100,sortable:false},
+            {label : '评查',name : 'htmc', width : 60,sortable:false},
+            {label : '占比',name : 'htmc', width : 60,sortable:false}
+        ];
+    }else{
+        cols = [
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : '组名',name : 'xmzt',width : 100,sortable:false},
+            {label : '组长',name : 'xmzt',width : 80,sortable:false},
+            {label : '组员',name : 'htmc', width : 200,sortable:false},
+            {label : '评查',name : 'htmc', width : 60,sortable:false},
+            {label : '占比',name : 'htmc', width : 60,sortable:false}
+        ];
+    }
     $("#table3").jqGrid({
         url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
@@ -91,14 +113,7 @@ function loadGridGroup() {
         width : $('body').width() * 0.4-10,
         shrinkToFit : true,
         rowNum : 20,
-        colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '组名',name : 'xmzt',width : 100,sortable:false},
-            {label : '组长',name : 'xmzt',width : 80,sortable:false},
-            {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false},
-            {label : '占比',name : 'htmc', width : 60,sortable:false}
-        ],
+        colModel : cols,
         pager:"#pager3"
         // ,viewrecords: true
     });//.jqGrid('setFrozenColumns');
