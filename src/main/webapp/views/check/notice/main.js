@@ -99,7 +99,7 @@ function openCases(mode,ggid) {
         cancel : function(index) {
             layer.close(index);
             reloadGrid();
-        },
+        }
 
     });
 }

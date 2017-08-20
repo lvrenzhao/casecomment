@@ -72,8 +72,13 @@
                 rowList : [ 10, 20, 30 ],
                 colModel : [
                     {label : 'ggid',name : 'ggid',hidden : true,key : true },
-                    {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
-                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
+                    {label : '公告标题',name : 'ggbt',width : 300,formatter : function(cellvalue, options, rowObject) {
+                        var style = "";
+                        if(rowObject.btys == 2){
+                            style = "color:red"
+                        }
+                        return '<a href="javascript:;"><span style="'+style+'">'+cellvalue+'</span></a>';
+                    }},
                     {label : '发布人',name : 'lxrmc',width : 100},
                     {label : '发布时间', name : 'fbsj',width : 100}
                 ],
@@ -95,7 +100,6 @@
                 colModel : [
                     {label : 'ggid',name : 'ggid',hidden : true,key : true },
                     {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
-                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
                     {label : '发布人',name : 'lxrmc',width : 100},
                     {label : '发布时间', name : 'fbsj',width : 100}
                 ],
@@ -117,7 +121,6 @@
                 colModel : [
                     {label : 'ggid',name : 'ggid',hidden : true,key : true },
                     {label : '公告标题',name : 'ggbt',width : 300},//###已读未读区分，红色，黑色区分
-                    {label : '信息类型',name : 'pclx',align : 'center',width : 100},
                     {label : '发布人',name : 'lxrmc',width : 100},
                     {label : '发布时间', name : 'fbsj',width : 100}
                 ],
@@ -158,7 +161,7 @@
     <div class="form_item wb100 no-margins " style="height: 100%;padding: 0px 10px 185px 10px !important; ">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>信息公开</h5>
+                <h5>未读的系统信息</h5>
                 <div class="bmbox_tool">
                 </div>
             </div>
@@ -173,7 +176,7 @@
     <div class="form_item wb100 no-margins " style="padding:10px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>最新案件评查公告</h5>
+                <h5>未读的案件评查公告</h5>
                 <div class="bmbox_tool">
                 </div>
             </div>
@@ -186,7 +189,7 @@
     <div class="form_item wb100 no-margins" style="padding:0px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>最新三精评选公告</h5>
+                <h5>未读的三精评选公告</h5>
                 <div class="bmbox_tool">
                 </div>
             </div>
