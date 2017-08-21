@@ -16,7 +16,7 @@
       <ul class="nav nav-tabs navs-3">
         <li class="active">
           <a data-toggle="tab" href="#tab-1">
-            待填报案件的三精评选活动公告
+            可填报案件的三精评选活动公告
           </a>
         </li>
         <li class="">
