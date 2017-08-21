@@ -1,7 +1,6 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
-import cn.gov.ahcourt.casecomment.mapper.BdCasecheckNoticeMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,8 @@ import java.util.Map;
 @RequestMapping("/statics")
 public class staticsController {
 
-	@Resource
-	private BdCasecheckNoticeMapper bdCasecheckNoticeMapper;
+//	@Resource
+//	private BdCasecheckNoticeMapper bdCasecheckNoticeMapper;
 
 	@RequestMapping(value = "/checkreport", method = { RequestMethod.GET, RequestMethod.POST })
 	public String checkreport() {
