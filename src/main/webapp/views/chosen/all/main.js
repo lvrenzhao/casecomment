@@ -16,100 +16,37 @@ function loadGrid() {
         shrinkToFit : false,
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
-        colModel : [ {
-            label : 'id',
-            name : 'id',
-            hidden : true,
-            key : true,
-            frozen:true
-        },{
-            label : '操作',
-            name : 'ggid',
-            width : 180,
-            align : 'center',
-            sortable : false,
-            formatter : function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评选结果</button>'
-                    +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+        colModel : [
+            {label : 'id',name : 'id', hidden : true,key : true,frozen:true },
+            {label : '操作',name : 'ggid',width : 180,align : 'center',sortable : false,frozen:true,
+                formatter : function(cellvalue, options, rowObject) {
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评选结果</button>'
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                }
             },
-            frozen:true
-        },{
-            label : '案号',
-            name : 'pclx',
-            width : 120,
-            frozen:true
-        }, {
-            label : '所属评选公告',
-            name : 'pclx',
-            width : 200
-        },{
-            label : '评选得分',
-            name : 'shsj',
-            width : 100
-        }, {
-            label : '评选时间',
-            name : 'lxrmc',
-            width : 100
-        },{
-            label : '评选组长',
-            name : 'xmcymc',
-            width : 80
-        },{
-            label : '评选组员',
-            name : 'xmcymc',
-            width : 200
-        },{
-            label : '填报日期',
-            name : 'fbsj',
-            width : 100
-        }, {
-            label : '推荐理由',
-            name : 'shr',
-            width : 300,
-            formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
-            }
-        } ,{
-            label : '公告发布人',
-            name : 'pclx',
-            width : 100
-        }, {
-            label : '发布日期',
-            name : 'pclx',
-            width : 100
-        }, {
-            label : '评选类型',
-            name : 'pclx',
-            width : 100
-        },{
-            label : '归属法院',
-            name : 'lxrmc',
-            width : 100
-        }, {
-            label : '承办部门',
-            name : 'fbsj',
-            width : 100
-        }, {
-            label : '承办人',
-            name : 'fbsj',
-            width : 100
-        }, {
-            label : '性质',
-            name : 'zylbmc',
-            width : 80
-        },  {
-            label : '案由',
-            name : 'xmfzrmc',
-            width : 150
-        }, {
-            label : '结案方式',
-            name : 'xmjlmc',
-            width : 80
-        }, {
-            label : '结案时间',
-            name : 'xmcymc',
-            width : 80
-        }],
+            {label : '案号',name : 'pclx',width : 120,sortable:false,frozen:true},
+            {label : '所属评选公告',name : 'pclx',sortable:false,width : 200},
+            {label : '评选得分',name : 'shsj',sortable:false,width : 100},
+            {label : '评选时间',name : 'lxrmc',sortable:false, width : 100},
+            {label : '评选组长', name : 'xmcymc',sortable:false,width : 80},
+            {label : '评选组员',name : 'xmcymc',sortable:false,width : 200},
+            {label : '填报日期',name : 'fbsj',sortable:false,width : 100},
+            {label : '推荐理由',name : 'shr',sortable:false,width : 300,
+                formatter:function (cellvalue,options,rowObject) {
+                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
+                }
+            } ,
+            {label : '公告发布人',name : 'pclx',sortable:false,width : 100},
+            {label : '发布日期',name : 'pclx',sortable:false,width : 100},
+            {label : '评选类型',name : 'pclx',sortable:false,width : 100},
+            {label : '归属法院',name : 'lxrmc',sortable:false,width : 100},
+            {label : '承办部门',name : 'fbsj',sortable:false,width : 100},
+            {label : '承办人',name : 'fbsj',sortable:false,width : 100},
+            {label : '性质',name : 'zylbmc',sortable:false,width : 80},
+            {label : '案由',name : 'xmfzrmc',sortable:false,width : 150},
+            {label : '结案方式',name : 'xmjlmc', sortable:false, width : 80},
+            {label : '结案时间',name : 'xmcymc',sortable:false,width : 80}
+        ],
         pager : '#pager1'
         ,viewrecords: true
     }).jqGrid('setFrozenColumns');

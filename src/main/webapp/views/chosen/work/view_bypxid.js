@@ -22,22 +22,11 @@ function loadGridCases() {
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
             {label : '关联案件',name : '',width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
                 return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
-            }},{
-                label : '评选得分',
-                name : 'shsj',
-                width : 100
-            }, {
-                label : '评选时间',
-                name : 'lxrmc',
-                width : 100
-            },{
-                label : '填报日期',
-                name : 'fbsj',
-                width : 100
-            }, {
-                label : '推荐理由',
-                name : 'shr',
-                width : 300,
+            }},
+            {label : '评选得分',name : 'shsj',sortable:false, width : 100},
+            {label : '评选时间',name : 'lxrmc',sortable:false,width : 100},
+            {label : '填报日期', name : 'fbsj',sortable:false,width : 100},
+            {label : '推荐理由',name : 'shr',sortable:false,width : 300,
                 formatter:function (cellvalue,options,rowObject) {
                     return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
                 }
@@ -58,14 +47,9 @@ function loadGridCases() {
             {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
             {label : '关联案件',name : '',width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
                 return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
-            }},{
-                label : '填报日期',
-                name : 'fbsj',
-                width : 100
-            }, {
-                label : '推荐理由',
-                name : 'shr',
-                width : 300,
+            }},
+            {label : '填报日期',name : 'fbsj', sortable:false,width : 100},
+            {label : '推荐理由', name : 'shr',sortable:false,width : 300,
                 formatter:function (cellvalue,options,rowObject) {
                     return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
                 }
