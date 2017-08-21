@@ -15,7 +15,7 @@
 		chose_mult_set_ini('#jsid', '${bean.jsid}');
 		//初始化
 		$("#jsid").chosen();
-
+		$(".chosen-choices").css("cssText","height:100px !important");
 	});
 
 	function chose_mult_set_ini(select, values) {
@@ -69,7 +69,7 @@
 				</div>
 				<div class="form_item wb100 fl">
 					<label>角色<span>*</span></label> 
-					<select data-placeholder="--选择--" class="chosen-select form-control bmrequire" retype="multiselect" multiple id="jsid">
+					<select data-placeholder="--选择--" style="height:100px;" class="chosen-select form-control bmrequire" retype="multiselect" multiple id="jsid">
 						<c:forEach items="${roleList }" var="role">
 							<option value="${role.id }">${role.jsmc }</option>
 						</c:forEach>
