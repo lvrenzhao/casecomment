@@ -41,12 +41,14 @@ $(function(){
                 name: 'xh',
                 index: 'xh',
                 width: 60,
+                sortable:false,
                 align:'center'
             },
             {
                 name: 'dj',
                 index: 'dj',
                 width: 200,
+                sortable:false,
                 align:'center'
 
             },
@@ -54,6 +56,7 @@ $(function(){
                 name: 'fzqj',
                 index: 'fzqj',
                 width: 200,
+                sortable:false,
                 align:'center'
             }
         ],

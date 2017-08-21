@@ -40,59 +40,71 @@ function loadCheckedGrid() {
             label : '案号',
             name : 'xmmc',
             frozen : true,
-            width : 150,
-            frozen:true
+            width : 150
         },{
             label : '评查分数',
             name : '',
+            sortable:false,
             width : 100
         },{
             label : '质量等级',
             name : '',
+            sortable:false,
             width : 100
         },{
             label : '评查时间',
             name : '',
+            sortable:false,
             width : 100
         },{
             label : '评查组长',
             name : 'xmcymc',
+            sortable:false,
             width : 80
         },{
             label : '评查组员',
             name : 'xmcymc',
+            sortable:false,
             width : 200
         },{
             label : '归属法院',
             name : 'gsfy',
+            sortable:false,
             width : 100
         }, {
             label : '承办部门',
             name : 'htmc',
+            sortable:false,
             width : 100
         }, {
             label : '承办人',
             name : 'xmlxmc',
+            sortable:false,
             width : 80
         }, {
             label : '性质',
             name : 'zylbmc',
+            sortable:false,
             width : 80
         },{
             label : '类型',
             name : 'zylbmc',
+            sortable:false,
             width : 80
         },  {
             label : '案由',
             name : 'xmfzrmc',
+            sortable:false,
             width : 150
         }, {
             label : '结案方式',
             name : 'xmjlmc',
+            sortable:false,
             width : 80
         }, {
             label : '结案时间',
             name : 'xmcymc',
+            sortable:false,
             width : 80
         }],
         pager : '#pager1'
