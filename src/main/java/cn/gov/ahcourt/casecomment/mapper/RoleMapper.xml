@@ -51,6 +51,7 @@
 				and remarks = #{remarks}
 			</if>
 		</where>
+		order by sort
 	</select>
 
 	<insert id="insertSelective" parameterType="cn.gov.ahcourt.casecomment.bean.RoleBean">
