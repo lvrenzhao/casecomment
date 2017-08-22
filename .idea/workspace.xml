@@ -27,13 +27,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="339" column="111" lean-forward="false" selection-start-line="339" selection-start-column="111" selection-end-line="339" selection-end-column="111" />
+            <state relative-caret-position="962">
+              <caret line="292" column="25" lean-forward="false" selection-start-line="292" selection-start-column="25" selection-end-line="292" selection-end-column="25" />
               <folding>
-                <marker date="1503365433000" expanded="true" signature="8220:8235" ph="..." />
-                <marker date="1503365433000" expanded="true" signature="8247:8261" ph="..." />
-                <marker date="1503365433000" expanded="true" signature="12119:12134" ph="..." />
-                <marker date="1503365433000" expanded="true" signature="12146:12160" ph="..." />
+                <marker date="1503365698000" expanded="true" signature="8220:8235" ph="..." />
+                <marker date="1503365698000" expanded="true" signature="8247:8261" ph="..." />
+                <marker date="1503365698000" expanded="true" signature="12097:12112" ph="..." />
+                <marker date="1503365698000" expanded="true" signature="12124:12138" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1129,14 +1129,7 @@
       <workItem from="1502762267851" duration="45077000" />
       <workItem from="1503038835823" duration="81000" />
       <workItem from="1503040852144" duration="30667000" />
-      <workItem from="1503295324751" duration="16925000" />
-    </task>
-    <task id="LOCAL-00148" summary="hooah hooah hooah">
-      <created>1503101994781</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1503101994782</updated>
+      <workItem from="1503295324751" duration="17052000" />
     </task>
     <task id="LOCAL-00149" summary="hooah hooah hooah">
       <created>1503102113601</created>
@@ -1474,11 +1467,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503363539339</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="hooah hooah hooah">
+      <created>1503365610462</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1503365610462</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370601000" />
+    <option name="totallyTimeSpent" value="370728000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2058,13 +2058,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="339" column="111" lean-forward="false" selection-start-line="339" selection-start-column="111" selection-end-line="339" selection-end-column="111" />
+        <state relative-caret-position="962">
+          <caret line="292" column="25" lean-forward="false" selection-start-line="292" selection-start-column="25" selection-end-line="292" selection-end-column="25" />
           <folding>
-            <marker date="1503365433000" expanded="true" signature="8220:8235" ph="..." />
-            <marker date="1503365433000" expanded="true" signature="8247:8261" ph="..." />
-            <marker date="1503365433000" expanded="true" signature="12119:12134" ph="..." />
-            <marker date="1503365433000" expanded="true" signature="12146:12160" ph="..." />
+            <marker date="1503365698000" expanded="true" signature="8220:8235" ph="..." />
+            <marker date="1503365698000" expanded="true" signature="8247:8261" ph="..." />
+            <marker date="1503365698000" expanded="true" signature="12097:12112" ph="..." />
+            <marker date="1503365698000" expanded="true" signature="12124:12138" ph="..." />
           </folding>
         </state>
       </provider>

@@ -290,8 +290,7 @@ function loadGrid2() {
 
 function loadGrid3() {
     $("#table3").jqGrid({
-        url:URL_CASES,
-        datatype : "json",
+        datatype : "local",
         height : $('body').height() - 225,
         width : $('body').width() * 0.45-10,
         shrinkToFit : true,
