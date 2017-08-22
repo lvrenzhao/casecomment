@@ -134,11 +134,11 @@
     <h1>抽取案件</h1>
     <div class="step-content">
       <div class="form_center clearfix" style="padding-bottom: 10px;">
-        <button id="btn-extract-checked" class="btn btn-primary fr mr10" type="button" >抽取选中案件</button>
+        <button id="btn_extract_checked" class="btn btn-primary fr mr10" type="button" >抽取选中案件</button>
         <div id="btn-extract-group" class="input-group fr mr10" style="width:200px;">
-          <input type="text" id="txt_radom" class="form-control" placeholder="案件数">
+          <input type="text" id="txt_random" class="form-control" placeholder="案件数">
           <span class="input-group-btn">
-                  <button class="btn btn-primary" id="btn_extract_radom" type="button">系统随机抽取</button>
+                  <button class="btn btn-primary" id="btn_extract_random" type="button">系统随机抽取</button>
                 </span>
         </div>
       </div>
@@ -146,7 +146,7 @@
       <div id="pager1"></div>
     </div>
 
-    <h1>分配案件&nbsp;<span class="label label-warning">0</span></h1>
+    <h1>分配案件&nbsp;<span class="label label-warning" id="lbl_joined_case_count">0</span></h1>
     <div class="step-content">
       <div class="wb50 fullbox fl">
         <div class="bmbox_layout clearfix">
