@@ -68,6 +68,22 @@ function getCaseUniqleNames() {
     return [];
 }
 
+//刷新待分配案件列表
+function refreshJoinedCasesGrid() {
+    //根据案件性质，类型，区域，及是否分配属性进行过滤。(取所有未分配的案件)
+    $("#table2").jqGrid('clearGridData');
+    var cases = getCases();
+    for ( var i = 0; i < cases.length; i++){
+        $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+    }
+}
+
+//刷新专家组列表
+var teams = [];
+function refreshTeamGrid() {
+    
+}
+
 var max_allowed_extract_case_count = 1024;
 //============================================================
 $(function () {
@@ -78,6 +94,10 @@ $(function () {
         onStepChanging: function (event, currentIndex, newIndex) {
             if(currentIndex == 0 && formChanged()){
                 reloadGrid1();
+            }
+            if(currentIndex == 1 && newIndex == 2){
+                refreshJoinedCasesGrid();
+                refreshTeamGrid();
             }
             if(currentIndex == 2){
                 $(".subforms").css("cssText","background-color:#1AB394 !important;color:#fff !important");
@@ -206,6 +226,16 @@ $(function () {
     for ( var selector in config) {
         $(selector).chosen(config[selector]);
     }
+    
+    $("#form_sel_region").change(function () {
+        refreshJoinedCasesGrid();
+    });
+    $("#form_sel_lx").change(function () {
+        refreshJoinedCasesGrid();
+    });
+    $("#form_sel_xz").change(function () {
+        refreshJoinedCasesGrid();
+    });
 
 });
 
