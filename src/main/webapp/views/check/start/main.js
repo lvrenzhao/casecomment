@@ -203,6 +203,10 @@ $(function () {
         });
     });
 
+    for ( var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
 });
 
 
@@ -248,9 +252,7 @@ function reloadGrid1() {
 
 function loadGrid2() {
     $("#table2").jqGrid({
-           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
-        datatype : "json",
-        mtype : "post",
+        datatype : "local",
         multiselect : true,
         height : $('body').height() - 305,
         width : $('body').width() * 0.5-10,
@@ -288,27 +290,73 @@ function loadGrid2() {
 
 function loadGrid3() {
     $("#table3").jqGrid({
-           url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url:URL_CASES,
         datatype : "json",
-        mtype : "post",
         height : $('body').height() - 225,
         width : $('body').width() * 0.45-10,
         shrinkToFit : true,
-        rowNum : 20,
+        rowNum : 2000,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '&nbsp;',name : 'ajid', width : 120,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="" title="退回待分配"><i class="fa fa-long-arrow-left"></i> </button>'
-                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="编辑"><i class="fa fa-edit"></i> </button>'
-                    +'<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>'
+            {label : '&nbsp;',name : 'ajid', width : 90,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick="" title="编辑"><i class="fa fa-edit"></i> </button>'
+                    +  '<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>';
             }},
             {label : '组名',name : 'xmzt',width : 100,sortable:false},
             {label : '组长',name : 'xmzt',width : 80,sortable:false},
             {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false},
+            {label : '评查',name : 'htmc', width : 60,sortable:false,
+                formatter:function(cellvalue,options,rowObject){
+                    return '<a href="javascript:;" onclick=""></a>';
+                }
+            },
             {label : '占比',name : 'htmc', width : 60,sortable:false}
         ],
-        pager:"#pager3"
+        pager:"#pager3",
+        subGrid : true,
+        subGridRowExpanded : initChildGrid1,
+        subGridOptions : {
+            "plusicon" : "fa fa-plus",
+            "minusicon" : "fa fa-minus",
+            "expandOnLoad" : false
+        }
+    });
+}
+
+function initChildGrid1(parentRowID, parentRowKey) {
+    var tabid = parentRowID + "_table";
+    $('#' + parentRowID).append('<table id="' + tabid + '"></table>');
+    $("#" + tabid).jqGrid({
+        datatype : "local",
+        height : 150,
+        width : $('body').width() * 0.45 - 60,
+        autowidth : true,
+        shrinkToFit : false,
+        rowNum : 100000,
+        colModel : [
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
+            {label : '-',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="long-arrow-left"></i> </button>';
+            }},
+            {label : '检',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+            }},
+            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
+                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+cellvalue+'</a>'
+            }},
+            {label : '关联案件',name : '',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
+                return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
+            }},
+            {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
+            {label : '承办部门',name : 'htmc', width : 100,sortable:false},
+            {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
+            {label : '性质',name : 'zylbmc',width : 80 ,sortable:false},
+            {label : '类型',name : 'zylbmc',width : 80,sortable:false},
+            {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
+            {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
+            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
+        ]
     });
 }
 
@@ -379,3 +427,18 @@ function onBodyDown(event) {
         hideMenu();
     }
 }
+var config = {
+    '.chosen-select' : {},
+    '.chosen-select-deselect' : {
+        allow_single_deselect : true
+    },
+    '.chosen-select-no-single' : {
+        disable_search_threshold : 10
+    },
+    '.chosen-select-no-results' : {
+        no_results_text : 'Oops, nothing found!'
+    },
+    '.chosen-select-width' : {
+        width : "95%"
+    }
+};
