@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="hooah hooah hooah">
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,13 +39,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            <state relative-caret-position="42">
+              <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
               <folding>
-                <marker date="1503392147000" expanded="true" signature="13255:13270" ph="..." />
-                <marker date="1503392147000" expanded="true" signature="13282:13296" ph="..." />
-                <marker date="1503392147000" expanded="true" signature="16989:17004" ph="..." />
-                <marker date="1503392147000" expanded="true" signature="17016:17030" ph="..." />
+                <marker date="1503392793000" expanded="true" signature="13264:13279" ph="..." />
+                <marker date="1503392793000" expanded="true" signature="13291:13305" ph="..." />
+                <marker date="1503392793000" expanded="true" signature="16998:17013" ph="..." />
+                <marker date="1503392793000" expanded="true" signature="17025:17039" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1231,14 +1230,7 @@
       <workItem from="1503038835823" duration="81000" />
       <workItem from="1503040852144" duration="30667000" />
       <workItem from="1503295324751" duration="20188000" />
-      <workItem from="1503382060074" duration="8088000" />
-    </task>
-    <task id="LOCAL-00151" summary="hooah hooah hooah">
-      <created>1503104456638</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1503104456638</updated>
+      <workItem from="1503382060074" duration="8306000" />
     </task>
     <task id="LOCAL-00152" summary="hooah hooah hooah">
       <created>1503105598006</created>
@@ -1576,11 +1568,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503369643988</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="hooah hooah hooah">
+      <created>1503392197740</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1503392197741</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381952000" />
+    <option name="totallyTimeSpent" value="382170000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2158,13 +2157,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        <state relative-caret-position="42">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           <folding>
-            <marker date="1503392147000" expanded="true" signature="13255:13270" ph="..." />
-            <marker date="1503392147000" expanded="true" signature="13282:13296" ph="..." />
-            <marker date="1503392147000" expanded="true" signature="16989:17004" ph="..." />
-            <marker date="1503392147000" expanded="true" signature="17016:17030" ph="..." />
+            <marker date="1503392793000" expanded="true" signature="13264:13279" ph="..." />
+            <marker date="1503392793000" expanded="true" signature="13291:13305" ph="..." />
+            <marker date="1503392793000" expanded="true" signature="16998:17013" ph="..." />
+            <marker date="1503392793000" expanded="true" signature="17025:17039" ph="..." />
           </folding>
         </state>
       </provider>
