@@ -4,7 +4,9 @@ var URL_ORGS = ahcourt.ctx + "/setting/organization/getlist.do";
 var URL_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
 //获取随机的案件
 var URL_RANDOM_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
+var URL_PROFESSIONALS = ahcourt.ctx + '/setting/professional/listjson.do';
 
+var lo;
 //获取ztree中选中节点的下级节点名称,返回数组
 function getSubCourtNameBYSelectedCourt() {
 
@@ -48,7 +50,7 @@ function extractRandomCases(casecount) {
 //将抽取的案件加入到待分配
 function addCases(caselist) {
     for(var i =0 ; caselist && i < caselist.length ; i ++){
-        joinedCases.push(caselist[i]);
+        joinedCases.push({});
     }
     $("#lbl_joined_case_count").text(joinedCases.length);
 }
@@ -58,10 +60,6 @@ function removeCases() {
 
 }
 
-//获取待分配案件
-function getCases() {
-    return joinedCases;
-}
 
 //获取待分配案件的案号
 function getCaseUniqleNames() {
@@ -72,8 +70,9 @@ function getCaseUniqleNames() {
 function refreshJoinedCasesGrid() {
     //根据案件性质，类型，区域，及是否分配属性进行过滤。(取所有未分配的案件)
     $("#table2").jqGrid('clearGridData');
-    var cases = getCases();
+    var cases = joinedCases;
     for ( var i = 0; i < cases.length; i++){
+        //todo 过滤
         $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
     }
 }
@@ -81,7 +80,80 @@ function refreshJoinedCasesGrid() {
 //刷新专家组列表
 var teams = [];
 function refreshTeamGrid() {
-    
+    $("#table3").jqGrid('clearGridData');
+    for ( var i = 0; i < teams.length; i++){
+        $("#table3").jqGrid('addRowData', teams[i].id, teams[i]);
+    }
+}
+
+function addProGroup(groupObject){
+    var idx = -1;
+    for(var i = 0 ; teams && i < teams.length ; i ++){
+        if(teams[i].id == groupObject.id){
+            idx = i;
+            break;
+        }
+    }
+    if(idx > -1){
+        teams.splice(idx,1);
+    }
+    // teams.push(groupObject);
+    teams.splice(0, 0, groupObject);
+    refreshTeamGrid();
+}
+
+function removeProGroup(id) {
+    layer.confirm('确认删除该专家组吗？', {
+        btn : [ '确认', '取消' ]
+    }, function(lo) {
+        layer.close(lo);
+        layer.msg("删除专家组成功",{icon:1});
+        var idx = -1;
+        for(var i = 0 ; teams && i < teams.length ; i ++){
+            if(teams[i].id == id){
+                idx = i;
+                break;
+            }
+        }
+        if(idx > -1){
+            teams.splice(idx,1);
+        }
+        refreshTeamGrid();
+    });
+}
+
+function editProGroup(id) {
+    lo = layer.open({
+        type : 1,
+        shift : 5,
+        title : '编辑组',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '600px', '400px' ],
+        content : $("#div_newGroup"),
+        cancel : function(index) {
+            layer.close(index);
+        },
+        success:function () {
+            var groupObj = null;
+            for(var i = 0 ; teams && i < teams.length ; i ++){
+                if(teams[i].id == id){
+                    groupObj = teams[i];
+                    break;
+                }
+            }
+            //设置form
+            $("#from_ipt_groupname").val(groupObj.name);
+            $("#form_ipt_groupid").val(groupObj.id);
+            $("#form_sel_teamleader").find("option").removeAttr("selected");
+            $("#form_sel_teamleader").val(groupObj.teamleaderid);
+            $("#form_sel_teamleader").trigger("chosen:updated");
+            var teanmates = groupObj.teammateids ? groupObj.teammateids.split(";"):[];
+            $("#form_sel_teammate").find("option").removeAttr("selected");
+            $("#form_sel_teammate").val(teanmates);
+            $("#form_sel_teammate").trigger("chosen:updated");
+        }
+    });
 }
 
 var max_allowed_extract_case_count = 1024;
@@ -165,7 +237,7 @@ $(function () {
     $("#btn_extract_random").click(function () {
         var casecount = $("#txt_random").val();
         if(casecount && !isNaN(casecount)){
-            var extractedcount = getCases().length;
+            var extractedcount = joinedCases.length;
             if(parseInt(casecount) + extractedcount > max_allowed_extract_case_count){
                 layer.msg("一次评查活动最多不允许抽取案件超过1024件。");
                 return false;
@@ -207,25 +279,74 @@ $(function () {
             }
         });
     });
-
     $("#btn_newGroup").click(function () {
-        layer.open({
+        //清空form
+        $("#from_ipt_groupname").val("");
+        $("#form_ipt_groupid").val("");
+        $("#form_sel_teamleader").find("option").removeAttr("selected");
+        $("#form_sel_teamleader").find("option:first").attr("selected","selected");
+        $("#form_sel_teamleader").trigger("chosen:updated");
+        $("#form_sel_teammate").find("option").removeAttr("selected");
+        $("#form_sel_teammate").trigger("chosen:updated");
+        lo = layer.open({
             type : 1,
             shift : 5,
             title : '新建组',
             shadeClose : false,
             shade : 0.3,
-            area : [ '600px', '300px' ],
+            area : [ '600px', '400px' ],
             content : $("#div_newGroup"),
             cancel : function(index) {
                 layer.close(index);
             }
         });
     });
+    
+    $("#btn_savegroup").click(function () {
+        if(!$("#from_ipt_groupname").val()){
+            layer.msg("组名不能为空!");
+            return false;
+        }
+        if(!$("#form_sel_teamleader").val()){
+            layer.msg("组长不能为空!");
+            return false;
+        }
+        layer.close(lo);
+        var tms = "";
+        $("#form_sel_teammate").find("option:selected").each(function () {
+            tms += $(this).attr("data-xm")+";"
+        });
+        addProGroup({
+            id:$("#form_ipt_groupid").val()?$("#form_ipt_groupid").val():uuid(),
+            name:$("#from_ipt_groupname").val(),
+            teamleaderid:$("#form_sel_teamleader").val(),
+            teamleadername:$("#form_sel_teamleader").find("option:selected").attr("data-xm"),
+            teammateids:$("#form_sel_teammate").val()?$("#form_sel_teammate").val().join(";"):"",
+            teammatenames:tms,
+            pc:"0",
+            zb:"0%"
+        });
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : URL_PROFESSIONALS,
+        datatype : 'json',
+        async : false,
+        success : function(data) {
+            var html="";
+            for (var i = 0; data && data.rows && i < data.rows.length; i++) {
+                html += '<option data-xm="'+data.rows[i].xm+'" value="' + data.rows[i].userid + '" >' + data.rows[i].xm + ' (' + data.rows[i].zzjgmc + ')' + '</option>'
+            }
+            $("#form_sel_teamleader").html("<option>--请选择--</option>"+html);
+            $("#form_sel_teammate").html(html);
+        }
+    });
 
     for ( var selector in config) {
         $(selector).chosen(config[selector]);
     }
+    $(".chosen-choices").css("cssText","height:80px !important");
     
     $("#form_sel_region").change(function () {
         refreshJoinedCasesGrid();
@@ -313,9 +434,7 @@ function loadGrid2() {
             {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
             {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
         ]
-        // ,pager:"#pager2",
-        // viewrecords: true
-    });//.jqGrid('setFrozenColumns');
+    });
 }
 
 function loadGrid3() {
@@ -326,20 +445,16 @@ function loadGrid3() {
         shrinkToFit : true,
         rowNum : 2000,
         colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '&nbsp;',name : 'ajid', width : 90,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick="" title="编辑"><i class="fa fa-edit"></i> </button>'
-                    +  '<button class="btn btn-link btn-xs " type="button" onclick="" title="移除"><i class="fa fa-trash"></i> </button>';
+            {label : 'id',name : 'id',hidden : true,key : true,sortable:false,frozen : true},
+            {label : '&nbsp;',name : '', width : 90,sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick="editProGroup(\'' + rowObject.id + '\')" title="编辑"><i class="fa fa-edit"></i> </button>'
+                    +  '<button class="btn btn-link btn-xs " type="button" onclick="removeProGroup(\'' + rowObject.id + '\')" title="移除"><i class="fa fa-trash"></i> </button>';
             }},
-            {label : '组名',name : 'xmzt',width : 100,sortable:false},
-            {label : '组长',name : 'xmzt',width : 80,sortable:false},
-            {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false,
-                formatter:function(cellvalue,options,rowObject){
-                    return '<a href="javascript:;" onclick=""></a>';
-                }
-            },
-            {label : '占比',name : 'htmc', width : 60,sortable:false}
+            {label : '组名',name : 'name',width : 100,sortable:false},
+            {label : '组长',name : 'teamleadername',width : 80,sortable:false},
+            {label : '组员',name : 'teammatenames', width : 200,sortable:false},
+            {label : '评查',name : 'pc', width : 60,sortable:false,align:'right'},
+            {label : '占比',name : 'zb', width : 60,sortable:false,align:'right'}
         ],
         pager:"#pager3",
         subGrid : true,
@@ -363,7 +478,7 @@ function initChildGrid1(parentRowID, parentRowKey) {
         shrinkToFit : false,
         rowNum : 100000,
         colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'ajid',name : 'id',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
             {label : '-',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="long-arrow-left"></i> </button>';
@@ -385,7 +500,11 @@ function initChildGrid1(parentRowID, parentRowKey) {
             {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
             {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
             {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
-        ]
+        ],
+        gridComplete:function () {
+            //在此查询专家评查案件并展示
+            //todo
+        }
     });
 }
 
@@ -471,3 +590,18 @@ var config = {
         width : "95%"
     }
 };
+
+
+function uuid() {
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+    var uuid = s.join("");
+    return uuid;
+}

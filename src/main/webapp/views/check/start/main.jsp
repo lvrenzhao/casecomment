@@ -301,28 +301,30 @@
   </div>
 
   <div id="div_newGroup" style="display: none;">
-    <div class="form_item wb50 fl">
-      <label>组名</label>
-      <input type="text" class="form-control" placeholder=""/>
+    <input type="hidden" id="form_ipt_groupid" />
+    <div class="form_item wb100 fl">
+      <label>组名<span>*</span></label>
+      <input type="text" class="form-control" placeholder="" id="from_ipt_groupname"/>
     </div>
 
-    <div class="form_item wb50 fl">
-      <label>组长</label>
-      <select data-placeholder="--选择组长--" class="chosen-select form-control "  id="form_sel_teamleader" style="width: 200px;">
-        <option value="1">张三</option>
+    <div class="form_item wb100 fl">
+      <label>组长<span>*</span></label>
+      <select data-placeholder=""  class="chosen-select form-control "  id="form_sel_teamleader" style="width: 200px;">
+        <option value="">--选择组长--</option>
+        <option value="1" >张三</option>
         <option value="2">李四</option>
       </select>
     </div>
 
-    <div class="form_item wb80 fl">
+    <div class="form_item wb100 fl">
       <label>组员</label>
       <select data-placeholder="--选择组员--" class="chosen-select form-control " retype="multiselect" multiple id="form_sel_teammate">
         <option value="1">张三</option>
         <option value="2">李四</option>
       </select>
     </div>
-    <div class="form_item wb20 fl" style="text-align: right;padding-top: 30px;">
-      <button class="btn btn-primary btn-sm" type="button" id="">确定</button>
+    <div class="form_item wb100 fl" style="text-align: center;padding-top: 30px;">
+      <button class="btn btn-primary btn-sm" type="button" id="btn_savegroup">确定</button>
     </div>
   </div>
 
