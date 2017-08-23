@@ -29,8 +29,8 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>
-        <table tableName="bd_casecheck" domainObjectName="BdCasecheck"></table>
+        <table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>
+        <!--<table tableName="bd_casecheck" domainObjectName="BdCasecheck"></table>
         <table tableName="bd_casecheck_jy" domainObjectName="BdCasecheckJy"></table>
         <table tableName="bd_casecheck_notice" domainObjectName="BdCasecheckNotice"></table>
         <table tableName="bd_casecheck_noticeread" domainObjectName="BdCasecheckNoticeread"></table>
