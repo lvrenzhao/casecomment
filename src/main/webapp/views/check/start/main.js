@@ -1,7 +1,7 @@
 //获取组织机构接口
 var URL_ORGS = ahcourt.ctx + "/setting/organization/getlist.do";
 //案件库接口，接受多个查询条件
-var URL_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
+var URL_CASES = ahcourt.ctx + '/case/list.do';
 //获取随机的案件
 var URL_RANDOM_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
 //获取专家接口

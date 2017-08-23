@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdMiddleCase {
+public class BdMiddleCase extends BaseEntity{
     private String ajid;
 
     private String ah;
