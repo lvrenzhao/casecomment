@@ -2,6 +2,7 @@ var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
 
 var ajid , mode;
 $(function () {
+
     mode = $.getUrlParam("mode");
     //### mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
@@ -45,7 +46,13 @@ function initTree() {
 }
 
 function selectCd() {
-    console.log(123);
+    var treeObj = $.fn.zTree.getZTreeObj("pTree");
+    var nodes = treeObj.getSelectedNodes();
+    if(nodes[0].name == "1.mp4"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/1.mp4";
+    }else if (nodes[0].name == "1.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/1.pdf";
+    }
 }
 
 

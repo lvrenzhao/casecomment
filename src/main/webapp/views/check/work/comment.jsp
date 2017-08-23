@@ -17,8 +17,110 @@
         <div class="bmbox_tool">
         </div>
     </div>
-    <div class="bmbox_content clearfix" >
-
+    <div class="bmbox_content clearfix" style="padding-bottom: 60px;" >
+        <table class="table table-bordered" id="table_score"  style="margin-bottom: 60px;">
+            <thead>
+            <tr>
+                <th class="wb5" rowspan="2" style="text-align: center">序号</th>
+                <th class="wb15" rowspan="2" style="text-align: center">评审内容</th>
+                <th class="wb30" rowspan="2" style="text-align: center">评分标准</th>
+                <th class="wb5" rowspan="2" style="text-align: center">分值</th>
+                <th class="wb20" colspan="2" style="text-align:center;">张三</th>
+                <th class="wb20" colspan="2" style="text-align:center;">李四</th>
+                <th class="wb5"  rowspan="2" style="text-align:center;">平均分</th>
+            </tr>
+            <tr>
+                <th  style="text-align: center">扣分</th>
+                <th style="text-align: center">扣分理由</th>
+                <th style="text-align: center">扣分</th>
+                <th style="text-align: center">扣分理由</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>事实证据与实体处理</td>
+                <td>审理查明的事实是否全面、客观、清楚</td>
+                <td style="text-align: right">8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>事实证据与实体处理</td>
+                <td>使用法律是否正确</td>
+                <td style="text-align: right">5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>事实证据与实体处理</td>
+                <td>处理结果是否适当</td>
+                <td style="text-align: right">3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>事实证据与实体处理</td>
+                <td>是否有其他不规范情形</td>
+                <td style="text-align: right">6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>审理程序</td>
+                <td>庭审是否规范严谨，能否有序组织举证，质证，认证和辩论。</td>
+                <td style="text-align: right">2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>审理程序</td>
+                <td>是否严格遵守规定</td>
+                <td style="text-align: right">2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>审理程序</td>
+                <td>是否充分保障诉讼参与人行使诉讼权利</td>
+                <td style="text-align: right">2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>满分</td>
+                <td colspan="7"></td>
+                <td style="text-align: right">100</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="bmbox_layout clearfix" style="height:200px">

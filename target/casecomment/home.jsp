@@ -32,7 +32,7 @@
                 <div class="form_item wb50 fl">
                     <div class="ibox m10" id="countbox2">
                         <div class="ibox-content bg1"> <h5 style="text-align: center">待评选三精案件数</h5>
-                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_sjpx_px').trigger('click')"><span id="label_count_2">1111</span></a></h1>
+                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_sjpx_px').trigger('click')"><span id="label_count_2">6</span></a></h1>
                         </div>
                     </div>
                 </div>

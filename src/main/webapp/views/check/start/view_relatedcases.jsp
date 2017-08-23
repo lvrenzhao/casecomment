@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=" />
+    <jsp:include page="/header.jsp?libs=jqgrid;layer" />
     <script src="view_relatedcases.js"></script>
 </head>
 <body>
