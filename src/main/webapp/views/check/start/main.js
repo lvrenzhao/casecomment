@@ -44,7 +44,6 @@ function extractRandomCases(casecount) {
         datatype : 'json',
         async : false,
         success : function(data) {
-            console.log(data.rows);
             addCases(data.rows);
             reloadGrid1();
             layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
