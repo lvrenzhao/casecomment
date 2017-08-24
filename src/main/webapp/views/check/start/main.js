@@ -137,13 +137,13 @@ function reloadTab3() {
     }
     $("#form_sel_region").html(qy_html);
     //设置性质分布控件
-    var xz_html = "<option value=''>归属法院</option>";
+    var xz_html = "<option value=''>案件性质</option>";
     for(var i = 0 ; xzs && i < xzs.length ; i ++){
         xz_html += "<option value='"+xzs[i].xz+"'>"+xzs[i].xz + " - 被抽中" + xzs[i].cases + "条 - 占比" + (xzs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
     $("#form_sel_xz").html(xz_html);
     //设置类型分布控件
-    var lx_html = "<option value=''>归属法院</option>";
+    var lx_html = "<option value=''>案件类型</option>";
     for(var i = 0 ; lxs && i < lxs.length ; i ++){
         lx_html += "<option value='"+lxs[i].lx+"'>"+lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
