@@ -59,6 +59,33 @@ function addCases(caselist) {
         delete obj.act;
         joinedCases.push(obj);
     }
+    reloadTab3();//刷新第三步，将待分配案件数，三个下拉框重置；
+    refreshJoinedCasesGrid();
+
+}
+
+//从待分配案件中移除
+function removeCase(ajid) {
+    layer.confirm('确认将该案件从待分配列表移除吗？', {
+        btn : [ '确认', '取消' ]
+    }, function(lo) {
+        layer.close(lo);
+        layer.msg("案件移除成功!",{icon:1});
+        var idx = -1;
+        for(var i = 0 ; joinedCases && i < joinedCases.length ; i ++){
+            if(joinedCases[i].ajid == ajid){
+                idx = i;
+            }
+        }
+        if(idx > -1){
+            joinedCases.splice(idx,1);
+        }
+        reloadTab3();//刷新第三步，将待分配案件数，三个下拉框重置；
+        refreshJoinedCasesGrid();
+    });
+}
+
+function reloadTab3() {
     $("#lbl_joined_case_count").text(joinedCases.length);
     //计算案件分布
     var qys = [] , xzs = [] , lxs = [] ;
@@ -121,13 +148,7 @@ function addCases(caselist) {
         lx_html += "<option value='"+lxs[i].lx+"'>"+lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
     $("#form_sel_lx").html(lx_html);
-
 }
-
-//从待分配案件中移除
-function removeCases() {
-}
-
 
 //获取待分配案件的案号
 function getJoinedCaseIds() {
@@ -281,10 +302,6 @@ $(function () {
         onStepChanging: function (event, currentIndex, newIndex) {
             if(currentIndex == 0 && formChanged()){
                 reloadGrid1();
-            }
-            if(currentIndex == 1 && newIndex == 2){
-                refreshJoinedCasesGrid();
-                refreshTeamGrid();
             }
             if(currentIndex == 2){
                 $(".subforms").css("cssText","background-color:#1AB394 !important;color:#fff !important");
@@ -533,7 +550,7 @@ function loadGrid2() {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'raj',name : 'raj',hidden : true,sortable:false,frozen : true},
             {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="fa fa-trash"></i> </button>';
+                return '<button class="btn btn-link btn-xs " type="button" onclick="removeCase(\'' + rowObject.ajid + '\')"><i class="fa fa-trash"></i> </button>';
             }},
             {label : '检',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';

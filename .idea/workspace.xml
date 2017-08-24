@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="hooah hooah hooah">
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,13 +27,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="809">
-              <caret line="188" column="14" lean-forward="false" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
+            <state relative-caret-position="274">
+              <caret line="304" column="13" lean-forward="false" selection-start-line="304" selection-start-column="13" selection-end-line="304" selection-end-column="13" />
               <folding>
-                <marker date="1503543929000" expanded="true" signature="17829:17844" ph="..." />
-                <marker date="1503543929000" expanded="true" signature="17856:17870" ph="..." />
-                <marker date="1503543929000" expanded="true" signature="21613:21628" ph="..." />
-                <marker date="1503543929000" expanded="true" signature="21640:21654" ph="..." />
+                <marker date="1503544710000" expanded="true" signature="18326:18341" ph="..." />
+                <marker date="1503544710000" expanded="true" signature="18353:18367" ph="..." />
+                <marker date="1503544710000" expanded="true" signature="22110:22125" ph="..." />
+                <marker date="1503544710000" expanded="true" signature="22137:22151" ph="..." />
               </folding>
             </state>
           </provider>
@@ -62,9 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pull</find>
-      <find>chosen</find>
-      <find>rightslide_close</find>
       <find>f1f1f1fff</find>
       <find>f1f1f1</find>
       <find>badge_sjpx</find>
@@ -90,8 +86,11 @@
       <find>getJoinedCaseIds</find>
       <find>URL_RANDOM_CASES</find>
       <find>addca</find>
-      <find>refreshJoinedCasesGrid</find>
       <find>todo</find>
+      <find>removeProGroup</find>
+      <find>removeCase</find>
+      <find>removeCases</find>
+      <find>refreshJoinedCasesGrid</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1086,14 +1085,7 @@
       <workItem from="1503040852144" duration="30667000" />
       <workItem from="1503295324751" duration="20188000" />
       <workItem from="1503382060074" duration="8429000" />
-      <workItem from="1503468879325" duration="16145000" />
-    </task>
-    <task id="LOCAL-00161" summary="hooah hooah hooah">
-      <created>1503150855100</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1503150855101</updated>
+      <workItem from="1503468879325" duration="16843000" />
     </task>
     <task id="LOCAL-00162" summary="hooah hooah hooah">
       <created>1503151980686</created>
@@ -1431,11 +1423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503538686614</updated>
     </task>
-    <option name="localTasksCounter" value="210" />
+    <task id="LOCAL-00210" summary="hooah hooah hooah">
+      <created>1503544117739</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1503544117739</updated>
+    </task>
+    <option name="localTasksCounter" value="211" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398438000" />
+    <option name="totallyTimeSpent" value="399136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2067,13 +2066,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="188" column="14" lean-forward="false" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
+        <state relative-caret-position="274">
+          <caret line="304" column="13" lean-forward="false" selection-start-line="304" selection-start-column="13" selection-end-line="304" selection-end-column="13" />
           <folding>
-            <marker date="1503543929000" expanded="true" signature="17829:17844" ph="..." />
-            <marker date="1503543929000" expanded="true" signature="17856:17870" ph="..." />
-            <marker date="1503543929000" expanded="true" signature="21613:21628" ph="..." />
-            <marker date="1503543929000" expanded="true" signature="21640:21654" ph="..." />
+            <marker date="1503544710000" expanded="true" signature="18326:18341" ph="..." />
+            <marker date="1503544710000" expanded="true" signature="18353:18367" ph="..." />
+            <marker date="1503544710000" expanded="true" signature="22110:22125" ph="..." />
+            <marker date="1503544710000" expanded="true" signature="22137:22151" ph="..." />
           </folding>
         </state>
       </provider>
