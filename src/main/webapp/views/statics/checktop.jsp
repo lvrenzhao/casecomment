@@ -108,7 +108,7 @@
 
 
           $("#table1").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
@@ -181,7 +181,7 @@
           });
 
           $("#table2").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
@@ -254,7 +254,7 @@
           });
 
           $("#table3").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
@@ -328,7 +328,7 @@
 
 
           $("#table4").jqGrid({
-              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
