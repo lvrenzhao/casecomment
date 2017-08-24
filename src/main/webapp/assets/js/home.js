@@ -29,7 +29,7 @@ function loadGrid1() {
                 }
                 return '<a href="javascript:;" onclick="openDetails(1,\'' + rowObject.ggid + '\')"><span style="'+style+'">'+cellvalue+'</span></a>';
             }},
-            {label : '发布人',name : 'lxrmc',width : 100,sortable:false},
+            {label : '发布人',name : 'fqr',width : 100,sortable:false},
             {label : '发布时间', name : 'fbsj',width : 100,sortable:false}
         ],
         pager : '#pager1'
@@ -58,7 +58,7 @@ function loadGrid2() {
                 }
                 return '<a href="javascript:;" onclick="openDetails(2,\'' + rowObject.ggid + '\')"><span style="'+style+'">'+cellvalue+'</span></a>';
             }},
-            {label : '发布人',name : 'lxrmc',width : 100,sortable:false},
+            {label : '发布人',name : 'fqr',width : 100,sortable:false},
             {label : '发布时间', name : 'fbsj',width : 100,sortable:false}
         ],
         pager : '#pager2'
@@ -87,7 +87,7 @@ function loadGrid3() {
                 }
                 return '<a href="javascript:;" onclick="openDetails(3,\'' + rowObject.ggid + '\')"><span style="'+style+'">'+cellvalue+'</span></a>';
             }},
-            {label : '发布人',name : 'lxrmc',width : 100,sortable:false},
+            {label : '发布人',name : 'fqr',width : 100,sortable:false},
             {label : '发布时间', name : 'fbsj',width : 100,sortable:false}
         ],
         pager : '#pager3'

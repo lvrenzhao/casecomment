@@ -23,7 +23,7 @@ $(function(){
             {label : '公告标题',name : 'ggbt',sortable:false,width : 300 },
             {label : '评查类型',name : 'pclx',align : 'center',sortable:false, width : 100},
             {label : '评查任务',name : 'pclx',align : 'center',sortable:false,width : 100},
-            {label : '发起人',name : 'lxrmc',sortable:false,width : 100},
+            {label : '发起人',name : 'fqr',sortable:false,width : 100},
             {label : '发布时间',name : 'fbsj',sortable:false,width : 100}
         ],
         pager : '#pager1'
@@ -52,8 +52,8 @@ $(function(){
             {label : '公告标题',name : 'ggbt',sortable:false,width : 300 },
             {label : '状态',name : 'ggzt',align : 'center',sortable:false,width : 100},
             {label : '评查类型',name : 'pclx',align : 'center',sortable:false,width : 100},
-            {label : '评查任务',name : 'pclx',align : 'center', sortable:false,width : 100},
-            {label : '发起人',name : 'lxrmc',sortable:false,width : 100},
+            {label : '评查任务',name : 'pcrw',align : 'center', sortable:false,width : 100},
+            {label : '发起人',name : 'fqr',sortable:false,width : 100},
             {label : '发布时间',name : 'fbsj',sortable:false,width : 120},
             {label : '审核人',name : 'shr',sortable:false,width : 100} ,
             {label : '审核时间',name : 'shsj',sortable:false,width : 120},

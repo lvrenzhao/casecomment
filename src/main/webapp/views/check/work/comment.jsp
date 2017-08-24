@@ -25,8 +25,8 @@
                 <th class="wb15" rowspan="2" style="text-align: center">评审内容</th>
                 <th class="wb30" rowspan="2" style="text-align: center">评分标准</th>
                 <th class="wb5" rowspan="2" style="text-align: center">分值</th>
-                <th class="wb20" colspan="2" style="text-align:center;">张三</th>
-                <th class="wb20" colspan="2" style="text-align:center;">李四</th>
+                <th class="wb20" colspan="2" style="text-align:center;">宋佳卿</th>
+                <th class="wb20" colspan="2" style="text-align:center;">李飞</th>
                 <th class="wb5"  rowspan="2" style="text-align:center;">平均分</th>
             </tr>
             <tr>

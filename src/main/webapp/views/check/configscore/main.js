@@ -46,7 +46,7 @@ function loadTables() {
                 return btn_str;
             }},
             {label : '模板名称',name : 'ggbt',sortable:false,width : 400},
-            {label : '模板说明',name : 'pclx',sortable:false,align : 'center',width : 300},
+            {label : '模板说明',name : '',sortable:false,align : 'center',width : 300},
             {label : '创建人',name : 'lxrmc',sortable:false,width : 100},
             {label : '创建时间', name : 'fbsj',sortable:false,width : 100}
         ],
