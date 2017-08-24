@@ -287,13 +287,12 @@
   <div id="div_chooseTo" style="display: none;padding-top: 20px;">
     <div class="form_item wb75 fl">
       <label>选则专家组</label>
-      <select class="form-control">
+      <select class="form-control" id="from_sel_groups">
         <option value="">--请选择--</option>
-        <option value="">刑事组</option>
       </select>
     </div>
     <div class="form_item wb25 fl" style="text-align: right;padding-top: 30px;">
-      <button class="btn btn-primary" type="button" id="">确定</button>
+      <button class="btn btn-primary" type="button" id="btn_chosenCaseToGroup">确定</button>
     </div>
   </div>
 

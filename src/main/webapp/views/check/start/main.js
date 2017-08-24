@@ -167,48 +167,80 @@ function refreshJoinedCasesGrid() {
     for ( var i = 0; i < cases.length; i++){
         if($("#form_sel_region").val() && $("#form_sel_xz").val() && $("#form_sel_lx").val()){
             if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_region").val() && $("#form_sel_xz").val()){
             if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val()){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_region").val() && $("#form_sel_lx").val()){
             if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].lx == $("#form_sel_lx").val()){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_xz").val() && $("#form_sel_lx").val()){
             if(cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_region").val()){
-            if(cases[i].gsfy == $("#form_sel_region").val() ){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            if(cases[i].gsfy == $("#form_sel_region").val()){
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_xz").val()){
-            if(cases[i].xz == $("#form_sel_xz").val() ){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            if(cases[i].xz == $("#form_sel_xz").val()){
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else if ($("#form_sel_lx").val()){
             if(cases[i].lx == $("#form_sel_lx").val()){
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                if(cases[i].groupid){
+                    continue;
+                }else{
+                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                }
             }else{
                 continue;
             }
         }else{
-            $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            if(cases[i].groupid){
+                continue;
+            }else{
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }
         }
     }
 }
@@ -216,10 +248,26 @@ function refreshJoinedCasesGrid() {
 //刷新专家组列表
 var teams = [];
 function refreshTeamGrid() {
+    var chosedcount= 0;
+    for(var i = 0 ; teams && i < teams.length ; i ++){
+        teams[i].pc = 0;
+        for(var j = 0 ; joinedCases && j < joinedCases.length; j ++){
+            if(joinedCases[j].groupid == teams[i].id){
+                teams[i].pc = parseInt(teams[i].pc) + 1;
+                chosedcount++;
+            }
+        }
+    }
+
     $("#table3").jqGrid('clearGridData');
     for ( var i = 0; i < teams.length; i++){
-        $("#table3").jqGrid('addRowData', teams[i].id, teams[i]);
+        var row = teams[i];
+        if(chosedcount > 0){
+            row.zb = (parseInt(row.pc)/chosedcount * 100).toFixed(0)+"%";
+        }
+        $("#table3").jqGrid('addRowData', row.id, row);
     }
+
 }
 
 function addProGroup(groupObject){
@@ -254,6 +302,7 @@ function removeProGroup(id) {
         if(idx > -1){
             teams.splice(idx,1);
         }
+        reChooseCasesByTeam(id);//撤销之前对该组的案件分配
         refreshTeamGrid();
     });
 }
@@ -290,6 +339,37 @@ function editProGroup(id) {
             $("#form_sel_teammate").trigger("chosen:updated");
         }
     });
+}
+
+//分配案件
+function chooseCases(ids,teamid) {
+    for(var i = 0 ; joinedCases && i < joinedCases.length; i ++){
+        if(ids.indexOf(joinedCases[i].ajid) > -1){
+            joinedCases[i].groupid = teamid;
+        }
+    }
+    refreshJoinedCasesGrid();
+    refreshTeamGrid();
+}
+//撤销分配（整组）
+function reChooseCasesByTeam(teamid) {
+    for(var i = 0 ; joinedCases && i < joinedCases.length; i ++){
+        if(joinedCases[i].groupid && joinedCases[i].groupid == teamid){
+            joinedCases[i].groupid = null;
+        }
+    }
+    refreshJoinedCasesGrid();
+    refreshTeamGrid();
+}
+//撤销分配（单个案件）
+function reChooseCasesByCase(caseid) {
+    for(var i = 0 ; joinedCases && i < joinedCases.length; i ++){
+        if(joinedCases[i].groupid && joinedCases[i].ajid == caseid){
+            joinedCases[i].groupid = null;
+        }
+    }
+    refreshJoinedCasesGrid();
+    // refreshTeamGrid();
 }
 
 var max_allowed_extract_case_count = 1024;
@@ -397,8 +477,20 @@ $(function () {
         height:300
     });
 
+    var l_chosen_group;
     $("#btn_chooseTo").click(function () {
-        layer.open({
+        var ids = $("#table2").jqGrid('getGridParam', 'selarrrow');
+        if(ids.length == 0){
+            layer.msg("请先从待分配案件选择至少一条案件后再分配!");
+            return;
+        }
+        //先动态填充组到选择控件中
+        var html = "<option value=''>--请选择专家组--</option>";
+        for(var i = 0 ; teams && i < teams.length ; i ++){
+            html += "<option value='"+teams[i].id+"'>"+teams[i].name+"</option>";
+        }
+        $("#from_sel_groups").html(html);
+        l_chosen_group = layer.open({
             type : 1,
             shift : 5,
             title : '将选中案件分配至...',
@@ -410,6 +502,16 @@ $(function () {
                 layer.close(index);
             }
         });
+    });
+    $("#btn_chosenCaseToGroup").click(function () {
+        if(!$("#from_sel_groups").val()){
+            layer.msg("必须选择一个专家组!");
+            return false;
+        }
+        var caselist = [];
+        var ids = $("#table2").jqGrid('getGridParam', 'selarrrow');
+        chooseCases(ids,$("#from_sel_groups").val());
+        layer.close(l_chosen_group);
     });
     $("#btn_newGroup").click(function () {
         //清空form

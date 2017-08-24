@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="hooah hooah hooah">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2537">
-              <caret line="168" column="60" lean-forward="false" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="60" />
+            <state relative-caret-position="506">
+              <caret line="184" column="29" lean-forward="false" selection-start-line="184" selection-start-column="23" selection-end-line="184" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -37,13 +38,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-59">
-              <caret line="145" column="40" lean-forward="false" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
+            <state relative-caret-position="195">
+              <caret line="252" column="24" lean-forward="false" selection-start-line="252" selection-start-column="24" selection-end-line="252" selection-end-column="24" />
               <folding>
-                <marker date="1503553596000" expanded="true" signature="18326:18341" ph="..." />
-                <marker date="1503553596000" expanded="true" signature="18353:18367" ph="..." />
-                <marker date="1503553596000" expanded="true" signature="22110:22125" ph="..." />
-                <marker date="1503553596000" expanded="true" signature="22137:22151" ph="..." />
+                <marker date="1503558164000" expanded="true" signature="21473:21488" ph="..." />
+                <marker date="1503558164000" expanded="true" signature="21500:21514" ph="..." />
+                <marker date="1503558164000" expanded="true" signature="25257:25272" ph="..." />
+                <marker date="1503558164000" expanded="true" signature="25284:25298" ph="..." />
               </folding>
             </state>
           </provider>
@@ -61,8 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>f1f1f1fff</find>
-      <find>f1f1f1</find>
       <find>badge_sjpx</find>
       <find>summ</find>
       <find>div_chooseTo</find>
@@ -70,7 +69,6 @@
       <find>reloadGrid</find>
       <find>subforms</find>
       <find>ids</find>
-      <find>caselist</find>
       <find>btn_newgroup</find>
       <find>uuid</find>
       <find>getid</find>
@@ -91,6 +89,9 @@
       <find>removeCase</find>
       <find>removeCases</find>
       <find>refreshJoinedCasesGrid</find>
+      <find>caselist</find>
+      <find>chooseCases</find>
+      <find>chosedcount</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1085,14 +1086,7 @@
       <workItem from="1503040852144" duration="30667000" />
       <workItem from="1503295324751" duration="20188000" />
       <workItem from="1503382060074" duration="8429000" />
-      <workItem from="1503468879325" duration="16999000" />
-    </task>
-    <task id="LOCAL-00163" summary="hooah hooah hooah">
-      <created>1503152694043</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1503152694044</updated>
+      <workItem from="1503468879325" duration="21013000" />
     </task>
     <task id="LOCAL-00164" summary="hooah hooah hooah">
       <created>1503153741149</created>
@@ -1430,11 +1424,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503553530267</updated>
     </task>
-    <option name="localTasksCounter" value="212" />
+    <task id="LOCAL-00212" summary="hooah hooah hooah">
+      <created>1503553708858</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1503553708859</updated>
+    </task>
+    <option name="localTasksCounter" value="213" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="399292000" />
+    <option name="totallyTimeSpent" value="403306000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2058,21 +2059,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2537">
-          <caret line="168" column="60" lean-forward="false" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="60" />
+        <state relative-caret-position="506">
+          <caret line="184" column="29" lean-forward="false" selection-start-line="184" selection-start-column="23" selection-end-line="184" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-59">
-          <caret line="145" column="40" lean-forward="false" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
+        <state relative-caret-position="195">
+          <caret line="252" column="24" lean-forward="false" selection-start-line="252" selection-start-column="24" selection-end-line="252" selection-end-column="24" />
           <folding>
-            <marker date="1503553596000" expanded="true" signature="18326:18341" ph="..." />
-            <marker date="1503553596000" expanded="true" signature="18353:18367" ph="..." />
-            <marker date="1503553596000" expanded="true" signature="22110:22125" ph="..." />
-            <marker date="1503553596000" expanded="true" signature="22137:22151" ph="..." />
+            <marker date="1503558164000" expanded="true" signature="21473:21488" ph="..." />
+            <marker date="1503558164000" expanded="true" signature="21500:21514" ph="..." />
+            <marker date="1503558164000" expanded="true" signature="25257:25272" ph="..." />
+            <marker date="1503558164000" expanded="true" signature="25284:25298" ph="..." />
           </folding>
         </state>
       </provider>
