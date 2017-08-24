@@ -35,7 +35,7 @@ $(function () {
             }
         }, {
             label : '公告标题',
-            name : 'ggbt',
+            name : 'pxggbt',
             width : 300,
             formatter : function(cellvalue, options, rowObject) {
                 var style = "";
@@ -63,7 +63,7 @@ $(function () {
             width : 100
         },{
             label : '发起人',
-            name : 'lxrmc',
+            name : 'fqr',
             width : 100
         }, {
             label : '发布时间',
@@ -98,24 +98,24 @@ $(function () {
         rowList : [ 10, 20, 30 ],
         colModel : [
             {label : 'id',name : 'id',hidden : true,key : true},
-            {label : '案号',name : 'pclx',sortable:false,width : 120},
-            {label : '所属评选公告',name : 'pclx',sortable:false,width : 200},
+            {label : '案号',name : 'ah',sortable:false,width : 120},
+            {label : '所属评选公告',name : 'pxggbt',sortable:false,width : 200},
             {label : '评选类型',name : 'pclx',sortable:false,width : 100},
-            {label : '评选得分',name : 'shsj',sortable:false,width : 100},
-            {label : '评选时间',name : '',sortable:false,width : 100},
-            {label : '填报日期', name : 'fbsj',sortable:false,width : 100},
-            {label : '推荐理由',name : 'shr',width : 300,sortable:false,
+            {label : '评选得分',name : 'pcdf',sortable:false,width : 100},
+            {label : '评选时间',name : 'pcsj',sortable:false,width : 100},
+            {label : '填报日期', name : '',sortable:false,width : 100},
+            {label : '推荐理由',name : '',width : 300,sortable:false,
                 formatter:function (cellvalue,options,rowObject) {
                     return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
                 }
             } ,
-            {label : '归属法院',name : 'lxrmc',sortable:false,width : 100},
-            {label : '承办部门',name : 'fbsj',sortable:false,width : 100},
-            {label : '承办人',name : 'fbsj',sortable:false,width : 100},
-            {label : '性质',name : 'zylbmc',sortable:false,width : 80},
-            {label : '案由',name : 'xmfzrmc',sortable:false,width : 150},
-            {label : '结案方式',name : 'xmjlmc',sortable:false,width : 80 },
-            {label : '结案时间',name : 'xmcymc',sortable:false,width : 80}
+            {label : '归属法院',name : 'gsfy',sortable:false,width : 100},
+            {label : '承办部门',name : 'cbbm',sortable:false,width : 100},
+            {label : '承办人',name : 'cbr',sortable:false,width : 100},
+            {label : '性质',name : 'xz',sortable:false,width : 80},
+            {label : '案由',name : 'ay',sortable:false,width : 150},
+            {label : '结案方式',name : 'jafs',sortable:false,width : 80 },
+            {label : '结案时间',name : 'jasj',sortable:false,width : 80}
         ],
         pager : '#pager2'
         ,viewrecords: true

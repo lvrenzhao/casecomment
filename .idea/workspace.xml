@@ -13,9 +13,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" afterPath="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/work/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/work/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" afterPath="$PROJECT_DIR$/target/casecomment/assets/data/casecheck_notice_verify_table1.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,41 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="casecheck_notice_verify_table1.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_relatedcases.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+            <state relative-caret-position="232">
+              <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -145,7 +115,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/view_bypcid.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/details.js" />
@@ -158,13 +127,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/setting/user/input.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/reject/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/all/main.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/my/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/verify/main.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/all/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/configlevel/main.js" />
@@ -195,6 +161,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
       </list>
     </option>
   </component>
@@ -389,7 +359,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -423,7 +393,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1146,14 +1116,7 @@
       <workItem from="1503040852144" duration="30667000" />
       <workItem from="1503295324751" duration="20188000" />
       <workItem from="1503382060074" duration="8429000" />
-      <workItem from="1503468879325" duration="28919000" />
-    </task>
-    <task id="LOCAL-00172" summary="hooah hooah hooah">
-      <created>1503187406962</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1503187406962</updated>
+      <workItem from="1503468879325" duration="29346000" />
     </task>
     <task id="LOCAL-00173" summary="hooah hooah hooah">
       <created>1503188525238</created>
@@ -1491,11 +1454,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503578120810</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="hooah hooah hooah">
+      <created>1503578774513</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1503578774513</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="411212000" />
+    <option name="totallyTimeSpent" value="411639000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1660,46 +1630,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/setting/user/input.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="17" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/setting/user/input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/setting/user/list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="105" column="121" lean-forward="false" selection-start-line="105" selection-start-column="93" selection-end-line="105" selection-end-column="121" />
-          <folding>
-            <marker date="1493695550000" expanded="true" signature="2263:2269" ph="&amp;nbsp;" />
-            <marker date="1493695550000" expanded="true" signature="2280:2286" ph="&amp;nbsp;" />
-            <marker date="1493695550000" expanded="true" signature="2450:2456" ph="&amp;nbsp;" />
-            <marker date="1493695550000" expanded="true" signature="2629:2635" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/setting/role/list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="270" column="11" lean-forward="true" selection-start-line="270" selection-start-column="11" selection-end-line="270" selection-end-column="11" />
-          <folding>
-            <marker date="1492699998000" expanded="true" signature="967:973" ph="&amp;nbsp;" />
-            <marker date="1492699998000" expanded="true" signature="984:990" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/view_bypcid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -2060,7 +1990,7 @@
         <state relative-caret-position="-290">
           <caret line="34" column="176" lean-forward="false" selection-start-line="34" selection-start-column="176" selection-end-line="34" selection-end-column="176" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#h1#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#h1#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2105,6 +2035,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10">
@@ -2121,10 +2059,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/data/casecheck_notice_verify_table1.json">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+        <state relative-caret-position="578">
+          <caret line="106" column="36" lean-forward="false" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+          <folding>
+            <marker date="1503578951000" expanded="true" signature="1742:1748" ph="&amp;nbsp;" />
+            <marker date="1503578951000" expanded="true" signature="1748:1754" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="913">
+          <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+          <folding>
+            <marker date="1503579013000" expanded="true" signature="1983:1998" ph="..." />
+            <marker date="1503579013000" expanded="true" signature="2010:2024" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
           <folding />
         </state>
       </provider>

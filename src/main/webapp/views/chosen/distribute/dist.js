@@ -38,7 +38,7 @@ $(function () {
 
 function loadGrid2() {
     $("#table2").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        // url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
         multiselect : true,
@@ -78,7 +78,7 @@ function loadGrid2() {
 
 function loadGrid3() {
     $("#table3").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        // url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
         datatype : "json",
         mtype : "post",
         height : $('body').height() - 175,
