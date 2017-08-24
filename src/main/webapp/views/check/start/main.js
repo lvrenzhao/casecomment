@@ -56,7 +56,9 @@ function extractRandomCases(casecount) {
 function addCases(caselist) {
     for(var i =0 ; caselist && i < caselist.length ; i ++){
         var obj = caselist[i];
-        delete obj.act;
+        delete obj.fmt;
+        delete obj.fmt1;
+        delete obj.fmt2;
         joinedCases.push(obj);
     }
     reloadTab3();//刷新第三步，将待分配案件数，三个下拉框重置；
@@ -604,15 +606,26 @@ function loadGrid1() {
         height : $('body').height() - 230,
         width : $('body').width() ,
         rownumbers : true,
-        shrinkToFit : true,
+        shrinkToFit : false,
         rowNum : 20,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'raj',name : 'raj',hidden : true,sortable:false,frozen : true},
-            {label : '案号',name : 'ah', width : 120,sortable:false,frozen : true},
+            {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
+            // {label : '案号',name : 'ah', width : 120,sortable:false,frozen : true},
+            {label : '案号',name : 'fmt1', width : 120,sortable:false,frozen : true,
+                formatter:function (cellvalue,options,rowObject) {
+                    return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
+                }
+            },
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {
                     return '<a onclick="viewRelated(\'' + rowObject.raj + '\')" href="javascript:;">'+rowObject.raj+'</a>';
+                }
+            },
+            {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
+                formatter:function (cellvalue,options,rowObject) {
+                    return '<a onclick="" href="javascript:;">'+rowObject.raj+'</a>';
                 }
             },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
@@ -620,8 +633,8 @@ function loadGrid1() {
             {label : '承办人',name : 'cbr',width : 80,sortable:false},
             {label : '性质',name : 'xz',width : 80 ,sortable:false},
             {label : '类型',name : 'lx',width : 80,sortable:false},
-            {label : '案由',name : 'ay',width : 120,sortable:false},
-            {label : '结案方式',name : 'jafs', width : 80,sortable:false},
+            {label : '案由',name : 'ay',width : 150,sortable:false},
+            {label : '结案方式',name : 'jafs', width : 120,sortable:false},
             {label : '结案时间',name : 'jasj', width : 80,sortable:false}
         ],
         pager:"#pager1",
@@ -775,7 +788,7 @@ function check(mode,ajid) {
     layer.open({
         type : 2,
         shift : 5,
-        title : '案件评查',
+        title : '查看案件资料',
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],

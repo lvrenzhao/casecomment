@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="bmbox_content clearfix fullbox">
-        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" frameborder="0" seamless></iframe>
+        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" frameborder="0" seamless src="viewer.jsp"></iframe>
     </div>
 </div>
 </body>
