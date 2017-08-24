@@ -161,22 +161,19 @@
 
               <div class="form_item wb25 fl">
                 <select class="form-control" id="form_sel_region">
-                  <option value="">区域分布</option>
-                  <option value="1">合肥 - 共11件 - 占比25%</option>
+                  <option value="">归属法院</option>
                 </select>
               </div>
 
               <div class="form_item wb25 fl">
                 <select class="form-control" id="form_sel_xz">
-                  <option value="">案件性质分布</option>
-                  <option value="1">民事 - 共11件 - 占比25%</option>
+                  <option value="">案件性质</option>
                 </select>
               </div>
 
               <div class="form_item wb25 fl">
                 <select class="form-control" id="form_sel_lx">
-                  <option value="">案件类型分布</option>
-                  <option value="1">抗诉 - 共11件 - 占比25%</option>
+                  <option value="">案件类型</option>
                 </select>
               </div>
 

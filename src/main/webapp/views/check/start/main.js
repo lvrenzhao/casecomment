@@ -60,6 +60,68 @@ function addCases(caselist) {
         joinedCases.push(obj);
     }
     $("#lbl_joined_case_count").text(joinedCases.length);
+    //计算案件分布
+    var qys = [] , xzs = [] , lxs = [] ;
+
+    for(var i = 0 ; joinedCases && i < joinedCases.length ; i ++){
+        var item = joinedCases[i];
+        //计算区域分布
+        var isInQy = false;
+        for(var x = 0 ; x < qys.length; x++){
+            if(qys[x].gsfy == item.gsfy){
+                qys[x].cases += 1;
+                isInQy = true;
+                break;
+            }
+        }
+        if(!isInQy){
+            qys.push({gsfy:item.gsfy,cases:1});
+        }
+        //计算性质分布
+        var isInXz = false;
+        for(var x = 0 ; x < xzs.length; x++){
+            if(xzs[x].xz == item.xz){
+                xzs[x].cases += 1;
+                isInXz = true;
+                break;
+            }
+        }
+        if(!isInXz){
+            xzs.push({xz:item.xz,cases:1});
+        }
+        //计算类型分布
+        var isInLx = false;
+        for(var x = 0 ; x < lxs.length; x++){
+            if(lxs[x].lx == item.lx){
+                lxs[x].cases += 1;
+                isInLx = true;
+                break;
+            }
+        }
+        if(!isInLx){
+            lxs.push({lx:item.lx,cases:1});
+        }
+    }
+
+    //设置区域分布控件
+    var qy_html = "<option value=''>归属法院</option>";
+    for(var i = 0 ; qys && i < qys.length ; i ++){
+        qy_html += "<option value='"+qys[i].gsfy+"'>"+qys[i].gsfy + " - 被抽中" + qys[i].cases + "条 - 占比" + (qys[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
+    }
+    $("#form_sel_region").html(qy_html);
+    //设置性质分布控件
+    var xz_html = "<option value=''>归属法院</option>";
+    for(var i = 0 ; xzs && i < xzs.length ; i ++){
+        xz_html += "<option value='"+xzs[i].xz+"'>"+xzs[i].xz + " - 被抽中" + xzs[i].cases + "条 - 占比" + (xzs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
+    }
+    $("#form_sel_xz").html(xz_html);
+    //设置类型分布控件
+    var lx_html = "<option value=''>归属法院</option>";
+    for(var i = 0 ; lxs && i < lxs.length ; i ++){
+        lx_html += "<option value='"+lxs[i].lx+"'>"+lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
+    }
+    $("#form_sel_lx").html(lx_html);
+
 }
 
 //从待分配案件中移除
@@ -82,8 +144,51 @@ function refreshJoinedCasesGrid() {
     $("#table2").jqGrid('clearGridData');
     var cases = joinedCases;
     for ( var i = 0; i < cases.length; i++){
-        //todo 过滤
-        $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+        if($("#form_sel_region").val() && $("#form_sel_xz").val() && $("#form_sel_lx").val()){
+            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_region").val() && $("#form_sel_xz").val()){
+            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val()){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_region").val() && $("#form_sel_lx").val()){
+            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].lx == $("#form_sel_lx").val()){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_xz").val() && $("#form_sel_lx").val()){
+            if(cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_region").val()){
+            if(cases[i].gsfy == $("#form_sel_region").val() ){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_xz").val()){
+            if(cases[i].xz == $("#form_sel_xz").val() ){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else if ($("#form_sel_lx").val()){
+            if(cases[i].lx == $("#form_sel_lx").val()){
+                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+            }else{
+                continue;
+            }
+        }else{
+            $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+        }
     }
 }
 
