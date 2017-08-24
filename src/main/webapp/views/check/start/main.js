@@ -622,11 +622,11 @@ function loadGrid1() {
                     return '<a onclick="viewRelated(\'' + rowObject.raj + '\')" href="javascript:;">'+rowObject.raj+'</a>';
                 }
             },
-            {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
-                formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="" href="javascript:;">'+rowObject.raj+'</a>';
-                }
-            },
+            // {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
+            //     formatter:function (cellvalue,options,rowObject) {
+            //         return '<a onclick="" href="javascript:;">'+rowObject.raj+'</a>';
+            //     }
+            // },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
             {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
             {label : '承办人',name : 'cbr',width : 80,sortable:false},

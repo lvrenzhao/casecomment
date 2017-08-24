@@ -42,77 +42,77 @@
                 <td>事实证据与实体处理</td>
                 <td>审理查明的事实是否全面、客观、清楚</td>
                 <td style="text-align: right">8</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>2</td>
+                <td>证据不够充分</td>
+                <td>1</td>
+                <td>关键证据不够充分</td>
+                <td>6.5</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>事实证据与实体处理</td>
                 <td>使用法律是否正确</td>
                 <td style="text-align: right">5</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>2</td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>事实证据与实体处理</td>
                 <td>处理结果是否适当</td>
                 <td style="text-align: right">3</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>3</td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>事实证据与实体处理</td>
                 <td>是否有其他不规范情形</td>
                 <td style="text-align: right">6</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>4</td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>审理程序</td>
                 <td>庭审是否规范严谨，能否有序组织举证，质证，认证和辩论。</td>
                 <td style="text-align: right">2</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>2</td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>审理程序</td>
                 <td>是否严格遵守规定</td>
                 <td style="text-align: right">2</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>6</td>
             </tr>
             <tr>
                 <td>7</td>
                 <td>审理程序</td>
                 <td>是否充分保障诉讼参与人行使诉讼权利</td>
                 <td style="text-align: right">2</td>
+                <td>0</td>
                 <td></td>
+                <td>0</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>2</td>
             </tr>
             <tr>
                 <td>满分</td>
