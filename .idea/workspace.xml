@@ -4,7 +4,6 @@
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="hooah hooah hooah">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,13 +37,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="252" column="24" lean-forward="false" selection-start-line="252" selection-start-column="24" selection-end-line="252" selection-end-column="24" />
+            <state relative-caret-position="450">
+              <caret line="372" column="1" lean-forward="true" selection-start-line="372" selection-start-column="1" selection-end-line="372" selection-end-column="1" />
               <folding>
-                <marker date="1503558164000" expanded="true" signature="21473:21488" ph="..." />
-                <marker date="1503558164000" expanded="true" signature="21500:21514" ph="..." />
-                <marker date="1503558164000" expanded="true" signature="25257:25272" ph="..." />
-                <marker date="1503558164000" expanded="true" signature="25284:25298" ph="..." />
+                <marker date="1503560051000" expanded="true" signature="21486:21501" ph="..." />
+                <marker date="1503560051000" expanded="true" signature="21513:21527" ph="..." />
+                <marker date="1503560051000" expanded="true" signature="25412:25427" ph="..." />
+                <marker date="1503560051000" expanded="true" signature="25439:25453" ph="..." />
               </folding>
             </state>
           </provider>
@@ -62,8 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>badge_sjpx</find>
-      <find>summ</find>
       <find>div_chooseTo</find>
       <find>loadGridGroup</find>
       <find>reloadGrid</find>
@@ -84,7 +81,6 @@
       <find>getJoinedCaseIds</find>
       <find>URL_RANDOM_CASES</find>
       <find>addca</find>
-      <find>todo</find>
       <find>removeProGroup</find>
       <find>removeCase</find>
       <find>removeCases</find>
@@ -92,6 +88,9 @@
       <find>caselist</find>
       <find>chooseCases</find>
       <find>chosedcount</find>
+      <find>todo</find>
+      <find>table2</find>
+      <find>addRowData</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1086,14 +1085,7 @@
       <workItem from="1503040852144" duration="30667000" />
       <workItem from="1503295324751" duration="20188000" />
       <workItem from="1503382060074" duration="8429000" />
-      <workItem from="1503468879325" duration="21013000" />
-    </task>
-    <task id="LOCAL-00164" summary="hooah hooah hooah">
-      <created>1503153741149</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1503153741149</updated>
+      <workItem from="1503468879325" duration="22459000" />
     </task>
     <task id="LOCAL-00165" summary="hooah hooah hooah">
       <created>1503153883379</created>
@@ -1431,11 +1423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503553708859</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="hooah hooah hooah">
+      <created>1503558288120</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1503558288121</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403306000" />
+    <option name="totallyTimeSpent" value="404752000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2067,13 +2066,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="252" column="24" lean-forward="false" selection-start-line="252" selection-start-column="24" selection-end-line="252" selection-end-column="24" />
+        <state relative-caret-position="450">
+          <caret line="372" column="1" lean-forward="true" selection-start-line="372" selection-start-column="1" selection-end-line="372" selection-end-column="1" />
           <folding>
-            <marker date="1503558164000" expanded="true" signature="21473:21488" ph="..." />
-            <marker date="1503558164000" expanded="true" signature="21500:21514" ph="..." />
-            <marker date="1503558164000" expanded="true" signature="25257:25272" ph="..." />
-            <marker date="1503558164000" expanded="true" signature="25284:25298" ph="..." />
+            <marker date="1503560051000" expanded="true" signature="21486:21501" ph="..." />
+            <marker date="1503560051000" expanded="true" signature="21513:21527" ph="..." />
+            <marker date="1503560051000" expanded="true" signature="25412:25427" ph="..." />
+            <marker date="1503560051000" expanded="true" signature="25439:25453" ph="..." />
           </folding>
         </state>
       </provider>

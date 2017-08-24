@@ -170,7 +170,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -180,7 +180,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -190,7 +190,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -200,7 +200,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -210,7 +210,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -220,7 +220,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -230,7 +230,7 @@ function refreshJoinedCasesGrid() {
                 if(cases[i].groupid){
                     continue;
                 }else{
-                    $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                    $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
                 }
             }else{
                 continue;
@@ -239,7 +239,7 @@ function refreshJoinedCasesGrid() {
             if(cases[i].groupid){
                 continue;
             }else{
-                $("#table2").jqGrid('addRowData', cases[i].id, cases[i]);
+                $("#table2").jqGrid('addRowData', cases[i].ajid, cases[i]);
             }
         }
     }
@@ -369,7 +369,7 @@ function reChooseCasesByCase(caseid) {
         }
     }
     refreshJoinedCasesGrid();
-    // refreshTeamGrid();
+    refreshTeamGrid();
 }
 
 var max_allowed_extract_case_count = 1024;
@@ -718,32 +718,38 @@ function initChildGrid1(parentRowID, parentRowKey) {
         shrinkToFit : false,
         rowNum : 100000,
         colModel : [
-            {label : 'ajid',name : 'id',hidden : true,key : true,sortable:false,frozen : true},
-            {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
-            {label : '-',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="long-arrow-left"></i> </button>';
+            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'teamid',name : 'teamid',hidden : true,sortable:false,frozen : true},
+            {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
+            {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ajid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
-            {label : '检',name : 'ajid', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            {label : '检',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
             }},
-            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+cellvalue+'</a>'
+            {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
+                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+rowObject.ah+'</a>'
             }},
             {label : '关联案件',name : '',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
                 return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
             }},
-            {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
-            {label : '承办部门',name : 'htmc', width : 100,sortable:false},
-            {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
-            {label : '性质',name : 'zylbmc',width : 80 ,sortable:false},
-            {label : '类型',name : 'zylbmc',width : 80,sortable:false},
-            {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
-            {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
-            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
+            {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
+            {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
+            {label : '承办人',name : 'cbr',width : 80,sortable:false},
+            {label : '性质',name : 'xz',width : 80 ,sortable:false},
+            {label : '类型',name : 'lx',width : 80,sortable:false},
+            {label : '案由',name : 'ay',width : 120,sortable:false},
+            {label : '结案方式',name : 'jsfs', width : 80,sortable:false},
+            {label : '结案时间',name : 'jasj', width : 80,sortable:false}
         ],
-        gridComplete:function () {
+        loadComplete:function () {
             //在此查询专家评查案件并展示
-            //todo
+            for(var i = 0 ; joinedCases && i < joinedCases.length ; i ++){
+                if(joinedCases[i].groupid == parentRowKey){
+                    // console.log(2222)
+                    $("#" + tabid).jqGrid('addRowData', joinedCases[i].ajid, joinedCases[i]);
+                }
+            }
         }
     });
 }
