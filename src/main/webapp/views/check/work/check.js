@@ -50,8 +50,24 @@ function selectCd() {
     var nodes = treeObj.getSelectedNodes();
     if(nodes[0].name == "1.mp4"){
         window.frames["iframe0"].location = ahcourt.ctx+"/files/1.mp4";
-    }else if (nodes[0].name == "1.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/1.pdf";
+    }else if (nodes[0].name == "一审裁定书.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/一审裁定书.pdf";
+    }else if (nodes[0].name == "上诉案件移送函.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/上诉案件移送函.pdf";
+    }else if (nodes[0].name == "二审裁定书.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/二审裁定书.pdf";
+    }else if (nodes[0].name == "备考表.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/备考表.pdf";
+    }else if (nodes[0].name == "封面.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/封面.pdf";
+    }else if (nodes[0].name == "目录.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/目录.pdf";
+    }else if (nodes[0].name == "行政上诉状.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/行政上诉状.pdf";
+    }else if (nodes[0].name == "退卷函.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/退卷函.pdf";
+    }else if (nodes[0].name == "送达回证.pdf"){
+        window.frames["iframe0"].location = ahcourt.ctx+"/files/送达回证.pdf";
     }
 }
 
