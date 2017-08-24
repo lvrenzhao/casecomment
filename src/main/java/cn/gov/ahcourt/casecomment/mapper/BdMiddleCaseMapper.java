@@ -10,7 +10,7 @@ public interface BdMiddleCaseMapper {
 
     BdMiddleCase selectByPrimaryKey(String ajid);
 
-    List<BdMiddleCase> selectAll();
+    List<BdMiddleCase> selectAll(BdMiddleCase record);
 
     int updateByPrimaryKey(BdMiddleCase record);
 }

@@ -4,6 +4,7 @@ import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
+import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +26,11 @@ public class XCaseController {
         if (user == null) {
             return null;
         }
-        return bean.toMap(bdMiddleCaseMapper.selectAll());
+        //处理bean对象，转化为mabtis接受的querybean
+        if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
+            bean.setJcs(bean.getJoinedCaseIds().split(";"));
+        }
+        return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
     }
 
 }
