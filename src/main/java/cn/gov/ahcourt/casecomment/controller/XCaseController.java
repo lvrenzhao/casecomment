@@ -33,4 +33,18 @@ public class XCaseController {
         return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
     }
 
+    @RequestMapping("/random")
+    public @ResponseBody Map random(BdMiddleCase bean, @SessionScope("user") UserBean user) {
+        if (user == null) {
+            return null;
+        }
+        //处理bean对象，转化为mabtis接受的querybean
+        if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
+            bean.setJcs(bean.getJoinedCaseIds().split(";"));
+        }
+        return bean.toMap(bdMiddleCaseMapper.random(bean));
+    }
+
+
+
 }

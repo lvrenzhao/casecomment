@@ -3,7 +3,7 @@ var URL_ORGS = ahcourt.ctx + "/setting/organization/getlist.do";
 //案件库接口，接受多个查询条件
 var URL_CASES = ahcourt.ctx + '/case/list.do';
 //获取随机的案件
-var URL_RANDOM_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
+var URL_RANDOM_CASES = ahcourt.ctx + '/case/random.do';
 //获取专家接口
 var URL_PROFESSIONALS = ahcourt.ctx + '/setting/professional/listjson.do';
 
@@ -17,7 +17,7 @@ var currentFormValues = {};
 //对比抽案表单是否发生条件变更，如存在变更需重新刷新表格。
 function formChanged() {
     var newFormValues = getFromValues();
-    //todo 进行比较
+    //todo 进行比较 (仅比较抽取条件是否不一致，已分配案件数，和随机抽取数等不参与比较)
     currentFormValues = newFormValues;
     return true;
 }
@@ -25,6 +25,7 @@ function formChanged() {
 function getFromValues() {
     var newFormValues = {};
     newFormValues.joinedCaseIds = getJoinedCaseIds();
+    newFormValues.randomcount = $("#txt_random").val()?parseInt($.trim($("#txt_random").val())):0;
     return newFormValues;
 }
 
@@ -39,12 +40,14 @@ function extractRandomCases(casecount) {
     $.ajax({
         type : 'POST',
         url : URL_RANDOM_CASES,
+        data:getFromValues(),
         datatype : 'json',
         async : false,
         success : function(data) {
-            layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
-            addCases(data);
+            console.log(data.rows);
+            addCases(data.rows);
             reloadGrid1();
+            layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
         }
     });
 }
@@ -433,9 +436,11 @@ function loadGrid2() {
             {label : '案号',name : 'fmt3', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
             }},
-            {label : '关联案件',name : 'fmt4',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
-                return '<a onclick="viewRelated(\'' + rowObject.raj + '\')" href="javascript:;">'+rowObject.raj+'</a>';
-            }},
+            {label : '关联案件',name : 'fmt4',frozen : true,width : 80,sortable:false,align:'right',
+                formatter:function (cellvalue,options,rowObject) {
+                    return '<a onclick="viewRelated(\'' + rowObject.raj + '\')" href="javascript:;">'+rowObject.raj+'</a>';
+                }
+            },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
             {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
             {label : '承办人',name : 'cbr',width : 80,sortable:false},

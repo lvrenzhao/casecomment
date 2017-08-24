@@ -4,6 +4,27 @@ import java.util.Date;
 
 public class BdMiddleCase extends BaseEntity{
 
+    private int raj;
+
+    public int getRaj() {
+        return raj;
+    }
+
+    public void setRaj(int raj) {
+        this.raj = raj;
+    }
+
+    private int randomcount;
+
+    public void setRandomcount(int randomcount) {
+        this.randomcount = randomcount;
+    }
+
+    public int getRandomcount() {
+
+        return randomcount;
+    }
+
     private String joinedCaseIds;
 
     public void setJoinedCaseIds(String joinedCaseIds) {

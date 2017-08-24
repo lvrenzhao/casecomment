@@ -3,6 +3,7 @@
 <mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper" >
   <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
     <id column="ajid" property="ajid" jdbcType="VARCHAR" />
+    <id column="raj" property="raj" jdbcType="VARCHAR" />
     <result column="ah" property="ah" jdbcType="VARCHAR" />
     <result column="gsfy" property="gsfy" jdbcType="VARCHAR" />
     <result column="cbbm" property="cbbm" jdbcType="VARCHAR" />
@@ -64,9 +65,28 @@
     from bd_middle_case
     where ajid = #{ajid,jdbcType=VARCHAR}
   </select>
+
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase"  >
+  select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
+  update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
+
+  ,'2' raj
+  from bd_middle_case where 1=1
+
+  <if test="jcs !=null and jcs.length  > 0">
+    and ajid not in
+    <foreach item="jc" index="index" collection="jcs" open="(" separator="," close=")">
+      #{jc}
+    </foreach>
+  </if>
+  order by create_date desc
+</select>
+
+  <select id="random" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase"  >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
     update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
+
+    ,'2' raj
     from bd_middle_case where 1=1
 
     <if test="jcs !=null and jcs.length  > 0">
@@ -75,6 +95,7 @@
         #{jc}
       </foreach>
     </if>
-    order by create_date desc
+    ORDER BY RAND() LIMIT #{randomcount}
   </select>
+
 </mapper>

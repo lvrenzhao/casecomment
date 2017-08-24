@@ -12,5 +12,7 @@ public interface BdMiddleCaseMapper {
 
     List<BdMiddleCase> selectAll(BdMiddleCase record);
 
+    List<BdMiddleCase> random(BdMiddleCase record);
+
     int updateByPrimaryKey(BdMiddleCase record);
 }
