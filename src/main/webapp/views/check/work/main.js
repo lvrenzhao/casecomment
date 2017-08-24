@@ -32,18 +32,18 @@ function loadUnCheckGrid() {
                 },
                 frozen:true
             },
-            {label : '案号',name : 'xmmc',frozen : true,sortable:false,width : 150},
-            {label : '所属评查公告',name : '', sortable:false,width : 200},
-            {label : '评查组长',name : 'xmcymc',sortable:false,width : 80},
-            {label : '评查组员',name : 'xmcymc',sortable:false,width : 200},
+            {label : '案号',name : 'ah',frozen : true,sortable:false,width : 150},
+            {label : '所属评查公告',name : 'ggbt', sortable:false,width : 200},
+            {label : '评查组长',name : '',sortable:false,width : 80},
+            {label : '评查组员',name : '',sortable:false,width : 200},
             {label : '归属法院',name : 'gsfy',sortable:false,width : 100},
-            {label : '承办部门',name : 'htmc',sortable:false,width : 100},
-            {label : '承办人',name : 'xmlxmc',sortable:false,width : 80},
-            {label : '性质',name : 'zylbmc',sortable:false,width : 80 },
-            {label : '类型',name : 'zylbmc',sortable:false,width : 80 },
-            {label : '案由', name : 'xmfzrmc',sortable:false,width : 150 },
-            {label : '结案方式',name : 'xmjlmc',sortable:false,width : 80},
-            {label : '结案时间',name : 'xmcymc',sortable:false,width : 80}
+            {label : '承办部门',name : 'cbbm',sortable:false,width : 100},
+            {label : '承办人',name : 'cbr',sortable:false,width : 80},
+            {label : '性质',name : 'xz',sortable:false,width : 80 },
+            {label : '类型',name : 'lx',sortable:false,width : 80 },
+            {label : '案由', name : 'ay',sortable:false,width : 150 },
+            {label : '结案方式',name : 'jafs',sortable:false,width : 80},
+            {label : '结案时间',name : 'jasj',sortable:false,width : 80}
         ],
         pager : '#pager1'
         ,viewrecords: true
@@ -70,21 +70,21 @@ function loadCheckedGrid() {
                     +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
-            {label : '案号', name : 'xmmc',frozen : true,sortable:false,width : 150},
-            {label : '所属评查公告',name : '',sortable:false,width : 200},
+            {label : '案号', name : 'ah',frozen : true,sortable:false,width : 150},
+            {label : '所属评查公告',name : 'ggbt',sortable:false,width : 200},
             {label : '评查分数',name : '',sortable:false,width : 100},
             {label : '质量等级',name : '',sortable:false,width : 100  },
             {label : '评查时间',name : '',sortable:false,width : 100},
-            {label : '评查组长',name : 'xmcymc',sortable:false, width : 80 },
-            {label : '评查组员',name : 'xmcymc',sortable:false,width : 200},
+            {label : '评查组长',name : '',sortable:false, width : 80 },
+            {label : '评查组员',name : '',sortable:false,width : 200},
             {label : '归属法院',name : 'gsfy',sortable:false,width : 200},
-            {label : '承办部门',name : 'htmc',sortable:false,width : 100},
-            {label : '承办人',name : 'xmlxmc',sortable:false,width : 80},
-            {label : '性质', name : 'zylbmc',sortable:false, width : 80},
-            {label : '类型',name : 'zylbmc',sortable:false, width : 80},
-            {label : '案由', name : 'xmfzrmc',sortable:false,width : 150},
-            {label : '结案方式',name : 'xmjlmc',sortable:false, width : 80},
-            {label : '结案时间',name : 'xmcymc',sortable:false, width : 80 }
+            {label : '承办部门',name : 'cbbm',sortable:false,width : 100},
+            {label : '承办人',name : 'cbr',sortable:false,width : 80},
+            {label : '性质', name : 'xz',sortable:false, width : 80},
+            {label : '类型',name : 'lx',sortable:false, width : 80},
+            {label : '案由', name : 'ay',sortable:false,width : 150},
+            {label : '结案方式',name : 'jafs',sortable:false, width : 80},
+            {label : '结案时间',name : 'jasj',sortable:false, width : 80 }
         ],
         pager : '#pager2'
         ,viewrecords: true

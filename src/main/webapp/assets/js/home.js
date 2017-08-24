@@ -20,7 +20,7 @@ function loadGrid1() {
         rowList : [ 10, 20, 30 ],
         colModel : [
             {label : 'ggid',name : 'ggid',hidden : true,key : true },
-            {label : '公告标题',name : 'ggbt',width : 300,sortable:false,formatter : function(cellvalue, options, rowObject) {
+            {label : '公告标题',name : 'xxggbt',width : 300,sortable:false,formatter : function(cellvalue, options, rowObject) {
                 var style = "";
                 if(rowObject.btys == 2){
                     style = "color:red;text-decoration:underline"
@@ -78,7 +78,7 @@ function loadGrid3() {
         rowList : [ 10, 20, 30 ],
         colModel : [
             {label : 'ggid',name : 'ggid',hidden : true,key : true },
-            {label : '公告标题',name : 'ggbt',width : 300,sortable:false,formatter : function(cellvalue, options, rowObject) {
+            {label : '公告标题',name : 'pxggbt',width : 300,sortable:false,formatter : function(cellvalue, options, rowObject) {
                 var style = "";
                 if(rowObject.btys == 2){
                     style = "color:red;text-decoration:underline"
