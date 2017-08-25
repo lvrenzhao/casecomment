@@ -113,7 +113,7 @@
               title : '下载中心',
               shadeClose : false,
               shade : 0.3,
-              area : [ '500px', '350px' ],
+              area : [ '80%', '80%' ],
               content : ahcourt.ctx + "/views/statics/downloadcenter.jsp",
               cancel : function(index) {
                   layer.close(index);
