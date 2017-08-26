@@ -14,8 +14,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/details.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/details.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1106,14 +1104,7 @@
       <workItem from="1503295324751" duration="20188000" />
       <workItem from="1503382060074" duration="8429000" />
       <workItem from="1503468879325" duration="31443000" />
-      <workItem from="1503622901879" duration="1877000" />
-    </task>
-    <task id="LOCAL-00178" summary="hooah hooah hooah">
-      <created>1503192783263</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1503192783263</updated>
+      <workItem from="1503622901879" duration="1906000" />
     </task>
     <task id="LOCAL-00179" summary="hooah hooah hooah">
       <created>1503194843775</created>
@@ -1451,11 +1442,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503623890472</updated>
     </task>
-    <option name="localTasksCounter" value="227" />
+    <task id="LOCAL-00227" summary="hooah hooah hooah">
+      <created>1503733976616</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
+      <option name="project" value="LOCAL" />
+      <updated>1503733976616</updated>
+    </task>
+    <option name="localTasksCounter" value="228" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="415613000" />
+    <option name="totallyTimeSpent" value="415642000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
