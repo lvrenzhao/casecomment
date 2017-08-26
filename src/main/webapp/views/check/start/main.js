@@ -605,7 +605,7 @@ function loadGrid1() {
         height : $('body').height() - 230,
         width : $('body').width() ,
         rownumbers : true,
-        shrinkToFit : false,
+        shrinkToFit : true,
         rowNum : 20,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},

@@ -70,7 +70,11 @@
               </div>
             </div>
             <div class="bmbox_content clearfix" id="div_noticeconent" style="overflow: auto;padding: 15px;">
-              123
+              <h2 style="text-align: center">这里是测试公告内容的标题</h2>
+              <h6 style="text-align: center">这里是测试公告内容的副标题</h6>
+              <hr />
+              <h6 style="text-align: center">发布人：宋佳卿 发布时间:2017-01-01</h6>
+              <p>这里是随意输入的公告内容，仅作为测试数据。</p>
             </div>
           </div>
         </div>
