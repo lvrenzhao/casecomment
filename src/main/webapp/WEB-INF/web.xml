@@ -12,7 +12,7 @@
 <!-- 程序Session配置 -->
 <session-config>
   <!-- Session过期时间(单位：分) -->
-  <session-timeout>120</session-timeout>
+  <session-timeout>480</session-timeout>
 </session-config>
 
 <!-- 编码过滤器 -->
