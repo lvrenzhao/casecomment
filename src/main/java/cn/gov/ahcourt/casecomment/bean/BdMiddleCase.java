@@ -1,5 +1,7 @@
 package cn.gov.ahcourt.casecomment.bean;
 
+import cn.gov.ahcourt.casecomment.utils.StringUtils;
+
 import java.util.Date;
 
 public class BdMiddleCase extends BaseEntity{
@@ -80,6 +82,81 @@ public class BdMiddleCase extends BaseEntity{
     private String remarks;
 
     private String flag;
+
+    private String formAjxzUnSplited;
+    private String[] formAjxz;
+
+    private String formAjlxUnSplited;
+    private String[] formAjlx;
+
+    private String formGsfyUnlplited;
+    private String[] formGsfy;
+    private String formStartJarq;
+    private String formEndJqrq;
+
+    public String getFormAjxzUnSplited() {
+        return formAjxzUnSplited;
+    }
+
+    public void setFormAjxzUnSplited(String formAjxzUnSplited) {
+        this.formAjxzUnSplited = formAjxzUnSplited;
+    }
+
+    public String getFormAjlxUnSplited() {
+        return formAjlxUnSplited;
+    }
+
+    public void setFormAjlxUnSplited(String formAjlxUnSplited) {
+        this.formAjlxUnSplited = formAjlxUnSplited;
+    }
+
+    public String getFormGsfyUnlplited() {
+        return formGsfyUnlplited;
+    }
+
+    public void setFormGsfyUnlplited(String formGsfyUnlplited) {
+        this.formGsfyUnlplited = formGsfyUnlplited;
+    }
+
+    public String[] getFormGsfy() {
+        return formGsfy;
+    }
+
+    public void setFormGsfy(String[] formGsfy) {
+        this.formGsfy = formGsfy;
+    }
+
+    public String[] getFormAjxz() {
+        return formAjxz;
+    }
+
+    public void setFormAjxz(String[] formAjxz) {
+        this.formAjxz = formAjxz;
+    }
+
+    public String[] getFormAjlx() {
+        return formAjlx;
+    }
+
+    public void setFormAjlx(String[] formAjlx) {
+        this.formAjlx = formAjlx;
+    }
+
+    public String getFormStartJarq() {
+        return formStartJarq;
+    }
+
+    public void setFormStartJarq(String formStartJarq) {
+        this.formStartJarq = formStartJarq;
+    }
+
+    public String getFormEndJqrq() {
+        return formEndJqrq;
+    }
+
+    public void setFormEndJqrq(String formEndJqrq) {
+        this.formEndJqrq = formEndJqrq;
+    }
 
     public String getAjid() {
         return ajid;

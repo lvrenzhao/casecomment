@@ -10,22 +10,86 @@ var URL_PROFESSIONALS = ahcourt.ctx + '/setting/professional/listjson.do';
 var lo;
 //获取ztree中选中节点的下级节点名称,返回数组
 function getSubCourtNameBYSelectedCourt() {
+    if($("#chx_sfbhxjfy").is(':checked') == true){
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+        var node = treeObj.getSelectedNodes()[0];
+        if(node){
+            var res = node.name+digui(node);
+            return res;
+        }
+    }
+    return $("#citySel").val();
+}
 
+function digui(treeNode) {
+    //此处treeNode 为当前节点
+    var str ='' ;
+    str = getAllChildrenNodes(treeNode,str);
+    return str;
+}
+
+function getAllChildrenNodes(treeNode,result){
+    if (treeNode.isParent) {
+        var childrenNodes = treeNode.children;
+        if (childrenNodes) {
+            for (var i = 0; i < childrenNodes.length; i++) {
+                result += ";" + childrenNodes[i].name ;
+                result = getAllChildrenNodes(childrenNodes[i], result);
+            }
+        }
+    }
+    return result;
 }
 
 var currentFormValues = {};
 //对比抽案表单是否发生条件变更，如存在变更需重新刷新表格。
 function formChanged() {
+    var changed = true;
     var newFormValues = getFromValues();
-    //todo 进行比较 (仅比较抽取条件是否不一致，已分配案件数，和随机抽取数等不参与比较)
+    //进行比较 (仅比较抽取条件是否不一致，已分配案件数，和随机抽取数等不参与比较)
+    if(newFormValues.formAjxzUnSplited == currentFormValues.formAjxzUnSplited
+       && newFormValues.formAjlxUnSplited == currentFormValues.formAjlxUnSplited
+       && newFormValues.formGsfyUnlplited == currentFormValues.formGsfyUnlplited
+       && newFormValues.cbbm == currentFormValues.cbbm
+       && newFormValues.cbr == currentFormValues.cbr
+       && newFormValues.ah == currentFormValues.ah
+       && newFormValues.ay == currentFormValues.ay
+       && newFormValues.formStartJarq == currentFormValues.formStartJarq
+       && newFormValues.formEndJqrq == currentFormValues.formEndJqrq){
+        changed = false;
+    }
     currentFormValues = newFormValues;
-    return true;
+    return changed;
 }
 //返回抽案表单对象
 function getFromValues() {
     var newFormValues = {};
     newFormValues.joinedCaseIds = getJoinedCaseIds();
     newFormValues.randomcount = $("#txt_random").val()?parseInt($.trim($("#txt_random").val())):0;
+
+    //获取抽案条件
+    newFormValues.formAjxzUnSplited = "";
+    $("input[name='ajxz']:checkbox").each(function(){
+        if(true == $(this).is(':checked')){
+            newFormValues.formAjxzUnSplited += $(this).val()+";";
+        }
+    });
+    newFormValues.formAjlxUnSplited = "";
+    $("input[name='ajlx']:checkbox").each(function(){
+        if(true == $(this).is(':checked')){
+            newFormValues.formAjxzUnSplited += $(this).val()+";";
+        }
+    });
+    newFormValues.formGsfyUnlplited = getSubCourtNameBYSelectedCourt();
+
+    newFormValues.cbbm = $("#txt_cbbm").val();
+    newFormValues.cbr = $("#txt_cbr").val();
+    newFormValues.ah = $("#txt_ah").val();
+    newFormValues.ay = $("#txt_ay").val();
+    newFormValues.formStartJarq = $("#txt_jarq1").val();
+    newFormValues.formEndJqrq = $("#txt_jarq2").val();
+
+
     return newFormValues;
 }
 

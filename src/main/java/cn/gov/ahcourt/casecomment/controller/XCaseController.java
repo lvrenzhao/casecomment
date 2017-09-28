@@ -30,6 +30,15 @@ public class XCaseController {
         if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
             bean.setJcs(bean.getJoinedCaseIds().split(";"));
         }
+        if(bean != null && StringUtils.isNotBlank(bean.getFormAjxzUnSplited())){
+            bean.setFormAjxz(bean.getFormAjxzUnSplited().split(";"));
+        }
+        if(bean != null && StringUtils.isNotBlank(bean.getFormAjlxUnSplited())){
+            bean.setFormAjlx(bean.getFormAjlxUnSplited().split(";"));
+        }
+        if(bean != null && StringUtils.isNotBlank(bean.getFormGsfyUnlplited())){
+            bean.setFormGsfy(bean.getFormGsfyUnlplited().split(";"));
+        }
         return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
     }
 
