@@ -27,22 +27,22 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" id="ajxz80401" value="80401" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 刑事
+                <input type="checkbox" id="ajxz80401" value="刑事" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 刑事
               </label>
               <label>
-                <input type="checkbox" id="ajxz80402" value="80402" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 民事
+                <input type="checkbox" id="ajxz80402" value="民事" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 民事
               </label>
               <label>
-                <input type="checkbox" id="ajxz80403" value="80403" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 行政
+                <input type="checkbox" id="ajxz80403" value="行政" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 行政
               </label>
               <label>
-                <input type="checkbox" id="ajxz80404" value="80404" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 赔偿
+                <input type="checkbox" id="ajxz80404" value="赔偿" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 赔偿
               </label>
               <label>
-                <input type="checkbox" id="ajxz80405" value="80405" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 执行
+                <input type="checkbox" id="ajxz80405" value="执行" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 执行
               </label>
               <label>
-                <input type="checkbox" id="ajxz80406" value="80406" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 其他
+                <input type="checkbox" id="ajxz80406" value="其他" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 其他
               </label>
             </div>
           </div>
@@ -53,19 +53,19 @@
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
               <label class="default_radio">
-                <input type="checkbox" id="ajlx80601" value="80601" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 抗诉
+                <input type="checkbox" id="ajlx80601" value="抗诉" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 抗诉
               </label>
               <label>
-                <input type="checkbox" id="ajlx80602" value="80602" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 发回改判
+                <input type="checkbox" id="ajlx80602" value="发回改判" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 发回改判
               </label>
               <label>
-                <input type="checkbox" id="ajlx80603" value="80603" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 再审
+                <input type="checkbox" id="ajlx80603" value="再审" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 再审
               </label>
               <label>
-                <input type="checkbox" id="ajlx80604" value="80604" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 审理周期超过一年半以上
+                <input type="checkbox" id="ajlx80604" value="审理周期超过一年半以上" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 审理周期超过一年半以上
               </label>
               <label>
-                <input type="checkbox" id="ajlx80605" value="80605" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 执行异议复议
+                <input type="checkbox" id="ajlx80605" value="执行异议复议" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 执行异议复议
               </label>
             </div>
           </div>

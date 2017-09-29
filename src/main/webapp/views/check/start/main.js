@@ -77,7 +77,7 @@ function getFromValues() {
     newFormValues.formAjlxUnSplited = "";
     $("input[name='ajlx']:checkbox").each(function(){
         if(true == $(this).is(':checked')){
-            newFormValues.formAjxzUnSplited += $(this).val()+";";
+            newFormValues.formAjlxUnSplited += $(this).val()+";";
         }
     });
     newFormValues.formGsfyUnlplited = getSubCourtNameBYSelectedCourt();
@@ -488,6 +488,7 @@ $(function () {
     $('#btn_clearorgs').click(function(){
         $('#citySel').val("");
         $("#zzid").val("");
+        $('#chx_sfbhxjfy').iCheck('uncheck');
     });
 
     //手动选中案件抽取
