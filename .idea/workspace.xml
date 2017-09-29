@@ -14,12 +14,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -65,14 +60,24 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17010">
-              <caret line="810" column="72" lean-forward="false" selection-start-line="810" selection-start-column="72" selection-end-line="810" selection-end-column="72" />
+            <state relative-caret-position="606">
+              <caret line="612" column="9" lean-forward="false" selection-start-line="612" selection-start-column="9" selection-end-line="612" selection-end-column="9" />
               <folding>
-                <marker date="1506656158000" expanded="true" signature="24478:24493" ph="..." />
-                <marker date="1506656158000" expanded="true" signature="24505:24519" ph="..." />
-                <marker date="1506656158000" expanded="true" signature="28417:28432" ph="..." />
-                <marker date="1506656158000" expanded="true" signature="28444:28458" ph="..." />
+                <marker date="1506659513000" expanded="true" signature="24606:24621" ph="..." />
+                <marker date="1506659513000" expanded="true" signature="24633:24647" ph="..." />
+                <marker date="1506659513000" expanded="true" signature="28545:28560" ph="..." />
+                <marker date="1506659513000" expanded="true" signature="28572:28586" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="308" column="33" lean-forward="true" selection-start-line="308" selection-start-column="25" selection-end-line="308" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,8 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCases</find>
-      <find>addProGroup</find>
       <find>lo</find>
       <find>J_iframe</find>
       <find>joinedCaseUniqleNames</find>
@@ -136,6 +139,8 @@
       <find>selectAll</find>
       <find>btn_clearorgs</find>
       <find>formrelatedcaseid</find>
+      <find>btn_newGroup</find>
+      <find>form_sel_teamleader</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -210,9 +215,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
       </list>
     </option>
   </component>
@@ -1202,14 +1207,7 @@
       <workItem from="1504503375854" duration="131000" />
       <workItem from="1504503511483" duration="40000" />
       <workItem from="1504924233220" duration="125000" />
-      <workItem from="1506584459555" duration="11932000" />
-    </task>
-    <task id="LOCAL-00185" summary="hooah hooah hooah">
-      <created>1503272796052</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1503272796052</updated>
+      <workItem from="1506584459555" duration="12319000" />
     </task>
     <task id="LOCAL-00186" summary="hooah hooah hooah">
       <created>1503273689229</created>
@@ -1547,11 +1545,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506653801009</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="hooah hooah hooah">
+      <created>1506659108932</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1506659108933</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="428462000" />
+    <option name="totallyTimeSpent" value="428849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1591,7 +1596,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33997655" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28333333" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28333333" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2025,14 +2030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="95" column="65" lean-forward="false" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/details.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -2046,16 +2043,6 @@
         <state relative-caret-position="357">
           <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2100,15 +2087,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="308" column="33" lean-forward="true" selection-start-line="308" selection-start-column="25" selection-end-line="308" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17010">
-          <caret line="810" column="72" lean-forward="false" selection-start-line="810" selection-start-column="72" selection-end-line="810" selection-end-column="72" />
+        <state relative-caret-position="606">
+          <caret line="612" column="9" lean-forward="false" selection-start-line="612" selection-start-column="9" selection-end-line="612" selection-end-column="9" />
           <folding>
-            <marker date="1506656158000" expanded="true" signature="24478:24493" ph="..." />
-            <marker date="1506656158000" expanded="true" signature="24505:24519" ph="..." />
-            <marker date="1506656158000" expanded="true" signature="28417:28432" ph="..." />
-            <marker date="1506656158000" expanded="true" signature="28444:28458" ph="..." />
+            <marker date="1506659513000" expanded="true" signature="24606:24621" ph="..." />
+            <marker date="1506659513000" expanded="true" signature="24633:24647" ph="..." />
+            <marker date="1506659513000" expanded="true" signature="28545:28560" ph="..." />
+            <marker date="1506659513000" expanded="true" signature="28572:28586" ph="..." />
           </folding>
         </state>
       </provider>

@@ -611,6 +611,10 @@ $(function () {
             layer.msg("组长不能为空!");
             return false;
         }
+        if("--请选择--" == $("#form_sel_teamleader").val()){
+            layer.msg("组长不能为空!");
+            return false;
+        }
         layer.close(lo);
         var tms = "";
         $("#form_sel_teammate").find("option:selected").each(function () {
