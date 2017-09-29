@@ -20,6 +20,8 @@
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="relatedcasecount" property="relatedcasecount" jdbcType="VARCHAR" />
+    <result column="relatedcaseid" property="relatedcaseid" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_middle_case
@@ -70,7 +72,7 @@
   select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
   update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
 
-  ,'2' raj
+  ,relatedcasecount,relatedcaseid
   from bd_middle_case where 1=1
 
   <if test="jcs !=null and jcs.length  > 0">
@@ -123,7 +125,7 @@
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
     update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
 
-    ,'2' raj
+    ,relatedcasecount,relatedcaseid
     from bd_middle_case where 1=1
 
     <if test="jcs !=null and jcs.length  > 0">

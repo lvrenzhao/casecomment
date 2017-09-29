@@ -94,6 +94,28 @@ public class BdMiddleCase extends BaseEntity{
     private String formStartJarq;
     private String formEndJqrq;
 
+    private int relatedcasecount;
+
+    public int getRelatedcasecount() {
+        return relatedcasecount;
+    }
+
+    public void setRelatedcasecount(int relatedcasecount) {
+        this.relatedcasecount = relatedcasecount;
+    }
+
+    public String getRelatedcaseid() {
+        return relatedcaseid;
+    }
+
+    public void setRelatedcaseid(String relatedcaseid) {
+        this.relatedcaseid = relatedcaseid;
+    }
+
+    private String relatedcaseid;
+
+
+
     public String getFormAjxzUnSplited() {
         return formAjxzUnSplited;
     }

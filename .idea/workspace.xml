@@ -14,9 +14,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,14 +40,24 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="490" column="24" lean-forward="false" selection-start-line="490" selection-start-column="24" selection-end-line="490" selection-end-column="24" />
+            <state relative-caret-position="506">
+              <caret line="819" column="38" lean-forward="false" selection-start-line="819" selection-start-column="38" selection-end-line="819" selection-end-column="38" />
               <folding>
-                <marker date="1506651732000" expanded="true" signature="24523:24538" ph="..." />
-                <marker date="1506651732000" expanded="true" signature="24550:24564" ph="..." />
-                <marker date="1506651732000" expanded="true" signature="28449:28464" ph="..." />
-                <marker date="1506651732000" expanded="true" signature="28476:28490" ph="..." />
+                <marker date="1506653679000" expanded="true" signature="24490:24505" ph="..." />
+                <marker date="1506653679000" expanded="true" signature="24517:24531" ph="..." />
+                <marker date="1506653679000" expanded="true" signature="28441:28456" ph="..." />
+                <marker date="1506653679000" expanded="true" signature="28468:28482" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_relatedcases.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,9 +75,29 @@
       <file leaf-file-name="XCaseController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="54" />
+            <state relative-caret-position="147">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BdMiddleCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1702#1703#0" expanded="true" />
+                <element signature="e#1741#1742#0" expanded="true" />
+                <element signature="e#1802#1803#0" expanded="true" />
+                <element signature="e#1858#1859#0" expanded="true" />
+                <element signature="e#1898#1899#0" expanded="true" />
+                <element signature="e#1934#1935#0" expanded="true" />
+                <element signature="e#1992#1993#0" expanded="true" />
+                <element signature="e#2042#2043#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,15 +105,15 @@
       <file leaf-file-name="BdMiddleCaseMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            <state relative-caret-position="186">
+              <caret line="22" column="83" lean-forward="false" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
               <folding>
-                <marker date="1506648888000" expanded="true" signature="1584:1652" ph="delete from " />
-                <marker date="1506648888000" expanded="true" signature="1754:2451" ph="insert into bd_middle_case... " />
-                <marker date="1506648888000" expanded="true" signature="2565:3297" ph="update bd_mi... " />
-                <marker date="1506648888000" expanded="true" signature="3409:3608" ph="select ajid,... bd_middle_case" />
-                <marker date="1506648888000" expanded="true" signature="3739:5460" ph="select ajid,... bd_middle_case" />
-                <marker date="1506648888000" expanded="true" signature="5588:6132" ph="select ajid,... bd_middle_case" />
+                <marker date="1506653305000" expanded="true" signature="1754:1822" ph="delete from " />
+                <marker date="1506653305000" expanded="true" signature="1924:2621" ph="insert into bd_middle_case... " />
+                <marker date="1506653305000" expanded="true" signature="2735:3467" ph="update bd_mi... " />
+                <marker date="1506653305000" expanded="true" signature="3579:3778" ph="select ajid,... bd_middle_case" />
+                <marker date="1506653305000" expanded="true" signature="3909:5653" ph="select ajid,... bd_middle_case" />
+                <marker date="1506653305000" expanded="true" signature="5781:6348" ph="select ajid,... bd_middle_case" />
               </folding>
             </state>
           </provider>
@@ -203,9 +233,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/downloadcenter.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/details.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
       </list>
@@ -1197,14 +1227,7 @@
       <workItem from="1504503375854" duration="131000" />
       <workItem from="1504503511483" duration="40000" />
       <workItem from="1504924233220" duration="125000" />
-      <workItem from="1506584459555" duration="7547000" />
-    </task>
-    <task id="LOCAL-00183" summary="hooah hooah hooah">
-      <created>1503196345940</created>
-      <option name="number" value="00183" />
-      <option name="presentableId" value="LOCAL-00183" />
-      <option name="project" value="LOCAL" />
-      <updated>1503196345940</updated>
+      <workItem from="1506584459555" duration="8929000" />
     </task>
     <task id="LOCAL-00184" summary="hooah hooah hooah">
       <created>1503196801741</created>
@@ -1542,11 +1565,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506612025204</updated>
     </task>
-    <option name="localTasksCounter" value="232" />
+    <task id="LOCAL-00232" summary="hooah hooah hooah">
+      <created>1506651794719</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
+      <option name="project" value="LOCAL" />
+      <updated>1506651794719</updated>
+    </task>
+    <option name="localTasksCounter" value="233" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424077000" />
+    <option name="totallyTimeSpent" value="425459000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1631,7 +1661,7 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28397712" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28397712" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
@@ -1711,13 +1741,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sysconfig.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1879,13 +1902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="82" lean-forward="false" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10">
@@ -1991,13 +2007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/details.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="76" column="38" lean-forward="false" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -2030,9 +2039,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="95" column="65" lean-forward="false" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/details.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="76" column="38" lean-forward="false" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdPublishReadMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493816602000" expanded="true" signature="662:739" ph="delete from " />
+            <marker date="1493816602000" expanded="true" signature="842:1034" ph="insert into bd_publish_read... " />
+            <marker date="1493816602000" expanded="true" signature="1149:1341" ph="update bd_pu... " />
+            <marker date="1493816602000" expanded="true" signature="1453:1562" ph="select xxggy... bd_publish_read" />
+            <marker date="1493816602000" expanded="true" signature="1632:1691" ph="select xxggy... bd_publish_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdPublishMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
+        <state relative-caret-position="1806">
           <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="92" selection-end-column="9" />
           <folding>
             <marker date="1493816914000" expanded="true" signature="3448:4792" ph="select bp.xx... bd_publish" />
@@ -2042,54 +2089,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdMiddleCase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="29" />
+        <state relative-caret-position="359">
+          <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1741#1742#0" expanded="true" />
+            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+            <element signature="e#1898#1899#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        <state relative-caret-position="186">
+          <caret line="22" column="83" lean-forward="false" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
           <folding>
-            <marker date="1506648888000" expanded="true" signature="1584:1652" ph="delete from " />
-            <marker date="1506648888000" expanded="true" signature="1754:2451" ph="insert into bd_middle_case... " />
-            <marker date="1506648888000" expanded="true" signature="2565:3297" ph="update bd_mi... " />
-            <marker date="1506648888000" expanded="true" signature="3409:3608" ph="select ajid,... bd_middle_case" />
-            <marker date="1506648888000" expanded="true" signature="3739:5460" ph="select ajid,... bd_middle_case" />
-            <marker date="1506648888000" expanded="true" signature="5588:6132" ph="select ajid,... bd_middle_case" />
+            <marker date="1506653305000" expanded="true" signature="1754:1822" ph="delete from " />
+            <marker date="1506653305000" expanded="true" signature="1924:2621" ph="insert into bd_middle_case... " />
+            <marker date="1506653305000" expanded="true" signature="2735:3467" ph="update bd_mi... " />
+            <marker date="1506653305000" expanded="true" signature="3579:3778" ph="select ajid,... bd_middle_case" />
+            <marker date="1506653305000" expanded="true" signature="3909:5653" ph="select ajid,... bd_middle_case" />
+            <marker date="1506653305000" expanded="true" signature="5781:6348" ph="select ajid,... bd_middle_case" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="95" column="65" lean-forward="false" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="490" column="24" lean-forward="false" selection-start-line="490" selection-start-column="24" selection-end-line="490" selection-end-column="24" />
+        <state relative-caret-position="506">
+          <caret line="819" column="38" lean-forward="false" selection-start-line="819" selection-start-column="38" selection-end-line="819" selection-end-column="38" />
           <folding>
-            <marker date="1506651732000" expanded="true" signature="24523:24538" ph="..." />
-            <marker date="1506651732000" expanded="true" signature="24550:24564" ph="..." />
-            <marker date="1506651732000" expanded="true" signature="28449:28464" ph="..." />
-            <marker date="1506651732000" expanded="true" signature="28476:28490" ph="..." />
+            <marker date="1506653679000" expanded="true" signature="24490:24505" ph="..." />
+            <marker date="1506653679000" expanded="true" signature="24517:24531" ph="..." />
+            <marker date="1506653679000" expanded="true" signature="28441:28456" ph="..." />
+            <marker date="1506653679000" expanded="true" signature="28468:28482" ph="..." />
           </folding>
         </state>
       </provider>
