@@ -10,15 +10,8 @@
     <jsp:include page="/header.jsp?libs=jqgrid;layer" />
     <script src="view_relatedcases.js"></script>
 </head>
-<body>
-<div class="bmbox_layout title_fixed clearfix">
-    <div class="bmbox_title">
-        <h5>皖民他10号 - 的关联案件列表</h5>
-    </div>
-    <div class="bmbox_content clearfix">
-        <table id="table1" class="table table-striped"></table>
-        <div id="pager1"></div>
-    </div>
-</div>
+<body style="overflow: hidden">
+<table id="table1" class="table table-striped"></table>
+<div id="pager1"></div>
 </body>
 </html>

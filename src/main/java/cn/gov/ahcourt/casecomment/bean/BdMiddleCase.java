@@ -114,7 +114,15 @@ public class BdMiddleCase extends BaseEntity{
 
     private String relatedcaseid;
 
+    private String[] formrelatedcaseid;
 
+    public String[] getFormrelatedcaseid() {
+        return formrelatedcaseid;
+    }
+
+    public void setFormrelatedcaseid(String[] formrelatedcaseid) {
+        this.formrelatedcaseid = formrelatedcaseid;
+    }
 
     public String getFormAjxzUnSplited() {
         return formAjxzUnSplited;

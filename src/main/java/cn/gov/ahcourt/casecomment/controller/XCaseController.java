@@ -22,10 +22,7 @@ public class XCaseController {
 	private BdMiddleCaseMapper bdMiddleCaseMapper;
 
     @RequestMapping("/list")
-    public @ResponseBody Map list(BdMiddleCase bean, @SessionScope("user") UserBean user) {
-        if (user == null) {
-            return null;
-        }
+    public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
         if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
             bean.setJcs(bean.getJoinedCaseIds().split(";"));
@@ -43,10 +40,7 @@ public class XCaseController {
     }
 
     @RequestMapping("/random")
-    public @ResponseBody Map random(BdMiddleCase bean, @SessionScope("user") UserBean user) {
-        if (user == null) {
-            return null;
-        }
+    public @ResponseBody Map random(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
         if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
             bean.setJcs(bean.getJoinedCaseIds().split(";"));
@@ -54,6 +48,17 @@ public class XCaseController {
         return bean.toMap(bdMiddleCaseMapper.random(bean));
     }
 
-
+    @RequestMapping("/related")
+    public @ResponseBody Map related(String ajid) {
+        if(StringUtils.isNotBlank(ajid)){
+            BdMiddleCase item = bdMiddleCaseMapper.selectByPrimaryKey(ajid);
+            if(item != null && StringUtils.isNotBlank(item.getRelatedcaseid())){
+                BdMiddleCase bean = new BdMiddleCase();
+                bean.setFormrelatedcaseid(item.getRelatedcaseid().split(";"));
+                return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
+            }
+        }
+        return null;
+    }
 
 }

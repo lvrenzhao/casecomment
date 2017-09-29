@@ -683,7 +683,7 @@ function loadGrid1() {
             },
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="viewRelated(\'' + rowObject.relatedcasecount + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
+                    return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
                 }
             },
             // {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
@@ -738,7 +738,7 @@ function loadGrid2() {
             }},
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="viewRelated(\'' + rowObject.relatedcasecount + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
+                    return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
                 }
             },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
@@ -808,7 +808,7 @@ function initChildGrid1(parentRowID, parentRowKey) {
             }},
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="viewRelated(\'' + rowObject.relatedcasecount + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
+                    return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
                 }
             },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},

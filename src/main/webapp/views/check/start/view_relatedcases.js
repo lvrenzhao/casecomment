@@ -1,16 +1,21 @@
-var URL_RELATED_CASES = ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json';
+var ajid;
+
+var URL_RELATED_CASES = ahcourt.ctx + '/case/related.do';
 
 $(function () {
+
+    ajid = $.getUrlParam("ajid");
     loadGrid1();
 });
 
 function loadGrid1() {
     $("#table1").jqGrid({
         url:URL_RELATED_CASES,
+        postData:{ajid:ajid},
         datatype : "json",
         mtype : "post",
         multiselect : true,
-        height : $('body').height() - 125,
+        height : $('body').height() - 75,
         width : $('body').width() ,
         rownumbers : true,
         shrinkToFit : true,

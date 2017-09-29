@@ -63,7 +63,7 @@
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, jasj, lx, thirdid, create_by, create_date, 
-    update_by, update_date, remarks, flag
+    update_by, update_date, remarks, flag,relatedcasecount,relatedcaseid
     from bd_middle_case
     where ajid = #{ajid,jdbcType=VARCHAR}
   </select>
@@ -75,6 +75,12 @@
   ,relatedcasecount,relatedcaseid
   from bd_middle_case where 1=1
 
+  <if test="formrelatedcaseid !=null and formrelatedcaseid.length  > 0">
+    and ajid in
+    <foreach item="item" index="index" collection="formrelatedcaseid" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </if>
   <if test="jcs !=null and jcs.length  > 0">
     and ajid not in
     <foreach item="jc" index="index" collection="jcs" open="(" separator="," close=")">
@@ -133,6 +139,43 @@
       <foreach item="jc" index="index" collection="jcs" open="(" separator="," close=")">
         #{jc}
       </foreach>
+    </if>
+    <if test="formAjxz !=null and formAjxz.length  > 0">
+      and xz in
+      <foreach item="item" index="index" collection="formAjxz" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="formGsfy !=null and formGsfy.length  > 0">
+      and gsfy in
+      <foreach item="item" index="index" collection="formGsfy" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="formAjlx !=null and formAjlx.length  > 0">
+      and lx in
+      <foreach item="item" index="index" collection="formAjlx" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="cbbm !=null and cbbm != '' ">
+      and cbbm like concat('%',#{cbbm},'%')
+    </if>
+    <if test="cbr !=null and cbr != '' ">
+      and cbr like concat('%',#{cbr},'%')
+    </if>
+    <if test="ah !=null and ah != '' ">
+      and ah like concat('%',#{ah},'%')
+    </if>
+    <if test="ay !=null and ay != '' ">
+      and ay like concat('%',#{ay},'%')
+    </if>
+
+    <if test="formStartJarq != null and formStartJarq != '' ">
+      and date_format(jasj, '%Y/%m/%d') &gt;= #{formStartJarq}
+    </if>
+    <if test="formEndJqrq != null and formEndJqrq != '' ">
+      and date_format(jasj, '%Y/%m/%d') &lt;= #{formEndJqrq}
     </if>
     ORDER BY RAND() LIMIT #{randomcount}
   </select>
