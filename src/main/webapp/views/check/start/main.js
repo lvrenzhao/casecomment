@@ -817,11 +817,16 @@ function initChildGrid1(parentRowID, parentRowKey) {
             {label : 'teamid',name : 'teamid',hidden : true,sortable:false,frozen : true},
             {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
             {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,sortable:false,frozen : true},
+            {label : 'passcheck',name : 'passcheck',hidden : true,sortable:false,frozen : true},
             {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ajid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
-            {label : '检',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+            {label : '<i style="color:grey" class="fa fa-warning"></i>',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                if(rowObject.passcheck == "1"){
+                    return '';
+                }else{
+                    return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+                }
             }},
             {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+rowObject.ah+'</a>'
