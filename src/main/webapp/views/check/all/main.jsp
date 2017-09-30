@@ -24,10 +24,6 @@
         <input type="text" id="" class="form-control input-sm" placeholder="请输入公告标题" maxlength="255" />
       </div>
         <div class="form_item wb15 fl">
-          <label>案号</label>
-          <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
-        </div>
-        <div class="form_item wb15 fl">
           <label>发布人</label>
           <input type="text" class="form-control input-sm" placeholder=""/>
         </div>
@@ -54,6 +50,10 @@
             <option value="">常规评查</option>
           </select>
         </div>
+        <div class="form_item wb15 fl">
+          <label>评查专家</label>
+          <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
+        </div>
 
         <div class="form_item wb15 fl">
           <label>所属法院</label>
@@ -68,7 +68,7 @@
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">
-          <label>评查成员</label>
+          <label>案号</label>
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">
