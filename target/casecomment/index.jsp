@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双评工作平台</title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=metismenu;slimscroll" />
+    <jsp:include page="/header.jsp?libs=metismenu;slimscroll;layer" />
     <link href="${ctx_assets}/css/index.css" rel="stylesheet">
     <script type="text/javascript" src="${ctx_assets}/js/contabs.js"></script>
     <script type="text/javascript" src="${ctx_assets}/js/index.js"></script>

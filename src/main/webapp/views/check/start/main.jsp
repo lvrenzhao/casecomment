@@ -213,7 +213,7 @@
         <div class="alert alert-warning" role="alert">系统将会自动短信通知各评审专家准备评审。</div>
         <div class="form_item wb60 fl">
           <label>评查公告标题<span>*</span></label>
-          <input type="text" id="khmc" class="form-control input-sm" placeholder="" maxlength="255" />
+          <input type="text" id="txt_bt" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
 
         <div class="form_item wb40 fl">
@@ -266,9 +266,9 @@
 
         <div class="form_item wb20 fl">
           <label>选择评分表<span>*</span></label>
-          <select class="form-control">
+          <select class="form-control" id="form_sel_pfb">
             <option value="">--请选择--</option>
-            <option value="">2017常规评查评分表</option>
+            <option value="1">2017常规评查评分表</option>
           </select>
         </div>
 

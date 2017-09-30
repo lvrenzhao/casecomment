@@ -459,6 +459,15 @@ $(function () {
             if(currentIndex < 3){
                 return false;
             }
+
+            if($("#txt_bt").val() && $("#form_sel_pfb").val()){
+
+                window.location.reload(true);
+                top.layer.msg("公告发布成功! 正在等待审核。");
+            }else{
+                layer.msg("请将所有必填项填写完整");
+                return false;
+            }
             return true;
         }
     });
@@ -680,6 +689,7 @@ function loadGrid1() {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
             {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,sortable:false,frozen : true},
+            {label : 'passcheck',name : 'passcheck',hidden : true,sortable:false,frozen : true},
             {label : '案号',name : 'fmt1', width : 120,sortable:false,frozen : true,
                 formatter:function (cellvalue,options,rowObject) {
                     return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
@@ -730,12 +740,17 @@ function loadGrid2() {
         rowNum : 100000000,
         colModel : [
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : 'raj',name : 'raj',hidden : true,sortable:false,frozen : true},
-            {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,sortable:false,frozen : true},
+            {label : 'passcheck',name : 'passcheck',hidden : true,sortable:false,frozen : true},
+            {label : '<i style="color:grey" class="fa fa-trash"></i>',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="removeCase(\'' + rowObject.ajid + '\')"><i class="fa fa-trash"></i> </button>';
             }},
-            {label : '检',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+            {label : '<i style="color:grey" class="fa fa-warning"></i>',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+                if(rowObject.passcheck == "1"){
+                    return '';
+                }else{
+                    return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+                }
             }},
             {label : '案号',name : 'fmt3', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
@@ -801,6 +816,7 @@ function initChildGrid1(parentRowID, parentRowKey) {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'teamid',name : 'teamid',hidden : true,sortable:false,frozen : true},
             {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,sortable:false,frozen : true},
             {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ajid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
@@ -845,7 +861,7 @@ function viewRelated(key) {
         title : '查看关联案件',
         shadeClose : false,
         shade : 0.3,
-        area : [ '90%', '90%' ],
+        area : [ '90%', '60%' ],
         content : ahcourt.ctx + '/views/check/start/view_relatedcases.jsp?ajid=' + key,
         cancel : function(index) {
             layer.close(index);

@@ -22,6 +22,7 @@
     <result column="flag" property="flag" jdbcType="VARCHAR" />
     <result column="relatedcasecount" property="relatedcasecount" jdbcType="VARCHAR" />
     <result column="relatedcaseid" property="relatedcaseid" jdbcType="VARCHAR" />
+    <result column="passcheck" property="passcheck" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_middle_case
@@ -63,14 +64,14 @@
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, jasj, lx, thirdid, create_by, create_date, 
-    update_by, update_date, remarks, flag,relatedcasecount,relatedcaseid
+    update_by, update_date, remarks, flag,relatedcasecount,relatedcaseid,passcheck
     from bd_middle_case
     where ajid = #{ajid,jdbcType=VARCHAR}
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase"  >
   select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
-  update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
+  update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck
 
   ,relatedcasecount,relatedcaseid
   from bd_middle_case where 1=1
@@ -129,7 +130,7 @@
 
   <select id="random" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase"  >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
-    update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag
+    update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck
 
     ,relatedcasecount,relatedcaseid
     from bd_middle_case where 1=1

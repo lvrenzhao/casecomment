@@ -94,6 +94,16 @@ public class BdMiddleCase extends BaseEntity{
     private String formStartJarq;
     private String formEndJqrq;
 
+    private String passcheck;
+
+    public String getPasscheck() {
+        return passcheck;
+    }
+
+    public void setPasscheck(String passcheck) {
+        this.passcheck = passcheck;
+    }
+
     private int relatedcasecount;
 
     public int getRelatedcasecount() {
