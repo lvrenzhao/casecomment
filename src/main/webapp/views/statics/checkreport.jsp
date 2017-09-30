@@ -40,11 +40,11 @@
                   {label : 'ggid',name : 'ggid',hidden : true,key : true },
                   {label : 'btys',name : 'btys',hidden : true},
                   {label : 'sfyd',name : 'sfyd',hidden : true},
-                  {label : '操作',name : 'ggid', width : 240,align : 'center',sortable : false,
+                  {label : '操作',name : 'ggid', width : 200,align : 'center',sortable : false,
                       formatter : function(cellvalue, options, rowObject) {
                           return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(3,\'' + rowObject.ggid + '\')" title=""><i class="fa fa-info-circle"></i> 公告详细</button>'
                               +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails()" title=""><i class="fa fa-balance-scale"></i> 评查情况</button>'
-                              +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="downLoad()" title=""><i class="fa fa-file-word-o"></i> 下载报告</button>';
+//                              +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="downLoad()" title=""><i class="fa fa-file-word-o"></i> 下载报告</button>';
                       }
                   },
                   {label : '公告标题',name : 'ggbt',width : 300,sortable:false,

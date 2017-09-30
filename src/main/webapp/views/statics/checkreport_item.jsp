@@ -515,7 +515,7 @@
 
                 </div>
                 <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="">清空</button>
-                <div id="menuContent" class="menuContent">
+                <div id="menuContent" class="menuContent" style="z-index: 9999999">
                   <ul id="treeDemo" class="ztree"></ul>
                 </div>
               </div>
@@ -529,14 +529,14 @@
               </select>
             </div>
 
-            <div class="form_item wb20 fl moreview">
-              <label>排名依据</label>
-              <select class="form-control input-sm">
-                <option>总分</option>
-                <option>审理程序</option>
-                <option>事实证据与实体处理	</option>
-              </select>
-            </div>
+            <%--<div class="form_item wb20 fl moreview">--%>
+              <%--<label>排名依据</label>--%>
+              <%--<select class="form-control input-sm">--%>
+                <%--<option>总分</option>--%>
+                <%--<option>审理程序</option>--%>
+                <%--<option>事实证据与实体处理	</option>--%>
+              <%--</select>--%>
+            <%--</div>--%>
 
           </div>
 
@@ -599,18 +599,19 @@
                 label : '来自',
                 name : 'lz',
                 frozen : true,
-                width : 150
+                width : 300
             },{
                 label : '本次评查案件',
                 name : 'bc',
                 frozen : true,
                 width : 100
-            },{
-                label : '本次评查活动寄语',
-                name : '',
-                frozen : true,
-                width : 500
             }
+//            ,{
+//                label : '本次评查活动寄语',
+//                name : '',
+//                frozen : true,
+//                width : 500
+//            }
             ],
             pager:"#pager1"
             ,viewrecords: true
