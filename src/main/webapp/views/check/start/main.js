@@ -6,6 +6,10 @@ var URL_CASES = ahcourt.ctx + '/case/list.do';
 var URL_RANDOM_CASES = ahcourt.ctx + '/case/random.do';
 //获取专家接口
 var URL_PROFESSIONALS = ahcourt.ctx + '/setting/professional/listjson.do';
+//发布公告接口
+var URL_SUBMIT = ahcourt.ctx + '/case/publish.do';
+//获取评分表接口
+var URL_PFB = ahcourt.ctx + '/case/pfb.do';
 
 var lo;
 //获取ztree中选中节点的下级节点名称,返回数组
@@ -149,7 +153,7 @@ function removeCase(ajid) {
         refreshJoinedCasesGrid();
     });
 }
-
+var dists=[];
 function reloadTab3() {
     $("#lbl_joined_case_count").text(joinedCases.length);
     //计算案件分布
@@ -198,18 +202,21 @@ function reloadTab3() {
     //设置区域分布控件
     var qy_html = "<option value=''>归属法院</option>";
     for(var i = 0 ; qys && i < qys.length ; i ++){
+        dists.push({"fbxmc":qys[i].gsfy + " - 被抽中" + qys[i].cases + "条 - 占比" + (qys[i].cases/joinedCases.length * 100).toFixed(2)  +"%",fbxlx:"1","fbx":qys[i].gsfy});
         qy_html += "<option value='"+qys[i].gsfy+"'>"+qys[i].gsfy + " - 被抽中" + qys[i].cases + "条 - 占比" + (qys[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
     $("#form_sel_region").html(qy_html);
     //设置性质分布控件
     var xz_html = "<option value=''>案件性质</option>";
     for(var i = 0 ; xzs && i < xzs.length ; i ++){
+        dists.push({"fbxmc":xzs[i].xz + " - 被抽中" + xzs[i].cases + "条 - 占比" + (xzs[i].cases/joinedCases.length * 100).toFixed(2)  +"%",fbxlx:"2","fbx":xzs[i].xz});
         xz_html += "<option value='"+xzs[i].xz+"'>"+xzs[i].xz + " - 被抽中" + xzs[i].cases + "条 - 占比" + (xzs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
     $("#form_sel_xz").html(xz_html);
     //设置类型分布控件
     var lx_html = "<option value=''>案件类型</option>";
     for(var i = 0 ; lxs && i < lxs.length ; i ++){
+        dists.push({"fbxmc":lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%",fbxlx:"3","fbx":lxs[i].lx});
         lx_html += "<option value='"+lxs[i].lx+"'>"+lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
     $("#form_sel_lx").html(lx_html);
@@ -460,8 +467,28 @@ $(function () {
                 return false;
             }
 
-            if($("#txt_bt").val() && $("#form_sel_pfb").val()){
+            //todo 不能有未分配的案件，其余不管，哪怕0个评查案件都让其发布公告。
 
+            if($("#txt_bt").val() && $("#form_sel_pfb").val()){
+                $.ajax({
+                    type : 'POST',
+                    url : URL_SUBMIT,
+                    datatype : 'json',
+                    data:{
+                        bt:$("#txt_bt").val(),
+                        btys:$("#btys1").is(':checked')?"black":"red",
+                        pclx:$("#type1").is(':checked')?"常规评查":($("#type2").is(':checked')?"专项评查":"重点评查"),
+                        pcrw:$("#task1").is(':checked')?"案件":($("#task2").is(':checked')?"文书":"庭审"),
+                        pfb:$("#form_sel_pfb").val(),
+                        casesjson:JSON.stringify(joinedCases),
+                        teamjson:JSON.stringify(teams),
+                        distjson:JSON.stringify(dists)
+
+                    },
+                    success : function(data) {
+
+                    }
+                });
                 window.location.reload(true);
                 top.layer.msg("公告发布成功! 正在等待审核。");
             }else{
@@ -492,6 +519,29 @@ $(function () {
                 showMenu();
                 return false;
             });
+        }
+    });
+    //设置评分表
+    $.ajax({
+        type : 'POST',
+        url : URL_PFB,
+        datatype : 'json',
+        // async : false,
+        success : function(data) {
+            console.log(data)
+            if (data && data.rows && data.rows.length > 0) {
+                $("#form_sel_pfb").each(function() {
+                    var html = '<option value="">--请选择--</option>';
+                    for (var i = 0; i < data.rows.length; i++) {
+                        html += '<option ' + 'value="' + data.rows[i].tableid + '">' + data.rows[i].mbmc + '</option>'
+                    }
+                    $(this).html(html);
+                });
+            } else {
+                $("#form_sel_pfb").each(function() {
+                    $(this).html('<option value="">--请选择--</option>');
+                })
+            }
         }
     });
     $('#btn_clearorgs').click(function(){

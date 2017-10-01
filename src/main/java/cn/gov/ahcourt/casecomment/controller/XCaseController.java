@@ -1,10 +1,9 @@
 package cn.gov.ahcourt.casecomment.controller;
 
-import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
-import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
-import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.BdScoretablesMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -25,6 +24,9 @@ public class XCaseController {
 
     @Resource
     private BdCheckCasesMapper bdCheckCasesMapper;
+
+    @Resource
+    private BdScoretablesMapper bdScoretablesMapper;
 
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
@@ -74,6 +76,20 @@ public class XCaseController {
             return bean.toMap(bdCheckCasesMapper.selectAll(bean));
         }
         return null;
+    }
+
+    @RequestMapping("/publish")
+    public @ResponseBody String publish(BdCheck bean) {
+        System.out.println(111);
+        return "";
+    }
+
+    @RequestMapping("/pfb")
+    public @ResponseBody Map pfb() {
+        BdScoretables bean = new BdScoretables();
+        bean.setLx("1");
+        bean.setSfqy("1");
+        return bean.toMap(bdScoretablesMapper.selectAll(bean));
     }
 
 }

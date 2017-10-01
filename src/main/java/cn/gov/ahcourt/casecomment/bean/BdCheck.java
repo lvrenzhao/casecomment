@@ -41,6 +41,34 @@ public class BdCheck extends BaseEntity{
 
     private String nr;
 
+    private String casesjson;
+    private String teamjson;
+    private String distjson;
+
+    public String getDistjson() {
+        return distjson;
+    }
+
+    public void setDistjson(String distjson) {
+        this.distjson = distjson;
+    }
+
+    public String getTeamjson() {
+        return teamjson;
+    }
+
+    public void setTeamjson(String teamjson) {
+        this.teamjson = teamjson;
+    }
+
+    public String getCasesjson() {
+        return casesjson;
+    }
+
+    public void setCasesjson(String casesjson) {
+        this.casesjson = casesjson;
+    }
+
     public String getCheckid() {
         return checkid;
     }

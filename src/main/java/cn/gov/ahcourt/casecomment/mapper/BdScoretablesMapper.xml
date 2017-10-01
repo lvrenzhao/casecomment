@@ -54,5 +54,12 @@
     select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_scoretables
+    where 1=1
+    <if test="sfqy !=null and sfqy != '' ">
+      and sfqy = #{sfqy}
+    </if>
+    <if test="lx !=null and lx != '' ">
+      and lx = #{lx}
+    </if>
   </select>
 </mapper>

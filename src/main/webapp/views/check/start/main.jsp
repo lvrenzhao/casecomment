@@ -221,10 +221,10 @@
           <div class="i-checkslayout">
             <div class="radio i-checks">
               <label class="default_radio">
-                <input type="radio" value="1" name="btys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
+                <input id="btys1" type="radio" value="1" name="btys" checked style="position: absolute; opacity: 0;"> <i></i> 黑色（普通）
               </label>
               <label>
-                <input type="radio" value="2" name="btys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
+                <input id="btys2" type="radio" value="2" name="btys" style="position: absolute; opacity: 0;"> <i></i> 红色（重要）
               </label>
             </div>
           </div>
@@ -235,13 +235,13 @@
           <div class="i-checkslayout">
             <div class="radio i-checks">
               <label class="default_radio">
-                <input type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 常规评查
+                <input id="type1" type="radio" value="1" name="types" checked style="position: absolute; opacity: 0;"> <i></i> 常规评查
               </label>
               <label>
-                <input type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 专项评查
+                <input id="type2" type="radio" value="2" name="types" style="position: absolute; opacity: 0;"> <i></i> 专项评查
               </label>
               <label>
-                <input type="radio" value="3" name="types" style="position: absolute; opacity: 0;"> <i></i> 重点评查
+                <input id="type3" type="radio" value="3" name="types" style="position: absolute; opacity: 0;"> <i></i> 重点评查
               </label>
             </div>
           </div>
@@ -252,13 +252,13 @@
           <div class="i-checkslayout">
             <div class="radio i-checks">
               <label class="default_radio">
-                <input type="radio" value="1" name="task" checked style="position: absolute; opacity: 0;"> <i></i> 案件
+                <input id="task1" type="radio" value="1" name="task" checked style="position: absolute; opacity: 0;"> <i></i> 案件
               </label>
               <label>
-                <input type="radio" value="2" name="task" style="position: absolute; opacity: 0;"> <i></i> 文书
+                <input id="task2" type="radio" value="2" name="task" style="position: absolute; opacity: 0;"> <i></i> 文书
               </label>
               <label>
-                <input type="radio" value="3" name="task" style="position: absolute; opacity: 0;"> <i></i> 庭审
+                <input id="task3" type="radio" value="3" name="task" style="position: absolute; opacity: 0;"> <i></i> 庭审
               </label>
             </div>
           </div>
@@ -268,7 +268,6 @@
           <label>选择评分表<span>*</span></label>
           <select class="form-control" id="form_sel_pfb">
             <option value="">--请选择--</option>
-            <option value="1">2017常规评查评分表</option>
           </select>
         </div>
 
