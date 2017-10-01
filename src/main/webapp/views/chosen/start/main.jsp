@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="form_item wb20 fl">
-                <label>上传截止日期</label>
+                <label>案例填报截止日期</label>
                 <input type="text" class="form-control" placeholder=""/>
             </div>
             <div class="form_item wb50 fl">

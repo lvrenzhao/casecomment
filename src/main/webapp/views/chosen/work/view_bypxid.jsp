@@ -34,14 +34,14 @@
 
             <div class="form_item wb40 fl">
                 <select class="form-control">
-                    <option value="">区域分布</option>
+                    <option value="">归属法院</option>
                     <option value="1">合肥 - 共11件 - 占比25%</option>
                 </select>
             </div>
 
             <div class="form_item wb40 fl">
                 <select class="form-control">
-                    <option value="">案件性质分布</option>
+                    <option value="">案件性质</option>
                     <option value="1">民事 - 共11件 - 占比25%</option>
                 </select>
             </div>
