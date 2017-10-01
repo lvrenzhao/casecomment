@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCheckScoreMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCheckScore" >
+    <id column="scoreid" property="scoreid" jdbcType="VARCHAR" />
+    <result column="crid" property="crid" jdbcType="VARCHAR" />
+    <result column="tableid" property="tableid" jdbcType="VARCHAR" />
+    <result column="itemid" property="itemid" jdbcType="VARCHAR" />
+    <result column="kf" property="kf" jdbcType="VARCHAR" />
+    <result column="kfyy" property="kfyy" jdbcType="VARCHAR" />
+    <result column="df" property="df" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_check_score
+    where scoreid = #{scoreid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckScore" >
+    insert into bd_check_score (scoreid, crid, tableid, 
+      itemid, kf, kfyy, df, 
+      create_by, create_date, update_by, 
+      update_date, remarks, flag
+      )
+    values (#{scoreid,jdbcType=VARCHAR}, #{crid,jdbcType=VARCHAR}, #{tableid,jdbcType=VARCHAR}, 
+      #{itemid,jdbcType=VARCHAR}, #{kf,jdbcType=VARCHAR}, #{kfyy,jdbcType=VARCHAR}, #{df,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckScore" >
+    update bd_check_score
+    set crid = #{crid,jdbcType=VARCHAR},
+      tableid = #{tableid,jdbcType=VARCHAR},
+      itemid = #{itemid,jdbcType=VARCHAR},
+      kf = #{kf,jdbcType=VARCHAR},
+      kfyy = #{kfyy,jdbcType=VARCHAR},
+      df = #{df,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where scoreid = #{scoreid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select scoreid, crid, tableid, itemid, kf, kfyy, df, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by,
+    date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_score
+    where scoreid = #{scoreid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select scoreid, crid, tableid, itemid, kf, kfyy, df, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by,
+    date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_score
+  </select>
+</mapper>

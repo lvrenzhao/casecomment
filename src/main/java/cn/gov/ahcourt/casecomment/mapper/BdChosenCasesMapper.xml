@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdChosenCasesMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
+    <id column="ccid" property="ccid" jdbcType="VARCHAR" />
+    <result column="chosenid" property="chosenid" jdbcType="VARCHAR" />
+    <result column="ajid" property="ajid" jdbcType="VARCHAR" />
+    <result column="psgroupid" property="psgroupid" jdbcType="VARCHAR" />
+    <result column="jydp" property="jydp" jdbcType="VARCHAR" />
+    <result column="zzpxdf" property="zzpxdf" jdbcType="VARCHAR" />
+    <result column="dpr" property="dpr" jdbcType="VARCHAR" />
+    <result column="dpsj" property="dpsj" jdbcType="TIMESTAMP" />
+    <result column="tjly" property="tjly" jdbcType="VARCHAR" />
+    <result column="tbrq" property="tbrq" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_chosen_cases
+    where ccid = #{ccid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
+    insert into bd_chosen_cases (ccid, chosenid, ajid, 
+      psgroupid, jydp, zzpxdf, 
+      dpr, dpsj, tjly, 
+      tbrq, create_by, create_date, 
+      update_by, update_date, remarks, 
+      flag)
+    values (#{ccid,jdbcType=VARCHAR}, #{chosenid,jdbcType=VARCHAR}, #{ajid,jdbcType=VARCHAR}, 
+      #{psgroupid,jdbcType=VARCHAR}, #{jydp,jdbcType=VARCHAR}, #{zzpxdf,jdbcType=VARCHAR}, 
+      #{dpr,jdbcType=VARCHAR}, #{dpsj,jdbcType=TIMESTAMP}, #{tjly,jdbcType=VARCHAR}, 
+      #{tbrq,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
+    update bd_chosen_cases
+    set chosenid = #{chosenid,jdbcType=VARCHAR},
+      ajid = #{ajid,jdbcType=VARCHAR},
+      psgroupid = #{psgroupid,jdbcType=VARCHAR},
+      jydp = #{jydp,jdbcType=VARCHAR},
+      zzpxdf = #{zzpxdf,jdbcType=VARCHAR},
+      dpr = #{dpr,jdbcType=VARCHAR},
+      dpsj = #{dpsj,jdbcType=TIMESTAMP},
+      tjly = #{tjly,jdbcType=VARCHAR},
+      tbrq = #{tbrq,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where ccid = #{ccid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select ccid, chosenid, ajid, psgroupid, jydp, zzpxdf, dpr,date_format(dpsj, '%Y/%m/%d') dpsj, tjly, date_format(tbrq, '%Y/%m/%d') tbrq, create_by,
+    date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_chosen_cases
+    where ccid = #{ccid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ccid, chosenid, ajid, psgroupid, jydp, zzpxdf, dpr,date_format(dpsj, '%Y/%m/%d') dpsj, tjly, date_format(tbrq, '%Y/%m/%d') tbrq, create_by,
+    date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_chosen_cases
+  </select>
+</mapper>

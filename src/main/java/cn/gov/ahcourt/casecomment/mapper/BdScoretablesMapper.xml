@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdScoretablesMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdScoretables" >
+    <id column="tableid" property="tableid" jdbcType="VARCHAR" />
+    <result column="mbmc" property="mbmc" jdbcType="VARCHAR" />
+    <result column="mcms" property="mcms" jdbcType="VARCHAR" />
+    <result column="sfqy" property="sfqy" jdbcType="VARCHAR" />
+    <result column="lx" property="lx" jdbcType="VARCHAR" />
+    <result column="mf" property="mf" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_scoretables
+    where tableid = #{tableid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdScoretables" >
+    insert into bd_scoretables (tableid, mbmc, mcms, 
+      sfqy, lx, mf, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag)
+    values (#{tableid,jdbcType=VARCHAR}, #{mbmc,jdbcType=VARCHAR}, #{mcms,jdbcType=VARCHAR}, 
+      #{sfqy,jdbcType=VARCHAR}, #{lx,jdbcType=VARCHAR}, #{mf,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdScoretables" >
+    update bd_scoretables
+    set mbmc = #{mbmc,jdbcType=VARCHAR},
+      mcms = #{mcms,jdbcType=VARCHAR},
+      sfqy = #{sfqy,jdbcType=VARCHAR},
+      lx = #{lx,jdbcType=VARCHAR},
+      mf = #{mf,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where tableid = #{tableid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag
+    from bd_scoretables
+    where tableid = #{tableid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag
+    from bd_scoretables
+  </select>
+</mapper>

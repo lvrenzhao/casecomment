@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdMiddleFileMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
+    <id column="fileid" property="fileid" jdbcType="VARCHAR" />
+    <result column="pfileid" property="pfileid" jdbcType="VARCHAR" />
+    <result column="xname" property="xname" jdbcType="VARCHAR" />
+    <result column="xurl" property="xurl" jdbcType="VARCHAR" />
+    <result column="xorder" property="xorder" jdbcType="INTEGER" />
+    <result column="ajid" property="ajid" jdbcType="INTEGER" />
+    <result column="require" property="require" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_middle_file
+    where fileid = #{fileid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
+    insert into bd_middle_file (fileid, pfileid, xname, 
+      xurl, xorder, ajid, 
+      require, create_by, create_date, 
+      update_by, update_date, remarks, 
+      flag)
+    values (#{fileid,jdbcType=VARCHAR}, #{pfileid,jdbcType=VARCHAR}, #{xname,jdbcType=VARCHAR}, 
+      #{xurl,jdbcType=VARCHAR}, #{xorder,jdbcType=INTEGER}, #{ajid,jdbcType=INTEGER}, 
+      #{require,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
+    update bd_middle_file
+    set pfileid = #{pfileid,jdbcType=VARCHAR},
+      xname = #{xname,jdbcType=VARCHAR},
+      xurl = #{xurl,jdbcType=VARCHAR},
+      xorder = #{xorder,jdbcType=INTEGER},
+      ajid = #{ajid,jdbcType=INTEGER},
+      require = #{require,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where fileid = #{fileid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select fileid, pfileid, xname, xurl, xorder, ajid, require, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_middle_file
+    where fileid = #{fileid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select fileid, pfileid, xname, xurl, xorder, ajid, require, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_middle_file
+  </select>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCheckLevelsMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCheckLevels" >
+    <id column="levelid" property="levelid" jdbcType="VARCHAR" />
+    <result column="levelname" property="levelname" jdbcType="VARCHAR" />
+    <result column="maxscore" property="maxscore" jdbcType="VARCHAR" />
+    <result column="minscore" property="minscore" jdbcType="VARCHAR" />
+    <result column="xh" property="xh" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_check_levels
+    where levelid = #{levelid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckLevels" >
+    insert into bd_check_levels (levelid, levelname, maxscore, 
+      minscore, xh, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag)
+    values (#{levelid,jdbcType=VARCHAR}, #{levelname,jdbcType=VARCHAR}, #{maxscore,jdbcType=VARCHAR}, 
+      #{minscore,jdbcType=VARCHAR}, #{xh,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckLevels" >
+    update bd_check_levels
+    set levelname = #{levelname,jdbcType=VARCHAR},
+      maxscore = #{maxscore,jdbcType=VARCHAR},
+      minscore = #{minscore,jdbcType=VARCHAR},
+      xh = #{xh,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where levelid = #{levelid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select levelid, levelname, maxscore, minscore, xh, create_by,date_format(create_date, '%Y/%m/%d') create_date, update_by,
+    date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_levels
+    where levelid = #{levelid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select levelid, levelname, maxscore, minscore, xh, create_by,date_format(create_date, '%Y/%m/%d') create_date, update_by,
+    date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_levels
+  </select>
+</mapper>

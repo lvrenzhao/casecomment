@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCheckRejectReadMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCheckRejectRead" >
+    <id column="readid" property="readid" jdbcType="VARCHAR" />
+    <result column="readman" property="readman" jdbcType="VARCHAR" />
+    <result column="readtime" property="readtime" jdbcType="TIMESTAMP" />
+    <result column="checkid" property="checkid" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_check_reject_read
+    where readid = #{readid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckRejectRead" >
+    insert into bd_check_reject_read (readid, readman, readtime, 
+      checkid, create_by, create_date, 
+      update_by, update_date, remarks, 
+      flag)
+    values (#{readid,jdbcType=VARCHAR}, #{readman,jdbcType=VARCHAR}, #{readtime,jdbcType=TIMESTAMP}, 
+      #{checkid,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckRejectRead" >
+    update bd_check_reject_read
+    set readman = #{readman,jdbcType=VARCHAR},
+      readtime = #{readtime,jdbcType=TIMESTAMP},
+      checkid = #{checkid,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where readid = #{readid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select readid, readman, date_format(readtime, '%Y/%m/%d') readtime, checkid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag
+    from bd_check_reject_read
+    where readid = #{readid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select readid, readman, date_format(readtime, '%Y/%m/%d') readtime, checkid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag
+    from bd_check_reject_read
+  </select>
+</mapper>

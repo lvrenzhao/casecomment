@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCheckMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCheck" >
+    <id column="checkid" property="checkid" jdbcType="VARCHAR" />
+    <result column="bt" property="bt" jdbcType="VARCHAR" />
+    <result column="btys" property="btys" jdbcType="VARCHAR" />
+    <result column="pclx" property="pclx" jdbcType="VARCHAR" />
+    <result column="pcrw" property="pcrw" jdbcType="VARCHAR" />
+    <result column="pfb" property="pfb" jdbcType="VARCHAR" />
+    <result column="fqr" property="fqr" jdbcType="VARCHAR" />
+    <result column="fqsj" property="fqsj" jdbcType="TIMESTAMP" />
+    <result column="shr" property="shr" jdbcType="VARCHAR" />
+    <result column="shsj" property="shsj" jdbcType="TIMESTAMP" />
+    <result column="shyj" property="shyj" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_check
+    where checkid = #{checkid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheck" >
+    insert into bd_check (checkid, bt, btys, 
+      pclx, pcrw, pfb, fqr, 
+      fqsj, shr, shsj, 
+      shyj, zt, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag, nr
+      )
+    values (#{checkid,jdbcType=VARCHAR}, #{bt,jdbcType=VARCHAR}, #{btys,jdbcType=VARCHAR}, 
+      #{pclx,jdbcType=VARCHAR}, #{pcrw,jdbcType=VARCHAR}, #{pfb,jdbcType=VARCHAR}, #{fqr,jdbcType=VARCHAR}, 
+      #{fqsj,jdbcType=TIMESTAMP}, #{shr,jdbcType=VARCHAR}, #{shsj,jdbcType=TIMESTAMP}, 
+      #{shyj,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheck" >
+    update bd_check
+    set bt = #{bt,jdbcType=VARCHAR},
+      btys = #{btys,jdbcType=VARCHAR},
+      pclx = #{pclx,jdbcType=VARCHAR},
+      pcrw = #{pcrw,jdbcType=VARCHAR},
+      pfb = #{pfb,jdbcType=VARCHAR},
+      fqr = #{fqr,jdbcType=VARCHAR},
+      fqsj = #{fqsj,jdbcType=TIMESTAMP},
+      shr = #{shr,jdbcType=VARCHAR},
+      shsj = #{shsj,jdbcType=TIMESTAMP},
+      shyj = #{shyj,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      nr = #{nr,jdbcType=LONGVARCHAR}
+    where checkid = #{checkid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select checkid, bt, btys, pclx, pcrw, pfb, fqr, date_format(fqsj, '%Y/%m/%d') fqsj, shr, date_format(shsj, '%Y/%m/%d') shsj, shyj, zt, create_by,
+    date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag, nr
+    from bd_check
+    where checkid = #{checkid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select checkid, bt, btys, pclx, pcrw, pfb, fqr, date_format(fqsj, '%Y/%m/%d') fqsj, shr, date_format(shsj, '%Y/%m/%d') shsj, shyj, zt, create_by,
+    date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag, nr
+    from bd_check
+  </select>
+</mapper>

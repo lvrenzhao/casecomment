@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.BdCheckRecordsMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.BdCheckRecords" >
+    <id column="crid" property="crid" jdbcType="VARCHAR" />
+    <result column="checkid" property="checkid" jdbcType="VARCHAR" />
+    <result column="ajid" property="ajid" jdbcType="VARCHAR" />
+    <result column="pcr" property="pcr" jdbcType="VARCHAR" />
+    <result column="pcsj" property="pcsj" jdbcType="TIMESTAMP" />
+    <result column="pcfs" property="pcfs" jdbcType="VARCHAR" />
+    <result column="pczt" property="pczt" jdbcType="VARCHAR" />
+    <result column="zldj" property="zldj" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bd_check_records
+    where crid = #{crid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckRecords" >
+    insert into bd_check_records (crid, checkid, ajid, 
+      pcr, pcsj, pcfs, 
+      pczt, zldj, create_by, 
+      create_date, update_by, update_date, 
+      remarks, flag)
+    values (#{crid,jdbcType=VARCHAR}, #{checkid,jdbcType=VARCHAR}, #{ajid,jdbcType=VARCHAR}, 
+      #{pcr,jdbcType=VARCHAR}, #{pcsj,jdbcType=TIMESTAMP}, #{pcfs,jdbcType=VARCHAR}, 
+      #{pczt,jdbcType=VARCHAR}, #{zldj,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckRecords" >
+    update bd_check_records
+    set checkid = #{checkid,jdbcType=VARCHAR},
+      ajid = #{ajid,jdbcType=VARCHAR},
+      pcr = #{pcr,jdbcType=VARCHAR},
+      pcsj = #{pcsj,jdbcType=TIMESTAMP},
+      pcfs = #{pcfs,jdbcType=VARCHAR},
+      pczt = #{pczt,jdbcType=VARCHAR},
+      zldj = #{zldj,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where crid = #{crid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select crid, checkid, ajid, pcr,date_format(pcsj, '%Y/%m/%d') pcsj, pcfs, pczt, zldj, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_records
+    where crid = #{crid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select crid, checkid, ajid, pcr,date_format(pcsj, '%Y/%m/%d') pcsj, pcfs, pczt, zldj, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
+    from bd_check_records
+  </select>
+</mapper>
