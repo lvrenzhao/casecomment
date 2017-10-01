@@ -68,7 +68,7 @@
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb15 fl">
-          <label>评选成员</label>
+          <label>评选专家</label>
           <input type="text" id="" class="form-control input-sm" placeholder="" maxlength="255" />
         </div>
         <div class="form_item wb10 fl" style="text-align: right">
