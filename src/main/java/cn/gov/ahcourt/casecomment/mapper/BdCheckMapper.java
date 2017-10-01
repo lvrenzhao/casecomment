@@ -10,7 +10,7 @@ public interface BdCheckMapper {
 
     BdCheck selectByPrimaryKey(String checkid);
 
-    List<BdCheck> selectAll();
+    List<BdCheck> selectAll(BdCheck bean);
 
     int updateByPrimaryKey(BdCheck record);
 }

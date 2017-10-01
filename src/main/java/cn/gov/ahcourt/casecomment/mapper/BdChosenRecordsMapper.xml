@@ -54,7 +54,7 @@
     from bd_chosen_records
     where crid = #{crid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenRecords" >
     select crid, chosenid, ajid, pcr, pcsj, pcfs, pczt, create_by, create_date, update_by, 
     update_date, remarks, flag
     from bd_chosen_records

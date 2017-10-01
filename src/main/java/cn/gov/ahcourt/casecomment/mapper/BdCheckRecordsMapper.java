@@ -10,7 +10,7 @@ public interface BdCheckRecordsMapper {
 
     BdCheckRecords selectByPrimaryKey(String crid);
 
-    List<BdCheckRecords> selectAll();
+    List<BdCheckRecords> selectAll(BdCheckRecords bean);
 
     int updateByPrimaryKey(BdCheckRecords record);
 }

@@ -10,7 +10,7 @@ public interface BdCheckLevelsMapper {
 
     BdCheckLevels selectByPrimaryKey(String levelid);
 
-    List<BdCheckLevels> selectAll();
+    List<BdCheckLevels> selectAll(BdCheckLevels bean);
 
     int updateByPrimaryKey(BdCheckLevels record);
 }

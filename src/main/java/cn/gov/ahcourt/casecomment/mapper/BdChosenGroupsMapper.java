@@ -10,7 +10,7 @@ public interface BdChosenGroupsMapper {
 
     BdChosenGroups selectByPrimaryKey(String cgid);
 
-    List<BdChosenGroups> selectAll();
+    List<BdChosenGroups> selectAll(BdChosenGroups bean);
 
     int updateByPrimaryKey(BdChosenGroups record);
 }

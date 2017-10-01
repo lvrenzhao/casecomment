@@ -48,7 +48,7 @@
     from bd_chosen_pros
     where cpid = #{cpid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenPros">
     select cpid, chosenid, groupid, proid, sfzz, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_pros

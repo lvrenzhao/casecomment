@@ -10,7 +10,7 @@ public interface BdCheckReadMapper {
 
     BdCheckRead selectByPrimaryKey(String readid);
 
-    List<BdCheckRead> selectAll();
+    List<BdCheckRead> selectAll(BdCheckRead bean);
 
     int updateByPrimaryKey(BdCheckRead record);
 }

@@ -48,7 +48,7 @@
     from bd_chosen_groups
     where cgid = #{cgid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenGroups" >
     select cgid, chosenid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_groups

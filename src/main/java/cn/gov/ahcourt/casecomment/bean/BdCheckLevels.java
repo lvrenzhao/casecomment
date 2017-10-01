@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdCheckLevels {
+public class BdCheckLevels extends BaseEntity {
     private String levelid;
 
     private String levelname;

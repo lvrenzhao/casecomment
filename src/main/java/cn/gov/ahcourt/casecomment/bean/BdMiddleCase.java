@@ -96,6 +96,16 @@ public class BdMiddleCase extends BaseEntity{
 
     private String passcheck;
 
+    private String pcjl;
+
+    public String getPcjl() {
+        return pcjl;
+    }
+
+    public void setPcjl(String pcjl) {
+        this.pcjl = pcjl;
+    }
+
     public String getPasscheck() {
         return passcheck;
     }

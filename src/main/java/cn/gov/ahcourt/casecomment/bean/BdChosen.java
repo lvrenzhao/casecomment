@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdChosen {
+public class BdChosen extends BaseEntity {
     private String chosenid;
 
     private String bt;

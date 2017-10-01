@@ -1,7 +1,9 @@
 package cn.gov.ahcourt.casecomment.controller;
 
+import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
 import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
@@ -20,6 +22,9 @@ public class XCaseController {
 
     @Resource
 	private BdMiddleCaseMapper bdMiddleCaseMapper;
+
+    @Resource
+    private BdCheckCasesMapper bdCheckCasesMapper;
 
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
@@ -57,6 +62,16 @@ public class XCaseController {
                 bean.setFormrelatedcaseid(item.getRelatedcaseid().split(";"));
                 return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
             }
+        }
+        return null;
+    }
+
+    @RequestMapping("/pcjl")
+    public @ResponseBody Map pcjl(String ajid) {
+        if(StringUtils.isNotBlank(ajid)){
+            BdCheckCases bean = new BdCheckCases();
+            bean.setAjid(ajid);
+            return bean.toMap(bdCheckCasesMapper.selectAll(bean));
         }
         return null;
     }

@@ -10,7 +10,7 @@ public interface BdCheckScoreMapper {
 
     BdCheckScore selectByPrimaryKey(String scoreid);
 
-    List<BdCheckScore> selectAll();
+    List<BdCheckScore> selectAll(BdCheckScore bean);
 
     int updateByPrimaryKey(BdCheckScore record);
 }

@@ -10,7 +10,7 @@ public interface BdChosenCasesMapper {
 
     BdChosenCases selectByPrimaryKey(String ccid);
 
-    List<BdChosenCases> selectAll();
+    List<BdChosenCases> selectAll(BdChosenCases bean);
 
     int updateByPrimaryKey(BdChosenCases record);
 }

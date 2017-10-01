@@ -62,7 +62,7 @@
     from bd_chosen_cases
     where ccid = #{ccid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
     select ccid, chosenid, ajid, psgroupid, jydp, zzpxdf, dpr,date_format(dpsj, '%Y/%m/%d') dpsj, tjly, date_format(tbrq, '%Y/%m/%d') tbrq, create_by,
     date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_chosen_cases

@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdCheckGroups {
+public class BdCheckGroups extends BaseEntity {
     private String cgid;
 
     private String checkid;

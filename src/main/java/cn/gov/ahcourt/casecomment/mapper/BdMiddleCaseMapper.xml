@@ -23,6 +23,7 @@
     <result column="relatedcasecount" property="relatedcasecount" jdbcType="VARCHAR" />
     <result column="relatedcaseid" property="relatedcaseid" jdbcType="VARCHAR" />
     <result column="passcheck" property="passcheck" jdbcType="VARCHAR" />
+    <result column="pcjl" property="pcjl" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_middle_case
@@ -70,11 +71,11 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase"  >
-  select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
-  update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck
+    select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,
+    update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck
 
-  ,relatedcasecount,relatedcaseid
-  from bd_middle_case where 1=1
+    ,relatedcasecount,relatedcaseid,(select count(1) from bd_check_cases a where a.ajid = t.ajid and a.jydp is not null) pcjl
+    from bd_middle_case t where 1=1
 
   <if test="formrelatedcaseid !=null and formrelatedcaseid.length  > 0">
     and ajid in

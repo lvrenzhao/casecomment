@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdScoretableItems {
+public class BdScoretableItems extends BaseEntity {
     private String itemid;
 
     private String psnr;

@@ -10,7 +10,7 @@ public interface BdChosenReadMapper {
 
     BdChosenRead selectByPrimaryKey(String readid);
 
-    List<BdChosenRead> selectAll();
+    List<BdChosenRead> selectAll(BdChosenRead bean);
 
     int updateByPrimaryKey(BdChosenRead record);
 }

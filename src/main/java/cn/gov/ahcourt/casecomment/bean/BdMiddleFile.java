@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdMiddleFile {
+public class BdMiddleFile extends BaseEntity {
     private String fileid;
 
     private String pfileid;

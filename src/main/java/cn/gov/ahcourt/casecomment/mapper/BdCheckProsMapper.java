@@ -10,7 +10,7 @@ public interface BdCheckProsMapper {
 
     BdCheckPros selectByPrimaryKey(String cpid);
 
-    List<BdCheckPros> selectAll();
+    List<BdCheckPros> selectAll(BdCheckPros bean);
 
     int updateByPrimaryKey(BdCheckPros record);
 }

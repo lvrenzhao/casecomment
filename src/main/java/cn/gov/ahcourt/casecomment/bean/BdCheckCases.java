@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdCheckCases {
+public class BdCheckCases extends BaseEntity {
     private String ccid;
 
     private String checkid;
@@ -32,6 +32,34 @@ public class BdCheckCases {
     private String remarks;
 
     private String flag;
+
+    private String ggmc;
+    private String teamleadername;
+    private String teammatenames;
+
+    public String getGgmc() {
+        return ggmc;
+    }
+
+    public void setGgmc(String ggmc) {
+        this.ggmc = ggmc;
+    }
+
+    public String getTeamleadername() {
+        return teamleadername;
+    }
+
+    public void setTeamleadername(String teamleadername) {
+        this.teamleadername = teamleadername;
+    }
+
+    public String getTeammatenames() {
+        return teammatenames;
+    }
+
+    public void setTeammatenames(String teammatenames) {
+        this.teammatenames = teammatenames;
+    }
 
     public String getCcid() {
         return ccid;

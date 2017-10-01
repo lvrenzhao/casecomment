@@ -10,7 +10,7 @@ public interface BdScoretablesMapper {
 
     BdScoretables selectByPrimaryKey(String tableid);
 
-    List<BdScoretables> selectAll();
+    List<BdScoretables> selectAll(BdScoretables bean);
 
     int updateByPrimaryKey(BdScoretables record);
 }

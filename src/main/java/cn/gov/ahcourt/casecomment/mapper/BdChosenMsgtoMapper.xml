@@ -44,7 +44,7 @@
     from bd_chosen_msgto
     where msgtoid = #{msgtoid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenMsgto" >
     select msgtoid, chosenid, proid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_msgto

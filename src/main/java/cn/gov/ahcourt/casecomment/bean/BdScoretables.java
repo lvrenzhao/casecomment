@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdScoretables {
+public class BdScoretables extends BaseEntity {
     private String tableid;
 
     private String mbmc;

@@ -10,7 +10,7 @@ public interface BdChosenMsgtoMapper {
 
     BdChosenMsgto selectByPrimaryKey(String msgtoid);
 
-    List<BdChosenMsgto> selectAll();
+    List<BdChosenMsgto> selectAll(BdChosenMsgto bean);
 
     int updateByPrimaryKey(BdChosenMsgto record);
 }

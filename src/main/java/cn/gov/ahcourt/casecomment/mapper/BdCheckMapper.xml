@@ -70,7 +70,7 @@
     from bd_check
     where checkid = #{checkid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheck" >
     select checkid, bt, btys, pclx, pcrw, pfb, fqr, date_format(fqsj, '%Y/%m/%d') fqsj, shr, date_format(shsj, '%Y/%m/%d') shsj, shyj, zt, create_by,
     date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag, nr
     from bd_check

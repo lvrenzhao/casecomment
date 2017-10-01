@@ -10,7 +10,7 @@ public interface BdMiddleFileMapper {
 
     BdMiddleFile selectByPrimaryKey(String fileid);
 
-    List<BdMiddleFile> selectAll();
+    List<BdMiddleFile> selectAll(BdMiddleFile bean);
 
     int updateByPrimaryKey(BdMiddleFile record);
 }

@@ -70,7 +70,7 @@
     from bd_chosen
     where chosenid = #{chosenid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosen">
     select chosenid, bt, btys, pclx, pfb, fqr, date_format(fqsj, '%Y/%m/%d') fqsj, shr,date_format(shsj, '%Y/%m/%d') shsj, shyj, zt,date_format(jzrq, '%Y/%m/%d') jzrq, create_by,
     date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag, nr
     from bd_chosen

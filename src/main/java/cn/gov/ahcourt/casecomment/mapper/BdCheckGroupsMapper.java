@@ -10,7 +10,7 @@ public interface BdCheckGroupsMapper {
 
     BdCheckGroups selectByPrimaryKey(String cgid);
 
-    List<BdCheckGroups> selectAll();
+    List<BdCheckGroups> selectAll(BdCheckGroups bean);
 
     int updateByPrimaryKey(BdCheckGroups record);
 }

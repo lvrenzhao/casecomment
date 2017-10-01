@@ -10,7 +10,7 @@ public interface BdCheckDistributionMapper {
 
     BdCheckDistribution selectByPrimaryKey(String cdid);
 
-    List<BdCheckDistribution> selectAll();
+    List<BdCheckDistribution> selectAll(BdCheckDistribution bean);
 
     int updateByPrimaryKey(BdCheckDistribution record);
 }

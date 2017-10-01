@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdCheckRejectRead {
+public class BdCheckRejectRead extends BaseEntity {
     private String readid;
 
     private String readman;

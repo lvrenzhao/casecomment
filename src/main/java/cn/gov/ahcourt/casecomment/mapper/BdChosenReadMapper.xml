@@ -46,7 +46,7 @@
     from bd_chosen_read
     where readid = #{readid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenRead">
     select readid, readman, date_format(readtime, '%Y/%m/%d') readtime, chosenid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_read

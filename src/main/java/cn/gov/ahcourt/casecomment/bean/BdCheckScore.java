@@ -2,7 +2,7 @@ package cn.gov.ahcourt.casecomment.bean;
 
 import java.util.Date;
 
-public class BdCheckScore {
+public class BdCheckScore extends BaseEntity {
     private String scoreid;
 
     private String crid;
