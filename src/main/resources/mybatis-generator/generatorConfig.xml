@@ -29,7 +29,29 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>
+        <!--<table tableName="bd_middle_case" domainObjectName="BdMiddleCase"></table>-->
+        <table tableName="bd_middle_file" domainObjectName="BdMiddleFile"></table>
+        <table tableName="bd_check" domainObjectName="BdCheck"></table>
+        <table tableName="bd_check_cases" domainObjectName="BdCheckCases"></table>
+        <table tableName="bd_check_distribution" domainObjectName="BdCheckDistribution"></table>
+        <table tableName="bd_check_groups" domainObjectName="BdCheckGroups"></table>
+        <table tableName="bd_check_levels" domainObjectName="BdCheckLevels"></table>
+        <table tableName="bd_check_pros" domainObjectName="BdCheckPros"></table>
+        <table tableName="bd_check_read" domainObjectName="BdCheckRead"></table>
+        <table tableName="bd_check_records" domainObjectName="BdCheckRecords"></table>
+        <table tableName="bd_check_reject_read" domainObjectName="BdCheckRejectRead"></table>
+        <table tableName="bd_check_score" domainObjectName="BdCheckScore"></table>
+        <table tableName="bd_chosen" domainObjectName="BdChosen"></table>
+        <table tableName="bd_chosen_cases" domainObjectName="BdChosenCases"></table>
+        <table tableName="bd_chosen_groups" domainObjectName="BdChosenGroups"></table>
+        <table tableName="bd_chosen_msgto" domainObjectName="BdChosenMsgto"></table>
+        <table tableName="bd_chosen_pros" domainObjectName="BdChosenPros"></table>
+        <table tableName="bd_chosen_read" domainObjectName="BdChosenRead"></table>
+        <table tableName="bd_chosen_records" domainObjectName="BdChosenRecords"></table>
+        <table tableName="bd_chosen_reject_read" domainObjectName="BdChosenRejectRead"></table>
+        <table tableName="bd_chosen_score" domainObjectName="BdChosenScore"></table>
+        <table tableName="bd_scoretable_items" domainObjectName="BdScoretableItems"></table>
+        <table tableName="bd_scoretables" domainObjectName="BdScoretables"></table>
         <!--<table tableName="bd_casecheck" domainObjectName="BdCasecheck"></table>
         <table tableName="bd_casecheck_jy" domainObjectName="BdCasecheckJy"></table>
         <table tableName="bd_casecheck_notice" domainObjectName="BdCasecheckNotice"></table>
