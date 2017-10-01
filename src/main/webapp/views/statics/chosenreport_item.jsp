@@ -39,7 +39,7 @@
       <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
           <div class="alert alert-info">
-            本次评查活动共邀请专家 _____ 人，其中人大代表______人，政协委员______人，资深检察官_______人，专家学者______人，其他院外人士_______人。
+            本次评查活动共邀请专家 2 人，其中人大代表 0 人，政协委员 0 人，资深检察官 2 人，专家学者 0 人。
           </div>
           <div class="clearfix pd10">
             <table id="table1" class="table table-striped"></table>
@@ -135,25 +135,46 @@
                 frozen : true
             },{
                 label : '专家',
-                name : 'xmmc',
+                name : 'pczz',
                 frozen : true,
                 width : 100
             },{
                 label : '来自',
-                name : 'xmmc',
+                name : 'lz',
                 frozen : true,
-                width : 150
+                width : 300
+            },{
+                label : '人大代表',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '政协委员',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '资深检察官',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '专业学者',
+                name : '',
+                frozen : true,
+                width : 80
             },{
                 label : '本次评查案件',
-                name : 'xmmc',
+                name : 'bc',
                 frozen : true,
                 width : 100
-            },{
-                label : '本次评查活动寄语',
-                name : 'xmmc',
-                frozen : true,
-                width : 500
             }
+//            ,{
+//                label : '本次评查活动寄语',
+//                name : '',
+//                frozen : true,
+//                width : 500
+//            }
             ],
             pager:"#pager1"
             //,viewrecords: true

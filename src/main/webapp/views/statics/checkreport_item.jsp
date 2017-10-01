@@ -49,7 +49,7 @@
       <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
           <div class="alert alert-info">
-            本次评查活动共邀请专家 2 人，其中人大代表 0 人，政协委员 0 人，资深检察官 2 人，专家学者 0 人，其他院外人士  人。
+            本次评查活动共邀请专家 2 人，其中人大代表 0 人，政协委员 0 人，资深检察官 2 人，专家学者 0 人。
           </div>
           <div class="clearfix pd10">
             <table id="table1" class="table table-striped"></table>
@@ -601,6 +601,26 @@
                 frozen : true,
                 width : 300
             },{
+                label : '人大代表',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '政协委员',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '资深检察官',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
+                label : '专业学者',
+                name : '',
+                frozen : true,
+                width : 80
+            },{
                 label : '本次评查案件',
                 name : 'bc',
                 frozen : true,
@@ -637,12 +657,42 @@
                 frozen : true,
                 width : 150
             },{
+                label : '承办部门',
+                name : 'gsfy',
+                frozen : true,
+                width : 100
+            },{
+                label : '承办人',
+                name : 'gsfy',
+                frozen : true,
+                width : 80
+            },{
                 label : '案件性质',
                 name : 'xz',
                 frozen : true,
                 width : 100
             },{
+                label : '案件类型',
+                name : 'xz',
+                frozen : true,
+                width : 100
+            },{
+                label : '评查组长',
+                name : 'xz',
+                frozen : true,
+                width : 80
+            },{
+                label : '评查组员',
+                name : 'xz',
+                frozen : true,
+                width : 150
+            },{
                 label : '得分',
+                name : 'fs',
+                frozen : true,
+                width : 80
+            },{
+                label : '质量等级',
                 name : 'fs',
                 frozen : true,
                 width : 80
