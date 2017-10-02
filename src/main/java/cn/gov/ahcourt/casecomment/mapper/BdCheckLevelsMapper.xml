@@ -52,5 +52,7 @@
     select levelid, levelname, maxscore, minscore, xh, create_by,date_format(create_date, '%Y/%m/%d') create_date, update_by,
     date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_check_levels
+    where 1=1
+    order by xh asc
   </select>
 </mapper>

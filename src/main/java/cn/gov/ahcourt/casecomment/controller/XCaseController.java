@@ -49,6 +49,9 @@ public class XCaseController {
     @Resource
     private BdCheckRejectReadMapper bdCheckRejectReadMapper;
 
+    @Resource
+    private BdCheckLevelsMapper bdCheckLevelsMapper;
+
 
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
@@ -203,6 +206,17 @@ public class XCaseController {
             bean.setFbxlx(lx);
         }
         return bean.toMap(bdCheckDistributionMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/levels")
+    public @ResponseBody Map levels() {
+        BdCheckLevels bean = new BdCheckLevels();
+        return bean.toMap(bdCheckLevelsMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/dellevel")
+    public @ResponseBody int dellevel(String levelid) {
+        return bdCheckLevelsMapper.deleteByPrimaryKey(levelid);
     }
 
     @RequestMapping("/getcheck")
