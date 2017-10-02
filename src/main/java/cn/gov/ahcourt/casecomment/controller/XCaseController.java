@@ -1,15 +1,18 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.*;
-import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
-import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
-import cn.gov.ahcourt.casecomment.mapper.BdScoretablesMapper;
+import cn.gov.ahcourt.casecomment.mapper.*;
+import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
+import com.alibaba.fastjson.JSONArray;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +30,18 @@ public class XCaseController {
 
     @Resource
     private BdScoretablesMapper bdScoretablesMapper;
+
+    @Resource
+    private BdCheckMapper bdCheckMapper;
+
+    @Resource
+    private BdCheckDistributionMapper bdCheckDistributionMapper;
+
+    @Resource
+    private BdCheckGroupsMapper bdCheckGroupsMapper;
+
+    @Resource
+    private BdCheckProsMapper bdCheckProsMapper;
 
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
@@ -79,9 +94,74 @@ public class XCaseController {
     }
 
     @RequestMapping("/publish")
-    public @ResponseBody String publish(BdCheck bean) {
-        System.out.println(111);
-        return "";
+    public @ResponseBody String publish(BdCheck bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        //先保存公告；
+        try {
+            String checkid = IdGen.uuid();
+            bean.setCheckid(checkid);
+            bean.setFqr(user.getYhid());
+            bean.setFqsj(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+            bean.setZt("0");
+            bdCheckMapper.insert(bean);
+            //将案件分布情况保存
+            if (StringUtils.isNotBlank(bean.getDistjson())) {
+                List<BdCheckDistribution> dists = JSONArray.parseArray(bean.getDistjson(), BdCheckDistribution.class);
+                for (int i = 0; dists != null && i < dists.size(); i++) {
+                    BdCheckDistribution item = dists.get(i);
+                    item.setCdid(IdGen.uuid());
+                    item.setCheckid(checkid);
+                    bdCheckDistributionMapper.insert(item);
+                }
+            }
+            //将专家组和专家信息保存
+            if(StringUtils.isNotBlank(bean.getTeamjson())){
+                List<BdCheckGroups> teams = JSONArray.parseArray(bean.getTeamjson(),BdCheckGroups.class);
+                for(int i = 0 ; teams!=null && i < teams.size(); i++){
+                    BdCheckGroups team = teams.get(i);
+                    team.setCgid(team.getId());
+                    team.setCheckid(checkid);
+                    team.setGroupname(team.getName());
+                    team.setPcajs(team.getPc());
+                    bdCheckGroupsMapper.insert(team);
+                    BdCheckPros teamleader = new BdCheckPros();
+                    teamleader.setCpid(IdGen.uuid());
+                    teamleader.setCheckid(checkid);
+                    teamleader.setGroupid(team.getCgid());
+                    teamleader.setProid(team.getTeamleaderid());
+                    teamleader.setSfzz("1");
+                    bdCheckProsMapper.insert(teamleader);
+                    if(StringUtils.isNotBlank(team.getTeammateids())){
+                        String[] teammates = team.getTeammateids().split(";");
+                        for(int si = 0 ; teammates!=null && si < teammates.length ; si++){
+                            BdCheckPros teammate = new BdCheckPros();
+                            teammate.setCpid(IdGen.uuid());
+                            teammate.setCheckid(checkid);
+                            teammate.setGroupid(team.getCgid());
+                            teammate.setProid(teammates[si]);
+                            teammate.setSfzz("0");
+                            bdCheckProsMapper.insert(teammate);
+                        }
+                    }
+                }
+            }
+            //将案件信息保存
+            if(StringUtils.isNotBlank(bean.getCasesjson())){
+                List<BdCheckCases> cases = JSONArray.parseArray(bean.getCasesjson(),BdCheckCases.class);
+                for(int i = 0 ; cases != null && i < cases.size(); i++){
+                    BdCheckCases caseitem = cases.get(i);
+                    caseitem.setCcid(IdGen.uuid());
+                    caseitem.setPsgroupid(caseitem.getGroupid());
+                    caseitem.setCheckid(checkid);
+                    bdCheckCasesMapper.insert(caseitem);
+                }
+            }
+            return "1";
+        }catch (Exception ex){
+            return "-1";
+        }
     }
 
     @RequestMapping("/pfb")

@@ -35,7 +35,7 @@
     values (#{ccid,jdbcType=VARCHAR}, #{checkid,jdbcType=VARCHAR}, #{ajid,jdbcType=VARCHAR}, 
       #{psgroupid,jdbcType=VARCHAR}, #{jydp,jdbcType=VARCHAR}, #{zzpcdf,jdbcType=VARCHAR}, 
       #{zzzldj,jdbcType=VARCHAR}, #{dpr,jdbcType=VARCHAR}, #{dpsj,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, now(), #{updateBy,jdbcType=VARCHAR},
       #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
       )
   </insert>

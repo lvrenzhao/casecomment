@@ -467,7 +467,12 @@ $(function () {
                 return false;
             }
 
-            //todo 不能有未分配的案件，其余不管，哪怕0个评查案件都让其发布公告。
+            for(var x = 0 ; joinedCases && x< joinedCases.length; x++){
+                if(!joinedCases[x].groupid){
+                    layer.msg("您还有未分配的案件，请将案件分配给专家组。");
+                    return false;
+                }
+            }
 
             if($("#txt_bt").val() && $("#form_sel_pfb").val()){
                 $.ajax({
@@ -480,17 +485,22 @@ $(function () {
                         pclx:$("#type1").is(':checked')?"常规评查":($("#type2").is(':checked')?"专项评查":"重点评查"),
                         pcrw:$("#task1").is(':checked')?"案件":($("#task2").is(':checked')?"文书":"庭审"),
                         pfb:$("#form_sel_pfb").val(),
+                        nr:$('#xxnr').code(),
                         casesjson:JSON.stringify(joinedCases),
                         teamjson:JSON.stringify(teams),
                         distjson:JSON.stringify(dists)
 
                     },
                     success : function(data) {
-
+                        if(data == "1"){
+                            window.location.reload(true);
+                            top.layer.msg("公告发布成功! 正在等待审核。",{icon:1});
+                        }else{
+                            window.location.reload(true);
+                            top.layer.msg("公告发布失败！请联系系统管理员......",{icon:2});
+                        }
                     }
                 });
-                window.location.reload(true);
-                top.layer.msg("公告发布成功! 正在等待审核。");
             }else{
                 layer.msg("请将所有必填项填写完整");
                 return false;
@@ -528,7 +538,6 @@ $(function () {
         datatype : 'json',
         // async : false,
         success : function(data) {
-            console.log(data)
             if (data && data.rows && data.rows.length > 0) {
                 $("#form_sel_pfb").each(function() {
                     var html = '<option value="">--请选择--</option>';

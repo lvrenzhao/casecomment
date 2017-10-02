@@ -25,7 +25,7 @@
       remarks, flag)
     values (#{cgid,jdbcType=VARCHAR}, #{checkid,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, 
       #{pcajs,jdbcType=INTEGER}, #{zb,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      now(), #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP},
       #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckGroups" >

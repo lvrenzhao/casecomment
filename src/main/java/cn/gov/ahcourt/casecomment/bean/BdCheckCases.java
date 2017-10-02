@@ -37,6 +37,17 @@ public class BdCheckCases extends BaseEntity {
     private String teamleadername;
     private String teammatenames;
 
+    //前端属性
+    private String groupid;
+
+    public String getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(String groupid) {
+        this.groupid = groupid;
+    }
+
     public String getGgmc() {
         return ggmc;
     }
