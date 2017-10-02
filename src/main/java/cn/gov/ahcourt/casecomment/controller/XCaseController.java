@@ -115,11 +115,10 @@ public class XCaseController {
     }
 
     @RequestMapping("/notice")
-    public @ResponseBody Map notice(@SessionScope("user")UserBean user) {
+    public @ResponseBody Map notice(BdCheck bean,@SessionScope("user")UserBean user) {
         if(user == null){
             return null;
         }
-        BdCheck bean = new BdCheck();
         bean.setZt("1");
         bean.setUserid(user.getYhid());
         return bean.toMap(bdCheckMapper.selectAll(bean));

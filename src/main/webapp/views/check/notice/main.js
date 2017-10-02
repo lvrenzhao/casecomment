@@ -40,12 +40,23 @@ $(function(){
         pager : '#pager1'
         ,viewrecords: true
     });
+
+    $("#btn_query").click(function () {
+       reloadGrid();
+    });
 });
 
 function reloadGrid() {
     $("#table1").jqGrid().setGridParam({
         url : URL_TABLE1,
-        postData:{},
+        postData:{
+            bt:$("#form_inp_bt").val(),
+            pclx:$("#form_sel_pclx").val(),
+            pcrw:$("#form_sel_pcrw").val(),
+            fqrmc:$("#form_inp_fqr").val(),
+            fqsj1:$("#form_inp_fqsj1").val(),
+            fqsj2:$("#form_inp_fqsj2").val()
+        },
         page : 1
     }).trigger("reloadGrid");
 }
