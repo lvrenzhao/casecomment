@@ -16,10 +16,12 @@ public class BdCheck extends BaseEntity{
     private String pfb;
 
     private String fqr;
+    private String fqrmc;
 
     private String fqsj;
 
     private String shr;
+    private String shrmc;
 
     private String shsj;
 
@@ -44,6 +46,23 @@ public class BdCheck extends BaseEntity{
     private String casesjson;
     private String teamjson;
     private String distjson;
+
+
+    public String getFqrmc() {
+        return fqrmc;
+    }
+
+    public void setFqrmc(String fqrmc) {
+        this.fqrmc = fqrmc;
+    }
+
+    public String getShrmc() {
+        return shrmc;
+    }
+
+    public void setShrmc(String shrmc) {
+        this.shrmc = shrmc;
+    }
 
     public String getDistjson() {
         return distjson;

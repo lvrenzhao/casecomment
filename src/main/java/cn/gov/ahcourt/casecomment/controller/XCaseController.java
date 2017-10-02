@@ -61,6 +61,26 @@ public class XCaseController {
         return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
     }
 
+    @RequestMapping("/verifylist")
+    public @ResponseBody Map verifylist(@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        BdCheck bean = new BdCheck();
+        bean.setZt("0");
+        return bean.toMap(bdCheckMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/verifyhistorylist")
+    public @ResponseBody Map verifyhistorylist(@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        BdCheck bean = new BdCheck();
+        bean.setShrmc(user.getYhid());
+        return bean.toMap(bdCheckMapper.selectAll(bean));
+    }
+
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
