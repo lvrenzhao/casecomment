@@ -25,6 +25,7 @@
     <result column="shrmc" property="shrmc" jdbcType="VARCHAR" />
     <result column="pfbmc" property="pfbmc" jdbcType="VARCHAR" />
     <result column="orgname" property="orgname" jdbcType="VARCHAR" />
+    <result column="sfyd" property="sfyd" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_check
@@ -77,6 +78,7 @@
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheck" >
     select checkid, bt, btys, pclx, pcrw, pfb,(select a.mbmc from bd_scoretables a where a.tableid = t.pfb limit 1) pfbmc, fqr,fn_get_username(fqr) fqrmc,(select oi.zzjgmc from sd_user us,sd_organization oi where us.zzid = oi.zzjgid and us.yhid =t.fqr limit 1) orgname, date_format(fqsj, '%Y/%m/%d') fqsj, shr,fn_get_username(shr) shrmc, date_format(shsj, '%Y/%m/%d') shsj, shyj, zt, create_by,
     date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag, nr
+    ,(select count(1) from bd_check_read x where x.readman=#{userid} and x.checkid = t.checkid)  sfyd
     from bd_check t
     where 1=1
 

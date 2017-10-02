@@ -114,6 +114,17 @@ public class XCaseController {
         return "0";
     }
 
+    @RequestMapping("/notice")
+    public @ResponseBody Map notice(@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        BdCheck bean = new BdCheck();
+        bean.setZt("1");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdCheckMapper.selectAll(bean));
+    }
+
     @RequestMapping("/verifylist")
     public @ResponseBody Map verifylist(@SessionScope("user")UserBean user) {
         if(user == null){

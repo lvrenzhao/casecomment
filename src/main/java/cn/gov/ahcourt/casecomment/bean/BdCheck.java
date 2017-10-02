@@ -52,6 +52,26 @@ public class BdCheck extends BaseEntity{
     private String pfbmc;
     private String orgname;
 
+    private String userid;
+
+    private String sfyd;
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getSfyd() {
+        return sfyd;
+    }
+
+    public void setSfyd(String sfyd) {
+        this.sfyd = sfyd;
+    }
+
     public String getPfbmc() {
         return pfbmc;
     }
