@@ -71,6 +71,15 @@ public class BdCheckCases extends BaseEntity {
     private String fqsj2;
     private String pclx;
     private String pcrw;
+    private String tdcy;
+
+    public String getTdcy() {
+        return tdcy;
+    }
+
+    public void setTdcy(String tdcy) {
+        this.tdcy = tdcy;
+    }
 
     public String getFqrmc() {
         return fqrmc;

@@ -68,7 +68,8 @@ function reloadGrid() {
             ah:$("#form_inp_ah").val(),
             xz:$("#form_sel_xz").val(),
             lx:$("#form_sel_lx").val(),
-            fqrmc:$("#form_inp_fqr").val()
+            fqrmc:$("#form_inp_fqr").val(),
+            tdcy:$("#form_inp_zj").val()
         },
         page : 1
     }).trigger("reloadGrid");
