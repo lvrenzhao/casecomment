@@ -95,5 +95,17 @@
     <if test="ischecked !=null and ischecked != '' ">
       and a.jydp is not null
     </if>
+    <if test="gsfy !=null and gsfy != '' ">
+      and c.gsfy like concat('%',#{gsfy},'%')
+    </if>
+    <if test="xz !=null and xz != '' ">
+      and c.xz = #{xz}
+    </if>
+    <if test="lx !=null and lx != '' ">
+      and c.lx = #{lx}
+    </if>
+    <if test="psgroupid !=null and psgroupid != '' ">
+      and a.psgroupid = #{psgroupid}
+    </if>
   </select>
 </mapper>

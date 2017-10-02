@@ -86,19 +86,19 @@
 
               <div class="form_center clearfix" style="padding: 10px 0px;">
                 <div class="form_item wb100 fl">
-                  <select class="form-control" id="form_sel_gsfy">
+                  <select class="form-control xselect" id="form_sel_gsfy" data-lx="1">
                     <option value="">归属法院</option>
                   </select>
                 </div>
 
                 <div class="form_item wb100 fl">
-                  <select class="form-control" id="form_sel_xz">
+                  <select class="form-control xselect" id="form_sel_xz" data-lx="2">
                     <option value="">案件性质</option>
                   </select>
                 </div>
 
                 <div class="form_item wb100 fl">
-                  <select class="form-control" id="form_sel_lx">
+                  <select class="form-control xselect" id="form_sel_lx" data-lx="3">
                     <option value="">案件类型</option>
                   </select>
                 </div>
@@ -108,7 +108,7 @@
                 <div class="bmbox_title">
                   <h5>专家组分配</h5>
                   <div class="bmbox_tool">
-                    <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 清空专家组选择</button>
+                    <button id="btn_clear" class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 清空专家组选择</button>
                   </div>
                 </div>
                 <div class="bmbox_content clearfix">

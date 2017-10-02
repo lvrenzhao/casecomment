@@ -156,6 +156,24 @@ $(function () {
             }
         });
     });
+
+
+    $(".xselect").change(function () {
+        reloadGridCase();
+    });
+    
+    $("#btn_clear").click(function () {
+        $("#table3").jqGrid().setGridParam({
+            url : URL_TABLE3,
+            page : 1,
+            postData:{
+                ggid:ggid
+            }
+        }).trigger("reloadGrid");
+        selectgroupid = "";
+        reloadGridCase();
+    });
+
 });
 
 function loadGridCase() {
@@ -201,6 +219,21 @@ function loadGridCase() {
     });//.jqGrid('setFrozenColumns');
 }
 
+function reloadGridCase() {
+    $("#table1").jqGrid().setGridParam({
+        url : URL_TABLE1,
+        page : 1,
+        postData:{
+            ggid:ggid,
+            gsfy:$("#form_sel_gsfy").val(),
+            xz:$("#form_sel_xz").val(),
+            lx:$("#form_sel_lx").val(),
+            groupid:selectgroupid
+        }
+    }).trigger("reloadGrid");
+}
+
+var selectgroupid = "";
 function loadGridGroup() {
     var cols = [];
     if(mode == 3){
@@ -234,7 +267,11 @@ function loadGridGroup() {
         shrinkToFit : true,
         rowNum : 20,
         colModel : cols,
-        pager:"#pager3"
+        pager:"#pager3",
+        onSelectRow:function (rowid,status) {
+            selectgroupid = rowid;
+            reloadGridCase();
+        }
         // ,viewrecords: true
     });//.jqGrid('setFrozenColumns');
 }

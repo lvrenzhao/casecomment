@@ -81,9 +81,13 @@ public class XCaseController {
     }
 
     @RequestMapping("/checkcases")
-    public @ResponseBody Map checkcases(String ggid) {
+    public @ResponseBody Map checkcases(String ggid,String gsfy,String xz,String lx ,String groupid) {
         BdCheckCases bean = new BdCheckCases();
         bean.setCheckid(ggid);
+        bean.setGsfy(gsfy);
+        bean.setXz(xz);
+        bean.setLx(lx);
+        bean.setPsgroupid(groupid);
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 
