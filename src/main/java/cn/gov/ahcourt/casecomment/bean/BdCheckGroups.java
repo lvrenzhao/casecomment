@@ -25,12 +25,32 @@ public class BdCheckGroups extends BaseEntity {
 
     private String flag;
 
+    private String teamleadername;
+    private String teammatenames;
+
     //前端属性
     private String id;
     private String name;
     private String teamleaderid;
     private String teammateids;
     private int pc;
+
+
+    public String getTeamleadername() {
+        return teamleadername;
+    }
+
+    public void setTeamleadername(String teamleadername) {
+        this.teamleadername = teamleadername;
+    }
+
+    public String getTeammatenames() {
+        return teammatenames;
+    }
+
+    public void setTeammatenames(String teammatenames) {
+        this.teammatenames = teammatenames;
+    }
 
     public String getId() {
         return id;

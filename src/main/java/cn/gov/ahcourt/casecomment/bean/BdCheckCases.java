@@ -55,6 +55,20 @@ public class BdCheckCases extends BaseEntity {
 
     private String lx;
 
+    private int relatedcasecount;
+
+    private String pcjl;
+
+    private String ischecked;
+
+    public String getIschecked() {
+        return ischecked;
+    }
+
+    public void setIschecked(String ischecked) {
+        this.ischecked = ischecked;
+    }
+
     //前端属性
     private String groupid;
 
@@ -62,9 +76,24 @@ public class BdCheckCases extends BaseEntity {
         return groupid;
     }
 
+    public String getPcjl() {
+        return pcjl;
+    }
+
+    public void setPcjl(String pcjl) {
+        this.pcjl = pcjl;
+    }
 
     public String getAh() {
         return ah;
+    }
+
+    public int getRelatedcasecount() {
+        return relatedcasecount;
+    }
+
+    public void setRelatedcasecount(int relatedcasecount) {
+        this.relatedcasecount = relatedcasecount;
     }
 
     public void setAh(String ah) {

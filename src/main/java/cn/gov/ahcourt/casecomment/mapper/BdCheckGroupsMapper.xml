@@ -13,6 +13,8 @@
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="teamleadername" property="teamleadername" jdbcType="VARCHAR" />
+    <result column="teammatenames" property="teammatenames" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_check_groups
@@ -44,13 +46,22 @@
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select cgid, checkid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date,
-    remarks, flag
-    from bd_check_groups
+    remarks, flag,
+    (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.cgid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    from bd_check_groups a
     where cgid = #{cgid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckGroups">
     select cgid, checkid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date,
-    remarks, flag
-    from bd_check_groups
+    remarks, flag,
+    (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.cgid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    from bd_check_groups a
+    where 1=1
+    <if test="checkid !=null and checkid != '' ">
+      and a.checkid = #{checkid}
+    </if>
+    order by a.create_date desc
   </select>
 </mapper>

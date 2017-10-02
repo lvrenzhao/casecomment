@@ -52,5 +52,13 @@
     select cdid, checkid, fbxmc, fbxlx, fbx, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_check_distribution
+    where 1=1
+    <if test="checkid !=null and checkid != '' ">
+      and checkid = #{checkid}
+    </if>
+    <if test="fbxlx !=null and fbxlx != '' ">
+      and fbxlx = #{fbxlx}
+    </if>
+    order by create_date desc
   </select>
 </mapper>

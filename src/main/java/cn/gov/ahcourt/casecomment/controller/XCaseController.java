@@ -87,6 +87,22 @@ public class XCaseController {
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/groups")
+    public @ResponseBody Map groups(String ggid) {
+        BdCheckGroups bean = new BdCheckGroups();
+        bean.setCheckid(ggid);
+        return bean.toMap(bdCheckGroupsMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/dists")
+    public @ResponseBody Map dists(String ggid,String lx) {
+        BdCheckDistribution bean = new BdCheckDistribution();
+        bean.setCheckid(ggid);
+        if(StringUtils.isNotBlank(lx)){
+            bean.setFbxlx(lx);
+        }
+        return bean.toMap(bdCheckDistributionMapper.selectAll(bean));
+    }
 
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
@@ -115,6 +131,7 @@ public class XCaseController {
         if(StringUtils.isNotBlank(ajid)){
             BdCheckCases bean = new BdCheckCases();
             bean.setAjid(ajid);
+            bean.setIschecked("true");
             return bean.toMap(bdCheckCasesMapper.selectAll(bean));
         }
         return null;
