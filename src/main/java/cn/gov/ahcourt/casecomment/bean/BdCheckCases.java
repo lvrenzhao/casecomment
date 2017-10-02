@@ -64,6 +64,7 @@ public class BdCheckCases extends BaseEntity {
     private String ischecked;
 
     private String fqr;
+    private String fqrxm;
     private String fqrmc;
     private String fqsj;
     private String fqsj1;
@@ -77,6 +78,14 @@ public class BdCheckCases extends BaseEntity {
 
     public String getFqsj1() {
         return fqsj1;
+    }
+
+    public String getFqrxm() {
+        return fqrxm;
+    }
+
+    public void setFqrxm(String fqrxm) {
+        this.fqrxm = fqrxm;
     }
 
     public void setFqsj1(String fqsj1) {

@@ -183,6 +183,11 @@ public class XCaseController {
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/allstart")
+    public @ResponseBody Map allstart(BdCheckCases bean) {
+        return bean.toMap(bdCheckCasesMapper.selectAll(bean));
+    }
+
     @RequestMapping("/groups")
     public @ResponseBody Map groups(String ggid) {
         BdCheckGroups bean = new BdCheckGroups();

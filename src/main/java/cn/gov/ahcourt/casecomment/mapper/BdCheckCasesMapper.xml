@@ -81,7 +81,7 @@
     (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
     ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_check_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
-    from bd_check_cases a,bd_check b,bd_middle_case c where a.checkid = b.checkid and a.ajid = c.ajid
+    from bd_check_cases a,bd_check b,bd_middle_case c,sd_user u where a.checkid = b.checkid and a.ajid = c.ajid and b.fqr = u.yhid
     and a.ccid = #{ccid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >
@@ -92,7 +92,7 @@
     (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
     ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_check_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
-    from bd_check_cases a,bd_check b,bd_middle_case c where a.checkid = b.checkid and a.ajid = c.ajid
+    from bd_check_cases a,bd_check b,bd_middle_case c,sd_user u where a.checkid = b.checkid and a.ajid = c.ajid and b.fqr = u.yhid
     <if test="ajid !=null and ajid != '' ">
       and a.ajid = #{ajid}
     </if>
@@ -104,6 +104,15 @@
     </if>
     <if test="gsfy !=null and gsfy != '' ">
       and c.gsfy like concat('%',#{gsfy},'%')
+    </if>
+    <if test="cbbm !=null and cbbm != '' ">
+      and c.cbbm like concat('%',#{cbbm},'%')
+    </if>
+    <if test="cbr !=null and cbr != '' ">
+      and c.cbr like concat('%',#{cbr},'%')
+    </if>
+    <if test="ah !=null and ah != '' ">
+      and c.ah like concat('%',#{ah},'%')
     </if>
     <if test="xz !=null and xz != '' ">
       and c.xz = #{xz}
@@ -125,6 +134,9 @@
     </if>
     <if test="pcrw !=null and pcrw != '' ">
       and b.pcrw = #{pcrw}
+    </if>
+    <if test="fqrmc !=null and fqrmc != '' ">
+      and u.xm like concat('%',#{fqrmc},'%')
     </if>
 
     <if test="fqsj1 != null and fqsj1 != '' ">
