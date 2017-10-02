@@ -117,6 +117,8 @@ function openCases(mode,ggid) {
         area : [ '95%', '90%' ],
         content : ahcourt.ctx + '/views/check/start/details.jsp?ggid=' + ggid+"&mode="+mode,
         cancel : function(index) {
+            reloadTable1();
+            reloadTable2();
             layer.close(index);
         }
     });

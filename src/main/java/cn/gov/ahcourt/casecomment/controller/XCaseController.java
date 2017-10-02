@@ -61,6 +61,22 @@ public class XCaseController {
         return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
     }
 
+    @RequestMapping("/dovefify")
+    public @ResponseBody String dovefify(String ggid,String passorreject,String shyj,@SessionScope("user")UserBean user) {
+        BdCheck bean = bdCheckMapper.selectByPrimaryKey(ggid);
+        if(bean != null){
+            bean.setZt(passorreject);
+            if("2".equals(passorreject)){
+                bean.setShyj(shyj);
+            }
+            bean.setShr(user.getYhid());
+            bean.setShsj(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+            bdCheckMapper.updateByPrimaryKey(bean);
+            return "1";
+        }
+        return "0";
+    }
+
     @RequestMapping("/verifylist")
     public @ResponseBody Map verifylist(@SessionScope("user")UserBean user) {
         if(user == null){

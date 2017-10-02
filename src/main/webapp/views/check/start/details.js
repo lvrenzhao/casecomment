@@ -8,6 +8,7 @@ var URL_GETCHECK = ahcourt.ctx + '/case/getcheck.do';
 var URL_TABLE1 = ahcourt.ctx + '/case/checkcases.do';
 var URL_TABLE3 = ahcourt.ctx + '/case/groups.do';
 var URL_DIST = ahcourt.ctx + '/case/dists.do';
+var URL_DOVERIFY = ahcourt.ctx + '/case/dovefify.do';
 
 var ggid,mode;
 $(function () {
@@ -125,7 +126,33 @@ $(function () {
     loadGridCase();
     loadGridGroup();
     $("#div_noticeconent").height($('body').height()-240);
-    
+
+    $("#btn_pass").click(function () {
+        layer.confirm('确定审核通过此评查活动公告吗？', {
+            btn : [ '确认', '取消' ]
+        }, function(lo) {
+            $.ajax({
+                type : 'POST',
+                url : URL_DOVERIFY,
+                data:{
+                    ggid:ggid,
+                    passorreject:"1"
+                },
+                datatype : 'json',
+                success : function(data) {
+                    try{
+                        parent.reloadTable1();
+                        parent.reloadTable2();
+                    }catch (e){}
+                    top.layer.msg("审核通过!",{icon:1});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+
+                }
+            });
+        });
+    });
+
     $("#btn_reject").click(function () {
         layer.open({
             type : 1,
@@ -139,6 +166,32 @@ $(function () {
                 layer.close(index);
             }
         });
+    });
+    
+    $("#btn_reject_confirm").click(function () {
+        if($("#form_inp_shyj").val()){
+            $.ajax({
+                type : 'POST',
+                url : URL_DOVERIFY,
+                data:{
+                    ggid:ggid,
+                    passorreject:"2",
+                    shyj:$("#form_inp_shyj").val()
+                },
+                datatype : 'json',
+                success : function(data) {
+                    try{
+                        parent.reloadTable1();
+                        parent.reloadTable2();
+                    }catch (e){}
+                    top.layer.msg("操作成功，已退回此次评查活动!",{icon:7});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                }
+            });
+        }else{
+            layer.msg("请输入审核不同意的理由。");
+        }
     });
 
     $("#viewTable").click(function () {
