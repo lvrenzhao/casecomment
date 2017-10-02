@@ -37,11 +37,102 @@ public class BdCheckCases extends BaseEntity {
     private String teamleadername;
     private String teammatenames;
 
+    private String ah;
+
+    private String gsfy;
+
+    private String cbbm;
+
+    private String cbr;
+
+    private String xz;
+
+    private String ay;
+
+    private String jafs;
+
+    private String jasj;
+
+    private String lx;
+
     //前端属性
     private String groupid;
 
     public String getGroupid() {
         return groupid;
+    }
+
+
+    public String getAh() {
+        return ah;
+    }
+
+    public void setAh(String ah) {
+        this.ah = ah;
+    }
+
+    public String getGsfy() {
+        return gsfy;
+    }
+
+    public void setGsfy(String gsfy) {
+        this.gsfy = gsfy;
+    }
+
+    public String getCbbm() {
+        return cbbm;
+    }
+
+    public void setCbbm(String cbbm) {
+        this.cbbm = cbbm;
+    }
+
+    public String getCbr() {
+        return cbr;
+    }
+
+    public void setCbr(String cbr) {
+        this.cbr = cbr;
+    }
+
+    public String getXz() {
+        return xz;
+    }
+
+    public void setXz(String xz) {
+        this.xz = xz;
+    }
+
+    public String getAy() {
+        return ay;
+    }
+
+    public void setAy(String ay) {
+        this.ay = ay;
+    }
+
+    public String getJafs() {
+        return jafs;
+    }
+
+    public void setJafs(String jafs) {
+        this.jafs = jafs;
+    }
+
+    public String getJasj() {
+        return jasj;
+    }
+
+    public void setJasj(String jasj) {
+        this.jasj = jasj;
+    }
+
+    public String getLx() {
+        return lx;
+    }
+
+    public void setLx(String lx) {
+        this.lx = lx;
     }
 
     public void setGroupid(String groupid) {

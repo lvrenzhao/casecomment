@@ -80,6 +80,14 @@ public class XCaseController {
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
+    @RequestMapping("/checkcases")
+    public @ResponseBody Map checkcases(String ggid) {
+        BdCheckCases bean = new BdCheckCases();
+        bean.setCheckid(ggid);
+        return bean.toMap(bdCheckCasesMapper.selectAll(bean));
+    }
+
+
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean

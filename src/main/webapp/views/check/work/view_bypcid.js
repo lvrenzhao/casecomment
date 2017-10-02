@@ -1,11 +1,14 @@
-
+var URL_TABLE1 = ahcourt.ctx + "/case/checkcases.do";
+var ggid;
 $(function () {
+    ggid = $.getUrlParam("ggid");
     loadCheckedGrid();
 });
 
 function loadCheckedGrid() {
     $("#table1").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url : URL_TABLE1,
+        postData:{ggid:ggid},
         datatype : "json",
         mtype : "post",
         height : $('body').height() -125,
@@ -15,28 +18,29 @@ function loadCheckedGrid() {
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true, key : true,frozen:true},
-            {label : 'ggid',name : 'ggid',hidden : true,frozen:true},
-            {label : '操作',name : 'ggid',width : 180,align : 'center',sortable : false,frozen:true,
+            {label : 'ccid',name : 'ccid',hidden : true, key : true,frozen:true},
+            {label : 'checkid',name : 'checkid',hidden : true,frozen:true},
+            {label : 'ajid',name : 'ajid',hidden : true,frozen:true},
+            {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + cellvalue + '\')" title="点评"><i class="fa fa-info"></i> 评查详情</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')"><i class="fa fa-info"></i> 评查详情</button>'
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\')"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
-            {label : '案号', name : 'xmmc',frozen : true, sortable : false, width : 150},
-            {label : '评查分数',name : '',sortable:false,width : 100},
-            {label : '质量等级',name : '',sortable:false,width : 100},
-            {label : '评查时间',name : '',sortable:false,width : 100},
-            {label : '评查组长',name : 'xmcymc',sortable:false,width : 80},
-            {label : '评查组员', name : 'xmcymc',sortable:false,width : 200 },
+            {label : '案号', name : 'ah',frozen : true, sortable : false, width : 150},
+            {label : '评查分数',name : 'zzpcdf',sortable:false,width : 100},
+            {label : '质量等级',name : 'zzzldj',sortable:false,width : 100},
+            {label : '评查时间',name : 'dpsj',sortable:false,width : 100},
+            {label : '评查组长',name : 'teamleadername',sortable:false,width : 80},
+            {label : '评查组员', name : 'teammatenames',sortable:false,width : 200 },
             {label : '归属法院', name : 'gsfy',sortable:false,width : 100},
-            {label : '承办部门',name : 'htmc',sortable:false,width : 100},
-            {label : '承办人',name : 'xmlxmc',sortable:false,width : 80},
-            {label : '性质',name : 'zylbmc',sortable:false,width : 80 },
-            {label : '类型',name : 'zylbmc',sortable:false, width : 80},
-            {label : '案由',name : 'xmfzrmc',sortable:false,width : 150},
-            {label : '结案方式',name : 'xmjlmc',sortable:false,width : 80},
-            {label : '结案时间', name : 'xmcymc',sortable:false, width : 80}
+            {label : '承办部门',name : 'cbbm',sortable:false,width : 100},
+            {label : '承办人',name : 'cbr',sortable:false,width : 80},
+            {label : '性质',name : 'xz',sortable:false,width : 80 },
+            {label : '类型',name : 'lx',sortable:false, width : 80},
+            {label : '案由',name : 'ay',sortable:false,width : 150},
+            {label : '结案方式',name : 'jafs',sortable:false,width : 80},
+            {label : '结案时间', name : 'jasj',sortable:false, width : 80}
         ],
         pager : '#pager1'
         ,viewrecords: true

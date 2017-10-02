@@ -20,6 +20,15 @@
     <result column="ggmc" property="ggmc" jdbcType="VARCHAR" />
     <result column="teamleadername" property="teamleadername" jdbcType="VARCHAR" />
     <result column="teammatenames" property="teammatenames" jdbcType="VARCHAR" />
+    <result column="ah" property="ah" jdbcType="VARCHAR" />
+    <result column="gsfy" property="gsfy" jdbcType="VARCHAR" />
+    <result column="cbbm" property="cbbm" jdbcType="VARCHAR" />
+    <result column="cbr" property="cbr" jdbcType="VARCHAR" />
+    <result column="xz" property="xz" jdbcType="VARCHAR" />
+    <result column="ay" property="ay" jdbcType="VARCHAR" />
+    <result column="jafs" property="jafs" jdbcType="VARCHAR" />
+    <result column="jasj" property="jasj" jdbcType="TIMESTAMP" />
+    <result column="lx" property="lx" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_check_cases
@@ -63,18 +72,23 @@
 	b.bt ggmc,
 	(select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
 	(select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
-    from bd_check_cases a,bd_check b where a.checkid = b.checkid
+	,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj
+    from bd_check_cases a,bd_check b,bd_middle_case c where a.checkid = b.checkid and a.ajid = c.ajid
     and a.ccid = #{ccid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >
     select a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
     date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
-	b.bt ggmc,
-	(select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
-	(select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
-    from bd_check_cases a,bd_check b where a.checkid = b.checkid
+    b.bt ggmc,
+    (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj
+    from bd_check_cases a,bd_check b,bd_middle_case c where a.checkid = b.checkid and a.ajid = c.ajid
     <if test="ajid !=null and ajid != '' ">
       and a.ajid = #{ajid}
+    </if>
+    <if test="checkid !=null and checkid != '' ">
+      and a.checkid = #{checkid}
     </if>
   </select>
 </mapper>

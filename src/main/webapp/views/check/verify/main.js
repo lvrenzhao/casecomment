@@ -130,7 +130,7 @@ function viewByPCID(pcid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '95%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/view_bypcid.jsp?pcid=' + pcid,
+        content : ahcourt.ctx + '/views/check/work/view_bypcid.jsp?ggid=' + pcid,
         cancel : function(index) {
             layer.close(index);
         }
