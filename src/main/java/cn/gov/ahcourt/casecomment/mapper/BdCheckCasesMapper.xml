@@ -31,6 +31,11 @@
     <result column="lx" property="lx" jdbcType="VARCHAR" />
     <result column="relatedcasecount" property="relatedcasecount" jdbcType="VARCHAR" />
     <result column="pcjl" property="pcjl" jdbcType="VARCHAR" />
+    <result column="bt" property="bt" jdbcType="VARCHAR" />
+    <result column="fqrmc" property="fqrmc" jdbcType="VARCHAR" />
+    <result column="fqsj" property="fqsj" jdbcType="VARCHAR" />
+    <result column="pclx" property="pclx" jdbcType="VARCHAR" />
+    <result column="pcrw" property="pcrw" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_check_cases
@@ -69,7 +74,8 @@
     where ccid = #{ccid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+    select b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx, b.pcrw,fn_get_username(b.fqr) fqrmc
+    ,a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
     date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
     b.bt ggmc,
     (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
@@ -79,7 +85,8 @@
     and a.ccid = #{ccid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >
-    select a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+    select b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx, b.pcrw,fn_get_username(b.fqr) fqrmc
+    ,a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
     date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
     b.bt ggmc,
     (select u.xm  from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
@@ -107,5 +114,25 @@
     <if test="psgroupid !=null and psgroupid != '' ">
       and a.psgroupid = #{psgroupid}
     </if>
+    <if test="fqr !=null and fqr != '' ">
+      and b.fqr = #{fqr}
+    </if>
+    <if test="bt !=null and bt != '' ">
+      and b.bt like concat('%',#{bt},'%')
+    </if>
+    <if test="pclx !=null and pclx != '' ">
+      and b.pclx = #{pclx}
+    </if>
+    <if test="pcrw !=null and pcrw != '' ">
+      and b.pcrw = #{pcrw}
+    </if>
+
+    <if test="fqsj1 != null and fqsj1 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &gt;= #{fqsj1}
+    </if>
+    <if test="fqsj2 != null and fqsj2 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
+    </if>
+    order by b.bt asc , a.create_date desc
   </select>
 </mapper>

@@ -37,6 +37,8 @@ public class BdCheckCases extends BaseEntity {
     private String teamleadername;
     private String teammatenames;
 
+    private String bt;
+
     private String ah;
 
     private String gsfy;
@@ -61,6 +63,70 @@ public class BdCheckCases extends BaseEntity {
 
     private String ischecked;
 
+    private String fqr;
+    private String fqrmc;
+    private String fqsj;
+    private String fqsj1;
+    private String fqsj2;
+    private String pclx;
+    private String pcrw;
+
+    public String getFqrmc() {
+        return fqrmc;
+    }
+
+    public String getFqsj1() {
+        return fqsj1;
+    }
+
+    public void setFqsj1(String fqsj1) {
+        this.fqsj1 = fqsj1;
+    }
+
+    public String getFqsj2() {
+        return fqsj2;
+    }
+
+    public void setFqsj2(String fqsj2) {
+        this.fqsj2 = fqsj2;
+    }
+
+    public void setFqrmc(String fqrmc) {
+        this.fqrmc = fqrmc;
+    }
+
+    public String getFqsj() {
+        return fqsj;
+    }
+
+    public void setFqsj(String fqsj) {
+        this.fqsj = fqsj;
+    }
+
+    public String getPclx() {
+        return pclx;
+    }
+
+    public void setPclx(String pclx) {
+        this.pclx = pclx;
+    }
+
+    public String getPcrw() {
+        return pcrw;
+    }
+
+    public void setPcrw(String pcrw) {
+        this.pcrw = pcrw;
+    }
+
+    public String getFqr() {
+        return fqr;
+    }
+
+    public void setFqr(String fqr) {
+        this.fqr = fqr;
+    }
+
     public String getIschecked() {
         return ischecked;
     }
@@ -78,6 +144,14 @@ public class BdCheckCases extends BaseEntity {
 
     public String getPcjl() {
         return pcjl;
+    }
+
+    public String getBt() {
+        return bt;
+    }
+
+    public void setBt(String bt) {
+        this.bt = bt;
     }
 
     public void setPcjl(String pcjl) {

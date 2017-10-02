@@ -174,6 +174,15 @@ public class XCaseController {
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/mystart")
+    public @ResponseBody Map mystart(BdCheckCases bean ,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setFqr(user.getYhid());
+        return bean.toMap(bdCheckCasesMapper.selectAll(bean));
+    }
+
     @RequestMapping("/groups")
     public @ResponseBody Map groups(String ggid) {
         BdCheckGroups bean = new BdCheckGroups();
