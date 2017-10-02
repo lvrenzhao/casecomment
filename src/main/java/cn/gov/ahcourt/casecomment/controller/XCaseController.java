@@ -72,11 +72,10 @@ public class XCaseController {
     }
 
     @RequestMapping("/verifyhistorylist")
-    public @ResponseBody Map verifyhistorylist(@SessionScope("user")UserBean user) {
+    public @ResponseBody Map verifyhistorylist(BdCheck bean,@SessionScope("user")UserBean user) {
         if(user == null){
             return null;
         }
-        BdCheck bean = new BdCheck();
         bean.setShrmc(user.getYhid());
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }

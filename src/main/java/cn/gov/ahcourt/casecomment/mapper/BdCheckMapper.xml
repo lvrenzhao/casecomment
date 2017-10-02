@@ -84,6 +84,15 @@
     <if test="shrmc != null and shrmc != '' ">
       and shr = #{shrmc}
     </if>
+    <if test="bt != null and bt != '' ">
+      and bt like concat('%',#{bt},'%')
+    </if>
+    <if test="fqsj1 != null and fqsj1 != '' ">
+      and date_format(fqsj, '%Y/%m/%d') &gt;= #{fqsj1}
+    </if>
+    <if test="fqsj2 != null and fqsj2 != '' ">
+      and date_format(fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
+    </if>
 
     order by create_date desc
   </select>

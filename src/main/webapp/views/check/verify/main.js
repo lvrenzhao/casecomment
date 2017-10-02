@@ -33,6 +33,12 @@ $(function(){
 
     $("#table2").jqGrid({
         url : URL_TABLE2,
+        postData:{
+            bt:$("#form_inp_bt").val(),
+            zt:$("#form_sel_zt").val(),
+            fqsj1:$("#form_inp_fbsj1").val(),
+            fqsj2:$("#form_inp_fbsj2").val()
+        },
         datatype : "json",
         mtype : "post",
         height : $('body').height() -135 -65,
@@ -75,8 +81,31 @@ $(function(){
         ,viewrecords: true
     });
 
+    $("#btn_query").click(function () {
+        reloadTable2();
+    });
 
 });
+
+function reloadTable1() {
+    $("#table1").jqGrid().setGridParam({
+        url : URL_TABLE1,
+        page : 1
+    }).trigger("reloadGrid");
+}
+
+function reloadTable2() {
+    $("#table2").jqGrid().setGridParam({
+        url : URL_TABLE2,
+        page : 1,
+        postData:{
+            bt:$("#form_inp_bt").val(),
+            zt:$("#form_sel_zt").val(),
+            fqsj1:$("#form_inp_fbsj1").val(),
+            fqsj2:$("#form_inp_fbsj2").val()
+        }
+    }).trigger("reloadGrid");
+}
 
 function openCases(mode,ggid) {
     layer.open({

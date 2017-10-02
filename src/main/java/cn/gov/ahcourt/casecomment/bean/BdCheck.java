@@ -47,6 +47,24 @@ public class BdCheck extends BaseEntity{
     private String teamjson;
     private String distjson;
 
+    private String fqsj1;
+    private String fqsj2;
+
+    public String getFqsj1() {
+        return fqsj1;
+    }
+
+    public void setFqsj1(String fqsj1) {
+        this.fqsj1 = fqsj1;
+    }
+
+    public String getFqsj2() {
+        return fqsj2;
+    }
+
+    public void setFqsj2(String fqsj2) {
+        this.fqsj2 = fqsj2;
+    }
 
     public String getFqrmc() {
         return fqrmc;
