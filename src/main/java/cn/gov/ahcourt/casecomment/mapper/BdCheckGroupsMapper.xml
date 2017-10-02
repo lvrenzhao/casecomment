@@ -24,11 +24,11 @@
     insert into bd_check_groups (cgid, checkid, groupname, 
       pcajs, zb, create_by, 
       create_date, update_by, update_date, 
-      remarks, flag)
+      remarks, flag,tdcy)
     values (#{cgid,jdbcType=VARCHAR}, #{checkid,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, 
       #{pcajs,jdbcType=INTEGER}, #{zb,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       now(), #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP},
-      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR},#{tdcy,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckGroups" >
     update bd_check_groups
@@ -42,6 +42,7 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR}
+      tdcy = #{tdcy,jdbcType=VARCHAR}
     where cgid = #{cgid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >

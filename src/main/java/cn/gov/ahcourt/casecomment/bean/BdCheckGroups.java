@@ -35,6 +35,15 @@ public class BdCheckGroups extends BaseEntity {
     private String teammateids;
     private int pc;
 
+    private String tdcy;
+
+    public String getTdcy() {
+        return tdcy;
+    }
+
+    public void setTdcy(String tdcy) {
+        this.tdcy = tdcy;
+    }
 
     public String getTeamleadername() {
         return teamleadername;

@@ -275,6 +275,7 @@ public class XCaseController {
                     team.setCheckid(checkid);
                     team.setGroupname(team.getName());
                     team.setPcajs(team.getPc());
+                    team.setTdcy(team.getTeamleadername()+";"+team.getTeammatenames());
                     bdCheckGroupsMapper.insert(team);
                     BdCheckPros teamleader = new BdCheckPros();
                     teamleader.setCpid(IdGen.uuid());
