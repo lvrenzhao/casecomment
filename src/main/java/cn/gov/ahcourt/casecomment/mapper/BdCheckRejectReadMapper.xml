@@ -50,5 +50,12 @@
     select readid, readman, date_format(readtime, '%Y/%m/%d') readtime, checkid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_check_reject_read
+    where 1=1
+    <if test="checkid !=null and checkid != '' ">
+      and checkid = #{checkid}
+    </if>
+    <if test="readman !=null and readman != '' ">
+      and readman = #{readman}
+    </if>
   </select>
 </mapper>

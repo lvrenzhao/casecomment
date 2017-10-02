@@ -43,6 +43,13 @@ public class XCaseController {
     @Resource
     private BdCheckProsMapper bdCheckProsMapper;
 
+    @Resource
+    private BdCheckReadMapper bdCheckReadMapper;
+
+    @Resource
+    private BdCheckRejectReadMapper bdCheckRejectReadMapper;
+
+
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
@@ -72,6 +79,36 @@ public class XCaseController {
             bean.setShr(user.getYhid());
             bean.setShsj(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
             bdCheckMapper.updateByPrimaryKey(bean);
+            return "1";
+        }
+        return "0";
+    }
+
+    @RequestMapping("/setread")
+    public @ResponseBody String setread(String ggid,String type,@SessionScope("user")UserBean user) {
+        if(StringUtils.isNotBlank(ggid) && "3".equals(type)){
+            BdCheckRead bean = new BdCheckRead();
+            bean.setCheckid(ggid);
+            bean.setReadman(user.getYhid());
+            List<BdCheckRead> records = bdCheckReadMapper.selectAll(bean);
+            if(records==null || records.size() == 0){
+                bean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bean.setReadid(IdGen.uuid());
+                bean.setReadtime(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bdCheckReadMapper.insert(bean);
+            }
+            return "1";
+        }else if (StringUtils.isNotBlank(ggid) && "4".equals(type)){
+            BdCheckRejectRead bean = new BdCheckRejectRead();
+            bean.setCheckid(ggid);
+            bean.setReadman(user.getYhid());
+            List<BdCheckRejectRead> records = bdCheckRejectReadMapper.selectAll(bean);
+            if(records==null || records.size() == 0){
+                bean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bean.setReadid(IdGen.uuid());
+                bean.setReadtime(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bdCheckRejectReadMapper.insert(bean);
+            }
             return "1";
         }
         return "0";

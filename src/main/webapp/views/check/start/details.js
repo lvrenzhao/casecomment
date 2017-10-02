@@ -9,6 +9,7 @@ var URL_TABLE1 = ahcourt.ctx + '/case/checkcases.do';
 var URL_TABLE3 = ahcourt.ctx + '/case/groups.do';
 var URL_DIST = ahcourt.ctx + '/case/dists.do';
 var URL_DOVERIFY = ahcourt.ctx + '/case/dovefify.do';
+var URL_SETREAD = ahcourt.ctx + '/case/setread.do';
 
 var ggid,mode;
 $(function () {
@@ -19,7 +20,18 @@ $(function () {
         $("#btn_pass").show();
         $("#btn_reject").show();
     }
-    //### mode == 3 要记录阅读记录
+    if(mode == 3 || mode == 4){
+        $.ajax({
+            type : 'POST',
+            url : URL_SETREAD,
+            data:{
+                ggid:ggid,
+                type:mode
+            },
+            datatype : 'json',
+            success : function(data) {}
+        });
+    }
 
 
     $.ajax({
