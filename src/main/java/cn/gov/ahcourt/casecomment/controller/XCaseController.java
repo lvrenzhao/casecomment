@@ -124,6 +124,26 @@ public class XCaseController {
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
+    @RequestMapping("/verifing")
+    public @ResponseBody Map verifing(BdCheck bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("0");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdCheckMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/reject")
+    public @ResponseBody Map reject(BdCheck bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("2");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdCheckMapper.selectAll(bean));
+    }
+
     @RequestMapping("/verifylist")
     public @ResponseBody Map verifylist(@SessionScope("user")UserBean user) {
         if(user == null){

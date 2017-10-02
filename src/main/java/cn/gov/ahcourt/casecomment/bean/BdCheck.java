@@ -55,6 +55,15 @@ public class BdCheck extends BaseEntity{
     private String userid;
 
     private String sfyd;
+    private String sfyd2;
+
+    public String getSfyd2() {
+        return sfyd2;
+    }
+
+    public void setSfyd2(String sfyd2) {
+        this.sfyd2 = sfyd2;
+    }
 
     public String getUserid() {
         return userid;

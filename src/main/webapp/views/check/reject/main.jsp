@@ -21,7 +21,7 @@
         </li>
         <li class="">
           <a data-toggle="tab" href="#tab-2">
-            审核不同意&nbsp;&nbsp;<span class="label label-primary">1</span>
+            审核不同意&nbsp;&nbsp;<span id="label_remind" class="label label-primary"></span>
           </a>
         </li>
       </ul>
