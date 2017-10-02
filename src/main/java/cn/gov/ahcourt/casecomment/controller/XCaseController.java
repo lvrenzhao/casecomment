@@ -104,6 +104,11 @@ public class XCaseController {
         return bean.toMap(bdCheckDistributionMapper.selectAll(bean));
     }
 
+    @RequestMapping("/getcheck")
+    public @ResponseBody BdCheck getcheck(String ggid){
+        return bdCheckMapper.selectByPrimaryKey(ggid);
+    }
+
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean

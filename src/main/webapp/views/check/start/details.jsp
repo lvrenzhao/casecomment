@@ -36,31 +36,31 @@
           <div class="form_center clearfix" style="">
             <div class="form_item wb100 fl">
               <label>公告标题：</label>
-              <span>2007年安徽省高级人民法院案件评查活动相关告示</span>
+              <span id="label_bt"></span>
             </div>
             <div class="form_item wb33 fl">
               <label>评查类型：</label>
-              <span>常规评查</span>
+              <span id="label_pclx"></span>
             </div>
             <div class="form_item wb33 fl">
               <label>评查任务：</label>
-              <span>文书</span>
+              <span id="label_pcrw"></span>
             </div>
             <div class="form_item wb33 fl">
               <label>评分表模板：</label>
-              <a id="viewTable">2007年常规评查评分表</a>
+              <a id="viewTable"></a>
             </div>
             <div class="form_item wb33 fl">
               <label>发布人：</label>
-              <span>张三</span>
+              <span id="label_fbrmc"></span>
             </div>
             <div class="form_item wb33 fl">
-              <label>发布部门：</label>
-              <span>省高院</span>
+              <label>发布机构：</label>
+              <span id="label_orgname"></span>
             </div>
             <div class="form_item wb33 fl">
               <label>发布时间：</label>
-              <span>2001/01/01</span>
+              <span id="label_fbsj"></span>
             </div>
           </div>
           <div class="bmbox_layout  clearfix">
@@ -70,11 +70,7 @@
               </div>
             </div>
             <div class="bmbox_content clearfix" id="div_noticeconent" style="overflow: auto;padding: 15px;">
-              <h2 style="text-align: center">这里是测试公告内容的标题</h2>
-              <h6 style="text-align: center">这里是测试公告内容的副标题</h6>
-              <hr />
-              <h6 style="text-align: center">发布人：宋佳卿 发布时间:2017-01-01</h6>
-              <p>这里是随意输入的公告内容，仅作为测试数据。</p>
+
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@
 // 3：审核通过后查看（需向后台发送阅读记录，不能显示组员和组长信息）,
 // 4:审核不通过查看（需向后台发送阅读记录）
 
-
+var URL_GETCHECK = ahcourt.ctx + '/case/getcheck.do';
 var URL_TABLE1 = ahcourt.ctx + '/case/checkcases.do';
 var URL_TABLE3 = ahcourt.ctx + '/case/groups.do';
 var URL_DIST = ahcourt.ctx + '/case/dists.do';
@@ -19,6 +19,29 @@ $(function () {
         $("#btn_reject").show();
     }
     //### mode == 3 要记录阅读记录
+
+
+    $.ajax({
+        type : 'POST',
+        url : URL_GETCHECK,
+        data:{
+            ggid:ggid
+        },
+        datatype : 'json',
+        success : function(data) {
+            if(data){
+                $("#label_bt").html(data.bt);
+                $("#label_pclx").html(data.pclx);
+                $("#label_pcrw").html(data.pcrw);
+                $("#label_fbrmc").html(data.fqrmc);
+                $("#label_fbsj").html(data.fqsj);
+                $("#label_orgname").html(data.orgname);
+                $("#div_noticeconent").html(data.nr);
+                $("#viewTable").html(data.pfbmc);
+                $("#viewTable").attr("data-id",data.pfb);
+            }
+        }
+    });
 
     $('.i-checks').iCheck({
         radioClass : 'iradio_square-green',
@@ -119,6 +142,7 @@ $(function () {
     });
 
     $("#viewTable").click(function () {
+        var id = $(this).attr("data-id");
         layer.open({
             type : 2,
             shift : 5,
@@ -126,7 +150,7 @@ $(function () {
             shadeClose : false,
             shade : 0.3,
             area : [ '90%', '90%' ],
-            content : ahcourt.ctx+"/views/check/configscore/view_table.jsp?id=",
+            content : ahcourt.ctx+"/views/check/configscore/view_table.jsp?id="+id,
             cancel : function(index) {
                 layer.close(index);
             }
