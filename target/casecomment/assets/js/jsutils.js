@@ -413,7 +413,7 @@ function _w_table_rowspan(_w_table_id, _w_table_colnum) {
             _w_table_SpanNum = 1;
         } else {
             _w_table_currenttd = $(this);
-            if (_w_table_firsttd.text() == _w_table_currenttd.text() && _w_table_firsttd.prev().text() == _w_table_currenttd.prev().text()) { // 这边注意不是val（）属性，而是text（）属性
+            if (_w_table_firsttd.text() == _w_table_currenttd.text()) { // 这边注意不是val（）属性，而是text（）属性
                 _w_table_SpanNum++;
                 _w_table_currenttd.hide(); // remove();
                 _w_table_firsttd.attr("rowSpan", _w_table_SpanNum);
