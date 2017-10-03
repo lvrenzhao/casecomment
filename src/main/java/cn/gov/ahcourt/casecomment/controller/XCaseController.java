@@ -235,6 +235,11 @@ public class XCaseController {
         return bdCheckLevelsMapper.deleteByPrimaryKey(levelid);
     }
 
+    @RequestMapping("/delscore")
+    public @ResponseBody int delscore(String tableid) {
+        return bdScoretablesMapper.deleteByPrimaryKey(tableid);
+    }
+
     @RequestMapping("/savelevel")
     public @ResponseBody int savelevel(BdCheckLevels bean) {
         if(StringUtils.isNotBlank(bean.getLevelid())){

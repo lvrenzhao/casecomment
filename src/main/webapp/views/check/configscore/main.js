@@ -2,6 +2,7 @@
 
 var URL_TABLE1 =  ahcourt.ctx + "/case/scores.do";
 var URL_STPLAYORSTOP = ahcourt.ctx + "/case/scoresenable.do";
+var URL_DELETEONE = ahcourt.ctx + "/case/delscore.do";
 
 //============================================================
 var type;
@@ -47,10 +48,10 @@ function loadTable() {
                 var btn_str = "";
                 //如果已经被使用，则不能对评分表进行修改和删除
                 if(rowObject.sfsy == 0){
-                    btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-trash"></i> 删除</button>';
+                    btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="deleteItem(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-trash"></i> 删除</button>';
                     btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-edit"></i> 编辑</button>';
                 }
-                btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="viewone()" title=""><i class="fa fa-info-circle"></i> 查看</button>';
+                btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="viewone(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-info-circle"></i> 查看</button>';
                 if(rowObject.sfqy == "1"){
                     btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="playOrStop(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-pause"></i> 停用</button>';
                 }else{
@@ -109,5 +110,28 @@ function viewone(key) {
         cancel : function(index) {
             layer.close(index);
         }
+    });
+}
+
+function deleteItem (tableid) {
+    layer.confirm('确定要删除该项？', {
+        btn: ['确定','取消'] //按钮
+    }, function(o){
+        layer.close(o)
+        $.ajax({
+            type : 'POST',
+            url : URL_DELETEONE,
+            data:{
+                tableid:tableid
+            },
+            datatype : 'json',
+            success : function(data) {
+                if(data > 0){
+                    layer.msg("删除成功!",{icon:1});
+                    reloadTable();
+                }
+            }
+        });
+    }, function(){
     });
 }
