@@ -124,7 +124,7 @@ function editItem (levelid,levelname,xh,maxscore,minscore) {
     lo = layer.open({
         type : 1,
         shift : 5,
-        title : '新建质量等级',
+        title : '编辑质量等级',
         shadeClose : false,
         shade : 0.3,
         area : [ '600px', '350px' ],

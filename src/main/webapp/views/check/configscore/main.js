@@ -49,7 +49,7 @@ function loadTable() {
                 //如果已经被使用，则不能对评分表进行修改和删除
                 if(rowObject.sfsy == 0){
                     btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="deleteItem(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-trash"></i> 删除</button>';
-                    btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="" title=""><i class="fa fa-edit"></i> 编辑</button>';
+                    btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="editone(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-edit"></i> 编辑</button>';
                 }
                 btn_str += '<button class="btn btn-link btn-xs " type="button" onclick="viewone(\'' + rowObject.tableid + '\')" title=""><i class="fa fa-info-circle"></i> 查看</button>';
                 if(rowObject.sfqy == "1"){
@@ -133,5 +133,20 @@ function deleteItem (tableid) {
             }
         });
     }, function(){
+    });
+}
+
+function editone(tableid) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : ' 编辑评分表',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx+"/views/check/configscore/add_table.jsp?tableid="+tableid,
+        cancel : function(index) {
+            layer.close(index);
+        }
     });
 }

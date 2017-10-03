@@ -30,14 +30,14 @@ $(function () {
             },
             datatype : 'json',
             success : function(data) {
-                var html = "";
                 if(data && data.rows && data.rows.length > 0){
+                    var html = "";
                     for(var i = 0 ; i < data.rows.length; i ++){
                         var item = data.rows[i];
                         html += '<tr><td>'+item.xh+'</td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td><td style="text-align: right">'+item.fz+'</td></tr>';
                     }
+                    $("#table_score_tbody").html(html);
                 }
-                $("#table_score_tbody").html(html);
                 _w_table_rowspan("#table_score", 2);
             }
         });

@@ -14,12 +14,12 @@
     </style>
 </head>
 <body>
-<div class="bmbox_layout  clearfix">
+<div class="bmbox_layout title_fixed clearfix">
     <div class="bmbox_title">
         <h5 id="label_title"></h5>
     </div>
-    <div class="bmbox_content clearfix pd10">
-        <table id="table_score" class="table table-bordered table-hover">
+    <div class="bmbox_content clearfix pd10" >
+        <table id="table_score" class="table table-bordered table-hover" style="margin-top: 40px">
             <thead>
             <tr style="background: #e0e0e0">
                 <th class="width50" style="text-align: center">序号</th>
@@ -29,6 +29,9 @@
             </tr>
             </thead>
             <tbody id="table_score_tbody">
+            <tr>
+                <td colspan="5">暂无评分项....</td>
+            </tr>
             </tbody>
             <tfoot>
                 <tr style="background: #e0e0e0">
