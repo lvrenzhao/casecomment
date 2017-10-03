@@ -52,6 +52,9 @@ public class XCaseController {
     @Resource
     private BdCheckLevelsMapper bdCheckLevelsMapper;
 
+    @Resource
+    private BdScoretableItemsMapper bdScoretableItemsMapper;
+
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
@@ -238,6 +241,18 @@ public class XCaseController {
     @RequestMapping("/delscore")
     public @ResponseBody int delscore(String tableid) {
         return bdScoretablesMapper.deleteByPrimaryKey(tableid);
+    }
+
+    @RequestMapping("/getscore")
+    public @ResponseBody BdScoretables getscore(String tableid) {
+        return bdScoretablesMapper.selectByPrimaryKey(tableid);
+    }
+
+    @RequestMapping("/getscoredetails")
+    public @ResponseBody Map getscoredetails(String tableid) {
+        BdScoretableItems bean = new BdScoretableItems();
+        bean.setRemarks(tableid);
+        return bean.toMap(bdScoretableItemsMapper.selectAll(bean));
     }
 
     @RequestMapping("/savelevel")

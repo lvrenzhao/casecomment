@@ -9,72 +9,34 @@
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
     <jsp:include page="/header.jsp?libs=" />
     <script src="view_table.js"></script>
+    <style>
+        td{vertical-align: middle !important;}
+    </style>
 </head>
 <body>
 <div class="bmbox_layout  clearfix">
     <div class="bmbox_title">
-        <h5>评分表名称......</h5>
-
+        <h5 id="label_title"></h5>
     </div>
     <div class="bmbox_content clearfix pd10">
-        <table class="table table-bordered" id="table_score" >
+        <table id="table_score" class="table table-bordered table-hover">
             <thead>
-            <tr>
-                <th class="wb5" style="text-align: center">序号</th>
-                <th class="wb15" style="text-align: center">评审内容</th>
-                <th class="wb60" style="text-align: center">评分标准</th>
-                <th class="wb5" style="text-align: center">分值</th>
+            <tr style="background: #e0e0e0">
+                <th class="width50" style="text-align: center">序号</th>
+                <th class="width200" style="text-align: center">评审内容</th>
+                <th class="width400" style="text-align: center">评分标准</th>
+                <th class="width50" style="text-align: center">分值</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>事实证据与实体处理</td>
-                <td>审理查明的事实是否全面、客观、清楚</td>
-                <td style="text-align: right">8</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>事实证据与实体处理</td>
-                <td>使用法律是否正确</td>
-                <td style="text-align: right">5</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>事实证据与实体处理</td>
-                <td>处理结果是否适当</td>
-                <td style="text-align: right">3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>事实证据与实体处理</td>
-                <td>是否有其他不规范情形</td>
-                <td style="text-align: right">6</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>审理程序</td>
-                <td>庭审是否规范严谨，能否有序组织举证，质证，认证和辩论。</td>
-                <td style="text-align: right">2</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>审理程序</td>
-                <td>是否严格遵守规定</td>
-                <td style="text-align: right">2</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>审理程序</td>
-                <td>是否充分保障诉讼参与人行使诉讼权利</td>
-                <td style="text-align: right">2</td>
-            </tr>
-            <tr>
-                <td>满分</td>
-                <td colspan="2"></td>
-                <td style="text-align: right">100</td>
-            </tr>
+            <tbody id="table_score_tbody">
             </tbody>
+            <tfoot>
+                <tr style="background: #e0e0e0">
+                    <td>满分</td>
+                    <td colspan="2"></td>
+                    <td style="text-align: right" ><span id="label_mf"></span></td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
