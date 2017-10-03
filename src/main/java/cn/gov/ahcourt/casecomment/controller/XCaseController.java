@@ -52,7 +52,6 @@ public class XCaseController {
     @Resource
     private BdCheckLevelsMapper bdCheckLevelsMapper;
 
-
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
@@ -213,6 +212,23 @@ public class XCaseController {
         BdCheckLevels bean = new BdCheckLevels();
         return bean.toMap(bdCheckLevelsMapper.selectAll(bean));
     }
+
+    @RequestMapping("/scores")
+    public @ResponseBody Map scores(BdScoretables bean) {
+        return bean.toMap(bdScoretablesMapper.selectAll(bean));
+    }
+
+
+    @RequestMapping("/scoresenable")
+    public @ResponseBody int scoresenable(String tableid) {
+        if(StringUtils.isNotBlank(tableid)){
+            BdScoretables scoretables = bdScoretablesMapper.selectByPrimaryKey(tableid);
+            scoretables.setSfqy("1".equals(scoretables.getSfqy())?"0":"1");
+            return bdScoretablesMapper.updateByPrimaryKey(scoretables);
+        }
+        return -1;
+    }
+
 
     @RequestMapping("/dellevel")
     public @ResponseBody int dellevel(String levelid) {

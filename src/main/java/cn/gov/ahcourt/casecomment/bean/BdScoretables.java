@@ -9,7 +9,9 @@ public class BdScoretables extends BaseEntity {
 
     private String mcms;
 
-    private String sfqy;
+    private String sfqy; //是否启用
+
+    private String sfsy; //是否被使用
 
     private String lx;
 
@@ -19,6 +21,8 @@ public class BdScoretables extends BaseEntity {
 
     private String createDate;
 
+    private String cjrmc;
+
     private String updateBy;
 
     private String updateDate;
@@ -26,6 +30,22 @@ public class BdScoretables extends BaseEntity {
     private String remarks;
 
     private String flag;
+
+    public String getSfsy() {
+        return sfsy;
+    }
+
+    public void setSfsy(String sfsy) {
+        this.sfsy = sfsy;
+    }
+
+    public String getCjrmc() {
+        return cjrmc;
+    }
+
+    public void setCjrmc(String cjrmc) {
+        this.cjrmc = cjrmc;
+    }
 
     public String getTableid() {
         return tableid;

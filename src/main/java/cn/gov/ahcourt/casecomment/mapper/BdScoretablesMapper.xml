@@ -14,6 +14,8 @@
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="cjrmc" property="cjrmc" jdbcType="VARCHAR" />
+    <result column="sfsy" property="sfsy" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_scoretables
@@ -45,15 +47,15 @@
     where tableid = #{tableid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
-    remarks, flag
-    from bd_scoretables
+    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, fn_get_username(create_by) cjrmc, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag,(select count(1) from bd_check c where c.zt = '1' and c.pfb = t.tableid) sfsy
+    from bd_scoretables t
     where tableid = #{tableid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdScoretables">
-    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
-    remarks, flag
-    from bd_scoretables
+    select tableid, mbmc, mcms, sfqy, lx, mf, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, fn_get_username(create_by) cjrmc, date_format(update_date, '%Y/%m/%d') update_date,
+    remarks, flag,(select count(1) from bd_check c where c.zt = '1' and c.pfb = t.tableid) sfsy
+    from bd_scoretables t
     where 1=1
     <if test="sfqy !=null and sfqy != '' ">
       and sfqy = #{sfqy}
@@ -61,5 +63,6 @@
     <if test="lx !=null and lx != '' ">
       and lx = #{lx}
     </if>
+    order by create_date desc
   </select>
 </mapper>
