@@ -37,7 +37,7 @@ $(function () {
                     var html = "";
                     for(var i = 0 ; i < data.rows.length; i ++){
                         var item = data.rows[i];
-                        html += '<tr id="TR_'+i+'"><td>'+item.xh+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ i +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+i+'" data-xh="'+item.xh+'" data-psnr="'+item.psnr+'" data-pfbz="'+item.pfbz+'" data-fz="'+item.fz+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td><td style="text-align: right">'+item.fz+'</td></tr>';
+                        html += '<tr class="XH_'+item.xh+'" id="TR_'+i+'"><td>'+item.xh+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ i +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+i+'" data-xh="'+item.xh+'" data-psnr="'+item.psnr+'" data-pfbz="'+item.pfbz+'" data-fz="'+item.fz+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td><td class="xscore" style="text-align: right">'+item.fz+'</td></tr>';
                     }
                     $("#table_score_tbody").html(html);
                 }
@@ -73,6 +73,7 @@ $(function () {
             $("#"+row).remove();
             _w_table_rowspan("#table_score", 3);
             layer.close(o)
+            calcTotalScore();
         }, function(){
         });
     });
@@ -90,10 +91,66 @@ $(function () {
                 layer.close(index);
             }
         });
+        $("#form_hid_rowid").val($(this).attr("data-row"));
         $("#form_inp_xh").val($(this).attr("data-xh"));
         $("#form_inp_psnr").val($(this).attr("data-psnr"));
         $("#form_inp_pfbz").val($(this).attr("data-pfbz"));
         $("#form_inp_fz").val($(this).attr("data-fz"));
     });
 
+    var igloble = 9999999;
+    $("#btn_save_item").click(function () {
+        if($("#form_inp_xh").val() && $("#form_inp_psnr").val() && $("#form_inp_pfbz").val() && $("#form_inp_fz").val()) {
+            if( isNaN($("#form_inp_xh").val()) ){
+                layer.msg("序号 必填数字");
+                return false;
+            }
+            if( isNaN($("#form_inp_fz").val()) ){
+                layer.msg("分值 必填数字");
+                return false;
+            }
+
+        }else{
+            layer.msg("请填写完整....");
+        }
+
+        var html = '<tr class="XH_'+$("#form_inp_xh").val()+'" id="TR_'+igloble+'"><td>'+$("#form_inp_xh").val()+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ igloble +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+igloble+'" data-xh="'+$("#form_inp_xh").val()+'" data-psnr="'+$("#form_inp_psnr").val()+'" data-pfbz="'+$("#form_inp_pfbz").val()+'" data-fz="'+$("#form_inp_fz").val()+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+$("#form_inp_psnr").val()+'</td><td>'+$("#form_inp_pfbz").val()+'</td><td style="text-align: right" class="xscore">'+$("#form_inp_fz").val()+'</td></tr>';
+        igloble++;
+
+        $("#table_score_tbody td").removeAttr("rowSpan");
+        $("#table_score_tbody td").show();
+        if($("#form_hid_rowid").val()){
+            //编辑
+            $("#"+$("#form_hid_rowid").val()).after(html);
+            $("#"+$("#form_hid_rowid").val()).remove();
+        }else{
+            //新增
+            var rn = parseInt($.trim($("#form_inp_xh").val()));
+            var rowobject;
+            for(var i = rn ; i >= 0 ; i --){
+                if($(".XH_"+i)[0]){
+                    rowobject = $(".XH_"+i)[0];
+                    break;
+                }
+            }
+            if(rowobject){
+                $(rowobject).after(html);
+            }else{
+                $("#remindRow").remove();
+                $("#table_score_tbody").prepend(html);
+            }
+        }
+        _w_table_rowspan("#table_score", 3);
+        layer.close(lo);
+        calcTotalScore();
+    });
+
 });
+
+function calcTotalScore(){
+    var total = 0;
+    $(".xscore").each(function () {
+        total += parseInt($.trim($(this).text()));
+    });
+    $("#label_mf").html(total);
+}

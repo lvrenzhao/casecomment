@@ -54,7 +54,7 @@
             </tr>
             </thead>
             <tbody id="table_score_tbody">
-                <tr>
+                <tr id="remindRow">
                     <td colspan="5">暂无评分项，请点击 [新增评分项] 添加一些评分项.</td>
                 </tr>
             </tbody>
@@ -75,13 +75,13 @@
         <div class="bmbox_title">
             <h5>备注(* 为必填)</h5>
             <div class="bmbox_tool">
-                <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_save"><i class="fa fa-save"></i> 保存</button>
+                <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_save_item"><i class="fa fa-save"></i> 保存</button>
             </div>
         </div>
         <div class="bmbox_content clearfix">
 
             <form id="form_item">
-                <input type ="hidden" id="form_hid_levelid" />
+                <input type ="hidden" id="form_hid_rowid" />
                 <div class="form_item wb100 fl">
                     <label>序号 <span style="color:darkred;">*</span></label>
                     <input type="text" id="form_inp_xh" class="form-control input-sm" />
