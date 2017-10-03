@@ -19,7 +19,7 @@
   <div class="bmbox_title">
     <h5>案件评查评分项设置</h5>
     <div class="bmbox_tool">
-      <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 新增</button>
+      <button id="btn_new" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 新增</button>
     </div>
   </div>
   <div class="bmbox_content clearfix">
@@ -29,5 +29,48 @@
     </div>
   </div>
 </div>
+
+
+
+
+<div style="display: none" id="level_form">
+  <div class="bmbox_layout clearfix">
+    <div class="bmbox_title">
+      <h5>备注(* 为必填)</h5>
+      <div class="bmbox_tool">
+        <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_save"><i class="fa fa-save"></i> 保存</button>
+      </div>
+    </div>
+    <div class="bmbox_content clearfix">
+
+      <form id="form_level">
+        <input type ="hidden" id="form_hid_levelid" />
+        <div class="form_item wb100 fl">
+          <label>序号 <span style="color:darkred;">*</span></label>
+          <input type="text" id="form_inp_xh" class="form-control input-sm" />
+        </div>
+
+        <div class="form_item wb100 fl">
+          <label>等级名称 <span style="color:darkred;">*</span></label>
+          <input type="text" id="form_inp_mc" class="form-control input-sm" />
+        </div>
+
+        <div class="form_item wb100 fl">
+          <label>分值下线 <span style="color:darkred;">*</span></label>
+          <input type="text" id="form_inp_xx" class="form-control input-sm"  />
+        </div>
+
+        <div class="form_item wb100 fl">
+          <label>分值上线 <span style="color:darkred;">*</span></label>
+          <input type="text" id="form_inp_sx" class="form-control input-sm"  />
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>

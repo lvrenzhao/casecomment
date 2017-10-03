@@ -219,6 +219,16 @@ public class XCaseController {
         return bdCheckLevelsMapper.deleteByPrimaryKey(levelid);
     }
 
+    @RequestMapping("/savelevel")
+    public @ResponseBody int savelevel(BdCheckLevels bean) {
+        if(StringUtils.isNotBlank(bean.getLevelid())){
+            return bdCheckLevelsMapper.updateByPrimaryKey(bean);
+        }else{
+            bean.setLevelid(IdGen.uuid());
+            return bdCheckLevelsMapper.insert(bean);
+        }
+    }
+
     @RequestMapping("/getcheck")
     public @ResponseBody BdCheck getcheck(String ggid){
         return bdCheckMapper.selectByPrimaryKey(ggid);
