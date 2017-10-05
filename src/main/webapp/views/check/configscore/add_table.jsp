@@ -18,7 +18,7 @@
     <div class="bmbox_title">
         <h5>评分表基本信息</h5>
         <div class="bmbox_tool">
-            <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-save"></i> 保存</button>
+            <button id="btn_saveall" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-save"></i> 保存</button>
         </div>
     </div>
     <div class="bmbox_content clearfix">

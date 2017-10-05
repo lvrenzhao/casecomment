@@ -1,5 +1,7 @@
 var URL_GET = ahcourt.ctx + "/case/getscore.do";
 var URL_GETDETAILS = ahcourt.ctx + "/case/getscoredetails.do";
+var URL_SUBMIT =ahcourt.ctx + "/case/savescoretable.do";
+
 
 var tableid,tableinfo;
 var lo;
@@ -143,6 +145,40 @@ $(function () {
         _w_table_rowspan("#table_score", 3);
         layer.close(lo);
         calcTotalScore();
+    });
+
+    $("#btn_saveall").click(function () {
+       if($("#form_inp_mbmc").val()){
+           $.ajax({
+               type : 'POST',
+               url : URL_SUBMIT,
+               data:{
+                   tableid:tableid,
+                   mbmc:"",
+                   mcms:"",
+
+               },
+               datatype : 'json',
+               // async : false,
+               success : function(data) {
+                   if(data == "1"){
+                       parent.reloadTable();
+                       top.layer.msg("保存成功!",{icon:1});
+                       var index = parent.layer.getFrameIndex(window.name);
+                       parent.layer.close(index);
+                   }else{
+                       parent.reloadTable();
+                       top.layer.msg("操作失败!请联系管理员协助解决。",{icon:2});
+                       var index = parent.layer.getFrameIndex(window.name);
+                       parent.layer.close(index);
+                   }
+               }
+           });
+
+
+       } else{
+           layer.msg("模板名称必填..");
+       }
     });
 
 });

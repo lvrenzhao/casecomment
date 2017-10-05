@@ -255,6 +255,12 @@ public class XCaseController {
         return bean.toMap(bdScoretableItemsMapper.selectAll(bean));
     }
 
+    @RequestMapping("/savescoretable")
+    public @ResponseBody String savescoretable(BdScoretables bean) {
+        return "1";
+    }
+
+
     @RequestMapping("/savelevel")
     public @ResponseBody int savelevel(BdCheckLevels bean) {
         if(StringUtils.isNotBlank(bean.getLevelid())){
