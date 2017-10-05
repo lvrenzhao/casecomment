@@ -3,6 +3,9 @@ package cn.gov.ahcourt.casecomment.bean;
 import java.util.Date;
 
 public class BdScoretables extends BaseEntity {
+
+    private String itemjson;
+
     private String tableid;
 
     private String mbmc;
@@ -141,5 +144,13 @@ public class BdScoretables extends BaseEntity {
 
     public void setFlag(String flag) {
         this.flag = flag == null ? null : flag.trim();
+    }
+
+    public String getItemjson() {
+        return itemjson;
+    }
+
+    public void setItemjson(String itemjson) {
+        this.itemjson = itemjson;
     }
 }

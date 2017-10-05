@@ -18,6 +18,10 @@
     delete from bd_scoretable_items
     where itemid = #{itemid,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByTableid" parameterType="java.lang.String" >
+    delete from bd_scoretable_items
+    where remarks = #{remarks,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdScoretableItems" >
     insert into bd_scoretable_items (itemid, psnr, pfbz, 
       fz, xh, create_by, create_date, 

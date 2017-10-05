@@ -39,7 +39,7 @@ $(function () {
                     var html = "";
                     for(var i = 0 ; i < data.rows.length; i ++){
                         var item = data.rows[i];
-                        html += '<tr class="XH_'+item.xh+'" id="TR_'+i+'"><td>'+item.xh+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ i +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+i+'" data-xh="'+item.xh+'" data-psnr="'+item.psnr+'" data-pfbz="'+item.pfbz+'" data-fz="'+item.fz+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td><td class="xscore" style="text-align: right">'+item.fz+'</td></tr>';
+                        html += '<tr class="datarow XH_'+item.xh+'" id="TR_'+i+'"><td>'+item.xh+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ i +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+i+'" data-xh="'+item.xh+'" data-psnr="'+item.psnr+'" data-pfbz="'+item.pfbz+'" data-fz="'+item.fz+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td><td class="xscore" style="text-align: right">'+item.fz+'</td></tr>';
                     }
                     $("#table_score_tbody").html(html);
                 }
@@ -74,7 +74,7 @@ $(function () {
             $("#table_score_tbody td").show();
             $("#"+row).remove();
             _w_table_rowspan("#table_score", 3);
-            layer.close(o)
+            layer.close(o);
             calcTotalScore();
         }, function(){
         });
@@ -116,7 +116,7 @@ $(function () {
             layer.msg("请填写完整....");
         }
 
-        var html = '<tr class="XH_'+$("#form_inp_xh").val()+'" id="TR_'+igloble+'"><td>'+$("#form_inp_xh").val()+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ igloble +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+igloble+'" data-xh="'+$("#form_inp_xh").val()+'" data-psnr="'+$("#form_inp_psnr").val()+'" data-pfbz="'+$("#form_inp_pfbz").val()+'" data-fz="'+$("#form_inp_fz").val()+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+$("#form_inp_psnr").val()+'</td><td>'+$("#form_inp_pfbz").val()+'</td><td style="text-align: right" class="xscore">'+$("#form_inp_fz").val()+'</td></tr>';
+        var html = '<tr class="datarow XH_'+$("#form_inp_xh").val()+'" id="TR_'+igloble+'"><td>'+$("#form_inp_xh").val()+'</td><td style="text-align: center"><button class="btn btn-link btn-xs xdelete" type="button" data-row="TR_'+ igloble +'"><i class="fa fa-trash"></i> 删除</button><button class="btn btn-link btn-xs xedit" type="button"  data-row="TR_'+igloble+'" data-xh="'+$("#form_inp_xh").val()+'" data-psnr="'+$("#form_inp_psnr").val()+'" data-pfbz="'+$("#form_inp_pfbz").val()+'" data-fz="'+$("#form_inp_fz").val()+'" ><i class="fa fa-edit"></i> 编辑</button></td><td>'+$("#form_inp_psnr").val()+'</td><td>'+$("#form_inp_pfbz").val()+'</td><td style="text-align: right" class="xscore">'+$("#form_inp_fz").val()+'</td></tr>';
         igloble++;
 
         $("#table_score_tbody td").removeAttr("rowSpan");
@@ -149,14 +149,25 @@ $(function () {
 
     $("#btn_saveall").click(function () {
        if($("#form_inp_mbmc").val()){
+           var items = [];
+           $("tr.datarow").each(function () {
+               var tds = $(this).find('td');
+               var xh =$(tds[0]).text();
+               var psnr = $(tds[2]).text();
+               var pfbz = $(tds[3]).text();
+               var fz = $(tds[4]).text();
+               items.push({xh:xh,psnr:psnr,pfbz:pfbz,fz:fz});
+           });
            $.ajax({
                type : 'POST',
                url : URL_SUBMIT,
                data:{
                    tableid:tableid,
-                   mbmc:"",
-                   mcms:"",
-
+                   mbmc:$("#form_inp_mbmc").val(),
+                   mcms:$("#form_inp_mbms").val(),
+                   lx:parent.type,
+                   mf:$("#label_mf").text(),
+                   itemjson:JSON.stringify(items)
                },
                datatype : 'json',
                // async : false,

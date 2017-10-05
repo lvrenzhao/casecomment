@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BdScoretableItemsMapper {
     int deleteByPrimaryKey(String itemid);
+    int deleteByTableid(String tableid);
 
     int insert(BdScoretableItems record);
 

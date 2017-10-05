@@ -256,7 +256,33 @@ public class XCaseController {
     }
 
     @RequestMapping("/savescoretable")
-    public @ResponseBody String savescoretable(BdScoretables bean) {
+    public @ResponseBody String savescoretable(BdScoretables bean,@SessionScope("user")UserBean user) {
+        if(StringUtils.isNotBlank(bean.getTableid())){
+            BdScoretables newbean = bdScoretablesMapper.selectByPrimaryKey(bean.getTableid());
+            bean.setCreateDate(newbean.getCreateDate());
+            bean.setCreateBy(newbean.getCreateBy());
+            bean.setSfqy(newbean.getSfqy());
+            bdScoretablesMapper.updateByPrimaryKey(bean);
+        }else{
+            String tableid = IdGen.uuid();
+            bean.setSfqy("1");
+            bean.setTableid(tableid);
+            bean.setCreateBy(user.getYhid());
+            bean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+            bdScoretablesMapper.insert(bean);
+        }
+        bdScoretableItemsMapper.deleteByTableid(bean.getTableid());
+        if(StringUtils.isNotBlank(bean.getItemjson())){
+            List<BdScoretableItems> items = JSONArray.parseArray(bean.getItemjson(),BdScoretableItems.class);
+            if(items != null && items.size() > 0){
+                for(int i = 0 ; i < items.size() ; i ++){
+                    BdScoretableItems item = items.get(i);
+                    item.setRemarks(bean.getTableid());
+                    item.setItemid(IdGen.uuid());
+                    bdScoretableItemsMapper.insert(item);
+                }
+            }
+        }
         return "1";
     }
 
