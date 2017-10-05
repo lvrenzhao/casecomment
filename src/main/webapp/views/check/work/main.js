@@ -31,15 +31,16 @@ function loadUnCheckGrid() {
             {label : 'remarks',name : 'remarks',hidden : true,key : true,frozen:true},
             {label : 'ccid',name : 'ccid',hidden : true, frozen:true},
             {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
+            {label : 'sfzz',name : 'sfzz',hidden : true, frozen:true},
+            {label : 'jydp',name : 'jydp',hidden : true, frozen:true},
             {label : 'checkid',name : 'checkid',hidden : true, frozen:true},
             {label : '操作',name : 'fmt', width : 80, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
-                    if(rowObject.zt == 1){
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
-                    }else if(rowObject.zt == 2 ){
+                    if(rowObject.sfzz == "1" && rowObject.jydp && rowObject.jydp.length>0){
                         return '<button class="btn btn-link btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" title="总结"><i class="fa fa-commenting-o"></i> 点评</button>';
+                    }else{
+                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
                     }
-                    return '';
                 },
                 frozen:true
             },

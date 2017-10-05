@@ -37,6 +37,7 @@
     <result column="fqsj" property="fqsj" jdbcType="VARCHAR" />
     <result column="pclx" property="pclx" jdbcType="VARCHAR" />
     <result column="pcrw" property="pcrw" jdbcType="VARCHAR" />
+    <result column="sfzz" property="sfzz" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_check_cases
@@ -153,7 +154,7 @@
   </select>
 
   <select id="selectWork" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >
-    select CONCAT(a.ccid,p.cpid) keyid,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx, b.pcrw,fn_get_username(b.fqr) fqrmc
+    select CONCAT(a.ccid,p.cpid) keyid,p.sfzz,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx, b.pcrw,fn_get_username(b.fqr) fqrmc
         ,a.ccid, a.checkid, a.ajid, a.psgroupid, a.jydp, a.zzpcdf, a.zzzldj,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
         date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
         b.bt ggmc,
@@ -166,7 +167,10 @@
     left join bd_check_pros p on a.psgroupid = p.groupid and a.checkid = p.checkid
     left join bd_check_records r on r.checkid = a.checkid and r.ajid = a.ajid and r.pcr = p.proid
     left join sd_user u on b.fqr = u.yhid
-    where 1=1
+    where b.zt = '1'
+    <if test="proid !=null and proid != '' ">
+      and p.proid = #{proid}
+    </if>
     <if test="bt !=null and bt != '' ">
       and b.bt like concat('%',#{bt},'%')
     </if>
@@ -185,6 +189,13 @@
     <if test="fqsj2 != null and fqsj2 != '' ">
       and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
+    <if test='tasktype == "1" '>
+      and ((p.sfzz = '1' and a.jydp is null) or (r.pczt is null or r.pczt = '1'))
+    </if>
+    <if test='tasktype == "2" '>
+      and r.pczt = '2'
+    </if>
+
     order by b.bt asc , a.create_date desc
 
   </select>

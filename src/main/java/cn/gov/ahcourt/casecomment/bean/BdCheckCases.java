@@ -75,6 +75,25 @@ public class BdCheckCases extends BaseEntity {
     private String tdcy;
     private String tasktype;//1:待评查，2已评查
 
+    private String sfzz;
+    private String proid;
+
+    public String getProid() {
+        return proid;
+    }
+
+    public void setProid(String proid) {
+        this.proid = proid;
+    }
+
+    public String getSfzz() {
+        return sfzz;
+    }
+
+    public void setSfzz(String sfzz) {
+        this.sfzz = sfzz;
+    }
+
     public String getTasktype() {
         return tasktype;
     }
