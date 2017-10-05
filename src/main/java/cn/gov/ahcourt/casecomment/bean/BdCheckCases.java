@@ -30,6 +30,7 @@ public class BdCheckCases extends BaseEntity {
     private String updateDate;
 
     private String remarks;
+    private String keyid;
 
     private String flag;
 
@@ -72,6 +73,23 @@ public class BdCheckCases extends BaseEntity {
     private String pclx;
     private String pcrw;
     private String tdcy;
+    private String tasktype;//1:待评查，2已评查
+
+    public String getTasktype() {
+        return tasktype;
+    }
+
+    public void setTasktype(String tasktype) {
+        this.tasktype = tasktype;
+    }
+
+    public String getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(String keyid) {
+        this.keyid = keyid;
+    }
 
     public String getTdcy() {
         return tdcy;

@@ -179,6 +179,17 @@ public class XCaseController {
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/worktodo")
+    public @ResponseBody Map worktodo(BdCheckCases bean,@SessionScope("user")UserBean user) {
+        bean.setTasktype("1");
+        return bean.toMap(bdCheckCasesMapper.selectWork(bean));
+    }
+    @RequestMapping("/workdone")
+    public @ResponseBody Map workdone(BdCheckCases bean,@SessionScope("user")UserBean user) {
+        bean.setTasktype("2");
+        return bean.toMap(bdCheckCasesMapper.selectWork(bean));
+    }
+
     @RequestMapping("/mystart")
     public @ResponseBody Map mystart(BdCheckCases bean ,@SessionScope("user")UserBean user) {
         if(user == null){
