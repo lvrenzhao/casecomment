@@ -57,14 +57,75 @@
     where ccid = #{ccid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select ccid, chosenid, ajid, psgroupid, jydp, zzpxdf, dpr,date_format(dpsj, '%Y/%m/%d') dpsj, tjly, date_format(tbrq, '%Y/%m/%d') tbrq, create_by,
-    date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
-    from bd_chosen_cases
-    where ccid = #{ccid,jdbcType=VARCHAR}
+    select date_format(a.tbrq, '%Y/%m/%d') tbrq,a.tjly,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
+    ,a.ccid, a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+    date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
+    (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_chosen_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
+    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u,bd_chosen_groups g where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid and a.psgroupid = g.cgid
+    where a.ccid = #{ccid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
-    select ccid, chosenid, ajid, psgroupid, jydp, zzpxdf, dpr,date_format(dpsj, '%Y/%m/%d') dpsj, tjly, date_format(tbrq, '%Y/%m/%d') tbrq, create_by,
-    date_format(create_date, '%Y/%m/%d') create_date, update_by,date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
-    from bd_chosen_cases
+    select date_format(a.tbrq, '%Y/%m/%d') tbrq,a.tjly,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
+    ,a.ccid, a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+    date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
+    (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_chosen_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
+    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u,bd_chosen_groups g where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid and a.psgroupid = g.cgid
+    <if test="ajid !=null and ajid != '' ">
+      and a.ajid = #{ajid}
+    </if>
+    <if test="chosenid !=null and chosenid != '' ">
+      and a.chosenid = #{chosenid}
+    </if>
+    <if test="ischecked !=null and ischecked != '' ">
+      and a.jydp is not null
+    </if>
+    <if test="gsfy !=null and gsfy != '' ">
+      and c.gsfy like concat('%',#{gsfy},'%')
+    </if>
+    <if test="cbbm !=null and cbbm != '' ">
+      and c.cbbm like concat('%',#{cbbm},'%')
+    </if>
+    <if test="cbr !=null and cbr != '' ">
+      and c.cbr like concat('%',#{cbr},'%')
+    </if>
+    <if test="ah !=null and ah != '' ">
+      and c.ah like concat('%',#{ah},'%')
+    </if>
+    <if test="xz !=null and xz != '' ">
+      and c.xz = #{xz}
+    </if>
+    <if test="lx !=null and lx != '' ">
+      and c.lx = #{lx}
+    </if>
+    <if test="psgroupid !=null and psgroupid != '' ">
+      and a.psgroupid = #{psgroupid}
+    </if>
+    <if test="fqr !=null and fqr != '' ">
+      and b.fqr = #{fqr}
+    </if>
+    <if test="bt !=null and bt != '' ">
+      and b.bt like concat('%',#{bt},'%')
+    </if>
+    <if test="pclx !=null and pclx != '' ">
+      and b.pclx = #{pclx}
+    </if>
+    <if test="fqrmc !=null and fqrmc != '' ">
+      and u.xm like concat('%',#{fqrmc},'%')
+    </if>
+    <if test="tdcy !=null and tdcy != '' ">
+      and g.tdcy like concat('%',#{tdcy},'%')
+    </if>
+
+    <if test="fqsj1 != null and fqsj1 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &gt;= #{fqsj1}
+    </if>
+    <if test="fqsj2 != null and fqsj2 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
+    </if>
+    order by b.bt asc , a.create_date desc
   </select>
 </mapper>

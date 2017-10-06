@@ -61,4 +61,14 @@
     </if>
     order by create_date desc
   </select>
+
+
+  <select id="selectChosenByXz" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  select CONCAT(xz,' - 被抽中',count(xz),'条 - 占比',count(xz)/(select count(0) from bd_chosen_cases t where t.chosenid = #{ggid})*100,'%' ) fbxmc,xz fbx from bd_chosen_cases a left join bd_middle_case b on a.ajid = b.ajid where  a.chosenid = #{ggid}  group by b.xz
+  </select>
+
+  <select id="selectChosenByGsfy" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  select CONCAT(gsfy,' - 被抽中',count(gsfy),'条 - 占比',count(gsfy)/(select count(0) from bd_chosen_cases t where t.chosenid = #{ggid})*100,'%' ) fbxmc,gsfy fbx from bd_chosen_cases a left join bd_middle_case b on a.ajid = b.ajid where  a.chosenid = #{ggid}  group by b.gsfy
+  </select>
+
 </mapper>

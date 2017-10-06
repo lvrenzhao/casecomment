@@ -15,7 +15,7 @@
     <div class="bmbox_title">
         <h5>专家组分配</h5>
         <div class="bmbox_tool">
-            <button class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 清空选择</button>
+            <button id="btn_clear" class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 清空选择</button>
         </div>
     </div>
     <div class="bmbox_content clearfix">
@@ -33,16 +33,14 @@
         <div class="form_center clearfix" style="padding: 10px 0px;">
 
             <div class="form_item wb40 fl">
-                <select class="form-control">
+                <select class="form-control xselect" id="form_sel_gsfy">
                     <option value="">归属法院</option>
-                    <option value="1">合肥 - 共11件 - 占比25%</option>
                 </select>
             </div>
 
             <div class="form_item wb40 fl">
-                <select class="form-control">
+                <select class="form-control xselect" id="form_sel_xz">
                     <option value="">案件性质</option>
-                    <option value="1">民事 - 共11件 - 占比25%</option>
                 </select>
             </div>
 

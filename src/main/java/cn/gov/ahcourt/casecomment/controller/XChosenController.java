@@ -1,9 +1,6 @@
 package cn.gov.ahcourt.casecomment.controller;
 
-import cn.gov.ahcourt.casecomment.bean.BdChosen;
-import cn.gov.ahcourt.casecomment.bean.BdChosenMsgto;
-import cn.gov.ahcourt.casecomment.bean.BdScoretables;
-import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.*;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
@@ -37,6 +34,15 @@ public class XChosenController {
 
     @Resource
     private BdChosenMsgtoMapper bdChosenMsgtoMapper;
+
+    @Resource
+    private BdChosenCasesMapper bdChosenCasesMapper;
+
+    @Resource
+    private BdChosenGroupsMapper bdChosenGroupsMapper;
+
+    @Resource
+    private  BdCheckDistributionMapper bdCheckDistributionMapper;
 
     @RequestMapping("/pfb")
     public @ResponseBody Map pfb() {
@@ -114,5 +120,35 @@ public class XChosenController {
     public @ResponseBody BdChosen getchosen(String ggid){
         return bdChosenMapper.selectByPrimaryKey(ggid);
     }
+
+    @RequestMapping("/chosencases")
+    public @ResponseBody Map chosencases(String ggid,String gsfy,String xz,String lx ,String groupid) {
+        BdChosenCases bean = new BdChosenCases();
+        bean.setChosenid(ggid);
+        bean.setGsfy(gsfy);
+        bean.setXz(xz);
+        bean.setPsgroupid(groupid);
+        return bean.toMap(bdChosenCasesMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/groups")
+    public @ResponseBody Map groups(String ggid) {
+        BdChosenGroups bean = new BdChosenGroups();
+        bean.setChosenid(ggid);
+        return bean.toMap(bdChosenGroupsMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/distgsfy")
+    public @ResponseBody Map distgsfy(String ggid) {
+        BdCheckDistribution bean = new BdCheckDistribution();
+        return bean.toMap(bdCheckDistributionMapper.selectChosenByGsfy(ggid));
+    }
+
+    @RequestMapping("/distajxz")
+    public @ResponseBody Map distajxz(String ggid) {
+        BdCheckDistribution bean = new BdCheckDistribution();
+        return bean.toMap(bdCheckDistributionMapper.selectChosenByXz(ggid));
+    }
+
 
 }

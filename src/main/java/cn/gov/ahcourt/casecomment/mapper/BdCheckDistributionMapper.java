@@ -11,6 +11,8 @@ public interface BdCheckDistributionMapper {
     BdCheckDistribution selectByPrimaryKey(String cdid);
 
     List<BdCheckDistribution> selectAll(BdCheckDistribution bean);
+    List<BdCheckDistribution> selectChosenByXz(String ggid);
+    List<BdCheckDistribution> selectChosenByGsfy(String ggid);
 
     int updateByPrimaryKey(BdCheckDistribution record);
 }

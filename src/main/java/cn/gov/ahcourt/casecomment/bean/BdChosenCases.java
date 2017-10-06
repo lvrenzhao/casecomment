@@ -35,6 +35,276 @@ public class BdChosenCases extends BaseEntity {
 
     private String flag;
 
+
+
+    private String keyid;
+    private String teamleadername;
+    private String teammatenames;
+
+    private String bt;
+
+    private String ah;
+
+    private String gsfy;
+
+    private String cbbm;
+
+    private String cbr;
+
+    private String xz;
+
+    private String ay;
+
+    private String jafs;
+
+    private String jasj;
+
+    private String lx;
+
+    private int relatedcasecount;
+
+    private String pcjl;
+
+    private String ischecked;
+
+    private String fqr;
+    private String fqrxm;
+    private String fqrmc;
+    private String fqsj;
+    private String fqsj1;
+    private String fqsj2;
+    private String pclx;
+    private String pcrw;
+    private String tdcy;
+    private String tasktype;//1:待评查，2已评查
+
+    private String sfzz;
+    private String proid;
+
+    public String getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(String keyid) {
+        this.keyid = keyid;
+    }
+
+    public String getTeamleadername() {
+        return teamleadername;
+    }
+
+    public void setTeamleadername(String teamleadername) {
+        this.teamleadername = teamleadername;
+    }
+
+    public String getTeammatenames() {
+        return teammatenames;
+    }
+
+    public void setTeammatenames(String teammatenames) {
+        this.teammatenames = teammatenames;
+    }
+
+    public String getBt() {
+        return bt;
+    }
+
+    public void setBt(String bt) {
+        this.bt = bt;
+    }
+
+    public String getAh() {
+        return ah;
+    }
+
+    public void setAh(String ah) {
+        this.ah = ah;
+    }
+
+    public String getGsfy() {
+        return gsfy;
+    }
+
+    public void setGsfy(String gsfy) {
+        this.gsfy = gsfy;
+    }
+
+    public String getCbbm() {
+        return cbbm;
+    }
+
+    public void setCbbm(String cbbm) {
+        this.cbbm = cbbm;
+    }
+
+    public String getCbr() {
+        return cbr;
+    }
+
+    public void setCbr(String cbr) {
+        this.cbr = cbr;
+    }
+
+    public String getXz() {
+        return xz;
+    }
+
+    public void setXz(String xz) {
+        this.xz = xz;
+    }
+
+    public String getAy() {
+        return ay;
+    }
+
+    public void setAy(String ay) {
+        this.ay = ay;
+    }
+
+    public String getJafs() {
+        return jafs;
+    }
+
+    public void setJafs(String jafs) {
+        this.jafs = jafs;
+    }
+
+    public String getJasj() {
+        return jasj;
+    }
+
+    public void setJasj(String jasj) {
+        this.jasj = jasj;
+    }
+
+    public String getLx() {
+        return lx;
+    }
+
+    public void setLx(String lx) {
+        this.lx = lx;
+    }
+
+    public int getRelatedcasecount() {
+        return relatedcasecount;
+    }
+
+    public void setRelatedcasecount(int relatedcasecount) {
+        this.relatedcasecount = relatedcasecount;
+    }
+
+    public String getPcjl() {
+        return pcjl;
+    }
+
+    public void setPcjl(String pcjl) {
+        this.pcjl = pcjl;
+    }
+
+    public String getIschecked() {
+        return ischecked;
+    }
+
+    public void setIschecked(String ischecked) {
+        this.ischecked = ischecked;
+    }
+
+    public String getFqr() {
+        return fqr;
+    }
+
+    public void setFqr(String fqr) {
+        this.fqr = fqr;
+    }
+
+    public String getFqrxm() {
+        return fqrxm;
+    }
+
+    public void setFqrxm(String fqrxm) {
+        this.fqrxm = fqrxm;
+    }
+
+    public String getFqrmc() {
+        return fqrmc;
+    }
+
+    public void setFqrmc(String fqrmc) {
+        this.fqrmc = fqrmc;
+    }
+
+    public String getFqsj() {
+        return fqsj;
+    }
+
+    public void setFqsj(String fqsj) {
+        this.fqsj = fqsj;
+    }
+
+    public String getFqsj1() {
+        return fqsj1;
+    }
+
+    public void setFqsj1(String fqsj1) {
+        this.fqsj1 = fqsj1;
+    }
+
+    public String getFqsj2() {
+        return fqsj2;
+    }
+
+    public void setFqsj2(String fqsj2) {
+        this.fqsj2 = fqsj2;
+    }
+
+    public String getPclx() {
+        return pclx;
+    }
+
+    public void setPclx(String pclx) {
+        this.pclx = pclx;
+    }
+
+    public String getPcrw() {
+        return pcrw;
+    }
+
+    public void setPcrw(String pcrw) {
+        this.pcrw = pcrw;
+    }
+
+    public String getTdcy() {
+        return tdcy;
+    }
+
+    public void setTdcy(String tdcy) {
+        this.tdcy = tdcy;
+    }
+
+    public String getTasktype() {
+        return tasktype;
+    }
+
+    public void setTasktype(String tasktype) {
+        this.tasktype = tasktype;
+    }
+
+    public String getSfzz() {
+        return sfzz;
+    }
+
+    public void setSfzz(String sfzz) {
+        this.sfzz = sfzz;
+    }
+
+    public String getProid() {
+        return proid;
+    }
+
+    public void setProid(String proid) {
+        this.proid = proid;
+    }
+
     public String getCcid() {
         return ccid;
     }

@@ -1,15 +1,86 @@
 //mode:1 = 无评选结果，评选组长，评选组员 ,无按照专家组进行过滤的条件。
 //mod:2 = 有评选结果，有评选组长，评选组员，有按照专家组进行过滤的条件
 
-var mode;
+var URL_TABLE1 = ahcourt.ctx + '/chosen/chosencases.do';
+var URL_TABLE2 = ahcourt.ctx + '/chosen/groups.do';
+var URL_GSFY = ahcourt.ctx + '/chosen/distgsfy.do';
+var URL_AJXZ = ahcourt.ctx + '/chosen/distajxz.do';
+
+var mode,ggid;
 $(function () {
     mode = $.getUrlParam("mode");
+    ggid = $.getUrlParam("ggid");
     if(mode == 1){
         $("#left").hide();
         $("#right").css("cssText","width:100% !important");
     }
     loadGridCases();
     loadGridGroup();
+
+    $.ajax({
+        type : 'POST',
+        url : URL_GSFY,
+        data:{
+            ggid:ggid
+        },
+        datatype : 'json',
+        success : function(data) {
+            if (data && data.rows && data.rows.length > 0) {
+                $("#form_sel_gsfy").each(function() {
+                    var html = '<option value="">归属法院</option>';
+                    for (var i = 0; i < data.rows.length; i++) {
+                        html += '<option ' + 'value="' + data.rows[i].fbx + '">' + data.rows[i].fbxmc + '</option>'
+                    }
+                    $(this).html(html);
+                });
+            } else {
+                $("#form_sel_gsfy").each(function() {
+                    $(this).html('<option value="">归属法院</option>');
+                })
+            }
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : URL_AJXZ,
+        data:{
+            ggid:ggid
+        },
+        datatype : 'json',
+        success : function(data) {
+            if (data && data.rows && data.rows.length > 0) {
+                $("#form_sel_xz").each(function() {
+                    var html = '<option value="">案件性质</option>';
+                    for (var i = 0; i < data.rows.length; i++) {
+                        html += '<option ' + 'value="' + data.rows[i].fbx + '">' + data.rows[i].fbxmc + '</option>'
+                    }
+                    $(this).html(html);
+                });
+            } else {
+                $("#form_sel_xz").each(function() {
+                    $(this).html('<option value="">案件性质</option>');
+                })
+            }
+        }
+    });
+
+    $(".xselect").change(function () {
+        reloadGridCase();
+    });
+
+    $("#btn_clear").click(function () {
+        $("#table2").jqGrid().setGridParam({
+            url : URL_TABLE2,
+            page : 1,
+            postData:{
+                ggid:ggid
+            }
+        }).trigger("reloadGrid");
+        selectgroupid = "";
+        reloadGridCase();
+    });
+
 });
 
 
@@ -17,55 +88,62 @@ function loadGridCases() {
     var cols = [];
     if(mode == 2){
         cols = [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
-            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
-            {label : '关联案件',name : '',width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
-                return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
+            {label : 'ccid',name : 'ccid',hidden : true, key : true,frozen:true},
+            {label : 'chosenid',name : 'chosenid',hidden : true,frozen:true},
+            {label : 'ajid',name : 'ajid',hidden : true,frozen:true},
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,frozen:true},
+            {label : '案号',name : 'ah', width : 120,sortable:false,frozen : true},
+            {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
+                return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
             }},
-            {label : '评选得分',name : 'shsj',sortable:false, width : 100},
-            {label : '评选时间',name : 'lxrmc',sortable:false,width : 100},
-            {label : '填报日期', name : 'fbsj',sortable:false,width : 100},
-            {label : '推荐理由',name : 'shr',sortable:false,width : 300,
+            {label : '评选得分',name : 'zzpxdf',sortable:false, width : 100},
+            {label : '评选时间',name : 'dpsj',sortable:false,width : 100},
+            {label : '填报日期', name : 'tbrq',sortable:false,width : 100},
+            {label : '推荐理由',name : 'tjly',sortable:false,width : 300,
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
+                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.tjly + '\')">'+cellvalue+'</a>'
                 }
             },
-            {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
-            {label : '承办部门',name : 'htmc', width : 100,sortable:false},
-            {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
-            {label : '性质',name : 'zylbmc',width : 80 ,sortable:false},
-            {label : '类型',name : 'zylbmc',width : 80,sortable:false},
-            {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
-            {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
-            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
+            {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
+            {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
+            {label : '承办人',name : 'cbr',width : 80,sortable:false},
+            {label : '性质',name : 'xz',width : 80 ,sortable:false},
+            {label : '类型',name : 'lx',width : 80,sortable:false},
+            {label : '案由',name : 'ay',width : 120,sortable:false},
+            {label : '结案方式',name : 'jafs', width : 80,sortable:false},
+            {label : '结案时间',name : 'jasj', width : 80,sortable:false}
         ]
     }else{
         cols = [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
-            {label : '案号',name : 'xmmc', width : 120,sortable:false,frozen : true},
-            {label : '关联案件',name : '',width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
-                return '<a onclick="viewRelated(\'' + cellvalue + '\')" href="javascript:;">'+cellvalue+'</a>';
+            {label : 'ccid',name : 'ccid',hidden : true, key : true,frozen:true},
+            {label : 'chosenid',name : 'chosenid',hidden : true,frozen:true},
+            {label : 'ajid',name : 'ajid',hidden : true,frozen:true},
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,frozen:true},
+            {label : '案号',name : 'ah', width : 120,sortable:false,frozen : true},
+            {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,formatter:function (cellvalue,options,rowObject) {
+                return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
             }},
-            {label : '填报日期',name : 'fbsj', sortable:false,width : 100},
-            {label : '推荐理由', name : 'shr',sortable:false,width : 300,
+            {label : '填报日期', name : 'tbrq',sortable:false,width : 100},
+            {label : '推荐理由',name : 'tjly',sortable:false,width : 300,
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.ggid + '\')">'+cellvalue+'</a>'
+                    return '<a href="javascript:;" onclick="ViewComment(\'' + rowObject.tjly + '\')">'+cellvalue+'</a>'
                 }
             },
-            {label : '归属法院',name : 'xmzt',width : 150,sortable:false},
-            {label : '承办部门',name : 'htmc', width : 100,sortable:false},
-            {label : '承办人',name : 'xmlxmc',width : 80,sortable:false},
-            {label : '性质',name : 'zylbmc',width : 80 ,sortable:false},
-            {label : '类型',name : 'zylbmc',width : 80,sortable:false},
-            {label : '案由',name : 'xmfzrmc',width : 120,sortable:false},
-            {label : '结案方式',name : 'xmjlmc', width : 80,sortable:false},
-            {label : '结案时间',name : 'xmcymc', width : 80,sortable:false}
+            {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
+            {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
+            {label : '承办人',name : 'cbr',width : 80,sortable:false},
+            {label : '性质',name : 'xz',width : 80 ,sortable:false},
+            {label : '类型',name : 'lx',width : 80,sortable:false},
+            {label : '案由',name : 'ay',width : 120,sortable:false},
+            {label : '结案方式',name : 'jafs', width : 80,sortable:false},
+            {label : '结案时间',name : 'jasj', width : 80,sortable:false}
         ]
     }
     $("#table1").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url : URL_TABLE1,
+        postData:{
+            ggid:ggid
+        },
         datatype : "json",
         mtype : "post",
         multiselect : true,
@@ -78,9 +156,25 @@ function loadGridCases() {
     }).jqGrid('setFrozenColumns');
 }
 
+function reloadGridCase() {
+    $("#table1").jqGrid().setGridParam({
+        url : URL_TABLE1,
+        page : 1,
+        postData:{
+            ggid:ggid,
+            gsfy:$("#form_sel_gsfy").val(),
+            xz:$("#form_sel_xz").val(),
+            groupid:selectgroupid
+        }
+    }).trigger("reloadGrid");
+}
+var selectgroupid="";
 function loadGridGroup() {
     $("#table2").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url : URL_TABLE2,
+        postData:{
+            ggid:ggid
+        },
         datatype : "json",
         mtype : "post",
         height : $('body').height() - 125,
@@ -88,14 +182,19 @@ function loadGridGroup() {
         shrinkToFit : true,
         rowNum : 20,
         colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
-            {label : '组名',name : 'xmzt',width : 100,sortable:false},
-            {label : '组长',name : 'xmzt',width : 80,sortable:false},
-            {label : '组员',name : 'htmc', width : 200,sortable:false},
-            {label : '评查',name : 'htmc', width : 60,sortable:false},
-            {label : '占比',name : 'htmc', width : 60,sortable:false}
+            {label : 'cgid',name : 'cgid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'chosenid',name : 'chosenid',hidden : true,frozen:true},
+            {label : '组名',name : 'groupname',width : 100,sortable:false},
+            {label : '组长',name : 'teamleadername',width : 80,sortable:false},
+            {label : '组员',name : 'teammatenames', width : 200,sortable:false},
+            {label : '评查',name : 'pcajs', width : 60,sortable:false},
+            {label : '占比',name : 'zb', width : 60,sortable:false}
         ],
-        pager:"#pager2"
+        pager:"#pager2",
+        onSelectRow:function (rowid,status) {
+            selectgroupid = rowid;
+            reloadGridCase();
+        }
         // ,viewrecords: true
     });//.jqGrid('setFrozenColumns');
 }

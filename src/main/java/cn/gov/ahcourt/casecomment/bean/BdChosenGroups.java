@@ -25,6 +25,26 @@ public class BdChosenGroups extends BaseEntity {
 
     private String flag;
 
+    private String teamleadername;
+
+    private String teammatenames;
+
+    public String getTeamleadername() {
+        return teamleadername;
+    }
+
+    public void setTeamleadername(String teamleadername) {
+        this.teamleadername = teamleadername;
+    }
+
+    public String getTeammatenames() {
+        return teammatenames;
+    }
+
+    public void setTeammatenames(String teammatenames) {
+        this.teammatenames = teammatenames;
+    }
+
     public String getCgid() {
         return cgid;
     }
