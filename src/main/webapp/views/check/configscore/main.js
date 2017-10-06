@@ -44,7 +44,7 @@ function loadTable() {
             {label : 'tableid',name : 'tableid',hidden : true,key : true },
             {label : 'sfqy',name : 'sfqy',hidden : true, frozen:true},
             {label : 'sfsy',name : 'sfsy',hidden : true, frozen:true},
-            {label : '操作',name : 'fmt',width : 230,align:'center',sortable:false,formatter:function(cellvalue,options,rowObject){
+            {label : '操作',name : 'fmt',width : 250,align:'center',sortable:false,formatter:function(cellvalue,options,rowObject){
                 var btn_str = "";
                 //如果已经被使用，则不能对评分表进行修改和删除
                 if(rowObject.sfsy == 0){

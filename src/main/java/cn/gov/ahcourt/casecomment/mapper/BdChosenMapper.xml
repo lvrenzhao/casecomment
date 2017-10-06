@@ -26,6 +26,7 @@
     <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
     <result column="orgname" property="orgname" jdbcType="VARCHAR" />
     <result column="sfyd" property="sfyd" jdbcType="VARCHAR" />
+    <result column="msgtonames" property="msgtonames" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_chosen
@@ -70,25 +71,27 @@
     where chosenid = #{chosenid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,
+    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,t.jzrq,
     (select a.mbmc from bd_scoretables a where a.tableid = t.pfb limit 1) pfbmc,
     t.fqr,fn_get_username(t.fqr) fqrmc,
     (select oi.zzjgmc from sd_user us,sd_organization oi where us.zzid = oi.zzjgid and us.yhid =t.fqr limit 1) orgname,
     date_format(t.fqsj, '%Y/%m/%d') fqsj, shr,fn_get_username(shr) shrmc, date_format(shsj, '%Y/%m/%d') shsj, t.shyj, t.zt, t.create_by,
     date_format(t.create_date, '%Y/%m/%d') create_date, t.update_by, date_format(t.update_date, '%Y/%m/%d') update_date, t.remarks, t.flag, t.nr
-    ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd
+    ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd,
+    (select GROUP_CONCAT(m.proname SEPARATOR ';') xm from bd_chosen_msgto m where m.chosenid = t.chosenid group by m.chosenid limit 1) msgtonames
     from bd_chosen t,sd_user u
     where t.fqr = u.yhid
-    where chosenid = #{chosenid,jdbcType=VARCHAR}
+    and chosenid = #{chosenid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosen">
-    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,
+    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,t.jzrq,
     (select a.mbmc from bd_scoretables a where a.tableid = t.pfb limit 1) pfbmc,
     t.fqr,fn_get_username(t.fqr) fqrmc,
     (select oi.zzjgmc from sd_user us,sd_organization oi where us.zzid = oi.zzjgid and us.yhid =t.fqr limit 1) orgname,
     date_format(t.fqsj, '%Y/%m/%d') fqsj, shr,fn_get_username(shr) shrmc, date_format(shsj, '%Y/%m/%d') shsj, t.shyj, t.zt, t.create_by,
     date_format(t.create_date, '%Y/%m/%d') create_date, t.update_by, date_format(t.update_date, '%Y/%m/%d') update_date, t.remarks, t.flag, t.nr
-    ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd
+    ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd,
+    (select GROUP_CONCAT(m.proname SEPARATOR ';') xm from bd_chosen_msgto m where m.chosenid = t.chosenid group by m.chosenid limit 1) msgtonames
     from bd_chosen t,sd_user u
     where t.fqr = u.yhid
     <if test="zt != null and zt != '' ">

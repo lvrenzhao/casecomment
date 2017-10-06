@@ -110,4 +110,9 @@ public class XChosenController {
         return "0";
     }
 
+    @RequestMapping("/getchosen")
+    public @ResponseBody BdChosen getchosen(String ggid){
+        return bdChosenMapper.selectByPrimaryKey(ggid);
+    }
+
 }

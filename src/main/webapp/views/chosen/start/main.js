@@ -13,6 +13,29 @@ $(function(){
     mode = $.getUrlParam("mode");
     ggid = $.getUrlParam("ggid");
 
+    //设置评分表
+    $.ajax({
+        type : 'POST',
+        url : URL_PFB,
+        datatype : 'json',
+        async : false,
+        success : function(data) {
+            if (data && data.rows && data.rows.length > 0) {
+                $("#form_sel_pfb").each(function() {
+                    var html = '<option value="">--请选择--</option>';
+                    for (var i = 0; i < data.rows.length; i++) {
+                        html += '<option ' + 'value="' + data.rows[i].tableid + '">' + data.rows[i].mbmc + '</option>'
+                    }
+                    $(this).html(html);
+                });
+            } else {
+                $("#form_sel_pfb").each(function() {
+                    $(this).html('<option value="">--请选择--</option>');
+                })
+            }
+        }
+    });
+
     if(ggid){
         $.ajax({
             type : 'POST',
@@ -38,8 +61,10 @@ $(function(){
                         $("#type3").iCheck('check');
                     }
                     $("#form_sel_pfb").val(data.pfb);
-                    // $("#viewTable").html(data.pfbmc);
-                    // $("#viewTable").attr("data-id",data.pfb);
+                    $('#xxnr').code(data.nr);
+                    $("#viewTable").show();
+                    $("#viewTable").attr("data-id",data.pfb);
+                    $("#user_name").val(data.msgtonames);
                 }
             }
         });
@@ -48,11 +73,13 @@ $(function(){
     if(mode == 1){
         $("#selectuser").attr("disabled","disabled");
         $("input").attr("disabled","disabled");
+        $("#form_sel_pfb").attr("disabled","disabled");
         $("#btn_submit").hide();
         $("#btn_pass").show();
         $("#btn_reject").show();
     }else if(mode == 2){
         $("#selectuser").attr("disabled","disabled");
+        $("#form_sel_pfb").attr("disabled","disabled");
         $("input").attr("disabled","disabled");
         $("#btn_submit").hide();
         $("#btn_pass").hide();
@@ -62,29 +89,6 @@ $(function(){
         $("#btn_pass").hide();
         $("#btn_reject").hide();
     }
-
-    //设置评分表
-    $.ajax({
-        type : 'POST',
-        url : URL_PFB,
-        datatype : 'json',
-        // async : false,
-        success : function(data) {
-            if (data && data.rows && data.rows.length > 0) {
-                $("#form_sel_pfb").each(function() {
-                    var html = '<option value="">--请选择--</option>';
-                    for (var i = 0; i < data.rows.length; i++) {
-                        html += '<option ' + 'value="' + data.rows[i].tableid + '">' + data.rows[i].mbmc + '</option>'
-                    }
-                    $(this).html(html);
-                });
-            } else {
-                $("#form_sel_pfb").each(function() {
-                    $(this).html('<option value="">--请选择--</option>');
-                })
-            }
-        }
-    });
 
     $('.i-checks').iCheck({
         radioClass : 'iradio_square-green',
@@ -207,6 +211,23 @@ $(function(){
         }else{
             layer.msg("请输入审核不同意的理由。");
         }
+    });
+
+
+    $("#viewTable").click(function () {
+        var id = $(this).attr("data-id");
+        layer.open({
+            type : 2,
+            shift : 5,
+            title : '查看评分表',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '90%', '90%' ],
+            content : ahcourt.ctx+"/views/check/configscore/view_table.jsp?id="+id,
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
     });
 
 });

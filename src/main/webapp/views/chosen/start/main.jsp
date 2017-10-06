@@ -60,7 +60,8 @@
                 </div>
             </div>
             <div class="form_item wb20 fl">
-                <label>选择评分表<span>*</span></label>
+                <label>选择评分表<span>*</span>
+                    <a id="viewTable" style="display: none;">查看</a> </label>
                 <select class="form-control" id="form_sel_pfb">
                     <option value="">--请选择--</option>
                 </select>

@@ -66,6 +66,9 @@ $(function(){
             {label : '审核时间',name : 'shsj',sortable : false,width : 120},
             {label : '审核意见',name : 'shyj',sortable:false,width : 200,
                 formatter:function(cellvalue, options, rowObject) {
+                    if(!cellvalue){
+                        cellvalue = "";
+                    }
                     return '<a href="javascript:void(0)" onclick="openComments(\'' + cellvalue + '\')">'+cellvalue+'</a>';
                 }
             }
