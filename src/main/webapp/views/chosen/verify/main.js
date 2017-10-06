@@ -42,11 +42,11 @@ $(function(){
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [
-            {label : 'ggid',name : 'ggid',hidden : true, key : true},
-            {label : '操作', name : 'ggid',width : 260, align : 'center',sortable : false,
+            {label : 'chosenid',name : 'chosenid',hidden : true,key : true},
+            {label : '操作', name : 'fmt',width : 260, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.ggid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 查看公告 </button>'
-                         + '<button class="btn btn-link btn-xs " type="button" onclick="viewCases(2,\'' + rowObject.ggid + '\')"><i class="fa fa-reddit"></i> 评选详情 </button>'
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.chosenid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 查看公告 </button>'
+                         + '<button class="btn btn-link btn-xs " type="button" onclick="viewCases(2,\'' + rowObject.chosenid + '\')"><i class="fa fa-reddit"></i> 评选详情 </button>'
                 }
             },
             {label : '公告标题',name : 'bt',sortable : false, width : 300 },
