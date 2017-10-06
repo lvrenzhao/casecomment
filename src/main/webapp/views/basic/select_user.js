@@ -39,7 +39,7 @@ function Staffgrid(ele, hid, mult,_sfyzdw,useto) {
 		}
 		console.log(useto);
 		$("#staff_jqGrid").jqGrid({
-			url : ahcourt.ctx + "/userlist"+useto+".do",
+			url : ahcourt.ctx + "/userlist.do",
 			datatype : "json",
 			mtype : "post",
 			width : gridWidth(),
@@ -113,7 +113,7 @@ function Staffgrid(ele, hid, mult,_sfyzdw,useto) {
 	} else if (mult == "1") {
 //		$("#staff_select").removeClass("hidden");
 		$("#staff_jqGrid").jqGrid({
-			url : ahcourt.ctx + "/userlist"+useto+".do",
+			url : ahcourt.ctx + "/userlist.do",
 
 			datatype : "json",
 			mtype : "post",

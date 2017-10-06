@@ -1,3 +1,9 @@
+
+//获取评分表接口
+var URL_PFB = ahcourt.ctx + '/chosen/pfb.do';
+//发布公告接口
+// var URL_SUBMIT = ahcourt.ctx + '/chosen/publish.do';
+
 var mode ;
 $(function(){
     mode = $.getUrlParam("mode");
@@ -19,6 +25,29 @@ $(function(){
         $("#btn_pass").hide();
         $("#btn_reject").hide();
     }
+
+    //设置评分表
+    $.ajax({
+        type : 'POST',
+        url : URL_PFB,
+        datatype : 'json',
+        // async : false,
+        success : function(data) {
+            if (data && data.rows && data.rows.length > 0) {
+                $("#form_sel_pfb").each(function() {
+                    var html = '<option value="">--请选择--</option>';
+                    for (var i = 0; i < data.rows.length; i++) {
+                        html += '<option ' + 'value="' + data.rows[i].tableid + '">' + data.rows[i].mbmc + '</option>'
+                    }
+                    $(this).html(html);
+                });
+            } else {
+                $("#form_sel_pfb").each(function() {
+                    $(this).html('<option value="">--请选择--</option>');
+                })
+            }
+        }
+    });
 
     $('.i-checks').iCheck({
         radioClass : 'iradio_square-green',
