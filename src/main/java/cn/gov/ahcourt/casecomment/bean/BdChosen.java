@@ -73,6 +73,16 @@ private String fqrmc;
 
     private String userid;
 
+    private String ytbajs;
+
+    public String getYtbajs() {
+        return ytbajs;
+    }
+
+    public void setYtbajs(String ytbajs) {
+        this.ytbajs = ytbajs;
+    }
+
     public String getUserid() {
         return userid;
     }

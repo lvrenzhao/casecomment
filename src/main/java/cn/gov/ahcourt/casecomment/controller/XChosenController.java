@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,6 +44,12 @@ public class XChosenController {
 
     @Resource
     private  BdCheckDistributionMapper bdCheckDistributionMapper;
+
+    @Resource
+    private BdChosenReadMapper bdChosenReadMapper;
+
+    @Resource
+    private BdChosenRejectReadMapper bdChosenRejectReadMapper;
 
     @RequestMapping("/pfb")
     public @ResponseBody Map pfb() {
@@ -148,6 +155,46 @@ public class XChosenController {
     public @ResponseBody Map distajxz(String ggid) {
         BdCheckDistribution bean = new BdCheckDistribution();
         return bean.toMap(bdCheckDistributionMapper.selectChosenByXz(ggid));
+    }
+
+    @RequestMapping("/notice")
+    public @ResponseBody Map notice(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("1");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/setread")
+    public @ResponseBody String setread(String ggid,String type,@SessionScope("user")UserBean user) {
+        if(StringUtils.isNotBlank(ggid) && "1".equals(type)){
+            BdChosenRead bean = new BdChosenRead();
+            bean.setChosenid(ggid);
+            bean.setReadman(user.getYhid());
+            List<BdChosenRead> records = bdChosenReadMapper.selectAll(bean);
+            if(records==null || records.size() == 0){
+                bean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bean.setReadid(IdGen.uuid());
+                bean.setReadtime(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bdChosenReadMapper.insert(bean);
+            }
+            return "1";
+        }else if (StringUtils.isNotBlank(ggid) && "2".equals(type)){
+            BdChosenRejectRead bean = new BdChosenRejectRead();
+            bean.setChosenid(ggid);
+            bean.setReadman(user.getYhid());
+            List<BdChosenRejectRead> records = bdChosenRejectReadMapper.selectAll(bean);
+            if(records==null || records.size() == 0){
+                bean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bean.setReadid(IdGen.uuid());
+                bean.setReadtime(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bdChosenRejectReadMapper.insert(bean);
+            }
+            return "1";
+        }
+        return "0";
     }
 
 
