@@ -74,4 +74,40 @@ public class XChosenController {
             return "-1";
         }
     }
+
+    @RequestMapping("/verifylist")
+    public @ResponseBody Map verifylist(@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        BdChosen bean = new BdChosen();
+        bean.setZt("0");
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/verifyhistorylist")
+    public @ResponseBody Map verifyhistorylist(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setShrmc(user.getYhid());
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/dovefify")
+    public @ResponseBody String dovefify(String ggid,String passorreject,String shyj,@SessionScope("user")UserBean user) {
+        BdChosen bean = bdChosenMapper.selectByPrimaryKey(ggid);
+        if(bean != null){
+            bean.setZt(passorreject);
+            if("2".equals(passorreject)){
+                bean.setShyj(shyj);
+            }
+            bean.setShr(user.getYhid());
+            bean.setShsj(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+            bdChosenMapper.updateByPrimaryKey(bean);
+            return "1";
+        }
+        return "0";
+    }
+
 }

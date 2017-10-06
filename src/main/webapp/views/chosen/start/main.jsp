@@ -85,5 +85,15 @@
         </div>
     </div>
 </div>
+
+<div id="div_reject" style="display: none;">
+    <div class="form_item wb100 fl">
+        <label>&nbsp;</label>
+        <textarea id="form_inp_shyj" class="form-control" placeholder="请输入审核意见" style="height: 100px;"></textarea>
+    </div>
+    <div class="form_item wb100 fl" style="text-align: center;padding-top: 10px;">
+        <button id="btn_reject_confirm" class="btn btn-primary" type="button" >确定</button>
+    </div>
+</div>
 </body>
 </html>

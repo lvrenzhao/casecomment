@@ -13,11 +13,32 @@ public class BdChosen extends BaseEntity {
 
     private String pfb;
 
+    private String pfbmc;
+
     private String fqr;
+private String fqrmc;
+
+    public String getFqrmc() {
+        return fqrmc;
+    }
+
+    public void setFqrmc(String fqrmc) {
+        this.fqrmc = fqrmc;
+    }
 
     private String fqsj;
 
     private String shr;
+
+    private String shrmc;
+
+    public String getShrmc() {
+        return shrmc;
+    }
+
+    public void setShrmc(String shrmc) {
+        this.shrmc = shrmc;
+    }
 
     private String shsj;
 
@@ -43,6 +64,54 @@ public class BdChosen extends BaseEntity {
 
     private String msgtoids;
     private String msgtonames;
+
+    private String fqsj1;
+    private String fqsj2;
+
+    private String orgname;
+    private String sfyd;
+
+    private String userid;
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getOrgname() {
+        return orgname;
+    }
+
+    public void setOrgname(String orgname) {
+        this.orgname = orgname;
+    }
+
+    public String getSfyd() {
+        return sfyd;
+    }
+
+    public void setSfyd(String sfyd) {
+        this.sfyd = sfyd;
+    }
+
+    public String getFqsj1() {
+        return fqsj1;
+    }
+
+    public void setFqsj1(String fqsj1) {
+        this.fqsj1 = fqsj1;
+    }
+
+    public String getFqsj2() {
+        return fqsj2;
+    }
+
+    public void setFqsj2(String fqsj2) {
+        this.fqsj2 = fqsj2;
+    }
 
     public String getMsgtonames() {
         return msgtonames;
@@ -154,6 +223,14 @@ public class BdChosen extends BaseEntity {
 
     public void setJzrq(String jzrq) {
         this.jzrq = jzrq;
+    }
+
+    public String getPfbmc() {
+        return pfbmc;
+    }
+
+    public void setPfbmc(String pfbmc) {
+        this.pfbmc = pfbmc;
     }
 
     public String getCreateBy() {

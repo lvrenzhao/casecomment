@@ -4,9 +4,46 @@ var URL_PFB = ahcourt.ctx + '/chosen/pfb.do';
 //发布公告接口
 var URL_SUBMIT = ahcourt.ctx + '/chosen/publish.do';
 
-var mode ;
+
+var URL_DOVERIFY = ahcourt.ctx + '/chosen/dovefify.do';
+var URL_GETCHOSEN = ahcourt.ctx + '/chosen/getchosen.do';
+
+var mode ,ggid;
 $(function(){
     mode = $.getUrlParam("mode");
+    ggid = $.getUrlParam("ggid");
+
+    if(ggid){
+        $.ajax({
+            type : 'POST',
+            url : URL_GETCHOSEN,
+            data:{
+                ggid:ggid
+            },
+            datatype : 'json',
+            success : function(data) {
+                if(data){
+                    $("#form_inp_bt").val(data.bt);
+                    if(data.btys == "red"){
+                        $("#btys2").iCheck('check');
+                    }else{
+                        $("#btys1").iCheck('check');
+                    }
+                    $("#form_inp_jzsj").val(data.jzrq);
+                    if(data.pclx == "案件评选"){
+                        $("#type1").iCheck('check');
+                    }else if(data.pclx == "庭审影像评选"){
+                        $("#type2").iCheck('check');
+                    }else{
+                        $("#type3").iCheck('check');
+                    }
+                    $("#form_sel_pfb").val(data.pfb);
+                    // $("#viewTable").html(data.pfbmc);
+                    // $("#viewTable").attr("data-id",data.pfb);
+                }
+            }
+        });
+    }
 
     if(mode == 1){
         $("#selectuser").attr("disabled","disabled");
@@ -102,6 +139,73 @@ $(function(){
         }else{
             layer.msg("请将所有必填项填写完整");
             return false;
+        }
+    });
+
+    $("#btn_reject").click(function () {
+        layer.open({
+            type : 1,
+            shift : 5,
+            title : '审核不同意',
+            shadeClose : false,
+            shade : 0.3,
+            area : [ '480px', '250px' ],
+            content : $("#div_reject"),
+            cancel : function(index) {
+                layer.close(index);
+            }
+        });
+    });
+
+    $("#btn_pass").click(function () {
+        layer.confirm('确定审核通过此评查活动公告吗？', {
+            btn : [ '确认', '取消' ]
+        }, function(lo) {
+            $.ajax({
+                type : 'POST',
+                url : URL_DOVERIFY,
+                data:{
+                    ggid:ggid,
+                    passorreject:"1"
+                },
+                datatype : 'json',
+                success : function(data) {
+                    try{
+                        parent.reloadTable1();
+                        parent.reloadTable2();
+                    }catch (e){}
+                    top.layer.msg("审核通过!",{icon:1});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+
+                }
+            });
+        });
+    });
+
+    $("#btn_reject_confirm").click(function () {
+        if($("#form_inp_shyj").val()){
+            $.ajax({
+                type : 'POST',
+                url : URL_DOVERIFY,
+                data:{
+                    ggid:ggid,
+                    passorreject:"2",
+                    shyj:$("#form_inp_shyj").val()
+                },
+                datatype : 'json',
+                success : function(data) {
+                    try{
+                        parent.reloadTable1();
+                        parent.reloadTable2();
+                    }catch (e){}
+                    top.layer.msg("操作成功，已退回此次评查活动!",{icon:7});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                }
+            });
+        }else{
+            layer.msg("请输入审核不同意的理由。");
         }
     });
 
