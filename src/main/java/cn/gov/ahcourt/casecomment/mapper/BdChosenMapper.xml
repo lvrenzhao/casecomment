@@ -79,6 +79,7 @@
     date_format(t.fqsj, '%Y/%m/%d') fqsj, shr,fn_get_username(shr) shrmc, date_format(shsj, '%Y/%m/%d') shsj, t.shyj, t.zt, t.create_by,
     date_format(t.create_date, '%Y/%m/%d') create_date, t.update_by, date_format(t.update_date, '%Y/%m/%d') update_date, t.remarks, t.flag, t.nr
     ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd,
+    (select count(1) from bd_chosen_reject_read y where y.readman=#{userid} and y.chosenid = t.chosenid)  sfyd2,
     (select GROUP_CONCAT(m.proname SEPARATOR ';') xm from bd_chosen_msgto m where m.chosenid = t.chosenid group by m.chosenid limit 1) msgtonames
     ,(select count(1) from bd_chosen_cases x where x.chosenid = t.chosenid) ytbajs
     from bd_chosen t,sd_user u
@@ -93,6 +94,7 @@
     date_format(t.fqsj, '%Y/%m/%d') fqsj, shr,fn_get_username(shr) shrmc, date_format(shsj, '%Y/%m/%d') shsj, t.shyj, t.zt, t.create_by,
     date_format(t.create_date, '%Y/%m/%d') create_date, t.update_by, date_format(t.update_date, '%Y/%m/%d') update_date, t.remarks, t.flag, t.nr
     ,(select count(1) from bd_chosen_read x where x.readman=#{userid} and x.chosenid = t.chosenid)  sfyd,
+    (select count(1) from bd_chosen_reject_read y where y.readman=#{userid} and y.chosenid = t.chosenid)  sfyd2,
     (select GROUP_CONCAT(m.proname SEPARATOR ';') xm from bd_chosen_msgto m where m.chosenid = t.chosenid group by m.chosenid limit 1) msgtonames
     ,(select count(1) from bd_chosen_cases x where x.chosenid = t.chosenid) ytbajs
     from bd_chosen t,sd_user u

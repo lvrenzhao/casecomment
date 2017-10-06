@@ -197,5 +197,25 @@ public class XChosenController {
         return "0";
     }
 
+    @RequestMapping("/verifing")
+    public @ResponseBody Map verifing(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("0");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/reject")
+    public @ResponseBody Map reject(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("2");
+        bean.setUserid(user.getYhid());
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
 
 }

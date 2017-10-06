@@ -14,7 +14,11 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenRejectReadMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenRejectReadMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,11 +39,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1421">
+              <caret line="166" column="1" lean-forward="true" selection-start-line="166" selection-start-column="1" selection-end-line="166" selection-end-column="1" />
+              <folding>
+                <marker date="1507297509000" expanded="true" signature="3681:3687" ph="&amp;nbsp;" />
+                <marker date="1507297509000" expanded="true" signature="3687:3693" ph="&amp;nbsp;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-169">
-              <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="555">
+              <caret line="93" column="7" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="93" selection-end-column="7" />
               <folding>
                 <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
                 <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
@@ -48,60 +65,66 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BdChosenMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="81" column="112" lean-forward="false" selection-start-line="81" selection-start-column="112" selection-end-line="81" selection-end-column="112" />
+              <folding>
+                <marker date="1507297322000" expanded="true" signature="2132:2203" ph="delete from " />
+                <marker date="1507297322000" expanded="true" signature="2301:3081" ph="insert into bd_chosen... " />
+                <marker date="1507297322000" expanded="true" signature="3191:4006" ph="update bd_ch... " />
+                <marker date="1507297322000" expanded="true" signature="4118:5278" ph="select t.cho... bd_chosen" />
+                <marker date="1507297322000" expanded="true" signature="4733:4824" ph="select count... bd_chosen_read" />
+                <marker date="1507297322000" expanded="true" signature="4838:4936" ph="select count... bd_chosen_reject_read" />
+                <marker date="1507297322000" expanded="true" signature="5098:5166" ph="select count... bd_chosen_cases" />
+                <marker date="1507297322000" expanded="true" signature="5404:7210" ph="select t.cho... bd_chosen" />
+                <marker date="1507297322000" expanded="true" signature="5489:6516" ph="select t.cho... bd_chosen" />
+                <marker date="1507297322000" expanded="true" signature="5489:7210" ph="select t.cho... bd_chosen" />
+                <marker date="1507297322000" expanded="true" signature="6019:6110" ph="select count... bd_chosen_read" />
+                <marker date="1507297322000" expanded="true" signature="6124:6222" ph="select count... bd_chosen_reject_read" />
+                <marker date="1507297322000" expanded="true" signature="6384:6452" ph="select count... bd_chosen_cases" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BdCheckMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="91" column="101" lean-forward="true" selection-start-line="91" selection-start-column="101" selection-end-line="92" selection-end-column="109" />
+              <folding>
+                <marker date="1506941589000" expanded="true" signature="2048:2116" ph="delete from " />
+                <marker date="1506941589000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
+                <marker date="1506941589000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
+                <marker date="1506941589000" expanded="true" signature="4019:4801" ph="select check... bd_check" />
+                <marker date="1506941589000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
+                <marker date="1506941589000" expanded="true" signature="4927:6548" ph="select check... bd_check" />
+                <marker date="1506941589000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
+                <marker date="1506941589000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="XChosenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="181" column="13" lean-forward="true" selection-start-line="181" selection-start-column="13" selection-end-line="181" selection-end-column="13" />
+            <state relative-caret-position="603">
+              <caret line="215" column="39" lean-forward="true" selection-start-line="215" selection-start-column="39" selection-end-line="215" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdChosenRejectReadMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenRejectReadMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-              <folding>
-                <marker date="1507295741000" expanded="true" signature="1128:1207" ph="delete from " />
-                <marker date="1507295741000" expanded="true" signature="1315:1805" ph="insert into bd_chosen_reject_read... " />
-                <marker date="1507295741000" expanded="true" signature="1925:2429" ph="update bd_ch... " />
-                <marker date="1507295741000" expanded="true" signature="2541:2835" ph="select readi... bd_chosen_reject_read" />
-                <marker date="1507295741000" expanded="true" signature="2972:3220" ph="select readi... bd_chosen_reject_read" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdChosenReadMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenReadMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-              <folding>
-                <marker date="1507295642000" expanded="true" signature="1116:1188" ph="delete from " />
-                <marker date="1507295642000" expanded="true" signature="1290:1773" ph="insert into bd_chosen_read... " />
-                <marker date="1507295642000" expanded="true" signature="1887:2384" ph="update bd_ch... " />
-                <marker date="1507295642000" expanded="true" signature="2496:2783" ph="select readi... bd_chosen_read" />
-                <marker date="1507295642000" expanded="true" signature="2913:3154" ph="select readi... bd_chosen_read" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdCheckReadMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckReadMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="58" selection-end-column="9" />
-              <folding>
-                <marker date="1506934148000" expanded="true" signature="1112:1183" ph="delete from " />
-                <marker date="1506934148000" expanded="true" signature="1284:1764" ph="insert into bd_check_read... " />
-                <marker date="1506934148000" expanded="true" signature="1877:2371" ph="update bd_ch... " />
-                <marker date="1506934148000" expanded="true" signature="2483:2768" ph="select readi... bd_check_read" />
               </folding>
             </state>
           </provider>
@@ -119,7 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>deleteByTableid</find>
       <find>selectWork</find>
       <find>jydp</find>
       <find>pfb.</find>
@@ -149,6 +171,7 @@
       <find>selectAll</find>
       <find>URL_SETREAD</find>
       <find>setread</find>
+      <find>sfyd2</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -175,8 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/my/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/all/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/my/main.js" />
@@ -220,12 +241,14 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/view_bypxid.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenReadMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenRejectReadMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js" />
       </list>
     </option>
   </component>
@@ -453,7 +476,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
+              <option name="myItemId" value="reject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -483,71 +506,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1233,14 +1192,7 @@
       <workItem from="1506867501245" duration="8893000" />
       <workItem from="1506907834686" duration="19565000" />
       <workItem from="1506937064908" duration="45987000" />
-      <workItem from="1507275467169" duration="11671000" />
-    </task>
-    <task id="LOCAL-00237" summary="hooah hooah hooah">
-      <created>1506780527272</created>
-      <option name="number" value="00237" />
-      <option name="presentableId" value="LOCAL-00237" />
-      <option name="project" value="LOCAL" />
-      <updated>1506780527272</updated>
+      <workItem from="1507275467169" duration="13086000" />
     </task>
     <task id="LOCAL-00238" summary="hooah hooah hooah">
       <created>1506786848438</created>
@@ -1578,11 +1530,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507295708478</updated>
     </task>
-    <option name="localTasksCounter" value="286" />
+    <task id="LOCAL-00286" summary="1">
+      <created>1507295753947</created>
+      <option name="number" value="00286" />
+      <option name="presentableId" value="LOCAL-00286" />
+      <option name="project" value="LOCAL" />
+      <updated>1507295753947</updated>
+    </task>
+    <option name="localTasksCounter" value="287" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="528952000" />
+    <option name="totallyTimeSpent" value="530367000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1595,7 +1554,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1611,7 +1569,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34466588" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3024619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1654,7 +1612,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34466588" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34466588" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3024619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1748,39 +1706,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/configscore/add_table.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-573">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/check.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/my/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="22" column="81" lean-forward="true" selection-start-line="22" selection-start-column="81" selection-end-line="23" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="21" column="130" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="130" />
-          <folding>
-            <marker date="1506942620000" expanded="true" signature="3276:3282" ph="&amp;nbsp;" />
-            <marker date="1506942620000" expanded="true" signature="3282:3288" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/all/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="566">
@@ -1886,23 +1811,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="121" column="29" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="121" selection-end-column="29" />
-          <folding>
-            <marker date="1506941589000" expanded="true" signature="2048:2116" ph="delete from " />
-            <marker date="1506941589000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
-            <marker date="1506941589000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
-            <marker date="1506941589000" expanded="true" signature="4019:4801" ph="select check... bd_check" />
-            <marker date="1506941589000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
-            <marker date="1506941589000" expanded="true" signature="4927:6548" ph="select check... bd_check" />
-            <marker date="1506941589000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
-            <marker date="1506941589000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2138,42 +2046,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-          <folding>
-            <element signature="e#1223#1224#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1332#1333#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="57" column="44" lean-forward="true" selection-start-line="52" selection-start-column="12" selection-end-line="57" selection-end-column="44" />
-          <folding>
-            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
-            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/details.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4485">
           <caret line="32" column="11" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="32" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="119" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -2183,74 +2059,6 @@
         <state relative-caret-position="211">
           <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="41" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="74" column="89" lean-forward="false" selection-start-line="74" selection-start-column="89" selection-end-line="74" selection-end-column="89" />
-          <folding>
-            <marker date="1507294535000" expanded="true" signature="2132:2203" ph="delete from " />
-            <marker date="1507294535000" expanded="true" signature="2301:3081" ph="insert into bd_chosen... " />
-            <marker date="1507294535000" expanded="true" signature="3191:4006" ph="update bd_ch... " />
-            <marker date="1507294535000" expanded="true" signature="4118:5165" ph="select t.cho... bd_chosen" />
-            <marker date="1507294535000" expanded="true" signature="4733:4824" ph="select count... bd_chosen_read" />
-            <marker date="1507294535000" expanded="true" signature="4985:5053" ph="select count... bd_chosen_cases" />
-            <marker date="1507294535000" expanded="true" signature="5291:6984" ph="select t.cho... bd_chosen" />
-            <marker date="1507294535000" expanded="true" signature="5376:6290" ph="select t.cho... bd_chosen" />
-            <marker date="1507294535000" expanded="true" signature="5376:6984" ph="select t.cho... bd_chosen" />
-            <marker date="1507294535000" expanded="true" signature="5906:5997" ph="select count... bd_chosen_read" />
-            <marker date="1507294535000" expanded="true" signature="6158:6226" ph="select count... bd_chosen_cases" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-169">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding>
-            <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
-            <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckReadMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="58" selection-end-column="9" />
-          <folding>
-            <marker date="1506934148000" expanded="true" signature="1112:1183" ph="delete from " />
-            <marker date="1506934148000" expanded="true" signature="1284:1764" ph="insert into bd_check_read... " />
-            <marker date="1506934148000" expanded="true" signature="1877:2371" ph="update bd_ch... " />
-            <marker date="1506934148000" expanded="true" signature="2483:2768" ph="select readi... bd_check_read" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenReadMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-          <folding>
-            <marker date="1507295642000" expanded="true" signature="1116:1188" ph="delete from " />
-            <marker date="1507295642000" expanded="true" signature="1290:1773" ph="insert into bd_chosen_read... " />
-            <marker date="1507295642000" expanded="true" signature="1887:2384" ph="update bd_ch... " />
-            <marker date="1507295642000" expanded="true" signature="2496:2783" ph="select readi... bd_chosen_read" />
-            <marker date="1507295642000" expanded="true" signature="2913:3154" ph="select readi... bd_chosen_read" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="181" column="13" lean-forward="true" selection-start-line="181" selection-start-column="13" selection-end-line="181" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2277,6 +2085,162 @@
             <marker date="1507295741000" expanded="true" signature="1925:2429" ph="update bd_ch... " />
             <marker date="1507295741000" expanded="true" signature="2541:2835" ph="select readi... bd_chosen_reject_read" />
             <marker date="1507295741000" expanded="true" signature="2972:3220" ph="select readi... bd_chosen_reject_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenReadMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+          <folding>
+            <marker date="1507295642000" expanded="true" signature="1116:1188" ph="delete from " />
+            <marker date="1507295642000" expanded="true" signature="1290:1773" ph="insert into bd_chosen_read... " />
+            <marker date="1507295642000" expanded="true" signature="1887:2384" ph="update bd_ch... " />
+            <marker date="1507295642000" expanded="true" signature="2496:2783" ph="select readi... bd_chosen_read" />
+            <marker date="1507295642000" expanded="true" signature="2913:3154" ph="select readi... bd_chosen_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckReadMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="58" selection-end-column="9" />
+          <folding>
+            <marker date="1506934148000" expanded="true" signature="1112:1183" ph="delete from " />
+            <marker date="1506934148000" expanded="true" signature="1284:1764" ph="insert into bd_check_read... " />
+            <marker date="1506934148000" expanded="true" signature="1877:2371" ph="update bd_ch... " />
+            <marker date="1506934148000" expanded="true" signature="2483:2768" ph="select readi... bd_check_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="40" column="8" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="40" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="131" column="4" lean-forward="false" selection-start-line="131" selection-start-column="4" selection-end-line="149" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="215" column="39" lean-forward="true" selection-start-line="215" selection-start-column="39" selection-end-line="215" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="78" column="30" lean-forward="false" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+          <folding>
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1318#1319#0" expanded="true" />
+            <element signature="e#1352#1353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="95" selection-end-column="1" />
+          <folding>
+            <marker date="1506942620000" expanded="true" signature="3276:3282" ph="&amp;nbsp;" />
+            <marker date="1506942620000" expanded="true" signature="3282:3288" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="91" column="101" lean-forward="true" selection-start-line="91" selection-start-column="101" selection-end-line="92" selection-end-column="109" />
+          <folding>
+            <marker date="1506941589000" expanded="true" signature="2048:2116" ph="delete from " />
+            <marker date="1506941589000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
+            <marker date="1506941589000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
+            <marker date="1506941589000" expanded="true" signature="4019:4801" ph="select check... bd_check" />
+            <marker date="1506941589000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
+            <marker date="1506941589000" expanded="true" signature="4927:6548" ph="select check... bd_check" />
+            <marker date="1506941589000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
+            <marker date="1506941589000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="81" column="112" lean-forward="false" selection-start-line="81" selection-start-column="112" selection-end-line="81" selection-end-column="112" />
+          <folding>
+            <marker date="1507297322000" expanded="true" signature="2132:2203" ph="delete from " />
+            <marker date="1507297322000" expanded="true" signature="2301:3081" ph="insert into bd_chosen... " />
+            <marker date="1507297322000" expanded="true" signature="3191:4006" ph="update bd_ch... " />
+            <marker date="1507297322000" expanded="true" signature="4118:5278" ph="select t.cho... bd_chosen" />
+            <marker date="1507297322000" expanded="true" signature="4733:4824" ph="select count... bd_chosen_read" />
+            <marker date="1507297322000" expanded="true" signature="4838:4936" ph="select count... bd_chosen_reject_read" />
+            <marker date="1507297322000" expanded="true" signature="5098:5166" ph="select count... bd_chosen_cases" />
+            <marker date="1507297322000" expanded="true" signature="5404:7210" ph="select t.cho... bd_chosen" />
+            <marker date="1507297322000" expanded="true" signature="5489:6516" ph="select t.cho... bd_chosen" />
+            <marker date="1507297322000" expanded="true" signature="5489:7210" ph="select t.cho... bd_chosen" />
+            <marker date="1507297322000" expanded="true" signature="6019:6110" ph="select count... bd_chosen_read" />
+            <marker date="1507297322000" expanded="true" signature="6124:6222" ph="select count... bd_chosen_reject_read" />
+            <marker date="1507297322000" expanded="true" signature="6384:6452" ph="select count... bd_chosen_cases" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="66" column="14" lean-forward="false" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+          <folding>
+            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
+            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="93" column="7" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="93" selection-end-column="7" />
+          <folding>
+            <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
+            <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1421">
+          <caret line="166" column="1" lean-forward="true" selection-start-line="166" selection-start-column="1" selection-end-line="166" selection-end-column="1" />
+          <folding>
+            <marker date="1507297509000" expanded="true" signature="3681:3687" ph="&amp;nbsp;" />
+            <marker date="1507297509000" expanded="true" signature="3687:3693" ph="&amp;nbsp;" />
           </folding>
         </state>
       </provider>

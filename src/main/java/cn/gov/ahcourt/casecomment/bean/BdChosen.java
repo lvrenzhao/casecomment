@@ -70,10 +70,19 @@ private String fqrmc;
 
     private String orgname;
     private String sfyd;
+    private String sfyd2;
 
     private String userid;
 
     private String ytbajs;
+
+    public String getSfyd2() {
+        return sfyd2;
+    }
+
+    public void setSfyd2(String sfyd2) {
+        this.sfyd2 = sfyd2;
+    }
 
     public String getYtbajs() {
         return ytbajs;

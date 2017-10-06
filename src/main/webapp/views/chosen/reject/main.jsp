@@ -11,13 +11,41 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-  <div class="bmbox_layout clearfix">
-    <div class="bmbox_title">
-      <h5>审核未通过的评查公告</h5>
+  <%--<div class="bmbox_layout clearfix">--%>
+    <%--<div class="bmbox_title">--%>
+      <%--<h5>审核未通过的评查公告</h5>--%>
+    <%--</div>--%>
+    <%--<div class="bmbox_content clearfix">--%>
+      <%--<table id="table1" class="table table-striped"></table>--%>
+      <%--<div id="pager1"></div>--%>
+    <%--</div>--%>
+  <%--</div>--%>
+  <div class="bmbox_layout">
+    <div class="bmbox_title home-righttab">
+      <ul class="nav nav-tabs navs-3">
+        <li class="active">
+          <a data-toggle="tab" href="#tab-1">
+            正在审核中
+          </a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab-2">
+            审核不同意&nbsp;&nbsp;<span id="label_remind" class="label label-primary"></span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="bmbox_content clearfix">
-      <table id="table1" class="table table-striped"></table>
-      <div id="pager1"></div>
+    <div class="bmbox_content">
+      <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+          <table id="table1" class="table table-striped"></table>
+          <div id="pager1"></div>
+        </div>
+        <div id="tab-2" class="tab-pane">
+          <table id="table2" class="table table-striped"></table>
+          <div id="pager2"></div>
+        </div>
+      </div>
     </div>
   </div>
   </body>
