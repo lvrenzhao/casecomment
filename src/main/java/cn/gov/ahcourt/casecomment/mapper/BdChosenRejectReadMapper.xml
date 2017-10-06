@@ -50,5 +50,12 @@
     select readid, readman, date_format(readtime, '%Y/%m/%d') readtime, chosenid, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_reject_read
+    where 1=1
+    <if test="chosenid !=null and chosenid != '' ">
+      and chosenid = #{chosenid}
+    </if>
+    <if test="readman !=null and readman != '' ">
+      and readman = #{readman}
+    </if>
   </select>
 </mapper>
