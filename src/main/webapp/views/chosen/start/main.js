@@ -2,7 +2,7 @@
 //获取评分表接口
 var URL_PFB = ahcourt.ctx + '/chosen/pfb.do';
 //发布公告接口
-// var URL_SUBMIT = ahcourt.ctx + '/chosen/publish.do';
+var URL_SUBMIT = ahcourt.ctx + '/chosen/publish.do';
 
 var mode ;
 $(function(){
@@ -72,4 +72,37 @@ $(function(){
             }
         });
     })
+    
+    $("#btn_submit").click(function () {
+        if($("#form_inp_bt").val() && $("#form_sel_pfb").val() && $("#form_inp_jzsj").val()){
+            $.ajax({
+                type : 'POST',
+                url : URL_SUBMIT,
+                datatype : 'json',
+                data:{
+                    bt:$("#form_inp_bt").val(),
+                    btys:$("#btys1").is(':checked')?"black":"red",
+                    pclx:$("#type1").is(':checked')?"案件评选":($("#type2").is(':checked')?"庭审影像评选":"裁判文书评选"),
+                    pfb:$("#form_sel_pfb").val(),
+                    jzrq:$("#form_inp_jzsj").val(),
+                    nr:$('#xxnr').code(),
+                    msgtoids:$("#user_id").val(),
+                    msgtonames:$("#user_name").val()
+                },
+                success : function(data) {
+                    if(data == "1"){
+                        window.location.reload(true);
+                        top.layer.msg("公告发布成功! 正在等待审核。",{icon:1});
+                    }else{
+                        window.location.reload(true);
+                        top.layer.msg("公告发布失败！请联系系统管理员......",{icon:2});
+                    }
+                }
+            });
+        }else{
+            layer.msg("请将所有必填项填写完整");
+            return false;
+        }
+    });
+
 });

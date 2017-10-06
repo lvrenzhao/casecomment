@@ -24,7 +24,7 @@
         <div class="form_center clearfix" style="padding: 15px 0;">
             <div class="form_item wb100 fl">
                 <label>三精评选公告标题<span>*</span></label>
-                <input type="text" id="btn_form_bt" class="form-control" placeholder="请输入三精评选公告的标题"/>
+                <input type="text" id="form_inp_bt" class="form-control" placeholder="请输入三精评选公告的标题"/>
             </div>
             <div class="form_item wb28 fl">
                 <label>标题颜色<span>*</span></label>
@@ -41,7 +41,7 @@
             </div>
             <div class="form_item wb15 fl">
                 <label>案例填报截止日期<span>*</span></label>
-                <input id="btn_inp_jzsj" type="text" class="form-control" placeholder="" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})"/>
+                <input id="form_inp_jzsj" type="text" class="form-control" placeholder="" onclick="laydate({istime: true,format: 'YYYY/MM/DD'})"/>
             </div>
             <div class="form_item wb37 fl">
                 <label>三精评选类型<span>*</span></label>

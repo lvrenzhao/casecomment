@@ -41,6 +41,25 @@ public class BdChosen extends BaseEntity {
 
     private String nr;
 
+    private String msgtoids;
+    private String msgtonames;
+
+    public String getMsgtonames() {
+        return msgtonames;
+    }
+
+    public void setMsgtonames(String msgtonames) {
+        this.msgtonames = msgtonames;
+    }
+
+    public String getMsgtoids() {
+        return msgtoids;
+    }
+
+    public void setMsgtoids(String msgtoids) {
+        this.msgtoids = msgtoids;
+    }
+
     public String getChosenid() {
         return chosenid;
     }
