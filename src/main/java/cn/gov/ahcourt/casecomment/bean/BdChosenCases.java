@@ -22,6 +22,8 @@ public class BdChosenCases extends BaseEntity {
     private String tjly;
 
     private String tbrq;
+    private String tbrq1;
+    private String tbrq2;
 
     private String createBy;
 
@@ -80,6 +82,22 @@ public class BdChosenCases extends BaseEntity {
 
     private String sfzz;
     private String proid;
+
+    public String getTbrq1() {
+        return tbrq1;
+    }
+
+    public void setTbrq1(String tbrq1) {
+        this.tbrq1 = tbrq1;
+    }
+
+    public String getTbrq2() {
+        return tbrq2;
+    }
+
+    public void setTbrq2(String tbrq2) {
+        this.tbrq2 = tbrq2;
+    }
 
     public String getKeyid() {
         return keyid;

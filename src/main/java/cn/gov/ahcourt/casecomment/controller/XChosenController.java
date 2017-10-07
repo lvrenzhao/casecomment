@@ -232,6 +232,21 @@ public class XChosenController {
         return bean.toMap(bdChosenCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/incases")
+    public @ResponseBody Map incases(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setZt("1");
+        bean.setJzrq1(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/mysubmit")
+    public @ResponseBody Map mysubmit(BdChosenCases bean,@SessionScope("user")UserBean user) {
+        bean.setCreateBy(user.getYhid());
+        return bean.toMap(bdChosenCasesMapper.selectAll(bean));
+    }
 
 
 }

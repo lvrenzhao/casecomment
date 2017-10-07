@@ -113,6 +113,9 @@
     <if test="pclx !=null and pclx != '' ">
       and b.pclx = #{pclx}
     </if>
+    <if test="createBy !=null and createBy != '' ">
+      and a.create_by = #{createBy}
+    </if>
     <if test="fqrmc !=null and fqrmc != '' ">
       and u.xm like concat('%',#{fqrmc},'%')
     </if>
@@ -126,6 +129,14 @@
     <if test="fqsj2 != null and fqsj2 != '' ">
       and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
+
+    <if test="tbrq1 != null and tbrq1 != '' ">
+      and date_format(a.tbrq, '%Y/%m/%d') &gt;= #{tbrq1}
+    </if>
+    <if test="tbrq2 != null and tbrq2 != '' ">
+      and date_format(a.tbrq, '%Y/%m/%d') &lt;= #{tbrq2}
+    </if>
+
     order by b.bt asc , a.create_date desc
   </select>
 </mapper>

@@ -120,6 +120,12 @@
     <if test="fqsj2 != null and fqsj2 != '' ">
       and date_format(t.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
+    <if test="jzrq1 != null and jzrq1 != '' ">
+      and date_format(t.jzrq, '%Y/%m/%dd') &gt;= #{jzrq1}
+    </if>
+    <if test="jzrq2 != null and jzrq2 != '' ">
+      and date_format(t.jzrq, '%Y/%m/%dd') &lt;= #{jzrq2}
+    </if>
 
     order by create_date desc
   </select>

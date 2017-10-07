@@ -67,6 +67,8 @@ private String fqrmc;
 
     private String fqsj1;
     private String fqsj2;
+    private String jzrq1;
+    private String jzrq2;
 
     private String orgname;
     private String sfyd;
@@ -78,6 +80,22 @@ private String fqrmc;
 
     public String getSfyd2() {
         return sfyd2;
+    }
+
+    public String getJzrq1() {
+        return jzrq1;
+    }
+
+    public void setJzrq1(String jzrq1) {
+        this.jzrq1 = jzrq1;
+    }
+
+    public String getJzrq2() {
+        return jzrq2;
+    }
+
+    public void setJzrq2(String jzrq2) {
+        this.jzrq2 = jzrq2;
     }
 
     public void setSfyd2(String sfyd2) {
