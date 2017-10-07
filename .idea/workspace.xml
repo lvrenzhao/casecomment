@@ -14,13 +14,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosenCases.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdChosenCases.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,8 +38,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+            <state relative-caret-position="1372">
+              <caret line="90" column="24" lean-forward="false" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -1138,14 +1132,7 @@
       <workItem from="1506867501245" duration="8893000" />
       <workItem from="1506907834686" duration="19565000" />
       <workItem from="1506937064908" duration="45987000" />
-      <workItem from="1507275467169" duration="18278000" />
-    </task>
-    <task id="LOCAL-00241" summary="hooah hooah hooah">
-      <created>1506788525717</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1506788525717</updated>
+      <workItem from="1507275467169" duration="18375000" />
     </task>
     <task id="LOCAL-00242" summary="hooah hooah hooah">
       <created>1506851309550</created>
@@ -1483,11 +1470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507340964475</updated>
     </task>
-    <option name="localTasksCounter" value="290" />
+    <task id="LOCAL-00290" summary="1">
+      <created>1507345536669</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1507345536669</updated>
+    </task>
+    <option name="localTasksCounter" value="291" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="535559000" />
+    <option name="totallyTimeSpent" value="535656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2205,8 +2199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+        <state relative-caret-position="1372">
+          <caret line="90" column="24" lean-forward="false" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
           <folding />
         </state>
       </provider>

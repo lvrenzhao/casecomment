@@ -86,6 +86,13 @@ $(function () {
 
 });
 
+function reloadGrid1() {
+    $("#table1").jqGrid().setGridParam({
+        url :URL_TABLE1,
+        page : 1
+    }).trigger("reloadGrid");
+}
+
 function reloadGrid() {
     $("#table2").jqGrid().setGridParam({
         url :URL_TABLE2,
