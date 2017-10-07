@@ -3,6 +3,16 @@ var URL_TASK = "";
 
 
 $(function () {
+    if(top.badgeObject && top.badgeObject.badge_ajpc_pc){
+        $("#label_count_1").text(top.badgeObject.badge_ajpc_pc);
+    }else{
+        $("#label_count_1").text("0");
+    }
+    if(top.badgeObject && top.badgeObject.badge_sjpx_px){
+        $("#label_count_2").text(top.badgeObject.badge_sjpx_px);
+    }else{
+        $("#label_count_2").text("0");
+    }
     loadGrid1();
     loadGrid2();
     loadGrid3();
