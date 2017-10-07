@@ -248,5 +248,10 @@ public class XChosenController {
         return bean.toMap(bdChosenCasesMapper.selectAll(bean));
     }
 
+    @RequestMapping("/tbal")
+    public @ResponseBody String tbal(String ah,String tjly,@SessionScope("user")UserBean user){
+        return "9";
+    }
+
 
 }
