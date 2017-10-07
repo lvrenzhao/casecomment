@@ -160,6 +160,45 @@
 
 
   <select id="selectWork" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
-    select * from bd_chosen_cases
+    select CONCAT(a.ccid,p.cpid) keyid,p.sfzz,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
+        ,a.ccid, a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+        date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
+        b.bt ggmc,
+        (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
+        (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+        ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_chosen_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
+    from bd_chosen_cases a
+    left join bd_chosen b on a.chosenid = b.chosenid
+    left join bd_middle_case c on a.ajid = c.ajid
+    left join bd_chosen_pros p on a.psgroupid = p.groupid and a.chosenid = p.chosenid
+    left join bd_chosen_records r on r.chosenid = a.chosenid and r.ajid = a.ajid and r.pcr = p.proid
+    left join sd_user u on b.fqr = u.yhid
+    where b.zt = '1'
+    <if test="proid !=null and proid != '' ">
+      and p.proid = #{proid}
+    </if>
+    <if test="bt !=null and bt != '' ">
+      and b.bt like concat('%',#{bt},'%')
+    </if>
+    <if test="pclx !=null and pclx != '' ">
+      and b.pclx = #{pclx}
+    </if>
+    <if test="fqrmc !=null and fqrmc != '' ">
+      and u.xm like concat('%',#{fqrmc},'%')
+    </if>
+    <if test="fqsj1 != null and fqsj1 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &gt;= #{fqsj1}
+    </if>
+    <if test="fqsj2 != null and fqsj2 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
+    </if>
+    <if test='tasktype == "1" '>
+      and ((p.sfzz = '1' and a.jydp is null) or (r.pczt is null or r.pczt = '1'))
+    </if>
+    <if test='tasktype == "2" '>
+      and r.pczt = '2'
+    </if>
+
+    order by b.bt asc , a.create_date desc
   </select>
 </mapper>
