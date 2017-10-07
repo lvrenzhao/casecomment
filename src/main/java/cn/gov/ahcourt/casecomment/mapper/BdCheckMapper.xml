@@ -119,6 +119,6 @@
       and date_format(t.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
 
-    order by create_date desc
+    order by t.fqsj desc
   </select>
 </mapper>

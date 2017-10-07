@@ -553,23 +553,22 @@ function relogin(){
     location.href=smartec.ctx+"/login.do";
 }
 
-
+var badgeObject = {
+    badge_ajpc_sh:0,
+    badge_ajpc_gg:0,
+    badge_ajpc_pc:0,
+    badge_ajpc_reject:0,
+    badge_sjpx_sh:0,
+    badge_sjpx_gg:0,
+    badge_sjpx_px:0,
+    badge_sjpx_fp:0,
+    badge_sjpx_reject:0,
+    badge_xxgk_xxsh:0,
+    badge_xxgk_dwck:0
+};
 
 function loadBadges() {
 
-    var badgeObject = {
-        badge_ajpc_sh:0,
-        badge_ajpc_gg:0,
-        badge_ajpc_pc:0,
-        badge_ajpc_reject:0,
-        badge_sjpx_sh:0,
-        badge_sjpx_gg:0,
-        badge_sjpx_px:0,
-        badge_sjpx_fp:0,
-        badge_sjpx_reject:0,
-        badge_xxgk_xxsh:0,
-        badge_xxgk_dwck:0
-    };
     for(var badgetype in badgeObject){
         if($("#"+badgetype).length > 0 ){
             $.ajax({

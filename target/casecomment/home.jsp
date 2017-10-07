@@ -25,14 +25,14 @@
                     <div class="ibox m10" id="countbox1">
                         <div class="ibox-content bg1">
                             <h5 style="text-align: center">待评查的案件数</h5>
-                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_ajpc_pc').trigger('click')"><span id="label_count_1">5</span></a></h1>
+                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_ajpc_pc').trigger('click')"><span id="label_count_1"></span></a></h1>
                         </div>
                     </div>
                 </div>
                 <div class="form_item wb50 fl">
                     <div class="ibox m10" id="countbox2">
                         <div class="ibox-content bg1"> <h5 style="text-align: center">待评选三精案件数</h5>
-                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_sjpx_px').trigger('click')"><span id="label_count_2">6</span></a></h1>
+                            <h1 class="no-margins"><a style="color:#fff;" href="javascript:;" onclick="top.$('#menu_badge_sjpx_px').trigger('click')"><span id="label_count_2"></span></a></h1>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
     <div class="form_item wb100 no-margins " style="height: 100%;padding: 0px 10px 185px 10px !important; ">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的系统信息</h5>
+                <h5>系统公告</h5>
                 <div class="bmbox_tool">
                     <a onclick="top.$('#menu_badge_xxgk_dwck').trigger('click')" class="collapse-link"><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>
@@ -58,7 +58,7 @@
     <div class="form_item wb100 no-margins " style="padding:10px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的案件评查公告</h5>
+                <h5>案件评查公告</h5>
                 <div class="bmbox_tool">
                     <a class="collapse-link" onclick="top.$('#menu_badge_ajpc_gg').trigger('click')" ><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>
@@ -72,7 +72,7 @@
     <div class="form_item wb100 no-margins" style="padding:0px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的三精评选公告</h5>
+                <h5>三精评选公告</h5>
                 <div class="bmbox_tool">
                     <a class="collapse-link" onclick="top.$('#menu_badge_sjpx_gg').trigger('click')" ><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>

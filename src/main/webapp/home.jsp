@@ -42,7 +42,7 @@
     <div class="form_item wb100 no-margins " style="height: 100%;padding: 0px 10px 185px 10px !important; ">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的系统信息</h5>
+                <h5>系统公告</h5>
                 <div class="bmbox_tool">
                     <a onclick="top.$('#menu_badge_xxgk_dwck').trigger('click')" class="collapse-link"><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>
@@ -58,7 +58,7 @@
     <div class="form_item wb100 no-margins " style="padding:10px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的案件评查公告</h5>
+                <h5>案件评查公告</h5>
                 <div class="bmbox_tool">
                     <a class="collapse-link" onclick="top.$('#menu_badge_ajpc_gg').trigger('click')" ><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>
@@ -72,7 +72,7 @@
     <div class="form_item wb100 no-margins" style="padding:0px 10px 10px 0px;height: 50%;">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>未读的三精评选公告</h5>
+                <h5>三精评选公告</h5>
                 <div class="bmbox_tool">
                     <a class="collapse-link" onclick="top.$('#menu_badge_sjpx_gg').trigger('click')" ><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>
