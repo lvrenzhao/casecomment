@@ -28,6 +28,7 @@
     <result column="sfyd" property="sfyd" jdbcType="VARCHAR" />
     <result column="msgtonames" property="msgtonames" jdbcType="VARCHAR" />
     <result column="ytbajs" property="ytbajs" jdbcType="VARCHAR" />
+    <result column="sffp" property="sffp" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_chosen
@@ -39,14 +40,14 @@
       shr, shsj, shyj, 
       zt, jzrq, create_by, 
       create_date, update_by, update_date, 
-      remarks, flag, nr
+      remarks, flag, nr,sffp
       )
     values (#{chosenid,jdbcType=VARCHAR}, #{bt,jdbcType=VARCHAR}, #{btys,jdbcType=VARCHAR}, 
       #{pclx,jdbcType=VARCHAR}, #{pfb,jdbcType=VARCHAR}, #{fqr,jdbcType=VARCHAR}, #{fqsj,jdbcType=TIMESTAMP}, 
       #{shr,jdbcType=VARCHAR}, #{shsj,jdbcType=TIMESTAMP}, #{shyj,jdbcType=VARCHAR}, 
       #{zt,jdbcType=VARCHAR}, #{jzrq,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR}
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR}, #{sffp,jdbcType=LONGVARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosen" >
@@ -69,10 +70,11 @@
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR},
       nr = #{nr,jdbcType=LONGVARCHAR}
+      sffp = #{sffp,jdbcType=LONGVARCHAR}
     where chosenid = #{chosenid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,date_format(t.jzrq, '%Y/%m/%d')  jzrq,
+    select t.sffp,t.chosenid, t.bt, t.btys, t.pclx, t.pfb,date_format(t.jzrq, '%Y/%m/%d')  jzrq,
     (select a.mbmc from bd_scoretables a where a.tableid = t.pfb limit 1) pfbmc,
     t.fqr,fn_get_username(t.fqr) fqrmc,
     (select oi.zzjgmc from sd_user us,sd_organization oi where us.zzid = oi.zzjgid and us.yhid =t.fqr limit 1) orgname,
@@ -87,7 +89,7 @@
     and chosenid = #{chosenid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosen">
-    select t.chosenid, t.bt, t.btys, t.pclx, t.pfb,date_format(t.jzrq, '%Y/%m/%d')  jzrq,
+    select t.sffp,t.chosenid, t.bt, t.btys, t.pclx, t.pfb,date_format(t.jzrq, '%Y/%m/%d')  jzrq,
     (select a.mbmc from bd_scoretables a where a.tableid = t.pfb limit 1) pfbmc,
     t.fqr,fn_get_username(t.fqr) fqrmc,
     (select oi.zzjgmc from sd_user us,sd_organization oi where us.zzid = oi.zzjgid and us.yhid =t.fqr limit 1) orgname,
@@ -107,6 +109,9 @@
     </if>
     <if test="pclx != null and pclx != '' ">
       and t.pclx = #{pclx}
+    </if>
+    <if test="sffp != null and sffp != '' ">
+      and t.sffp = #{sffp}
     </if>
     <if test="bt != null and bt != '' ">
       and t.bt like concat('%',#{bt},'%')

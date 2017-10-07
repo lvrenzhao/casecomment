@@ -14,6 +14,15 @@ public class BdChosen extends BaseEntity {
     private String pfb;
 
     private String pfbmc;
+private String sffp;
+
+    public String getSffp() {
+        return sffp;
+    }
+
+    public void setSffp(String sffp) {
+        this.sffp = sffp;
+    }
 
     private String fqr;
 private String fqrmc;

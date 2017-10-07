@@ -69,6 +69,7 @@ public class XChosenController {
             bean.setFqr(user.getYhid());
             bean.setFqsj(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
             bean.setZt("0");
+            bean.setSffp("0");
             bdChosenMapper.insert(bean);
             if(StringUtils.isNotBlank(bean.getMsgtoids()) && StringUtils.isNotBlank(bean.getMsgtonames())){
                 String[] ids = bean.getMsgtoids().split(";");
@@ -278,5 +279,22 @@ public class XChosenController {
         return "9";
     }
 
+    @RequestMapping("/dfp")
+    public @ResponseBody Map dfp(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setSffp("0");
+        bean.setZt("1");
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+    @RequestMapping("/yfp")
+    public @ResponseBody Map yfp(BdChosen bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setSffp("1");
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
 
 }
