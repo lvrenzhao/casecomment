@@ -250,7 +250,7 @@ public class XChosenController {
 
     @RequestMapping("/tbal")
     public @ResponseBody String tbal(String ah,String tjly,@SessionScope("user")UserBean user){
-        return "9";
+        return "2";
     }
 
 
