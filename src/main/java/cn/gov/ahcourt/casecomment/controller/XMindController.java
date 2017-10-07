@@ -1,8 +1,6 @@
 package cn.gov.ahcourt.casecomment.controller;
 
-import cn.gov.ahcourt.casecomment.bean.BdCheck;
-import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
-import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.*;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import org.springframework.stereotype.Controller;
@@ -19,38 +17,29 @@ import java.util.List;
 @RequestMapping("/mind")
 public class XMindController {
 
-    @Resource
-    private BdMiddleCaseMapper bdMiddleCaseMapper;
 
     @Resource
     private BdCheckCasesMapper bdCheckCasesMapper;
 
-    @Resource
-    private BdScoretablesMapper bdScoretablesMapper;
 
     @Resource
     private BdCheckMapper bdCheckMapper;
 
-    @Resource
-    private BdCheckDistributionMapper bdCheckDistributionMapper;
 
     @Resource
-    private BdCheckGroupsMapper bdCheckGroupsMapper;
+    private BdChosenMapper bdChosenMapper;
 
     @Resource
-    private BdCheckProsMapper bdCheckProsMapper;
+    private BdChosenCasesMapper bdChosenCasesMapper;
+
 
     @Resource
-    private BdCheckReadMapper bdCheckReadMapper;
+    private BdPublishMapper bdPublishMapper;
 
     @Resource
-    private BdCheckRejectReadMapper bdCheckRejectReadMapper;
+    private BdPublishReadMapper bdPublishReadMapper;
 
-    @Resource
-    private BdCheckLevelsMapper bdCheckLevelsMapper;
 
-    @Resource
-    private BdScoretableItemsMapper bdScoretableItemsMapper;
 
 
     @RequestMapping("badge_ajpc_sh")
@@ -114,37 +103,95 @@ public class XMindController {
 
     @RequestMapping("badge_sjpx_sh")
     public @ResponseBody int badge_sjpx_sh(@SessionScope("user")UserBean user){
-        return 2;
+        if(user == null){
+            return 0;
+        }
+        BdChosen bean = new BdChosen();
+        bean.setZt("0");
+        List<BdChosen> items = bdChosenMapper.selectAll(bean);
+        return items==null?0: items.size();
     }
 
     @RequestMapping("badge_sjpx_gg")
     public @ResponseBody int badge_sjpx_gg(@SessionScope("user")UserBean user){
-        return 2;
+        if(user == null){
+            return 0;
+        }
+        BdChosen bean = new BdChosen();
+        bean.setZt("1");
+        bean.setUserid(user.getYhid());
+        List<BdChosen> items = bdChosenMapper.selectAll(bean);
+        int count = 0;
+        for(int i = 0 ; items != null && i < items.size(); i ++){
+            if("0".equals(items.get(i).getSfyd())){
+                count++;
+            }
+        }
+        return count;
     }
 
     @RequestMapping("badge_sjpx_px")
     public @ResponseBody int badge_sjpx_px(@SessionScope("user")UserBean user){
-        return 2;
+        if(user == null){
+            return 0;
+        }
+        BdChosenCases bean = new BdChosenCases();
+        bean.setProid(user.getYhid());
+        bean.setTasktype("1");
+        List<BdChosenCases> items = bdChosenCasesMapper.selectWork(bean);
+        return items==null?0: items.size();
     }
 
     @RequestMapping("badge_sjpx_fp")
     public @ResponseBody int badge_sjpx_fp(@SessionScope("user")UserBean user){
-        return 2;
+        if(user == null){
+            return 0;
+        }
+        BdChosen bean = new BdChosen();
+        bean.setSffp("0");
+        bean.setZt("1");
+        List<BdChosen> items = bdChosenMapper.selectAll(bean);
+        return items==null?0: items.size();
     }
 
     @RequestMapping("badge_sjpx_reject")
     public @ResponseBody int badge_sjpx_reject(@SessionScope("user")UserBean user){
-        return 2;
+        if(user == null){
+            return 0;
+        }
+        BdChosen bean = new BdChosen();
+        bean.setZt("2");
+        bean.setUserid(user.getYhid());
+        List<BdChosen> items = bdChosenMapper.selectAll(bean);
+        int count = 0;
+        for(int i = 0 ; items != null && i < items.size(); i ++){
+            if("0".equals(items.get(i).getSfyd2())){
+                count++;
+            }
+        }
+        return count;
     }
 
     @RequestMapping("badge_xxgk_xxsh")
     public @ResponseBody int badge_xxgk_xxsh(@SessionScope("user")UserBean user){
-        return 2;
+        if (user == null) {
+            return 0;
+        }
+        BdPublish bean = new BdPublish();
+        bean.setShr(user.getYhid());
+        List<BdPublish> items = bdPublishMapper.selectVerifyList(bean);
+        return items==null?0: items.size();
     }
 
     @RequestMapping("badge_xxgk_dwck")
     public @ResponseBody int badge_xxgk_dwck(@SessionScope("user")UserBean user){
-        return 2;
+        if (user == null) {
+            return 0;
+        }
+        BdPublish bean = new BdPublish();
+        bean.setCreateBy(user.getYhid());
+        List<BdPublish> items = bdPublishMapper.selectUnwatchedList(bean);
+        return items==null?0: items.size();
     }
 
 
