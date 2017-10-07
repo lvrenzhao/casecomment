@@ -365,4 +365,11 @@ public class XChosenController {
         bdChosenGroupsMapper.recalcGroup(ggid);
         return 1;
     }
+
+    @RequestMapping("/submitdist")
+    public @ResponseBody int submitdist(String ggid){
+        BdChosen bean = bdChosenMapper.selectByPrimaryKey(ggid);
+        bean.setSffp("1");
+        return bdChosenMapper.updateByPrimaryKey(bean);
+    }
 }

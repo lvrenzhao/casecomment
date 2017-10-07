@@ -18,7 +18,7 @@
     <div class="bmbox_title">
         <h5></h5>
         <div class="bmbox_tool">
-            <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
+            <button id="btn_submit" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
         </div>
     </div>
     <div class="bmbox_content clearfix pd10">

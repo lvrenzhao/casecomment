@@ -9,7 +9,7 @@ var URL_GROUP_ADD = ahcourt.ctx + '/chosen/groupsave.do';
 var URL_GROUP_DEL = ahcourt.ctx + '/chosen/groupdel.do';
 var URL_DODIST = ahcourt.ctx + '/chosen/dodist.do';
 var URL_REDODIST = ahcourt.ctx + '/chosen/redodist.do';
-
+var URL_SUBMIT = ahcourt.ctx + '/chosen/submitdist.do';
 var ggid;
 var lo;
 var l_chosen_group;
@@ -19,6 +19,48 @@ $(function () {
     loadGrid2();
     loadGrid3();
 
+    $("#btn_submit").click(function () {
+
+        $.ajax({
+            type : 'POST',
+            url : URL_TABLE1,
+            data:{
+                ggid:ggid,
+                undisted:"1"
+            },
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                if(data.rows.length>0){
+                    layer.msg("还有案件未分配，请将案件分配完毕后再提交");
+                }else{
+                    layer.confirm('确认完成分配并提交？', {
+                        btn : [ '确认', '取消' ]
+                    }, function(lo) {
+                        $.ajax({
+                            type : 'POST',
+                            url : URL_SUBMIT,
+                            data:{
+                                ggid:ggid
+                            },
+                            datatype : 'json',
+                            success : function(data) {
+                                layer.close(lo);
+                                top.layer.msg("案件分配成功！",{icon:1});
+                                parent.reloadGrid1();
+                                parent.reloadGrid2();
+                                var index = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(index);
+                            }
+                        });
+                    });
+                }
+            }
+        });
+
+
+    });
+    
     $.ajax({
         type : 'POST',
         url : URL_GSFY,
