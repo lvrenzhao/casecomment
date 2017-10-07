@@ -157,4 +157,9 @@
 
     order by b.bt asc , a.create_date desc
   </select>
+
+
+  <select id="selectWork" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
+    select * from bd_chosen_cases
+  </select>
 </mapper>

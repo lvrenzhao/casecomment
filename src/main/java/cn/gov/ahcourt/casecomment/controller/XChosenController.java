@@ -372,4 +372,24 @@ public class XChosenController {
         bean.setSffp("1");
         return bdChosenMapper.updateByPrimaryKey(bean);
     }
+
+    @RequestMapping("/worktodo")
+    public @ResponseBody Map worktodo(BdChosenCases bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setProid(user.getYhid());
+        bean.setTasktype("1");
+        return bean.toMap(bdChosenCasesMapper.selectWork(bean));
+    }
+    @RequestMapping("/workdone")
+    public @ResponseBody Map workdone(BdChosenCases bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setProid(user.getYhid());
+        bean.setTasktype("2");
+        return bean.toMap(bdChosenCasesMapper.selectWork(bean));
+    }
+
 }
