@@ -218,4 +218,20 @@ public class XChosenController {
     }
 
 
+    @RequestMapping("/mystart")
+    public @ResponseBody Map mystart(BdChosenCases bean ,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setFqr(user.getYhid());
+        return bean.toMap(bdChosenCasesMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/allstart")
+    public @ResponseBody Map allstart(BdChosenCases bean) {
+        return bean.toMap(bdChosenCasesMapper.selectAll(bean));
+    }
+
+
+
 }
