@@ -18,9 +18,12 @@ $(function () {
             {label : 'sfyd',name : 'sfyd',hidden : true},
             {label : '操作',name : 'fmt',width : 150,align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
-                    // todo 截止时间<=当前日期+1的可以进行分配
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.chosenid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="joinCase(\'' + rowObject.chosenid + '\')" title=""><i class="fa fa-random"></i> 分配</button>';
+                    var str="";
+                    str += '<button class="btn btn-link btn-xs " type="button" onclick="viewOrVerifyNotice(2,\'' + rowObject.chosenid + '\')" title="查看公告详细"><i class="fa fa-info-circle"></i> 详细</button>'
+                    if(getNowFormatDate() > rowObject.jzrq.replace(/\//g, "")){
+                        str +='<button class="btn btn-link btn-xs " type="button" onclick="joinCase(\'' + rowObject.chosenid + '\')" title=""><i class="fa fa-random"></i> 分配</button>';
+                    }
+                    return str;
                 }
             },
             {label : '公告标题',name : 'bt',width : 300,sortable:false,
@@ -158,4 +161,19 @@ function joinCase(key) {
             layer.close(index);
         }
     });
+}
+
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+    return currentdate;
 }
