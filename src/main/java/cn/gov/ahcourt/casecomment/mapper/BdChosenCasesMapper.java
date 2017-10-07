@@ -13,4 +13,5 @@ public interface BdChosenCasesMapper {
     List<BdChosenCases> selectAll(BdChosenCases bean);
 
     int updateByPrimaryKey(BdChosenCases record);
+    int setGroupNull(String groupid);
 }

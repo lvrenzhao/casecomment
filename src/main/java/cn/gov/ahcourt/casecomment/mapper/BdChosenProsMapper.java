@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BdChosenProsMapper {
     int deleteByPrimaryKey(String cpid);
+    int deleteByGroupId(String groupid);
 
     int insert(BdChosenPros record);
 

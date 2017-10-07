@@ -18,6 +18,10 @@
     delete from bd_chosen_pros
     where cpid = #{cpid,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByGroupId" parameterType="java.lang.String" >
+    delete from bd_chosen_pros
+    where groupid = #{groupid,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenPros" >
     insert into bd_chosen_pros (cpid, chosenid, groupid, 
       proid, sfzz, create_by, 

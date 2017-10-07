@@ -13,10 +13,10 @@
         .chosen-container{width:100% !important;}
     </style>
 </head>
-<body>
+<body style="overflow: hidden">
 <div class="bmbox_layout  clearfix">
     <div class="bmbox_title">
-        <h5>我的任务</h5>
+        <h5></h5>
         <div class="bmbox_tool">
             <button class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
         </div>
@@ -30,20 +30,18 @@
                     </div>
                 </div>
                 <div class="bmbox_content clearfix">
-                    <div class="alert alert-warning" role="alert">带有 <i class="fa fa-warning"></i> 图表的案件则表示系统检测到有资料缺失（点击案号查看卷宗），请联系案件负责人务必在评查前通过【案件管理系统】补齐资料以免影响评查分数。</div>
+                    <%--<div class="alert alert-warning" role="alert">带有 <i class="fa fa-warning"></i> 图表的案件则表示系统检测到有资料缺失（点击案号查看卷宗），请联系案件负责人务必在评查前通过【案件管理系统】补齐资料以免影响评查分数。</div>--%>
                     <div class="form_center clearfix" style="padding: 10px 0px;">
 
                         <div class="form_item wb40 fl">
-                            <select class="form-control">
-                                <option value="">区域分布</option>
-                                <option value="1">合肥 - 共11件 - 占比25%</option>
+                            <select class="form-control xselect" id="form_sel_gsfy">
+                                <option value="">归属法院</option>
                             </select>
                         </div>
 
                         <div class="form_item wb40 fl">
-                            <select class="form-control">
-                                <option value="">案件性质分布</option>
-                                <option value="1">民事 - 共11件 - 占比25%</option>
+                            <select class="form-control xselect" id="form_sel_xz">
+                                <option value="">案件性质</option>
                             </select>
                         </div>
 
@@ -89,28 +87,28 @@
     </div>
 </div>
 <div id="div_newGroup" style="display: none;">
-    <div class="form_item wb50 fl">
-        <label>组名</label>
-        <input type="text" class="form-control" placeholder=""/>
+    <input type="hidden" id="form_ipt_groupid" />
+    <input type="hidden" id="form_hid_pcajs" />
+    <input type="hidden" id="form_hid_zb" />
+    <div class="form_item wb100 fl">
+        <label>组名<span>*</span></label>
+        <input type="text" class="form-control" placeholder="" id="from_ipt_groupname"/>
     </div>
 
-    <div class="form_item wb50 fl">
-        <label>组长</label>
-        <select data-placeholder="--选择组长--" class="chosen-select form-control "  id="form_sel_teamleader" style="width: 200px;">
-            <option value="1">张三</option>
-            <option value="2">李四</option>
+    <div class="form_item wb100 fl">
+        <label>组长<span>*</span></label>
+        <select data-placeholder=""  class="chosen-select form-control "  id="form_sel_teamleader" style="width: 200px;">
+            <option value="">--选择组长--</option>
         </select>
     </div>
 
-    <div class="form_item wb80 fl">
+    <div class="form_item wb100 fl">
         <label>组员</label>
         <select data-placeholder="--选择组员--" class="chosen-select form-control " retype="multiselect" multiple id="form_sel_teammate">
-            <option value="1">张三</option>
-            <option value="2">李四</option>
         </select>
     </div>
-    <div class="form_item wb20 fl" style="text-align: right;padding-top: 30px;">
-        <button class="btn btn-primary btn-sm" type="button" id="">确定</button>
+    <div class="form_item wb100 fl" style="text-align: center;padding-top: 30px;">
+        <button class="btn btn-primary btn-sm" type="button" id="btn_savegroup">确定</button>
     </div>
 </div>
 </body>

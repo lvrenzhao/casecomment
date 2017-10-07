@@ -152,7 +152,7 @@ function joinCase(key) {
     layer.open({
         type : 2,
         shift : 5,
-        title : "填报案例",
+        title : "分配案件",
         shadeClose : false,
         shade : 0.3,
         area : [ '95%', '95%' ],

@@ -15,6 +15,9 @@
     <result column="flag" property="flag" jdbcType="VARCHAR" />
     <result column="teamleadername" property="teamleadername" jdbcType="VARCHAR" />
     <result column="teammatenames" property="teammatenames" jdbcType="VARCHAR" />
+    <result column="teamleaderid" property="teamleaderid" jdbcType="VARCHAR" />
+    <result column="teammateids" property="teammateids" jdbcType="VARCHAR" />
+    <result column="tdcy" property="tdcy" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bd_chosen_groups
@@ -24,11 +27,11 @@
     insert into bd_chosen_groups (cgid, chosenid, groupname, 
       pcajs, zb, create_by, 
       create_date, update_by, update_date, 
-      remarks, flag)
+      remarks, flag,tdcy)
     values (#{cgid,jdbcType=VARCHAR}, #{chosenid,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, 
       #{pcajs,jdbcType=INTEGER}, #{zb,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+      #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR},#{tdcy,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenGroups" >
     update bd_chosen_groups
@@ -41,11 +44,12 @@
       update_by = #{updateBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       remarks = #{remarks,jdbcType=VARCHAR},
-      flag = #{flag,jdbcType=VARCHAR}
+      flag = #{flag,jdbcType=VARCHAR},
+      tdcy = #{tdcy,jdbcType=VARCHAR}
     where cgid = #{cgid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select cgid, chosenid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    select tdcy,cgid, chosenid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag,
     (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz = '1' limit 1) teamleadername,
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
@@ -53,10 +57,12 @@
     where cgid = #{cgid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenGroups" >
-    select cgid, chosenid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    select tdcy,cgid, chosenid, groupname, pcajs, zb, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag,
     (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz = '1' limit 1) teamleadername,
-    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
+    (select u.yhid  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz = '1' limit 1) teamleaderid,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames,
+    (select GROUP_CONCAT(u.yhid SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.cgid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammateids
     from bd_chosen_groups a
     where 1=1
     <if test="chosenid !=null and chosenid != '' ">

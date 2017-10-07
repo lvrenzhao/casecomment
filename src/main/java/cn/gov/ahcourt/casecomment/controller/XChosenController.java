@@ -43,6 +43,9 @@ public class XChosenController {
     private BdChosenGroupsMapper bdChosenGroupsMapper;
 
     @Resource
+    private BdChosenProsMapper bdChosenProsMapper;
+
+    @Resource
     private  BdCheckDistributionMapper bdCheckDistributionMapper;
 
     @Resource
@@ -130,12 +133,13 @@ public class XChosenController {
     }
 
     @RequestMapping("/chosencases")
-    public @ResponseBody Map chosencases(String ggid,String gsfy,String xz,String lx ,String groupid) {
+    public @ResponseBody Map chosencases(String ggid,String gsfy,String xz,String lx ,String groupid,String undisted) {
         BdChosenCases bean = new BdChosenCases();
         bean.setChosenid(ggid);
         bean.setGsfy(gsfy);
         bean.setXz(xz);
         bean.setPsgroupid(groupid);
+        bean.setRemarks(undisted);
         return bean.toMap(bdChosenCasesMapper.selectAll(bean));
     }
 
@@ -297,4 +301,46 @@ public class XChosenController {
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
 
+    @RequestMapping("/groupsave")
+    public @ResponseBody int groupsave(BdChosenGroups team,@SessionScope("user")UserBean user){
+        team.setTdcy(team.getTeamleadername()+";"+team.getTeammatenames());
+        if(StringUtils.isNotBlank(team.getCgid())){
+            bdChosenGroupsMapper.updateByPrimaryKey(team);
+            bdChosenProsMapper.deleteByGroupId(team.getCgid());
+        }else{
+            team.setCgid(IdGen.uuid());
+            bdChosenGroupsMapper.insert(team);
+        }
+        BdChosenPros teamleader = new BdChosenPros();
+        teamleader.setCpid(IdGen.uuid());
+        teamleader.setChosenid(team.getChosenid());
+        teamleader.setGroupid(team.getCgid());
+        teamleader.setProid(team.getTeamleaderid());
+        teamleader.setSfzz("1");
+        bdChosenProsMapper.insert(teamleader);
+        if(StringUtils.isNotBlank(team.getTeammateids())){
+            String[] teammates = team.getTeammateids().split(";");
+            for(int si = 0 ; teammates!=null && si < teammates.length ; si++){
+                BdChosenPros teammate = new BdChosenPros();
+                teammate.setCpid(IdGen.uuid());
+                teammate.setChosenid(team.getChosenid());
+                teammate.setGroupid(team.getCgid());
+                teammate.setProid(teammates[si]);
+                teammate.setSfzz("0");
+                bdChosenProsMapper.insert(teammate);
+            }
+        }
+
+        return -1;
+    }
+
+
+
+    @RequestMapping("/groupdel")
+    public @ResponseBody int groupdel(String groupid,@SessionScope("user")UserBean user){
+        bdChosenCasesMapper.setGroupNull(groupid);
+        bdChosenProsMapper.deleteByGroupId(groupid);
+        bdChosenGroupsMapper.deleteByPrimaryKey(groupid);
+        return 1;
+    }
 }
