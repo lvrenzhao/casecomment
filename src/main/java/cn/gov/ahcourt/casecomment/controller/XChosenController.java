@@ -249,8 +249,33 @@ public class XChosenController {
     }
 
     @RequestMapping("/tbal")
-    public @ResponseBody String tbal(String ah,String tjly,@SessionScope("user")UserBean user){
-        return "2";
+    public @ResponseBody String tbal(String ah,String tjly,String ggid,@SessionScope("user")UserBean user){
+
+        BdMiddleCase bean = new BdMiddleCase();
+        bean.setAh(ah);
+        List<BdMiddleCase> bmcs = bdMiddleCaseMapper.selectAll(bean);
+        if(bmcs == null || bmcs.size() == 0 ){
+            return "0";
+        }else if (bmcs.size() > 1){
+            return "1";
+        }else{
+            BdChosenCases cbean = new BdChosenCases();
+            cbean.setChosenid(ggid);
+            cbean.setAh(ah);
+            List<BdChosenCases> cs = bdChosenCasesMapper.selectAll(cbean);
+            if(cs == null || cs.size() == 0){
+                cbean.setCcid(IdGen.uuid());
+                cbean.setAjid(bmcs.get(0).getAjid());
+                cbean.setTjly(tjly);
+                cbean.setTbrq(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                cbean.setCreateBy(user.getYhid());
+                cbean.setCreateDate(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
+                bdChosenCasesMapper.insert(cbean);
+            }else{
+                return "2";
+            }
+        }
+        return "9";
     }
 
 

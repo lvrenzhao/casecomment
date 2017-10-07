@@ -11,7 +11,8 @@ $(function () {
                 datatype : 'json',
                 data:{
                     ah:$("#form_inp_ah").val(),
-                    tjly:$("#form_inp_tjly").val()
+                    tjly:$("#form_inp_tjly").val(),
+                    ggid:ggid
                 },
                 success : function(data) {
                     if(data == "9"){
@@ -20,7 +21,7 @@ $(function () {
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }else{
-                        top.layer.msg(["找不到该案号，请确认案号是否正确。","案件已在本次评选中被推荐，请勿重复推荐。","输入案号查询出多个案件，请确认案号唯一。"][parseInt(data)],{icon:2});
+                        top.layer.msg(["找不到该案号，请确认案号是否正确。","输入案号查询出多个案件，请确认案号唯一。","案件已在本次评选中被推荐，请勿重复推荐。"][parseInt(data)],{icon:2});
                     }
                 }
             });

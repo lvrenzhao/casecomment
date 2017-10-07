@@ -73,7 +73,15 @@
     (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
     ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_chosen_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
-    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u,bd_chosen_groups g where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid and a.psgroupid = g.cgid
+    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u
+    <if test="tdcy !=null and tdcy != '' ">
+      ,bd_chosen_groups g
+    </if>
+     where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid
+    <if test="tdcy !=null and tdcy != '' ">
+      and a.psgroupid = g.cgid
+    </if>
+
     <if test="ajid !=null and ajid != '' ">
       and a.ajid = #{ajid}
     </if>
