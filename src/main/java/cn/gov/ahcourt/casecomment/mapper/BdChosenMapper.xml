@@ -69,7 +69,7 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       remarks = #{remarks,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR},
-      nr = #{nr,jdbcType=LONGVARCHAR}
+      nr = #{nr,jdbcType=LONGVARCHAR},
       sffp = #{sffp,jdbcType=LONGVARCHAR}
     where chosenid = #{chosenid,jdbcType=VARCHAR}
   </update>
@@ -132,6 +132,6 @@
       and date_format(t.jzrq, '%Y/%m/%dd') &lt;= #{jzrq2}
     </if>
 
-    order by create_date desc
+    order by t.fqsj desc
   </select>
 </mapper>

@@ -337,10 +337,11 @@ public class XChosenController {
 
 
     @RequestMapping("/groupdel")
-    public @ResponseBody int groupdel(String groupid,@SessionScope("user")UserBean user){
+    public @ResponseBody int groupdel(String groupid,String ggid,@SessionScope("user")UserBean user){
         bdChosenCasesMapper.setGroupNull(groupid);
         bdChosenProsMapper.deleteByGroupId(groupid);
         bdChosenGroupsMapper.deleteByPrimaryKey(groupid);
+        bdChosenGroupsMapper.recalcGroup(ggid);
         return 1;
     }
 
@@ -349,23 +350,19 @@ public class XChosenController {
         if(StringUtils.isNotBlank(ids)){
             String[] cases = ids.split(";");
             for(int i = 0 ; cases != null && i < cases.length ; i ++){
-                BdChosenCases bean = new BdChosenCases();
-                bean.setAjid(cases[i]);
-                bean.setChosenid(ggid);
-                List<BdChosenCases> beans = bdChosenCasesMapper.selectAll(bean);
-                if(beans != null && beans.size() > 0){
-                    BdChosenCases xbean = beans.get(0);
-                    xbean.setPsgroupid(cgid);
-                    bdChosenCasesMapper.updateByPrimaryKey(xbean);
-                }
+                BdChosenCases bean = bdChosenCasesMapper.selectByPrimaryKey(cases[i]);
+                bean.setPsgroupid(cgid);
+                bdChosenCasesMapper.updateByPrimaryKey(bean);
             }
+            bdChosenGroupsMapper.recalcGroup(ggid);
         }
         return 1;
     }
 
     @RequestMapping("/redodist")
-    public @ResponseBody int redodist(String ccid,@SessionScope("user")UserBean user){
+    public @ResponseBody int redodist(String ccid,String ggid,@SessionScope("user")UserBean user){
         bdChosenCasesMapper.setGroupNullByCCID(ccid);
+        bdChosenGroupsMapper.recalcGroup(ggid);
         return 1;
     }
 }

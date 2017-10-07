@@ -70,8 +70,8 @@
     (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
     ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_chosen_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
-    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u,bd_chosen_groups g where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid and a.psgroupid = g.cgid
-    where a.ccid = #{ccid,jdbcType=VARCHAR}
+    from bd_chosen_cases a,bd_chosen b,bd_middle_case c,sd_user u where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid
+    and a.ccid = #{ccid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
     select date_format(a.tbrq, '%Y/%m/%d') tbrq,a.tjly,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc

@@ -13,4 +13,6 @@ public interface BdChosenGroupsMapper {
     List<BdChosenGroups> selectAll(BdChosenGroups bean);
 
     int updateByPrimaryKey(BdChosenGroups record);
+
+    int recalcGroup(String chosenid);
 }

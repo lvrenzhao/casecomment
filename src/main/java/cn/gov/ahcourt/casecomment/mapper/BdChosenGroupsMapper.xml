@@ -70,4 +70,11 @@
     </if>
     order by a.create_date desc
   </select>
+  <update id="recalcGroup" parameterType="java.lang.String">
+    update bd_chosen_groups t
+    set
+    zb = concat((select count(1) from bd_chosen_cases c where c.chosenid = t.chosenid and c.psgroupid = t.cgid) / (select count(1) from bd_chosen_cases c where c.chosenid = t.chosenid and c.psgroupid is not null) * 100 ,'%')
+    ,pcajs = (select count(1) from bd_chosen_cases c where c.chosenid = t.chosenid and c.psgroupid = t.cgid)
+    where chosenid =  #{chosenid}
+  </update>
 </mapper>

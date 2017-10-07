@@ -495,7 +495,8 @@ function removeProGroup(id) {
             type : 'POST',
             url : URL_GROUP_DEL,
             data:{
-                groupid:id
+                groupid:id,
+                ggid:ggid
             },
             datatype : 'json',
             success : function(data) {
@@ -512,7 +513,8 @@ function reChooseCasesByCase(caseid) {
         type : 'POST',
         url : URL_REDODIST,
         data:{
-            ccid:caseid
+            ccid:caseid,
+            ggid:ggid
         },
         datatype : 'json',
         success : function(data) {
