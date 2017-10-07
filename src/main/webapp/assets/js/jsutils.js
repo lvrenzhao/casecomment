@@ -572,8 +572,16 @@ function loadBadges() {
     };
     for(var badgetype in badgeObject){
         if($("#"+badgetype).length > 0 ){
-            //get count(type must be number)
-            badgeObject[badgetype] = 1;
+            $.ajax({
+                type : 'POST',
+                url : ahcourt.ctx+"/mind/"+badgetype+".do",
+                data:{},
+                datatype : 'json',
+                async : false,
+                success : function(data) {
+                    badgeObject[badgetype] = parseInt(data);
+                }
+            });
         }
     }
 

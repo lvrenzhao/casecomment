@@ -14,7 +14,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/js/jsutils.js" afterPath="$PROJECT_DIR$/target/casecomment/assets/js/jsutils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,57 +37,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js">
+      <file leaf-file-name="jsutils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="-15">
+              <caret line="562" column="24" lean-forward="true" selection-start-line="562" selection-start-column="24" selection-end-line="562" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BdChosenCasesMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml">
+      <file leaf-file-name="XCaseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="173" column="96" lean-forward="false" selection-start-line="173" selection-start-column="93" selection-end-line="173" selection-end-column="96" />
-              <folding>
-                <element signature="e#8118#8122#0" expanded="true" />
-                <marker date="1507388667000" expanded="true" signature="1498:1567" ph="delete from " />
-                <marker date="1507388667000" expanded="true" signature="1670:2370" ph="insert into bd_chosen_cases... " />
-                <marker date="1507388667000" expanded="true" signature="2485:3213" ph="update bd_ch... " />
-                <marker date="1507388667000" expanded="true" signature="3296:3385" ph="update bd_ch... " />
-                <marker date="1507388667000" expanded="true" signature="3471:3552" ph="update bd_ch... " />
-                <marker date="1507388667000" expanded="true" signature="3664:4816" ph="select b.bt,... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="4550:4633" ph="select count... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="4948:6229" ph="select b.bt,... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="4948:8276" ph="select b.bt,... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="5834:5917" ph="select count... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="8411:9796" ph="select * fro... bd_" />
-                <marker date="1507388667000" expanded="true" signature="8411:10618" ph="select CONCA... bd_chosen_cases" />
-                <marker date="1507388667000" expanded="true" signature="9327:9410" ph="select count... bd_chosen_cases" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdCheckCasesMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1072">
-              <caret line="198" column="42" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="198" selection-end-column="42" />
-              <folding>
-                <marker date="1507184702000" expanded="true" signature="2818:2886" ph="delete from " />
-                <marker date="1507184702000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
-                <marker date="1507184702000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
-                <marker date="1507184702000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507184702000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
-                <marker date="1507184702000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507184702000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
-                <marker date="1507184702000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
-                <marker date="1507184702000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
-              </folding>
+            <state relative-caret-position="401">
+              <caret line="142" column="48" lean-forward="false" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,9 +60,21 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="177" selection-end-column="1" />
+            <state relative-caret-position="84">
+              <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="46" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XMindController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="107" column="47" lean-forward="false" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,12 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>btn_savegroup</find>
-      <find>addProGroup</find>
-      <find>splice</find>
-      <find>joinedCases</find>
-      <find>uuid</find>
-      <find>teams</find>
       <find>btn_newGroup</find>
       <find>chosencases</find>
       <find>initChildGrid1</find>
@@ -139,9 +112,15 @@
       <find>dovefify</find>
       <find>URL_DOVERIFY</find>
       <find>selectByPrimaryKey</find>
-      <find>worktodo</find>
       <find>p.sfzz</find>
       <find>p.pcz</find>
+      <find>badge_ajpc_sh</find>
+      <find>@SessionScope(&quot;user&quot;)UserBean user</find>
+      <find>verifylist</find>
+      <find>notice</find>
+      <find>worktodo</find>
+      <find>reject</find>
+      <find>/reject</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -168,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdScoretableItemsMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/check/configscore/add_table.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/BdCheckCases.java" />
@@ -219,6 +196,8 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java" />
       </list>
     </option>
   </component>
@@ -412,7 +391,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="chosen" />
+              <option name="myItemId" value="check" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -442,11 +425,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="chosen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
+              <option name="myItemId" value="check" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,6 +444,96 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="check" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1129,14 +1198,7 @@
       <workItem from="1506907834686" duration="19565000" />
       <workItem from="1506937064908" duration="45987000" />
       <workItem from="1507275467169" duration="19717000" />
-      <workItem from="1507359617490" duration="21358000" />
-    </task>
-    <task id="LOCAL-00253" summary="hooah hooah hooah">
-      <created>1506920835193</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1506920835194</updated>
+      <workItem from="1507359617490" duration="23146000" />
     </task>
     <task id="LOCAL-00254" summary="hooah hooah hooah">
       <created>1506922339118</created>
@@ -1474,11 +1536,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507387869986</updated>
     </task>
-    <option name="localTasksCounter" value="302" />
+    <task id="LOCAL-00302" summary="1">
+      <created>1507388989133</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1507388989133</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="558356000" />
+    <option name="totallyTimeSpent" value="560144000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1491,6 +1560,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1506,7 +1576,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34466588" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3024619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1635,7 +1705,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="135" />
+      <option name="time" value="136" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1644,60 +1714,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="40" column="8" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="40" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="95" selection-end-column="1" />
-          <folding>
-            <marker date="1506942620000" expanded="true" signature="3276:3282" ph="&amp;nbsp;" />
-            <marker date="1506942620000" expanded="true" signature="3282:3288" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="99" column="1" lean-forward="true" selection-start-line="99" selection-start-column="1" selection-end-line="99" selection-end-column="1" />
-          <folding>
-            <marker date="1507297509000" expanded="true" signature="3681:3687" ph="&amp;nbsp;" />
-            <marker date="1507297509000" expanded="true" signature="3687:3693" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="91" column="101" lean-forward="true" selection-start-line="91" selection-start-column="101" selection-end-line="92" selection-end-column="109" />
-          <folding>
-            <marker date="1506941589000" expanded="true" signature="2048:2116" ph="delete from " />
-            <marker date="1506941589000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
-            <marker date="1506941589000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
-            <marker date="1506941589000" expanded="true" signature="4019:4801" ph="select check... bd_check" />
-            <marker date="1506941589000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
-            <marker date="1506941589000" expanded="true" signature="4927:6548" ph="select check... bd_check" />
-            <marker date="1506941589000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
-            <marker date="1506941589000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/my/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -1789,25 +1805,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/configscore/add_table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="174" column="35" lean-forward="true" selection-start-line="174" selection-start-column="35" selection-end-line="178" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2061,30 +2062,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="186" column="30" lean-forward="true" selection-start-line="186" selection-start-column="30" selection-end-line="186" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="66" column="14" lean-forward="false" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
-          <folding>
-            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
-            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2096,40 +2078,6 @@
             <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
             <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="177" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="198" column="42" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="198" selection-end-column="42" />
-          <folding>
-            <marker date="1507184702000" expanded="true" signature="2818:2886" ph="delete from " />
-            <marker date="1507184702000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
-            <marker date="1507184702000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
-            <marker date="1507184702000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507184702000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
-            <marker date="1507184702000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507184702000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
-            <marker date="1507184702000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
-            <marker date="1507184702000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2152,6 +2100,125 @@
             <marker date="1507388667000" expanded="true" signature="8411:9796" ph="select * fro... bd_" />
             <marker date="1507388667000" expanded="true" signature="8411:10618" ph="select CONCA... bd_chosen_cases" />
             <marker date="1507388667000" expanded="true" signature="9327:9410" ph="select count... bd_chosen_cases" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1072">
+          <caret line="198" column="42" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="198" selection-end-column="42" />
+          <folding>
+            <marker date="1507184702000" expanded="true" signature="2818:2886" ph="delete from " />
+            <marker date="1507184702000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
+            <marker date="1507184702000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
+            <marker date="1507184702000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507184702000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
+            <marker date="1507184702000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507184702000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
+            <marker date="1507184702000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
+            <marker date="1507184702000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/configscore/add_table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="186" column="14" lean-forward="true" selection-start-line="160" selection-start-column="11" selection-end-line="186" selection-end-column="14" />
+          <folding>
+            <marker date="1507170615000" expanded="true" signature="1381:1399" ph="..." />
+            <marker date="1507170615000" expanded="true" signature="1807:1824" ph="..." />
+            <marker date="1507170615000" expanded="true" signature="4346:4364" ph="..." />
+            <marker date="1507170615000" expanded="true" signature="4865:4882" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/verify/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="48" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="42" />
+          <folding>
+            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
+            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="562" column="24" lean-forward="true" selection-start-line="562" selection-start-column="24" selection-end-line="562" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="81" column="32" lean-forward="false" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="32" />
+          <folding>
+            <marker date="1506942620000" expanded="true" signature="3276:3282" ph="&amp;nbsp;" />
+            <marker date="1506942620000" expanded="true" signature="3282:3288" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="142" column="48" lean-forward="false" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="107" column="47" lean-forward="false" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
