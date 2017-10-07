@@ -343,4 +343,29 @@ public class XChosenController {
         bdChosenGroupsMapper.deleteByPrimaryKey(groupid);
         return 1;
     }
+
+    @RequestMapping("/dodist")
+    public @ResponseBody int dodist(String ids,String cgid,String ggid){
+        if(StringUtils.isNotBlank(ids)){
+            String[] cases = ids.split(";");
+            for(int i = 0 ; cases != null && i < cases.length ; i ++){
+                BdChosenCases bean = new BdChosenCases();
+                bean.setAjid(cases[i]);
+                bean.setChosenid(ggid);
+                List<BdChosenCases> beans = bdChosenCasesMapper.selectAll(bean);
+                if(beans != null && beans.size() > 0){
+                    BdChosenCases xbean = beans.get(0);
+                    xbean.setPsgroupid(cgid);
+                    bdChosenCasesMapper.updateByPrimaryKey(xbean);
+                }
+            }
+        }
+        return 1;
+    }
+
+    @RequestMapping("/redodist")
+    public @ResponseBody int redodist(String ccid,@SessionScope("user")UserBean user){
+        bdChosenCasesMapper.setGroupNullByCCID(ccid);
+        return 1;
+    }
 }

@@ -14,4 +14,5 @@ public interface BdChosenCasesMapper {
 
     int updateByPrimaryKey(BdChosenCases record);
     int setGroupNull(String groupid);
+    int setGroupNullByCCID(String ccid);
 }

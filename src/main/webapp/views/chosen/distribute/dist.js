@@ -7,9 +7,12 @@ var URL_PROFESSIONALS = ahcourt.ctx + '/setting/professional/listjson.do';
 
 var URL_GROUP_ADD = ahcourt.ctx + '/chosen/groupsave.do';
 var URL_GROUP_DEL = ahcourt.ctx + '/chosen/groupdel.do';
+var URL_DODIST = ahcourt.ctx + '/chosen/dodist.do';
+var URL_REDODIST = ahcourt.ctx + '/chosen/redodist.do';
 
 var ggid;
 var lo;
+var l_chosen_group;
 $(function () {
     ggid = $.getUrlParam("ggid");
 
@@ -64,8 +67,64 @@ $(function () {
         }
     });
 
+    $("#btn_chosenCaseToGroup").click(function () {
+        if(!$("#from_sel_groups").val()){
+            layer.msg("必须选择一个专家组!");
+            return false;
+        }
+        var ids = $("#table2").jqGrid('getGridParam', 'selarrrow');
+        $.ajax({
+            type : 'POST',
+            url : URL_DODIST,
+            data:{
+                ids:ids.join(";"),
+                cgid:$("#from_sel_groups").val(),
+                ggid:ggid
+            },
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                reloadGrid2();
+                reloadGrid3();
+            }
+        });
+        layer.close(l_chosen_group);
+    });
+    
     $("#btn_chooseTo").click(function () {
-        layer.open({
+
+        var ids = $("#table2").jqGrid('getGridParam', 'selarrrow');
+        if(ids.length == 0){
+            layer.msg("请先从待分配案件选择至少一条案件后再分配!");
+            return;
+        }
+        //先动态填充组到选择控件中
+        $.ajax({
+            type : 'POST',
+            url : URL_TABLE2,
+            data:{
+                ggid:ggid
+            },
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                if (data && data.rows && data.rows.length > 0) {
+                    $("#from_sel_groups").each(function() {
+                        var html = '<option value="">--请选择专家组--</option>';
+                        for (var i = 0; i < data.rows.length; i++) {
+                            html += '<option ' + 'value="' + data.rows[i].cgid + '">' + data.rows[i].groupname + '</option>'
+                        }
+                        $(this).html(html);
+                    });
+                } else {
+                    $("#from_sel_groups").each(function() {
+                        $(this).html('<option value="">--请选择专家组--</option>');
+                    })
+                }
+            }
+        });
+
+        l_chosen_group = layer.open({
             type : 1,
             shift : 5,
             title : '将选中案件分配至...',
@@ -289,12 +348,13 @@ function initChildGrid1(parentRowID, parentRowKey) {
         shrinkToFit : false,
         rowNum : 100000,
         colModel : [
-            {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'ccid',name : 'ccid',hidden : true,key : true,sortable:false,frozen : true},
+            {label : 'ajid',name : 'ajid',hidden : true,sortable:false,frozen : true},
             {label : 'teamid',name : 'teamid',hidden : true,sortable:false,frozen : true},
             {label : 'ah',name : 'ah',hidden : true,sortable:false,frozen : true},
             {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true,sortable:false,frozen : true},
             {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                return '<button class="btn btn-link btn-xs " type="button" onclick=""><i class="fa fa-long-arrow-left"></i> </button>';
+                return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ccid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
             {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+rowObject.ah+'</a>'
@@ -441,10 +501,27 @@ function removeProGroup(id) {
             success : function(data) {
                 layer.msg("删除专家组成功",{icon:1});
                 reloadGrid3();
+                reloadGrid2();
             }
         });
     });
 }
+
+function reChooseCasesByCase(caseid) {
+    $.ajax({
+        type : 'POST',
+        url : URL_REDODIST,
+        data:{
+            ccid:caseid
+        },
+        datatype : 'json',
+        success : function(data) {
+            reloadGrid2();
+            reloadGrid3();
+        }
+    });
+}
+
 
 
 //=======================

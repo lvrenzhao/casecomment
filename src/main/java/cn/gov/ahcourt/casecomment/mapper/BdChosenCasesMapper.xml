@@ -60,6 +60,9 @@
   <update id="setGroupNull" parameterType="java.lang.String" >
       update bd_chosen_cases set psgroupid = null where psgroupid = #{groupid,jdbcType=VARCHAR}
   </update>
+  <update id="setGroupNullByCCID" parameterType="java.lang.String" >
+    update bd_chosen_cases set psgroupid = null where ccid = #{ccid,jdbcType=VARCHAR}
+  </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select date_format(a.tbrq, '%Y/%m/%d') tbrq,a.tjly,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
     ,a.ccid, a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
