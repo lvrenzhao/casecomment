@@ -1,4 +1,5 @@
 //获取任务数
+var URL_TABLE1 = ahcourt.ctx + '/publish/unwatchedlistjson.do';
 var URL_TABLE2 =  ahcourt.ctx + "/case/notice.do";
 var URL_TABLE3 = ahcourt.ctx + "/chosen/notice.do";
 var URL_SETREAD = ahcourt.ctx + '/chosen/setread.do';
@@ -22,7 +23,7 @@ $(function () {
 });
 function loadGrid1() {
     $("#table1").jqGrid({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url : URL_TABLE1,
         datatype : "json",
         mtype : "post",
         height : $('body').height()-300,
@@ -32,18 +33,19 @@ function loadGrid1() {
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [
-            {label : 'ggid',name : 'ggid',hidden : true,key : true },
-            {label : '公告标题',name : 'xxggbt',width : 300,sortable:false,formatter : function(cellvalue, options, rowObject) {
-                var style = "";
-                if(rowObject.btys == 2){
-                    style = "color:red;text-decoration:underline"
-                }else{
-                    style = "color:black;text-decoration:underline";
+            {label : 'xxid',name : 'xxid',hidden : true,key : true },
+            {label : '公告标题',name : 'bt',width : 300,sortable:false,
+                formatter : function(cellvalue, options, rowObject) {
+                    var style = "color:"+rowObject.btys;
+                    var remind = "";
+                    if(rowObject.sfyd == 0){
+                        remind = "<span class='label label-primary'>未读</span>&nbsp;&nbsp;";
+                    }
+                    return '<a href="javascript:;" onclick="openDetails(1,\'' + rowObject.xxid + '\')">' + remind + '<span style="text-decoration:underline;'+style+'">'+cellvalue+'</span>'+'</a>';
                 }
-                return '<a href="javascript:;" onclick="openDetails(1,\'' + rowObject.ggid + '\')"><span style="'+style+'">'+cellvalue+'</span></a>';
-            }},
-            {label : '发布人',name : 'fqr',width : 100,sortable:false},
-            {label : '发布时间', name : 'fbsj',width : 100,sortable:false}
+            },
+            {label : '发布人',name : 'createByMC',width : 100,sortable:false},
+            {label : '发布时间', name : 'createDate',width : 100,sortable:false}
         ],
         pager : '#pager1'
         ,viewrecords: true
@@ -124,7 +126,7 @@ function loadGrid3() {
 
 function reloadGrid1() {
     $("#table1").jqGrid().setGridParam({
-        url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+        url : URL_TABLE1,
         postData:{
         },
         page : 1

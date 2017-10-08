@@ -42,7 +42,7 @@
     <div class="form_item wb100 no-margins " style="height: 100%;padding: 0px 10px 185px 10px !important; ">
         <div class="bmbox_layout clearfix" style="overflow: hidden">
             <div class="bmbox_title">
-                <h5>系统公告</h5>
+                <h5>未读系统公告</h5>
                 <div class="bmbox_tool">
                     <a onclick="top.$('#menu_badge_xxgk_dwck').trigger('click')" class="collapse-link"><i class="fa fa-ellipsis-h"> 更多 </i> </a>
                 </div>

@@ -66,7 +66,15 @@
             pager : '#pager1'
             ,viewrecords: true
         });
-    })
+    });
+
+    function reloadtable() {
+        $("#table1").jqGrid().setGridParam({
+            url : ahcourt.ctx + '/publish/unwatchedlistjson.do',
+            postData:{},
+            page : 1
+        }).trigger("reloadGrid");
+    }
 
     function formatter_zt(cellvalue, options, rowObject) {
         if (cellvalue == '审核不通过') {
@@ -105,6 +113,7 @@
             area : [ '95%', '90%' ],
             content : ahcourt.ctx + '/publish/input.do?mode='+mode+'&xxid=' + ggid,
             cancel : function(index) {
+                reloadtable();
                 layer.close(index);
             }
         });
