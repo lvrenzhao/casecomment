@@ -7,6 +7,7 @@ $(function () {
     //### mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
         $("#btn_submit").show();
+        $("#btn_save").show();
     }else if(mode == 3){
         $("#btn_open_score_table").hide();
     }
