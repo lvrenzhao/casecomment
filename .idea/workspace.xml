@@ -14,11 +14,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/assets/js/jsutils.js" afterPath="$PROJECT_DIR$/target/casecomment/assets/js/jsutils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/home.jsp" afterPath="$PROJECT_DIR$/target/casecomment/home.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,47 +35,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="74" column="50" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="50" />
+            <state relative-caret-position="300">
+              <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
               <folding>
-                <marker date="1507420611000" expanded="true" signature="3168:3174" ph="&amp;nbsp;" />
-                <marker date="1507420611000" expanded="true" signature="3174:3180" ph="&amp;nbsp;" />
-                <marker date="1507420611000" expanded="true" signature="3335:3361" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdCheckMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="121" column="19" lean-forward="false" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
-              <folding>
-                <marker date="1507420734000" expanded="true" signature="2048:2116" ph="delete from " />
-                <marker date="1507420734000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
-                <marker date="1507420734000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
-                <marker date="1507420734000" expanded="true" signature="4019:4801" ph="select t.che... bd_check" />
-                <marker date="1507420734000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
-                <marker date="1507420734000" expanded="true" signature="4927:6543" ph="select t.che... bd_check" />
-                <marker date="1507420734000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
-                <marker date="1507420734000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
+                <marker date="1507453778000" expanded="true" signature="3275:3281" ph="&amp;nbsp;" />
+                <marker date="1507453778000" expanded="true" signature="3281:3287" ph="&amp;nbsp;" />
+                <marker date="1507453778000" expanded="true" signature="3445:3471" ph="..." />
+                <marker date="1507453778000" expanded="true" signature="4643:4649" ph="&amp;nbsp;" />
+                <marker date="1507453778000" expanded="true" signature="4649:4655" ph="&amp;nbsp;" />
+                <marker date="1507453778000" expanded="true" signature="4814:4840" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="31" selection-end-column="14" />
+            <state relative-caret-position="0">
+              <caret line="0" column="51" lean-forward="true" selection-start-line="0" selection-start-column="51" selection-end-line="2" selection-end-column="0" />
               <folding>
-                <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
-                <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
+                <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
+                <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
               </folding>
             </state>
           </provider>
@@ -212,8 +192,8 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" />
       </list>
     </option>
   </component>
@@ -435,7 +415,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,11 +445,79 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="chosen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="notice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chosen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="join" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chosen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="distribute" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1181,14 +1229,7 @@
       <workItem from="1506937064908" duration="45987000" />
       <workItem from="1507275467169" duration="19717000" />
       <workItem from="1507359617490" duration="24275000" />
-      <workItem from="1507419593774" duration="1125000" />
-    </task>
-    <task id="LOCAL-00257" summary="hooah hooah hooah">
-      <created>1506930562906</created>
-      <option name="number" value="00257" />
-      <option name="presentableId" value="LOCAL-00257" />
-      <option name="project" value="LOCAL" />
-      <updated>1506930562906</updated>
+      <workItem from="1507419593774" duration="2065000" />
     </task>
     <task id="LOCAL-00258" summary="hooah hooah hooah">
       <created>1506933231968</created>
@@ -1526,11 +1567,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507420170827</updated>
     </task>
-    <option name="localTasksCounter" value="306" />
+    <task id="LOCAL-00306" summary="1">
+      <created>1507420749924</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1507420749924</updated>
+    </task>
+    <option name="localTasksCounter" value="307" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="562398000" />
+    <option name="totallyTimeSpent" value="563338000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1709,6 +1757,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="67" column="1" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="67" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,13 +1793,6 @@
         <state relative-caret-position="189">
           <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1882,13 +1924,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2308">
           <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="21" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1905,13 +1941,6 @@
         <state relative-caret-position="265">
           <caret line="24" column="6" lean-forward="true" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="43" column="41" lean-forward="true" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1967,13 +1996,6 @@
         <state relative-caret-position="324">
           <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="91" column="15" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="91" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -2153,29 +2175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="31" selection-end-column="14" />
-          <folding>
-            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
-            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="74" column="50" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="50" />
-          <folding>
-            <marker date="1507420611000" expanded="true" signature="3168:3174" ph="&amp;nbsp;" />
-            <marker date="1507420611000" expanded="true" signature="3174:3180" ph="&amp;nbsp;" />
-            <marker date="1507420611000" expanded="true" signature="3335:3361" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="631">
@@ -2189,6 +2188,67 @@
             <marker date="1507420734000" expanded="true" signature="4927:6543" ph="select t.che... bd_check" />
             <marker date="1507420734000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
             <marker date="1507420734000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="31" selection-end-column="14" />
+          <folding>
+            <marker date="1506940378000" expanded="true" signature="1315:1321" ph="&amp;nbsp;" />
+            <marker date="1506940378000" expanded="true" signature="1321:1327" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="21" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="31" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/notice/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="51" lean-forward="true" selection-start-line="0" selection-start-column="51" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <marker date="1507294812000" expanded="true" signature="1367:1373" ph="&amp;nbsp;" />
+            <marker date="1507294812000" expanded="true" signature="1373:1379" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+          <folding>
+            <marker date="1507453778000" expanded="true" signature="3275:3281" ph="&amp;nbsp;" />
+            <marker date="1507453778000" expanded="true" signature="3281:3287" ph="&amp;nbsp;" />
+            <marker date="1507453778000" expanded="true" signature="3445:3471" ph="..." />
+            <marker date="1507453778000" expanded="true" signature="4643:4649" ph="&amp;nbsp;" />
+            <marker date="1507453778000" expanded="true" signature="4649:4655" ph="&amp;nbsp;" />
+            <marker date="1507453778000" expanded="true" signature="4814:4840" ph="..." />
           </folding>
         </state>
       </provider>
