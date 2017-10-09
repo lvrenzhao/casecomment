@@ -118,6 +118,9 @@
     <if test="fqsj2 != null and fqsj2 != '' ">
       and date_format(t.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
+    <if test="flag != null and flag != '' ">
+      and (select count(1) from bd_check_cases x where x.checkid = t.checkid and x.jydp is null) = 0
+    </if>
 
     order by t.fqsj desc
   </select>
