@@ -132,6 +132,10 @@
       and date_format(t.jzrq, '%Y/%m/%dd') &lt;= #{jzrq2}
     </if>
 
+    <if test="flag != null and flag != '' ">
+      and (select count(1) from bd_chosen_cases x where x.chosenid = t.chosenid and x.jydp is null) = 0
+    </if>
+
     order by t.fqsj desc
   </select>
 </mapper>

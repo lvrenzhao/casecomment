@@ -1,8 +1,10 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.BdCheck;
+import cn.gov.ahcourt.casecomment.bean.BdChosen;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
 import cn.gov.ahcourt.casecomment.mapper.BdCheckMapper;
+import cn.gov.ahcourt.casecomment.mapper.BdChosenMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +24,25 @@ public class XStaticsController {
     @Resource
     private BdCheckMapper bdCheckMapper;
 
+    @Resource
+    private BdChosenMapper bdChosenMapper;
+
     @RequestMapping("/checkreport")
-    public @ResponseBody
-    Map report(BdCheck bean, @SessionScope("user")UserBean user) {
+    public @ResponseBody Map checkreport(BdCheck bean, @SessionScope("user")UserBean user) {
         if(user == null){
             return null;
         }
         bean.setFlag("1");
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
+
+    @RequestMapping("/chosenreport")
+    public @ResponseBody Map chosenreport(BdChosen bean, @SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setFlag("1");
+        return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
 }
