@@ -582,15 +582,8 @@
             rownumbers : true,
             shrinkToFit : true,
             rowNum : 1000000,
-            colModel : [ {
-                label : '操作',
-                name : 'ggid',
-                width : 50,
-                align : 'center',
-                sortable : false,
-                formatter :formatter_grid1_opt_1 ,
-                frozen : true
-            },{
+            colModel : [
+                {
                 label : '专家',
                 name : 'pczz',
                 frozen : true,

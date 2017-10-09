@@ -434,13 +434,5 @@ public class XCaseController {
         return bean.toMap(bdScoretablesMapper.selectAll(bean));
     }
 
-    @RequestMapping("/report")
-    public @ResponseBody Map report(BdCheck bean,@SessionScope("user")UserBean user) {
-        if(user == null){
-            return null;
-        }
-        bean.setFlag("1");
-        return bean.toMap(bdCheckMapper.selectAll(bean));
-    }
 
 }

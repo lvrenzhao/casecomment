@@ -27,7 +27,7 @@
   <script>
       $(function(){
           $("#table1").jqGrid({
-              url : ahcourt.ctx + '/case/report.do',
+              url : ahcourt.ctx + '/static/checkreport.do',
               datatype : "json",
               mtype : "post",
               height : $('body').height() -95 -65,
@@ -69,7 +69,7 @@
 
       function reloadGrid() {
           $("#table1").jqGrid().setGridParam({
-              url : ahcourt.ctx + '/case/report.do',
+              url : ahcourt.ctx + '/static/checkreport.do',
               postData:{
                   bt:$("#form_inp_bt").val()
               },
