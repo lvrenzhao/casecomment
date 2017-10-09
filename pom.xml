@@ -21,6 +21,7 @@
     <druid.version>1.0.20</druid.version>
     <!-- excel解析框架版本 -->
     <poi.version>3.9</poi.version>
+    <axis2.version>1.6.2</axis2.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <webserver.port>8080</webserver.port>
   </properties>
@@ -233,6 +234,34 @@
       <artifactId>poi-scratchpad</artifactId>
       <version>${poi.version}</version>
     </dependency>
+
+    <!--axis2 begin-->
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-spring</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-transport-http</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-transport-local</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-xmlbeans</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <!--axis2 end-->
 
   </dependencies>
 
