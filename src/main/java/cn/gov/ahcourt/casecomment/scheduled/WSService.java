@@ -1,0 +1,116 @@
+package cn.gov.ahcourt.casecomment.scheduled;
+
+import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
+import cn.gov.ahcourt.casecomment.bean.WsTask;
+import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.WsTaskMapper;
+import cn.gov.ahcourt.casecomment.utils.IdGen;
+import cn.gov.ahcourt.casecomment.utils.StringUtils;
+import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.client.ServiceClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.apache.commons.codec.binary.Base64;
+
+import javax.annotation.Resource;
+import javax.xml.namespace.QName;
+
+/**
+ * Created by lvrenzhao on 2017/10/9.
+ */
+@Service
+public class WSService {
+
+    @Resource
+    private BdMiddleCaseMapper bdMiddleCaseMapper;
+
+    @Resource
+    private WsTaskMapper wsTaskMapper;
+
+    public static final String WEBSERVICE_BASE = "http://139.1.1.19:81/court/service/SzftWebService";
+    public static final String WEBSERVICE_BASE_NS = "http://szft.tdh/";
+    public static final String WEBSERVICE_BASE_UN = "ahgyszft";
+    public static final String WEBSERVICE_BASE_PW = "ahgyszftsa";
+    public static final String WEBSERVICE_FILE = "http://139.1.1.130:99/dagl/service/TDHYxxxService?wsdl";
+    public static final String WEBSERVICE_VIDEO = "";
+
+    //return 1 : SUCCESS  -1: FAILD
+    public void processBaseInfo(String xml){
+        System.out.println(bdMiddleCaseMapper.selectAll(new BdMiddleCase()).size());
+    }
+
+    public String invokeBaseInfo(){
+        try {
+//            EndpointReference targetEPR = new EndpointReference(WSService.WEBSERVICE_BASE);// 接口地址
+//            Options options = new Options();
+//            options.setTo(targetEPR);
+//            ServiceClient sender = null;
+//            sender = new ServiceClient();
+//            sender.setOptions(options);
+//            OMFactory fac = OMAbstractFactory.getOMFactory();
+//            OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS, "SzftWebServiceService");
+//            OMElement method = fac.createOMElement("GetPlAj", omNs);
+//            OMElement p1 = fac.createOMElement("Userid", omNs);
+//            p1.setText(WSService.WEBSERVICE_BASE_UN);
+//            method.addChild(p1);
+//            OMElement p2 = fac.createOMElement("testParam", omNs);
+//            p2.setText(WSService.WEBSERVICE_BASE_PW);
+//            method.addChild(p2);
+//
+//            OMElement p3 = fac.createOMElement("testParam", omNs);
+            String typeValue = new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))));
+            String xml = "<Request><ZT>"+typeValue+"</ZT></Request>";
+            String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+//            p3.setText(p3text);
+//            method.addChild(p3);
+//
+//            method.build();
+//            OMElement response = sender.sendReceive(method); //获取处理结果
+//            System.out.println("response:" + response);
+
+
+            String soapBindingAddress = WSService.WEBSERVICE_BASE;
+            ServiceClient sender = new ServiceClient();
+            EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+            Options options = new Options();
+            options.setTimeOutInMilliSeconds(200*60*1000);
+            options.setTo(endpointReference);
+            sender.setOptions(options);
+            OMFactory fac = OMAbstractFactory.getOMFactory();
+            OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+            OMElement method = fac.createOMElement("GetPlAj", omNs);
+            String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+            String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+            for (int i = 0; i < paramnames.length; i++) {
+                QName qname=new QName(paramnames[i]);
+                OMElement inner = fac.createOMElement(qname);
+                inner.setText(paramvalues[i]);
+                method.addChild(inner);
+            }
+            // 发送数据，返回结果
+            OMElement result = sender.sendReceive(method);
+            System.out.println(result.toString());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+
+    public int saveTask(WsTask task){
+        if(task!=null && StringUtils.isNotBlank(task.getTaskid())){
+            return wsTaskMapper.updateByPrimaryKey(task);
+        }else{
+            task.setTaskid(IdGen.uuid());
+            return wsTaskMapper.insert(task);
+        }
+    }
+
+}

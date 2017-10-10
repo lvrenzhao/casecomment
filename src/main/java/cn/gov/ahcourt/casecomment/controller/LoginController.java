@@ -4,8 +4,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.scheduled.JobCaseInit;
 import cn.gov.ahcourt.casecomment.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
@@ -21,6 +23,10 @@ public class LoginController {
 	public String login(HttpSession httpSession) {
 		return "../login";
 	}
+
+
+	@Resource
+	private JobCaseInit jobCaseInit;
 
 
 	@RequestMapping("/checklogin")
@@ -53,6 +59,11 @@ public class LoginController {
 		httpSession.removeAttribute("user");
 		httpSession.setAttribute("msg", "已退出，请重新登录..");
 		return "redirect:/";
+	}
+
+	@RequestMapping("/caseinit")
+	public void caseinit(HttpSession httpSession) {
+		jobCaseInit.doInit();
 	}
 
 }

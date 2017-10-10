@@ -1,13 +1,13 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
-import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
-import cn.gov.ahcourt.casecomment.service.WSService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 /**
  * Created by lvrenzhao on 2017/10/9.
  */
+@Service
 public class JobCaseUpdate {
     @Resource
     private WSService wsService;
