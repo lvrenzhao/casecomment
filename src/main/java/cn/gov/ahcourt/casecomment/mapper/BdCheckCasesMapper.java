@@ -14,4 +14,6 @@ public interface BdCheckCasesMapper {
     List<BdCheckCases> selectWork(BdCheckCases bean);
 
     int updateByPrimaryKey(BdCheckCases record);
+
+    List<BdCheckCases> selectTop(BdCheckCases bean);
 }

@@ -39,33 +39,36 @@
 
         </div>
         <div class="bmbox_tool">
-          <select>
-            <option>2017年</option>
-            <option>2016年</option>
+          <select class="xyear xsel" id="year1">
           </select>
 
         </div>
         <div class="bmbox_tool">
-          <select>
-            <option>2017年</option>
-            <option>2016年</option>
+          <select class="xyear xsel">
           </select>
-          <select>
-            <option>第四季度</option>
-            <option>第三季度</option>
-            <option>第二季度</option>
-            <option>第一季度</option>
+          <select class="xsel">
+            <option value="4">第四季度</option>
+            <option value="3">第三季度</option>
+            <option value="2">第二季度</option>
+            <option value="1">第一季度</option>
           </select>
         </div>
         <div class="bmbox_tool">
-          <select>
-            <option>2017年</option>
-            <option>2016年</option>
+          <select class="xyear xsel">
           </select>
-          <select>
-            <option>12月</option>
-            <option>11月</option>
-            <option>..</option>
+          <select class="xsel">
+            <option value="12">12月</option>
+            <option value="11">11月</option>
+            <option value="10">10月</option>
+            <option value="9">09月</option>
+            <option value="8">08月</option>
+            <option value="7">07月</option>
+            <option value="6">06月</option>
+            <option value="5">05月</option>
+            <option value="4">04月</option>
+            <option value="3">03月</option>
+            <option value="2">02月</option>
+            <option value="1">01月</option>
           </select>
         </div>
       </div>
@@ -100,308 +103,129 @@
     </div>
   </div>
   <script type="text/javascript">
+      var URL_ALLTABLE = ahcourt.ctx+"/static/topcheck.do";
       $(function(){
           //双tab联动
           var firstitem=$(".home-righttab .nav-tabs li");
           var secitem=$(".tabrightmenu .bmbox_tool");
           doubletab(firstitem,secitem);
 
+          var tenyears = getRecent10Years();
+          var html = "";
+          for(var i = 0 ; i < tenyears.length ; i ++){
+              html += '<option value="'+tenyears[i]+'">'+tenyears[i]+'年</option>'
+          }
+          $(".xyear").html(html);
+
+          var monthbegin = ["01/01",'02/01','03/01','04/01','05/01','06/01','07/01','08/01','09/01','10/01','11/01','12/01'];
+          var monthend = ["01/31","02/28","03/31","04/30","05/31","06/30","07/31","08/31","09/30","10/31","11/30","12/31"];
+          var sessionbegin = ["01/01",'04/01','07/01','10/01'];
+          var sessionend = ["03/31",'06/30','09/30','12/31'];
+
+          var cols = [
+                  {label : 'ccid',name : 'ccid',hidden : true,key : true,frozen : true},
+                  {label : '案号',name : 'ah',frozen : true,width : 100},
+                  {label : '归属法院',name : 'gsfy',width : 150},
+                  {label : '公告标题',name : 'bt',width : 150},
+                  {label : '承办部门',name : 'cbbm',width : 100},
+                  {label : '承办人',name : 'cbr',width : 80},
+                  {label : '案件性质', name : 'xz', width : 80 },
+                  {label : '案件类型', name : 'xz', width : 80 },
+                  {label : '案由',name : 'ay',width : 120 },
+                  {label : '结案方式',name : 'jafs',width : 80},
+                  {label : '评查专家',name : 'teamleadername',width : 80},
+                  {label : '评查专家',name : 'teammatenames',width : 80},
+                  {label : '评查分数',name : 'zzpcdf',width : 80},
+                  {label : '质量等级',name : 'zzzldj',width : 80},
+                  {label : '评查时间',name : 'dpsj',width : 80}
+              ];
 
           $("#table1").jqGrid({
-//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : URL_ALLTABLE,
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
-              colModel : [ {
-                  label : 'ajid',
-                  name : 'ajid',
-                  hidden : true,
-                  key : true,
-                  frozen : true
-              }, {
-                  label : 'ggid',
-                  name : 'ggid',
-                  hidden : true,
-                  frozen : true
-              },{
-                  label : '操作',
-                  name : 'ggid',
-                  width : 100,
-                  align : 'center',
-                  sortable : false,
-                  formatter :formatter_grid1_opt_1 ,
-                  frozen : true
-              },{
-                  label : '案号',
-                  name : 'xmmc',
-                  frozen : true,
-                  width : 100
-              }, {
-                  label : '归属法院',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '公告标题',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '承办部门',
-                  name : 'htmc',
-                  width : 100
-              }, {
-                  label : '承办人',
-                  name : 'xmlxmc',
-                  width : 80
-              }, {
-                  label : '案件性质',
-                  name : 'zylbmc',
-                  width : 80
-              }, {
-                  label : '案由',
-                  name : 'xmfzrmc',
-                  width : 120
-              }, {
-                  label : '结案方式',
-                  name : 'xmjlmc',
-                  width : 80
-              }, {
-                  label : '评查专家',
-                  name : 'pszj',
-                  width : 80
-              }
-                  ,{label : '评查时间',name : 'pcsj',width : 80}
-                  ,{label : '得分',name : 'yqgq',width : 80}
-              ],
+              rowNum : 50,
+              colModel : cols,
               pager:"#pager1",
               viewrecords: true
           });
 
           $("#table2").jqGrid({
-//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : URL_ALLTABLE,
+              postData:{
+                  fqsj1:$("#year1").val()+"/01/01",
+                  fqsj2:$("#year1").val()+"/12/31"
+              },
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
-              colModel : [ {
-                  label : 'ajid',
-                  name : 'ajid',
-                  hidden : true,
-                  key : true,
-                  frozen : true
-              }, {
-                  label : 'ggid',
-                  name : 'ggid',
-                  hidden : true,
-                  frozen : true
-              },{
-                  label : '操作',
-                  name : 'ggid',
-                  width : 100,
-                  align : 'center',
-                  sortable : false,
-                  formatter :formatter_grid1_opt_1 ,
-                  frozen : true
-              },{
-                  label : '案号',
-                  name : 'xmmc',
-                  frozen : true,
-                  width : 100
-              }, {
-                  label : '归属法院',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '公告标题',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '承办部门',
-                  name : 'htmc',
-                  width : 100
-              }, {
-                  label : '承办人',
-                  name : 'xmlxmc',
-                  width : 80
-              }, {
-                  label : '案件性质',
-                  name : 'zylbmc',
-                  width : 80
-              }, {
-                  label : '案由',
-                  name : 'xmfzrmc',
-                  width : 120
-              }, {
-                  label : '结案方式',
-                  name : 'xmjlmc',
-                  width : 80
-              }, {
-                  label : '评查专家',
-                  name : 'pszj',
-                  width : 80
-              }
-                  ,{label : '评查时间',name : 'pcsj',width : 80}
-                  ,{label : '得分',name : 'yqgq',width : 80}
-              ],
+              rowNum : 50,
+              colModel : cols,
               pager:"#pager2",
               viewrecords: true
           });
 
           $("#table3").jqGrid({
-//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : URL_ALLTABLE,
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
-              colModel : [ {
-                  label : 'ajid',
-                  name : 'ajid',
-                  hidden : true,
-                  key : true,
-                  frozen : true
-              }, {
-                  label : 'ggid',
-                  name : 'ggid',
-                  hidden : true,
-                  frozen : true
-              },{
-                  label : '操作',
-                  name : 'ggid',
-                  width : 100,
-                  align : 'center',
-                  sortable : false,
-                  formatter :formatter_grid1_opt_1 ,
-                  frozen : true
-              },{
-                  label : '案号',
-                  name : 'xmmc',
-                  frozen : true,
-                  width : 100
-              }, {
-                  label : '归属法院',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '公告标题',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '承办部门',
-                  name : 'htmc',
-                  width : 100
-              }, {
-                  label : '承办人',
-                  name : 'xmlxmc',
-                  width : 80
-              }, {
-                  label : '案件性质',
-                  name : 'zylbmc',
-                  width : 80
-              }, {
-                  label : '案由',
-                  name : 'xmfzrmc',
-                  width : 120
-              }, {
-                  label : '结案方式',
-                  name : 'xmjlmc',
-                  width : 80
-              }, {
-                  label : '评查专家',
-                  name : 'pszj',
-                  width : 80
-              }
-                  ,{label : '评查时间',name : 'pcsj',width : 80}
-                  ,{label : '得分',name : 'yqgq',width : 80}
-              ],
+              rowNum : 50,
+              colModel :  cols,
               pager:"#pager3",
               viewrecords: true
           });
 
 
           $("#table4").jqGrid({
-//              url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+              url : URL_ALLTABLE,
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
               width : gridWidth(),
               rownumbers : true,
               shrinkToFit : true,
-              rowNum : 1000000,
-              colModel : [ {
-                  label : 'ajid',
-                  name : 'ajid',
-                  hidden : true,
-                  key : true,
-                  frozen : true
-              }, {
-                  label : 'ggid',
-                  name : 'ggid',
-                  hidden : true,
-                  frozen : true
-              },{
-                  label : '操作',
-                  name : 'ggid',
-                  width : 100,
-                  align : 'center',
-                  sortable : false,
-                  formatter :formatter_grid1_opt_1 ,
-                  frozen : true
-              },{
-                  label : '案号',
-                  name : 'xmmc',
-                  frozen : true,
-                  width : 100
-              }, {
-                  label : '归属法院',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '公告标题',
-                  name : 'xmzt',
-                  width : 150
-              }, {
-                  label : '承办部门',
-                  name : 'htmc',
-                  width : 100
-              }, {
-                  label : '承办人',
-                  name : 'xmlxmc',
-                  width : 80
-              }, {
-                  label : '案件性质',
-                  name : 'zylbmc',
-                  width : 80
-              }, {
-                  label : '案由',
-                  name : 'xmfzrmc',
-                  width : 120
-              }, {
-                  label : '结案方式',
-                  name : 'xmjlmc',
-                  width : 80
-              }, {
-                  label : '评查专家',
-                  name : 'pszj',
-                  width : 80
-              }
-                  ,{label : '评查时间',name : 'pcsj',width : 80}
-                  ,{label : '得分',name : 'yqgq',width : 80}
-              ],
+              rowNum : 50,
+              colModel :  cols,
               pager:"#pager4",
               viewrecords: true
           });
 
+          $(".xsel").change(function () {
+              reloadGrid();
+          });
 
-      })
+      });
+
+      function reloadGrid() {
+        if ($.trim($(".nav li.active").text()) == "年度排行榜"){
+            $("#table2").jqGrid().setGridParam({
+                url : URL_ALLTABLE,
+                postData:{
+                    fqsj1:$("#year1").val()+"-01-01",
+                    fqsj2:$("#year1").val()+"-12-31"
+                },
+                page : 1
+            }).trigger("reloadGrid");
+
+        }else if ($.trim($(".nav li.active").text()) == "季度排行榜"){
+            console.log(3)
+
+        }else if ($.trim($(".nav li.active").text()) == "月度排行榜"){
+            console.log(4)
+
+        }
+      }
 
       function gridWidth() {
           return $('body').width() - 22;
@@ -410,25 +234,15 @@
           return $('body').height() -135;
       }
 
-      function formatter_grid1_opt_1(cellvalue, options, rowObject) {
-          return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails()" title="评查信息"><i class="fa fa-info-circle"></i> 评查信息</button>';
+      function getRecent10Years() {
+          var cy = new Date().getFullYear();
+          var arr = [cy];
+          for(var i = cy-1; i> cy-5; i-- ){
+              arr.push(i);
+          }
+          return arr;
       }
 
-
-      function openDetails(){
-          layer.open({
-              type : 2,
-              shift : 5,
-              title : '评查信息',
-              shadeClose : false,
-              shade : 0.3,
-              area : [ '90%', '90%' ],
-              content : ahcourt.ctx + "/casecheck/check/checkinfo.do",
-              cancel : function(index) {
-                  layer.close(index);
-              }
-          });
-      }
   </script>
   </body>
 </html>

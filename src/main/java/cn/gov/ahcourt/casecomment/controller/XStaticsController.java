@@ -1,8 +1,10 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.BdCheck;
+import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
 import cn.gov.ahcourt.casecomment.bean.BdChosen;
 import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdCheckMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdChosenMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
@@ -25,6 +27,9 @@ public class XStaticsController {
     private BdCheckMapper bdCheckMapper;
 
     @Resource
+    private BdCheckCasesMapper bdCheckCasesMapper;
+
+    @Resource
     private BdChosenMapper bdChosenMapper;
 
     @RequestMapping("/checkreport")
@@ -43,6 +48,11 @@ public class XStaticsController {
         }
         bean.setFlag("1");
         return bean.toMap(bdChosenMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/topcheck")
+    public @ResponseBody Map topcheck(BdCheckCases bean){
+        return bean.toMap(bdCheckCasesMapper.selectTop(bean));
     }
 
 }
