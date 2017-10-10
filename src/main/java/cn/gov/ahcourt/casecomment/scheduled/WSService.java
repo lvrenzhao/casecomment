@@ -46,34 +46,6 @@ public class WSService {
 
     public String invokeBaseInfo(){
         try {
-//            EndpointReference targetEPR = new EndpointReference(WSService.WEBSERVICE_BASE);// 接口地址
-//            Options options = new Options();
-//            options.setTo(targetEPR);
-//            ServiceClient sender = null;
-//            sender = new ServiceClient();
-//            sender.setOptions(options);
-//            OMFactory fac = OMAbstractFactory.getOMFactory();
-//            OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS, "SzftWebServiceService");
-//            OMElement method = fac.createOMElement("GetPlAj", omNs);
-//            OMElement p1 = fac.createOMElement("Userid", omNs);
-//            p1.setText(WSService.WEBSERVICE_BASE_UN);
-//            method.addChild(p1);
-//            OMElement p2 = fac.createOMElement("testParam", omNs);
-//            p2.setText(WSService.WEBSERVICE_BASE_PW);
-//            method.addChild(p2);
-//
-//            OMElement p3 = fac.createOMElement("testParam", omNs);
-            String typeValue = new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))));
-            String xml = "<Request><ZT>"+typeValue+"</ZT></Request>";
-            String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
-//            p3.setText(p3text);
-//            method.addChild(p3);
-//
-//            method.build();
-//            OMElement response = sender.sendReceive(method); //获取处理结果
-//            System.out.println("response:" + response);
-
-
             String soapBindingAddress = WSService.WEBSERVICE_BASE;
             ServiceClient sender = new ServiceClient();
             EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
@@ -85,6 +57,8 @@ public class WSService {
             OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
             OMElement method = fac.createOMElement("GetPlAj", omNs);
             String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+            String xml = "<Request><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
+            String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
             String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
             for (int i = 0; i < paramnames.length; i++) {
                 QName qname=new QName(paramnames[i]);
@@ -95,8 +69,6 @@ public class WSService {
             // 发送数据，返回结果
             OMElement result = sender.sendReceive(method);
             System.out.println(result.toString());
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
