@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.WsTaskItemsMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
+    <id column="taskitemid" property="taskitemid" jdbcType="VARCHAR" />
+    <result column="taskid" property="taskid" jdbcType="VARCHAR" />
+    <result column="wsadd" property="wsadd" jdbcType="VARCHAR" />
+    <result column="wsusername" property="wsusername" jdbcType="VARCHAR" />
+    <result column="wspassword" property="wspassword" jdbcType="VARCHAR" />
+    <result column="params" property="params" jdbcType="VARCHAR" />
+    <result column="results" property="results" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WS_TASK_ITEMS
+    where taskitemid = #{taskitemid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
+    insert into WS_TASK_ITEMS (taskitemid, taskid, wsadd, 
+      wsusername, wspassword, params, 
+      results)
+    values (#{taskitemid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, #{wsadd,jdbcType=VARCHAR}, 
+      #{wsusername,jdbcType=VARCHAR}, #{wspassword,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, 
+      #{results,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
+    update WS_TASK_ITEMS
+    set taskid = #{taskid,jdbcType=VARCHAR},
+      wsadd = #{wsadd,jdbcType=VARCHAR},
+      wsusername = #{wsusername,jdbcType=VARCHAR},
+      wspassword = #{wspassword,jdbcType=VARCHAR},
+      params = #{params,jdbcType=VARCHAR},
+      results = #{results,jdbcType=LONGVARCHAR}
+    where taskitemid = #{taskitemid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select taskitemid, taskid, wsadd, wsusername, wspassword, params, results
+    from WS_TASK_ITEMS
+    where taskitemid = #{taskitemid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select taskitemid, taskid, wsadd, wsusername, wspassword, params, results
+    from WS_TASK_ITEMS
+  </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.WsLogMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.WsLog" >
+    <id column="errorid" property="errorid" jdbcType="VARCHAR" />
+    <result column="taskid" property="taskid" jdbcType="VARCHAR" />
+    <result column="tdhid" property="tdhid" jdbcType="VARCHAR" />
+    <result column="log" property="log" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WS_LOG
+    where errorid = #{errorid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsLog" >
+    insert into WS_LOG (errorid, taskid, tdhid, 
+      log)
+    values (#{errorid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, #{tdhid,jdbcType=VARCHAR}, 
+      #{log,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsLog" >
+    update WS_LOG
+    set taskid = #{taskid,jdbcType=VARCHAR},
+      tdhid = #{tdhid,jdbcType=VARCHAR},
+      log = #{log,jdbcType=VARCHAR}
+    where errorid = #{errorid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select errorid, taskid, tdhid, log
+    from WS_LOG
+    where errorid = #{errorid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select errorid, taskid, tdhid, log
+    from WS_LOG
+  </select>
+</mapper>
