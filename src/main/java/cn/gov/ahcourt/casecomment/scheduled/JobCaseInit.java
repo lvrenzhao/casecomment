@@ -5,6 +5,10 @@ package cn.gov.ahcourt.casecomment.scheduled;
  */
 public class JobCaseInit {
     public void doInit(){
+        //###开启一个全量同步的Task
+        //###
+
+        //###结束全量同步TASK
 
     }
 }
