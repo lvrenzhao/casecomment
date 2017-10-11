@@ -80,8 +80,7 @@ public class WSService {
                 // 发送数据，返回结果
                 OMElement result = sender.sendReceive(method);
                 OMElement elementReturn = result.getFirstElement();
-                System.out.println(new String(Base64.decodeBase64(elementReturn.getText())));
-                System.out.println(result.toString());
+                return new String(Base64.decodeBase64(elementReturn.getText()));
             }
         } catch (Exception e) {
             e.printStackTrace();
