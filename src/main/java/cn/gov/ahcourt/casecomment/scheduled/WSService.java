@@ -34,10 +34,21 @@ public class WSService {
 
     public static final String WEBSERVICE_BASE = "http://139.1.1.19:81/court/service/SzftWebService";
     public static final String WEBSERVICE_BASE_NS = "http://szft.tdh/";
-    public static final String WEBSERVICE_BASE_UN = "ahgyszft";
-    public static final String WEBSERVICE_BASE_PW = "ahgyszftsa";
+    public static final String WEBSERVICE_BASE_UN = "dic";
+    public static final String WEBSERVICE_BASE_PW = "dic";
+    private static final String WEBSERVICE_BASE_STARTDATE = "2016-01-01";
+    private static final String WEBSERVICE_BASE_ENDDATE = "2017-12-31";
     public static final String WEBSERVICE_FILE = "http://139.1.1.130:99/dagl/service/TDHYxxxService?wsdl";
     public static final String WEBSERVICE_VIDEO = "";
+    ServiceClient sender;
+
+    public WSService(){
+        try{
+            sender = new ServiceClient();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
     //return 1 : SUCCESS  -1: FAILD
     public void processBaseInfo(String xml){
@@ -46,29 +57,32 @@ public class WSService {
 
     public String invokeBaseInfo(){
         try {
-            String soapBindingAddress = WSService.WEBSERVICE_BASE;
-            ServiceClient sender = new ServiceClient();
-            EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
-            Options options = new Options();
-            options.setTimeOutInMilliSeconds(200*60*1000);
-            options.setTo(endpointReference);
-            sender.setOptions(options);
-            OMFactory fac = OMAbstractFactory.getOMFactory();
-            OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
-            OMElement method = fac.createOMElement("GetPlAj", omNs);
-            String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
-            String xml = "<Request><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
-            String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
-            String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
-            for (int i = 0; i < paramnames.length; i++) {
-                QName qname=new QName(paramnames[i]);
-                OMElement inner = fac.createOMElement(qname);
-                inner.setText(paramvalues[i]);
-                method.addChild(inner);
+            if(sender != null){
+                String soapBindingAddress = WSService.WEBSERVICE_BASE;
+                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+                OMElement method = fac.createOMElement("GetPlAj", omNs);
+                String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+                String xml = "<Request><AH>"+new String(new String(Base64.encodeBase64("(2017)皖刑终4号".getBytes("UTF-8"))))+"</AH><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
+                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                OMElement elementReturn = result.getFirstElement();
+                System.out.println(new String(Base64.decodeBase64(elementReturn.getText())));
+                System.out.println(result.toString());
             }
-            // 发送数据，返回结果
-            OMElement result = sender.sendReceive(method);
-            System.out.println(result.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
