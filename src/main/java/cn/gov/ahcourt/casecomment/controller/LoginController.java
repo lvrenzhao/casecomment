@@ -63,7 +63,7 @@ public class LoginController {
 
 	@RequestMapping("/caseinit")
 	public void caseinit(HttpSession httpSession) {
-		jobCaseInit.doInit();
+		jobCaseInit.doJob();
 	}
 
 }

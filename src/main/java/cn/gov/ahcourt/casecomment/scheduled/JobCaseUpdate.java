@@ -12,7 +12,7 @@ public class JobCaseUpdate {
     @Resource
     private WSService wsService;
 
-    public void doUpdate(){
-        wsService.processBaseInfo("123");
+    public void doJob(){
+        System.out.println(this.getClass().getName()+"......dojob");
     }
 }

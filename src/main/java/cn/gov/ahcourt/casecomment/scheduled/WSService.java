@@ -60,15 +60,9 @@ public class WSService {
         }
     }
 
-    //return 1 : SUCCESS  -1: FAILD
-    public void processBaseInfo(String xml){
-        System.out.println(bdMiddleCaseMapper.selectAll(new BdMiddleCase()).size());
-    }
-
-    public OMElement invokeBaseInfoByOneDay(String fycode,String day){
+    public OMElement invokeBaseInfoByTimeSpan(String fycode,String span){
         try {
-            if(sender != null && StringUtils.isNotBlank(day)){
-                day = day+"-"+day;
+            if(sender != null && StringUtils.isNotBlank(span)){
                 String soapBindingAddress = WSService.WEBSERVICE_BASE;
                 EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
                 Options options = new Options();
@@ -79,7 +73,7 @@ public class WSService {
                 OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
                 OMElement method = fac.createOMElement("GetPlAj", omNs);
                 String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
-                String xml = "<Request><FYDM>"+new String(new String(Base64.encodeBase64(fycode.getBytes("UTF-8"))))+"</FYDM><JARQ>"+new String(new String(Base64.encodeBase64(day.getBytes("UTF-8"))))+"</JARQ><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
+                String xml = "<Request><FYDM>"+new String(new String(Base64.encodeBase64(fycode.getBytes("UTF-8"))))+"</FYDM><JARQ>"+new String(new String(Base64.encodeBase64(span.getBytes("UTF-8"))))+"</JARQ><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
                 String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
                 String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
                 for (int i = 0; i < paramnames.length; i++) {
