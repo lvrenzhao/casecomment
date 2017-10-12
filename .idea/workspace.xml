@@ -13,10 +13,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/行政上诉状.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseFileInit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseFileUpdate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseVideoInit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseVideoUpdate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1062,14 +1058,7 @@
       <workItem from="1507419593774" duration="4260000" />
       <workItem from="1507512800754" duration="3692000" />
       <workItem from="1507559071221" duration="17989000" />
-      <workItem from="1507622841827" duration="16613000" />
-    </task>
-    <task id="LOCAL-00277" summary="1">
-      <created>1507181940447</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1507181940448</updated>
+      <workItem from="1507622841827" duration="16631000" />
     </task>
     <task id="LOCAL-00278" summary="1">
       <created>1507184720219</created>
@@ -1407,11 +1396,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507772881749</updated>
     </task>
-    <option name="localTasksCounter" value="326" />
+    <task id="LOCAL-00326" summary="1">
+      <created>1507773725444</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1507773725444</updated>
+    </task>
+    <option name="localTasksCounter" value="327" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="603827000" />
+    <option name="totallyTimeSpent" value="603845000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
