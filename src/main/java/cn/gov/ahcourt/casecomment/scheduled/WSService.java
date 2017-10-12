@@ -1,9 +1,12 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
 import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
+import cn.gov.ahcourt.casecomment.bean.WsLog;
 import cn.gov.ahcourt.casecomment.bean.WsTask;
 import cn.gov.ahcourt.casecomment.bean.WsTaskItems;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.WsLogMapper;
+import cn.gov.ahcourt.casecomment.mapper.WsTaskItemsMapper;
 import cn.gov.ahcourt.casecomment.mapper.WsTaskMapper;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
@@ -37,6 +40,12 @@ public class WSService {
 
     @Resource
     private WsTaskMapper wsTaskMapper;
+
+    @Resource
+    private WsTaskItemsMapper wsTaskItemsMapper;
+
+    @Resource
+    private WsLogMapper wsLogMapper;
 
     public static final String WEBSERVICE_BASE = "http://139.1.1.19:81/court/service/SzftWebService";
     public static final String WEBSERVICE_BASE_NS = "http://szft.tdh/";

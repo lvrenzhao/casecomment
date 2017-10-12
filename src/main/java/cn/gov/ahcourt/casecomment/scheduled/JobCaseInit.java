@@ -25,7 +25,6 @@ public class JobCaseInit {
     private WSService wsService;
 
     public void doJob(){
-        System.out.println(this.getClass().getName()+"......dojob");
 ////        List<String> dateblock = WSService.findDates("20160101",new SimpleDateFormat("yyyyMMdd").format(new Date()));
 //        List<String> dateblock = WSService.findDates("20160101","20160131");
 //
