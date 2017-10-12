@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by lvrenzhao on 2017/10/9.
@@ -69,7 +71,7 @@ public class WSService {
         }
     }
 
-    public OMElement invokeBaseInfoByTimeSpan(String fycode,String span){
+    public String invokeBaseInfoByTimeSpan(String fycode,String span){
         try {
             if(sender != null && StringUtils.isNotBlank(span)){
                 String soapBindingAddress = WSService.WEBSERVICE_BASE;
@@ -93,7 +95,7 @@ public class WSService {
                 }
                 // 发送数据，返回结果
                 OMElement result = sender.sendReceive(method);
-                return result.getFirstElement();
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,7 +121,7 @@ public class WSService {
         while (dEnd.after(calBegin.getTime()))
         {
             String now = new SimpleDateFormat("yyyyMMdd").format(calBegin.getTime());
-            calBegin.add(Calendar.DAY_OF_MONTH, 10);
+            calBegin.add(Calendar.DAY_OF_MONTH, 5);
             lDate.add(now+"-"+new SimpleDateFormat("yyyyMMdd").format(calBegin.getTime()));
             calBegin.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -137,11 +139,32 @@ public class WSService {
     }
 
     public int insertTaskItem(WsTaskItems item){
-        return -1;
+        return wsTaskItemsMapper.insert(item);
     }
 
     public int updateTaskItem(WsTaskItems item){
-        return -1;
+        return wsTaskItemsMapper.updateByPrimaryKey(item);
     }
 
+    public int insertLog(WsLog item){
+        return wsLogMapper.insert(item);
+    }
+
+    public int updateLog(WsLog item){
+        return wsLogMapper.updateByPrimaryKey(item);
+    }
+
+
+    public static int getAllCount(String text){
+        Pattern pattern = Pattern.compile("(?<=<Data Count=\")\\S+(?=\"\\s*>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()){
+            try{
+                return Integer.parseInt(new String(Base64.decodeBase64(matcher.group())));
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return 0;
+    }
 }

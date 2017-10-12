@@ -1,5 +1,7 @@
 package cn.gov.ahcourt.casecomment.bean;
 
+import java.util.Date;
+
 public class WsTaskItems {
     private String taskitemid;
 
@@ -18,6 +20,8 @@ public class WsTaskItems {
     private String remark2;
 
     private String remark3;
+
+    private String exetime;
 
     private String results;
 
@@ -91,6 +95,14 @@ public class WsTaskItems {
 
     public void setRemark3(String remark3) {
         this.remark3 = remark3 == null ? null : remark3.trim();
+    }
+
+    public String getExetime() {
+        return exetime;
+    }
+
+    public void setExetime(String exetime) {
+        this.exetime = exetime;
     }
 
     public String getResults() {

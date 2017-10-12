@@ -11,6 +11,7 @@
     <result column="remark1" property="remark1" jdbcType="VARCHAR" />
     <result column="remark2" property="remark2" jdbcType="VARCHAR" />
     <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="exetime" property="exetime" jdbcType="TIMESTAMP" />
     <result column="results" property="results" jdbcType="LONGVARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -21,11 +22,11 @@
     insert into WS_TASK_ITEMS (taskitemid, taskid, params, 
       datacount, handlecount, remark, 
       remark1, remark2, remark3, 
-      results)
+      exetime, results)
     values (#{taskitemid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, 
       #{datacount,jdbcType=INTEGER}, #{handlecount,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
       #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, 
-      #{results,jdbcType=LONGVARCHAR})
+      #{exetime,jdbcType=TIMESTAMP}, #{results,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
     update WS_TASK_ITEMS
@@ -37,18 +38,19 @@
       remark1 = #{remark1,jdbcType=VARCHAR},
       remark2 = #{remark2,jdbcType=VARCHAR},
       remark3 = #{remark3,jdbcType=VARCHAR},
+      exetime = #{exetime,jdbcType=TIMESTAMP},
       results = #{results,jdbcType=LONGVARCHAR}
     where taskitemid = #{taskitemid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select taskitemid, taskid, params, datacount, handlecount, remark, remark1, remark2, 
-    remark3, results
+    remark3, exetime, results
     from WS_TASK_ITEMS
     where taskitemid = #{taskitemid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select taskitemid, taskid, params, datacount, handlecount, remark, remark1, remark2, 
-    remark3, results
+    remark3, exetime, results
     from WS_TASK_ITEMS
   </select>
 </mapper>
