@@ -5,7 +5,7 @@ public class WsLog {
 
     private String taskid;
 
-    private String tdhid;
+    private String taskitemid;
 
     private String log;
 
@@ -25,12 +25,12 @@ public class WsLog {
         this.taskid = taskid == null ? null : taskid.trim();
     }
 
-    public String getTdhid() {
-        return tdhid;
+    public String getTaskitemid() {
+        return taskitemid;
     }
 
-    public void setTdhid(String tdhid) {
-        this.tdhid = tdhid == null ? null : tdhid.trim();
+    public void setTaskitemid(String taskitemid) {
+        this.taskitemid = taskitemid == null ? null : taskitemid.trim();
     }
 
     public String getLog() {
