@@ -49,7 +49,7 @@ public class WSService {
     @Resource
     private WsLogMapper wsLogMapper;
 
-    public static final String WEBSERVICE_BASE = "http://139.1.1.19:81/court/service/SzftWebService";
+    public static final String WEBSERVICE_BASE = "http://139.1.1.129:81/court/service/SzftWebService";
     public static final String WEBSERVICE_BASE_NS = "http://szft.tdh/";
     public static final String WEBSERVICE_BASE_UN = "dic";
     public static final String WEBSERVICE_BASE_PW = "dic";
@@ -121,8 +121,9 @@ public class WSService {
         while (dEnd.after(calBegin.getTime()))
         {
             String now = new SimpleDateFormat("yyyyMMdd").format(calBegin.getTime());
-            calBegin.add(Calendar.DAY_OF_MONTH, 5);
-            lDate.add(now+"-"+new SimpleDateFormat("yyyyMMdd").format(calBegin.getTime()));
+            lDate.add(now+"-"+now);
+//            calBegin.add(Calendar.DAY_OF_MONTH, 5);
+//            lDate.add(now+"-"+new SimpleDateFormat("yyyyMMdd").format(calBegin.getTime()));
             calBegin.add(Calendar.DAY_OF_MONTH, 1);
         }
         return lDate;
