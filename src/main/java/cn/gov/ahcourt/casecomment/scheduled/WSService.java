@@ -71,6 +71,10 @@ public class WSService {
         }
     }
 
+//    public String invokeBaseInfoAJID(){
+//
+//    }
+
     public String invokeBaseInfoByTimeSpan(String fycode,String span){
         try {
             if(sender != null && StringUtils.isNotBlank(span)){

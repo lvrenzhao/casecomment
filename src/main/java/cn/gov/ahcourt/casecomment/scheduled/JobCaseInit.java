@@ -26,49 +26,53 @@ public class JobCaseInit {
     private WSService wsService;
 
     public void doJob(){
-        //开启一个全量同步的Task
-        WsTask wsTask = new WsTask();
-        String taskid = IdGen.uuid();
-        wsTask.setTaskid(taskid);
-        wsTask.setTasktype("A1");
-        wsTask.setBegeindate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-        int flagWsTaskSaveState = wsService.insertTask(wsTask);
-        if(flagWsTaskSaveState == 1){
-            //=============task已注册成功，开始执行task。
-            List<String> dateblock = WSService.findDates("20160101","20161231");
-//            List<String> dateblock = WSService.findDates("20160101",new SimpleDateFormat("yyyyMMdd").format(new Date()));
-            for(int i = 0 ; i < dateblock.size() ; i ++){
-                for(int j = 0 ; j < WSService.FYCODE.length; j++){
-                    String currentDay = dateblock.get(i);
-                    String currentFyCode = WSService.FYCODE[j];
-                    WsTaskItems currentTaskItem = new WsTaskItems();
-                    String taskitemid = IdGen.uuid();
-                    currentTaskItem.setTaskitemid(taskitemid);
-                    currentTaskItem.setTaskid(taskid);
-                    currentTaskItem.setParams(currentDay+"_"+currentFyCode);
-                    currentTaskItem.setExetime(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-                    wsService.insertTaskItem(currentTaskItem);
-                    try{
-                        String result = wsService.invokeBaseInfoByTimeSpan(currentFyCode,currentDay);
-                        if(result != null && StringUtils.isNotBlank(result)){
-                            //直接取webservice数据,不进行任何加工直接存入数据库（包含异常信息）。记录count 供后面分析是否存在count>1000的数据
-                            currentTaskItem.setDatacount(WSService.getAllCount(result));
-                            currentTaskItem.setResults(result);
-                            wsService.updateTaskItem(currentTaskItem);
-                        }
-                    }catch (Exception ex){
-                        WsLog log = new WsLog();
-                        log.setErrorid(IdGen.uuid());
-                        log.setTaskid(taskid);
-                        log.setTaskitemid(taskitemid);
-                        log.setLog(ex.getMessage());
-                        wsService.insertLog(log);
-                    }
-                }
-            }
-        }
-        //结束全量同步TASK
-        wsTask.setEnddate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-        wsService.updateTask(wsTask);
+        //请求获取案件标识号
     }
+
+//    public void doJob(){
+//        //开启一个全量同步的Task
+//        WsTask wsTask = new WsTask();
+//        String taskid = IdGen.uuid();
+//        wsTask.setTaskid(taskid);
+//        wsTask.setTasktype("A1");
+//        wsTask.setBegeindate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+//        int flagWsTaskSaveState = wsService.insertTask(wsTask);
+//        if(flagWsTaskSaveState == 1){
+//            //=============task已注册成功，开始执行task。
+//            List<String> dateblock = WSService.findDates("20160101","20161231");
+////            List<String> dateblock = WSService.findDates("20160101",new SimpleDateFormat("yyyyMMdd").format(new Date()));
+//            for(int i = 0 ; i < dateblock.size() ; i ++){
+//                for(int j = 0 ; j < WSService.FYCODE.length; j++){
+//                    String currentDay = dateblock.get(i);
+//                    String currentFyCode = WSService.FYCODE[j];
+//                    WsTaskItems currentTaskItem = new WsTaskItems();
+//                    String taskitemid = IdGen.uuid();
+//                    currentTaskItem.setTaskitemid(taskitemid);
+//                    currentTaskItem.setTaskid(taskid);
+//                    currentTaskItem.setParams(currentDay+"_"+currentFyCode);
+//                    currentTaskItem.setExetime(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+//                    wsService.insertTaskItem(currentTaskItem);
+//                    try{
+//                        String result = wsService.invokeBaseInfoByTimeSpan(currentFyCode,currentDay);
+//                        if(result != null && StringUtils.isNotBlank(result)){
+//                            //直接取webservice数据,不进行任何加工直接存入数据库（包含异常信息）。记录count 供后面分析是否存在count>1000的数据
+//                            currentTaskItem.setDatacount(WSService.getAllCount(result));
+//                            currentTaskItem.setResults(result);
+//                            wsService.updateTaskItem(currentTaskItem);
+//                        }
+//                    }catch (Exception ex){
+//                        WsLog log = new WsLog();
+//                        log.setErrorid(IdGen.uuid());
+//                        log.setTaskid(taskid);
+//                        log.setTaskitemid(taskitemid);
+//                        log.setLog(ex.getMessage());
+//                        wsService.insertLog(log);
+//                    }
+//                }
+//            }
+//        }
+//        //结束全量同步TASK
+//        wsTask.setEnddate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+//        wsService.updateTask(wsTask);
+//    }
 }
