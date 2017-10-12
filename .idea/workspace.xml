@@ -13,13 +13,8 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/行政上诉状.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/databasebakup/casecomment_20171012.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsLog.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsTask.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsTaskItems.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/WsTaskItems.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsLogMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsLogMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsTaskItemsMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsTaskItemsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsTaskMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsTaskMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -334,32 +329,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybatis-generator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -381,20 +350,20 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/lvrenzhao/IdeaProjects/casecomment/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/databasebakup" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/views/check/start" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/files" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute" />
       <recent name="$PROJECT_DIR$/src/main/webapp/views/chosen/work" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/views/casechosen/chosen" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/assets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.gov.ahcourt.casecomment.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp/views/check/start" />
-      <recent name="$PROJECT_DIR$/src/main/resources/databasebakup" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/files" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/views/chosen/work" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/views/casechosen/chosen" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1030,14 +999,7 @@
       <workItem from="1507419593774" duration="4260000" />
       <workItem from="1507512800754" duration="3692000" />
       <workItem from="1507559071221" duration="17989000" />
-      <workItem from="1507622841827" duration="18823000" />
-    </task>
-    <task id="LOCAL-00284" summary="1">
-      <created>1507291783684</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1507291783685</updated>
+      <workItem from="1507622841827" duration="19021000" />
     </task>
     <task id="LOCAL-00285" summary="1">
       <created>1507295708478</created>
@@ -1375,11 +1337,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507775594611</updated>
     </task>
-    <option name="localTasksCounter" value="333" />
+    <task id="LOCAL-00333" summary="1">
+      <created>1507776003606</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1507776003607</updated>
+    </task>
+    <option name="localTasksCounter" value="334" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="606037000" />
+    <option name="totallyTimeSpent" value="606235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
