@@ -6,6 +6,11 @@
     <result column="taskid" property="taskid" jdbcType="VARCHAR" />
     <result column="params" property="params" jdbcType="VARCHAR" />
     <result column="datacount" property="datacount" jdbcType="INTEGER" />
+    <result column="handlecount" property="handlecount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
     <result column="results" property="results" jdbcType="LONGVARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -14,25 +19,36 @@
   </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
     insert into WS_TASK_ITEMS (taskitemid, taskid, params, 
-      datacount, results)
+      datacount, handlecount, remark, 
+      remark1, remark2, remark3, 
+      results)
     values (#{taskitemid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, 
-      #{datacount,jdbcType=INTEGER}, #{results,jdbcType=LONGVARCHAR})
+      #{datacount,jdbcType=INTEGER}, #{handlecount,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, 
+      #{results,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsTaskItems" >
     update WS_TASK_ITEMS
     set taskid = #{taskid,jdbcType=VARCHAR},
       params = #{params,jdbcType=VARCHAR},
       datacount = #{datacount,jdbcType=INTEGER},
+      handlecount = #{handlecount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
       results = #{results,jdbcType=LONGVARCHAR}
     where taskitemid = #{taskitemid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select taskitemid, taskid, params, datacount, results
+    select taskitemid, taskid, params, datacount, handlecount, remark, remark1, remark2, 
+    remark3, results
     from WS_TASK_ITEMS
     where taskitemid = #{taskitemid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select taskitemid, taskid, params, datacount, results
+    select taskitemid, taskid, params, datacount, handlecount, remark, remark1, remark2, 
+    remark3, results
     from WS_TASK_ITEMS
   </select>
 </mapper>

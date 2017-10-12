@@ -5,6 +5,10 @@
     <id column="errorid" property="errorid" jdbcType="VARCHAR" />
     <result column="taskid" property="taskid" jdbcType="VARCHAR" />
     <result column="taskitemid" property="taskitemid" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="log" property="log" jdbcType="LONGVARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -13,24 +17,30 @@
   </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsLog" >
     insert into WS_LOG (errorid, taskid, taskitemid, 
-      log)
+      remark1, remark2, remark3, 
+      remark, log)
     values (#{errorid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, #{taskitemid,jdbcType=VARCHAR}, 
-      #{log,jdbcType=LONGVARCHAR})
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{log,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsLog" >
     update WS_LOG
     set taskid = #{taskid,jdbcType=VARCHAR},
       taskitemid = #{taskitemid,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       log = #{log,jdbcType=LONGVARCHAR}
     where errorid = #{errorid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select errorid, taskid, taskitemid, log
+    select errorid, taskid, taskitemid, remark1, remark2, remark3, remark, log
     from WS_LOG
     where errorid = #{errorid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select errorid, taskid, taskitemid, log
+    select errorid, taskid, taskitemid, remark1, remark2, remark3, remark, log
     from WS_LOG
   </select>
 </mapper>
