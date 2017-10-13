@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.scheduled.JobCaseFileInit;
 import cn.gov.ahcourt.casecomment.scheduled.JobCaseInit;
 import cn.gov.ahcourt.casecomment.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class LoginController {
 
 	@Resource
 	private JobCaseInit jobCaseInit;
+	@Resource
+	private JobCaseFileInit jobCaseFileInit;
 
 
 	@RequestMapping("/checklogin")
@@ -62,8 +65,15 @@ public class LoginController {
 	}
 
 	@RequestMapping("/caseinit")
-	public void caseinit(HttpSession httpSession) {
+	public String caseinit(HttpSession httpSession) {
 		jobCaseInit.doJob();
+		return "redirect:/blank.jsp";
+	}
+
+	@RequestMapping("/casefileinit")
+	public String casefileinit(HttpSession httpSession) {
+		jobCaseFileInit.doJob();
+		return "redirect:/blank.jsp";
 	}
 
 }

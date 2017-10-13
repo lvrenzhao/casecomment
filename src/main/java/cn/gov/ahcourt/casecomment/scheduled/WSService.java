@@ -55,8 +55,11 @@ public class WSService {
     public static final String WEBSERVICE_BASE_PW = "dic";
     private static final String WEBSERVICE_BASE_STARTDATE = "2016-01-01";
     private static final String WEBSERVICE_BASE_ENDDATE = "2017-12-31";
-    public static final String WEBSERVICE_FILE = "http://139.1.1.130:99/dagl/service/TDHYxxxService?wsdl";
-    public static final String WEBSERVICE_VIDEO = "";
+    public static final String[] WEBSERVICE_FILE_FBS = {"http://139.1.1.130:99/dagl/service/TDHYxxxService"};//(注意：这里是分布式)
+    public static final String WEBSERVICE_FILE_NS = "http://web.service.tdh/";
+    public static final String WEBSERVICE_FILE_UN = "";
+    public static final String WEBSERVICE_FILE_PW = "";
+    public static final String HTTPSERVICE_VIDEO = "";
 //    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
     public static final String[] FYCODE={"C00","C10"};
 
@@ -71,9 +74,46 @@ public class WSService {
         }
     }
 
-//    public String invokeBaseInfoAJID(){
-//
-//    }
+    /**
+     * 仅获取基本信息接口的中所有ajid的列表。
+     * @param page
+     * @return
+     */
+    public String invokeBaseInfoOnlyTdhAjid(int page){
+        try {
+            if(sender != null ){
+                String soapBindingAddress = WSService.WEBSERVICE_BASE;
+                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+                OMElement method = fac.createOMElement("getPlAjbs", omNs);
+                String[] paramnames = new String[] { "Uid","Pwd","XML" };
+                String xml = "<Request><FJM>"+new String(Base64.encodeBase64("C00".getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64("20160416-20170417".getBytes("UTF-8")))+"</LARQ></Request>";
+                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String invokeBaseInfoByTDHAjid(){
+        return null;
+    }
 
     public String invokeBaseInfoByTimeSpan(String fycode,String span){
         try {
@@ -91,6 +131,36 @@ public class WSService {
                 String xml = "<Request><FYDM>"+new String(new String(Base64.encodeBase64(fycode.getBytes("UTF-8"))))+"</FYDM><JARQ>"+new String(new String(Base64.encodeBase64(span.getBytes("UTF-8"))))+"</JARQ><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
                 String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
                 String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String invokeFileInfoByAh(int fbsxh,String ah,String fycode){
+        try {
+            if(sender != null && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fycode)){
+                String soapBindingAddress = WSService.WEBSERVICE_FILE_FBS[fbsxh];
+                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_FILE_NS,  "");
+                OMElement method = fac.createOMElement("GetYxTmInfo", omNs);
+                String[] paramnames = new String[] { "Userid","Pwd","Ah","Fydm" };
+                String[] paramvalues = new String[] { new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_UN.getBytes("UTF-8"))), new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_PW.getBytes("UTF-8"))),new String(Base64.encodeBase64(ah.getBytes("UTF-8"))),new String(Base64.encodeBase64(fycode.getBytes("UTF-8")))};
                 for (int i = 0; i < paramnames.length; i++) {
                     QName qname=new QName(paramnames[i]);
                     OMElement inner = fac.createOMElement(qname);
@@ -136,27 +206,51 @@ public class WSService {
 
 
     public int insertTask(WsTask task){
-        return wsTaskMapper.insert(task);
+        try {
+            return wsTaskMapper.insert(task);
+        }catch (Exception ex){
+            return 0;
+        }
     }
 
     public int updateTask(WsTask task){
-        return wsTaskMapper.updateByPrimaryKey(task);
+        try {
+            return wsTaskMapper.updateByPrimaryKey(task);
+        }catch (Exception ex){
+            return 0;
+        }
     }
 
     public int insertTaskItem(WsTaskItems item){
-        return wsTaskItemsMapper.insert(item);
+        try {
+            return wsTaskItemsMapper.insert(item);
+        }catch(Exception ex){
+            return 0;
+        }
     }
 
     public int updateTaskItem(WsTaskItems item){
-        return wsTaskItemsMapper.updateByPrimaryKey(item);
+        try {
+            return wsTaskItemsMapper.updateByPrimaryKey(item);
+        }catch (Exception ex){
+            return 0;
+        }
     }
 
     public int insertLog(WsLog item){
-        return wsLogMapper.insert(item);
+        try {
+            return wsLogMapper.insert(item);
+        }catch (Exception ex){
+            return 0;
+        }
     }
 
     public int updateLog(WsLog item){
-        return wsLogMapper.updateByPrimaryKey(item);
+        try {
+            return wsLogMapper.updateByPrimaryKey(item);
+        }catch (Exception ex){
+            return 0;
+        }
     }
 
 

@@ -27,6 +27,44 @@ public class JobCaseInit {
 
     public void doJob(){
         //请求获取案件标识号
+        WsTask wsTask = new WsTask();
+        String taskid = IdGen.uuid();
+        wsTask.setTaskid(taskid);
+        wsTask.setTasktype("A1");
+        wsTask.setBegeindate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+        int flagWsTaskSaveState = wsService.insertTask(wsTask);
+        if(flagWsTaskSaveState == 1){
+            int c_page = 0;
+            int t_page = 0;
+            do{
+                WsTaskItems currentTaskItem = new WsTaskItems();
+                String taskitemid = IdGen.uuid();
+                currentTaskItem.setTaskitemid(taskitemid);
+                currentTaskItem.setTaskid(taskid);
+                currentTaskItem.setParams("");//todo
+                currentTaskItem.setExetime(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+                wsService.insertTaskItem(currentTaskItem);
+                try{
+                    String result = wsService.invokeBaseInfoOnlyTdhAjid(c_page);
+                    if(result != null && StringUtils.isNotBlank(result)){
+//                        currentTaskItem.setDatacount(0);//todo
+                        currentTaskItem.setResults(result);
+                        wsService.updateTaskItem(currentTaskItem);
+                    }
+                }catch (Exception ex){
+                    WsLog log = new WsLog();
+                    log.setErrorid(IdGen.uuid());
+                    log.setTaskid(taskid);
+                    log.setTaskitemid(taskitemid);
+                    log.setLog(ex.getMessage());
+                    wsService.insertLog(log);
+                }
+                if(c_page == 0){
+                    t_page = 0;
+                }
+                c_page++;
+            }while( c_page < t_page );
+        }
     }
 
 //    public void doJob(){
