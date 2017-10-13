@@ -59,7 +59,10 @@ public class WSService {
     public static final String WEBSERVICE_FILE_NS = "http://web.service.tdh/";
     public static final String WEBSERVICE_FILE_UN = "";
     public static final String WEBSERVICE_FILE_PW = "";
-    public static final String HTTPSERVICE_VIDEO = "";
+    public static final String HTTPSERVICE_VIDEO = "http://139.0.90.103:8080/imp/DataExtraction";
+    public static final String WEBSERVICE_VIDEO_UN = "tydk";
+    public static final String WEBSERVICE_VIDEO_PW = "tydk";
+
 //    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
     public static final String[] FYCODE={"C00","C10"};
 
