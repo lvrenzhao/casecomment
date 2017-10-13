@@ -111,7 +111,35 @@ public class WSService {
         return null;
     }
 
-    public String invokeBaseInfoByTDHAjid(){
+    public String invokeBaseInfoByTDHAjid(String tdhajid){
+        try {
+            if(sender != null && StringUtils.isNotBlank(tdhajid)){
+                String soapBindingAddress = WSService.WEBSERVICE_BASE;
+                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+                OMElement method = fac.createOMElement("GetPlAj", omNs);
+                String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+                String xml = "<Request><AHDM>"+new String(new String(Base64.encodeBase64(tdhajid.getBytes("UTF-8"))))+"</AHDM></Request>";
+                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
