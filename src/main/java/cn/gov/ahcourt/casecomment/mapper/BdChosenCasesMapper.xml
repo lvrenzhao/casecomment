@@ -201,4 +201,26 @@
 
     order by b.bt asc , a.create_date desc
   </select>
+
+  <select id="selectTop" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >
+    select
+    b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc,
+    a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
+    date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
+    (select u.xm  from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz = '1' limit 1) teamleadername,
+    (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_chosen_pros t,sd_user u where t.proid =u.yhid and t.chosenid = a.chosenid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames,
+    c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj
+    from bd_chosen_cases a , bd_chosen b ,bd_middle_case c where a.chosenid = b.chosenid and a.ajid = c.ajid
+
+    <if test="fqsj1 != null and fqsj1 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &gt;= #{fqsj1}
+    </if>
+    <if test="fqsj2 != null and fqsj2 != '' ">
+      and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
+    </if>
+
+    order by a.zzpxdf desc , a.create_date desc
+
+  </select>
+
 </mapper>

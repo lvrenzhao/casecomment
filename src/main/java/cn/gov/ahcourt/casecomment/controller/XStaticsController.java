@@ -1,11 +1,9 @@
 package cn.gov.ahcourt.casecomment.controller;
 
-import cn.gov.ahcourt.casecomment.bean.BdCheck;
-import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
-import cn.gov.ahcourt.casecomment.bean.BdChosen;
-import cn.gov.ahcourt.casecomment.bean.UserBean;
+import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdCheckMapper;
+import cn.gov.ahcourt.casecomment.mapper.BdChosenCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdChosenMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import org.springframework.stereotype.Controller;
@@ -28,6 +26,9 @@ public class XStaticsController {
 
     @Resource
     private BdCheckCasesMapper bdCheckCasesMapper;
+
+    @Resource
+    private BdChosenCasesMapper bdChosenCasesMapper;
 
     @Resource
     private BdChosenMapper bdChosenMapper;
@@ -53,6 +54,11 @@ public class XStaticsController {
     @RequestMapping("/topcheck")
     public @ResponseBody Map topcheck(BdCheckCases bean){
         return bean.toMap(bdCheckCasesMapper.selectTop(bean));
+    }
+
+    @RequestMapping("/topchosen")
+    public @ResponseBody Map topchosen(BdChosenCases bean){
+        return bean.toMap(bdChosenCasesMapper.selectTop(bean));
     }
 
 }

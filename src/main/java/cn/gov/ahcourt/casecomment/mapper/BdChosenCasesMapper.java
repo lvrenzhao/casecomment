@@ -1,5 +1,6 @@
 package cn.gov.ahcourt.casecomment.mapper;
 
+import cn.gov.ahcourt.casecomment.bean.BdCheckCases;
 import cn.gov.ahcourt.casecomment.bean.BdChosenCases;
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface BdChosenCasesMapper {
     int updateByPrimaryKey(BdChosenCases record);
     int setGroupNull(String groupid);
     int setGroupNullByCCID(String ccid);
+
+    List<BdChosenCases> selectTop(BdChosenCases bean);
 
 
 }

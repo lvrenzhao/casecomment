@@ -75,7 +75,7 @@ public class staticsController {
 
 	@RequestMapping(value = "/chosendata", method = { RequestMethod.GET, RequestMethod.POST })
 	public String chosendata() {
-		return "statics/bak_chosendata";
+		return "basic/bak_chosendata";
 	}
 
 	@RequestMapping(value = "/chosenreportitem", method = { RequestMethod.GET, RequestMethod.POST })

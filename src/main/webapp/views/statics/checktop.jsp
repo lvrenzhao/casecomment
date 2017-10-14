@@ -132,8 +132,8 @@
                   {label : '案件类型', name : 'xz', width : 80 },
                   {label : '案由',name : 'ay',width : 120 },
                   {label : '结案方式',name : 'jafs',width : 80},
-                  {label : '评查专家',name : 'teamleadername',width : 80},
-                  {label : '评查专家',name : 'teammatenames',width : 80},
+                  {label : '评查组长',name : 'teamleadername',width : 80},
+                  {label : '评查组员',name : 'teammatenames',width : 80},
                   {label : '评查分数',name : 'zzpcdf',width : 80},
                   {label : '质量等级',name : 'zzzldj',width : 80},
                   {label : '评查时间',name : 'dpsj',width : 80}
