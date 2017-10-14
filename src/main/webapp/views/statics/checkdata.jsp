@@ -208,7 +208,7 @@
           jssj=$("#form_sel_year").val()+"/"+ monthend[$("#form_sel_month").val()];
       }else if(!$("#form_sel_session").is(":hidden")){
           kssj=$("#form_sel_year").val()+"/"+ sessionbegin[$("#form_sel_session").val()];
-          jssj=$("#form_sel_year").val()+"/"+ sessionbegin[$("#form_sel_session").val()];
+          jssj=$("#form_sel_year").val()+"/"+ sessionend[$("#form_sel_session").val()];
       }else if(!$("#form_sel_year").is(":hidden")){
           kssj=$("#form_sel_year").val()+"/01/01";
           jssj=$("#form_sel_year").val()+"/12/31";
@@ -226,12 +226,18 @@
           },
           datatype : 'json',
           success : function(data) {
-              if(data && data.data){
-                  
+              layer.close(ltip);
+              if(data&&data.data){
+                  var html  = "";
+                  for(var i  = 0 ;  i < data.data.length ; i ++){
+                      html += "<tr><td>"+data.data[i].zzjgmc+"</td><td align='right'>"+data.data[i].c1+"</td><td align='right'>"+data.data[i].c2+"</td><td align='right'>"+data.data[i].c3+"</td><td align='right'>"+data.data[i].c4+"</td><td align='right'>"+data.data[i].c5+"</td><td align='right'>"+data.data[i].c6+"</td><td align='right'>"+data.data[i].c7+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c8+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c9+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c10+"</td><td align='right'>-</td></tr>";
+                  }
+                  if(currentTab == 1){
+                      $("#tbody1").html(html);
+                  }
               }
           }
       });
-      layer.close(ltip);
   }
 
   function getRecent10Years() {

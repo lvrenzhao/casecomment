@@ -69,7 +69,7 @@ public class XStaticsController {
         BdCheckCases bean = new BdCheckCases();
         if(StringUtils.isNotBlank(kssj) && StringUtils.isNotBlank(jssj)) {
             bean.setFqsj1(kssj);
-            bean.setFqsj1(jssj);
+            bean.setFqsj2(jssj);
         }
         if("1".equals(type)){
             List<Map> list= bdCheckCasesMapper.selectReportXz(bean);

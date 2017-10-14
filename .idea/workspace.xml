@@ -14,6 +14,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,12 +37,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="checkdata.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkdata.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="229" column="18" lean-forward="false" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
+            <state relative-caret-position="315">
+              <caret line="227" column="36" lean-forward="false" selection-start-line="227" selection-start-column="36" selection-end-line="227" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XStaticsController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BdCheckCasesMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="232" column="130" lean-forward="false" selection-start-line="232" selection-start-column="130" selection-end-line="232" selection-end-column="130" />
+              <folding>
+                <element signature="e#14802#14806#0" expanded="true" />
+                <element signature="e#15091#15095#0" expanded="true" />
+                <element signature="e#15380#15384#0" expanded="true" />
+                <element signature="e#15669#15673#0" expanded="true" />
+                <element signature="e#15958#15962#0" expanded="true" />
+                <element signature="e#16233#16237#0" expanded="true" />
+                <element signature="e#16524#16528#0" expanded="true" />
+                <element signature="e#16815#16819#0" expanded="true" />
+                <element signature="e#17106#17110#0" expanded="true" />
+                <element signature="e#17881#17885#0" expanded="true" />
+                <element signature="e#18172#18176#0" expanded="true" />
+                <element signature="e#18461#18465#0" expanded="true" />
+                <element signature="e#18757#18761#0" expanded="true" />
+                <element signature="e#19050#19054#0" expanded="true" />
+                <element signature="e#19325#19329#0" expanded="true" />
+                <element signature="e#19616#19620#0" expanded="true" />
+                <element signature="e#19907#19911#0" expanded="true" />
+                <element signature="e#20198#20202#0" expanded="true" />
+                <marker date="1507959446000" expanded="true" signature="2818:2886" ph="delete from " />
+                <marker date="1507959446000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
+                <marker date="1507959446000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
+                <marker date="1507959446000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="11235:12168" ph="select b.bt,... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="11235:12427" ph="select b.bt,... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="11235:12446" ph="select b.bt,... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="12553:14131" ph="select zzjgi... sd_organization" />
+                <marker date="1507959446000" expanded="true" signature="12584:12724" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="12736:12876" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="12888:13028" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13040:13180" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13192:13332" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13344:13469" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13481:13624" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13635:13778" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13789:13932" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="13943:14086" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="14259:17211" ph="select zzjgi... sd_organization" />
+                <marker date="1507959446000" expanded="true" signature="14290:14570" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="14582:14859" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="14871:15148" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="15160:15437" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="15449:15726" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="15738:16000" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="15738:16001" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="16013:16293" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="16304:16584" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="16595:16875" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="16886:17166" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="17338:20303" ph="select zzjgi... sd_organization" />
+                <marker date="1507959446000" expanded="true" signature="17369:17649" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="17661:17940" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="17952:18229" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="18241:18525" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="18537:18818" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="18830:19092" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="18830:19093" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="19105:19385" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="19396:19676" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="19687:19967" ph="select count... bd_check_cases" />
+                <marker date="1507959446000" expanded="true" signature="19978:20258" ph="select count... bd_check_cases" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,9 +251,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/StaticxzBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
       </list>
     </option>
@@ -1131,14 +1220,7 @@
       <workItem from="1507512800754" duration="3692000" />
       <workItem from="1507559071221" duration="17989000" />
       <workItem from="1507622841827" duration="42441000" />
-      <workItem from="1507939196810" duration="12105000" />
-    </task>
-    <task id="LOCAL-00305" summary="1">
-      <created>1507420170825</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1507420170827</updated>
+      <workItem from="1507939196810" duration="14172000" />
     </task>
     <task id="LOCAL-00306" summary="1">
       <created>1507420749924</created>
@@ -1476,11 +1558,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507958699905</updated>
     </task>
-    <option name="localTasksCounter" value="354" />
+    <task id="LOCAL-00354" summary="1">
+      <created>1507958730960</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1507958730960</updated>
+    </task>
+    <option name="localTasksCounter" value="355" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="641760000" />
+    <option name="totallyTimeSpent" value="643827000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1497,7 +1586,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.5028612" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28915662" sideWeight="0.50572246" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771084" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18097281" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1509,7 +1598,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29277107" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28915662" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30240965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1552,7 +1641,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2951807" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29277107" sideWeight="0.49761903" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30240965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1657,7 +1746,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="188" />
+      <option name="time" value="192" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1808,15 +1897,15 @@
         <state relative-caret-position="119">
           <caret line="37" column="35" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
           <folding>
-            <element signature="e#527#528#0" expanded="true" />
-            <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#955#956#0" expanded="true" />
-            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="false" />
+            <element signature="e#558#559#0" expanded="false" />
+            <element signature="e#749#750#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#845#846#0" expanded="false" />
+            <element signature="e#879#880#0" expanded="false" />
+            <element signature="e#909#910#0" expanded="false" />
+            <element signature="e#955#956#0" expanded="false" />
+            <element signature="e#993#994#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1848,9 +1937,9 @@
         <state relative-caret-position="608">
           <caret line="99" column="32" lean-forward="false" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
           <folding>
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2161#2162#0" expanded="true" />
+            <element signature="e#2077#2078#0" expanded="false" />
+            <element signature="e#2123#2124#0" expanded="false" />
+            <element signature="e#2161#2162#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2001,8 +2090,8 @@
         <state relative-caret-position="189">
           <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2073,7 +2162,7 @@
         <state relative-caret-position="84">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2102,90 +2191,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="79" column="62" lean-forward="false" selection-start-line="79" selection-start-column="62" selection-end-line="79" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="236" column="153" lean-forward="false" selection-start-line="236" selection-start-column="153" selection-end-line="236" selection-end-column="153" />
+        <state relative-caret-position="483">
+          <caret line="232" column="130" lean-forward="false" selection-start-line="232" selection-start-column="130" selection-end-line="232" selection-end-column="130" />
           <folding>
-            <element signature="e#14817#14821#0" expanded="true" />
-            <element signature="e#15106#15110#0" expanded="true" />
-            <element signature="e#15395#15399#0" expanded="true" />
-            <element signature="e#15684#15688#0" expanded="true" />
-            <element signature="e#15973#15977#0" expanded="true" />
-            <element signature="e#16262#16266#0" expanded="true" />
-            <element signature="e#16553#16557#0" expanded="true" />
-            <element signature="e#16844#16848#0" expanded="true" />
-            <element signature="e#17135#17139#0" expanded="true" />
-            <element signature="e#17910#17914#0" expanded="true" />
-            <element signature="e#18201#18205#0" expanded="true" />
-            <element signature="e#18490#18494#0" expanded="true" />
-            <element signature="e#18786#18790#0" expanded="true" />
-            <element signature="e#19079#19083#0" expanded="true" />
-            <element signature="e#19368#19372#0" expanded="true" />
-            <element signature="e#19659#19663#0" expanded="true" />
-            <element signature="e#19950#19954#0" expanded="true" />
-            <element signature="e#20241#20245#0" expanded="true" />
-            <marker date="1507957569000" expanded="true" signature="2818:2886" ph="delete from " />
-            <marker date="1507957569000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
-            <marker date="1507957569000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
-            <marker date="1507957569000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="11235:12168" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="11235:12427" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="11235:12446" ph="select b.bt,... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="12553:14146" ph="select zzjgi... sd_organization" />
-            <marker date="1507957569000" expanded="true" signature="12584:12724" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="12736:12876" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="12888:13028" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13040:13180" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13192:13332" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13344:13484" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13496:13639" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13650:13793" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13804:13947" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="13958:14101" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="14274:17240" ph="select zzjgi... sd_organization" />
-            <marker date="1507957569000" expanded="true" signature="14305:14585" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="14597:14874" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="14886:15163" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="15175:15452" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="15464:15741" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="15753:16030" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="16042:16322" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="16333:16613" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="16624:16904" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="16915:17195" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="17367:20346" ph="select zzjgi... sd_organization" />
-            <marker date="1507957569000" expanded="true" signature="17398:17678" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="17690:17969" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="17981:18258" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="18270:18554" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="18566:18847" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="18859:19136" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="19148:19428" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="19439:19719" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="19730:20010" ph="select count... bd_check_cases" />
-            <marker date="1507957569000" expanded="true" signature="20021:20301" ph="select count... bd_check_cases" />
+            <element signature="e#14802#14806#0" expanded="true" />
+            <element signature="e#15091#15095#0" expanded="true" />
+            <element signature="e#15380#15384#0" expanded="true" />
+            <element signature="e#15669#15673#0" expanded="true" />
+            <element signature="e#15958#15962#0" expanded="true" />
+            <element signature="e#16233#16237#0" expanded="true" />
+            <element signature="e#16524#16528#0" expanded="true" />
+            <element signature="e#16815#16819#0" expanded="true" />
+            <element signature="e#17106#17110#0" expanded="true" />
+            <element signature="e#17881#17885#0" expanded="true" />
+            <element signature="e#18172#18176#0" expanded="true" />
+            <element signature="e#18461#18465#0" expanded="true" />
+            <element signature="e#18757#18761#0" expanded="true" />
+            <element signature="e#19050#19054#0" expanded="true" />
+            <element signature="e#19325#19329#0" expanded="true" />
+            <element signature="e#19616#19620#0" expanded="true" />
+            <element signature="e#19907#19911#0" expanded="true" />
+            <element signature="e#20198#20202#0" expanded="true" />
+            <marker date="1507959446000" expanded="true" signature="2818:2886" ph="delete from " />
+            <marker date="1507959446000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
+            <marker date="1507959446000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
+            <marker date="1507959446000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="5844:8680" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="8813:11101" ph="select CONCA... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="9740:9822" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="11235:12168" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="11235:12427" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="11235:12446" ph="select b.bt,... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="12553:14131" ph="select zzjgi... sd_organization" />
+            <marker date="1507959446000" expanded="true" signature="12584:12724" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="12736:12876" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="12888:13028" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13040:13180" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13192:13332" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13344:13469" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13481:13624" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13635:13778" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13789:13932" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="13943:14086" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="14259:17211" ph="select zzjgi... sd_organization" />
+            <marker date="1507959446000" expanded="true" signature="14290:14570" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="14582:14859" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="14871:15148" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="15160:15437" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="15449:15726" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="15738:16000" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="15738:16001" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="16013:16293" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="16304:16584" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="16595:16875" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="16886:17166" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="17338:20303" ph="select zzjgi... sd_organization" />
+            <marker date="1507959446000" expanded="true" signature="17369:17649" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="17661:17940" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="17952:18229" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="18241:18525" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="18537:18818" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="18830:19092" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="18830:19093" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="19105:19385" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="19396:19676" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="19687:19967" ph="select count... bd_check_cases" />
+            <marker date="1507959446000" expanded="true" signature="19978:20258" ph="select count... bd_check_cases" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="229" column="18" lean-forward="false" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
+        <state relative-caret-position="315">
+          <caret line="227" column="36" lean-forward="false" selection-start-line="227" selection-start-column="36" selection-end-line="227" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>
