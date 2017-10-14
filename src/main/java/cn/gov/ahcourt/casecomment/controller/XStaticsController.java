@@ -107,4 +107,12 @@ public class XStaticsController {
         return bean.toMap(sdProfessionalMapper.selectForActive(ggid));
     }
 
+    @RequestMapping("/quality")
+    public @ResponseBody Map quality(String ggid){
+        List<Map> list= bdCheckCasesMapper.selectQuality(ggid);
+        HashMap map = new HashMap();
+        map.put("data",list);
+        return map;
+    }
+
 }

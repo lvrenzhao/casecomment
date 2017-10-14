@@ -284,4 +284,15 @@
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid <if test="fqsj1 != null and fqsj1 != '' "> and date_format(c.create_date, '%Y/%m/%d') >= #{fqsj1} and date_format(c.create_date, '%Y/%m/%d') &lt;= #{fqsj2}</if> and c1.gsfy = a.zzjgmc and c.zzzldj='差错') c10
     from sd_organization a order by fjm
   </select>
+
+  <select id="selectQuality" resultType="map" parameterType="java.lang.String">
+    select
+    itemid,
+    (select psnr from bd_scoretable_items x where x.itemid = a.itemid) psnr,
+    (select pfbz from bd_scoretable_items x where x.itemid = a.itemid) pfbz,
+    (select fz from bd_scoretable_items x where x.itemid = a.itemid) fz,
+    count(1) kfaj,sum(kf) ljkf,sum(kf)/count(1) pjkf
+    from bd_check_score a , bd_check_records r where a.crid = r.crid and r.checkid = #{ggid} group by itemid
+    order by sum(kf) desc
+  </select>
 </mapper>

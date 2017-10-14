@@ -121,7 +121,7 @@
               <th class="wb5">平均扣分</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody4">
 
             </tbody>
           </table>
@@ -240,6 +240,24 @@
                         html += "<tr><td>"+data.data[i].zzjgmc+"</td><td align='right'>"+data.data[i].c1+"</td><td align='right'>"+data.data[i].c2+"</td><td align='right'>"+data.data[i].c3+"</td><td align='right'>"+data.data[i].c4+"</td><td align='right'>"+data.data[i].c5+"</td><td align='right'>"+data.data[i].c6+"</td><td align='right'>"+data.data[i].c7+"</td><td align='right'>"+docal(data.data[i].c7,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c8+"</td><td align='right'>"+docal(data.data[i].c8,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c9+"</td><td align='right'>"+docal(data.data[i].c9,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c10+"</td><td align='right'>"+docal(data.data[i].c10,data.data[i].c6)+"%</td></tr>";
                     }
                     $("#tbody2").html(html);
+                }
+            }
+        });
+
+        $.ajax({
+            type : 'POST',
+            url : ahcourt.ctx+"/static/quality.do",
+            data:{
+                ggid:ggid
+            },
+            datatype : 'json',
+            success : function(data) {
+                if(data&&data.data){
+                    var html  = "";
+                    for(var i  = 0 ;  i < data.data.length ; i ++){
+                        html += "<tr><td>"+(i+1)+"</td><td>"+data.data[i].psnr+"</td><td>"+data.data[i].pfbz+"</td><td>"+data.data[i].fz+"</td><td>"+data.data[i].ljkf+"</td><td>"+data.data[i].kfaj+"</td><td>"+data.data[i].pjkf+"</td></tr>";
+                    }
+                    $("#tbody4").html(html);
                 }
             }
         });
