@@ -14,6 +14,10 @@
       .step-content{padding:0px !important;width:100% !important;height:100% !important;background-color: #fff; }
       .subforms{background: #eee !important;color: #aaa !important;}
       .chosen-container{width:100% !important;}
+      .menuContent{
+        height:300px;
+        overflow: auto;
+      }
     </style>
   </head>
   <body>
