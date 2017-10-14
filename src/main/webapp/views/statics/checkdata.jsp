@@ -230,10 +230,12 @@
               if(data&&data.data){
                   var html  = "";
                   for(var i  = 0 ;  i < data.data.length ; i ++){
-                      html += "<tr><td>"+data.data[i].zzjgmc+"</td><td align='right'>"+data.data[i].c1+"</td><td align='right'>"+data.data[i].c2+"</td><td align='right'>"+data.data[i].c3+"</td><td align='right'>"+data.data[i].c4+"</td><td align='right'>"+data.data[i].c5+"</td><td align='right'>"+data.data[i].c6+"</td><td align='right'>"+data.data[i].c7+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c8+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c9+"</td><td align='right'>-</td><td align='right'>"+data.data[i].c10+"</td><td align='right'>-</td></tr>";
+                      html += "<tr><td>"+data.data[i].zzjgmc+"</td><td align='right'>"+data.data[i].c1+"</td><td align='right'>"+data.data[i].c2+"</td><td align='right'>"+data.data[i].c3+"</td><td align='right'>"+data.data[i].c4+"</td><td align='right'>"+data.data[i].c5+"</td><td align='right'>"+data.data[i].c6+"</td><td align='right'>"+data.data[i].c7+"</td><td align='right'>"+docal(data.data[i].c7,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c8+"</td><td align='right'>"+docal(data.data[i].c8,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c9+"</td><td align='right'>"+docal(data.data[i].c9,data.data[i].c6)+"%</td><td align='right'>"+data.data[i].c10+"</td><td align='right'>"+docal(data.data[i].c10,data.data[i].c6)+"%</td></tr>";
                   }
                   if(currentTab == 1){
                       $("#tbody1").html(html);
+                  }else{
+                      $("#tbody2").html(html);
                   }
               }
           }
@@ -247,6 +249,14 @@
           arr.push(i);
       }
       return arr;
+  }
+
+  function docal(c1,c2) {
+      if(c2>0){
+          return (c1/c2).toFixed(2);
+      }else{
+          return "0.00";
+      }
   }
 
 </script>
