@@ -13,6 +13,7 @@ public interface SdProfessionalMapper {
     List<SdProfessional> selectAll();
 
     List<SdProfessional> select(SdProfessional bean);
+    List<SdProfessional> selectForActive(String ggid);
 
     int updateByPrimaryKey(SdProfessional record);
 }

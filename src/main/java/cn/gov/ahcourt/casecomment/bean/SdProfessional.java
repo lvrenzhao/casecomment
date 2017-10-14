@@ -29,6 +29,16 @@ public class SdProfessional extends BaseEntity{
 
     private String xm;
 
+    private String pcs;
+
+    public String getPcs() {
+        return pcs;
+    }
+
+    public void setPcs(String pcs) {
+        this.pcs = pcs;
+    }
+
     public String getZymc() {
         return zymc;
     }

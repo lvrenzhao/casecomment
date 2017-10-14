@@ -1,10 +1,7 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.*;
-import cn.gov.ahcourt.casecomment.mapper.BdCheckCasesMapper;
-import cn.gov.ahcourt.casecomment.mapper.BdCheckMapper;
-import cn.gov.ahcourt.casecomment.mapper.BdChosenCasesMapper;
-import cn.gov.ahcourt.casecomment.mapper.BdChosenMapper;
+import cn.gov.ahcourt.casecomment.mapper.*;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -35,6 +32,9 @@ public class XStaticsController {
 
     @Resource
     private BdChosenMapper bdChosenMapper;
+
+    @Resource
+    private SdProfessionalMapper sdProfessionalMapper;
 
     @RequestMapping("/checkreport")
     public @ResponseBody Map checkreport(BdCheck bean, @SessionScope("user")UserBean user) {
@@ -83,6 +83,28 @@ public class XStaticsController {
             return map;
         }
         return null;
+    }
+
+    @RequestMapping("/checkdatabyggid")
+    public @ResponseBody Map checkdatabyggid(String type,String ggid){
+        if("1".equals(type)){
+            List<Map> list= bdCheckCasesMapper.selectReportXzByGGID(ggid);
+            HashMap map = new HashMap();
+            map.put("data",list);
+            return map;
+        }else if ("2".equals(type)){
+            List<Map> list= bdCheckCasesMapper.selectReportLxByGGID(ggid);
+            HashMap map = new HashMap();
+            map.put("data",list);
+            return map;
+        }
+        return null;
+    }
+
+    @RequestMapping("/checkpros")
+    public @ResponseBody Map checkpros(String ggid){
+        SdProfessional bean = new SdProfessional();
+        return bean.toMap(sdProfessionalMapper.selectForActive(ggid));
     }
 
 }

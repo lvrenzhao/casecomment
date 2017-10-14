@@ -26,6 +26,7 @@
     <result column="xm" property="xm" />
     <result column="zzjgid" property="zzjgid" />
     <result column="zzjgmc" property="zzjgmc" />
+    <result column="pcs" property="pcs" />
   </resultMap>
 
 
@@ -73,6 +74,11 @@
     <if test="zzjgmc != null and zzjgmc != '' ">
       and c.zzjgmc like concat('%',#{zzjgmc},'%')
     </if>
+  </select>
+
+  <select id="selectForActive" resultMap="ResultMapWithUser" parameterType="java.lang.String" >
+    select zjid, zy,fn_get_dict(zy) zymc, bq,fn_get_dict(bq) bqmc, a.tx, userid, js,b.dh,b.dzyx,b.sj,b.xm,c.zzjgid ,c.zzjgmc,(select count(1) from bd_check_pros d, bd_check_cases e where d.groupid = e.psgroupid and e.checkid=#{ggid} and d.proid = b.yhid ) pcs
+    from sd_professional a, sd_user b,sd_organization c where a.userid = b.yhid and b.zzid = c.zzjgid and b.yhid in (select c.proid from bd_check_pros c where c.checkid = #{ggid})
   </select>
 
 </mapper>

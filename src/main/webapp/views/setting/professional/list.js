@@ -10,11 +10,11 @@ $(function() {
             page:1,
             postData : {
 				xm : $('#xm').val(),
-				zzjgmc : $('#zzjgmc').val(),
+				zzjgmc : $('#zzjgmc').val()
 			}
 		}).trigger("reloadGrid");
 	})
-})
+});
 
 function listgrid() {
 	$("#table1").jqGrid({

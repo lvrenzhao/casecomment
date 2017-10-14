@@ -19,6 +19,7 @@ public interface BdCheckCasesMapper {
     List<BdCheckCases> selectTop(BdCheckCases bean);
 
     List<Map> selectReportXzByGGID(String ggid);
+    List<Map> selectReportLxByGGID(String ggid);
 
     List<Map> selectReportXz(BdCheckCases bean);
     List<Map> selectReportLx(BdCheckCases bean);
