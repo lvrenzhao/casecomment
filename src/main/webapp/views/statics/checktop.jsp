@@ -44,31 +44,31 @@
 
         </div>
         <div class="bmbox_tool">
-          <select class="xyear xsel">
+          <select class="xyear xsel" id="year2">
           </select>
-          <select class="xsel">
-            <option value="4">第四季度</option>
-            <option value="3">第三季度</option>
-            <option value="2">第二季度</option>
-            <option value="1">第一季度</option>
+          <select class="xsel" id="session2">
+            <option value="3">第四季度</option>
+            <option value="2">第三季度</option>
+            <option value="1">第二季度</option>
+            <option value="0">第一季度</option>
           </select>
         </div>
         <div class="bmbox_tool">
-          <select class="xyear xsel">
+          <select class="xyear xsel" id="year3">
           </select>
-          <select class="xsel">
-            <option value="12">12月</option>
-            <option value="11">11月</option>
-            <option value="10">10月</option>
-            <option value="9">09月</option>
-            <option value="8">08月</option>
-            <option value="7">07月</option>
-            <option value="6">06月</option>
-            <option value="5">05月</option>
-            <option value="4">04月</option>
-            <option value="3">03月</option>
-            <option value="2">02月</option>
-            <option value="1">01月</option>
+          <select class="xsel" id="month3">
+            <option value="11">12月</option>
+            <option value="10">11月</option>
+            <option value="9">10月</option>
+            <option value="8">09月</option>
+            <option value="7">08月</option>
+            <option value="6">07月</option>
+            <option value="5">06月</option>
+            <option value="4">05月</option>
+            <option value="3">04月</option>
+            <option value="2">03月</option>
+            <option value="1">02月</option>
+            <option value="0">01月</option>
           </select>
         </div>
       </div>
@@ -104,6 +104,10 @@
   </div>
   <script type="text/javascript">
       var URL_ALLTABLE = ahcourt.ctx+"/static/topcheck.do";
+      var monthbegin = ["01/01",'02/01','03/01','04/01','05/01','06/01','07/01','08/01','09/01','10/01','11/01','12/01'];
+      var monthend = ["01/31","02/28","03/31","04/30","05/31","06/30","07/31","08/31","09/30","10/31","11/30","12/31"];
+      var sessionbegin = ["01/01",'04/01','07/01','10/01'];
+      var sessionend = ["03/31",'06/30','09/30','12/31'];
       $(function(){
           //双tab联动
           var firstitem=$(".home-righttab .nav-tabs li");
@@ -116,11 +120,6 @@
               html += '<option value="'+tenyears[i]+'">'+tenyears[i]+'年</option>'
           }
           $(".xyear").html(html);
-
-          var monthbegin = ["01/01",'02/01','03/01','04/01','05/01','06/01','07/01','08/01','09/01','10/01','11/01','12/01'];
-          var monthend = ["01/31","02/28","03/31","04/30","05/31","06/30","07/31","08/31","09/30","10/31","11/30","12/31"];
-          var sessionbegin = ["01/01",'04/01','07/01','10/01'];
-          var sessionend = ["03/31",'06/30','09/30','12/31'];
 
           var cols = [
                   {label : 'ccid',name : 'ccid',hidden : true,key : true,frozen : true},
@@ -174,6 +173,10 @@
 
           $("#table3").jqGrid({
               url : URL_ALLTABLE,
+              postData:{
+                  fqsj1:$("#year2").val()+"/"+sessionbegin[$("#session2").val()],
+                  fqsj2:$("#year2").val()+"/"+sessionend[$("#session2").val()]
+              },
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
@@ -189,6 +192,10 @@
 
           $("#table4").jqGrid({
               url : URL_ALLTABLE,
+              postData:{
+                  fqsj1:$("#year3").val()+"/"+monthbegin[$("#month3").val()],
+                  fqsj2:$("#year3").val()+"/"+monthend[$("#month3").val()]
+              },
               datatype : "json",
               mtype : "post",
               height : gridHeight(),
@@ -212,18 +219,30 @@
             $("#table2").jqGrid().setGridParam({
                 url : URL_ALLTABLE,
                 postData:{
-                    fqsj1:$("#year1").val()+"-01-01",
-                    fqsj2:$("#year1").val()+"-12-31"
+                    fqsj1:$("#year1").val()+"/01/01",
+                    fqsj2:$("#year1").val()+"/12/31"
                 },
                 page : 1
             }).trigger("reloadGrid");
 
         }else if ($.trim($(".nav li.active").text()) == "季度排行榜"){
-            console.log(3)
-
+            $("#table3").jqGrid().setGridParam({
+                url : URL_ALLTABLE,
+                postData:{
+                    fqsj1:$("#year2").val()+"/"+sessionbegin[$("#session2").val()],
+                    fqsj2:$("#year2").val()+"/"+sessionend[$("#session2").val()]
+                },
+                page : 1
+            }).trigger("reloadGrid");
         }else if ($.trim($(".nav li.active").text()) == "月度排行榜"){
-            console.log(4)
-
+            $("#table4").jqGrid().setGridParam({
+                url : URL_ALLTABLE,
+                postData:{
+                    fqsj1:$("#year3").val()+"/"+monthbegin[$("#month3").val()],
+                    fqsj2:$("#year3").val()+"/"+monthend[$("#month3").val()]
+                },
+                page : 1
+            }).trigger("reloadGrid");
         }
       }
 
