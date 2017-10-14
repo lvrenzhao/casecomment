@@ -61,4 +61,14 @@ public class XStaticsController {
         return bean.toMap(bdChosenCasesMapper.selectTop(bean));
     }
 
+    @RequestMapping("/checkdata")
+    public @ResponseBody Map checkdata(String type,String kssj,String jssj){
+        return null;
+    }
+
+    @RequestMapping("/chosendata")
+    public @ResponseBody Map chosendata(String type,String kssj,String jssj){
+        return null;
+    }
+
 }

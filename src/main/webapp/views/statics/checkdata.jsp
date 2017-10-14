@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>双评工作平台</title>
   <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-  <jsp:include page="/header.jsp?libs=icheck" />
+  <jsp:include page="/header.jsp?libs=icheck;layer;" />
   <style>
     #table_score th{text-align: center;vertical-align: middle}
     #table_score td{vertical-align: middle}
@@ -20,50 +20,63 @@
     <div class="i-checkslayout">
       <div class="checkbox i-checks">
         <label class="default_radio">
-          <input type="radio" checked value="1" name="service" style="position: absolute; opacity: 0;"> <i></i> 总计
+          <input id="check1" type="radio" checked value="1" name="service" style="position: absolute; opacity: 0;"> <i></i> 总计
         </label>
         <label>
-          <input type="radio" value="2" name="service" style="position: absolute; opacity: 0;"> <i></i> 年度
+          <input id="check2" type="radio" value="2" name="service" style="position: absolute; opacity: 0;"> <i></i> 年度
         </label>
         <label>
-          <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 季度
+          <input id="check3" type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 季度
         </label>
         <label>
-          <input type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 月度
+          <input id="check4" type="radio" value="3" name="service" style="position: absolute; opacity: 0;"> <i></i> 月度
         </label>
       </div>
     </div>
   </div>
   <div class="form_item wb15 fl">
-    <label>选择年度</label>
-    <select class="form-control ">
-      <option>2017年</option>
+    <label style="visibility: hidden">选择年度</label>
+    <select class="form-control xsel xyear" id="form_sel_year" style="display: none;">
     </select>
   </div>
 
   <div class="form_item wb15 fl">
-    <label>选择季度</label>
-    <select class="form-control ">
-      <option>第四季度</option>
+    <label style="visibility: hidden">选择季度</label>
+    <select class="form-control xsel" id="form_sel_session" style="display: none;">
+      <option value="3">第四季度</option>
+      <option value="2">第三季度</option>
+      <option value="1">第二季度</option>
+      <option value="0">第一季度</option>
     </select>
   </div>
 
   <div class="form_item wb15 fl">
-    <label>选择月份</label>
-    <select class="form-control ">
-      <option>12月</option>
+    <label style="visibility: hidden">选择月份</label>
+    <select class="form-control xsel" id="form_sel_month" style="display: none;">
+      <option value="11">12月</option>
+      <option value="10">11月</option>
+      <option value="9">10月</option>
+      <option value="8">09月</option>
+      <option value="7">08月</option>
+      <option value="6">07月</option>
+      <option value="5">06月</option>
+      <option value="4">05月</option>
+      <option value="3">04月</option>
+      <option value="2">03月</option>
+      <option value="1">02月</option>
+      <option value="0">01月</option>
     </select>
   </div>
 </div>
 <div class="bmbox_layout">
   <div class="bmbox_title home-righttab">
     <ul class="nav nav-tabs navs-3">
-      <li class="active">
+      <li id="t1" class="active">
         <a data-toggle="tab" href="#tab-1">
           按案件性质
         </a>
       </li>
-      <li class="">
+      <li id="t2" class="">
         <a data-toggle="tab" href="#tab-2">
           按案件类型
         </a>
@@ -73,7 +86,7 @@
   <div class="bmbox_content">
     <div class="tab-content">
       <div id="tab-1" class="tab-pane active">
-        <table class="table table-bordered" id="table_score">
+        <table class="table table-bordered" id="table1">
           <thead>
           <tr>
             <th class="wb20">法院</th>
@@ -93,182 +106,13 @@
             <th class="wb7">差错率</th>
           </tr>
           </thead>
-          <tbody>
-          <tr style="background-color:#B1D2EC">
-            <td class="wb20">安徽省高级人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">合肥市中级人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">蜀山区人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">长丰县人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr style="background-color: #B1D2EC">
-            <td class="wb20">小计</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">宣城市中级人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">广德县人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr>
-            <td class="wb20">绩溪县人民法院</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr style="background-color: #B1D2EC">
-            <td class="wb20">小计</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
-          <tr style="background-color:#1c94c4">
-            <td class="wb20">总计</td>
-            <td class="wb5"><a href="#">3</a></td>
-            <td class="wb5"><a href="#">4</a></td>
-            <td class="wb5"><a href="#">8</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb5"><a href="#">10</a></td>
-            <td class="wb7"><a href="#">37</a></td>
-            <td class="wb5"><a href="#">12</a></td>
-            <td class="wb7"><a href="#">35%</a></td>
-            <td class="wb5"><a href="#">22</a></td>
-            <td class="wb7"><a href="#">55%</a></td>
-            <td class="wb5"><a href="#">5</a></td>
-            <td class="wb7"><a href="#">10%</a></td>
-            <td class="wb5"><a href="#">2</a></td>
-            <td class="wb7"><a href="#">5%</a></td>
-          </tr>
+          <tbody id="tbody1">
+
           </tbody>
         </table>
       </div>
       <div id="tab-2" class="tab-pane">
-        <table class="table table-bordered" id="table_score">
+        <table class="table table-bordered" id="table2">
           <thead>
           <tr>
             <th class="wb20">法院</th>
@@ -288,177 +132,8 @@
             <th class="wb7">差错率</th>
           </tr>
           </thead>
-          <tbody>
-          <tr style="background-color:#B1D2EC">
-            <td class="wb20">安徽省高级人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">合肥市中级人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">肥东县人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">长丰人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr style="background-color: #B1D2EC">
-            <td class="wb20">小计</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">宣城市中级人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">广德县人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr>
-            <td class="wb20">绩溪县人民法院</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr style="background-color: #B1D2EC">
-            <td class="wb20">小计</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
-          <tr style="background-color:#1c94c4">
-            <td class="wb20">总计</td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-            <td class="wb5"></td>
-            <td class="wb7"></td>
-          </tr>
+          <tbody id="tbody2">
+
           </tbody>
         </table>
       </div>
@@ -466,12 +141,106 @@
   </div>
 </div>
 <script>
+  var currentTab = 1;
+  var URL_CHECKDATA = ahcourt.ctx+"/static/checkdata.do";
   $(function () {
+      var tenyears = getRecent10Years();
+      var html = "";
+      for(var i = 0 ; i < tenyears.length ; i ++){
+          html += '<option value="'+tenyears[i]+'">'+tenyears[i]+'年</option>'
+      }
+      $(".xyear").html(html);
+
+
       $('.i-checks').iCheck({
           radioClass : 'iradio_square-green',
-          checkboxClass : 'icheckbox_square-green',
+          checkboxClass : 'icheckbox_square-green'
       });
-  })
+
+      $('#check1').on('ifChecked', function(event){
+          $(".xsel").hide();
+          reloadData();
+      });
+      $('#check2').on('ifChecked', function(event){
+          $(".xsel").hide();
+          $("#form_sel_year").show();
+          reloadData();
+      });
+      $('#check3').on('ifChecked', function(event){
+          $(".xsel").hide();
+          $("#form_sel_year").show();
+          $("#form_sel_session").show();
+          reloadData();
+      });
+      $('#check4').on('ifChecked', function(event){
+          $("#form_sel_year").show();
+          $("#form_sel_session").show();
+          $("#form_sel_month").show();
+          reloadData();
+      });
+
+      $(".xsel").change(function () {
+          reloadData();
+      });
+
+      $("#t1").click(function () {
+          currentTab = 1;
+          reloadData();
+      });
+      $("#t2").click(function () {
+          currentTab = 2;
+          reloadData();
+      });
+
+      reloadData();
+  });
+
+  var monthbegin = ["01/01",'02/01','03/01','04/01','05/01','06/01','07/01','08/01','09/01','10/01','11/01','12/01'];
+  var monthend = ["01/31","02/28","03/31","04/30","05/31","06/30","07/31","08/31","09/30","10/31","11/30","12/31"];
+  var sessionbegin = ["01/01",'04/01','07/01','10/01'];
+  var sessionend = ["03/31",'06/30','09/30','12/31'];
+  function reloadData() {
+      var ltip = layer.msg("正在实时进行统计，请稍等....",{time: 50000000,icon:6});
+      var kssj = "";
+      var jssj = "";
+      if(!$("#form_sel_month").is(":hidden")){
+          kssj=$("#form_sel_year").val()+"/"+ monthbegin[$("#form_sel_month").val()];
+          jssj=$("#form_sel_year").val()+"/"+ monthend[$("#form_sel_month").val()];
+      }else if(!$("#form_sel_session").is(":hidden")){
+          kssj=$("#form_sel_year").val()+"/"+ sessionbegin[$("#form_sel_session").val()];
+          jssj=$("#form_sel_year").val()+"/"+ sessionbegin[$("#form_sel_session").val()];
+      }else if(!$("#form_sel_year").is(":hidden")){
+          kssj=$("#form_sel_year").val()+"/01/01";
+          jssj=$("#form_sel_year").val()+"/12/31";
+      }else{
+          kssj="";
+          jssj="";
+      }
+      $.ajax({
+          type : 'POST',
+          url : URL_CHECKDATA,
+          data:{
+              type:currentTab,
+              kssj:kssj,
+              jssj:jssj
+          },
+          datatype : 'json',
+          success : function(data) {
+              console.log(data)
+          }
+      });
+      layer.close(ltip);
+  }
+
+  function getRecent10Years() {
+      var cy = new Date().getFullYear();
+      var arr = [cy];
+      for(var i = cy-1; i> cy-5; i-- ){
+          arr.push(i);
+      }
+      return arr;
+  }
+
 </script>
 </body>
 </html>
