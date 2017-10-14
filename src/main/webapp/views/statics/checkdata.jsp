@@ -226,7 +226,9 @@
           },
           datatype : 'json',
           success : function(data) {
-              console.log(data)
+              if(data && data.data){
+                  
+              }
           }
       });
       layer.close(ltip);

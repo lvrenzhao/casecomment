@@ -14,8 +14,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/退卷函.pdf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml" afterPath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml" afterPath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="checkdata.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="217" column="7" lean-forward="true" selection-start-line="217" selection-start-column="7" selection-end-line="217" selection-end-column="7" />
+            <state relative-caret-position="391">
+              <caret line="229" column="18" lean-forward="false" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -159,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checktop.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosentop.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/StaticxzBean.java" />
@@ -168,6 +166,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
       </list>
     </option>
   </component>
@@ -1133,14 +1132,7 @@
       <workItem from="1507512800754" duration="3692000" />
       <workItem from="1507559071221" duration="17989000" />
       <workItem from="1507622841827" duration="42441000" />
-      <workItem from="1507939196810" duration="11639000" />
-    </task>
-    <task id="LOCAL-00303" summary="1">
-      <created>1507390854363</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1507390854363</updated>
+      <workItem from="1507939196810" duration="12071000" />
     </task>
     <task id="LOCAL-00304" summary="1">
       <created>1507392208125</created>
@@ -1478,11 +1470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507957901276</updated>
     </task>
-    <option name="localTasksCounter" value="352" />
+    <task id="LOCAL-00352" summary="1">
+      <created>1507957945859</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1507957945859</updated>
+    </task>
+    <option name="localTasksCounter" value="353" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="641294000" />
+    <option name="totallyTimeSpent" value="641726000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2186,8 +2185,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="217" column="7" lean-forward="true" selection-start-line="217" selection-start-column="7" selection-end-line="217" selection-end-column="7" />
+        <state relative-caret-position="391">
+          <caret line="229" column="18" lean-forward="false" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
           <folding />
         </state>
       </provider>
