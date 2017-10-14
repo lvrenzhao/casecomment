@@ -180,7 +180,7 @@
 		</where>
 	</delete>
 	<select id="getlist" resultMap="BaseResultMap">
-		select zzjgid as id,zzjgmc as name, sjzzjgid as pId,'true' as open from sd_organization
+		select zzjgid as id,zzjgmc as name, sjzzjgid as pId,CASE WHEN zzjgmc = '安徽省高级人民法院' THEN 'true' ELSE '' END open from sd_organization
 		where 1=1
 		<if test="remarks != null and remarks != '' ">
 			 and FIND_IN_SET( zzjgid, fn_get_childs (#{remarks}))

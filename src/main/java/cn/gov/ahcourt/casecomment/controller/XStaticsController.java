@@ -6,11 +6,14 @@ import cn.gov.ahcourt.casecomment.mapper.BdCheckMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdChosenCasesMapper;
 import cn.gov.ahcourt.casecomment.mapper.BdChosenMapper;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
+import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,11 +66,22 @@ public class XStaticsController {
 
     @RequestMapping("/checkdata")
     public @ResponseBody Map checkdata(String type,String kssj,String jssj){
-        return null;
-    }
-
-    @RequestMapping("/chosendata")
-    public @ResponseBody Map chosendata(String type,String kssj,String jssj){
+        BdCheckCases bean = new BdCheckCases();
+        if(StringUtils.isNotBlank(kssj) && StringUtils.isNotBlank(jssj)) {
+            bean.setFqsj1(kssj);
+            bean.setFqsj1(jssj);
+        }
+        if("1".equals(type)){
+            List<Map> list= bdCheckCasesMapper.selectReportXz(bean);
+            HashMap map = new HashMap();
+            map.put("data",list);
+            return map;
+        }else if ("2".equals(type)){
+            List<Map> list= bdCheckCasesMapper.selectReportLx(bean);
+            HashMap map = new HashMap();
+            map.put("data",list);
+            return map;
+        }
         return null;
     }
 
