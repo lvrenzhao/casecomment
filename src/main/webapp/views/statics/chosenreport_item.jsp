@@ -106,7 +106,10 @@
 
 
         $("#table2").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/chosen/chosencases.do',
+            postData:{
+                ggid:ggid
+            },
             datatype : "json",
             mtype : "post",
             height : $('body').height()-135,
@@ -114,61 +117,48 @@
             rownumbers : true,
             shrinkToFit : true,
             rowNum : 20,
-            colModel : [ {
-                label : 'ajid',
-                name : 'ajid',
-                hidden : true,
-                key : true,
-                frozen : true
-            }, {
-                label : 'ggid',
-                name : 'ggid',
-                hidden : true,
-                frozen : true
-            },{
-                label : '操作',
-                name : 'ggid',
-                width : 100,
-                align : 'center',
-                sortable : false,
-                formatter :formatter_grid1_opt_1 ,
-                frozen : true
-            },{
+            colModel : [
+                {label : 'ccid',name : 'ccid',hidden : true, key : true,frozen:true},
+                {
                 label : '案号',
-                name : 'xmmc',
+                name : 'ah',
                 frozen : true,
                 width : 100
             },{
                 label : '归属法院',
-                name : 'xmzt',
+                name : 'gsfy',
                 width : 150
             }, {
                 label : '承办部门',
-                name : 'htmc',
+                name : 'cbbm',
                 width : 100
             }, {
                 label : '承办人',
-                name : 'xmlxmc',
+                name : 'cbr',
                 width : 80
             }, {
                 label : '案件性质',
-                name : 'zylbmc',
+                name : 'xz',
                 width : 80
             }, {
                 label : '案由',
-                name : 'xmfzrmc',
+                name : 'ay',
                 width : 120
             }, {
                 label : '结案方式',
-                name : 'xmjlmc',
+                name : 'jafs',
                 width : 80
             },{
-                label : '评审专家',
-                name : 'pszj',
+                label : '评审组长',
+                name : 'teamleadername',
                 width : 80
-            }
-                ,{label : '评审时间',name : 'pcsj',width : 80}
-                ,{label : '得分',name : 'yqgq',width : 80}
+            },{
+                    label : '评审组员',
+                    name : 'teammatenames',
+                    width : 180
+                },
+                {label : '评选时间',name : 'dpsj',sortable:false,width : 100},
+                {label : '评选得分',name : 'zzpxdf',sortable:false, width : 100}
             ],
             pager:"#pager2"
             ,viewrecords: true

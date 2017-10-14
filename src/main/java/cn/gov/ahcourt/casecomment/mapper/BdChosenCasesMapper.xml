@@ -155,7 +155,7 @@
       and a.psgroupid is null
     </if>
 
-    order by b.bt asc , a.create_date desc
+    order by b.bt asc ,a.zzpxdf desc, a.create_date desc
   </select>
 
 
