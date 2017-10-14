@@ -138,7 +138,7 @@
                               </span>
 
                 </div>
-                <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="">清空</button>
+                <button type="button" class="btn btn-white btn-sm " style="float: right;margin-top: -30px;margin-right: -50px;" id="btn_clearorgs">清空</button>
                 <div id="menuContent" class="menuContent" style="z-index: 9999999">
                   <ul id="treeDemo" class="ztree"></ul>
                 </div>
@@ -147,10 +147,18 @@
 
             <div class="form_item wb20 fl moreview" style="padding-left: 60px;">
               <label>案件性质</label>
-              <select class="form-control input-sm">
-                <option>--请选择--</option>
-                <option>民事</option>
+              <select class="form-control input-sm" id="form_sel_xz">
+                <option value="">--请选择--</option>
+                <option value="刑事">刑事</option>
+                <option value="民事">民事</option>
+                <option value="行政">行政</option>
+                <option value="赔偿">赔偿</option>
+                <option value="执行">执行</option>
               </select>
+            </div>
+            <div class="form_item wb20 fl moreview" style="padding-left: 60px;">
+              <label>&nbsp;</label>
+              <button id="btn_query" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
             </div>
 
             <%--<div class="form_item wb20 fl moreview">--%>
@@ -283,7 +291,8 @@
         });
 
         $("#table5").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + "/case/checkcases.do",
+            postData:{ggid:ggid},
             datatype : "json",
             mtype : "post",
             height : $('body').height()-200,
@@ -303,12 +312,12 @@
                 width : 150
             },{
                 label : '承办部门',
-                name : 'gsfy',
+                name : 'cbbm',
                 frozen : true,
                 width : 100
             },{
                 label : '承办人',
-                name : 'gsfy',
+                name : 'cbr',
                 frozen : true,
                 width : 80
             },{
@@ -318,33 +327,47 @@
                 width : 100
             },{
                 label : '案件类型',
-                name : 'xz',
+                name : 'lx',
                 frozen : true,
                 width : 100
             },{
                 label : '评查组长',
-                name : 'xz',
+                name : 'teamleadername',
                 frozen : true,
                 width : 80
             },{
                 label : '评查组员',
-                name : 'xz',
+                name : 'teammatenames',
                 frozen : true,
                 width : 150
             },{
                 label : '得分',
-                name : 'fs',
+                name : 'zzpcdf',
                 frozen : true,
                 width : 80
             },{
                 label : '质量等级',
-                name : 'fs',
+                name : 'zzzldj',
                 frozen : true,
                 width : 80
             }
             ],
             pager:"#pager5"
             ,viewrecords: true
+        });
+        
+        $("#btn_query").click(function () {
+//            var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+//            var node = treeObj.getSelectedNodes()[0];
+            $("#table5").jqGrid().setGridParam({
+                url : ahcourt.ctx + "/case/checkcases.do",
+                page : 1,
+                postData:{
+                    ggid:ggid,
+                    gsfy:$('#citySel').val(),
+                    xz:$("#form_sel_xz").val()
+                }
+            }).trigger("reloadGrid");
         });
 
     });
@@ -402,6 +425,11 @@
             return "0.00";
         }
     }
+    $('#btn_clearorgs').click(function(){
+        $('#citySel').val("");
+        $("#zzid").val("");
+//        $('#chx_sfbhxjfy').iCheck('uncheck');
+    });
   </script>
   </body>
 </html>
