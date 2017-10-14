@@ -15,9 +15,10 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/files/送达回证.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,104 +39,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="checkreport_item.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+      <file leaf-file-name="chosenreport_item.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="257" column="226" lean-forward="false" selection-start-line="257" selection-start-column="226" selection-end-line="257" selection-end-column="226" />
+            <state relative-caret-position="136">
+              <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BdCheckCasesMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="294" column="65" lean-forward="true" selection-start-line="294" selection-start-column="65" selection-end-line="294" selection-end-column="65" />
-              <folding>
-                <element signature="e#16513#16517#0" expanded="true" />
-                <element signature="e#16802#16806#0" expanded="true" />
-                <element signature="e#17091#17095#0" expanded="true" />
-                <element signature="e#17380#17384#0" expanded="true" />
-                <element signature="e#17669#17673#0" expanded="true" />
-                <element signature="e#17944#17948#0" expanded="true" />
-                <element signature="e#18235#18239#0" expanded="true" />
-                <element signature="e#18526#18530#0" expanded="true" />
-                <element signature="e#18817#18821#0" expanded="true" />
-                <element signature="e#19592#19596#0" expanded="true" />
-                <element signature="e#19883#19887#0" expanded="true" />
-                <element signature="e#20172#20176#0" expanded="true" />
-                <element signature="e#20468#20472#0" expanded="true" />
-                <element signature="e#20761#20765#0" expanded="true" />
-                <element signature="e#21036#21040#0" expanded="true" />
-                <element signature="e#21327#21331#0" expanded="true" />
-                <element signature="e#21618#21622#0" expanded="true" />
-                <element signature="e#21909#21913#0" expanded="true" />
-                <marker date="1507991938000" expanded="true" signature="2818:2886" ph="delete from " />
-                <marker date="1507991938000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
-                <marker date="1507991938000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
-                <marker date="1507991938000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="5844:8694" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="8827:11115" ph="select CONCA... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="9754:9836" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="11249:12182" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="11249:12441" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="11249:12460" ph="select b.bt,... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="12567:14145" ph="select zzjgi... sd_organization" />
-                <marker date="1507991938000" expanded="true" signature="12598:12738" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="12750:12890" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="12902:13042" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13054:13194" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13206:13346" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13358:13483" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13495:13638" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13649:13792" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13803:13946" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="13957:14100" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="14251:15842" ph="select zzjgi... sd_organization" />
-                <marker date="1507991938000" expanded="true" signature="14282:14422" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="14434:14576" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="14588:14728" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="14740:14887" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="14899:15043" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15055:15180" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15192:15335" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15346:15489" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15500:15643" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15654:15797" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="15970:18922" ph="select zzjgi... sd_organization" />
-                <marker date="1507991938000" expanded="true" signature="16001:16281" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="16293:16570" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="16582:16859" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="16871:17148" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="17160:17437" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="17449:17711" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="17449:17712" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="17724:18004" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="18015:18295" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="18306:18586" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="18597:18877" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="19049:22014" ph="select zzjgi... sd_organization" />
-                <marker date="1507991938000" expanded="true" signature="19080:19360" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="19372:19651" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="19663:19940" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="19952:20236" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="20248:20529" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="20541:20803" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="20541:20804" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="20816:21096" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="21107:21387" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="21398:21678" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="21689:21969" ph="select count... bd_check_cases" />
-                <marker date="1507991938000" expanded="true" signature="22112:22519" ph="select itemi... bd_check_score" />
-                <marker date="1507991938000" expanded="true" signature="22112:22545" ph="select itemi... bd_check_score" />
-                <marker date="1507991938000" expanded="true" signature="22136:22200" ph="select psnr bd_scoretable_items" />
-                <marker date="1507991938000" expanded="true" signature="22213:22277" ph="select pfbz bd_scoretable_items" />
-                <marker date="1507991938000" expanded="true" signature="22290:22352" ph="select fz fr... bd_scoretable_items" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,8 +52,50 @@
       <file leaf-file-name="XStaticsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="29" />
+            <state relative-caret-position="550">
+              <caret line="112" column="46" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SdProfessionalMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SdProfessionalMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="84" column="235" lean-forward="false" selection-start-line="84" selection-start-column="235" selection-end-line="84" selection-end-column="235" />
+              <folding>
+                <marker date="1507992791000" expanded="true" signature="1687:1756" ph="delete from " />
+                <marker date="1507992791000" expanded="true" signature="1860:2094" ph="insert into sd_professional... " />
+                <marker date="1507992791000" expanded="true" signature="2210:2458" ph="update sd_pr... " />
+                <marker date="1507992791000" expanded="true" signature="2570:2672" ph="select zjid,... sd_professional" />
+                <marker date="1507992791000" expanded="true" signature="2742:2802" ph="select zjid,... sd_professional" />
+                <marker date="1507992791000" expanded="true" signature="3574:4009" ph="select zjid,... sd_professional" />
+                <marker date="1507992791000" expanded="true" signature="3696:3823" ph="select count... bd_check_pros" />
+                <marker date="1507992791000" expanded="true" signature="3947:4008" ph="select c.pro... bd_check_pros" />
+                <marker date="1507992791000" expanded="true" signature="4123:4563" ph="select zjid,... sd_professional" />
+                <marker date="1507992791000" expanded="true" signature="4245:4375" ph="select count... bd_chosen_pros" />
+                <marker date="1507992791000" expanded="true" signature="4499:4562" ph="select c.pro... bd_chosen_pros" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkreport_item.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="308" column="11" lean-forward="true" selection-start-line="264" selection-start-column="8" selection-end-line="308" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -221,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/publish/unwatch.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/home.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
@@ -232,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/CaseService.java" />
@@ -263,15 +212,17 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdChosenCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkdata.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/bean/SdProfessional.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/setting/professional/list.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml" />
       </list>
     </option>
   </component>
@@ -483,198 +434,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="work" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="all" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1373,14 +1132,7 @@
       <workItem from="1507512800754" duration="3692000" />
       <workItem from="1507559071221" duration="17989000" />
       <workItem from="1507622841827" duration="42441000" />
-      <workItem from="1507939196810" duration="21071000" />
-    </task>
-    <task id="LOCAL-00310" summary="1">
-      <created>1507463341290</created>
-      <option name="number" value="00310" />
-      <option name="presentableId" value="LOCAL-00310" />
-      <option name="project" value="LOCAL" />
-      <updated>1507463341290</updated>
+      <workItem from="1507939196810" duration="21767000" />
     </task>
     <task id="LOCAL-00311" summary="1">
       <created>1507559289191</created>
@@ -1718,11 +1470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507990095896</updated>
     </task>
-    <option name="localTasksCounter" value="359" />
+    <task id="LOCAL-00359" summary="1">
+      <created>1507991970262</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1507991970262</updated>
+    </task>
+    <option name="localTasksCounter" value="360" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="650726000" />
+    <option name="totallyTimeSpent" value="651422000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1735,7 +1494,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1751,7 +1509,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28313252" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30240965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1908,22 +1666,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/WsTaskMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="110" column="19" lean-forward="false" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseVideoUpdate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -2214,38 +1956,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="15" column="52" lean-forward="false" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="78" column="38" lean-forward="false" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
-          <folding>
-            <marker date="1507985974000" expanded="true" signature="1687:1756" ph="delete from " />
-            <marker date="1507985974000" expanded="true" signature="1860:2094" ph="insert into sd_professional... " />
-            <marker date="1507985974000" expanded="true" signature="2210:2458" ph="update sd_pr... " />
-            <marker date="1507985974000" expanded="true" signature="2570:2672" ph="select zjid,... sd_professional" />
-            <marker date="1507985974000" expanded="true" signature="2742:2802" ph="select zjid,... sd_professional" />
-            <marker date="1507985974000" expanded="true" signature="3574:4009" ph="select zjid,... sd_professional" />
-            <marker date="1507985974000" expanded="true" signature="3696:3823" ph="select count... bd_check_pros" />
-            <marker date="1507985974000" expanded="true" signature="3947:4008" ph="select c.pro... bd_check_pros" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/staticsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="40" />
           <folding>
-            <element signature="e#1770#1771#0" expanded="true" />
-            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="e#1770#1771#0" expanded="false" />
+            <element signature="e#1802#1803#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2369,26 +2086,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="257" column="226" lean-forward="false" selection-start-line="257" selection-start-column="226" selection-end-line="257" selection-end-column="226" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="294" column="65" lean-forward="true" selection-start-line="294" selection-start-column="65" selection-end-line="294" selection-end-column="65" />
+        <state relative-caret-position="268">
+          <caret line="290" column="76" lean-forward="true" selection-start-line="290" selection-start-column="76" selection-end-line="290" selection-end-column="76" />
           <folding>
             <element signature="e#16513#16517#0" expanded="true" />
             <element signature="e#16802#16806#0" expanded="true" />
@@ -2471,6 +2172,66 @@
             <marker date="1507991938000" expanded="true" signature="22136:22200" ph="select psnr bd_scoretable_items" />
             <marker date="1507991938000" expanded="true" signature="22213:22277" ph="select pfbz bd_scoretable_items" />
             <marker date="1507991938000" expanded="true" signature="22290:22352" ph="select fz fr... bd_scoretable_items" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="308" column="11" lean-forward="true" selection-start-line="264" selection-start-column="8" selection-end-line="308" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="45" column="163" lean-forward="false" selection-start-line="45" selection-start-column="155" selection-end-line="45" selection-end-column="163" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="112" column="46" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/SdProfessionalMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="84" column="235" lean-forward="false" selection-start-line="84" selection-start-column="235" selection-end-line="84" selection-end-column="235" />
+          <folding>
+            <marker date="1507992791000" expanded="true" signature="1687:1756" ph="delete from " />
+            <marker date="1507992791000" expanded="true" signature="1860:2094" ph="insert into sd_professional... " />
+            <marker date="1507992791000" expanded="true" signature="2210:2458" ph="update sd_pr... " />
+            <marker date="1507992791000" expanded="true" signature="2570:2672" ph="select zjid,... sd_professional" />
+            <marker date="1507992791000" expanded="true" signature="2742:2802" ph="select zjid,... sd_professional" />
+            <marker date="1507992791000" expanded="true" signature="3574:4009" ph="select zjid,... sd_professional" />
+            <marker date="1507992791000" expanded="true" signature="3696:3823" ph="select count... bd_check_pros" />
+            <marker date="1507992791000" expanded="true" signature="3947:4008" ph="select c.pro... bd_check_pros" />
+            <marker date="1507992791000" expanded="true" signature="4123:4563" ph="select zjid,... sd_professional" />
+            <marker date="1507992791000" expanded="true" signature="4245:4375" ph="select count... bd_chosen_pros" />
+            <marker date="1507992791000" expanded="true" signature="4499:4562" ph="select c.pro... bd_chosen_pros" />
           </folding>
         </state>
       </provider>

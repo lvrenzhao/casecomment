@@ -15,5 +15,7 @@ public interface SdProfessionalMapper {
     List<SdProfessional> select(SdProfessional bean);
     List<SdProfessional> selectForActive(String ggid);
 
+    List<SdProfessional> selectForChosen(String ggid);
+
     int updateByPrimaryKey(SdProfessional record);
 }

@@ -43,7 +43,7 @@
                 {label : '操作',name : 'fmt', width : 200,align : 'center',sortable : false,
                     formatter : function(cellvalue, options, rowObject) {
                         return '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openCases(2,\'' + rowObject.chosenid + '\')" title=""><i class="fa fa-info-circle"></i> 公告详细</button>'
-                            +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails()" title=""><i class="fa fa-balance-scale"></i> 评查情况</button>'
+                            +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="openDetails(\'' + rowObject.chosenid + '\')" title=""><i class="fa fa-balance-scale"></i> 评查情况</button>'
 //                              +      '<button class="btn btn-link btn-xs _myproject_list_btn_view_busPro" type="button" onclick="downLoad()" title=""><i class="fa fa-file-word-o"></i> 下载报告</button>';
                     }
                 },
@@ -92,7 +92,7 @@
 
         });
     }
-    function openDetails(){
+    function openDetails(ggid){
         layer.open({
             type : 2,
             shift : 5,
@@ -100,7 +100,7 @@
             shadeClose : false,
             shade : 0.3,
             area : [ '90%', '90%' ],
-            content : ahcourt.ctx + "/statics/chosenreportitem.do",
+            content : ahcourt.ctx + "/views/statics/chosenreport_item.jsp?ggid="+ggid,
             cancel : function(index) {
                 layer.close(index);
             }

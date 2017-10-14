@@ -28,19 +28,14 @@
             参选案例排名
           </a>
         </li>
-        <li>
-          <a data-toggle="tab" href="#tab-4">
-            质量情况
-          </a>
-        </li>
       </ul>
     </div>
     <div class="bmbox_content">
       <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
-          <div class="alert alert-info">
-            本次评查活动共邀请专家 2 人，其中人大代表 0 人，政协委员 0 人，资深检察官 2 人，专家学者 0 人。
-          </div>
+          <%--<div class="alert alert-info">--%>
+            <%--本次评查活动共邀请专家 2 人，其中人大代表 0 人，政协委员 0 人，资深检察官 2 人，专家学者 0 人。--%>
+          <%--</div>--%>
           <div class="clearfix pd10">
             <table id="table1" class="table table-striped"></table>
             <div id="pager1"></div>
@@ -52,62 +47,7 @@
             <div id="pager2"></div>
           </div>
         </div>
-        <div id="tab-4" class="tab-pane">
-          <table class="table table-bordered" id="table_score" >
-            <thead>
-            <tr>
-              <th class="wb5">序号</th>
-              <th class="wb20">评审内容</th>
-              <th class="wb45">评分标准</th>
-              <th class="wb5">分值</th>
-              <th class="wb5">累计扣分</th>
-              <th class="wb5">扣分案件</th>
-              <th class="wb5">平均扣分</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td class="wb5">1</td>
-              <td class="wb20">事实证据与实体处理</td>
-              <td class="wb45">审理查明的事实是否全面、客观、清楚</td>
-              <td class="wb5">8</td>
-              <td class="wb5">30</td>
-              <td class="wb5">5</td>
-              <td class="wb5">6</td>
-            </tr>
 
-            <tr>
-              <td class="wb5">1</td>
-              <td class="wb20">事实证据与实体处理</td>
-              <td class="wb45">是否有其他不规范情形</td>
-              <td class="wb5">8</td>
-              <td class="wb5">30</td>
-              <td class="wb5">5</td>
-              <td class="wb5">6</td>
-            </tr>
-
-            <tr>
-              <td class="wb5">1</td>
-              <td class="wb20">审理程序</td>
-              <td class="wb45">是否严格遵守规定</td>
-              <td class="wb5">8</td>
-              <td class="wb5">30</td>
-              <td class="wb5">5</td>
-              <td class="wb5">6</td>
-            </tr>
-
-            <tr>
-              <td class="wb5">1</td>
-              <td class="wb20">审理程序</td>
-              <td class="wb45">庭审是否规范严谨，能否有序组织举证，质证，认证和辩论。</td>
-              <td class="wb5">8</td>
-              <td class="wb5">30</td>
-              <td class="wb5">5</td>
-              <td class="wb5">6</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
@@ -115,69 +55,53 @@
 
 
   <script>
+    var ggid;
     $(function () {
+        ggid = $.getUrlParam("ggid");
         $("#table1").jqGrid({
-            url : ahcourt.ctx + '/assets/data/casecheck_notice_verify_table1.json',
+            url : ahcourt.ctx + '/static/chosenpros.do',
+            postData:{ggid:ggid},
             datatype : "json",
             mtype : "post",
-            height : $('body').height()-175,
+            height : $('body').height()-135,
             width : $('body').width()-22,
             rownumbers : true,
             shrinkToFit : true,
-            rowNum : 20,
-            colModel : [ {
-                label : '操作',
-                name : 'ggid',
-                width : 50,
-                align : 'center',
-                sortable : false,
-                formatter :formatter_grid1_opt_1 ,
-                frozen : true
-            },{
-                label : '专家',
-                name : 'pczz',
-                frozen : true,
-                width : 100
-            },{
-                label : '来自',
-                name : 'lz',
-                frozen : true,
-                width : 300
-            },{
-                label : '人大代表',
-                name : '',
-                frozen : true,
-                width : 80
-            },{
-                label : '政协委员',
-                name : '',
-                frozen : true,
-                width : 80
-            },{
-                label : '资深检察官',
-                name : '',
-                frozen : true,
-                width : 80
-            },{
-                label : '专业学者',
-                name : '',
-                frozen : true,
-                width : 80
-            },{
-                label : '本次评查案件',
-                name : 'bc',
-                frozen : true,
-                width : 100
-            }
-//            ,{
-//                label : '本次评查活动寄语',
-//                name : '',
-//                frozen : true,
-//                width : 500
-//            }
+            rowNum : 1000000,
+            colModel : [
+                {
+                    label : '专家姓名',
+                    name : 'xm',
+                    width : 100
+                },
+                {
+                    label : '来自',
+                    name : 'zzjgmc',
+                    frozen : true,
+                    width : 300
+                },
+                {
+                    label : '头衔',
+                    name : 'tx',
+                    width : 100
+                },  {
+                    label : '专业',
+                    name : 'zymc',
+                    width : 150
+                },  {
+                    label : '标签',
+                    name : 'bqmc',
+                    width : 150
+                },
+                {
+                    label : '本次评查案件',
+                    name : 'pcs',
+                    frozen : true,
+                    width : 100
+                }
             ],
             pager:"#pager1"
-            //,viewrecords: true
+            ,viewrecords: true
         });
 
 

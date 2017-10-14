@@ -81,4 +81,9 @@
     from sd_professional a, sd_user b,sd_organization c where a.userid = b.yhid and b.zzid = c.zzjgid and b.yhid in (select c.proid from bd_check_pros c where c.checkid = #{ggid})
   </select>
 
+  <select id="selectForChosen" resultMap="ResultMapWithUser" parameterType="java.lang.String" >
+    select zjid, zy,fn_get_dict(zy) zymc, bq,fn_get_dict(bq) bqmc, a.tx, userid, js,b.dh,b.dzyx,b.sj,b.xm,c.zzjgid ,c.zzjgmc,(select count(1) from bd_chosen_pros d, bd_chosen_cases e where d.groupid = e.psgroupid and e.chosenid=#{ggid} and d.proid = b.yhid ) pcs
+    from sd_professional a, sd_user b,sd_organization c where a.userid = b.yhid and b.zzid = c.zzjgid and b.yhid in (select c.proid from bd_chosen_pros c where c.chosenid = #{ggid})
+  </select>
+
 </mapper>

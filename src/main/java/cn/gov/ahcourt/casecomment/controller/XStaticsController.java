@@ -107,6 +107,12 @@ public class XStaticsController {
         return bean.toMap(sdProfessionalMapper.selectForActive(ggid));
     }
 
+    @RequestMapping("/chosenpros")
+    public @ResponseBody Map chosenpros(String ggid){
+        SdProfessional bean = new SdProfessional();
+        return bean.toMap(sdProfessionalMapper.selectForChosen(ggid));
+    }
+
     @RequestMapping("/quality")
     public @ResponseBody Map quality(String ggid){
         List<Map> list= bdCheckCasesMapper.selectQuality(ggid);
