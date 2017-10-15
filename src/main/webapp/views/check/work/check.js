@@ -1,7 +1,8 @@
-var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
+var URL_AJZL = ahcourt.ctx + "/case/files.do";
 
 var ajid , mode,type,ccid;
 $(function () {
+    ajid = $.getUrlParam("ajid");
     type = $.getUrlParam("type");
     ccid = $.getUrlParam("ccid");
     // if(!type){
@@ -37,16 +38,18 @@ function initTree() {
     $.ajax({
         type: 'POST',
         url: URL_AJZL,
-        data:{ajid:ajid},
+        data:{
+            "ajid":ajid
+        },
         datatype: 'json',
         async: false,
         success: function (data) {
-            if (data) {
+            if (data && data.rows) {
                 var setting = {
                     data: {simpleData: {enable: true}},
                     callback: {onClick: selectCd}
                 };
-                $.fn.zTree.init($("#pTree"), setting, data);
+                $.fn.zTree.init($("#pTree"), setting, data.rows);
             }
         }
     });

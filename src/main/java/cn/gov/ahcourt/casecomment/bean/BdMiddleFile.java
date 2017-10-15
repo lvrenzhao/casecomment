@@ -3,6 +3,46 @@ package cn.gov.ahcourt.casecomment.bean;
 import java.util.Date;
 
 public class BdMiddleFile extends BaseEntity {
+
+    //ztree model
+    private String id;
+    private String pId;
+    private String name;
+    private String open;
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOpen() {
+        return open;
+    }
+
+    public void setOpen(String open) {
+        this.open = open;
+    }
+
     private String fileid;
 
     private String pfileid;
@@ -13,7 +53,7 @@ public class BdMiddleFile extends BaseEntity {
 
     private Integer xorder;
 
-    private Integer ajid;
+    private String ajid;
 
     private String require;
 
@@ -69,11 +109,11 @@ public class BdMiddleFile extends BaseEntity {
         this.xorder = xorder;
     }
 
-    public Integer getAjid() {
+    public String getAjid() {
         return ajid;
     }
 
-    public void setAjid(Integer ajid) {
+    public void setAjid(String ajid) {
         this.ajid = ajid;
     }
 

@@ -26,6 +26,9 @@ public class XCaseController {
 	private BdMiddleCaseMapper bdMiddleCaseMapper;
 
     @Resource
+    private BdMiddleFileMapper bdMiddleFileMapper;
+
+    @Resource
     private BdCheckCasesMapper bdCheckCasesMapper;
 
     @Resource
@@ -432,6 +435,16 @@ public class XCaseController {
         bean.setLx("1");
         bean.setSfqy("1");
         return bean.toMap(bdScoretablesMapper.selectAll(bean));
+    }
+
+    @RequestMapping("/files")
+    public @ResponseBody Map files(String ajid){
+        if(StringUtils.isNotBlank(ajid)){
+            BdMiddleFile bean=  new BdMiddleFile();
+            bean.setAjid(ajid);
+            return bean.toMap(bdMiddleFileMapper.selectTree(bean));
+        }
+        return null;
     }
 
 

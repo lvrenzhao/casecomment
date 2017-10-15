@@ -7,7 +7,7 @@
     <result column="xname" property="xname" jdbcType="VARCHAR" />
     <result column="xurl" property="xurl" jdbcType="VARCHAR" />
     <result column="xorder" property="xorder" jdbcType="INTEGER" />
-    <result column="ajid" property="ajid" jdbcType="INTEGER" />
+    <result column="ajid" property="ajid" jdbcType="VARCHAR" />
     <result column="require" property="require" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -27,7 +27,7 @@
       update_by, update_date, remarks, 
       flag)
     values (#{fileid,jdbcType=VARCHAR}, #{pfileid,jdbcType=VARCHAR}, #{xname,jdbcType=VARCHAR}, 
-      #{xurl,jdbcType=VARCHAR}, #{xorder,jdbcType=INTEGER}, #{ajid,jdbcType=INTEGER}, 
+      #{xurl,jdbcType=VARCHAR}, #{xorder,jdbcType=INTEGER}, #{ajid,jdbcType=VARCHAR},
       #{require,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
       #{flag,jdbcType=VARCHAR})
@@ -38,7 +38,7 @@
       xname = #{xname,jdbcType=VARCHAR},
       xurl = #{xurl,jdbcType=VARCHAR},
       xorder = #{xorder,jdbcType=INTEGER},
-      ajid = #{ajid,jdbcType=INTEGER},
+      ajid = #{ajid,jdbcType=VARCHAR},
       require = #{require,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -58,5 +58,14 @@
     select fileid, pfileid, xname, xurl, xorder, ajid, require, create_by, date_format(create_date, '%Y/%m/%d') create_date,
     update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_middle_file
+  </select>
+
+  <select id="selectTree" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
+    select fileid id,pfileid pId,xname name,remarks open from bd_middle_file
+    where 1=1
+    <if test="ajid !=null and ajid != '' ">
+      and ajid = #{ajid}
+    </if>
+    order by xorder
   </select>
 </mapper>

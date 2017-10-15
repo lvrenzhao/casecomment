@@ -11,6 +11,7 @@ public interface BdMiddleFileMapper {
     BdMiddleFile selectByPrimaryKey(String fileid);
 
     List<BdMiddleFile> selectAll(BdMiddleFile bean);
+    List<BdMiddleFile> selectTree(BdMiddleFile bean);
 
     int updateByPrimaryKey(BdMiddleFile record);
 }
