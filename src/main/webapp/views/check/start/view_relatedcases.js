@@ -24,7 +24,7 @@ function loadGrid1() {
             {label : 'ajid',name : 'ajid',hidden : true,key : true,sortable:false,frozen : true},
             {label : 'ggid',name : 'ggid',hidden : true,sortable:false,frozen : true},
             {label : '操作',name : '',frozen : true,width : 100,sortable:false,formatter:function (cellvalue,options,rowObject) {
-                return  '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + cellvalue + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                return  '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
             }},
             {label : '案号',name : 'ah', width : 120,sortable:false,frozen : true},
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},

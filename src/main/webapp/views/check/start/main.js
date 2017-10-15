@@ -752,7 +752,7 @@ function loadGrid1() {
             {label : 'pcjl',name : 'pcjl',hidden : true,sortable:false,frozen : true},
             {label : '案号',name : 'fmt1', width : 120,sortable:false,frozen : true,
                 formatter:function (cellvalue,options,rowObject) {
-                    return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
+                    return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ajid + '\')">'+rowObject.ah+'</a>'
                 }
             },
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
@@ -814,7 +814,7 @@ function loadGrid2() {
                 }
             }},
             {label : '案号',name : 'fmt3', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ah + '\')">'+rowObject.ah+'</a>'
+                return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ajid + '\')">'+rowObject.ah+'</a>'
             }},
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {
@@ -896,7 +896,7 @@ function initChildGrid1(parentRowID, parentRowKey) {
                 }
             }},
             {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+rowObject.ah+'</a>'
+                return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ajid + '\')">'+rowObject.ah+'</a>'
             }},
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {

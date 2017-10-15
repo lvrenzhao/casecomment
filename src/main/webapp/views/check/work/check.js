@@ -5,13 +5,13 @@ $(function () {
     ajid = $.getUrlParam("ajid");
     type = $.getUrlParam("type");
     ccid = $.getUrlParam("ccid");
-    // if(!type){
-    //     alert("程序错误");
-    //     return ;
-    // }
     mode = $.getUrlParam("mode");
-    //### mode=2被取消，原作为可顺带查看评分表
+    //mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
+        if(!type || !ccid){
+            alert("程序错误");
+            return ;
+        }
         $("#btn_submit").show();
         $("#btn_save").show();
     }else if(mode == 3){

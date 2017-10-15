@@ -399,7 +399,7 @@ function initChildGrid1(parentRowID, parentRowKey) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ccid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
             {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
-                return '<a href="javascript:;" onclick="check(3,\'' + cellvalue + '\')">'+rowObject.ah+'</a>'
+                return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ajid + '\')">'+rowObject.ah+'</a>'
             }},
             {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
                 formatter:function (cellvalue,options,rowObject) {

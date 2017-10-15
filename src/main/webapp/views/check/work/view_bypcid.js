@@ -62,7 +62,7 @@ function check(mode,ajid) {
     });
 }
 
-function comment(mode,ajid) {
+function comment(mode,ccid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -70,7 +70,7 @@ function comment(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/comment.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=1&ccid=' + ccid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }

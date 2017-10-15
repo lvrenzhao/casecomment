@@ -22,10 +22,11 @@ function loadGrid() {
         colModel : [
             {label : 'ccid',name : 'ccid',hidden : true, key : true,frozen:true},
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
+            {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.chosenid + '\')" title="点评"><i class="fa fa-info"></i> 评选结果</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.chosenid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" title="点评"><i class="fa fa-info"></i> 评选结果</button>'
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
                 },
                 frozen:true
             },
@@ -110,7 +111,7 @@ function check(mode,ajid) {
     });
 }
 
-function comment(mode,ajid) {
+function comment(mode,ccid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -118,7 +119,7 @@ function comment(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/comment.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=2&ccid=' + ccid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }

@@ -39,7 +39,7 @@ function loadUnCheckGrid() {
                     if(rowObject.sfzz == "1" && rowObject.jydp && rowObject.jydp.length>0){
                         return '<button class="btn btn-link btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" title="总结"><i class="fa fa-commenting-o"></i> 点评</button>';
                     }else{
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
+                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
                     }
                 },
                 frozen:true
@@ -132,7 +132,7 @@ function reloadCheckedGrid() {
     }).trigger("reloadGrid");
 }
 
-function check(mode,ajid) {
+function check(mode,ccid,ajid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -140,14 +140,14 @@ function check(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/check.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/check.jsp?type=1&ccid='+ccid+'&ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
     });
 }
 
-function comment(mode,ajid) {
+function comment(mode,ccid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -155,7 +155,7 @@ function comment(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/comment.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=1&ccid=' + ccid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
