@@ -1,8 +1,13 @@
 var URL_AJZL = ahcourt.ctx + "/assets/data/check_ajzl.json"
 
-var ajid , mode;
+var ajid , mode,type,ccid;
 $(function () {
-
+    type = $.getUrlParam("type");
+    ccid = $.getUrlParam("ccid");
+    // if(!type){
+    //     alert("程序错误");
+    //     return ;
+    // }
     mode = $.getUrlParam("mode");
     //### mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
@@ -32,6 +37,7 @@ function initTree() {
     $.ajax({
         type: 'POST',
         url: URL_AJZL,
+        data:{ajid:ajid},
         datatype: 'json',
         async: false,
         success: function (data) {
@@ -45,31 +51,16 @@ function initTree() {
         }
     });
 }
-
+var isshowed = false;
 function selectCd() {
+    if(!isshowed){
+        $("#displayOnce").hide();
+        $("#viewframe").show();
+        isshowed = true;
+    }
     var treeObj = $.fn.zTree.getZTreeObj("pTree");
     var nodes = treeObj.getSelectedNodes();
-    if(nodes[0].name == "1.mp4"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/1.mp4";
-    }else if (nodes[0].name == "一审裁定书.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/一审裁定书.pdf";
-    }else if (nodes[0].name == "上诉案件移送函.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/上诉案件移送函.pdf";
-    }else if (nodes[0].name == "二审裁定书.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/二审裁定书.pdf";
-    }else if (nodes[0].name == "备考表.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/备考表.pdf";
-    }else if (nodes[0].name == "封面.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/封面.pdf";
-    }else if (nodes[0].name == "目录.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/目录.pdf";
-    }else if (nodes[0].name == "行政上诉状.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/行政上诉状.pdf";
-    }else if (nodes[0].name == "退卷函.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/退卷函.pdf";
-    }else if (nodes[0].name == "送达回证.pdf"){
-        window.frames["iframe0"].location = ahcourt.ctx+"/files/送达回证.pdf";
-    }
+    window.frames["iframe0"].location = "viewer.jsp?fid="+nodes[0].id;
 }
 
 
