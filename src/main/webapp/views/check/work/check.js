@@ -83,6 +83,11 @@ $(function () {
     });
 });
 
+//type:1暂存，2：提交
+function save(type) {
+    
+}
+
 function getDf() {
     var total = 0;
     $(".xfzlabel").each(function () {
