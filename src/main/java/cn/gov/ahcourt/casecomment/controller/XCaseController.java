@@ -564,7 +564,7 @@ public class XCaseController {
     }
 
     private String getZldj(String fs){
-        return "";
+        return "未配置";
     }
 
 }
