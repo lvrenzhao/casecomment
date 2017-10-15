@@ -31,6 +31,16 @@ public class BdCheckRecords extends BaseEntity {
 
     private String flag;
 
+    private String itemJson;
+
+    public String getItemJson() {
+        return itemJson;
+    }
+
+    public void setItemJson(String itemJson) {
+        this.itemJson = itemJson;
+    }
+
     public String getCrid() {
         return crid;
     }

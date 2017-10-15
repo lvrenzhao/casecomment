@@ -9,6 +9,9 @@
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
     <jsp:include page="/header.jsp?libs=layer;ztree" />
     <script type="text/javascript" src="check.js"></script>
+    <style>
+        td{vertical-align: middle !important;}
+    </style>
 </head>
 <body class="warpslide fullbox" style="overflow: hidden">
 <div class="rightslide_menu">

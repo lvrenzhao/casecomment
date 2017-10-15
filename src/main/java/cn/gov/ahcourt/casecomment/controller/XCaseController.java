@@ -38,6 +38,9 @@ public class XCaseController {
     private BdCheckMapper bdCheckMapper;
 
     @Resource
+    private BdChosenMapper bdChosenMapper;
+
+    @Resource
     private BdCheckDistributionMapper bdCheckDistributionMapper;
 
     @Resource
@@ -57,6 +60,9 @@ public class XCaseController {
 
     @Resource
     private BdScoretableItemsMapper bdScoretableItemsMapper;
+
+    @Resource
+    private BdChosenCasesMapper bdChosenCasesMapper;
 
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
@@ -335,6 +341,17 @@ public class XCaseController {
         return null;
     }
 
+    @RequestMapping("/getchosenbyccid")
+    public @ResponseBody BdChosen getchosenbyccid(String ccid){
+        if(StringUtils.isNotBlank(ccid)){
+            BdChosenCases cb = bdChosenCasesMapper.selectByPrimaryKey(ccid);
+            if(cb != null) {
+                return bdChosenMapper.selectByPrimaryKey(cb.getChosenid());
+            }
+        }
+        return null;
+    }
+
 
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
@@ -459,5 +476,16 @@ public class XCaseController {
         return null;
     }
 
+    @RequestMapping("/submitCheckScore")
+    public @ResponseBody String submitCheckScore(BdCheckScore bean){
+
+        return "1";
+    }
+
+    @RequestMapping("/submitChosenScore")
+    public @ResponseBody String submitChosenScore(BdChosenScore bean){
+
+        return "2";
+    }
 
 }

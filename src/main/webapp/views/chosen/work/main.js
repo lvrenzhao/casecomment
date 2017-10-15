@@ -79,7 +79,7 @@ function loadCheckedGrid() {
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
                     return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" title="点评"><i class="fa fa-info"></i> 评查详情</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\',\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
             {label : '案号', name : 'ah',frozen : true,sortable:false,width : 150},
@@ -126,7 +126,7 @@ function reloadCheckedGrid() {
 }
 
 
-function check(mode,ajid) {
+function check(mode,ajid,ccid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -134,14 +134,14 @@ function check(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/check.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/check.jsp?type=2&ccid='+ccid+'ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
     });
 }
 
-function comment(mode,ajid) {
+function comment(mode,ccid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -149,7 +149,7 @@ function comment(mode,ajid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/comment.jsp?ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=2&ajid=' + ccid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
