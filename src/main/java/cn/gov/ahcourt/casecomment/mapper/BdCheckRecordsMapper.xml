@@ -60,5 +60,15 @@
     select crid, checkid, ajid, pcr,date_format(pcsj, '%Y/%m/%d') pcsj, pcfs, pczt, zldj, create_by, date_format(create_date, '%Y/%m/%d') create_date,
     update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_check_records
+    where 1=1
+    <if test="checkid !=null and checkid != '' ">
+      and checkid = #{checkid}
+    </if>
+    <if test="ajid !=null and ajid != '' ">
+      and ajid = #{ajid}
+    </if>
+    <if test="pcr !=null and pcr != '' ">
+      and pcr = #{pcr}
+    </if>
   </select>
 </mapper>

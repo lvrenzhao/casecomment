@@ -488,6 +488,37 @@ public class XCaseController {
         return null;
     }
 
+    @RequestMapping("getWritedScores")
+    public @ResponseBody Map getWritedScores(String ggid,String ajid,String type,@SessionScope("user")UserBean user){
+        if(user == null){
+            return null;
+        }
+        if("1".equals(type)){
+            BdCheckRecords bean = new BdCheckRecords();
+            bean.setCheckid(ggid);
+            bean.setAjid(ajid);
+            bean.setPcr(user.getYhid());
+            List<BdCheckRecords> records = bdCheckRecordsMapper.selectAll(bean);
+            if(records != null && records.size() == 1){
+                BdCheckScore scorebean= new BdCheckScore();
+                scorebean.setCrid(records.get(0).getCrid());
+                return scorebean.toMap(bdCheckScoreMapper.selectAll(scorebean));
+            }
+        }else if ("2".equals(type)){
+            BdChosenRecords bean = new BdChosenRecords();
+            bean.setChosenid(ggid);
+            bean.setAjid(ajid);
+            bean.setPcr(user.getYhid());
+            List<BdChosenRecords> records = bdChosenRecordsMapper.selectAll(bean);
+            if(records != null && records.size() == 1){
+                BdChosenScore scorebean= new BdChosenScore();
+                scorebean.setCrid(bean.getCrid());
+                return scorebean.toMap(bdChosenScoreMapper.selectAll(scorebean));
+            }
+        }
+        return null;
+    }
+
     @RequestMapping("/submitCheckScore")
     public @ResponseBody String submitCheckScore(BdCheckRecords bean,@SessionScope("user")UserBean user){
         try {

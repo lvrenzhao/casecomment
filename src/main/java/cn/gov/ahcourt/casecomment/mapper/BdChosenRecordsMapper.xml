@@ -58,5 +58,15 @@
     select crid, chosenid, ajid, pcr, pcsj, pcfs, pczt, create_by, create_date, update_by, 
     update_date, remarks, flag
     from bd_chosen_records
+    where 1=1
+    <if test="chosenid !=null and chosenid != '' ">
+      and chosenid = #{chosenid}
+    </if>
+    <if test="ajid !=null and ajid != '' ">
+      and ajid = #{ajid}
+    </if>
+    <if test="pcr !=null and pcr != '' ">
+      and pcr = #{pcr}
+    </if>
   </select>
 </mapper>

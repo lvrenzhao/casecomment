@@ -2,6 +2,7 @@ var URL_AJZL = ahcourt.ctx + "/case/files.do";
 var URL_GET = [ahcourt.ctx + "/case/getcheckbyccid.do",ahcourt.ctx + "/case/getchosenbyccid.do"];
 var URL_GETDETAILS = ahcourt.ctx + "/case/getscoredetails.do";
 var URL_SUBMIT = [ahcourt.ctx+"/case/submitCheckScore.do",ahcourt.ctx+"/case/submitChosenScore.do"];
+var URL_GETWRITEDSCORE = ahcourt.ctx+"/case/getWritedScores.do";
 
 var ajid , mode,type,ccid,tableid;//type1:评查type2:评选
 var crid;
@@ -56,8 +57,8 @@ $(function () {
                             var item = data.rows[i];
                             html += '<tr class="xdatarow" dataid="'+item.itemid+'"><td>'+item.xh+'</td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td>' +
                                 '<td class="xfzlabel" style="text-align: right">'+item.fz+'</td>' +
-                                '<td><input class="xkf" data-maxkf="'+item.fz+'" type="text" style="width: 50px;" /></td>' +
-                                '<td><input class="xkfly" type="text" style="width: 100%;" /></td></tr>';
+                                '<td><input id="kf_'+item.itemid+'" class="xkf" data-maxkf="'+item.fz+'" type="text" style="width: 50px;" /></td>' +
+                                '<td><input id="kfyy_'+item.itemid+'" class="xkfly" type="text" style="width: 100%;" /></td></tr>';
                         }
                         $("#table_score_tbody").html(html);
                     }
@@ -68,7 +69,27 @@ $(function () {
             });
         }
         //todo 加载之前已经评查的分数情况
-
+        $.ajax({
+            type : 'POST',
+            url : URL_GETWRITEDSCORE,
+            data:{
+                ggid:ggid,
+                ajid:ajid,
+                type:type
+            },
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                if(data && data.rows && data.rows.length > 0){
+                    crid = data.rows[0].crid;
+                    for(var i = 0 ; i < data.rows.length; i ++){
+                        var item = data.rows[i];
+                        $("#kf_"+item.itemid).val(item.kf);
+                        $("#kfyy_"+item.itemid).val(item.kfyy);
+                    }
+                }
+            }
+        });
     }else if(mode == 3){
         $("#btn_open_score_table").hide();
     }
@@ -150,7 +171,7 @@ function save(xtype) {
         datatype : 'json',
         async : false,
         success : function(data) {
-            console.log(data);
+            // console.log(data);
             if(data != -1){
                 crid = data;
                 top.layer.msg(xtype==2?"提交成功!":"暂存成功!",{icon:1});
@@ -166,6 +187,7 @@ function save(xtype) {
     if(xtype == "2"){
         //关闭当前窗口 刷新父窗口
         parent.reloadUnCheckGrid();
+        parent.reloadCheckedGrid();
         var index = parent.layer.getFrameIndex(window.name);
         parent.layer.close(index);
     }
