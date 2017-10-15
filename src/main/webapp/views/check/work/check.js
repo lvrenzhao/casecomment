@@ -160,8 +160,11 @@ function save(xtype) {
     if(xtype == "3"){
         closerightslide();
     }
-    if(xtype == "1"){
+    if(xtype == "2"){
         //关闭当前窗口 刷新父窗口
+        parent.reloadUnCheckGrid();
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
     }
 }
 
