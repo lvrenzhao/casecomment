@@ -64,6 +64,18 @@ public class XCaseController {
     @Resource
     private BdChosenCasesMapper bdChosenCasesMapper;
 
+    @Resource
+    private BdCheckRecordsMapper bdCheckRecordsMapper;
+
+    @Resource
+    private BdChosenRecordsMapper bdChosenRecordsMapper;
+
+    @Resource
+    private BdCheckScoreMapper bdCheckScoreMapper;
+
+    @Resource
+    private BdChosenScoreMapper bdChosenScoreMapper;
+
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
@@ -477,15 +489,51 @@ public class XCaseController {
     }
 
     @RequestMapping("/submitCheckScore")
-    public @ResponseBody String submitCheckScore(BdCheckScore bean){
+    public @ResponseBody String submitCheckScore(BdCheckRecords bean,@SessionScope("user")UserBean user){
+        try {
+            if (user == null) {
+                return "-1";
+            }
+            bean.setCreateBy(user.getYhid());
+            bean.setPcr(user.getYhid());
+            bean.setPcsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+            bean.setZldj(getZldj(bean.getPcfs()));
 
-        return "1";
+            String crid = bean.getCrid();
+            if (StringUtils.isNotBlank(crid)) {
+                bdCheckRecordsMapper.updateByPrimaryKey(bean);
+            } else {
+                crid = IdGen.uuid();
+                bean.setCrid(crid);
+                bdCheckRecordsMapper.insert(bean);
+            }
+
+            bdCheckScoreMapper.deleteByCrid(crid);
+
+            if (StringUtils.isNotBlank(bean.getItemJson())) {
+                List<BdCheckScore> items = JSONArray.parseArray(bean.getItemJson(), BdCheckScore.class);
+                for (int i = 0; items != null && i < items.size(); i++) {
+                    BdCheckScore item = items.get(i);
+                    item.setCrid(crid);
+                    item.setScoreid(IdGen.uuid());
+                    bdCheckScoreMapper.insert(item);
+                }
+            }
+
+            return crid;
+        }catch (Exception ex){
+            return "-1";
+        }
     }
 
     @RequestMapping("/submitChosenScore")
-    public @ResponseBody String submitChosenScore(BdChosenScore bean){
+    public @ResponseBody String submitChosenScore(BdChosenRecords bean){
 
         return "2";
+    }
+
+    private String getZldj(String fs){
+        return "";
     }
 
 }

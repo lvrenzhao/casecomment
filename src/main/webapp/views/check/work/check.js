@@ -141,6 +141,8 @@ function save(xtype) {
         items.push(item);
     });
     var xdata = [{crid:crid,ajid:ajid,checkid:ggid,tableid:tableid,itemJson:JSON.stringify(items)},{crid:crid,ajid:ajid,chosenid:ggid,tableid:tableid,itemJson:JSON.stringify(items)}];
+    xdata[type-1].pczt=(xtype==2?"2":"1");
+    xdata[type-1].pcfs=$("#label_mf").text();
     $.ajax({
         type : 'POST',
         url : URL_SUBMIT[type-1],
@@ -148,14 +150,15 @@ function save(xtype) {
         datatype : 'json',
         async : false,
         success : function(data) {
-            if(data){
-                console.log(data);
+            console.log(data);
+            if(data != -1){
                 crid = data;
+                top.layer.msg(xtype==2?"提交成功!":"暂存成功!",{icon:1});
+            }else{
+                top.layer.msg("操作失败，请联系管理员协助解决。",{icon:2});
             }
         }
     });
-
-    top.layer.msg(xtype==2?"提交成功!":"暂存成功!",{icon:1});
 
     if(xtype == "3"){
         closerightslide();

@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BdChosenScoreMapper {
     int deleteByPrimaryKey(String scoreid);
+    int deleteByCrid(String crid);
 
     int insert(BdChosenScore record);
 

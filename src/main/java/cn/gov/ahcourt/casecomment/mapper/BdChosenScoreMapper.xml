@@ -20,6 +20,10 @@
     delete from bd_chosen_score
     where scoreid = #{scoreid,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByCrid" parameterType="java.lang.String" >
+    delete from bd_chosen_score
+    where crid = #{crid,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenScore" >
     insert into bd_chosen_score (scoreid, crid, tableid, 
       itemid, kf, kfyy, df, 
