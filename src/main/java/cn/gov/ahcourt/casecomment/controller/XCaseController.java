@@ -324,6 +324,18 @@ public class XCaseController {
         return bdCheckMapper.selectByPrimaryKey(ggid);
     }
 
+    @RequestMapping("/getcheckbyccid")
+    public @ResponseBody BdCheck getcheckbyccid(String ccid){
+        if(StringUtils.isNotBlank(ccid)){
+            BdCheckCases cb = bdCheckCasesMapper.selectByPrimaryKey(ccid);
+            if(cb != null) {
+                return bdCheckMapper.selectByPrimaryKey(cb.getCheckid());
+            }
+        }
+        return null;
+    }
+
+
     @RequestMapping("/random")
     public @ResponseBody Map random(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean

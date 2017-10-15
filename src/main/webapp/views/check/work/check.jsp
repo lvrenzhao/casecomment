@@ -20,11 +20,34 @@
                     <div class="bmbox_tool">
                         <button class="btn btn-primary btn-sm btn-smx" id="btn_submit" style="display: none;" type="button"><i class="fa fa-check"></i> 提交</button>
                         <button class="btn btn-white btn-sm btn-smx" id="btn_save" style="display: none;" type="button"><i class="fa fa-save"></i> 暂存</button>
-                        <button class="btn btn-white btn-sm btn-smx" id="btn_close_score_table" type="button"><i class="fa fa-hand-o-right"></i> 收起评分表</button>
+                        <button class="btn btn-white btn-sm btn-smx" id="btn_close_score_table" type="button"><i class="fa fa-hand-o-right"></i> 收起评分表(自动暂存)</button>
                     </div>
                 </div>
                 <div class="bmbox_content clearfix">
-
+                    <table id="table_score" class="table table-bordered table-hover" style="">
+                        <thead>
+                        <tr style="background: #e0e0e0">
+                            <th class="width50" style="text-align: center">序号</th>
+                            <th class="width200" style="text-align: center">评审内容</th>
+                            <th class="width400" style="text-align: center">评分标准</th>
+                            <th class="width50" style="text-align: center">分值</th>
+                            <th class="width50" style="text-align: center">扣分</th>
+                            <th class="width200" style="text-align: center">扣分理由</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_score_tbody">
+                        <tr>
+                            <td colspan="5">暂无评分项....</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr style="background: #e0e0e0">
+                            <td>得分</td>
+                            <td colspan="4"></td>
+                            <td style="text-align: right" ><span id="label_mf"></span></td>
+                        </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
