@@ -55,4 +55,8 @@
     where 1=1
     order by xh asc
   </select>
+
+  <select id="getLevelByScore" resultType="java.lang.String" parameterType="java.lang.String">
+    select levelname from bd_check_levels where #{score} &lt;= maxscore and #{score} >= minscore limit 1
+  </select>
 </mapper>

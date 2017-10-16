@@ -693,7 +693,7 @@ public class XCaseController {
 
 
     private String getZldj(String fs){
-        return "未配置";
+        return bdCheckLevelsMapper.getLevelByScore(fs);
     }
 
 }

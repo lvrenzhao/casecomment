@@ -13,4 +13,7 @@ public interface BdCheckLevelsMapper {
     List<BdCheckLevels> selectAll(BdCheckLevels bean);
 
     int updateByPrimaryKey(BdCheckLevels record);
+
+    String getLevelByScore(String score);
+
 }
