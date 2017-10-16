@@ -1,6 +1,7 @@
 package cn.gov.ahcourt.casecomment.bean;
 
 import cn.gov.ahcourt.casecomment.scheduled.WSService;
+import org.apache.commons.codec.binary.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,9 @@ public class test {
 //        boolean rs = matcher.find();
 //        System.out.println(rs);
 //        getTeacherList("<Data Count=\"MzgwNTc=\">da<c1212>sdasdasfasdasd/>");
-        int i = WSService.getAllCount("</Result><Data Count=\"OTE=\" ><EAJ>");
-        System.out.println(i);
+//        int i = WSService.getAllCount("</Result><Data Count=\"OTE=\" ><EAJ>");
+//        String i = getAllCount("<FileContent>jdslafjasldkfjlsad</FileContent>");
+//        System.out.println(i);
     }
 
 //    public static List<String> getTeacherList(String managers){
@@ -39,4 +41,5 @@ public class test {
 //        }
 //        return ls;
 //    }
+
 }

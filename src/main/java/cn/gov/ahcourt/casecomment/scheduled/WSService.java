@@ -208,6 +208,44 @@ public class WSService {
         return null;
     }
 
+
+    public String invokeFileContentInfoByAh(int fbsxh,String FILENAME,String FTPSERVER,String FYDM){
+        try {
+            if(sender != null && StringUtils.isNotBlank(FILENAME) && StringUtils.isNotBlank(FTPSERVER) && StringUtils.isNotBlank(FYDM)){
+                String soapBindingAddress = WSService.WEBSERVICE_FILE_FBS[fbsxh];
+                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_FILE_NS,  "");
+                OMElement method = fac.createOMElement("GetYxFile", omNs);
+                String param3 =
+                        "<Request>" +
+                        "<FYDM>"+new String(Base64.encodeBase64(FYDM.getBytes("UTF-8")))+"</FYDM>" +
+                        "<FILENAME>"+new String(Base64.encodeBase64(FILENAME.getBytes("UTF-8")))+"</FILENAME>" +
+                        "<FTPSERVER>"+new String(Base64.encodeBase64(FTPSERVER.getBytes("UTF-8")))+"</FTPSERVER>" +
+                        "</Request>";
+                String[] paramnames = new String[] { "Userid","Pwd","Xml"};
+                String[] paramvalues = new String[] { new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_UN.getBytes("UTF-8"))), new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_PW.getBytes("UTF-8"))),new String(Base64.encodeBase64(param3.getBytes("UTF-8")))};
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+//                System.out.println(result.getFirstElement().getText());
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static List<String> findDates(String sbegin, String send)
     {
         List lDate = new ArrayList();
