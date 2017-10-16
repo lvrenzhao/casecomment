@@ -66,5 +66,8 @@
     <if test="crid !=null and crid != '' ">
       and crid = #{crid}
     </if>
+    <if test="dospecialquery !=null and dospecialquery != '' ">
+      and crid = (select x.crid from bd_chosen_records x where x.chosenid = #{ggid} and x.ajid = #{ajid} and x.pcr = #{pcr} limit 1)
+    </if>
   </select>
 </mapper>

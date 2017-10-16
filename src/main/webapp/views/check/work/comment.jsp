@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- library list = slimscroll;metismenu;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=" />
+    <jsp:include page="/header.jsp?libs=layer" />
     <script type="text/javascript" src="comment.js"></script>
     <style>
         th{border:1px solid #999 !important;}
+        td{vertical-align: middle !important;}
     </style>
 </head>
 <body style="overflow:hidden;">
@@ -67,7 +68,7 @@
     <div class="bmbox_content clearfix">
         <div class="form_item wb100 fl">
             <label>简要点评</label>
-            <textarea class="form-control" style="height:120px" placeholder="请输入您的简要点评..."></textarea>
+            <textarea id="form_inp_jydp" class="form-control" style="height:120px" placeholder="请输入您的简要点评..."></textarea>
         </div>
         <%--<div class="form_item wb33 fl">--%>
             <%--<label>点评人</label>--%>

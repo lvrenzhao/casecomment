@@ -29,6 +29,43 @@ public class BdCheckScore extends BaseEntity {
 
     private String flag;
 
+    private String pcr;
+    private String ggid;
+    private String ajid;
+    private String dospecialquery;
+
+    public String getPcr() {
+        return pcr;
+    }
+
+    public void setPcr(String pcr) {
+        this.pcr = pcr;
+    }
+
+    public String getGgid() {
+        return ggid;
+    }
+
+    public void setGgid(String ggid) {
+        this.ggid = ggid;
+    }
+
+    public String getAjid() {
+        return ajid;
+    }
+
+    public void setAjid(String ajid) {
+        this.ajid = ajid;
+    }
+
+    public String getDospecialquery() {
+        return dospecialquery;
+    }
+
+    public void setDospecialquery(String dospecialquery) {
+        this.dospecialquery = dospecialquery;
+    }
+
     public String getScoreid() {
         return scoreid;
     }

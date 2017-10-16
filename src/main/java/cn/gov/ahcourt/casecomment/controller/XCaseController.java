@@ -550,6 +550,7 @@ public class XCaseController {
                     BdCheckScore item = items.get(i);
                     item.setCrid(crid);
                     item.setScoreid(IdGen.uuid());
+                    item.setCreateBy(user.getYhid());
                     bdCheckScoreMapper.insert(item);
                 }
             }
@@ -587,6 +588,7 @@ public class XCaseController {
                     BdChosenScore item = items.get(i);
                     item.setCrid(crid);
                     item.setScoreid(IdGen.uuid());
+                    item.setCreateBy(user.getYhid());
                     bdChosenScoreMapper.insert(item);
                 }
             }
@@ -604,13 +606,19 @@ public class XCaseController {
             BdCheckPros bean = new BdCheckPros();
             bean.setCheckid(cc.getCheckid());
             bean.setGroupid(cc.getPsgroupid());
-            return bean.toMap(bdCheckProsMapper.selectAll(bean));
+            Map map = bean.toMap(bdCheckProsMapper.selectAll(bean));
+            map.put("jydp",cc.getJydp());
+            map.put("ajid",cc.getAjid());
+            return map;
         }else if ("2".equals(type) && StringUtils.isNotBlank(ccid)){
             BdChosenCases cc = bdChosenCasesMapper.selectByPrimaryKey(ccid);
             BdChosenPros bean = new BdChosenPros();
             bean.setChosenid(cc.getChosenid());
             bean.setGroupid(cc.getPsgroupid());
-            return bean.toMap(bdChosenProsMapper.selectAll(bean));
+            Map map =  bean.toMap(bdChosenProsMapper.selectAll(bean));
+            map.put("ajid",cc.getAjid());
+            map.put("jydp",cc.getJydp());
+            return map;
         }
         return null;
     }
@@ -625,6 +633,60 @@ public class XCaseController {
             return cc;
         }
         return null;
+    }
+
+    @RequestMapping("/getscoredetailsforpro")
+    public @ResponseBody Map getscoredetailsforpro(String ggid,String ajid,String pcr,String type){
+        if(StringUtils.isNotBlank(ggid) && StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(pcr)) {
+            if ("1".equals(type)) {
+                BdCheckScore bcs = new BdCheckScore();
+                bcs.setGgid(ggid);
+                bcs.setAjid(ajid);
+                bcs.setPcr(pcr);
+                bcs.setDospecialquery("yes");
+                return bcs.toMap(bdCheckScoreMapper.selectAll(bcs));
+            } else if ("2".equals(type)) {
+                BdChosenScore bcs = new BdChosenScore();
+                bcs.setGgid(ggid);
+                bcs.setAjid(ajid);
+                bcs.setPcr(pcr);
+                bcs.setDospecialquery("yes");
+                return bcs.toMap(bdChosenScoreMapper.selectAll(bcs));
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping("/submitjydp")
+    public @ResponseBody String submitjydp(String type,String ccid,String jydp,String zzdf,@SessionScope("user")UserBean user){
+        if(user == null){
+            return "-1";
+        }
+        if(StringUtils.isNotBlank(ccid)){
+            try {
+                if ("1".equals(type)) {
+                    BdCheckCases bean = bdCheckCasesMapper.selectByPrimaryKey(ccid);
+                    bean.setJydp(jydp);
+                    bean.setZzpcdf(zzdf);
+                    bean.setZzzldj(getZldj(zzdf));
+                    bean.setDpr(user.getYhid());
+                    bean.setDpsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+                    bdCheckCasesMapper.updateByPrimaryKey(bean);
+                    return "1";
+                } else if ("2".equals(type)) {
+                    BdChosenCases bean = bdChosenCasesMapper.selectByPrimaryKey(ccid);
+                    bean.setJydp(jydp);
+                    bean.setZzpxdf(zzdf);
+                    bean.setDpr(user.getYhid());
+                    bean.setDpsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+                    bdChosenCasesMapper.updateByPrimaryKey(bean);
+                    return "1";
+                }
+            }catch (Exception ex){
+                return "-1";
+            }
+        }
+        return "-1";
     }
 
 
