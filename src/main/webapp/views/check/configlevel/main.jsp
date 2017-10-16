@@ -19,7 +19,7 @@
   <div class="bmbox_title">
     <h5>案件评查评分项设置</h5>
     <div class="bmbox_tool">
-      <button id="btn_new" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 新增</button>
+      <%--<button id="btn_new" class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-plus"></i> 新增</button>--%>
     </div>
   </div>
   <div class="bmbox_content clearfix">

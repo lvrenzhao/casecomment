@@ -70,6 +70,7 @@ $(function(){
 
     $("#btn_new").click(function () {
         $("#form_level")[0].reset();
+        $("#form_hid_levelid").val("")
         lo = layer.open({
             type : 1,
             shift : 5,
