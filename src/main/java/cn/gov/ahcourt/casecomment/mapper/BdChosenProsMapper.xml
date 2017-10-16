@@ -53,8 +53,15 @@
     where cpid = #{cpid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenPros">
-    select cpid, chosenid, groupid, proid, sfzz, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
+    select cpid, chosenid, groupid, proid,fn_get_username(proid) proname,  sfzz, create_by, date_format(create_date, '%Y/%m/%d') create_date, update_by, date_format(update_date, '%Y/%m/%d') update_date,
     remarks, flag
     from bd_chosen_pros
+    where 1=1
+    <if test="chosenid != null and chosenid != '' ">
+      and chosenid = #{chosenid}
+    </if>
+    <if test="groupid != null and groupid != '' ">
+      and groupid = #{groupid}
+    </if>
   </select>
 </mapper>

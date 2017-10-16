@@ -76,6 +76,9 @@ public class XCaseController {
     @Resource
     private BdChosenScoreMapper bdChosenScoreMapper;
 
+    @Resource
+    private BdChosenProsMapper bdChosenProsMapper;
+
     @RequestMapping("/list")
     public @ResponseBody Map list(BdMiddleCase bean) {
         //处理bean对象，转化为mabtis接受的querybean
@@ -558,10 +561,74 @@ public class XCaseController {
     }
 
     @RequestMapping("/submitChosenScore")
-    public @ResponseBody String submitChosenScore(BdChosenRecords bean){
+    public @ResponseBody String submitChosenScore(BdChosenRecords bean,@SessionScope("user")UserBean user){
+        try {
+            if (user == null) {
+                return "-1";
+            }
+            bean.setCreateBy(user.getYhid());
+            bean.setPcr(user.getYhid());
+            bean.setPcsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
 
-        return "2";
+            String crid = bean.getCrid();
+            if (StringUtils.isNotBlank(crid)) {
+                bdChosenRecordsMapper.updateByPrimaryKey(bean);
+            } else {
+                crid = IdGen.uuid();
+                bean.setCrid(crid);
+                bdChosenRecordsMapper.insert(bean);
+            }
+
+            bdChosenScoreMapper.deleteByCrid(crid);
+
+            if (StringUtils.isNotBlank(bean.getItemJson())) {
+                List<BdChosenScore> items = JSONArray.parseArray(bean.getItemJson(), BdChosenScore.class);
+                for (int i = 0; items != null && i < items.size(); i++) {
+                    BdChosenScore item = items.get(i);
+                    item.setCrid(crid);
+                    item.setScoreid(IdGen.uuid());
+                    bdChosenScoreMapper.insert(item);
+                }
+            }
+
+            return crid;
+        }catch (Exception ex){
+            return "-1";
+        }
     }
+
+    @RequestMapping("/getProsByCCID")
+    public @ResponseBody Map getProsByCCID(String ccid , String type){
+        if("1".equals(type) && StringUtils.isNotBlank(ccid)){
+            BdCheckCases cc = bdCheckCasesMapper.selectByPrimaryKey(ccid);
+            BdCheckPros bean = new BdCheckPros();
+            bean.setCheckid(cc.getCheckid());
+            bean.setGroupid(cc.getPsgroupid());
+            return bean.toMap(bdCheckProsMapper.selectAll(bean));
+        }else if ("2".equals(type) && StringUtils.isNotBlank(ccid)){
+            BdChosenCases cc = bdChosenCasesMapper.selectByPrimaryKey(ccid);
+            BdChosenPros bean = new BdChosenPros();
+            bean.setChosenid(cc.getChosenid());
+            bean.setGroupid(cc.getPsgroupid());
+            return bean.toMap(bdChosenProsMapper.selectAll(bean));
+        }
+        return null;
+    }
+
+    @RequestMapping("/getcc")
+    public @ResponseBody Object getcc(String ccid , String type){
+        if("1".equals(type) && StringUtils.isNotBlank(ccid)){
+            BdCheckCases cc = bdCheckCasesMapper.selectByPrimaryKey(ccid);
+            return cc;
+        }else if ("2".equals(type) && StringUtils.isNotBlank(ccid)){
+            BdChosenCases cc = bdChosenCasesMapper.selectByPrimaryKey(ccid);
+            return cc;
+        }
+        return null;
+    }
+
+
+
 
     private String getZldj(String fs){
         return "未配置";

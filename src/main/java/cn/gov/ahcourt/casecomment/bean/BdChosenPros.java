@@ -11,6 +11,16 @@ public class BdChosenPros extends BaseEntity {
 
     private String proid;
 
+    private String proname;
+
+    public String getProname() {
+        return proname;
+    }
+
+    public void setProname(String proname) {
+        this.proname = proname;
+    }
+
     private String sfzz;
 
     private String createBy;
