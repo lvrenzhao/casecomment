@@ -1,8 +1,5 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
-import cn.gov.ahcourt.casecomment.bean.WsLog;
-import cn.gov.ahcourt.casecomment.bean.WsTask;
-import cn.gov.ahcourt.casecomment.bean.WsTaskItems;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.axiom.om.OMElement;
@@ -27,16 +24,16 @@ public class JobCaseInit {
 
     public void doJob(){
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        for(int i = 0 ; i <WSService.FYCODE.length;i++){
+        for (int i = 0; i < WSService.FYCODE.length; i++) {
             int c_page = 1;
             int t_page = 0;
-            do{
-                String xml = wsService.wsGetAllAJID(WSService.FYCODE[i],today,c_page);
-                if(c_page == 1){
+            do {
+                String xml = wsService.wsGetAllAJID(WSService.FYCODE[i], today, c_page);
+                if (c_page == 1) {
                     t_page = WSService.getT_PageNum(xml);
                 }
                 c_page++;
-            }while( c_page <= t_page );
+            } while (c_page <= t_page);
         }
     }
 
