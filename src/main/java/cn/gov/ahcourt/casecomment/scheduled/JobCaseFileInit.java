@@ -41,10 +41,6 @@ public class JobCaseFileInit {
         }
     }
 
-    private int getFbsxhByFyCode(String fycode){
-        return 0;
-    }
-
 
     public String getFileContent(String text){
         Pattern pattern = Pattern.compile("(?<=<FileContent>)[\\s\\S]+(?=</FileContent>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)

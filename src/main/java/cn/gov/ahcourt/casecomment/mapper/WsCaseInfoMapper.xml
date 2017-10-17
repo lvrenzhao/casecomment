@@ -17,7 +17,7 @@
     insert into WS_CASEINFO (WSID, TDHID, CREATETIME, 
       REMARK, BASEINFOXML, FILEINFOXML
       )
-    values (#{wsid,jdbcType=VARCHAR}, #{tdhid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+    values (#{wsid,jdbcType=VARCHAR}, #{tdhid,jdbcType=VARCHAR},now(),
       #{remark,jdbcType=VARCHAR}, #{baseinfoxml,jdbcType=LONGVARCHAR}, #{fileinfoxml,jdbcType=LONGVARCHAR}
       )
   </insert>

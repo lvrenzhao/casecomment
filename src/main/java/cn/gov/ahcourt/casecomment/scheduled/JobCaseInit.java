@@ -1,17 +1,21 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
+import cn.gov.ahcourt.casecomment.bean.WsCaseInfo;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.xml.namespace.QName;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -24,11 +28,32 @@ public class JobCaseInit {
 
     public void doJob(){
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        int record = 0;
         for (int i = 0; i < WSService.FYCODE.length; i++) {
             int c_page = 1;
             int t_page = 0;
             do {
                 String xml = wsService.wsGetAllAJID(WSService.FYCODE[i], today, c_page);
+                List<String> ajids = getAJIDS(xml);
+                for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
+                    System.out.println("process record ......"+ record);
+                    record ++;
+                    String baseinfoxml = wsService.wsGetOneBaseInfo(ajids.get(x));
+                    String fileinfoxml = "";
+                    String fycode = getFycode(baseinfoxml);
+                    String ah = getAH(baseinfoxml);
+                    if(StringUtils.isNotBlank(fycode)){
+                        fileinfoxml = wsService.wsGetOneFileInfo(wsService.getFbsxhByFyCode(fycode),ah,fycode);
+                    }
+                    //将webservice结果不处理直接存入数据库供后面解析
+                    WsCaseInfo caseInfo = new WsCaseInfo();
+                    caseInfo.setWsid(IdGen.uuid());
+                    caseInfo.setTdhid(ajids.get(x));
+                    caseInfo.setBaseinfoxml(baseinfoxml);
+                    caseInfo.setFileinfoxml(fileinfoxml);
+                    caseInfo.setRemark("1");
+                    wsService.insertCaseInfo(caseInfo);
+                }
                 if (c_page == 1) {
                     t_page = WSService.getT_PageNum(xml);
                 }
@@ -39,7 +64,46 @@ public class JobCaseInit {
 
 
 
+    private List<String> getAJIDS(String text){
+        List<String> ajids = new ArrayList<String>();
+        Pattern pattern = Pattern.compile("(?<=AHDM=\")\\S+(?=\")");
+        Matcher matcher = pattern.matcher(text);
+        while(matcher.find()) {
+            ajids.add(new String(Base64.decodeBase64(matcher.group())));
+        }
+        return ajids;
+    }
 
+    private String getFycode(String text){
+        Pattern pattern = Pattern.compile("(?<=<FYDM>)\\S+(?=</FYDM>)");
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()) {
+            String fjm = new String(Base64.decodeBase64(matcher.group()));
+            int i = indexOfArr(WSService.FYCODE,fjm);
+            if(i > -1){
+                return WSService.FYDM[i];
+            }
+        }
+        return "";
+    }
+
+    private String getAH(String text){
+        Pattern pattern = Pattern.compile("(?<=<AH>)\\S+(?=</AH>)");
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()) {
+            return new String(Base64.decodeBase64(matcher.group()));
+        }
+        return "";
+    }
+
+    public static int indexOfArr(String[] arr,String value2){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i].equals(value2)){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
 

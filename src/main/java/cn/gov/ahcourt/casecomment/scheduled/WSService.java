@@ -1,7 +1,9 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
 import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
+import cn.gov.ahcourt.casecomment.bean.WsCaseInfo;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.WsCaseInfoMapper;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.axiom.om.OMAbstractFactory;
@@ -34,6 +36,9 @@ public class WSService {
     @Resource
     private BdMiddleCaseMapper bdMiddleCaseMapper;
 
+    @Resource
+    private WsCaseInfoMapper wsCaseInfoMapper;
+
 //    @Resource
 //    private WsTaskMapper wsTaskMapper;
 //
@@ -49,7 +54,7 @@ public class WSService {
     public static final String WEBSERVICE_BASE_PW = "dic";
     private static final String WEBSERVICE_BASE_STARTDATE = "2016-01-01";
     private static final String WEBSERVICE_BASE_ENDDATE = "2017-12-31";
-    public static final String[] WEBSERVICE_FILE_FBS = {"http://139.1.1.130:99/dagl/service/TDHYxxxService"};//(注意：这里是分布式)
+    public static final String[] WEBSERVICE_FILE_FBS = {"http://139.1.1.130:99/dagl/service/TDHYxxxService","http://139.1.1.130:98/dagl/service/TDHYxxxService","http://139.1.1.130:97/dagl/service/TDHYxxxService"};//(注意：这里是分布式)
     public static final String WEBSERVICE_FILE_NS = "http://web.service.tdh/";
     public static final String WEBSERVICE_FILE_UN = "";
     public static final String WEBSERVICE_FILE_PW = "";
@@ -57,8 +62,9 @@ public class WSService {
     public static final String WEBSERVICE_VIDEO_UN = "tydk";
     public static final String WEBSERVICE_VIDEO_PW = "tydk";
 
-    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
-//    public static final String[] FYCODE={"C00","C10"};
+//    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
+    public static final String[] FYCODE = {"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C29","C2A","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C52","C53","C54","C55","C56","C57","C60","C61","C62","C63","C64","C70","C71","C72","C73","C74","C75","C76","C77","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CC0","CC1","CC2","CC3","CC4","CC5","CC6","CC7","CC8","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
+    public static final String[] FYDM  ={"340000","340100","340102","340103","340104","340111","340121","340122","340123","340141","340192","340193","340194","340200","340202","340203","340205","340221","340222","340223","340224","340291","340231","340300","340302","340303","340304","340311","340321","340322","340323","340400","340402","340403","340404","340405","340406","340421","340422","340500","340503","340504","340521","340591","340592","340502","340600","340602","340603","340604","340621","340700","340702","340703","340711","340706","340722","340705","340721","340800","340802","340803","340811","340821","340822","340823","340824","340825","340826","340827","340828","341000","341001","341002","341003","341021","341022","341023","341024","341200","341203","341213","341222","341223","341227","341228","341229","341230","342200","342201","342221","342222","342224","342225","341100","341101","341111","341121","341122","341123","341124","341112","341103","342400","342401","342422","342423","342425","342426","342427","342428","342429","342500","342501","342522","342523","342524","342526","342527","342529","342800","342811","342821","342822","342823","342831","342900","342901","342902","342903","342904"};
 
 
     ServiceClient sender;
@@ -403,6 +409,14 @@ public class WSService {
 //        }
 //    }
 
+    public int insertCaseInfo(WsCaseInfo item){
+        try{
+            return wsCaseInfoMapper.insert(item);
+        }catch (Exception ex){
+            return 0;
+        }
+    }
+
 
     public static int getAllCount(String text){
         Pattern pattern = Pattern.compile("(?<=<Data Count=\")\\S+(?=\"\\s*>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
@@ -428,5 +442,39 @@ public class WSService {
             }
         }
         return 0;
+    }
+
+
+    public int getFbsxhByFyCode(String fycode){
+        String[] server0 = {"340000","340100","340102","340103","340104","340111","340121","340122","340123","340141","340192","340193","340194","340500","340502","340503","340504","340521","340591","340592","340700","340702","340703","340705","340706","340711","340721","340722","341000","341001","341002","341003","341021","341022","341023","341024","342800","342811","342821","342822","342823","342831"};
+        String[] server1 = {"340300","340302","340303","340304","340311","340321","340322","340323","340400","340402","340403","340404","340405","340406","340421","340422","340600","340602","340603","340604","340621","341200","341203","341213","341222","341223","341227","341228","341229","341230","342200","342201","342221","342222","342224","342225","342900","342901","342902","342903","342904"};
+        String[] server2 = {"340200","340202","340203","340205","340221","340222","340223","340224","340231","340291","340800","340802","340803","340811","340821","340822","340823","340824","340825","340826","340827","340828","341100","341101","341103","341111","341112","341121","341122","341123","341124","342400","342401","342422","342423","342425","342426","342427","342428","342429","342500","342501","342522","342523","342524","342526","342527","342529"};
+
+        int i = indexOfArr(server0,fycode);
+        if(i > -1){
+            return 0;
+        }
+
+        i = indexOfArr(server1,fycode);
+        if(i > -1){
+            return 1;
+        }
+
+        i = indexOfArr(server2,fycode);
+        if(i> -1){
+            return 2;
+        }
+
+        return 0;
+    }
+
+
+    public static int indexOfArr(String[] arr,String value2){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i].equals(value2)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
