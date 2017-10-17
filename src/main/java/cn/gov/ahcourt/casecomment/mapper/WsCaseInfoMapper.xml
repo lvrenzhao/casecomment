@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.WsCaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.WsCaseInfo" >
+    <id column="WSID" property="wsid" jdbcType="VARCHAR" />
+    <result column="TDHID" property="tdhid" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="BASEINFOXML" property="baseinfoxml" jdbcType="LONGVARCHAR" />
+    <result column="FILEINFOXML" property="fileinfoxml" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WS_CASEINFO
+    where WSID = #{wsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsCaseInfo" >
+    insert into WS_CASEINFO (WSID, TDHID, CREATETIME, 
+      REMARK, BASEINFOXML, FILEINFOXML
+      )
+    values (#{wsid,jdbcType=VARCHAR}, #{tdhid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{baseinfoxml,jdbcType=LONGVARCHAR}, #{fileinfoxml,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsCaseInfo" >
+    update WS_CASEINFO
+    set TDHID = #{tdhid,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BASEINFOXML = #{baseinfoxml,jdbcType=LONGVARCHAR},
+      FILEINFOXML = #{fileinfoxml,jdbcType=LONGVARCHAR}
+    where WSID = #{wsid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select WSID, TDHID, CREATETIME, REMARK, BASEINFOXML, FILEINFOXML
+    from WS_CASEINFO
+    where WSID = #{wsid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select WSID, TDHID, CREATETIME, REMARK, BASEINFOXML, FILEINFOXML
+    from WS_CASEINFO
+  </select>
+</mapper>
