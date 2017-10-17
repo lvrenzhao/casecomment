@@ -22,7 +22,7 @@ public class JobCaseUpdate {
         caltoday.roll(Calendar.DAY_OF_MONTH, 1);
         String zdsj = new SimpleDateFormat("yyyy-MM-dd").format(caltoday.getTime()) +" 00:00:00";
         //调用
-        String xml = wsService.wsGetUpdateAJIDByDay(zdsj,"C10");
+        String xml = wsService.wsGetUpdateAJID(zdsj,"C10");
         System.out.println(xml);
         System.out.println(this.getClass().getName()+"......dojob");
     }

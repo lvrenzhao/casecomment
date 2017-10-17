@@ -120,9 +120,10 @@ public class WSService {
     /**
      * 获取今天更新的ajid
      * @param fjm 法院分级码
+     * @param zdsj 指定时间
      * @return
      */
-    public String wsGetUpdateAJIDByDay(String zdsj,String fjm){
+    public String wsGetUpdateAJID(String zdsj,String fjm){
         try {
             if(sender != null && StringUtils.isNotBlank(fjm) && StringUtils.isNotBlank(zdsj)){
                 EndpointReference endpointReference = new EndpointReference(WSService.WEBSERVICE_BASE);
@@ -154,46 +155,7 @@ public class WSService {
     }
 
 
-    //==========================所有老方法（不再推荐使用）============================
-
-    /**
-     * 仅获取基本信息接口的中所有ajid的列表。
-     * @param page
-     * @return
-     */
-    public String invokeBaseInfoOnlyTdhAjid(int page){
-        try {
-            if(sender != null ){
-                String soapBindingAddress = WSService.WEBSERVICE_BASE;
-                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
-                Options options = new Options();
-                options.setTimeOutInMilliSeconds(200*60*1000);
-                options.setTo(endpointReference);
-                sender.setOptions(options);
-                OMFactory fac = OMAbstractFactory.getOMFactory();
-                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
-                OMElement method = fac.createOMElement("getPlAjbs", omNs);
-                String[] paramnames = new String[] { "Uid","Pwd","XML" };
-                String xml = "<Request><FJM>"+new String(Base64.encodeBase64("C10".getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64("19491001-20171231".getBytes("UTF-8")))+"</LARQ></Request>";
-                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
-                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
-                for (int i = 0; i < paramnames.length; i++) {
-                    QName qname=new QName(paramnames[i]);
-                    OMElement inner = fac.createOMElement(qname);
-                    inner.setText(paramvalues[i]);
-                    method.addChild(inner);
-                }
-                // 发送数据，返回结果
-                OMElement result = sender.sendReceive(method);
-                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public String invokeBaseInfoByTDHAjid(String tdhajid){
+    public String wsGetOneBaseInfo(String tdhajid){
         try {
             if(sender != null && StringUtils.isNotBlank(tdhajid)){
                 String soapBindingAddress = WSService.WEBSERVICE_BASE;
@@ -224,40 +186,7 @@ public class WSService {
         }
         return null;
     }
-
-    public String invokeBaseInfoByTimeSpan(String fycode,String span){
-        try {
-            if(sender != null && StringUtils.isNotBlank(span)){
-                String soapBindingAddress = WSService.WEBSERVICE_BASE;
-                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
-                Options options = new Options();
-                options.setTimeOutInMilliSeconds(200*60*1000);
-                options.setTo(endpointReference);
-                sender.setOptions(options);
-                OMFactory fac = OMAbstractFactory.getOMFactory();
-                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
-                OMElement method = fac.createOMElement("GetPlAj", omNs);
-                String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
-                String xml = "<Request><FYDM>"+new String(new String(Base64.encodeBase64(fycode.getBytes("UTF-8"))))+"</FYDM><JARQ>"+new String(new String(Base64.encodeBase64(span.getBytes("UTF-8"))))+"</JARQ><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
-                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
-                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
-                for (int i = 0; i < paramnames.length; i++) {
-                    QName qname=new QName(paramnames[i]);
-                    OMElement inner = fac.createOMElement(qname);
-                    inner.setText(paramvalues[i]);
-                    method.addChild(inner);
-                }
-                // 发送数据，返回结果
-                OMElement result = sender.sendReceive(method);
-                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public String invokeFileInfoByAh(int fbsxh,String ah,String fycode){
+    public String wsGetOneFileInfo(int fbsxh,String ah,String fycode){
         try {
             if(sender != null && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fycode)){
                 String soapBindingAddress = WSService.WEBSERVICE_FILE_FBS[fbsxh];
@@ -288,7 +217,7 @@ public class WSService {
     }
 
 
-    public String invokeFileContentInfoByAh(int fbsxh,String FILENAME,String FTPSERVER,String FYDM){
+    public String wsGetOneFileContent(int fbsxh,String FILENAME,String FTPSERVER,String FYDM){
         try {
             if(sender != null && StringUtils.isNotBlank(FILENAME) && StringUtils.isNotBlank(FTPSERVER) && StringUtils.isNotBlank(FYDM)){
                 String soapBindingAddress = WSService.WEBSERVICE_FILE_FBS[fbsxh];
@@ -302,10 +231,10 @@ public class WSService {
                 OMElement method = fac.createOMElement("GetYxFile", omNs);
                 String param3 =
                         "<Request>" +
-                        "<FYDM>"+new String(Base64.encodeBase64(FYDM.getBytes("UTF-8")))+"</FYDM>" +
-                        "<FILENAME>"+new String(Base64.encodeBase64(FILENAME.getBytes("UTF-8")))+"</FILENAME>" +
-                        "<FTPSERVER>"+new String(Base64.encodeBase64(FTPSERVER.getBytes("UTF-8")))+"</FTPSERVER>" +
-                        "</Request>";
+                                "<FYDM>"+new String(Base64.encodeBase64(FYDM.getBytes("UTF-8")))+"</FYDM>" +
+                                "<FILENAME>"+new String(Base64.encodeBase64(FILENAME.getBytes("UTF-8")))+"</FILENAME>" +
+                                "<FTPSERVER>"+new String(Base64.encodeBase64(FTPSERVER.getBytes("UTF-8")))+"</FTPSERVER>" +
+                                "</Request>";
                 String[] paramnames = new String[] { "Userid","Pwd","Xml"};
                 String[] paramvalues = new String[] { new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_UN.getBytes("UTF-8"))), new String(Base64.encodeBase64(WSService.WEBSERVICE_FILE_PW.getBytes("UTF-8"))),new String(Base64.encodeBase64(param3.getBytes("UTF-8")))};
                 for (int i = 0; i < paramnames.length; i++) {
@@ -324,6 +253,85 @@ public class WSService {
         }
         return null;
     }
+
+
+    //==========================所有老方法（不再推荐使用）============================
+
+    /**
+     * 仅获取基本信息接口的中所有ajid的列表。
+     * @param page
+     * @return
+     */
+//    public String invokeBaseInfoOnlyTdhAjid(int page){
+//        try {
+//            if(sender != null ){
+//                String soapBindingAddress = WSService.WEBSERVICE_BASE;
+//                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+//                Options options = new Options();
+//                options.setTimeOutInMilliSeconds(200*60*1000);
+//                options.setTo(endpointReference);
+//                sender.setOptions(options);
+//                OMFactory fac = OMAbstractFactory.getOMFactory();
+//                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+//                OMElement method = fac.createOMElement("getPlAjbs", omNs);
+//                String[] paramnames = new String[] { "Uid","Pwd","XML" };
+//                String xml = "<Request><FJM>"+new String(Base64.encodeBase64("C10".getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64("19491001-20171231".getBytes("UTF-8")))+"</LARQ></Request>";
+//                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+//                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+//                for (int i = 0; i < paramnames.length; i++) {
+//                    QName qname=new QName(paramnames[i]);
+//                    OMElement inner = fac.createOMElement(qname);
+//                    inner.setText(paramvalues[i]);
+//                    method.addChild(inner);
+//                }
+//                // 发送数据，返回结果
+//                OMElement result = sender.sendReceive(method);
+//                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+
+    /**
+     * 模糊查询案件列表，根据法院分级码和结案时间段(方法存在漏案情况，不建议使用)
+     * @param fycode
+     * @param span
+     * @return
+     */
+//    public String invokeBaseInfoByTimeSpan(String fycode,String span){
+//        try {
+//            if(sender != null && StringUtils.isNotBlank(span)){
+//                String soapBindingAddress = WSService.WEBSERVICE_BASE;
+//                EndpointReference endpointReference = new EndpointReference(soapBindingAddress);
+//                Options options = new Options();
+//                options.setTimeOutInMilliSeconds(200*60*1000);
+//                options.setTo(endpointReference);
+//                sender.setOptions(options);
+//                OMFactory fac = OMAbstractFactory.getOMFactory();
+//                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+//                OMElement method = fac.createOMElement("GetPlAj", omNs);
+//                String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+//                String xml = "<Request><FYDM>"+new String(new String(Base64.encodeBase64(fycode.getBytes("UTF-8"))))+"</FYDM><JARQ>"+new String(new String(Base64.encodeBase64(span.getBytes("UTF-8"))))+"</JARQ><ZT>"+new String(new String(Base64.encodeBase64("1".getBytes("UTF-8"))))+"</ZT></Request>";
+//                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+//                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+//                for (int i = 0; i < paramnames.length; i++) {
+//                    QName qname=new QName(paramnames[i]);
+//                    OMElement inner = fac.createOMElement(qname);
+//                    inner.setText(paramvalues[i]);
+//                    method.addChild(inner);
+//                }
+//                // 发送数据，返回结果
+//                OMElement result = sender.sendReceive(method);
+//                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     public static List<String> findDates(String sbegin, String send)
     {

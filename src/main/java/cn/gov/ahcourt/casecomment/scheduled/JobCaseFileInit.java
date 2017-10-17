@@ -28,7 +28,7 @@ public class JobCaseFileInit {
 //            System.out.println(xml);
 
             //tif
-            String xml = wsService.invokeFileContentInfoByAh(0,"2017/1201/145100000065779/Z_1/20170626.085335.226_0006.tif","ahgy_ftp","340000");
+            String xml = wsService.wsGetOneFileContent(0,"2017/1201/145100000065779/Z_1/20170626.085335.226_0006.tif","ahgy_ftp","340000");
             String content = getFileContent(xml);
             String recontent = new String(Base64.decodeBase64(content.getBytes()));
             System.out.println(recontent);
