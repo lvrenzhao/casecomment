@@ -40,6 +40,29 @@ public class JobCaseInit {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //============================老方法==================================
 //    public void doJob(){
 //        //请求获取案件标识号
 //        WsTask wsTask = new WsTask();
