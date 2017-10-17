@@ -1,13 +1,7 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
 import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
-import cn.gov.ahcourt.casecomment.bean.WsLog;
-import cn.gov.ahcourt.casecomment.bean.WsTask;
-import cn.gov.ahcourt.casecomment.bean.WsTaskItems;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
-import cn.gov.ahcourt.casecomment.mapper.WsLogMapper;
-import cn.gov.ahcourt.casecomment.mapper.WsTaskItemsMapper;
-import cn.gov.ahcourt.casecomment.mapper.WsTaskMapper;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.axiom.om.OMAbstractFactory;
@@ -40,14 +34,14 @@ public class WSService {
     @Resource
     private BdMiddleCaseMapper bdMiddleCaseMapper;
 
-    @Resource
-    private WsTaskMapper wsTaskMapper;
-
-    @Resource
-    private WsTaskItemsMapper wsTaskItemsMapper;
-
-    @Resource
-    private WsLogMapper wsLogMapper;
+//    @Resource
+//    private WsTaskMapper wsTaskMapper;
+//
+//    @Resource
+//    private WsTaskItemsMapper wsTaskItemsMapper;
+//
+//    @Resource
+//    private WsLogMapper wsLogMapper;
 
     public static final String WEBSERVICE_BASE = "http://139.1.1.129:81/court/service/SzftWebService";
     public static final String WEBSERVICE_BASE_NS = "http://szft.tdh/";
@@ -361,53 +355,53 @@ public class WSService {
 
 
 
-    public int insertTask(WsTask task){
-        try {
-            return wsTaskMapper.insert(task);
-        }catch (Exception ex){
-            return 0;
-        }
-    }
-
-    public int updateTask(WsTask task){
-        try {
-            return wsTaskMapper.updateByPrimaryKey(task);
-        }catch (Exception ex){
-            return 0;
-        }
-    }
-
-    public int insertTaskItem(WsTaskItems item){
-        try {
-            return wsTaskItemsMapper.insert(item);
-        }catch(Exception ex){
-            return 0;
-        }
-    }
-
-    public int updateTaskItem(WsTaskItems item){
-        try {
-            return wsTaskItemsMapper.updateByPrimaryKey(item);
-        }catch (Exception ex){
-            return 0;
-        }
-    }
-
-    public int insertLog(WsLog item){
-        try {
-            return wsLogMapper.insert(item);
-        }catch (Exception ex){
-            return 0;
-        }
-    }
-
-    public int updateLog(WsLog item){
-        try {
-            return wsLogMapper.updateByPrimaryKey(item);
-        }catch (Exception ex){
-            return 0;
-        }
-    }
+//    public int insertTask(WsTask task){
+//        try {
+//            return wsTaskMapper.insert(task);
+//        }catch (Exception ex){
+//            return 0;
+//        }
+//    }
+//
+//    public int updateTask(WsTask task){
+//        try {
+//            return wsTaskMapper.updateByPrimaryKey(task);
+//        }catch (Exception ex){
+//            return 0;
+//        }
+//    }
+//
+//    public int insertTaskItem(WsTaskItems item){
+//        try {
+//            return wsTaskItemsMapper.insert(item);
+//        }catch(Exception ex){
+//            return 0;
+//        }
+//    }
+//
+//    public int updateTaskItem(WsTaskItems item){
+//        try {
+//            return wsTaskItemsMapper.updateByPrimaryKey(item);
+//        }catch (Exception ex){
+//            return 0;
+//        }
+//    }
+//
+//    public int insertLog(WsLog item){
+//        try {
+//            return wsLogMapper.insert(item);
+//        }catch (Exception ex){
+//            return 0;
+//        }
+//    }
+//
+//    public int updateLog(WsLog item){
+//        try {
+//            return wsLogMapper.updateByPrimaryKey(item);
+//        }catch (Exception ex){
+//            return 0;
+//        }
+//    }
 
 
     public static int getAllCount(String text){
