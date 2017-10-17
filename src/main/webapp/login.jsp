@@ -16,21 +16,22 @@
 <div class="loginHeader">
     <div>
         <img src="${ctx_assets}/img/logo.png" style="width:40px;height: 40px;display:inline-block;margin-top: -5px;" /><span style="font-size: 19px;margin-left: 10px;display:inline-block;">安徽省法院案件质量网上双评工作平台</span>
+        <a class="menuitem pull-right code-layout" href="${ctx}/files/360se9.1.0.356.exe" data-index="0"><i class="fa fa-download mr5"></i> 下载360安全浏览器</a>
 
-        <a class="menuitem pull-right code-layout" href="javascript:void(0)" data-index="0">
-            <i class="fa fa-apple mr5"></i> 安卓客户端
-            <div class="code-box">
-                <img src="${ctx_assets}/img/code_az.png">
-                <p><span style="color: green;">微信</span>扫一扫，立即安装!</p>
-            </div>
-        </a>
-        <a class="menuitem pull-right code-layout" href="javascript:void(0)" data-index="0">
-            <i class="fa fa-android mr5"></i> 苹果客户端
-            <div class="code-box">
-                <img src="${ctx_assets}/img/code_pg.png">
-                <p><span style="color: green;">微信</span>扫一扫，立即安装!</p>
-            </div>
-        </a>
+        <%--<a class="menuitem pull-right code-layout" href="javascript:void(0)" data-index="0">--%>
+            <%--<i class="fa fa-apple mr5"></i> 安卓客户端--%>
+            <%--<div class="code-box">--%>
+                <%--<img src="${ctx_assets}/img/code_az.png">--%>
+                <%--<p><span style="color: green;">微信</span>扫一扫，立即安装!</p>--%>
+            <%--</div>--%>
+        <%--</a>--%>
+        <%--<a class="menuitem pull-right code-layout" href="javascript:void(0)" data-index="0">--%>
+            <%--<i class="fa fa-android mr5"></i> 苹果客户端--%>
+            <%--<div class="code-box">--%>
+                <%--<img src="${ctx_assets}/img/code_pg.png">--%>
+                <%--<p><span style="color: green;">微信</span>扫一扫，立即安装!</p>--%>
+            <%--</div>--%>
+        <%--</a>--%>
     </div>
 </div>
 <div class="loginBody bm-desktop">
@@ -88,7 +89,7 @@
     </div>
 </div>
 <div class="loginFooter">
-    <div class="footer_msg">* 推荐使用<a href="http://se.360.cn/" target="_blank" style="">360浏览器</a>极速模式</div>
+    <div class="footer_msg">* 推荐使用<a href="${ctx}/files/360se9.1.0.356.exe" target="_blank" style="">360安全浏览器</a>极速模式</div>
 </div>
 
 <script>
