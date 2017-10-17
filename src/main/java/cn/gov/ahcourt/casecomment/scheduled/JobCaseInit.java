@@ -26,46 +26,61 @@ public class JobCaseInit {
     private WSService wsService;
 
     public void doJob(){
-        //请求获取案件标识号
-        WsTask wsTask = new WsTask();
-        String taskid = IdGen.uuid();
-        wsTask.setTaskid(taskid);
-        wsTask.setTasktype("A1");
-        wsTask.setBegeindate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-        int flagWsTaskSaveState = wsService.insertTask(wsTask);
-        if(flagWsTaskSaveState == 1){
-            int c_page = 0;
+        String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        for(int i = 0 ; i <WSService.FYCODE.length;i++){
+            int c_page = 1;
             int t_page = 0;
             do{
-                WsTaskItems currentTaskItem = new WsTaskItems();
-                String taskitemid = IdGen.uuid();
-                currentTaskItem.setTaskitemid(taskitemid);
-                currentTaskItem.setTaskid(taskid);
-                currentTaskItem.setParams("");//todo
-                currentTaskItem.setExetime(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-                wsService.insertTaskItem(currentTaskItem);
-                try{
-                    String result = wsService.invokeBaseInfoOnlyTdhAjid(c_page);
-                    if(result != null && StringUtils.isNotBlank(result)){
-//                        currentTaskItem.setDatacount(0);//todo
-                        currentTaskItem.setResults(result);
-                        wsService.updateTaskItem(currentTaskItem);
-                    }
-                }catch (Exception ex){
-                    WsLog log = new WsLog();
-                    log.setErrorid(IdGen.uuid());
-                    log.setTaskid(taskid);
-                    log.setTaskitemid(taskitemid);
-                    log.setLog(ex.getMessage());
-                    wsService.insertLog(log);
-                }
-                if(c_page == 0){
-                    t_page = 0;
+                String xml = wsService.wsGetAllAJID(WSService.FYCODE[i],today,c_page);
+                if(c_page == 1){
+                    t_page = WSService.getT_PageNum(xml);
                 }
                 c_page++;
-            }while( c_page < t_page );
+            }while( c_page <= t_page );
         }
     }
+
+//    public void doJob(){
+//        //请求获取案件标识号
+//        WsTask wsTask = new WsTask();
+//        String taskid = IdGen.uuid();
+//        wsTask.setTaskid(taskid);
+//        wsTask.setTasktype("A1");
+//        wsTask.setBegeindate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+//        int flagWsTaskSaveState = wsService.insertTask(wsTask);
+//        if(flagWsTaskSaveState == 1){
+//            int c_page = 0;
+//            int t_page = 0;
+//            do{
+//                WsTaskItems currentTaskItem = new WsTaskItems();
+//                String taskitemid = IdGen.uuid();
+//                currentTaskItem.setTaskitemid(taskitemid);
+//                currentTaskItem.setTaskid(taskid);
+//                currentTaskItem.setParams("");//todo
+//                currentTaskItem.setExetime(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
+//                wsService.insertTaskItem(currentTaskItem);
+//                try{
+//                    String result = wsService.invokeBaseInfoOnlyTdhAjid(c_page);
+//                    if(result != null && StringUtils.isNotBlank(result)){
+////                        currentTaskItem.setDatacount(0);//todo
+//                        currentTaskItem.setResults(result);
+//                        wsService.updateTaskItem(currentTaskItem);
+//                    }
+//                }catch (Exception ex){
+//                    WsLog log = new WsLog();
+//                    log.setErrorid(IdGen.uuid());
+//                    log.setTaskid(taskid);
+//                    log.setTaskitemid(taskitemid);
+//                    log.setLog(ex.getMessage());
+//                    wsService.insertLog(log);
+//                }
+//                if(c_page == 0){
+//                    t_page = 0;
+//                }
+//                c_page++;
+//            }while( c_page < t_page );
+//        }
+//    }
 
 //    public void doJob(){
 //        //开启一个全量同步的Task

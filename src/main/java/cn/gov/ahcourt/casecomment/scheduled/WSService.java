@@ -63,8 +63,8 @@ public class WSService {
     public static final String WEBSERVICE_VIDEO_UN = "tydk";
     public static final String WEBSERVICE_VIDEO_PW = "tydk";
 
-//    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
-    public static final String[] FYCODE={"C00","C10"};
+    public static final String[] FYCODE={"C00","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C1A","C1B","C20","C21","C22","C24","C25","C26","C27","C28","C2A","C29","C30","C31","C32","C33","C34","C35","C36","C37","C40","C41","C42","C43","C44","C45","C46","C47","C50","C57","C52","C53","C54","C55","C56","C60","C61","C62","C63","C64","C70","C71","C72","C76","C74","C73","C74","C75","C80","C81","C82","C83","C84","C85","C86","C87","C88","C89","C8A","C8B","C90","C91","C92","C93","C94","C95","C96","C97","CC0","CC1","CC8","CC2","CC7","CC3","CC4","CC5","CC6","CA0","CA1","CA2","CA3","CA4","CA7","CA8","CAB","CAC","CB0","CB1","CB2","CB3","CB4","CB5","CD0","CD1","CD2","CD3","CD4","CD5","CD6","CD7","CD8","CE0","CE1","CE2","CE3","CE4","CE5","CE6","CE7","CG0","CG1","CG2","CG3","CG4","CG5","CH0","CH1","CH2","CH3","CH4"};
+//    public static final String[] FYCODE={"C00","C10"};
 
 
     ServiceClient sender;
@@ -76,6 +76,85 @@ public class WSService {
             ex.printStackTrace();
         }
     }
+
+
+    /**
+     * 根据法院分级码下载该院建国以来的所有案件标识号(每页1000条，分页下载)
+     * @param fjm 法院分级码
+     * @param page 页码
+     * @param today 今天 格式 yyyymmdd
+     * @return
+     */
+    public String wsGetAllAJID(String fjm,String today,int page){
+        try {
+            if(sender != null && StringUtils.isNotBlank(fjm) && StringUtils.isNotBlank(today)){
+                today = "19491001-"+today;
+                EndpointReference endpointReference = new EndpointReference(WSService.WEBSERVICE_BASE);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+                OMElement method = fac.createOMElement("getPlAjbs", omNs);
+                String[] paramnames = new String[] { "Uid","Pwd","XML" };
+                String xml = "<Request><FJM>"+new String(Base64.encodeBase64(fjm.getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64(today.getBytes("UTF-8")))+"</LARQ><C_PageNum>"+new String(Base64.encodeBase64(String.valueOf(page).getBytes("UTF-8")))+"</C_PageNum></Request>";
+                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取今天更新的ajid
+     * @param fjm 法院分级码
+     * @return
+     */
+    public String wsGetUpdateAJIDByDay(String zdsj,String fjm){
+        try {
+            if(sender != null && StringUtils.isNotBlank(fjm) && StringUtils.isNotBlank(zdsj)){
+                EndpointReference endpointReference = new EndpointReference(WSService.WEBSERVICE_BASE);
+                Options options = new Options();
+                options.setTimeOutInMilliSeconds(200*60*1000);
+                options.setTo(endpointReference);
+                sender.setOptions(options);
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
+                OMElement method = fac.createOMElement("GetGxajByZdsj", omNs);
+                String[] paramnames = new String[] { "Userid","Pwd","RequestXML" };
+                String xml = "<Request><FY>"+new String(Base64.encodeBase64(fjm.getBytes("UTF-8")))+"</FY><ZDSJ>"+new String(Base64.encodeBase64(zdsj.getBytes("UTF-8")))+"</ZDSJ></Request>";
+                String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
+                String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
+                for (int i = 0; i < paramnames.length; i++) {
+                    QName qname=new QName(paramnames[i]);
+                    OMElement inner = fac.createOMElement(qname);
+                    inner.setText(paramvalues[i]);
+                    method.addChild(inner);
+                }
+                // 发送数据，返回结果
+                OMElement result = sender.sendReceive(method);
+                return new String(Base64.decodeBase64(result.getFirstElement().getText()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    //==========================所有老方法（不再推荐使用）============================
 
     /**
      * 仅获取基本信息接口的中所有ajid的列表。
@@ -95,7 +174,7 @@ public class WSService {
                 OMNamespace omNs = fac.createOMNamespace(WSService.WEBSERVICE_BASE_NS,  "");
                 OMElement method = fac.createOMElement("getPlAjbs", omNs);
                 String[] paramnames = new String[] { "Uid","Pwd","XML" };
-                String xml = "<Request><FJM>"+new String(Base64.encodeBase64("C00".getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64("20160416-20170417".getBytes("UTF-8")))+"</LARQ></Request>";
+                String xml = "<Request><FJM>"+new String(Base64.encodeBase64("C10".getBytes("UTF-8")))+"</FJM><LARQ>"+new String(Base64.encodeBase64("19491001-20171231".getBytes("UTF-8")))+"</LARQ></Request>";
                 String p3text = new String(Base64.encodeBase64(xml.getBytes("UTF-8")));
                 String[] paramvalues = new String[] { WSService.WEBSERVICE_BASE_UN,WSService.WEBSERVICE_BASE_PW,p3text };
                 for (int i = 0; i < paramnames.length; i++) {
@@ -325,6 +404,19 @@ public class WSService {
 
     public static int getAllCount(String text){
         Pattern pattern = Pattern.compile("(?<=<Data Count=\")\\S+(?=\"\\s*>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()){
+            try{
+                return Integer.parseInt(new String(Base64.decodeBase64(matcher.group())));
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    public static int getT_PageNum(String text){
+        Pattern pattern = Pattern.compile("(?<=T_PageNum=\")\\S+(?=\")");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
         Matcher matcher = pattern.matcher(text);
         if(matcher.find()){
             try{
