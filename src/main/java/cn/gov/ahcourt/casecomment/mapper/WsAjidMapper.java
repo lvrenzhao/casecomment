@@ -10,9 +10,12 @@ public interface WsAjidMapper {
 
     WsAjid selectByPrimaryKey(String tdhajid);
 
-    List<WsAjid> selectAll();
+    List<WsAjid> selectAll(WsAjid record);
 
     int updateByPrimaryKey(WsAjid record);
 
     int deleteByFjm(String fjm);
+
+    WsAjid getCount(WsAjid record);
+
 }

@@ -11,6 +11,36 @@ public class WsAjid {
 
     private String fjm;
 
+    private String begintime;
+
+    private int start;
+
+    private int pagesize;
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getPagesize() {
+        return pagesize;
+    }
+
+    public void setPagesize(int pagesize) {
+        this.pagesize = pagesize;
+    }
+
+    public String getBegintime() {
+        return begintime;
+    }
+
+    public void setBegintime(String begintime) {
+        this.begintime = begintime;
+    }
+
     public String getTdhajid() {
         return tdhajid;
     }

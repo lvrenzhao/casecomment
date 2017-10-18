@@ -15,6 +15,8 @@ public class WsAj {
 
     private Date lastupdatetime;
 
+    private Date createtime;
+
     private String xmlbase;
 
     private String xmlfile;
@@ -65,6 +67,14 @@ public class WsAj {
 
     public void setLastupdatetime(Date lastupdatetime) {
         this.lastupdatetime = lastupdatetime;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
     public String getXmlbase() {

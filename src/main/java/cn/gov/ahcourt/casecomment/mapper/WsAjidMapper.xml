@@ -33,8 +33,24 @@
     from WS_AJID
     where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.WsAjid" >
     select TDHAJID, CREATETIME, UPDATETIME, FJM
     from WS_AJID
+    where 1=1
+    <if test="begintime != null and begintime != '' ">
+      and CREATETIME >= #{begintime}  or UPDATETIME >= #{begintime}
+    </if>
+    <if test="start != null and start != '' ">
+    limit #{start} ,  #{pagesize}
+    </if>
+  </select>
+
+  <select id="getCount" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.WsAjid" >
+    select count(1) FJM
+    from WS_AJID
+    where 1=1
+    <if test="begintime != null and begintime != '' ">
+      and CREATETIME >= #{begintime}  or UPDATETIME >= #{begintime}
+    </if>
   </select>
 </mapper>

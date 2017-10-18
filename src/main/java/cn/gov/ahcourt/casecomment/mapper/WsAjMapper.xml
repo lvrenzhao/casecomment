@@ -8,39 +8,38 @@
     <result column="FYDM" property="fydm" jdbcType="VARCHAR" />
     <result column="AJZTMC" property="ajztmc" jdbcType="VARCHAR" />
     <result column="LASTUPDATETIME" property="lastupdatetime" jdbcType="TIMESTAMP" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="XMLBASE" property="xmlbase" jdbcType="LONGVARCHAR" />
     <result column="XMLFILE" property="xmlfile" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from WS_AJ_C00
-    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
-  </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
-    insert into WS_AJ_C00 (TDHAJID, AH, FJM, 
+    insert into WS_AJ_${fjm} (TDHAJID, AH, FJM,
       FYDM, AJZTMC, LASTUPDATETIME, 
-      XMLBASE, XMLFILE)
+      createtime, XMLBASE, XMLFILE
+      )
     values (#{tdhajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{fjm,jdbcType=VARCHAR}, 
       #{fydm,jdbcType=VARCHAR}, #{ajztmc,jdbcType=VARCHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
-      #{xmlbase,jdbcType=LONGVARCHAR}, #{xmlfile,jdbcType=LONGVARCHAR})
+      #{createtime,jdbcType=TIMESTAMP}, #{xmlbase,jdbcType=LONGVARCHAR}, #{xmlfile,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
-    update WS_AJ_C00
+    update WS_AJ_${fjm}
     set AH = #{ah,jdbcType=VARCHAR},
       FJM = #{fjm,jdbcType=VARCHAR},
       FYDM = #{fydm,jdbcType=VARCHAR},
       AJZTMC = #{ajztmc,jdbcType=VARCHAR},
       LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
       XMLBASE = #{xmlbase,jdbcType=LONGVARCHAR},
       XMLFILE = #{xmlfile,jdbcType=LONGVARCHAR}
     where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, XMLBASE, XMLFILE
-    from WS_AJ_C00
-    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
-  </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, XMLBASE, XMLFILE
-    from WS_AJ_C00
+    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, createtime, XMLBASE, XMLFILE
+    from WS_AJ_${fjm}
+    where 1=1
+    <if test="tdhajid != null and tdhajid != '' ">
+      and tdhajid = #{tdhajid}
+    </if>
   </select>
 </mapper>

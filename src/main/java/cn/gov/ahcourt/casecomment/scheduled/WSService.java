@@ -6,6 +6,7 @@ import cn.gov.ahcourt.casecomment.bean.WsAj;
 import cn.gov.ahcourt.casecomment.bean.WsAjid;
 //import cn.gov.ahcourt.casecomment.bean.WsCaseInfo;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.WsAjMapper;
 import cn.gov.ahcourt.casecomment.mapper.WsAjidMapper;
 //import cn.gov.ahcourt.casecomment.mapper.WsCaseInfoMapper;
 import cn.gov.ahcourt.casecomment.service.SettingService;
@@ -49,6 +50,9 @@ public class WSService {
 
     @Resource
     private WsAjidMapper wsAjidMapper;
+
+    @Resource
+    private WsAjMapper wsAjMapper;
 
 //    @Resource
 //    private WsTaskMapper wsTaskMapper;
@@ -530,5 +534,50 @@ public class WSService {
         String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         sb.setSetvalue(time);
         settingService.updateByKeySelective(sb);
+    }
+
+    public int getAllNeedConvertPage(String begintime,int pagesize){
+        if(StringUtils.isNotBlank(begintime)) {
+            WsAjid bean = new WsAjid();
+            bean.setBegintime(begintime);
+            try {
+                int i = Integer.parseInt(wsAjidMapper.getCount(bean).getFjm()) / pagesize;
+                return i+1;
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    List<WsAjid> getNeedConvertByPage(String begintime,int start,int pagesize){
+        WsAjid bean = new WsAjid();
+        bean.setBegintime(begintime);
+        bean.setStart(start);
+        bean.setPagesize(pagesize);
+        return wsAjidMapper.selectAll(bean);
+    }
+
+    public WsAj getWsAj(String fjm,String tdhajid){
+        WsAj bean = new WsAj();
+        bean.setFjm(fjm);
+        bean.setTdhajid(tdhajid);
+        List<WsAj> ls = wsAjMapper.selectAll(bean);
+        if(ls != null && ls.size() > 0){
+            return ls.get(0);
+        }
+        return null;
+    }
+
+    public int saveWsAj(WsAj bean){
+        try {
+            if (bean != null && bean.getLastupdatetime() != null) {
+                return wsAjMapper.updateByPrimaryKey(bean);
+            } else {
+                return wsAjMapper.insert(bean);
+            }
+        }catch (Exception ex){
+            return -1;
+        }
     }
 }
