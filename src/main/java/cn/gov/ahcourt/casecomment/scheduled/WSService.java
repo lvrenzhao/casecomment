@@ -517,4 +517,18 @@ public class WSService {
         }
         return -1;
     }
+    public String getTaskBeginTime(){
+        SettingBean sb = settingService.get("TASK_BEGINTIME");
+        if(sb != null && StringUtils.isNotBlank(sb.getSetvalue())){
+            return sb.getSetvalue();
+        }
+        return "";
+    }
+
+    public void setTaskBegin(){
+        SettingBean sb = settingService.get("TASK_BEGINTIME");
+        String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        sb.setSetvalue(time);
+        settingService.updateByKeySelective(sb);
+    }
 }

@@ -33,6 +33,7 @@ public class JobCaseInit {
     private JobCaseConverter jobCaseConverter;
 
     public void doJob(){
+        wsService.setTaskBegin();
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
         SettingBean setitem = wsService.getSetting("TASK_AJXX_QLTB");
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){

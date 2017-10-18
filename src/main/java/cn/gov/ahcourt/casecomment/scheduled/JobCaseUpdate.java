@@ -28,6 +28,7 @@ public class JobCaseUpdate {
     private JobCaseConverter jobCaseConverter;
 
     public void doJob(){
+        wsService.setTaskBegin();
         Calendar caltoday = Calendar.getInstance();
         caltoday.setTime(new Date());
         caltoday.add(Calendar.DAY_OF_MONTH, -1);
