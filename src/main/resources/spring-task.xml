@@ -10,39 +10,17 @@
             <list>
                 <!--<ref bean="triggerCaseInit" />-->
                 <!--<ref bean="triggerCaseUpdate" />-->
-                <!--<ref bean="triggerCaseFileInit" />-->
-                <!--<ref bean="triggerCaseFileUpdate" />-->
-                <!--<ref bean="triggerCaseVideoInit" />-->
-                <!--<ref bean="triggerCaseVideoUpdate" />-->
             </list>
         </property>
     </bean>
 
     <bean id="triggerCaseInit" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail"><ref bean="ijobCaseInit" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
+        <property name="cronExpression"><value>0 0 23 * * ?</value></property>
     </bean>
     <bean id="triggerCaseUpdate" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail"><ref bean="ijobCaseUpdate" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
-    </bean>
-
-    <bean id="triggerCaseFileInit" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail"><ref bean="ijobCaseFileInit" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
-    </bean>
-    <bean id="triggerCaseFileUpdate" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail"><ref bean="ijobCaseFileUpdate" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
-    </bean>
-
-    <bean id="triggerCaseVideoInit" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail"><ref bean="ijobCaseVideoInit" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
-    </bean>
-    <bean id="triggerCaseVideoUpdate" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail"><ref bean="ijobCaseVideoUpdate" /></property>
-        <property name="cronExpression"><value>*/5 * * * * ?</value></property>
+        <property name="cronExpression"><value>0 0 1 * * ?</value></property>
     </bean>
 
     <bean id="ijobCaseInit" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -54,31 +32,7 @@
         <property name="targetMethod"><value>doJob</value></property>
     </bean>
 
-    <bean id="ijobCaseFileInit" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject"><ref bean="caseFileInit" /></property>
-        <property name="targetMethod"><value>doJob</value></property>
-    </bean>
-    <bean id="ijobCaseFileUpdate" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject"><ref bean="caseFileUpdate" /></property>
-        <property name="targetMethod"><value>doJob</value></property>
-    </bean>
-
-    <bean id="ijobCaseVideoInit" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject"><ref bean="caseVideoInit" /></property>
-        <property name="targetMethod"><value>doJob</value></property>
-    </bean>
-    <bean id="ijobCaseVideoUpdate" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject"><ref bean="caseVideoUpdate" /></property>
-        <property name="targetMethod"><value>doJob</value></property>
-    </bean>
-
     <bean id="caseInit" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseInit" />
     <bean id="caseUpdate" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseUpdate" />
-
-    <bean id="caseFileInit" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseFileInit" />
-    <bean id="caseFileUpdate" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseFileUpdate" />
-
-    <bean id="caseVideoInit" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseVideoInit" />
-    <bean id="caseVideoUpdate" class="cn.gov.ahcourt.casecomment.scheduled.JobCaseVideoUpdate" />
 
 </beans>

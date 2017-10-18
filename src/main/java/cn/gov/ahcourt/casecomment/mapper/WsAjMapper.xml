@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.WsAjMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.WsAj" >
+    <id column="TDHAJID" property="tdhajid" jdbcType="VARCHAR" />
+    <result column="AH" property="ah" jdbcType="VARCHAR" />
+    <result column="FJM" property="fjm" jdbcType="VARCHAR" />
+    <result column="FYDM" property="fydm" jdbcType="VARCHAR" />
+    <result column="AJZTMC" property="ajztmc" jdbcType="VARCHAR" />
+    <result column="LASTUPDATETIME" property="lastupdatetime" jdbcType="TIMESTAMP" />
+    <result column="XMLBASE" property="xmlbase" jdbcType="LONGVARCHAR" />
+    <result column="XMLFILE" property="xmlfile" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WS_AJ_C00
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
+    insert into WS_AJ_C00 (TDHAJID, AH, FJM, 
+      FYDM, AJZTMC, LASTUPDATETIME, 
+      XMLBASE, XMLFILE)
+    values (#{tdhajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{fjm,jdbcType=VARCHAR}, 
+      #{fydm,jdbcType=VARCHAR}, #{ajztmc,jdbcType=VARCHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
+      #{xmlbase,jdbcType=LONGVARCHAR}, #{xmlfile,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
+    update WS_AJ_C00
+    set AH = #{ah,jdbcType=VARCHAR},
+      FJM = #{fjm,jdbcType=VARCHAR},
+      FYDM = #{fydm,jdbcType=VARCHAR},
+      AJZTMC = #{ajztmc,jdbcType=VARCHAR},
+      LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
+      XMLBASE = #{xmlbase,jdbcType=LONGVARCHAR},
+      XMLFILE = #{xmlfile,jdbcType=LONGVARCHAR}
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, XMLBASE, XMLFILE
+    from WS_AJ_C00
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, XMLBASE, XMLFILE
+    from WS_AJ_C00
+  </select>
+</mapper>

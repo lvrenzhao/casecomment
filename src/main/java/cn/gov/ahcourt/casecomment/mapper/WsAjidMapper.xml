@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.ahcourt.casecomment.mapper.WsAjidMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.ahcourt.casecomment.bean.WsAjid" >
+    <id column="TDHAJID" property="tdhajid" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="FJM" property="fjm" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WS_AJID
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByFjm" parameterType="java.lang.String" >
+    delete from WS_AJID
+    where FJM = #{fjm,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsAjid" >
+    insert into WS_AJID (TDHAJID, CREATETIME, UPDATETIME, 
+      FJM)
+    values (#{tdhajid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{fjm,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsAjid" >
+    update WS_AJID
+    set CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      FJM = #{fjm,jdbcType=VARCHAR}
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select TDHAJID, CREATETIME, UPDATETIME, FJM
+    from WS_AJID
+    where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select TDHAJID, CREATETIME, UPDATETIME, FJM
+    from WS_AJID
+  </select>
+</mapper>

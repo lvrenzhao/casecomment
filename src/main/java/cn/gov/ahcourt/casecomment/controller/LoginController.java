@@ -4,8 +4,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
-import cn.gov.ahcourt.casecomment.scheduled.JobCaseFileInit;
+import cn.gov.ahcourt.casecomment.scheduled.JobCaseConverter;
 import cn.gov.ahcourt.casecomment.scheduled.JobCaseInit;
+import cn.gov.ahcourt.casecomment.scheduled.JobCaseUpdate;
 import cn.gov.ahcourt.casecomment.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,9 @@ public class LoginController {
 	@Resource
 	private JobCaseInit jobCaseInit;
 	@Resource
-	private JobCaseFileInit jobCaseFileInit;
+	private JobCaseUpdate jobCaseUpdate;
+	@Resource
+	private JobCaseConverter jobCaseConverter;
 
 
 	@RequestMapping("/checklogin")
@@ -69,10 +72,15 @@ public class LoginController {
 		jobCaseInit.doJob();
 		return "redirect:/blank.jsp";
 	}
+	@RequestMapping("/caseupdate")
+	public String caseupdate(HttpSession httpSession) {
+		jobCaseUpdate.doJob();
+		return "redirect:/blank.jsp";
+	}
 
-	@RequestMapping("/casefileinit")
-	public String casefileinit(HttpSession httpSession) {
-		jobCaseFileInit.doJob();
+	@RequestMapping("/caseconvert")
+	public String caseconvert(HttpSession httpSession) {
+		jobCaseConverter.doJob();
 		return "redirect:/blank.jsp";
 	}
 

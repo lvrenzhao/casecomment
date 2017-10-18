@@ -1,6 +1,8 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
-import cn.gov.ahcourt.casecomment.bean.WsCaseInfo;
+import cn.gov.ahcourt.casecomment.bean.SettingBean;
+import cn.gov.ahcourt.casecomment.bean.WsAj;
+import cn.gov.ahcourt.casecomment.bean.WsAjid;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.axiom.om.OMElement;
@@ -21,46 +23,85 @@ import java.util.regex.Pattern;
 /**
  * Created by lvrenzhao on 2017/10/9.
  */
+//该task建议每晚11点执行(如果没有匹配的全量设置项则不会执行，所以建议定时器每晚11点执行检查是否存在全量同步任务，有则执行)
 @Service
 public class JobCaseInit {
     @Resource
     private WSService wsService;
 
+    @Resource
+    private JobCaseConverter jobCaseConverter;
+
     public void doJob(){
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        int record = 0;
-        for (int i = 0; i < WSService.FYCODE.length; i++) {
-            int c_page = 1;
-            int t_page = 0;
-            do {
-                String xml = wsService.wsGetAllAJID(WSService.FYCODE[i], today, c_page);
-                List<String> ajids = getAJIDS(xml);
-                for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
-                    System.out.println("process record ......"+ record);
-                    record ++;
-                    String baseinfoxml = wsService.wsGetOneBaseInfo(ajids.get(x));
-                    String fileinfoxml = "";
-                    String fycode = getFycode(baseinfoxml);
-                    String ah = getAH(baseinfoxml);
-                    if(StringUtils.isNotBlank(fycode)){
-                        fileinfoxml = wsService.wsGetOneFileInfo(wsService.getFbsxhByFyCode(fycode),ah,fycode);
-                    }
-                    //将webservice结果不处理直接存入数据库供后面解析
-                    WsCaseInfo caseInfo = new WsCaseInfo();
-                    caseInfo.setWsid(IdGen.uuid());
-                    caseInfo.setTdhid(ajids.get(x));
-                    caseInfo.setBaseinfoxml(baseinfoxml);
-                    caseInfo.setFileinfoxml(fileinfoxml);
-                    caseInfo.setRemark("1");
-                    wsService.insertCaseInfo(caseInfo);
+        SettingBean setitem = wsService.getSetting("TASK_AJXX_QLTB");
+        if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
+            String[] ss = setitem.getSetvalue().split("_");
+            if(ss != null && ss.length>1 && today.equals(ss[1])){
+                String[] tbfy = ss[0].split(",");
+                System.out.println("@开始执行全量更新，共 "+tbfy.length +" 个法院。");
+                int record = 0;
+                for (int i = 0; i < tbfy.length; i++) {
+                    wsService.deleteAjidByFjm(tbfy[i]);
+                    int c_page = 1;
+                    int t_page = 0;
+                    do {
+                        String xml = wsService.wsGetAllAJID(tbfy[i], today, c_page);
+                        List<String> ajids = getAJIDS(xml);
+                        for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
+                            WsAjid beanAjid = new WsAjid();
+                            beanAjid.setTdhajid(ajids.get(x));
+                            beanAjid.setFjm(tbfy[i]);
+                            beanAjid.setCreatetime(new Date());
+                            wsService.saveWsAjid(beanAjid);
+                        }
+                        if (c_page == 1) {
+                            t_page = WSService.getT_PageNum(xml);
+                        }
+                        c_page++;
+                    } while (c_page <= t_page);
                 }
-                if (c_page == 1) {
-                    t_page = WSService.getT_PageNum(xml);
-                }
-                c_page++;
-            } while (c_page <= t_page);
+            }
         }
+        //执行完毕，进行job转换
+        jobCaseConverter.doJob();
     }
+
+//    public void doJob(){
+//        String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
+//        int record = 0;
+//        for (int i = 0; i < WSService.FYCODE.length; i++) {
+//            int c_page = 1;
+//            int t_page = 0;
+//            do {
+//                String xml = wsService.wsGetAllAJID(WSService.FYCODE[i], today, c_page);
+//                List<String> ajids = getAJIDS(xml);
+//                for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
+//                    System.out.println("process record ......"+ record);
+//                    record ++;
+//                    String baseinfoxml = wsService.wsGetOneBaseInfo(ajids.get(x));
+//                    String fileinfoxml = "";
+//                    String fycode = getFycode(baseinfoxml);
+//                    String ah = getAH(baseinfoxml);
+//                    if(StringUtils.isNotBlank(fycode)){
+//                        fileinfoxml = wsService.wsGetOneFileInfo(wsService.getFbsxhByFyCode(fycode),ah,fycode);
+//                    }
+//                    //将webservice结果不处理直接存入数据库供后面解析
+//                    WsCaseInfo caseInfo = new WsCaseInfo();
+//                    caseInfo.setWsid(IdGen.uuid());
+//                    caseInfo.setTdhid(ajids.get(x));
+//                    caseInfo.setBaseinfoxml(baseinfoxml);
+//                    caseInfo.setFileinfoxml(fileinfoxml);
+//                    caseInfo.setRemark("1");
+//                    wsService.insertCaseInfo(caseInfo);
+//                }
+//                if (c_page == 1) {
+//                    t_page = WSService.getT_PageNum(xml);
+//                }
+//                c_page++;
+//            } while (c_page <= t_page);
+//        }
+//    }
 
 
 

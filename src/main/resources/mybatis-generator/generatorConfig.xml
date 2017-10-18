@@ -29,6 +29,8 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <!--<table tableName="WS_AJ_C00" domainObjectName="WsAj"></table>-->
+        <!--<table tableName="WS_AJID" domainObjectName="WsAjid"></table>-->
         <!--<table tableName="WS_CASEINFO" domainObjectName="WsCaseInfo"></table>-->
         <!--<table tableName="WS_LOG" domainObjectName="WsLog"></table>-->
         <!--<table tableName="WS_TASK" domainObjectName="WsTask"></table>-->

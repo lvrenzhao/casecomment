@@ -29,17 +29,18 @@ public class test {
 //        int i = WSService.getAllCount("</Result><Data Count=\"OTE=\" ><EAJ>");
 //        String i = getAllCount("<FileContent>jdslafjasldkfjlsad</FileContent>");
 //        System.out.println(i);
+        getTeacherList("<?xml version=\"1.0\" encoding=\"utf-8\"?><Response><Result><Code>MA==</Code><Msg /></Result><Data Count=\"MjMz\"><R><AHDM>MTQ1MTAwMDAwMDYzNTc5</AHDM><AH>KDIwMTYp55qW5rCR57uIOTIz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY4OTQ0</AHDM><AH>KDIwMTcp55qW6KGM57uINDAy5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDYyNDEw</AHDM><AH>KDIwMTYp55qW5rCR57uINzg25Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY1Mjgz</AHDM><AH>KDIwMTYp55qW5YiR55SzMTMz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0ODAx</AHDM><AH>KDIwMTYp55qW5rCR57uIMTA1NeWPtw==</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0OTA4</AHDM><AH>KDIwMTYp55qW5rCR55SzMTE2MOWPtw==</AH><FY>QzAw</FY></R></Data></Response>");
     }
 
-//    public static List<String> getTeacherList(String managers){
-//        List<String> ls=new ArrayList<String>();
-//        Pattern pattern = Pattern.compile("(?<=<Data Count=\")\\S+(?=\"/>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
-//        Matcher matcher = pattern.matcher(managers);
-//        while(matcher.find()) {
-//            ls.add(matcher.group());
-//            System.out.println(matcher.group());
-//        }
-//        return ls;
-//    }
+    public static List<String> getTeacherList(String managers){
+        List<String> ls=new ArrayList<String>();
+        Pattern pattern = Pattern.compile("(?<=<AHDM>)\\S{1,40}(?=</AHDM>)");//("(?<=<c)\\d+(?=>)");//("^<Data\\w*>$");//(?<=\<)\.*(?=\>)
+        Matcher matcher = pattern.matcher(managers);
+        while(matcher.find()) {
+            ls.add(matcher.group());
+            System.out.println(matcher.group());
+        }
+        return ls;
+    }
 
 }
