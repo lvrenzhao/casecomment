@@ -11,15 +11,18 @@
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="XMLBASE" property="xmlbase" jdbcType="LONGVARCHAR" />
     <result column="XMLFILE" property="xmlfile" jdbcType="LONGVARCHAR" />
+    <result column="JARQ" property="jarq" jdbcType="VARCHAR" />
+    <result column="LARQ" property="larq" jdbcType="VARCHAR" />
   </resultMap>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
     insert into WS_AJ_${fjm} (TDHAJID, AH, FJM,
       FYDM, AJZTMC, LASTUPDATETIME, 
-      createtime, XMLBASE, XMLFILE
+      createtime, XMLBASE, XMLFILE,JARQ,LARQ
       )
     values (#{tdhajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{fjm,jdbcType=VARCHAR}, 
       #{fydm,jdbcType=VARCHAR}, #{ajztmc,jdbcType=VARCHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
       #{createtime,jdbcType=TIMESTAMP}, #{xmlbase,jdbcType=LONGVARCHAR}, #{xmlfile,jdbcType=LONGVARCHAR}
+      ,#{jarq,jdbcType=VARCHAR},#{larq,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.WsAj" >
@@ -31,11 +34,13 @@
       LASTUPDATETIME = #{lastupdatetime,jdbcType=TIMESTAMP},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       XMLBASE = #{xmlbase,jdbcType=LONGVARCHAR},
-      XMLFILE = #{xmlfile,jdbcType=LONGVARCHAR}
+      XMLFILE = #{xmlfile,jdbcType=LONGVARCHAR},
+      JARQ = #{jarq,jdbcType=VARCHAR},
+      LARQ = #{larq,jdbcType=VARCHAR}
     where TDHAJID = #{tdhajid,jdbcType=VARCHAR}
   </update>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, createtime, XMLBASE, XMLFILE
+    select TDHAJID, AH, FJM, FYDM, AJZTMC, LASTUPDATETIME, createtime, XMLBASE, XMLFILE,JARQ,LARQ
     from WS_AJ_${fjm}
     where 1=1
     <if test="tdhajid != null and tdhajid != '' ">

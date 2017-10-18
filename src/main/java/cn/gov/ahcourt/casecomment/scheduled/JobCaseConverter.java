@@ -4,6 +4,7 @@ import cn.gov.ahcourt.casecomment.bean.WsAj;
 import cn.gov.ahcourt.casecomment.bean.WsAjid;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.commons.codec.binary.Base64;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -43,6 +44,8 @@ public class JobCaseConverter {
                     String xmlbase = wsService.wsGetOneBaseInfo(item.getTdhajid());
                     beanAj.setXmlbase(xmlbase);
                     beanAj.setAh(getAH(xmlbase));
+                    beanAj.setJarq(getJarq(xmlbase));
+                    beanAj.setLarq(getLarq(xmlbase));
                     beanAj.setAjztmc(getAjztmc(xmlbase));
                     String xmlfile = wsService.wsGetOneFileInfo(wsService.getFbsxhByFyCode(beanAj.getFydm()), beanAj.getAh(), beanAj.getFydm());
                     beanAj.setXmlfile(xmlfile);
@@ -71,6 +74,24 @@ public class JobCaseConverter {
 
     private String getAH(String text){
         Pattern pattern = Pattern.compile("(?<=<AH>)\\S+(?=</AH>)");
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()) {
+            return new String(Base64.decodeBase64(matcher.group()));
+        }
+        return "";
+    }
+
+    private String getJarq(String text){
+        Pattern pattern = Pattern.compile("(?<=<JARQ>)\\S+(?=</JARQ>)");
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()) {
+            return new String(Base64.decodeBase64(matcher.group()));
+        }
+        return "";
+    }
+
+    private String getLarq(String text){
+        Pattern pattern = Pattern.compile("(?<=<LARQ>)\\S+(?=</LARQ>)");
         Matcher matcher = pattern.matcher(text);
         if(matcher.find()) {
             return new String(Base64.decodeBase64(matcher.group()));

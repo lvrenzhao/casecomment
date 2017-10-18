@@ -40,7 +40,8 @@
     <if test="begintime != null and begintime != '' ">
       and CREATETIME >= #{begintime}  or UPDATETIME >= #{begintime}
     </if>
-    <if test="start != null and start != '' ">
+    order by CREATETIME
+    <if test="pagesize > 0 ">
     limit #{start} ,  #{pagesize}
     </if>
   </select>

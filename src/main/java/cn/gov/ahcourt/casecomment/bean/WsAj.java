@@ -21,6 +21,26 @@ public class WsAj {
 
     private String xmlfile;
 
+    private String jarq;
+
+    private String larq;
+
+    public String getJarq() {
+        return jarq;
+    }
+
+    public void setJarq(String jarq) {
+        this.jarq = jarq;
+    }
+
+    public String getLarq() {
+        return larq;
+    }
+
+    public void setLarq(String larq) {
+        this.larq = larq;
+    }
+
     public String getTdhajid() {
         return tdhajid;
     }
