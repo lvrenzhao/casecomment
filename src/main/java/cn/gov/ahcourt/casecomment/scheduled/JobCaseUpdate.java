@@ -51,7 +51,7 @@ public class JobCaseUpdate {
                 System.out.println("#开始执行增量更新，共 "+tbfy.length +" 个法院。");
                 for (int i = 0; i < tbfy.length; i++) {
                     String xml = wsService.wsGetUpdateAJID(zdsj,tbfy[i]);
-                    List<String> ajids = getAJIDSForUpdate(xml);//todo
+                    List<String> ajids = getAJIDSForUpdate(xml);
                     for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
                         WsAjid beanAjid = wsService.getWsAjid(ajids.get(x));
                         if(beanAjid == null){
@@ -66,10 +66,10 @@ public class JobCaseUpdate {
                         wsService.saveWsAjid(beanAjid);
                     }
                 }
+                jobCaseConverter.doJob();
+                jobCaseFetcher.doJob();
             }
         }
-        jobCaseConverter.doJob();
-        jobCaseFetcher.doJob();
     }
 
 //    public void doJob(){

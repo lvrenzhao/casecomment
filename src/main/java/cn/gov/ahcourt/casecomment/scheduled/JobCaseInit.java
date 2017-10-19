@@ -43,38 +43,42 @@ public class JobCaseInit {
         if(setitemstartdate!=null && StringUtils.isNotBlank(setitemstartdate.getSetvalue())){
             startdate = setitemstartdate.getSetvalue();
         }
+        //如果全量设置项不为空
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
             String[] ss = setitem.getSetvalue().split("_");
+            //如果全量设置项为今日执行
             if(ss != null && ss.length>1 && today.equals(ss[1])){
                 String[] tbfy = ss[0].split(",");
-                wsService.setTaskBegin();
-                System.out.println("@开始执行全量更新，共 "+tbfy.length +" 个法院。");
-                int record = 0;
-                for (int i = 0; i < tbfy.length; i++) {
-                    wsService.deleteAjidByFjm(tbfy[i]);
-                    int c_page = 1;
-                    int t_page = 0;
-                    do {
-                        String xml = wsService.wsGetAllAJID(tbfy[i], today, c_page,startdate);
-                        List<String> ajids = getAJIDS(xml);
-                        for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
-                            WsAjid beanAjid = new WsAjid();
-                            beanAjid.setTdhajid(ajids.get(x));
-                            beanAjid.setFjm(tbfy[i]);
-                            beanAjid.setCreatetime(new Date());
-                            wsService.saveWsAjid(beanAjid);
-                        }
-                        if (c_page == 1) {
-                            t_page = WSService.getT_PageNum(xml);
-                        }
-                        c_page++;
-                    } while (c_page <= t_page);
+                //如果全量设置项中今日执行的法院大于0个。
+                if(tbfy!=null && tbfy.length>0){
+                    wsService.setTaskBegin();
+                    System.out.println("@开始执行全量更新，共 "+tbfy.length +" 个法院。");
+                    for (int i = 0; i < tbfy.length; i++) {
+                        wsService.deleteAjidByFjm(tbfy[i]);
+                        int c_page = 1;
+                        int t_page = 0;
+                        do {
+                            String xml = wsService.wsGetAllAJID(tbfy[i], today, c_page,startdate);
+                            List<String> ajids = getAJIDS(xml);
+                            for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
+                                WsAjid beanAjid = new WsAjid();
+                                beanAjid.setTdhajid(ajids.get(x));
+                                beanAjid.setFjm(tbfy[i]);
+                                beanAjid.setCreatetime(new Date());
+                                wsService.saveWsAjid(beanAjid);
+                            }
+                            if (c_page == 1) {
+                                t_page = WSService.getT_PageNum(xml);
+                            }
+                            c_page++;
+                        } while (c_page <= t_page);
+                    }
+                    //执行完毕，进行job转换
+                    jobCaseConverter.doJob();
+                    jobCaseFetcher.doJob();
                 }
             }
         }
-        //执行完毕，进行job转换
-        jobCaseConverter.doJob();
-        jobCaseFetcher.doJob();
     }
 
 //    public void doJob(){
