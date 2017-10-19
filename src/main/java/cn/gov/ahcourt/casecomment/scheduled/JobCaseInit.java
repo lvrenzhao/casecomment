@@ -36,7 +36,6 @@ public class JobCaseInit {
     private JobCaseFetcher jobCaseFetcher;
 
     public void doJob(){
-        wsService.setTaskBegin();
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
         SettingBean setitem = wsService.getSetting("TASK_AJXX_QLTB");
         SettingBean setitemstartdate = wsService.getSetting("TASK_AJXX_QLTB_STARTDATE");
@@ -48,6 +47,7 @@ public class JobCaseInit {
             String[] ss = setitem.getSetvalue().split("_");
             if(ss != null && ss.length>1 && today.equals(ss[1])){
                 String[] tbfy = ss[0].split(",");
+                wsService.setTaskBegin();
                 System.out.println("@开始执行全量更新，共 "+tbfy.length +" 个法院。");
                 int record = 0;
                 for (int i = 0; i < tbfy.length; i++) {

@@ -31,7 +31,6 @@ public class JobCaseUpdate {
     private JobCaseFetcher jobCaseFetcher;
 
     public void doJob(){
-        wsService.setTaskBegin();
 
         String zdsj = "";
 
@@ -47,6 +46,7 @@ public class JobCaseUpdate {
         SettingBean setitem = wsService.getSetting("TASK_AJXX_ZLTB");
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
             String[] tbfy = setitem.getSetvalue().split(",");
+            wsService.setTaskBegin();
             System.out.println("#开始执行增量更新，共 "+tbfy.length +" 个法院。");
             for (int i = 0; i < tbfy.length; i++) {
                 String xml = wsService.wsGetUpdateAJID(zdsj,tbfy[i]);
