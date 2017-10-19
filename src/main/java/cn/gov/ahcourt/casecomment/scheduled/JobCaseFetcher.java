@@ -92,10 +92,60 @@ public class JobCaseFetcher {
     }
 
     private String getXz(String xml){
-        return null;
+        int ajlx = 0;
+        try {
+            ajlx = Integer.parseInt(getByRegex(xml, "(?<=<AJLX>)\\S+(?=</AJLX>)"));
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        if(ajlx>=11 && ajlx <=19){
+            return "刑事";
+        }else if(ajlx>=21 && ajlx<=29){
+            return "民事";
+        }else if(ajlx>=31 && ajlx<=39){
+            return "行政";
+        }else if(ajlx>=41 && ajlx<=49){
+            return "赔偿";
+        }else if(ajlx>=51 && ajlx<=59){
+            return "执行";
+        }else{
+            return "其他";
+        }
     }
     private String getLx(String xml){
-        return null;
+        String jafsmc = getByRegex(xml, "(?<=<JAFSMS>)\\S+(?=</JAFSMS>)");
+        String ah = getByRegex(xml, "(?<=<AH>)\\S+(?=</AH>)");
+        int jarq = 0;
+        int larq = 0;
+        int ajlx = 0;
+        try {
+            jarq = Integer.parseInt(getByRegex(xml, "(?<=<JARQ>)\\S+(?=</JARQ>)"));
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        try {
+            larq = Integer.parseInt(getByRegex(xml, "(?<=<LARQ>)\\S+(?=</LARQ>)"));
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        try {
+            ajlx = Integer.parseInt(getByRegex(xml, "(?<=<AJLX>)\\S+(?=</AJLX>)"));
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        String ajlxmc = getByRegex(xml, "(?<=<AJLXMC>)\\S+(?=</AJLXMC>)");
+        if(ah !=null && ah.indexOf("抗") > -1){
+            return "抗诉";
+        }else if(jafsmc != null && (jafsmc.indexOf("维持")>-1 || jafsmc.indexOf("改判")>-1)){
+            return "发回改判";
+        }else if(ajlx == 13 || ajlx == 23 || ajlx == 33){
+            return "再审";
+        }else if(ajlx == 52 || ajlx == 77){
+            return "执行异议复议";
+        }else if (jarq - larq > 540){
+            return "审理周期超过一年半以上";
+        }
+        return "";
     }
 
 
