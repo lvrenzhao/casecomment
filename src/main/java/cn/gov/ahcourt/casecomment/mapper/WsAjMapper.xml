@@ -46,6 +46,9 @@
     <if test="tdhajid != null and tdhajid != '' ">
       and tdhajid = #{tdhajid}
     </if>
+    <if test="ajztmc != null and ajztmc != '' ">
+      and AJZTMC = #{ajztmc}
+    </if>
 
     <if test="begintime != null and begintime != '' ">
       and CREATETIME >= #{begintime}  or LASTUPDATETIME >= #{begintime}
@@ -61,6 +64,9 @@
     select count(1) FJM
     from WS_AJ_${fjm}
     where 1=1
+    <if test="ajztmc != null and ajztmc != '' ">
+      and AJZTMC = #{ajztmc}
+    </if>
     <if test="begintime != null and begintime != '' ">
       and CREATETIME >= #{begintime}  or LASTUPDATETIME >= #{begintime}
     </if>

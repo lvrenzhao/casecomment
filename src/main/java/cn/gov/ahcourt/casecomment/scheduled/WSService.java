@@ -594,6 +594,7 @@ public class WSService {
             WsAj bean = new WsAj();
             bean.setFjm(fjm);
             bean.setBegintime(begintime);
+            bean.setAjztmc("归档");
             try {
                 int i = Integer.parseInt(wsAjMapper.getCount(bean).getFjm()) ;
                 if( i == 0){
@@ -611,6 +612,7 @@ public class WSService {
     public List<WsAj> getNeedFetchByPage(String fjm,String begintime,int start,int pagesize){
         WsAj bean = new WsAj();
         bean.setBegintime(begintime);
+        bean.setAjztmc("归档");
         bean.setFjm(fjm);
         bean.setStart(start);
         bean.setPagesize(pagesize);
