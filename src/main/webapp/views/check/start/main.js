@@ -216,6 +216,9 @@ function reloadTab3() {
     //设置类型分布控件
     var lx_html = "<option value=''>案件类型</option>";
     for(var i = 0 ; lxs && i < lxs.length ; i ++){
+        if(!lxs[i].lx){
+            lxs[i].lx = "其他";
+        }
         dists.push({"fbxmc":lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%",fbxlx:"3","fbx":lxs[i].lx});
         lx_html += "<option value='"+lxs[i].lx+"'>"+lxs[i].lx + " - 被抽中" + lxs[i].cases + "条 - 占比" + (lxs[i].cases/joinedCases.length * 100).toFixed(2)  +"%</option>";
     }
