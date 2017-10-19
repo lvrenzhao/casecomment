@@ -46,23 +46,25 @@ public class JobCaseUpdate {
         SettingBean setitem = wsService.getSetting("TASK_AJXX_ZLTB");
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
             String[] tbfy = setitem.getSetvalue().split(",");
-            wsService.setTaskBegin();
-            System.out.println("#开始执行增量更新，共 "+tbfy.length +" 个法院。");
-            for (int i = 0; i < tbfy.length; i++) {
-                String xml = wsService.wsGetUpdateAJID(zdsj,tbfy[i]);
-                List<String> ajids = getAJIDSForUpdate(xml);//todo
-                for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
-                    WsAjid beanAjid = wsService.getWsAjid(ajids.get(x));
-                    if(beanAjid == null){
-                        beanAjid = new WsAjid();
-                        beanAjid.setTdhajid(ajids.get(x));
-                        beanAjid.setFjm(tbfy[i]);
-                        beanAjid.setCreatetime(new Date());
-                    }else{
-                        beanAjid.setFjm(tbfy[i]);
-                        beanAjid.setUpdatetime(new Date());
+            if(tbfy!=null && tbfy.length>0) {
+                wsService.setTaskBegin();
+                System.out.println("#开始执行增量更新，共 "+tbfy.length +" 个法院。");
+                for (int i = 0; i < tbfy.length; i++) {
+                    String xml = wsService.wsGetUpdateAJID(zdsj,tbfy[i]);
+                    List<String> ajids = getAJIDSForUpdate(xml);//todo
+                    for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
+                        WsAjid beanAjid = wsService.getWsAjid(ajids.get(x));
+                        if(beanAjid == null){
+                            beanAjid = new WsAjid();
+                            beanAjid.setTdhajid(ajids.get(x));
+                            beanAjid.setFjm(tbfy[i]);
+                            beanAjid.setCreatetime(new Date());
+                        }else{
+                            beanAjid.setFjm(tbfy[i]);
+                            beanAjid.setUpdatetime(new Date());
+                        }
+                        wsService.saveWsAjid(beanAjid);
                     }
-                    wsService.saveWsAjid(beanAjid);
                 }
             }
         }
