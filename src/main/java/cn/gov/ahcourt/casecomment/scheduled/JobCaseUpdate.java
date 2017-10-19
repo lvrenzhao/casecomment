@@ -32,11 +32,18 @@ public class JobCaseUpdate {
 
     public void doJob(){
         wsService.setTaskBegin();
-        Calendar caltoday = Calendar.getInstance();
-        caltoday.setTime(new Date());
-        caltoday.add(Calendar.DAY_OF_MONTH, -1);
-        String zdsj = new SimpleDateFormat("yyyy-MM-dd").format(caltoday.getTime()) +" 00:00:00";
 
+        String zdsj = "";
+
+        SettingBean setitemstartdate = wsService.getSetting("TASK_AJXX_ZLTB_STARTDATE");
+        if(setitemstartdate != null && StringUtils.isNotBlank(setitemstartdate.getSetvalue())){
+            zdsj = setitemstartdate.getSetvalue();
+        }else{
+            Calendar caltoday = Calendar.getInstance();
+            caltoday.setTime(new Date());
+            caltoday.add(Calendar.DAY_OF_MONTH, -1);
+            zdsj = new SimpleDateFormat("yyyy-MM-dd").format(caltoday.getTime()) +" 00:00:00";
+        }
         SettingBean setitem = wsService.getSetting("TASK_AJXX_ZLTB");
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
             String[] tbfy = setitem.getSetvalue().split(",");

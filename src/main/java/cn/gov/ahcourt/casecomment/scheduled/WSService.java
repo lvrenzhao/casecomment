@@ -97,10 +97,14 @@ public class WSService {
      * @param today 今天 格式 yyyymmdd
      * @return
      */
-    public String wsGetAllAJID(String fjm,String today,int page){
+    public String wsGetAllAJID(String fjm,String today,int page,String startdate){
         try {
             if(sender != null && StringUtils.isNotBlank(fjm) && StringUtils.isNotBlank(today)){
-                today = "19491001-"+today;
+                if(StringUtils.isNotBlank(startdate)){
+                    today = startdate+"-"+today;
+                }else {
+                    today = "19491001-" + today;
+                }
                 EndpointReference endpointReference = new EndpointReference(WSService.WEBSERVICE_BASE);
                 Options options = new Options();
                 options.setTimeOutInMilliSeconds(200*60*1000);

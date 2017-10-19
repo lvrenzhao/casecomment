@@ -39,6 +39,11 @@ public class JobCaseInit {
         wsService.setTaskBegin();
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
         SettingBean setitem = wsService.getSetting("TASK_AJXX_QLTB");
+        SettingBean setitemstartdate = wsService.getSetting("TASK_AJXX_QLTB_STARTDATE");
+        String startdate = "";
+        if(setitemstartdate!=null && StringUtils.isNotBlank(setitemstartdate.getSetvalue())){
+            startdate = setitemstartdate.getSetvalue();
+        }
         if(setitem != null && StringUtils.isNotBlank(setitem.getSetvalue())){
             String[] ss = setitem.getSetvalue().split("_");
             if(ss != null && ss.length>1 && today.equals(ss[1])){
@@ -50,7 +55,7 @@ public class JobCaseInit {
                     int c_page = 1;
                     int t_page = 0;
                     do {
-                        String xml = wsService.wsGetAllAJID(tbfy[i], today, c_page);
+                        String xml = wsService.wsGetAllAJID(tbfy[i], today, c_page,startdate);
                         List<String> ajids = getAJIDS(xml);
                         for(int x = 0 ; ajids!=null && x<ajids.size();  x++){
                             WsAjid beanAjid = new WsAjid();
