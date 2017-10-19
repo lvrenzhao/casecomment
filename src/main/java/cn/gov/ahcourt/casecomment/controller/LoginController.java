@@ -1,6 +1,7 @@
 package cn.gov.ahcourt.casecomment.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
@@ -93,8 +94,9 @@ public class LoginController {
 	}
 
 	@RequestMapping("/filefetch")
-	public String filefetch(HttpSession httpSession) {
-		caseFileFetcher.doJob();
+	public String filefetch(HttpSession httpSession,HttpServletRequest req) {
+		String path = req.getSession().getServletContext().getRealPath("/files/");
+		caseFileFetcher.doJob(path);
 		return "redirect:/blank.jsp";
 	}
 
