@@ -25,6 +25,36 @@ public class WsAj {
 
     private String larq;
 
+    private int start;
+
+    private int pagesize;
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getPagesize() {
+        return pagesize;
+    }
+
+    public void setPagesize(int pagesize) {
+        this.pagesize = pagesize;
+    }
+
+    private String begintime;
+
+    public String getBegintime() {
+        return begintime;
+    }
+
+    public void setBegintime(String begintime) {
+        this.begintime = begintime;
+    }
+
     public String getJarq() {
         return jarq;
     }

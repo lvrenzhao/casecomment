@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.gov.ahcourt.casecomment.bean.UserBean;
 import cn.gov.ahcourt.casecomment.scheduled.JobCaseConverter;
+import cn.gov.ahcourt.casecomment.scheduled.JobCaseFetcher;
 import cn.gov.ahcourt.casecomment.scheduled.JobCaseInit;
 import cn.gov.ahcourt.casecomment.scheduled.JobCaseUpdate;
 import cn.gov.ahcourt.casecomment.service.UserService;
@@ -33,6 +34,8 @@ public class LoginController {
 	private JobCaseUpdate jobCaseUpdate;
 	@Resource
 	private JobCaseConverter jobCaseConverter;
+	@Resource
+	private JobCaseFetcher jobCaseFetcher;
 
 
 	@RequestMapping("/checklogin")
@@ -81,6 +84,12 @@ public class LoginController {
 	@RequestMapping("/caseconvert")
 	public String caseconvert(HttpSession httpSession) {
 		jobCaseConverter.doJob();
+		return "redirect:/blank.jsp";
+	}
+
+	@RequestMapping("/casefetch")
+	public String casefetch(HttpSession httpSession) {
+		jobCaseFetcher.doJob();
 		return "redirect:/blank.jsp";
 	}
 

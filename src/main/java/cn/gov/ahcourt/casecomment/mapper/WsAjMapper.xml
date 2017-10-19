@@ -46,5 +46,23 @@
     <if test="tdhajid != null and tdhajid != '' ">
       and tdhajid = #{tdhajid}
     </if>
+
+    <if test="begintime != null and begintime != '' ">
+      and CREATETIME >= #{begintime}  or LASTUPDATETIME >= #{begintime}
+    </if>
+    order by CREATETIME
+    <if test="pagesize > 0 ">
+      limit #{start} ,  #{pagesize}
+    </if>
+
+  </select>
+
+  <select id="getCount" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.WsAjid" >
+    select count(1) FJM
+    from WS_AJ_${fjm}
+    where 1=1
+    <if test="begintime != null and begintime != '' ">
+      and CREATETIME >= #{begintime}  or LASTUPDATETIME >= #{begintime}
+    </if>
   </select>
 </mapper>

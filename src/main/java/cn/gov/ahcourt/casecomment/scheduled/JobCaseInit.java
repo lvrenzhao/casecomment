@@ -32,6 +32,9 @@ public class JobCaseInit {
     @Resource
     private JobCaseConverter jobCaseConverter;
 
+    @Resource
+    private JobCaseFetcher jobCaseFetcher;
+
     public void doJob(){
         wsService.setTaskBegin();
         String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
@@ -66,6 +69,7 @@ public class JobCaseInit {
         }
         //执行完毕，进行job转换
         jobCaseConverter.doJob();
+        jobCaseFetcher.doJob();
     }
 
 //    public void doJob(){

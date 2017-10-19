@@ -541,7 +541,11 @@ public class WSService {
             WsAjid bean = new WsAjid();
             bean.setBegintime(begintime);
             try {
-                int i = Integer.parseInt(wsAjidMapper.getCount(bean).getFjm()) / pagesize;
+                int i = Integer.parseInt(wsAjidMapper.getCount(bean).getFjm());
+                if( i == 0){
+                    return 0;
+                }
+                i = i / pagesize;
                 return i+1;
             }catch (Exception ex){
                 ex.printStackTrace();
@@ -579,5 +583,33 @@ public class WSService {
         }catch (Exception ex){
             return -1;
         }
+    }
+
+    public int getAllNeedFetchPage(String fjm,String begintime,int pagesize){
+        if(StringUtils.isNotBlank(begintime) && StringUtils.isNotBlank(fjm)) {
+            WsAj bean = new WsAj();
+            bean.setFjm(fjm);
+            bean.setBegintime(begintime);
+            try {
+                int i = Integer.parseInt(wsAjMapper.getCount(bean).getFjm()) ;
+                if( i == 0){
+                    return 0;
+                }
+                i = i / pagesize;
+                return i+1;
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    public List<WsAj> getNeedFetchByPage(String fjm,String begintime,int start,int pagesize){
+        WsAj bean = new WsAj();
+        bean.setBegintime(begintime);
+        bean.setFjm(fjm);
+        bean.setStart(start);
+        bean.setPagesize(pagesize);
+        return wsAjMapper.selectAll(bean);
     }
 }

@@ -27,6 +27,9 @@ public class JobCaseUpdate {
     @Resource
     private JobCaseConverter jobCaseConverter;
 
+    @Resource
+    private JobCaseFetcher jobCaseFetcher;
+
     public void doJob(){
         wsService.setTaskBegin();
         Calendar caltoday = Calendar.getInstance();
@@ -57,6 +60,7 @@ public class JobCaseUpdate {
             }
         }
         jobCaseConverter.doJob();
+        jobCaseFetcher.doJob();
     }
 
 //    public void doJob(){
