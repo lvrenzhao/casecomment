@@ -80,7 +80,7 @@ $(function () {
             datatype : 'json',
             async : false,
             success : function(data) {
-                $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td style="text-align: right">'+(data.zzpcdf?data.zzpcdf:'-')+'</td></tr>')
+                $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td id="total_avg" style="text-align: right">'+(data.zzpcdf?data.zzpcdf:'-')+'</td></tr>')
             }
         });
         //获取评分表 构建表内容
@@ -135,6 +135,7 @@ $(function () {
             });
         }
         //计算平均列
+        var avg_all = 0;
         $(".xavg").each(function () {
             var itemid = $(this).attr("data-id");
             var fz = parseInt($("#fz_"+itemid).text());
@@ -147,8 +148,13 @@ $(function () {
                     kftotal += ikf;
                 }
             }
-            $("#avg_"+itemid).text(fz-kftotal/pros.length);
+            var itemavg = fz-kftotal/pros.length;
+            $("#avg_"+itemid).text(itemavg);
+            avg_all+=parseInt(itemavg);
         });
+
+        //计算总平均值
+        $("#total_avg").html(avg_all);
 
         //提交
         $("#btn_submit").click(function () {
@@ -160,7 +166,8 @@ $(function () {
                     data:{
                         ccid:ccid,
                         type:type,
-                        jydp:$("#form_inp_jydp").val()
+                        jydp:$("#form_inp_jydp").val(),
+                        zzdf:$("#total_avg").text()
                     },
                     datatype : 'json',
                     success : function(data) {

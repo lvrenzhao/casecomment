@@ -38,7 +38,7 @@ function loadUnCheckGrid() {
             {label : '操作',name : 'fmt', width : 80, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
                     if(rowObject.sfzz == "1" && rowObject.pczt == "2"){
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" ><i class="fa fa-commenting-o"></i> 点评</button>';
+                        return '<button class="btn btn-primary btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" ><i class="fa fa-commenting-o"></i> 点评</button>';
                     }else{
                         return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" ><i class="fa fa-balance-scale"></i> 评查</button>';
                     }

@@ -667,8 +667,12 @@ public class XCaseController {
                 if ("1".equals(type)) {
                     BdCheckCases bean = bdCheckCasesMapper.selectByPrimaryKey(ccid);
                     bean.setJydp(jydp);
-                    bean.setZzpcdf(zzdf);
-                    bean.setZzzldj(getZldj(zzdf));
+                    int df =0;
+                    try{
+                        df = Integer.parseInt(zzdf);
+                    }catch (Exception ex){ex.printStackTrace();}
+                    bean.setZzpcdf(String.valueOf(df));
+                    bean.setZzzldj(getZldj(String.valueOf(df)));
                     bean.setDpr(user.getYhid());
                     bean.setDpsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
                     bdCheckCasesMapper.updateByPrimaryKey(bean);
