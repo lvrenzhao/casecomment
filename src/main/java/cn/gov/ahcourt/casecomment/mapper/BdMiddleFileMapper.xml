@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
     insert into bd_middle_file (fileid, pfileid, xname, 
       xurl, xorder, ajid, 
-      require, create_by, create_date, 
+      `require`, create_by, create_date,
       update_by, update_date, remarks, 
       flag)
     values (#{fileid,jdbcType=VARCHAR}, #{pfileid,jdbcType=VARCHAR}, #{xname,jdbcType=VARCHAR}, 
@@ -39,7 +39,7 @@
       xurl = #{xurl,jdbcType=VARCHAR},
       xorder = #{xorder,jdbcType=INTEGER},
       ajid = #{ajid,jdbcType=VARCHAR},
-      require = #{require,jdbcType=VARCHAR},
+      `require` = #{require,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -49,13 +49,13 @@
     where fileid = #{fileid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select fileid, pfileid, xname, xurl, xorder, ajid, require, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    select fileid, pfileid, xname, xurl, xorder, ajid, `require`, create_by, date_format(create_date, '%Y/%m/%d') create_date,
     update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_middle_file
     where fileid = #{fileid,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
-    select fileid, pfileid, xname, xurl, xorder, ajid, require, create_by, date_format(create_date, '%Y/%m/%d') create_date,
+    select fileid, pfileid, xname, xurl, xorder, ajid, `require`, create_by, date_format(create_date, '%Y/%m/%d') create_date,
     update_by, date_format(update_date, '%Y/%m/%d') update_date, remarks, flag
     from bd_middle_file
   </select>

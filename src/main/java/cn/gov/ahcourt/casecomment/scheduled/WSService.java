@@ -1,11 +1,9 @@
 package cn.gov.ahcourt.casecomment.scheduled;
 
-import cn.gov.ahcourt.casecomment.bean.BdMiddleCase;
-import cn.gov.ahcourt.casecomment.bean.SettingBean;
-import cn.gov.ahcourt.casecomment.bean.WsAj;
-import cn.gov.ahcourt.casecomment.bean.WsAjid;
+import cn.gov.ahcourt.casecomment.bean.*;
 //import cn.gov.ahcourt.casecomment.bean.WsCaseInfo;
 import cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper;
+import cn.gov.ahcourt.casecomment.mapper.BdMiddleFileMapper;
 import cn.gov.ahcourt.casecomment.mapper.WsAjMapper;
 import cn.gov.ahcourt.casecomment.mapper.WsAjidMapper;
 //import cn.gov.ahcourt.casecomment.mapper.WsCaseInfoMapper;
@@ -41,6 +39,9 @@ public class WSService {
 
     @Resource
     private BdMiddleCaseMapper bdMiddleCaseMapper;
+
+    @Resource
+    private BdMiddleFileMapper bdMiddleFileMapper;
 
 //    @Resource
 //    private WsCaseInfoMapper wsCaseInfoMapper;
@@ -617,5 +618,14 @@ public class WSService {
         bean.setStart(start);
         bean.setPagesize(pagesize);
         return wsAjMapper.selectAll(bean);
+    }
+
+    public int insertFile(BdMiddleFile bean){
+        try{
+            return bdMiddleFileMapper.insert(bean);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return  -1;
+        }
     }
 }

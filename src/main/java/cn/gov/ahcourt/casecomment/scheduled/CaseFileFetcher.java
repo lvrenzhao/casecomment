@@ -12,13 +12,13 @@ import org.apache.commons.codec.binary.Base64;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.xml.bind.Element;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
@@ -33,142 +33,161 @@ public class CaseFileFetcher {
     @Resource
     private WSService wsService;
 
-    private void processXML(){
-        String ajid = "145100000058900";
+    private List<BdMiddleFile> convertFilesByXML(String xml){
         List<BdMiddleFile> files = new ArrayList<BdMiddleFile>();
-        try {
+        try{
             Document document = DocumentHelper.parseText(xml);
-            org.dom4j.Element root = document.getRootElement();
-            List<org.dom4j.Element> nodes = root.elements();
-            Map<String,BdMiddleFile> jcmap = new HashMap<String, BdMiddleFile>();
+            Element root = document.getRootElement();
+            //如果根节点的子节点数量不为4，说明数据有问题，直接返回空项
+            if(root == null || root.elements() == null || root.elements().size() != 4){
+                return null;
+            }
             Map<Integer,BdMiddleFile> bmmap_zj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
             Map<Integer,BdMiddleFile> bmmap_fj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
-            for(int i = 0; nodes!=null && i<nodes.size();i++){
-                if("DA_SSJCXX_LIST".equals(nodes.get(i).getName())){
-                    List<org.dom4j.Element> jc = nodes.get(i).elements();
-                    int jcorder=1;
-                    //遍历卷册
-                    for(int jci = 0; jc!=null && jci<jc.size();jci++){
-                        //遍历卷册编目
-                        List<org.dom4j.Element> props =  jc.get(jci).elements();
-                        for(int p = 0 ;  props != null && p<props.size(); p++){
-                            if("JZLB".equals(props.get(p).getName())){
-                                if("正卷".equals(getCtext(props.get(p).getText())) || "副卷".equals(getCtext(props.get(p).getText())))
-                                {
-                                    BdMiddleFile fbean = new BdMiddleFile();
-                                    fbean.setFileid(IdGen.uuid());
-                                    fbean.setPfileid("0");
-                                    fbean.setXname(getCtext(props.get(p).getText()));
-                                    fbean.setAjid(ajid);
-                                    fbean.setXorder(10+jcorder);
-                                    jcorder++;
-                                    jcmap.put(fbean.getXname(),fbean);
-                                    files.add(fbean);
-                                    break;
-                                }
+            List<Element> subnodes = root.elements();
+            String zjid = "",fjid="";
+            int zjxh=0,fjxh=0;
+            for(Element cnode : subnodes){
+                if("DA_SSJCXX_LIST".equals(cnode.getName())){
+                    List<Element> jcs = cnode.elements();
+                    int jcorder = 2;//从二开始，是因为1留给庭审影像
+                    for(Element item : jcs){
+                        String itemxml = item.asXML();
+                        //本评查系统只抓取正卷和副卷档案，其余卷不关系。
+                        String xname = getByRegex(itemxml,"(?<=<JZLB>)\\S+(?=</JZLB>)");
+                        if("正卷".equals(xname) || "副卷".equals(xname)){
+                            BdMiddleFile bean = new BdMiddleFile();
+                            String id = IdGen.uuid();
+                            bean.setFileid(id);
+                            bean.setPfileid("0");
+                            bean.setXname(xname);
+                            bean.setXorder(jcorder*1000*100000);
+                            bean.setRemarks("true");
+                            if("正卷".equals(xname)){
+                                zjid = id;
+                                zjxh = jcorder;
+                            }else{
+                                fjid = id;
+                                fjxh = jcorder;
+                            }
+                            jcorder++;
+                            files.add(bean);
+                        }
+                    }
+                    //插入封面、目录、备考表
+                    if(StringUtils.isNotBlank(zjid)) {
+                        files.add(new BdMiddleFile(IdGen.uuid(), zjid, "封面", (zjxh * 1000 + 101)*100000));
+                        files.add(new BdMiddleFile(IdGen.uuid(), zjid, "目录", (zjxh * 1000 + 102)*100000));
+                        files.add(new BdMiddleFile(IdGen.uuid(), zjid, "备考表", (zjxh * 1000 + 900)*100000));
+                    }
+                    if(StringUtils.isNotBlank(fjid)) {
+                        files.add(new BdMiddleFile(IdGen.uuid(), fjid, "封面", (fjxh * 1000 + 101)*100000));
+                        files.add(new BdMiddleFile(IdGen.uuid(), fjid, "目录", (fjxh * 1000 + 102)*100000));
+                        files.add(new BdMiddleFile(IdGen.uuid(), fjid, "备考表", (fjxh * 1000 + 900)*100000));
+                    }
+                }else if("DA_SSJCBM_LIST".equals(cnode.getName())){
+                    List<Element> bms = cnode.elements();
+                    for(Element item : bms){
+                        String itemxml = item.asXML();
+                        String xname = getByRegex(itemxml,"(?<=<JZLB>)\\S+(?=</JZLB>)");
+                        if("正卷".equals(xname) || "副卷".equals(xname)){
+                            BdMiddleFile bean = new BdMiddleFile();
+                            bean.setFileid(IdGen.uuid());
+                            bean.setPfileid("正卷".equals(xname)?zjid:fjid);
+                            bean.setXname(getByRegex(itemxml,"(?<=<CLBT>)\\S+(?=</CLBT>)"));
+                            int parentxh = "正卷".equals(xname) ? zjxh : fjxh;
+                            int xh = 0;
+                            try{
+                                xh = Integer.parseInt(getByRegex(itemxml,"(?<=<XH>)\\S+(?=</XH>)"));
+                            }catch (Exception ex){
+                                ex.printStackTrace();
+                            }
+                            bean.setXorder(Integer.parseInt(parentxh+String.valueOf(100+xh+2))*100000);
+                            if("正卷".equals(xname)){
+                                bmmap_zj.put(Integer.parseInt(getByRegex(itemxml,"(?<=<P1>)\\S+(?=</P1>)")), bean);
+                            }else if("副卷".equals(xname)){
+                                bmmap_fj.put(Integer.parseInt(getByRegex(itemxml,"(?<=<P1>)\\S+(?=</P1>)")), bean);
+                            }
+
+                            if(xh>0) {
+                                files.add(bean);
                             }
                         }
                     }
-                    for(String key : jcmap.keySet()){
-                        //再次先插入封面(101)目录(102)备考表(900)
-                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"封面",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"101"),ajid));
-                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"目录",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"102"),ajid));
-                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"备考表",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"900"),ajid));
-                    }
-                }else if ("DA_SSJCBM_LIST".equals(nodes.get(i).getName())){
-                    List<org.dom4j.Element> bm = nodes.get(i).elements();
-                    int bmorder=3;
-                    for(int bmi = 0; bm!=null && bmi<bm.size();bmi++){
-                        BdMiddleFile fbean = new BdMiddleFile();
-                        List<org.dom4j.Element> props =  bm.get(bmi).elements();
-                        for(int p = 0 ;  props != null && p<props.size(); p++){
-                            if("JZLB".equals(props.get(p).getName())){
-                                fbean.setJzlb(getCtext(props.get(p).getText()));
-                                fbean.setPfileid(jcmap.get(getCtext(props.get(p).getText())).getFileid());
-                                fbean.setXorder(Integer.parseInt(String.valueOf(jcmap.get(getCtext(props.get(p).getText())).getXorder()) + String.valueOf(100+bmorder)));
-                            }else if("CLBT".equals(props.get(p).getName())){
-                                fbean.setFileid(IdGen.uuid());
-                                fbean.setXname(getCtext(props.get(p).getText()));
-                                fbean.setAjid(ajid);
-                                bmorder++;
-                            }else if("P1".equals(props.get(p).getName())){
-                                try {
-                                    if("正卷".equals(fbean.getJzlb())){
-                                        bmmap_zj.put(Integer.parseInt(getCtext(props.get(p).getText())), fbean);
-                                    }else if("副卷".equals(fbean.getJzlb())){
-                                        bmmap_fj.put(Integer.parseInt(getCtext(props.get(p).getText())), fbean);
-                                    }
-                                }catch (Exception ex){
-                                    ex.printStackTrace();
-                                }
-                                files.add(fbean);
+                }else if("DA_SSJCYX_LIST".equals(cnode.getName())){
+                    List<Element> yxs = cnode.elements();
+                    for(Element item : yxs){
+                        String itemxml = item.asXML();
+                        String xname = getByRegex(itemxml,"(?<=<JZLB>)\\S+(?=</JZLB>)");
+                        if("正卷".equals(xname) || "副卷".equals(xname)){
+                            BdMiddleFile bean = new BdMiddleFile();
+                            bean.setFileid(IdGen.uuid());
+                            int yema = 0;
+                            try{
+                                yema = Integer.parseInt(getByRegex(itemxml,"(?<=<YEMA>)\\S+(?=</YEMA>)"));
+                            }catch (Exception ex){
+                                ex.printStackTrace();
                             }
-                        }
-                    }
-                }else if ("DA_SSJCYX_LIST".equals(nodes.get(i).getName())){
-//                    List<BdMiddleFile> ymitems = new ArrayList<BdMiddleFile>();
-                    List<org.dom4j.Element> ym = nodes.get(i).elements();
-                    int ymorder=1;
-                    for(int ymi = 0; ym!=null && ymi<ym.size();ymi++){
-                        BdMiddleFile fbean = new BdMiddleFile();
-                        List<org.dom4j.Element> props =  ym.get(ymi).elements();
-                        for(int p = 0 ;  props != null && p<props.size(); p++){
-                            if("JZLB".equals(props.get(p).getName())) {
-                                fbean.setJzlb(getCtext(props.get(p).getText()));
-                            }else if("PGTYPE".equals(props.get(p).getName())){
-                                fbean.setPgtype(getCtext(props.get(p).getText()));
-                            }else if("YEMA".equals(props.get(p).getName())){
-//                                if("正卷".equals())
-                                fbean.setFileid(IdGen.uuid());
-                                int yema = 0;
-                                try{
-                                    yema = Integer.parseInt(getCtext(props.get(p).getText()));
-                                }catch (Exception ex){ex.printStackTrace();}
-                                fbean.setXname(String.valueOf(yema));
-                                if("正文".equals(fbean.getPgtype())){
-                                    if("正卷".equals(fbean.getJzlb())){
-                                        for (Integer spiter : bmmap_zj.keySet()){
-                                            if(yema >= spiter){
-                                                fbean.setPfileid(bmmap_zj.get(spiter).getFileid());
-                                                fbean.setXorder(Integer.parseInt(String.valueOf(bmmap_zj.get(spiter).getXorder()) + String.valueOf(10000+ymorder)));
-                                                break;
-                                            }
-                                        }
-                                    }else if ("副卷".equals(fbean.getJzlb())){
-                                        for (Integer spiter : bmmap_fj.keySet()){
-                                            if(yema >= spiter){
-                                                fbean.setPfileid(bmmap_fj.get(spiter).getFileid());
-                                                fbean.setXorder(Integer.parseInt(String.valueOf(bmmap_fj.get(spiter).getXorder()) + String.valueOf(10000+ymorder)));
-                                                break;
-                                            }
+                            bean.setXname(String.valueOf(yema));
+                            String pgtype = getByRegex(itemxml,"(?<=<PGTYPE>)\\S+(?=</PGTYPE>)");
+//                            bean.setRemarks(pgtype);
+//                            bean.setFlag(xname);
+                            BdMiddleFile parent = null;
+                            if("正卷".equals(xname)){
+                                if("封面".equals(pgtype)){
+                                    //todo 两个封面有一个是备考表呢....?(先将两个封面都归到封面底下)
+                                    for(int x = 0 ; x < files.size(); x++){
+                                        if(StringUtils.isNotBlank(zjid) && zjid.equals(files.get(x).getPfileid()) && "封面".equals(files.get(x).getXname())){
+                                            parent = files.get(x);
+                                            break;
                                         }
                                     }
-                                }else if ("封面".equals(fbean.getPgtype())){
-                                    if("正卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(2).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(2).getXorder()) + String.valueOf(10000+ymorder)));
-                                    }else if("副卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(5).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(5).getXorder()) + String.valueOf(10000+ymorder)));
+                                }else if("目录".equals(pgtype)){
+                                    for(int x = 0 ; x < files.size(); x++){
+                                        if(StringUtils.isNotBlank(zjid) && zjid.equals(files.get(x).getPfileid()) && "目录".equals(files.get(x).getXname())){
+                                            parent = files.get(x);
+                                            break;
+                                        }
                                     }
-                                }else if ("目录".equals(fbean.getPgtype())){
-                                    if("正卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(3).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(3).getXorder()) + String.valueOf(10000+ymorder)));
-                                    }else if("副卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(6).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(6).getXorder()) + String.valueOf(10000+ymorder)));
-                                    }
-                                }else if ("备考表".equals(fbean.getPgtype())){
-                                    if("正卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(4).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(4).getXorder()) + String.valueOf(10000+ymorder)));
-                                    }else if("副卷".equals(fbean.getJzlb())){
-                                        fbean.setPfileid(files.get(7).getFileid());
-                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(7).getXorder()) + String.valueOf(10000+ymorder)));
+                                }else if("正文".equals(pgtype)){
+                                    for (Integer spiter : bmmap_zj.keySet()){
+                                        if(yema >= spiter){
+                                            parent = bmmap_zj.get(spiter);
+                                            break;
+                                        }
                                     }
                                 }
-                                fbean.setAjid(ajid);
+                            }else if("副卷".equals(xname)){
+                                if("封面".equals(pgtype)){
+                                    //todo 两个封面有一个是备考表呢....?(先将两个封面都归到封面底下)
+                                    for(int x = 0 ; x < files.size(); x++){
+                                        if(StringUtils.isNotBlank(fjid) && fjid.equals(files.get(x).getPfileid()) && "封面".equals(files.get(x).getXname())){
+                                            parent = files.get(x);
+                                            break;
+                                        }
+                                    }
+                                }else if("目录".equals(pgtype)){
+                                    for(int x = 0 ; x < files.size(); x++){
+                                        if(StringUtils.isNotBlank(fjid) && fjid.equals(files.get(x).getPfileid()) && "目录".equals(files.get(x).getXname())){
+                                            parent = files.get(x);
+                                            break;
+                                        }
+                                    }
+                                }else if("正文".equals(pgtype)){
+                                    for (Integer spiter : bmmap_fj.keySet()){
+                                        if(yema >= spiter){
+                                            parent = bmmap_fj.get(spiter);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if(parent != null){
+                                bean.setPfileid(parent.getFileid());
+                                bean.setXorder(Integer.parseInt(parent.getXorder()/100000+String.valueOf(10000+yema)));
+                            }
+                            if(yema>0 && StringUtils.isNotBlank(bean.getPfileid())) {
+                                files.add(bean);
                             }
                         }
                     }
@@ -177,9 +196,156 @@ public class CaseFileFetcher {
         }catch (Exception ex){
             ex.printStackTrace();
         }
-//        for
-        System.out.println(files.size());
+        return files;
     }
+
+//    private void processXML(){
+//        String ajid = "145100000058900";
+//        List<BdMiddleFile> files = new ArrayList<BdMiddleFile>();
+//        try {
+//            Document document = DocumentHelper.parseText(xml);
+//            org.dom4j.Element root = document.getRootElement();
+//            List<org.dom4j.Element> nodes = root.elements();
+//            Map<String,BdMiddleFile> jcmap = new HashMap<String, BdMiddleFile>();
+//            Map<Integer,BdMiddleFile> bmmap_zj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
+//            Map<Integer,BdMiddleFile> bmmap_fj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
+//            for(int i = 0; nodes!=null && i<nodes.size();i++){
+//                if("DA_SSJCXX_LIST".equals(nodes.get(i).getName())){
+//                    List<org.dom4j.Element> jc = nodes.get(i).elements();
+//                    int jcorder=1;
+//                    //遍历卷册
+//                    for(int jci = 0; jc!=null && jci<jc.size();jci++){
+//                        //遍历卷册编目
+//                        List<org.dom4j.Element> props =  jc.get(jci).elements();
+//                        for(int p = 0 ;  props != null && p<props.size(); p++){
+//                            if("JZLB".equals(props.get(p).getName())){
+//                                if("正卷".equals(getCtext(props.get(p).getText())) || "副卷".equals(getCtext(props.get(p).getText())))
+//                                {
+//                                    BdMiddleFile fbean = new BdMiddleFile();
+//                                    fbean.setFileid(IdGen.uuid());
+//                                    fbean.setPfileid("0");
+//                                    fbean.setXname(getCtext(props.get(p).getText()));
+//                                    fbean.setAjid(ajid);
+//                                    fbean.setXorder(10+jcorder);
+//                                    jcorder++;
+//                                    jcmap.put(fbean.getXname(),fbean);
+//                                    files.add(fbean);
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                    }
+//                    for(String key : jcmap.keySet()){
+//                        //再次先插入封面(101)目录(102)备考表(900)
+//                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"封面",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"101"),ajid));
+//                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"目录",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"102"),ajid));
+//                        files.add(new BdMiddleFile(IdGen.uuid(),jcmap.get(key).getFileid(),"备考表",Integer.parseInt(String.valueOf(jcmap.get(key).getXorder())+"900"),ajid));
+//                    }
+//                }else if ("DA_SSJCBM_LIST".equals(nodes.get(i).getName())){
+//                    List<org.dom4j.Element> bm = nodes.get(i).elements();
+//                    int bmorder=3;
+//                    for(int bmi = 0; bm!=null && bmi<bm.size();bmi++){
+//                        BdMiddleFile fbean = new BdMiddleFile();
+//                        List<org.dom4j.Element> props =  bm.get(bmi).elements();
+//                        for(int p = 0 ;  props != null && p<props.size(); p++){
+//                            if("JZLB".equals(props.get(p).getName())){
+//                                fbean.setJzlb(getCtext(props.get(p).getText()));
+//                                fbean.setPfileid(jcmap.get(getCtext(props.get(p).getText())).getFileid());
+//                                fbean.setXorder(Integer.parseInt(String.valueOf(jcmap.get(getCtext(props.get(p).getText())).getXorder()) + String.valueOf(100+bmorder)));
+//                            }else if("CLBT".equals(props.get(p).getName())){
+//                                fbean.setFileid(IdGen.uuid());
+//                                fbean.setXname(getCtext(props.get(p).getText()));
+//                                fbean.setAjid(ajid);
+//                                bmorder++;
+//                            }else if("P1".equals(props.get(p).getName())){
+//                                try {
+//                                    if("正卷".equals(fbean.getJzlb())){
+//                                        bmmap_zj.put(Integer.parseInt(getCtext(props.get(p).getText())), fbean);
+//                                    }else if("副卷".equals(fbean.getJzlb())){
+//                                        bmmap_fj.put(Integer.parseInt(getCtext(props.get(p).getText())), fbean);
+//                                    }
+//                                }catch (Exception ex){
+//                                    ex.printStackTrace();
+//                                }
+//                                files.add(fbean);
+//                            }
+//                        }
+//                    }
+//                }else if ("DA_SSJCYX_LIST".equals(nodes.get(i).getName())){
+////                    List<BdMiddleFile> ymitems = new ArrayList<BdMiddleFile>();
+//                    List<org.dom4j.Element> ym = nodes.get(i).elements();
+//                    int ymorder=1;
+//                    for(int ymi = 0; ym!=null && ymi<ym.size();ymi++){
+//                        BdMiddleFile fbean = new BdMiddleFile();
+//                        List<org.dom4j.Element> props =  ym.get(ymi).elements();
+//                        for(int p = 0 ;  props != null && p<props.size(); p++){
+//                            if("JZLB".equals(props.get(p).getName())) {
+//                                fbean.setJzlb(getCtext(props.get(p).getText()));
+//                            }else if("PGTYPE".equals(props.get(p).getName())){
+//                                fbean.setPgtype(getCtext(props.get(p).getText()));
+//                            }else if("YEMA".equals(props.get(p).getName())){
+////                                if("正卷".equals())
+//                                fbean.setFileid(IdGen.uuid());
+//                                int yema = 0;
+//                                try{
+//                                    yema = Integer.parseInt(getCtext(props.get(p).getText()));
+//                                }catch (Exception ex){ex.printStackTrace();}
+//                                fbean.setXname(String.valueOf(yema));
+//                                if("正文".equals(fbean.getPgtype())){
+//                                    if("正卷".equals(fbean.getJzlb())){
+//                                        for (Integer spiter : bmmap_zj.keySet()){
+//                                            if(yema >= spiter){
+//                                                fbean.setPfileid(bmmap_zj.get(spiter).getFileid());
+//                                                fbean.setXorder(Integer.parseInt(String.valueOf(bmmap_zj.get(spiter).getXorder()) + String.valueOf(10000+ymorder)));
+//                                                break;
+//                                            }
+//                                        }
+//                                    }else if ("副卷".equals(fbean.getJzlb())){
+//                                        for (Integer spiter : bmmap_fj.keySet()){
+//                                            if(yema >= spiter){
+//                                                fbean.setPfileid(bmmap_fj.get(spiter).getFileid());
+//                                                fbean.setXorder(Integer.parseInt(String.valueOf(bmmap_fj.get(spiter).getXorder()) + String.valueOf(10000+ymorder)));
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+//                                }else if ("封面".equals(fbean.getPgtype())){
+//                                    if("正卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(2).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(2).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }else if("副卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(5).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(5).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }
+//                                }else if ("目录".equals(fbean.getPgtype())){
+//                                    if("正卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(3).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(3).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }else if("副卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(6).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(6).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }
+//                                }else if ("备考表".equals(fbean.getPgtype())){
+//                                    if("正卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(4).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(4).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }else if("副卷".equals(fbean.getJzlb())){
+//                                        fbean.setPfileid(files.get(7).getFileid());
+//                                        fbean.setXorder(Integer.parseInt(String.valueOf(files.get(7).getXorder()) + String.valueOf(10000+ymorder)));
+//                                    }
+//                                }
+//                                fbean.setAjid(ajid);
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }catch (Exception ex){
+//            ex.printStackTrace();
+//        }
+////        for
+//        System.out.println(files.size());
+//    }
 
     private String getCtext(String otext){
         if(StringUtils.isNotBlank(otext)){
@@ -189,7 +355,13 @@ public class CaseFileFetcher {
     }
 
     public void doJob(String path){
-        processXML();
+        List<BdMiddleFile> files = convertFilesByXML(xml);
+        for(BdMiddleFile f : files){
+            f.setAjid("145100000058900");
+            int i = wsService.insertFile(f);
+//            System.out.println(i);
+        }
+//        processXML();
 //        try {
 ////            String xml = wsService.wsGetOneFileContent(0, "2017/1201/145100000065779/Z_1/20170626.085335.210_0005.tif", "ahgy_ftp", "340000");
 //            String xml = wsService.wsGetOneFileContent(0, "2017/1201/145100000065779/Z_1/20170626.085335.179_0003.JPG", "ahgy_ftp", "340000");
@@ -223,6 +395,18 @@ public class CaseFileFetcher {
             }
         }
         return "";
+    }
+
+    private String getByRegex(String text,String regex){
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        if(matcher.find()) {
+            String value = new String(Base64.decodeBase64(matcher.group()));
+            if(StringUtils.isNotBlank(value) && StringUtils.isNotBlank(StringUtils.trim(value))) {
+                return StringUtils.trim(value);
+            }
+        }
+        return null;
     }
 
     private String xml = "<?xml version='1.0' encoding='UTF-8'?><Response><Result><Code>MA==</Code></Result><DA_SSJCXX_LIST><DA_SSJCXX><DHDM>MTQ1MTAwMDAwMDY1Nzc5</DHDM><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><CNYS>OTU=</CNYS></DA_SSJCXX><DA_SSJCXX><DHDM>MTQ1MTAwMDAwMDY1Nzc5</DHDM><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><CNYS>MTM1</CNYS></DA_SSJCXX></DA_SSJCXX_LIST><DA_SSJCBM_LIST><DA_SSJCBM><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><XH>MQ==</XH><CLBT>5LiA5a6h56e76YCB5oql5ZGK</CLBT><P1>MQ==</P1></DA_SSJCBM><DA_SSJCBM><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><XH>Mg==</XH><CLBT>6ZiF5Y2356yU5b2V</CLBT><P1>Mzk=</P1></DA_SSJCBM><DA_SSJCBM><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><XH>Mw==</XH><CLBT>5ZCI6K6u56yU5b2V</CLBT><P1>NTM=</P1></DA_SSJCBM><DA_SSJCBM><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><XH>NA==</XH><CLBT>5YiR5LqL6ZmE5bim5rCR5LqL5Yik5Yaz5Lmm5Y6f5pys</CLBT><P1>NTk=</P1></DA_SSJCBM></DA_SSJCBM_LIST><DA_SSJCYX_LIST><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA4MzEuMTAyNjQ3LjIzN18xXzIwMTcwNjI2LjA4NTMzNy42MTJfMDE2OS5KUEc=</FILENAME><FTPSERVER>MzQwMDAwZGE=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NA==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjIyNl8wMDA2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjM4Ml8wMDE2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5bCB6Z2i</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjE0OF8wMDAxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>55uu5b2V</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjE2M18wMDAyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjE3OV8wMDAzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mg==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjE5NF8wMDA0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mw==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjIxMF8wMDA1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjI0MV8wMDA3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Ng==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjI1N18wMDA4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nw==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjI3Ml8wMDA5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OA==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjI4OF8wMDEwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjMwNF8wMDExLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjMxOV8wMDEyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjMzNV8wMDEzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjM1MF8wMDE0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjM2Nl8wMDE1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjM5N18wMDE3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQxM18wMDE4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQyOF8wMDE5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQ0NF8wMDIwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQ2MF8wMDIxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQ3NV8wMDIyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjQ5MV8wMDIzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjUwNl8wMDI0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjUyMl8wMDI1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjUzOF8wMDI2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjU1M18wMDI3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjU2OV8wMDI4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjU4NF8wMDI5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjYwMF8wMDMwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjYxNl8wMDMxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjYzMV8wMDMyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjY0N18wMDMzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjY2Ml8wMDM0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjY3OF8wMDM1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjY5NF8wMDM2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjcwOV8wMDM3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjcyNV8wMDM4LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljc0MF8wMDM5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljc1Nl8wMDQwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljc3Ml8wMDQxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljc4N18wMDQyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjgwM18wMDQzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjgxOF8wMDQ0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjgzNF8wMDQ1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljg1MF8wMDQ2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljg2NV8wMDQ3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljg4MV8wMDQ4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljg5Nl8wMDQ5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjkxMl8wMDUwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1LjkyOF8wMDUxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljk0M18wMDUyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljk1OV8wMDUzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljk3NF8wMDU0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM1Ljk5MF8wMDU1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjAwNl8wMDU2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjAyMV8wMDU3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjAzN18wMDU4LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjA1Ml8wMDU5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjA2OF8wMDYwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjA4NF8wMDYxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjA5OV8wMDYyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjExNV8wMDYzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjEzMF8wMDY0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjE0Nl8wMDY1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjE2Ml8wMDY2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjE3N18wMDY3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjE5M18wMDY4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjIwOF8wMDY5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjIyNF8wMDcwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjI0MF8wMDcxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjI1NV8wMDcyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjI3MV8wMDczLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjI4Nl8wMDc0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjMwMl8wMDc1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjMxOF8wMDc2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjMzM18wMDc3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjM0OV8wMDc4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjM2NF8wMDc5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjM4MF8wMDgwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjM5Nl8wMDgxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQxMV8wMDgyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQyN18wMDgzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ0Ml8wMDg0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ1OF8wMDg1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ3NF8wMDg2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ4OV8wMDg3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ4OV8wMDg4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjQ4OV8wMDg5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjUwNV8wMDkwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjUyMF8wMDkxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjUzNl8wMDkyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjU1Ml8wMDkzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjU2N18wMDk0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjU4M18wMDk1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjU5OF8wMDk2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjYxNF8wMDk3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjYzMF8wMDk4LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjY0NV8wMDk5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjY2MV8wMTAwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OTk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjY3Nl8wMTAxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTAw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjY5Ml8wMTAyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTAx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjcwOF8wMTAzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTAy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjcyM18wMTA0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTAz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjczOV8wMTA1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljc1NF8wMTA2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljc3MF8wMTA3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljc4Nl8wMTA4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljc4Nl8wMTA5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjgwMV8wMTEwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjgxN18wMTExLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTEw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjgxN18wMTEyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTEx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjgzMl8wMTEzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTEy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjgzMl8wMTE0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTEz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljg0OF8wMTE1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljg0OF8wMTE2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljg2NF8wMTE3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljg3OV8wMTE4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljg5NV8wMTE5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjkxMF8wMTIwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2LjkyNl8wMTIxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTIw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk0Ml8wMTIyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTIx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk0Ml8wMTIzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTIy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk0Ml8wMTI0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTIz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk1N18wMTI1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk3M18wMTI2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk4OF8wMTI3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM2Ljk4OF8wMTI4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjAwNF8wMTI5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjAwNF8wMTMwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjAyMF8wMTMxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTMw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjAzNV8wMTMyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTMx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjA1MV8wMTMzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTMy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjA2Nl8wMTM0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTMz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjA4Ml8wMTM1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjA5OF8wMTM2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjExM18wMTM3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjEyOV8wMTM4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjE0NF8wMTM5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjE2MF8wMTQwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjE3Nl8wMTQxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjE5MV8wMTQyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjIwN18wMTQzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjIyMl8wMTQ0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjIzOF8wMTQ1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjI1NF8wMTQ2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjI2OV8wMTQ3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjI4NV8wMTQ4LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjMwMF8wMTQ5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjMxNl8wMTUwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjMzMl8wMTUxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTUw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjM0N18wMTUyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTUx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjM2M18wMTUzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTUy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjM3OF8wMTU0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTUz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjM5NF8wMTU1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQxMF8wMTU2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQyNV8wMTU3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQ0MV8wMTU4LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU3</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQ1Nl8wMTU5LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU4</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQ3Ml8wMTYwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU5</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjQ4OF8wMTYxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTYw</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjUwM18wMTYyLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTYx</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjUxOV8wMTYzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTYy</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjUzNF8wMTY0LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTYz</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjU1MF8wMTY1LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY0</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjU2Nl8wMTY2LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY1</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjU4MV8wMTY3LkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY2</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjU5N18wMTY4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5q2j5Y23</JZLB><CH>MQ==</CH><PGTYPE>5bCB6Z2i</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9aXzEvMjAxNzA2MjYuMDg1MzM3LjYyOF8wMTcwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5bCB6Z2i</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljg2MF8wMDAxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>55uu5b2V</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljg3Nl8wMDAyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljg5Ml8wMDAzLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mg==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3LjkwN18wMDA0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mw==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3LjkyM18wMDA1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NA==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3LjkzOF8wMDA2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljk1NF8wMDA3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Ng==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljk3MF8wMDA4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nw==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljk4NV8wMDA5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OA==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljk4NV8wMDEwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>OQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE3Ljk4NV8wMDExLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjAwMV8wMDEyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjAxNl8wMDEzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjE0MV8wMDE0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjE1N18wMDE1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjE3Ml8wMDE2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjE4OF8wMDE3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjIwNF8wMDE4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjIxOV8wMDE5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjIzNV8wMDIwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MTk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjI1MF8wMDIxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjI2Nl8wMDIyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjI4Ml8wMDIzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjI5N18wMDI0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjMxM18wMDI1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjMyOF8wMDI2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjM0NF8wMDI3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MjY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjM2MF8wMDI4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjM3NV8wMDI5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjM5MV8wMDMwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mjk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQwNl8wMDMxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQyMl8wMDMyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQzOF8wMDMzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQ1M18wMDM0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQ2OV8wMDM1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjQ4NF8wMDM2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjUwMF8wMDM3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>MzY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjUxNl8wMDM4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjUzMV8wMDM5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjU0N18wMDQwLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Mzk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjU2Ml8wMDQxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjU3OF8wMDQyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjU5NF8wMDQzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjYwOV8wMDQ0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjYyNV8wMDQ1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjY0MF8wMDQ2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjY1Nl8wMDQ3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjY3Ml8wMDQ4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjY4N18wMDQ5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjcwM18wMDUwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NDk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjcxOF8wMDUxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjczNF8wMDUyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljc1MF8wMDUzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljc2NV8wMDU0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljc4MV8wMDU1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljc5Nl8wMDU2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjgxMl8wMDU3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjgyOF8wMDU4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljg0M18wMDU5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljg1OV8wMDYwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NTk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljg3NF8wMDYxLkpQRw==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljg5MF8wMDYyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjkwNl8wMDYzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjkyMV8wMDY0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4LjkzN18wMDY1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljk1Ml8wMDY2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljk2OF8wMDY3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NjY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljk4NF8wMDY4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE4Ljk5OV8wMDY5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjAxNV8wMDcwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Njk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjAxNV8wMDcxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjAxNV8wMDcyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjAzMF8wMDczLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjA0Nl8wMDc0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjA2Ml8wMDc1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjA3N18wMDc2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjA5M18wMDc3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>NzY=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjEwOF8wMDc4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzc=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjEyNF8wMDc5LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzg=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjE0MF8wMDgwLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>Nzk=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjE1NV8wMDgxLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODA=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjE3MV8wMDgyLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODE=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjE4Nl8wMDgzLnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODI=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjIwMl8wMDg0LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODM=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjIwMl8wMDg1LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODQ=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjI4MF8wMDg2LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5q2j5paH</PGTYPE><YEMA>ODU=</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjM1OF8wMDg3LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX><DA_SSJCYX><JZLB>5Ymv5Y23</JZLB><CH>MQ==</CH><PGTYPE>5bCB6Z2i</PGTYPE><YEMA>MQ==</YEMA><FILENAME>MjAxNy8xMjAxLzE0NTEwMDAwMDA2NTc3OS9GXzEvMjAxNzA2MjYuMDg1NDE5LjM1OF8wMDg4LnRpZg==</FILENAME><FTPSERVER>YWhneV9mdHA=</FTPSERVER></DA_SSJCYX></DA_SSJCYX_LIST></Response>";

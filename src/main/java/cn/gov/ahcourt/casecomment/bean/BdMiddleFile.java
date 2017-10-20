@@ -8,12 +8,11 @@ public class BdMiddleFile extends BaseEntity {
 
     }
 
-    public BdMiddleFile(String fileid,String pfileid,String name,int xorder,String ajid){
+    public BdMiddleFile(String fileid,String pfileid,String name,int xorder){
         this.fileid = fileid;
         this.pfileid = pfileid;
         this.xname = name;
         this.xorder = xorder;
-        this.ajid = ajid;
     }
 
     //ztree model
