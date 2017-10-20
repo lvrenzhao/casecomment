@@ -84,6 +84,15 @@ public class BdMiddleFile extends BaseEntity {
 
     private String pgtype;
 
+    private String jzlb;
+
+    public String getJzlb() {
+        return jzlb;
+    }
+
+    public void setJzlb(String jzlb) {
+        this.jzlb = jzlb;
+    }
 
     public String getPgtype() {
         return pgtype;
