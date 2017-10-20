@@ -160,7 +160,7 @@
 
 
   <select id="selectWork" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdChosenCases" >
-    select CONCAT(a.ccid,p.cpid) keyid,p.sfzz,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
+    select r.pczt,CONCAT(a.ccid,p.cpid) keyid,p.sfzz,b.bt,date_format(b.fqsj, '%Y/%m/%d') fqsj,b.pclx,fn_get_username(b.fqr) fqrmc
         ,a.ccid, a.chosenid, a.ajid, a.psgroupid, a.jydp, a.zzpxdf,a.dpr,date_format(a.dpsj, '%Y/%m/%d') dpsj, a.create_by,
         date_format(a.create_date, '%Y/%m/%d') create_date, a.update_by, date_format(a.update_date, '%Y/%m/%d') update_date, a.remarks, a.flag,
         b.bt ggmc,
@@ -199,7 +199,7 @@
       and r.pczt = '2'
     </if>
 
-    order by b.bt asc , a.create_date desc
+    order by b.bt asc , a.create_date ,a.ajid desc
   </select>
 
   <select id="selectTop" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >

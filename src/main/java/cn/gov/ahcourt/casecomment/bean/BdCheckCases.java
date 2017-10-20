@@ -78,6 +78,16 @@ public class BdCheckCases extends BaseEntity {
     private String sfzz;
     private String proid;
 
+    private String pczt;
+
+    public String getPczt() {
+        return pczt;
+    }
+
+    public void setPczt(String pczt) {
+        this.pczt = pczt;
+    }
+
     public String getProid() {
         return proid;
     }

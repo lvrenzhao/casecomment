@@ -37,7 +37,15 @@ public class BdChosenCases extends BaseEntity {
 
     private String flag;
 
+    private String pczt;
 
+    public String getPczt() {
+        return pczt;
+    }
+
+    public void setPczt(String pczt) {
+        this.pczt = pczt;
+    }
 
     private String keyid;
     private String teamleadername;

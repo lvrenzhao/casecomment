@@ -33,13 +33,14 @@ function loadUnCheckGrid() {
             {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
             {label : 'sfzz',name : 'sfzz',hidden : true, frozen:true},
             {label : 'jydp',name : 'jydp',hidden : true, frozen:true},
+            {label : 'pczt',name : 'pczt',hidden : true, frozen:true},
             {label : 'checkid',name : 'checkid',hidden : true, frozen:true},
             {label : '操作',name : 'fmt', width : 80, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
-                    if(rowObject.sfzz == "1" && (rowObject.jydp == null || rowObject.jydp == undefined || rowObject.jydp.length==0)){
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" title="总结"><i class="fa fa-commenting-o"></i> 点评</button>';
+                    if(rowObject.sfzz == "1" && rowObject.pczt == "2"){
+                        return '<button class="btn btn-link btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" ><i class="fa fa-commenting-o"></i> 点评</button>';
                     }else{
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" title="评查"><i class="fa fa-balance-scale"></i> 评查</button>';
+                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" ><i class="fa fa-balance-scale"></i> 评查</button>';
                     }
                 },
                 frozen:true

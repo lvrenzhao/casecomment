@@ -80,7 +80,7 @@ $(function () {
             datatype : 'json',
             async : false,
             success : function(data) {
-                $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td style="text-align: right">'+data.zzpcdf+'分</td></tr>')
+                $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td style="text-align: right">'+(data.zzpcdf?data.zzpcdf:'-')+'</td></tr>')
             }
         });
         //获取评分表 构建表内容
