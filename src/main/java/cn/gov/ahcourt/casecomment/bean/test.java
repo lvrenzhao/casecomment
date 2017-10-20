@@ -1,10 +1,10 @@
 package cn.gov.ahcourt.casecomment.bean;
 
 import cn.gov.ahcourt.casecomment.scheduled.WSService;
+import cn.gov.ahcourt.casecomment.utils.MapKeyComparator;
 import org.apache.commons.codec.binary.Base64;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +13,27 @@ import java.util.regex.Pattern;
  */
 public class test {
     public static void main(String [] args){
+
+        Map<Integer,Object> sortedMap = new TreeMap<Integer, Object>(new MapKeyComparator());
+        sortedMap.put(9,"9");
+        sortedMap.put(1,"1");
+        sortedMap.put(29,"29");
+        sortedMap.put(2,"2");
+        sortedMap.put(8,"8");
+        sortedMap.put(21,"21");
+
+        System.out.println(sortedMap.size());
+
+
+//        List<Integer> pageSplit = new ArrayList<Integer>();
+//        pageSplit.add(8);
+//        pageSplit.add(2);
+//        pageSplit.add(3);
+//        pageSplit.add(11);
+//        pageSplit.add(9);
+//        Integer[] is = pageSplit.toArray(new Integer[]{});
+//        Arrays.sort(is);
+//        System.out.println(is.length);
 //        // 要验证的字符串
 //        String str = "<Data Count=\"MzgwNTc=\">dasdasdasfasdasd";
 //        // 正则表达式规则
@@ -29,7 +50,7 @@ public class test {
 //        int i = WSService.getAllCount("</Result><Data Count=\"OTE=\" ><EAJ>");
 //        String i = getAllCount("<FileContent>jdslafjasldkfjlsad</FileContent>");
 //        System.out.println(i);
-        getTeacherList("<?xml version=\"1.0\" encoding=\"utf-8\"?><Response><Result><Code>MA==</Code><Msg /></Result><Data Count=\"MjMz\"><R><AHDM>MTQ1MTAwMDAwMDYzNTc5</AHDM><AH>KDIwMTYp55qW5rCR57uIOTIz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY4OTQ0</AHDM><AH>KDIwMTcp55qW6KGM57uINDAy5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDYyNDEw</AHDM><AH>KDIwMTYp55qW5rCR57uINzg25Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY1Mjgz</AHDM><AH>KDIwMTYp55qW5YiR55SzMTMz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0ODAx</AHDM><AH>KDIwMTYp55qW5rCR57uIMTA1NeWPtw==</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0OTA4</AHDM><AH>KDIwMTYp55qW5rCR55SzMTE2MOWPtw==</AH><FY>QzAw</FY></R></Data></Response>");
+//        getTeacherList("<?xml version=\"1.0\" encoding=\"utf-8\"?><Response><Result><Code>MA==</Code><Msg /></Result><Data Count=\"MjMz\"><R><AHDM>MTQ1MTAwMDAwMDYzNTc5</AHDM><AH>KDIwMTYp55qW5rCR57uIOTIz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY4OTQ0</AHDM><AH>KDIwMTcp55qW6KGM57uINDAy5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDYyNDEw</AHDM><AH>KDIwMTYp55qW5rCR57uINzg25Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY1Mjgz</AHDM><AH>KDIwMTYp55qW5YiR55SzMTMz5Y+3</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0ODAx</AHDM><AH>KDIwMTYp55qW5rCR57uIMTA1NeWPtw==</AH><FY>QzAw</FY></R><R><AHDM>MTQ1MTAwMDAwMDY0OTA4</AHDM><AH>KDIwMTYp55qW5rCR55SzMTE2MOWPtw==</AH><FY>QzAw</FY></R></Data></Response>");
     }
 
     public static List<String> getTeacherList(String managers){

@@ -4,6 +4,18 @@ import java.util.Date;
 
 public class BdMiddleFile extends BaseEntity {
 
+    public BdMiddleFile(){
+
+    }
+
+    public BdMiddleFile(String fileid,String pfileid,String name,int xorder,String ajid){
+        this.fileid = fileid;
+        this.pfileid = pfileid;
+        this.xname = name;
+        this.xorder = xorder;
+        this.ajid = ajid;
+    }
+
     //ztree model
     private String id;
     private String pId;
@@ -68,6 +80,18 @@ public class BdMiddleFile extends BaseEntity {
     private String remarks;
 
     private String flag;
+
+
+    private String pgtype;
+
+
+    public String getPgtype() {
+        return pgtype;
+    }
+
+    public void setPgtype(String pgtype) {
+        this.pgtype = pgtype;
+    }
 
     public String getFileid() {
         return fileid;
