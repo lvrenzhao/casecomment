@@ -152,7 +152,8 @@ public class CaseFileFetcher {
     public void doJob(String path){
 //        processXML();
         try {
-            String xml = wsService.wsGetOneFileContent(0, "2017/1201/145100000065779/Z_1/20170626.085335.210_0005.tif", "ahgy_ftp", "340000");
+//            String xml = wsService.wsGetOneFileContent(0, "2017/1201/145100000065779/Z_1/20170626.085335.210_0005.tif", "ahgy_ftp", "340000");
+            String xml = wsService.wsGetOneFileContent(0, "2017/1201/145100000065779/Z_1/20170626.085335.179_0003.JPG", "ahgy_ftp", "340000");
             String content = getFileContent(xml);
 
             byte[] data = Base64.decodeBase64(content.getBytes());
