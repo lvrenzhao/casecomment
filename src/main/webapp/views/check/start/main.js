@@ -556,6 +556,31 @@ $(function () {
             }
         }
     });
+
+    $("#a_refresh_pfb").click(function () {
+        $.ajax({
+            type : 'POST',
+            url : URL_PFB,
+            datatype : 'json',
+            // async : false,
+            success : function(data) {
+                if (data && data.rows && data.rows.length > 0) {
+                    $("#form_sel_pfb").each(function() {
+                        var html = '<option value="">--请选择--</option>';
+                        for (var i = 0; i < data.rows.length; i++) {
+                            html += '<option ' + 'value="' + data.rows[i].tableid + '">' + data.rows[i].mbmc + '</option>'
+                        }
+                        $(this).html(html);
+                    });
+                } else {
+                    $("#form_sel_pfb").each(function() {
+                        $(this).html('<option value="">--请选择--</option>');
+                    })
+                }
+            }
+        });
+    });
+
     $('#btn_clearorgs').click(function(){
         $('#citySel').val("");
         $("#zzid").val("");

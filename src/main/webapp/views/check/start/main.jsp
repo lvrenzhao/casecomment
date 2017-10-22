@@ -270,9 +270,10 @@
 
         <div class="form_item wb20 fl">
           <label>选择评分表<span>*</span></label>
-          <select class="form-control" id="form_sel_pfb">
+          <select class="form-control" id="form_sel_pfb" style="width: 85%;float: left;">
             <option value="">--请选择--</option>
           </select>
+          <a href="javascript:;" id="a_refresh_pfb" style="display: block;float: left;padding-top:10px;color:#369 !important;">&nbsp;<span class="fa fa-refresh"></span></a>
         </div>
 
         <div class="form_item wb100 fl">
