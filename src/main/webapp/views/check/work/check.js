@@ -330,7 +330,10 @@ function selectCd() {
     var nodes = treeObj.getSelectedNodes();
     // window.frames["iframe0"].location = "viewer.jsp?fid="+nodes[0].id;
     if(nodes[0].ftpserver&&nodes[0].filename){
-        window.frames["iframe0"].location = ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fycode="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename;
+        // window.frames["iframe0"].location = ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename;
+        layer.msg("加载中....");
+        // console.log(ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename)
+        $("#viewer_img").attr("src",ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename);
     }
 }
 
