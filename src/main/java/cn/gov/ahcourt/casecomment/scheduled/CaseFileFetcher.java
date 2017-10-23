@@ -158,8 +158,8 @@ public class CaseFileFetcher {
                                 ex.printStackTrace();
                             }
                             bean.setXname(String.valueOf(yema));
-                            bean.setFtpserver("(?<=<FTPSERVER>)\\S+(?=</FTPSERVER>)");
-                            bean.setFilename("(?<=<FILENAME>)\\S+(?=</FILENAME>)");
+                            bean.setFtpserver(getByRegex(itemxml,"(?<=<FTPSERVER>)\\S+(?=</FTPSERVER>)"));
+                            bean.setFilename(getByRegex(itemxml,"(?<=<FILENAME>)\\S+(?=</FILENAME>)"));
                             String pgtype = getByRegex(itemxml,"(?<=<PGTYPE>)\\S+(?=</PGTYPE>)");
 //                            bean.setRemarks(pgtype);
 //                            bean.setFlag(xname);

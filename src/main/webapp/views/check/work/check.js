@@ -65,8 +65,10 @@ $(function () {
                             datatype : 'json',
                             success : function(data) {
                                 layer.close(lot);
-                                if (data) {
+                                if (data && data.rows && data.rows.length>0) {
                                     $.fn.zTree.init($("#pTree"), setting, data.rows);
+                                }else{
+                                    layer.msg("同步成功，但未获取到档案，请联系该案件承办人及时归档。",{icon:5});
                                 }
                             }
                         });
@@ -217,8 +219,11 @@ $(function () {
             datatype : 'json',
             success : function(data) {
                 layer.close(lo);
-                if (data) {
+                if (data && data.rows && data.rows.length>0) {
+                    layer.msg("同步成功！",{icon:1});
                     $.fn.zTree.init($("#pTree"), setting, data.rows);
+                }else{
+                    layer.msg("同步成功，但未获取到档案，请联系该案件承办人及时归档。",{icon:5});
                 }
             }
         });
