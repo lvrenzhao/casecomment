@@ -69,8 +69,10 @@
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, jasj, lx, thirdid, create_by, create_date, 
-    update_by, update_date, remarks, flag,relatedcasecount,relatedcaseid,passcheck
-    from bd_middle_case
+    update_by, update_date, flag,relatedcasecount,relatedcaseid,passcheck
+    ,(select fydm from sd_organization o where o.zzjgmc = c.gsfy limit 1) fydm
+    ,(select remarks from sd_organization o where o.zzjgmc = c.gsfy limit 1) remarks
+    from bd_middle_case c
     where ajid = #{ajid,jdbcType=VARCHAR}
   </select>
 

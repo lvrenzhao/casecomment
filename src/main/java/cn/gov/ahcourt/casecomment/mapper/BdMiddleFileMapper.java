@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BdMiddleFileMapper {
     int deleteByPrimaryKey(String fileid);
+    int deleteByAjid(String ajid);
 
     int insert(BdMiddleFile record);
 
@@ -14,4 +15,5 @@ public interface BdMiddleFileMapper {
     List<BdMiddleFile> selectTree(BdMiddleFile bean);
 
     int updateByPrimaryKey(BdMiddleFile record);
+
 }

@@ -20,17 +20,21 @@
     delete from bd_middle_file
     where fileid = #{fileid,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByAjid" parameterType="java.lang.String" >
+    delete from bd_middle_file
+    where ajid = #{ajid,jdbcType=VARCHAR} and xorder>=200000000
+  </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
     insert into bd_middle_file (fileid, pfileid, xname, 
       xurl, xorder, ajid, 
       `require`, create_by, create_date,
       update_by, update_date, remarks, 
-      flag)
+      flag,ftpserver,filename)
     values (#{fileid,jdbcType=VARCHAR}, #{pfileid,jdbcType=VARCHAR}, #{xname,jdbcType=VARCHAR}, 
       #{xurl,jdbcType=VARCHAR}, #{xorder,jdbcType=INTEGER}, #{ajid,jdbcType=VARCHAR},
       #{require,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{flag,jdbcType=VARCHAR})
+      #{flag,jdbcType=VARCHAR},#{ftpserver,jdbcType=VARCHAR},#{filename,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
     update bd_middle_file
@@ -61,7 +65,7 @@
   </select>
 
   <select id="selectTree" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
-    select fileid id,pfileid pId,xname name,remarks open from bd_middle_file
+    select fileid id,pfileid pId,xname name,remarks open,ftpserver,filename from bd_middle_file
     where 1=1
     <if test="ajid !=null and ajid != '' ">
       and ajid = #{ajid}

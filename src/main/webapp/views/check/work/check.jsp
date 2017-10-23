@@ -60,6 +60,7 @@
     <div class="bmbox_title">
         <h5>案件资料</h5>
         <div class="bmbox_tool">
+            <button id="btn_tongbu" class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 同步</button>
         </div>
     </div>
     <div class="bmbox_content clearfix fullbox" style="padding-bottom: 60px;overflow: auto">

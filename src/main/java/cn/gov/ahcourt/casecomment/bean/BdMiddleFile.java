@@ -4,6 +4,27 @@ import java.util.Date;
 
 public class BdMiddleFile extends BaseEntity {
 
+
+    private String ftpserver;
+
+    private String filename;
+
+    public String getFtpserver() {
+        return ftpserver;
+    }
+
+    public void setFtpserver(String ftpserver) {
+        this.ftpserver = ftpserver;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
     public BdMiddleFile(){
 
     }

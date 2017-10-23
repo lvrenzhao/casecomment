@@ -1,4 +1,6 @@
 var URL_AJZL = ahcourt.ctx + "/case/files.do";
+var URL_AJZLWS = ahcourt.ctx + "/case/filesFromWs.do";
+var URL_AJZLUPDATEWS = ahcourt.ctx + "/case/filesUpdateFromWs.do";
 var URL_GET = [ahcourt.ctx + "/case/getcheckbyccid.do",ahcourt.ctx + "/case/getchosenbyccid.do"];
 var URL_GETDETAILS = ahcourt.ctx + "/case/getscoredetails.do";
 var URL_SUBMIT = [ahcourt.ctx+"/case/submitCheckScore.do",ahcourt.ctx+"/case/submitChosenScore.do"];
@@ -7,11 +9,74 @@ var URL_GETWRITEDSCORE = ahcourt.ctx+"/case/getWritedScores.do";
 var ajid , mode,type,ccid,tableid;//type1:评查type2:评选
 var crid;
 var ggid;
+var setting = {
+    data: {simpleData: {enable: true}},
+    callback: {onClick: selectCd}
+};
+var ah,fydm,fbs;
 $(function () {
     ajid = $.getUrlParam("ajid");
     type = $.getUrlParam("type");
     ccid = $.getUrlParam("ccid");
     mode = $.getUrlParam("mode");
+
+    if(ajid){
+        $.ajax({
+            type: 'POST',
+            url: ahcourt.ctx+"/case/getAjDetails.do",
+            async : false,
+            data: {
+                ajid: ajid
+            },
+            datatype: 'json',
+            success: function (data) {
+                if(data){
+                    ah = data.ah;
+                    fydm = data.fydm;
+                    fbs = data.remarks;
+                }
+            }
+        });
+
+        var lox;
+        var lot;
+        lox = layer.msg("正在加载档案中,请稍后...",{icon:6,time:100000000});
+        $.ajax({
+            type : 'POST',
+            url : URL_AJZL,
+            data:{
+                ajid:ajid
+            },
+            datatype : 'json',
+            success : function(data) {
+                layer.close(lox);
+                if(data && data.rows){
+                    if(data.rows.length <=2){
+                        lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
+                        $.ajax({
+                            type : 'POST',
+                            url : URL_AJZLWS,
+                            data:{
+                                ajid:ajid,
+                                fbs:fbs,
+                                ah:ah,
+                                fydm:fydm
+                            },
+                            datatype : 'json',
+                            success : function(data) {
+                                layer.close(lot);
+                                if (data) {
+                                    $.fn.zTree.init($("#pTree"), setting, data.rows);
+                                }
+                            }
+                        });
+                    }else{
+                        $.fn.zTree.init($("#pTree"), setting, data.rows);
+                    }
+                }
+            }
+        });
+    }
     //mode=2被取消，原作为可顺带查看评分表
     if(mode == 1){
         if(!type || !ccid){
@@ -107,7 +172,7 @@ $(function () {
             closerightslide();
         }
     });
-    initTree();
+    // initTree();
 
 
     $("body").delegate(".xkf", "change", function () {
@@ -136,6 +201,29 @@ $(function () {
     $("#btn_close_score_table").click(function () {
         save(3);
     });
+    
+    $("#btn_tongbu").click(function () {
+        var lo ;
+        lo = layer.msg("正在从远程服务器下载更新,请稍后...",{icon:6,time:100000000});
+        $.ajax({
+            type : 'POST',
+            url : URL_AJZLUPDATEWS,
+            data:{
+                ajid:ajid,
+                fbs:fbs,
+                ah:ah,
+                fydm:fydm
+            },
+            datatype : 'json',
+            success : function(data) {
+                layer.close(lo);
+                if (data) {
+                    $.fn.zTree.init($("#pTree"), setting, data.rows);
+                }
+            }
+        });
+    });
+    
 });
 
 //type:1暂存，2：提交,3:暂存(但收起表单)
@@ -206,26 +294,26 @@ function getDf() {
     $("#label_mf").text(total+"分");
 }
 
-function initTree() {
-    $.ajax({
-        type: 'POST',
-        url: URL_AJZL,
-        data:{
-            "ajid":ajid
-        },
-        datatype: 'json',
-        async: false,
-        success: function (data) {
-            if (data && data.rows) {
-                var setting = {
-                    data: {simpleData: {enable: true}},
-                    callback: {onClick: selectCd}
-                };
-                $.fn.zTree.init($("#pTree"), setting, data.rows);
-            }
-        }
-    });
-}
+// function initTree() {
+//     $.ajax({
+//         type: 'POST',
+//         url: URL_AJZL,
+//         data:{
+//             "ajid":ajid
+//         },
+//         datatype: 'json',
+//         async: false,
+//         success: function (data) {
+//             if (data && data.rows) {
+//                 var setting = {
+//                     data: {simpleData: {enable: true}},
+//                     callback: {onClick: selectCd}
+//                 };
+//                 $.fn.zTree.init($("#pTree"), setting, data.rows);
+//             }
+//         }
+//     });
+// }
 var isshowed = false;
 function selectCd() {
     if(!isshowed){
@@ -235,7 +323,10 @@ function selectCd() {
     }
     var treeObj = $.fn.zTree.getZTreeObj("pTree");
     var nodes = treeObj.getSelectedNodes();
-    window.frames["iframe0"].location = "viewer.jsp?fid="+nodes[0].id;
+    // window.frames["iframe0"].location = "viewer.jsp?fid="+nodes[0].id;
+    if(nodes[0].ftpserver&&nodes[0].filename){
+        window.frames["iframe0"].location = ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fycode="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename;
+    }
 }
 
 

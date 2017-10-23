@@ -628,4 +628,15 @@ public class WSService {
             return  -1;
         }
     }
+
+    public int deleteFilesByAjid(String ajid){
+        try{
+            if(StringUtils.isNotBlank(ajid)) {
+                return bdMiddleFileMapper.deleteByAjid(ajid);
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return  -1;
+    }
 }

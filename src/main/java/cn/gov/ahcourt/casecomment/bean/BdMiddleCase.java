@@ -98,6 +98,26 @@ public class BdMiddleCase extends BaseEntity{
 
     private String pcjl;
 
+    private String fydm;
+
+    private String fjm;
+
+    public String getFydm() {
+        return fydm;
+    }
+
+    public void setFydm(String fydm) {
+        this.fydm = fydm;
+    }
+
+    public String getFjm() {
+        return fjm;
+    }
+
+    public void setFjm(String fjm) {
+        this.fjm = fjm;
+    }
+
     public String getPcjl() {
         return pcjl;
     }
