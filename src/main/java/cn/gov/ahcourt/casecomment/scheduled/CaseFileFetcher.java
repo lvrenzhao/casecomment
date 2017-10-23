@@ -73,6 +73,8 @@ public class CaseFileFetcher {
             }
             Map<Integer,BdMiddleFile> bmmap_zj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
             Map<Integer,BdMiddleFile> bmmap_fj = new TreeMap<Integer, BdMiddleFile>(new MapKeyComparator());
+            BdMiddleFile bkb_zj = null;
+            BdMiddleFile bkb_fj = null;
             List<Element> subnodes = root.elements();
             String zjid = "",fjid="";
             int zjxh=0,fjxh=0;
@@ -107,12 +109,16 @@ public class CaseFileFetcher {
                     if(StringUtils.isNotBlank(zjid)) {
                         files.add(new BdMiddleFile(IdGen.uuid(), zjid, "封面", (zjxh * 1000 + 101)*100000));
                         files.add(new BdMiddleFile(IdGen.uuid(), zjid, "目录", (zjxh * 1000 + 102)*100000));
-                        files.add(new BdMiddleFile(IdGen.uuid(), zjid, "备考表", (zjxh * 1000 + 900)*100000));
+                        BdMiddleFile bkbzj = new BdMiddleFile(IdGen.uuid(), zjid, "备考表", (zjxh * 1000 + 900)*100000);
+                        files.add(bkbzj);
+                        bkb_zj = bkbzj;
                     }
                     if(StringUtils.isNotBlank(fjid)) {
                         files.add(new BdMiddleFile(IdGen.uuid(), fjid, "封面", (fjxh * 1000 + 101)*100000));
                         files.add(new BdMiddleFile(IdGen.uuid(), fjid, "目录", (fjxh * 1000 + 102)*100000));
-                        files.add(new BdMiddleFile(IdGen.uuid(), fjid, "备考表", (fjxh * 1000 + 900)*100000));
+                        BdMiddleFile bkbfj = new BdMiddleFile(IdGen.uuid(), fjid, "备考表", (fjxh * 1000 + 900)*100000);
+                        files.add(bkbfj);
+                        bkb_fj = bkbfj;
                     }
                 }else if("DA_SSJCBM_LIST".equals(cnode.getName())){
                     List<Element> bms = cnode.elements();
@@ -169,7 +175,13 @@ public class CaseFileFetcher {
                                     //todo 两个封面有一个是备考表呢....?(先将两个封面都归到封面底下)
                                     for(int x = 0 ; x < files.size(); x++){
                                         if(StringUtils.isNotBlank(zjid) && zjid.equals(files.get(x).getPfileid()) && "封面".equals(files.get(x).getXname())){
-                                            parent = files.get(x);
+                                            if(StringUtils.isNotBlank(bean.getFilename()) && bean.getFilename().indexOf("_0001") > -1){
+                                                //是封面
+                                                parent = files.get(x);
+                                            }else {
+                                                //是备考表
+                                                parent = bkb_zj;
+                                            }
                                             break;
                                         }
                                     }
@@ -193,7 +205,13 @@ public class CaseFileFetcher {
                                     //todo 两个封面有一个是备考表呢....?(先将两个封面都归到封面底下)
                                     for(int x = 0 ; x < files.size(); x++){
                                         if(StringUtils.isNotBlank(fjid) && fjid.equals(files.get(x).getPfileid()) && "封面".equals(files.get(x).getXname())){
-                                            parent = files.get(x);
+                                            if(StringUtils.isNotBlank(bean.getFilename()) && bean.getFilename().indexOf("_0001") > -1){
+                                                //是封面
+                                                parent = files.get(x);
+                                            }else {
+                                                //是备考表
+                                                parent = bkb_fj;
+                                            }
                                             break;
                                         }
                                     }
