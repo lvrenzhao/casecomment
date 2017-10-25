@@ -41,7 +41,7 @@ function loadUnCheckGrid() {
                 formatter : function(cellvalue, options, rowObject) {
                     // if(rowObject.sfzz == "1" && rowObject.jydp && rowObject.jydp.length>0){
                     if(rowObject.sfzz == "1" && rowObject.pczt == "2"){
-                        return '<button class="btn btn-primary btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')"><i class="fa fa-commenting-o"></i> 点评</button>';
+                        return '<button class="btn btn-primary btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')"><i class="fa fa-commenting-o"></i> 合议</button>';
                     }else{
                         return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\')"><i class="fa fa-balance-scale"></i> 评查</button>';
                     }
@@ -86,15 +86,15 @@ function loadCheckedGrid() {
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
-                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" title="点评"><i class="fa fa-info"></i> 评查详情</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\',\'' + rowObject.ccid + '\')" title="评查"><i class="fa fa-dedent"></i> 案件资料</button>';
+                    return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" ><i class="fa fa-info"></i> 评查详情</button>'
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\',\'' + rowObject.ccid + '\')"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
             {label : '案号', name : 'ah',frozen : true,sortable:false,width : 150},
             {label : '所属评查公告',name : 'bt', sortable:false,width : 200,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="openCases(2,\'' + rowObject.chosenid + '\')">'+cellvalue+'</a>';
             }},
-            {label : '评选得分',name : 'zzpxdf',sortable : false,width : 100},
+            {label : '合议评选得分',name : 'zzpxdf',sortable : false,width : 100},
             {label : '评选时间',name : 'dpsj',sortable : false,width : 100},
             {label : '评查组长',name : 'teamleadername',sortable:false, width : 80 },
             {label : '评查组员',name : 'teammatenames',sortable:false,width : 200},
