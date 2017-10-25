@@ -44,7 +44,7 @@ public class JobCaseFetcher {
                             bean.setAjid(item.getTdhajid());
                             bean.setPasscheck("0");
                             bean.setCreateDate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-                            bean.setRelatedcasecount(0);
+//                            bean.setRelatedcasecount(0);
                         }else{
                             isNew=false;
                             bean.setUpdateDate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
@@ -61,7 +61,13 @@ public class JobCaseFetcher {
                             bean.setJasj(StringUtils.trim(item.getJarq()));
                         }
                         bean.setLx(getLx(item.getXmlbase()));
-                        bean.setThirdid(getByRegex(item.getXmlbase(),"(?<=<YSAH>)\\S+(?=</YSAH>)"));//原审案号
+                        String ysah = getByRegex(item.getXmlbase(),"(?<=<YSAH>)\\S+(?=</YSAH>)");
+                        if(StringUtils.isNotBlank(ysah)) {
+                            bean.setRelatedcaseid(ysah);//原审案号
+                            bean.setRelatedcasecount(1);
+                        }else{
+                            bean.setRelatedcasecount(0);
+                        }
                         try {
                             if (isNew) {
                                 bdMiddleCaseMapper.insert(bean);

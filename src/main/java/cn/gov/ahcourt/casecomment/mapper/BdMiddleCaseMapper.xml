@@ -34,14 +34,14 @@
       cbbm, cbr, xz, ay, 
       jafs, jasj, lx, thirdid, 
       create_by, create_date, update_by, 
-      update_date, remarks, flag,relatedcasecount,passcheck
+      update_date, remarks, flag,relatedcasecount,relatedcaseid,passcheck
       )
     values (#{ajid,jdbcType=VARCHAR}, #{ah,jdbcType=VARCHAR}, #{gsfy,jdbcType=VARCHAR}, 
       #{cbbm,jdbcType=VARCHAR}, #{cbr,jdbcType=VARCHAR}, #{xz,jdbcType=VARCHAR}, #{ay,jdbcType=VARCHAR}, 
       #{jafs,jdbcType=VARCHAR}, #{jasj,jdbcType=TIMESTAMP}, #{lx,jdbcType=VARCHAR}, #{thirdid,jdbcType=VARCHAR}, 
       #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR},
-      #{relatedcasecount,jdbcType=VARCHAR},#{passcheck,jdbcType=VARCHAR}
+      #{relatedcasecount,jdbcType=VARCHAR},#{relatedcaseid,jdbcType=VARCHAR},#{passcheck,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleCase" >
@@ -64,7 +64,8 @@
       flag = #{flag,jdbcType=VARCHAR},
       relatedcasecount = #{relatedcasecount,jdbcType=VARCHAR},
       relatedcaseid = #{relatedcaseid,jdbcType=VARCHAR},
-      passcheck = #{passcheck,jdbcType=VARCHAR}
+      passcheck = #{passcheck,jdbcType=VARCHAR},
+      relatedcaseid = #{relatedcaseid,jdbcType=VARCHAR}
     where ajid = #{ajid,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -84,7 +85,7 @@
     from bd_middle_case t where 1=1
 
   <if test="formrelatedcaseid !=null and formrelatedcaseid.length  > 0">
-    and ajid in
+    and ah in
     <foreach item="item" index="index" collection="formrelatedcaseid" open="(" separator="," close=")">
       #{item}
     </foreach>
