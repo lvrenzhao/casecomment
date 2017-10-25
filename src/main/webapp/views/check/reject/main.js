@@ -86,7 +86,21 @@ $(function () {
             $("#label_remind").html(count);
         }
     });
+
+    $("#xbtn_refresh").click(function () {
+        reloadGrid1();
+        reloadGrid2();
+        layer.msg("刷新成功!",{icon:1});
+    });
+
 });
+
+function reloadGrid1() {
+    $("#table1").jqGrid().setGridParam({
+        url : URL_TABLE1,
+        page : 1
+    }).trigger("reloadGrid");
+}
 
 function reloadGrid2() {
     $("#table2").jqGrid().setGridParam({

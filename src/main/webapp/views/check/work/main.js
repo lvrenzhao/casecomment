@@ -13,6 +13,12 @@ $(function () {
     $("#btn_query").click(function () {
         reloadCheckedGrid();
     });
+
+    $("#xbtn_refresh").click(function () {
+        reloadUnCheckGrid();
+        reloadCheckedGrid();
+        layer.msg("刷新成功!",{icon:1});
+    });
 });
 
 
