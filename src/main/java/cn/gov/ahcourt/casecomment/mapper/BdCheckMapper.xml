@@ -94,6 +94,10 @@
     from bd_check t,sd_user u
     where t.fqr = u.yhid
 
+    <if test="xorgid != null and xorgid != '' ">
+      and u.zzid = #{xorgid}
+    </if>
+
     <if test="zt != null and zt != '' ">
       and t.zt = #{zt}
     </if>

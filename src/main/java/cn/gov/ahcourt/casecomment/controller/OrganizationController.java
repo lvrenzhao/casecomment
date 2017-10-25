@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,9 @@ public class OrganizationController {
 	}
 
 	@RequestMapping("/getlist")
-	public @ResponseBody List<OrganizationBean> getlist(OrganizationBean bean) {
-//		System.out.println(bean.getRemarks());
+	public @ResponseBody List<OrganizationBean> getlist(OrganizationBean bean,@SessionScope("user")UserBean user) {
+//		System.out.println();
+		bean.setRemarks(user.getZzid());
 		return organizationService.getlist(bean);
 	}
 	

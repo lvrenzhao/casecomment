@@ -85,6 +85,9 @@
       ,bd_chosen_groups g
     </if>
      where a.chosenid = b.chosenid and a.ajid = c.ajid and b.fqr = u.yhid
+    <if test="xorgid != null and xorgid != '' ">
+      and u.zzid = #{xorgid}
+    </if>
     <if test="tdcy !=null and tdcy != '' ">
       and a.psgroupid = g.cgid
     </if>

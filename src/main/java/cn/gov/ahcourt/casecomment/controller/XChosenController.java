@@ -99,6 +99,7 @@ public class XChosenController {
         }
         BdChosen bean = new BdChosen();
         bean.setZt("0");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
 
@@ -208,6 +209,7 @@ public class XChosenController {
             return null;
         }
         bean.setZt("0");
+        bean.setXorgid(user.getZzid());
         bean.setUserid(user.getYhid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
@@ -219,6 +221,7 @@ public class XChosenController {
         }
         bean.setZt("2");
         bean.setUserid(user.getYhid());
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
 
@@ -233,7 +236,11 @@ public class XChosenController {
     }
 
     @RequestMapping("/allstart")
-    public @ResponseBody Map allstart(BdChosenCases bean) {
+    public @ResponseBody Map allstart(BdChosenCases bean,@SessionScope("user")UserBean user) {
+        if(user == null){
+            return null;
+        }
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenCasesMapper.selectAll(bean));
     }
 
@@ -290,6 +297,7 @@ public class XChosenController {
         }
         bean.setSffp("0");
         bean.setZt("1");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
     @RequestMapping("/yfp")
@@ -298,6 +306,7 @@ public class XChosenController {
             return null;
         }
         bean.setSffp("1");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
 

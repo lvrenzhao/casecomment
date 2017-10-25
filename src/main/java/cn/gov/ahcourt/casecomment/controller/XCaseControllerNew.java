@@ -175,6 +175,7 @@ public class XCaseControllerNew {
         }
         bean.setZt("0");
         bean.setUserid(user.getYhid());
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
@@ -185,6 +186,7 @@ public class XCaseControllerNew {
         }
         bean.setZt("2");
         bean.setUserid(user.getYhid());
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
@@ -195,6 +197,7 @@ public class XCaseControllerNew {
         }
         BdCheck bean = new BdCheck();
         bean.setZt("0");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
@@ -247,7 +250,8 @@ public class XCaseControllerNew {
     }
 
     @RequestMapping("/allstart")
-    public @ResponseBody Map allstart(BdCheckCases bean) {
+    public @ResponseBody Map allstart(BdCheckCases bean,@SessionScope("user")UserBean user) {
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdCheckCasesMapper.selectAll(bean));
     }
 

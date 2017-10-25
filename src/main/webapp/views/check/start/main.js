@@ -22,7 +22,18 @@ function getSubCourtNameBYSelectedCourt() {
             return res;
         }
     }
-    return $("#citySel").val();
+    // return $("#citySel").val();
+    if($("#citySel").val()){
+        return $("#citySel").val();
+    }else{
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+        var nodes = treeObj.getNodes();
+        var firstNode = nodes[0];
+        if(firstNode){
+            // console.log(nodes[0].name)
+            return nodes[0].name;
+        }
+    }
 }
 
 function digui(treeNode) {
@@ -758,7 +769,12 @@ $(function () {
     $("#form_sel_xz").change(function () {
         refreshJoinedCasesGrid();
     });
-
+    $('#chx_sfbhxjfy').on('ifChecked', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+        if(!$("#citySel").val()){
+            layer.msg("请先选择归属法院");
+            setTimeout("$('#chx_sfbhxjfy').iCheck('uncheck')",500)
+        }
+    });
 });
 
 

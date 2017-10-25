@@ -49,6 +49,7 @@ public class XMindController {
         }
         BdCheck bean = new BdCheck();
         bean.setZt("0");
+        bean.setXorgid(user.getZzid());
         List<BdCheck> items = bdCheckMapper.selectAll(bean);
         return items==null?0: items.size();
     }
@@ -90,6 +91,7 @@ public class XMindController {
         }
         BdCheck bean = new BdCheck();
         bean.setZt("2");
+        bean.setXorgid(user.getZzid());
         bean.setUserid(user.getYhid());
         List<BdCheck> items = bdCheckMapper.selectAll(bean);
         int count = 0;
@@ -108,6 +110,7 @@ public class XMindController {
         }
         BdChosen bean = new BdChosen();
         bean.setZt("0");
+        bean.setXorgid(user.getZzid());
         List<BdChosen> items = bdChosenMapper.selectAll(bean);
         return items==null?0: items.size();
     }
@@ -150,6 +153,7 @@ public class XMindController {
         BdChosen bean = new BdChosen();
         bean.setSffp("0");
         bean.setZt("1");
+        bean.setXorgid(user.getZzid());
         List<BdChosen> items = bdChosenMapper.selectAll(bean);
         return items==null?0: items.size();
     }
@@ -162,6 +166,7 @@ public class XMindController {
         BdChosen bean = new BdChosen();
         bean.setZt("2");
         bean.setUserid(user.getYhid());
+        bean.setXorgid(user.getZzid());
         List<BdChosen> items = bdChosenMapper.selectAll(bean);
         int count = 0;
         for(int i = 0 ; items != null && i < items.size(); i ++){

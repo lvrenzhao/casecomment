@@ -95,6 +95,11 @@
     (select GROUP_CONCAT(u.xm SEPARATOR ';') xm from bd_check_pros t,sd_user u where t.proid =u.yhid and t.checkid = a.checkid and t.groupid = a.psgroupid and t.sfzz != '1' GROUP BY t.groupid limit 1) teammatenames
     ,c.ah,c.gsfy,c.cbbm,c.cbr,c.ay,c.xz,c.lx,c.jafs,DATE_FORMAT(c.jasj, '%Y/%m/%d') jasj,c.relatedcasecount,(select count(1) from bd_check_cases x where x.ajid = a.ajid and x.jydp is not null) pcjl
     from bd_check_cases a,bd_check b,bd_middle_case c,sd_user u,bd_check_groups g where a.checkid = b.checkid and a.ajid = c.ajid and b.fqr = u.yhid and a.psgroupid = g.cgid
+
+    <if test="xorgid != null and xorgid != '' ">
+      and u.zzid = #{xorgid}
+    </if>
+
     <if test="ajid !=null and ajid != '' ">
       and a.ajid = #{ajid}
     </if>

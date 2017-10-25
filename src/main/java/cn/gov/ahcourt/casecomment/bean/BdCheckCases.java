@@ -3,6 +3,17 @@ package cn.gov.ahcourt.casecomment.bean;
 import java.util.Date;
 
 public class BdCheckCases extends BaseEntity {
+
+    private String xorgid;
+
+    public String getXorgid() {
+        return xorgid;
+    }
+
+    public void setXorgid(String xorgid) {
+        this.xorgid = xorgid;
+    }
+
     private String ccid;
 
     private String checkid;
