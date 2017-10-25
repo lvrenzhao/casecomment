@@ -48,7 +48,7 @@ function check(mode,ajid) {
         title : '案件资料',
         shadeClose : false,
         shade : 0.3,
-        area : [ '90%', '90%' ],
+        area : [ '100%', '100%' ],
         content : ahcourt.ctx + '/views/check/work/check.jsp?ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);

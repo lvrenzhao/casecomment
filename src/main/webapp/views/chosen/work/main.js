@@ -37,6 +37,7 @@ function loadUnCheckGrid() {
             {label : 'jydp',name : 'jydp',hidden : true, frozen:true},
             {label : 'pczt',name : 'pczt',hidden : true, frozen:true},
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true, frozen:true},
             {label : '操作',name : 'fmt', width : 80, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
                     // if(rowObject.sfzz == "1" && rowObject.jydp && rowObject.jydp.length>0){
@@ -48,7 +49,14 @@ function loadUnCheckGrid() {
                 },
                 frozen:true
             },
-            {label : '案号', name : 'ah',frozen : true,sortable : false,width : 150},
+            {label : '案号',name : 'ah',frozen : true,sortable:false,width : 150,formatter:function (cellvalue,options,rowObject) {
+                if(rowObject.relatedcasecount > 0){
+
+                    return '<a href="javascript:;" onclick="viewRelated(\'' + rowObject.ajid + '\')"><span class="fa fa-tags"></span></a> '+cellvalue;
+                }else{
+                    return cellvalue;
+                }
+            }},
             {label : '所属评查公告',name : 'bt', sortable:false,width : 200,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="openCases(2,\'' + rowObject.chosenid + '\')">'+cellvalue+'</a>';
             }},
@@ -84,13 +92,21 @@ function loadCheckedGrid() {
             {label : 'ccid',name : 'ccid',hidden : true, frozen:true},
             {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
+            {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true, frozen:true},
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
                     return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" ><i class="fa fa-info"></i> 评查详情</button>'
                         +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\',\'' + rowObject.ccid + '\')"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
-            {label : '案号', name : 'ah',frozen : true,sortable:false,width : 150},
+            {label : '案号',name : 'ah',frozen : true,sortable:false,width : 150,formatter:function (cellvalue,options,rowObject) {
+                if(rowObject.relatedcasecount > 0){
+
+                    return '<a href="javascript:;" onclick="viewRelated(\'' + rowObject.ajid + '\')"><span class="fa fa-tags"></span></a> '+cellvalue;
+                }else{
+                    return cellvalue;
+                }
+            }},
             {label : '所属评查公告',name : 'bt', sortable:false,width : 200,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="openCases(2,\'' + rowObject.chosenid + '\')">'+cellvalue+'</a>';
             }},
@@ -174,6 +190,22 @@ function openCases(mode,ggid) {
         shade : 0.3,
         area : [ '95%', '90%' ],
         content : ahcourt.ctx + '/views/chosen/start/main.jsp?ggid=' + ggid+"&mode="+mode,
+        cancel : function(index) {
+            layer.close(index);
+        }
+    });
+}
+
+
+function viewRelated(key) {
+    layer.open({
+        type : 2,
+        shift : 5,
+        title : '查看关联案件',
+        shadeClose : false,
+        shade : 0.3,
+        area : [ '90%', '90%' ],
+        content : ahcourt.ctx + '/views/check/start/view_relatedcases.jsp?ajid=' + key,
         cancel : function(index) {
             layer.close(index);
         }
