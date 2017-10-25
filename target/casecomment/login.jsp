@@ -16,8 +16,8 @@
 <div class="loginHeader">
     <div>
         <img src="${ctx_assets}/img/logo.png" style="width:40px;height: 40px;display:inline-block;margin-top: -5px;" /><span style="font-size: 19px;margin-left: 10px;display:inline-block;">安徽省法院案件质量网上双评工作平台</span>
-        <a class="menuitem pull-right code-layout" href="${ctx}/files/360se9.1.0.356.exe" data-index="0"><i class="fa fa-download mr5"></i> 下载360安全浏览器</a>
-
+        <a class="menuitem pull-right" href="${ctx}/files/360se9.1.0.356.exe" data-index="0"><i class="fa fa-download mr5"></i> 下载360安全浏览器</a>
+        <a class="menuitem pull-right" href="javascript:;" data-index="1"><i class="fa fa-book mr5"></i> 帮助手册</a>
         <%--<a class="menuitem pull-right code-layout" href="javascript:void(0)" data-index="0">--%>
             <%--<i class="fa fa-apple mr5"></i> 安卓客户端--%>
             <%--<div class="code-box">--%>
