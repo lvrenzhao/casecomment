@@ -94,6 +94,7 @@ function reloadTable1() {
         url : URL_TABLE1,
         page : 1
     }).trigger("reloadGrid");
+    top.loadBadges();
 }
 
 function reloadTable2() {

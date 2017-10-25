@@ -110,6 +110,7 @@ function reloadGrid2() {
         url : URL_TABLE2,
         page : 1
     }).trigger("reloadGrid");
+    top.loadBadges();
 }
 
 

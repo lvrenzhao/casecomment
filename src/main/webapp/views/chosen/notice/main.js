@@ -87,6 +87,7 @@ function viewOrVerifyNotice(mode,ggid) {
                 content : ahcourt.ctx + '/views/chosen/start/main.jsp?ggid=' + ggid+"&mode="+mode,
                 cancel : function(index) {
                     reloadGrid();
+                    top.loadBadges();
                     layer.close(index);
                 }
             });
