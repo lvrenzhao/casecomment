@@ -496,6 +496,7 @@ $(function () {
                     },
                     success : function(data) {
                         if(data == "1"){
+                            top.loadBadges();
                             window.location.reload(true);
                             top.layer.msg("公告发布成功! 正在等待审核。",{icon:1});
                         }else{

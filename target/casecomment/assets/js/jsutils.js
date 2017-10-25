@@ -569,6 +569,8 @@ var badgeObject = {
 
 function loadBadges() {
 
+    $("#side-menu .badge-white").text("");
+
     for(var badgetype in badgeObject){
         if($("#"+badgetype).length > 0 ){
             $.ajax({

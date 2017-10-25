@@ -153,6 +153,7 @@ $(function () {
                 datatype : 'json',
                 success : function(data) {
                     try{
+                        top.loadBadges();
                         parent.reloadTable1();
                         parent.reloadTable2();
                     }catch (e){}
@@ -193,6 +194,7 @@ $(function () {
                 datatype : 'json',
                 success : function(data) {
                     try{
+                        top.loadBadges();
                         parent.reloadTable1();
                         parent.reloadTable2();
                     }catch (e){}

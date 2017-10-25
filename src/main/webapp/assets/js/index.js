@@ -3,6 +3,19 @@ $(document).ready(function () {
 
     //加载所有数字提醒，此代码务必置于ready函数最底行。
     loadBadges();
+
+    //每次切换到首页时刷新数据
+    $(".J_menuTab").click(function () {
+        if($(this).text() == "首页"){
+            $('#framexHome').attr('src', $('#framexHome').attr('src'));
+        }
+    });
+
+    $($(".J_menuItem")).click(function () {
+        if($.trim($(this).text()) == "首页"){
+            $('#framexHome').attr('src', $('#framexHome').attr('src'));
+        }
+    });
 });
 
 $(window).bind("load resize", function () {

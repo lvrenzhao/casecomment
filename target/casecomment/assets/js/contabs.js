@@ -234,6 +234,11 @@ $(function () {
             });
             scrollToTab($('.J_menuTab.active'));
         }
+
+        if($.trim($(".J_menuTab.active").text()) == "首页"){
+            $('#framexHome').attr('src', $('#framexHome').attr('src'));
+        }
+
         return false;
     }
 
@@ -302,6 +307,7 @@ $(function () {
         });
         $('.page-tabs-content').children("[data-id]:first").each(function () {
             $('.J_iframe[data-id="' + $(this).data('id') + '"]').show();
+            $('.J_iframe[data-id="' + $(this).data('id') + '"]').attr("src",$('.J_iframe[data-id="' + $(this).data('id') + '"]').attr("src"));
             $(this).addClass("active");
         });
         $('.page-tabs-content').css("margin-left", "0");
