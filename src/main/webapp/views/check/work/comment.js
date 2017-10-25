@@ -108,6 +108,7 @@ $(function () {
                 _w_table_rowspan("#table_score", 2);
             }
         });
+        var isallwrited = true;
         //获取每个组员的打分，填充表内容
         for(var i = 0 ; i < pros.length ; i ++){
             var proid = pros[i].proid;
@@ -130,6 +131,8 @@ $(function () {
                             $("#kf_" + data.rows[i].itemid + "_" + proid).text(data.rows[i].kf);
                             $("#kfyy_" + data.rows[i].itemid + "_" + proid).text(data.rows[i].kfyy);
                         }
+                    }else{
+                        isallwrited = false;
                     }
                 }
             });
@@ -149,8 +152,8 @@ $(function () {
                 }
             }
             var itemavg = fz-kftotal/pros.length;
-            $("#avg_"+itemid).text(itemavg);
-            avg_all+=parseInt(itemavg);
+            $("#avg_"+itemid).text(itemavg.toFixed(2));
+            avg_all+=itemavg;
         });
 
         //计算总平均值
@@ -158,6 +161,10 @@ $(function () {
 
         //提交
         $("#btn_submit").click(function () {
+            if(!isallwrited){
+                layer.msg("尚有组员未完成打分。");
+                return;
+            }
             if($("#form_inp_jydp").val()){
                 $.ajax({
                     type : 'POST',
