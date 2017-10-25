@@ -81,6 +81,12 @@ $(function(){
         reloadTable2();
     });
 
+    $("#xbtn_refresh").click(function () {
+        reloadTable1();
+        reloadTable2();
+        layer.msg("刷新成功!",{icon:1});
+    });
+
 });
 
 function reloadTable1() {

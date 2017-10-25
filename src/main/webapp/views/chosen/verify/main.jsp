@@ -25,6 +25,9 @@
         </a>
       </li>
     </ul>
+    <div class="bmbox_tool">
+      <button id="xbtn_refresh" class="btn btn-white btn-sm btn-smx" type="button"><i class="fa fa-refresh"></i> 刷新</button>
+    </div>
   </div>
   <div class="bmbox_content">
     <div class="tab-content">

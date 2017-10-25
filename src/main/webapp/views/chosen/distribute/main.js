@@ -94,6 +94,13 @@ $(function () {
         reloadGrid2();
     });
 
+
+    $("#xbtn_refresh").click(function () {
+        reloadGrid1();
+        reloadGrid2();
+        layer.msg("刷新成功!",{icon:1});
+    });
+
 });
 
 

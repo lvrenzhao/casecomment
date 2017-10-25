@@ -90,6 +90,12 @@ $(function () {
         }
     });
 
+    $("#xbtn_refresh").click(function () {
+        reloadGrid();
+        reloadGrid2();
+        layer.msg("刷新成功!",{icon:1});
+    });
+
 });
 
 function reloadGrid() {

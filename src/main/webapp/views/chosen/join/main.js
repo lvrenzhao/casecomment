@@ -84,6 +84,12 @@ $(function () {
         reloadGrid();
     });
 
+    $("#xbtn_refresh").click(function () {
+        reloadGrid1();
+        reloadGrid();
+        layer.msg("刷新成功!",{icon:1});
+    });
+
 });
 
 function reloadGrid1() {
