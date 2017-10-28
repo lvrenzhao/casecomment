@@ -3,6 +3,7 @@ package cn.gov.ahcourt.casecomment.controller;
 import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.*;
 import cn.gov.ahcourt.casecomment.scheduled.CaseFileFetcher;
+import cn.gov.ahcourt.casecomment.scheduled.WSService;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
@@ -33,6 +34,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/case")
 public class XCaseControllerNew {
+
+    @Resource
+    private WSService wsService;
 
     @Resource
     private BdMiddleCaseMapper bdMiddleCaseMapper;
@@ -393,7 +397,48 @@ public class XCaseControllerNew {
         if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
             bean.setJcs(bean.getJoinedCaseIds().split(";"));
         }
-        return bean.toMap(bdMiddleCaseMapper.random(bean));
+        if(bean != null && StringUtils.isNotBlank(bean.getFormAjxzUnSplited())){
+            bean.setFormAjxz(bean.getFormAjxzUnSplited().split(";"));
+        }
+        if(bean != null && StringUtils.isNotBlank(bean.getFormAjlxUnSplited())){
+            bean.setFormAjlx(bean.getFormAjlxUnSplited().split(";"));
+        }
+        if(bean != null && StringUtils.isNotBlank(bean.getFormGsfyUnlplited())){
+            bean.setFormGsfy(bean.getFormGsfyUnlplited().split(";"));
+        }
+//        if(bean != null && StringUtils.isNotBlank(bean.getJoinedCaseIds())){
+//            bean.setJcs(bean.getJoinedCaseIds().split(";"));
+//        }
+        List<BdMiddleCase> cases = bdMiddleCaseMapper.random(bean);
+        for(int i = 0 ; cases != null && i < cases.size() ; i++){
+            BdMiddleCase cb = cases.get(i);
+            if(!"1".equals(cb.getPasscheck())){
+                Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(),wsService.getFbsxhByFyCode(cb.getFydm()),cb.getAh(),cb.getFydm());
+                if(b == true){
+                    cb.setPasscheck("1");
+                }
+            }
+        }
+        return bean.toMap(cases);
+    }
+
+
+    @RequestMapping("/sdcheck")
+    public @ResponseBody String sdcheck(String ids) {
+        String newStr = "-;";
+        if(StringUtils.isNotBlank(ids)){
+            String[] arr = ids.split(";");
+            for(int i = 0; arr != null && i < arr.length ; i ++){
+                BdMiddleCase cb = bdMiddleCaseMapper.selectByPrimaryKey(arr[i]);
+                if(cb !=null){
+                    Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(),wsService.getFbsxhByFyCode(cb.getFydm()),cb.getAh(),cb.getFydm());
+                    if(b == true){
+                        newStr += arr[i]+";";
+                    }
+                }
+            }
+        }
+        return newStr;
     }
 
     @RequestMapping("/related")
@@ -525,7 +570,7 @@ public class XCaseControllerNew {
     public @ResponseBody Map getDaFromWs(String ajid,int fbs,String ah,String fydm){
         try {
             if (StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fydm)) {
-                caseFileFetcher.getFilesFromWS(ajid, fbs, ah,fydm,false);
+                caseFileFetcher.getFilesFromWS(ajid, wsService.getFbsxhByFyCode(fydm), ah,fydm,false);
                 //再次查询 并返回
                 BdMiddleFile bean = new BdMiddleFile();
                 bean.setAjid(ajid);
@@ -540,7 +585,7 @@ public class XCaseControllerNew {
     public @ResponseBody Map filesUpdateFromWs(String ajid,int fbs,String ah,String fydm){
         try {
             if (StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fydm)) {
-                caseFileFetcher.getFilesFromWS(ajid, fbs, ah,fydm,true);
+                caseFileFetcher.getFilesFromWS(ajid, wsService.getFbsxhByFyCode(fydm), ah,fydm,true);
                 //再次查询 并返回
                 BdMiddleFile bean = new BdMiddleFile();
                 bean.setAjid(ajid);
@@ -559,7 +604,7 @@ public class XCaseControllerNew {
         response.setContentType("image/jpg");
         if(StringUtils.isNotBlank(ftpserver) && StringUtils.isNotBlank(filename) && StringUtils.isNotBlank(fydm)){
             try {
-                byte[] data = caseFileFetcher.getOneFile(fbs, fydm, ftpserver, filename);
+                byte[] data = caseFileFetcher.getOneFile(wsService.getFbsxhByFyCode(fydm), fydm, ftpserver, filename);
                 if(filename.indexOf("tif") > -1){
                     ByteArrayInputStream is = new ByteArrayInputStream(data);
                     BufferedImage tif = ImageIO.read(is);

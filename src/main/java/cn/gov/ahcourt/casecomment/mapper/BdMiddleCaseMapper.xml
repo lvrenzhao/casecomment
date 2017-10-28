@@ -68,6 +68,13 @@
       relatedcaseid = #{relatedcaseid,jdbcType=VARCHAR}
     where ajid = #{ajid,jdbcType=VARCHAR}
   </update>
+
+  <update id="updatePassCheck" parameterType="java.lang.String" >
+    update bd_middle_case
+    set passcheck = '1'
+    where ajid = #{ajid,jdbcType=VARCHAR}
+  </update>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, jasj, lx, thirdid, create_by, create_date, 
     update_by, update_date, flag,relatedcasecount,relatedcaseid,passcheck
@@ -141,6 +148,7 @@
     update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck
 
     ,relatedcasecount,relatedcaseid,(select count(1) from bd_check_cases a where a.ajid = t.ajid and a.jydp is not null) pcjl
+    ,(select fydm from sd_organization o where o.zzjgmc = t.gsfy limit 1) fydm
     from bd_middle_case t where 1=1
 
     <if test="jcs !=null and jcs.length  > 0">

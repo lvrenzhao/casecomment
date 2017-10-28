@@ -15,4 +15,6 @@ public interface BdMiddleCaseMapper {
     List<BdMiddleCase> random(BdMiddleCase record);
 
     int updateByPrimaryKey(BdMiddleCase record);
+
+    int updatePassCheck(String ajid);
 }

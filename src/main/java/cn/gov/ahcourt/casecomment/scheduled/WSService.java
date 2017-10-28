@@ -639,4 +639,12 @@ public class WSService {
         }
         return  -1;
     }
+
+    public void updatePassCheck(String ajid){
+        try{
+            bdMiddleCaseMapper.updatePassCheck(ajid);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

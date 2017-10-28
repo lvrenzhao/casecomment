@@ -40,6 +40,19 @@ public class CaseFileFetcher {
         return data;
     }
 
+    public boolean checkFilesFromWS(String ajid,int fbsserverxh,String ah,String fycode){
+        try {
+            String xml = wsService.wsGetOneFileInfo(fbsserverxh, ah, fycode);
+            if(StringUtils.isNotBlank(xml) && xml.indexOf("DA_SSJCXX_LIST")>-1){
+                wsService.updatePassCheck(ajid);
+                return true;
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
     public void getFilesFromWS(String ajid,int fbsserverxh,String ah,String fycode,Boolean isUpdate){
         try {
             String xml = wsService.wsGetOneFileInfo(fbsserverxh, ah, fycode);
@@ -54,6 +67,7 @@ public class CaseFileFetcher {
                     f.setAjid(ajid);
                     wsService.insertFile(f);
                 }
+                wsService.updatePassCheck(ajid);
             }
         }catch (Exception ex){
             ex.printStackTrace();

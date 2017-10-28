@@ -116,6 +116,8 @@ function extractSelectedCases(caselist) {
 }
 //随机抽取
 function extractRandomCases(casecount) {
+    var lo ;
+    lo = layer.msg("正在抽取案件，请稍后....",{icon:6});
     $.ajax({
         type : 'POST',
         url : URL_RANDOM_CASES,
@@ -123,6 +125,7 @@ function extractRandomCases(casecount) {
         datatype : 'json',
         async : false,
         success : function(data) {
+            layer.close(lo);
             addCases(data.rows);
             reloadGrid1();
             layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
@@ -459,9 +462,15 @@ function reChooseCasesByCase(caseid) {
 }
 
 var max_allowed_extract_case_count = 1024;
+
+function docheckFiles() {
+
+}
+
 //============================================================
 $(function () {
     //初始化jquery.step组件，分步骤引导用户发起评查活动
+    // var checkFiles = true;
     $("#wizard").steps({
         enableCancelButton: false,
         enableFinishButton: true,
@@ -474,6 +483,12 @@ $(function () {
             }else{
                 $(".subforms").css("cssText","background-color:#eee !important;color:#aaa !important");
             }
+            // if(currentIndex == 1){
+            //     if(checkFiles) {
+            //         docheckFiles();
+            //         checkFiles = false;
+            //     }
+            // }
             return true;
         },
         onFinishing:function (event, currentIndex) {
@@ -609,12 +624,31 @@ $(function () {
         layer.confirm('本次选中案件'+ids.length+'条，是否确定抽取？', {
             btn: ['确定','取消'] //按钮
         }, function(index){
-            var caselist = [];
-            for(var i = 0 ; i< ids.length ; i ++){
-                caselist.push($("#table1").jqGrid('getRowData',ids[i]));
-            }
-            extractSelectedCases(caselist);
             layer.close(index);
+            var lo ;
+            lo = layer.msg("正在抽取案件，请稍后....",{icon:6});
+
+            $.ajax({
+                type : 'POST',
+                url : ahcourt.ctx+"/case/sdcheck.do?ids="+ids.join(";"),
+                datatype : 'json',
+                async : false,
+                success : function(data) {
+                    var drr = data.split(";");
+                    layer.close(lo);
+
+                    var caselist = [];
+                    for(var i = 0 ; i< ids.length ; i ++){
+                        var rowdata = $("#table1").jqGrid('getRowData',ids[i]);
+                        if(drr.indexOf(ids[i]) > -1){
+                            rowdata.passcheck = "1";
+                        }
+                        caselist.push(rowdata);
+                    }
+                    extractSelectedCases(caselist);
+                    layer.msg("已成功抽取"+ids.length+"条案件",{icon:1});
+                }
+            });
         }, function(index){
             layer.close(index);
         });
@@ -853,7 +887,7 @@ function loadGrid2() {
             }},
             {label : '<i style="color:grey" class="fa fa-warning"></i>',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 if(rowObject.passcheck == "1"){
-                    return '';
+                    return '<div style="padding-top:3px"><i style="color: darkgreen;" class="fa fa-check"></i></div>';
                 }else{
                     return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
                 }
@@ -933,26 +967,26 @@ function initChildGrid1(parentRowID, parentRowKey) {
             {label : '-',name : 'fmt1', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
                 return '<button class="btn btn-link btn-xs " type="button" onclick="reChooseCasesByCase(\'' + rowObject.ajid + '\')"><i class="fa fa-long-arrow-left"></i> </button>';
             }},
-            {label : '<i style="color:grey" class="fa fa-warning"></i>',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
-                if(rowObject.passcheck == "1"){
-                    return '';
-                }else{
-                    return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
-                }
-            }},
+            // {label : '<i style="color:grey" class="fa fa-warning"></i>',name : 'fmt2', width : 40,align:'center',sortable:false,frozen : true,formatter:function(cellvalue, options, rowObject) {
+            //     if(rowObject.passcheck == "1"){
+            //         return '<div style="padding-top:3px"><i style="color: darkgreen;" class="fa fa-check"></i></div>';
+            //     }else{
+            //         return '<div style="padding-top:3px"><i style="color: orange;" class="fa fa-warning"></i></div>';
+            //     }
+            // }},
             {label : '案号',name : 'fmt2', width : 120,sortable:false,frozen : true,formatter:function (cellvalue,options,rowObject) {
                 return '<a href="javascript:;" onclick="check(3,\'' + rowObject.ajid + '\')">'+rowObject.ah+'</a>'
             }},
-            {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
-                formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
-                }
-            },
-            {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
-                formatter:function (cellvalue,options,rowObject) {
-                    return '<a onclick="viewPcjl(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.pcjl+'</a>';
-                }
-            },
+            // {label : '关联案件',name : 'fmt',frozen : true,width : 80,sortable:false,align:'right',
+            //     formatter:function (cellvalue,options,rowObject) {
+            //         return '<a onclick="viewRelated(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.relatedcasecount+'</a>';
+            //     }
+            // },
+            // {label : '评查记录',name : 'fmt2',frozen : true,width : 80,sortable:false,align:'right',
+            //     formatter:function (cellvalue,options,rowObject) {
+            //         return '<a onclick="viewPcjl(\'' + rowObject.ajid + '\')" href="javascript:;">'+rowObject.pcjl+'</a>';
+            //     }
+            // },
             {label : '归属法院',name : 'gsfy',width : 150,sortable:false},
             {label : '承办部门',name : 'cbbm', width : 100,sortable:false},
             {label : '承办人',name : 'cbr',width : 80,sortable:false},
