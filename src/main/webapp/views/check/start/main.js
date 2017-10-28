@@ -169,6 +169,7 @@ function removeCase(ajid) {
 }
 var dists=[];
 function reloadTab3() {
+    dists = [];
     $("#lbl_joined_case_count").text(joinedCases.length);
     //计算案件分布
     var qys = [] , xzs = [] , lxs = [] ;
@@ -255,7 +256,11 @@ function refreshJoinedCasesGrid() {
     var cases = joinedCases;
     for ( var i = 0; i < cases.length; i++){
         if($("#form_sel_region").val() && $("#form_sel_xz").val() && $("#form_sel_lx").val()){
-            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
+            var x = $("#form_sel_lx").val();
+            if(x == "其他"){
+                x = "";
+            }
+            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == x){
                 if(cases[i].groupid){
                     continue;
                 }else{
@@ -275,7 +280,11 @@ function refreshJoinedCasesGrid() {
                 continue;
             }
         }else if ($("#form_sel_region").val() && $("#form_sel_lx").val()){
-            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].lx == $("#form_sel_lx").val()){
+            var x = $("#form_sel_lx").val();
+            if(x == "其他"){
+                x = "";
+            }
+            if(cases[i].gsfy == $("#form_sel_region").val() && cases[i].lx == x){
                 if(cases[i].groupid){
                     continue;
                 }else{
@@ -285,7 +294,11 @@ function refreshJoinedCasesGrid() {
                 continue;
             }
         }else if ($("#form_sel_xz").val() && $("#form_sel_lx").val()){
-            if(cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == $("#form_sel_lx").val()){
+            var x = $("#form_sel_lx").val();
+            if(x == "其他"){
+                x = "";
+            }
+            if(cases[i].xz == $("#form_sel_xz").val() && cases[i].lx == x){
                 if(cases[i].groupid){
                     continue;
                 }else{
@@ -315,7 +328,11 @@ function refreshJoinedCasesGrid() {
                 continue;
             }
         }else if ($("#form_sel_lx").val()){
-            if(cases[i].lx == $("#form_sel_lx").val()){
+            var x = $("#form_sel_lx").val();
+            if(x == "其他"){
+                x = "";
+            }
+            if(cases[i].lx == x){
                 if(cases[i].groupid){
                     continue;
                 }else{

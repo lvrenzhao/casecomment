@@ -125,7 +125,7 @@
       and c.xz = #{xz}
     </if>
     <if test="lx !=null and lx != '' ">
-      and c.lx = #{lx}
+      and c.lx = REPLACE( #{lx},'其他','')
     </if>
     <if test="psgroupid !=null and psgroupid != '' ">
       and a.psgroupid = #{psgroupid}
