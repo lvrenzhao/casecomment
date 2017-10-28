@@ -240,7 +240,9 @@
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='合格') c8,
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='瑕疵') c9,
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='差错') c10
-    from sd_organization a order by fjm
+    from sd_organization a
+    where a.fjm like (select CONCAT(REPLACE(o.fjm, '0', ''),'%') from bd_check c,sd_user u,sd_organization o where c.fqr = u.yhid and u.zzid = o.zzjgid and c.checkid = #{ggid} limit 1)
+    order by fjm
   </select>
 
   <select id="selectReportLxByGGID" resultType="map" parameterType="java.lang.String" >
@@ -256,7 +258,9 @@
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='合格') c8,
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='瑕疵') c9,
     (select count(1) from bd_check_cases c,bd_middle_case c1 where c.ajid = c1.ajid and c.checkid = #{ggid} and c1.gsfy = a.zzjgmc and c.zzzldj='差错') c10
-    from sd_organization a order by fjm
+    from sd_organization a
+    where a.fjm like (select CONCAT(REPLACE(o.fjm, '0', ''),'%') from bd_check c,sd_user u,sd_organization o where c.fqr = u.yhid and u.zzid = o.zzjgid and c.checkid = #{ggid} limit 1)
+    order by fjm
   </select>
 
   <select id="selectReportXz" resultType="map" parameterType="cn.gov.ahcourt.casecomment.bean.BdCheckCases" >

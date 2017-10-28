@@ -42,6 +42,7 @@ public class XStaticsController {
             return null;
         }
         bean.setFlag("1");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdCheckMapper.selectAll(bean));
     }
 
@@ -51,6 +52,7 @@ public class XStaticsController {
             return null;
         }
         bean.setFlag("1");
+        bean.setXorgid(user.getZzid());
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }
 
