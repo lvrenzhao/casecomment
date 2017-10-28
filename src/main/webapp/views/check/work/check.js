@@ -125,7 +125,7 @@ $(function () {
                             html += '<tr class="xdatarow" dataid="'+item.itemid+'"><td>'+item.xh+'</td><td>'+item.psnr+'</td><td>'+item.pfbz+'</td>' +
                                 '<td class="xfzlabel" style="text-align: right">'+item.fz+'</td>' +
                                 '<td><input id="kf_'+item.itemid+'" class="xkf" data-maxkf="'+item.fz+'" type="text" style="width: 50px;" /></td>' +
-                                '<td><input id="kfyy_'+item.itemid+'" class="xkfly" type="text" style="width: 100%;" /></td></tr>';
+                                '<td><input id="kfyy_'+item.itemid+'" class="xkfly" data-itemid="'+item.itemid+'" type="text" style="width: 100%;" /></td></tr>';
                         }
                         $("#table_score_tbody").html(html);
                     }
@@ -242,6 +242,17 @@ function save(xtype) {
     });
     if(!isAllWriten){
         layer.msg("所有扣分项都必须填写，如不扣分请填数字0");
+        return;
+    }
+    var isALlKflyWriten = true;
+    $(".xkfly").each(function () {
+        // console.log($(this),$(this).val(),$("#kf_"+$(this).attr("data-itemid")).val())
+        if($("#kf_"+$(this).attr("data-itemid")).val() > 0 && $(this).val().length == 0 ) {
+            isALlKflyWriten = false;
+        }
+    });
+    if(!isALlKflyWriten){
+        layer.msg("扣分不等于0时，必须填写扣分理由！");
         return;
     }
     var items = [];
