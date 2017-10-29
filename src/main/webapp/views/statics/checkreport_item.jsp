@@ -156,6 +156,27 @@
                 <option value="执行">执行</option>
               </select>
             </div>
+            <div class="form_item wb15 fl moreview" style="">
+              <label>案件类型</label>
+              <select class="form-control input-sm" id="form_sel_lx">
+                <option value="">--请选择--</option>
+                <option value="抗诉">抗诉</option>
+                <option value="发回改判">发回改判</option>
+                <option value="再审">再审</option>
+                <option value="审理周期超过一年半以上">审理周期超过一年半以上</option>
+                <option value="执行异议复议">执行异议复议</option>
+              </select>
+            </div>
+            <div class="form_item wb15 fl moreview" style="">
+              <label>质量等级</label>
+              <select class="form-control input-sm" id="form_sel_level">
+                <option value="">--请选择--</option>
+                <option value="优秀">优秀</option>
+                <option value="合格">合格</option>
+                <option value="瑕疵">瑕疵</option>
+                <option value="差错">差错</option>
+              </select>
+            </div>
             <div class="form_item wb20 fl moreview" style="padding-left: 60px;">
               <label>&nbsp;</label>
               <button id="btn_query" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
@@ -383,7 +404,9 @@
                 postData:{
                     ggid:ggid,
                     gsfy:$('#citySel').val(),
-                    xz:$("#form_sel_xz").val()
+                    xz:$("#form_sel_xz").val(),
+                    lx:$("#form_sel_lx").val(),
+                    zzzldj:$("#form_sel_level").val()
                 }
             }).trigger("reloadGrid");
         });

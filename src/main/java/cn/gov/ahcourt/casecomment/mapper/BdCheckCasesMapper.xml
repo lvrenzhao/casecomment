@@ -155,6 +155,12 @@
     <if test="fqsj2 != null and fqsj2 != '' ">
       and date_format(b.fqsj, '%Y/%m/%d') &lt;= #{fqsj2}
     </if>
+
+
+    <if test="zzzldj != null and zzzldj != '' ">
+      and a.zzzldj = #{zzzldj}
+    </if>
+
     order by b.bt asc ,a.zzpcdf desc, a.create_date desc
   </select>
 
