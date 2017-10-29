@@ -233,27 +233,34 @@ $(function () {
 
 //type:1暂存，2：提交,3:暂存(但收起表单)
 function save(xtype) {
-    //检查必填
-    var isAllWriten = true;
-    $(".xkf").each(function () {
-        if($(this).val().length==0){
-            isAllWriten = false;
+
+    if(xtype == "2"){
+        //检查必填
+        var isAllWriten = true;
+        $(".xkf").each(function () {
+            if($(this).val().length==0){
+                isAllWriten = false;
+            }
+        });
+        if(!isAllWriten){
+            layer.msg("所有扣分项都必须填写，如不扣分请填数字0");
+            return;
         }
-    });
-    if(!isAllWriten){
-        layer.msg("所有扣分项都必须填写，如不扣分请填数字0");
-        return;
-    }
-    var isALlKflyWriten = true;
-    $(".xkfly").each(function () {
-        // console.log($(this),$(this).val(),$("#kf_"+$(this).attr("data-itemid")).val())
-        if($("#kf_"+$(this).attr("data-itemid")).val() > 0 && $(this).val().length == 0 ) {
-            isALlKflyWriten = false;
+        var isALlKflyWriten = true;
+        $(".xkfly").each(function () {
+            // console.log($(this),$(this).val(),$("#kf_"+$(this).attr("data-itemid")).val())
+            if($("#kf_"+$(this).attr("data-itemid")).val() > 0 && $(this).val().length == 0 ) {
+                isALlKflyWriten = false;
+            }
+        });
+        if(!isALlKflyWriten){
+            layer.msg("扣分不等于0时，必须填写扣分理由！");
+            return;
         }
-    });
-    if(!isALlKflyWriten){
-        layer.msg("扣分不等于0时，必须填写扣分理由！");
-        return;
+        if(!$("#txt_jydp").val()){
+            layer.msg("个人点评不能为空！");
+            return;
+        }
     }
     var items = [];
     $(".xdatarow").each(function () {
@@ -263,11 +270,14 @@ function save(xtype) {
         item.kf = $.trim($(this).find(".xkf").val());
         item.kfyy = $.trim($(this).find(".xkfly").val());
         item.df =parseInt($.trim($(this).find(".xkf").attr("data-maxkf"))) - parseInt($.trim($(this).find(".xkf").val()));
-        items.push(item);
+        if(!isNaN(item.kf)){
+            items.push(item);
+        }
     });
     var xdata = [{crid:crid,ajid:ajid,checkid:ggid,tableid:tableid,itemJson:JSON.stringify(items)},{crid:crid,ajid:ajid,chosenid:ggid,tableid:tableid,itemJson:JSON.stringify(items)}];
     xdata[type-1].pczt=(xtype==2?"2":"1");
     xdata[type-1].pcfs=$("#label_mf").text();
+    xdata[type-1].remarks=$("#txt_jydp").val();
     $.ajax({
         type : 'POST',
         url : URL_SUBMIT[type-1],

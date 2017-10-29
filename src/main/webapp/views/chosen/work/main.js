@@ -30,7 +30,7 @@ function loadUnCheckGrid() {
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [
-            {label : 'remarks',name : 'remarks',hidden : true,key : true,frozen:true},
+            {label : 'keyid',name : 'keyid',hidden : true,key : true,frozen:true},
             {label : 'ccid',name : 'ccid',hidden : true, frozen:true},
             {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
             {label : 'sfzz',name : 'sfzz',hidden : true, frozen:true},
@@ -38,6 +38,7 @@ function loadUnCheckGrid() {
             {label : 'pczt',name : 'pczt',hidden : true, frozen:true},
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
             {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true, frozen:true},
+            {label : 'remarks',name : 'remarks',hidden : true, frozen:true},
             {label : '操作',name : 'fmt', width : 80, align : 'center',sortable : false,
                 formatter : function(cellvalue, options, rowObject) {
                     // if(rowObject.sfzz == "1" && rowObject.jydp && rowObject.jydp.length>0){
@@ -88,11 +89,12 @@ function loadCheckedGrid() {
         rowNum : 20,
         rowList : [ 10, 20, 30 ],
         colModel : [
-            {label : 'remarks',name : 'remarks',hidden : true,key : true,frozen:true},
+            {label : 'keyid',name : 'keyid',hidden : true,key : true,frozen:true},
             {label : 'ccid',name : 'ccid',hidden : true, frozen:true},
             {label : 'ajid',name : 'ajid',hidden : true, frozen:true},
             {label : 'chosenid',name : 'chosenid',hidden : true, frozen:true},
             {label : 'relatedcasecount',name : 'relatedcasecount',hidden : true, frozen:true},
+            {label : 'remarks',name : 'remarks',hidden : true, frozen:true},
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
                     return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" ><i class="fa fa-info"></i> 评查详情</button>'

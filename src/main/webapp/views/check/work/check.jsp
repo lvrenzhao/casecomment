@@ -49,6 +49,26 @@
                             <td colspan="4"></td>
                             <td style="text-align: right" ><span id="label_mf"></span></td>
                         </tr>
+                        <tr>
+                            <td colspan="2">我的点评</td>
+                            <td colspan="4">
+                                <input type="text" id="txt_jydp" class="form-control input-sm" placeholder="请输入简要点评" maxlength="2000" />
+                            </td>
+                        </tr>
+                        <%--<tr>--%>
+                            <%--<td colspan="2">简要点评</td>--%>
+                            <%--<td colspan="4">--%>
+                                <%--<select class="form-control input-sm" id="form_sel_pclx" style="width:200px;">--%>
+                                <%--<option value="">--请选择质量等级--</option>--%>
+                                <%--<option value="优秀">优秀</option>--%>
+                                <%--<option value="合格">合格</option>--%>
+                                <%--<option value="瑕疵">瑕疵</option>--%>
+                                <%--<option value="差错">差错</option>--%>
+                                <%--</select>--%>
+                            <%--</td>--%>
+                        <%--</tr>--%>
+
+
                         </tfoot>
                     </table>
                 </div>
