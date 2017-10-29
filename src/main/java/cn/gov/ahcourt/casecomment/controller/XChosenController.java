@@ -2,15 +2,22 @@ package cn.gov.ahcourt.casecomment.controller;
 
 import cn.gov.ahcourt.casecomment.bean.*;
 import cn.gov.ahcourt.casecomment.mapper.*;
+import cn.gov.ahcourt.casecomment.service.UserUploadPictureService;
 import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +60,12 @@ public class XChosenController {
 
     @Resource
     private BdChosenRejectReadMapper bdChosenRejectReadMapper;
+
+    @Resource
+    private BdMiddleFileMapper bdMiddleFileMapper;
+
+    @Resource
+    private UserUploadPictureService userUploadPictureService;
 
     @RequestMapping("/pfb")
     public @ResponseBody Map pfb() {
@@ -260,9 +273,30 @@ public class XChosenController {
         return bean.toMap(bdChosenCasesMapper.selectAll(bean));
     }
 
-    @RequestMapping("/tbal")
-    public @ResponseBody String tbal(String ah,String tjly,String ggid,@SessionScope("user")UserBean user){
+    @RequestMapping("/tbaljc")
+    public @ResponseBody String tbal(String ah,String ggid,@SessionScope("user")UserBean user) {
+        BdMiddleCase bean = new BdMiddleCase();
+        bean.setAh(ah);
+        List<BdMiddleCase> bmcs = bdMiddleCaseMapper.selectAll(bean);
+        if(bmcs == null || bmcs.size() == 0 ){
+            return "0";
+        }else if (bmcs.size() > 1){
+            return "1";
+        }else{
+            BdChosenCases cbean = new BdChosenCases();
+            cbean.setChosenid(ggid);
+            cbean.setAh(ah);
+            List<BdChosenCases> cs = bdChosenCasesMapper.selectAll(cbean);
+            if(cs == null || cs.size() == 0){
+                return bmcs.get(0).getAjid();
+            }else{
+                return "2";
+            }
+        }
+    }
 
+        @RequestMapping("/tbal")
+    public @ResponseBody String tbal(String ah,String tjly,String ggid,@SessionScope("user")UserBean user){
         BdMiddleCase bean = new BdMiddleCase();
         bean.setAh(ah);
         List<BdMiddleCase> bmcs = bdMiddleCaseMapper.selectAll(bean);
@@ -401,4 +435,56 @@ public class XChosenController {
         return bean.toMap(bdChosenCasesMapper.selectWork(bean));
     }
 
+    @RequestMapping("upload")
+    @ResponseBody
+    public void uploads(@RequestParam("file")MultipartFile[] files,String ggid,String ajid,HttpServletRequest request, HttpServletResponse response,@SessionScope("user")UserBean user) {
+        try {
+            if(files !=null && StringUtils.isNotBlank(ggid) && StringUtils.isNotBlank(ajid)){
+                String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
+                for (MultipartFile file : files) {
+                    String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+                    File destFile = new File(uploadPath + ggid);
+                    if (!destFile.exists()) {
+                        destFile.mkdirs();
+                    }
+                    String fileNameNew = getFileNameNew() + "." + suffix;//
+                    File f = new File(destFile.getAbsoluteFile() + File.separator + fileNameNew);
+                    //如果当前文件已经存在了，就跳过。
+                    if(f.exists()){
+                        continue;
+                    }
+                    file.transferTo(f);
+                    f.createNewFile();
+
+
+
+//                    String pid = IdGen.uuid();
+//                    BdMiddleFile fbean = new BdMiddleFile();
+//                    fbean.setFileid(pid);
+//                    fbean.setPfileid("0");
+//                    fbean.setXname("上传文件");
+//                    fbean.setXorder(990000000);
+//                    fbean.setAjid(ajid);
+//                    bdMiddleFileMapper.insert(fbean);
+
+                    BdMiddleFile fbean = new BdMiddleFile();
+                    fbean.setFileid(IdGen.uuid());
+                    fbean.setPfileid("0");
+                    fbean.setXname(file.getOriginalFilename());
+                    fbean.setXurl(destFile.getAbsoluteFile() + File.separator + fileNameNew);
+                    fbean.setAjid(ajid);
+                    fbean.setXorder(990000000);
+                    bdMiddleFileMapper.insert(fbean);
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getFileNameNew() {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        return fmt.format(new Date());
+    }
 }

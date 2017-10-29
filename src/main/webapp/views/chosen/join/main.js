@@ -149,7 +149,7 @@ function joinCase(key) {
         title : "填报案例",
         shadeClose : false,
         shade : 0.3,
-        area : [ '600px', '420px' ],
+        area : [ '90%', '90%' ],
         content : ahcourt.ctx + '/views/chosen/join/add_case.jsp?ggid=' + key,
         cancel : function(index) {
             layer.close(index);
