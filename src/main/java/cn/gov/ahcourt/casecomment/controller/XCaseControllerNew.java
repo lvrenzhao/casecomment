@@ -871,7 +871,31 @@ public class XCaseControllerNew {
         return "-1";
     }
 
-
+    @RequestMapping("/advice")
+    public @ResponseBody Object getMyAdvice(String type,String ggid,String ajid,String pcr){
+        if(StringUtils.isNotBlank(ggid) && StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(pcr)) {
+            if ("1".equals(type)) {
+                BdCheckRecords bean = new BdCheckRecords();
+                bean.setCheckid(ggid);
+                bean.setAjid(ajid);
+                bean.setPcr(pcr);
+                List<BdCheckRecords> items = bdCheckRecordsMapper.selectAll(bean);
+                if (items != null && items.size() > 0) {
+                    return items.get(0);
+                }
+            } else if ("2".equals(type)) {
+                BdChosenRecords bean = new BdChosenRecords();
+                bean.setChosenid(ggid);
+                bean.setAjid(ajid);
+                bean.setPcr(pcr);
+                List<BdChosenRecords> items = bdChosenRecordsMapper.selectAll(bean);
+                if (items != null && items.size() > 0) {
+                    return items.get(0);
+                }
+            }
+        }
+        return null;
+    }
 
     private String getZldj(String fs){
         return bdCheckLevelsMapper.getLevelByScore(fs);

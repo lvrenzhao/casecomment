@@ -12,6 +12,10 @@ var pros=[];
 var ajid;
 var ggid;
 $(function () {
+    var firstitem=$(".home-righttab .nav-tabs li");
+    var secitem=$(".tabrightmenu .bmbox_tool");
+    doubletab(firstitem,secitem);
+
     mode = $.getUrlParam("mode");
     ccid = $.getUrlParam("ccid");
     type = $.getUrlParam("type");
@@ -62,6 +66,9 @@ $(function () {
                         $("#increseColumn").after('<th class="width250" colspan="2" style="text-align:center;">'+data.rows[i].proname+'</th>');
                         $("#increseColumnDetails").append('<th class="width50" style="text-align: center">扣分</th>');
                         $("#increseColumnDetails").append('<th class="width200" style="text-align: center">扣分理由</th>');
+                        $("#div_advice").append('<div class="form_item wb100 fl"><label>'+data.rows[i].proname+'：</label><label id="advice_'+data.rows[i].proid+'"></label></div>');
+                        //advice..
+                        getAdvice(type,ggid,ajid,data.rows[i].proid);
                     }
                 }
                 collength = data.rows.length;
@@ -78,7 +85,6 @@ $(function () {
                 type:type
             },
             datatype : 'json',
-            async : false,
             success : function(data) {
                 $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td id="total_avg" style="text-align: right">'+(data.zzpcdf?data.zzpcdf:'-')+'</td></tr>')
             }
@@ -190,7 +196,7 @@ $(function () {
                     }
                 });
             }else{
-                layer.msg("简要点评不能为空");
+                layer.msg("合议点评不能为空");
             }
 
         })
@@ -199,3 +205,22 @@ $(function () {
         alert("系统故障啦.....");
     }
 });
+
+function getAdvice(type,ggid,ajid,pcr) {
+    $.ajax({
+        type : 'POST',
+        url : ahcourt.ctx+"/case/advice.do",
+        data:{
+            type:type,
+            ggid:ggid,
+            ajid:ajid,
+            pcr:pcr
+        },
+        datatype : 'json',
+        success : function(data) {
+            if(data) {
+                $("#advice_" + pcr).text(data.remarks);
+            }
+        }
+    });
+}

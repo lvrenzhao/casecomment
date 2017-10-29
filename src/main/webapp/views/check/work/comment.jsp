@@ -10,79 +10,114 @@
     <jsp:include page="/header.jsp?libs=layer" />
     <script type="text/javascript" src="comment.js"></script>
     <style>
-        th{border:1px solid #999 !important;}
+        th{border:1px solid #c6c6c6 !important;}
         td{vertical-align: middle !important;}
     </style>
 </head>
-<body style="overflow:hidden;">
-<div class="bmbox_layout title_fixed clearfix" style="overflow: auto;padding-bottom: 200px;">
-    <div class="bmbox_title">
-        <h5>评分</h5>
-        <div class="bmbox_tool">
+<body>
+
+<div class="bmbox_layout">
+    <div class="bmbox_title home-righttab">
+        <ul class="nav nav-tabs navs-3">
+            <li class="active">
+                <a data-toggle="tab" href="#tab-1">
+                    评分成绩
+                </a>
+            </li>
+            <li class="">
+                <a data-toggle="tab" href="#tab-2">
+                    合议点评
+                </a>
+            </li>
+        </ul>
+        <div class="tabrightmenu">
+            <div class="bmbox_tool active">
+            </div>
+            <div class="bmbox_tool">
+                <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_submit" style="display: none;"><i class="fa fa-check"></i> 提交</button>
+            </div>
         </div>
     </div>
-    <div class="bmbox_content clearfix" style="" >
-        <table class="table table-bordered" id="table_score"  style="width:1000px;margin-left:auto;margin-right:auto">
-            <thead>
-            <tr style="background: #e0e0e0">
-                <th class="width50" rowspan="2" style="text-align: center">序号</th>
-                <th class="width150" rowspan="2" style="text-align: center">评审内容</th>
-                <th class="width250" rowspan="2" style="text-align: center">评分标准</th>
-                <th id="increseColumn" class="width50" rowspan="2" style="text-align: center">分值</th>
-                <%----%>
-                <%--<th class="width250" colspan="2" style="text-align:center;">李飞</th>--%>
-                <%--<th class="width250" colspan="2" style="text-align:center;">李飞1</th>--%>
-                <%--<th class="width250" colspan="2" style="text-align:center;">李飞1</th>--%>
-                <%--<th class="width250" colspan="2" style="text-align:center;">李飞1</th>--%>
-                <th class="width50"  rowspan="2" style="text-align:center;">平均</th>
-            </tr>
-            <tr style="background: #e0e0e0;" id="increseColumnDetails">
-                <%--<th class="width50" style="text-align: center">扣分</th>--%>
-                <%--<th id="increseColumnDetails" class="width200" style="text-align: center">扣分理由</th>--%>
-                <%--<th class="width50" style="text-align: center">扣分</th>--%>
-                <%--<th class="width200" style="text-align: center">扣分理由</th>--%>
-                <%--<th class="width50" style="text-align: center">扣分</th>--%>
-                <%--<th class="width200" style="text-align: center">扣分理由</th>--%>
-                <%--<th class="width50" style="text-align: center">扣分</th>--%>
-                <%--<th class="width200" style="text-align: center">扣分理由</th>--%>
-                <%--<th class="width50" style="text-align: center">扣分</th>--%>
-                <%--<th class="width200" style="text-align: center">扣分理由</th>--%>
-            </tr>
-            </thead>
-            <tbody id="tbody1">
+    <div class="bmbox_content">
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane active" style="overflow: auto;">
+                <table class="table table-bordered" id="table_score"  style="width:1000px;margin-left:auto;margin-right:auto">
+                    <thead>
+                    <tr style="background: #e0e0e0">
+                        <th class="width50" rowspan="2" style="text-align: center">序号</th>
+                        <th class="width150" rowspan="2" style="text-align: center">评审内容</th>
+                        <th class="width250" rowspan="2" style="text-align: center">评分标准</th>
+                        <th id="increseColumn" class="width50" rowspan="2" style="text-align: center">分值</th>
+                        <th class="width50"  rowspan="2" style="text-align:center;">平均</th>
+                    </tr>
+                    <tr style="background: #e0e0e0;" id="increseColumnDetails">
+                    </tr>
+                    </thead>
+                    <tbody id="tbody1">
 
-            </tbody>
-            <tfoot id="tfooter1">
+                    </tbody>
+                    <tfoot id="tfooter1">
 
-            </tfoot>
-        </table>
+                    </tfoot>
+                </table>
+            </div>
+            <div id="tab-2" class="tab-pane" style="padding:10px;">
+
+                <div class="bmbox_layout clearfix">
+                    <div class="bmbox_title">
+                        <h5>组员点评</h5>
+                        <div class="bmbox_tool"> </div>
+                    </div>
+                    <div class="bmbox_content clearfix" id="div_advice">
+
+                    </div>
+                </div>
+
+                <div class="bmbox_layout clearfix" style="margin-top:10px;">
+                    <div class="bmbox_title">
+                        <h5>合议点评</h5>
+                        <div class="bmbox_tool"> </div>
+                    </div>
+                    <div class="bmbox_content clearfix" style="padding-top:10px;">
+                        <div class="form_item wb100 fl">
+                            <textarea id="form_inp_jydp" class="form-control" style="height:80px" placeholder="请输入合议点评.."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
 </div>
-<div class="bmbox_layout clearfix" style="position: absolute;width:100%;height:200px;bottom: 0;left: 0">
-    <div class="bmbox_title">
-        <h5>点评</h5>
-        <div class="bmbox_tool">
-            <button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_submit" style="display: none;"><i class="fa fa-check"></i> 提交</button>
-        </div>
-    </div>
-    <div class="bmbox_content clearfix">
-        <div class="form_item wb100 fl">
-            <label>简要点评</label>
-            <textarea id="form_inp_jydp" class="form-control" style="height:120px" placeholder="请输入您的简要点评..."></textarea>
-        </div>
-        <%--<div class="form_item wb33 fl">--%>
-            <%--<label>点评人</label>--%>
-            <%--<span></span>--%>
+
+
+
+
+
+
+
+
+<%--<div class="bmbox_layout title_fixed clearfix" style="overflow: auto;padding-bottom: 200px;">--%>
+    <%--<div class="bmbox_title">--%>
+        <%--<h5>评分</h5>--%>
+        <%--<div class="bmbox_tool">--%>
         <%--</div>--%>
-        <%--<div class="form_item wb33 fl">--%>
-            <%--<label>点评人部门</label>--%>
-            <%--<span></span>--%>
+    <%--</div>--%>
+    <%--<div class="bmbox_content clearfix" style="" >--%>
+        <%----%>
+    <%--</div>--%>
+<%--</div>--%>
+<%--<div class="bmbox_layout clearfix" style="position: absolute;width:100%;height:200px;bottom: 0;left: 0">--%>
+    <%--<div class="bmbox_title">--%>
+        <%--<h5>合议评查笔录</h5>--%>
+        <%--<div class="bmbox_tool">--%>
+            <%--<button class="btn btn-primary btn-sm btn-smx" type="button" id="btn_submit" style="display: none;"><i class="fa fa-check"></i> 提交</button>--%>
         <%--</div>--%>
-        <%--<div class="form_item wb33 fl">--%>
-            <%--<label>点评时间</label>--%>
-            <%--<span></span>--%>
-        <%--</div>--%>
-    </div>
-</div>
+    <%--</div>--%>
+    <%--<div class="bmbox_content clearfix" style="overflow: auto !important;">--%>
+        <%----%>
+    <%--</div>--%>
+<%--</div>--%>
 </body>
 </html>
