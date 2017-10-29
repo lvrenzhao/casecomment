@@ -442,6 +442,37 @@ function getFilePath(id) {
 }
 
 
+function export2Excel2(export_url, export_params, headers, filename) {
+    export_params.rows = 999999999;// 导出excel设定是不分页，所以按照最大支持不超过10亿数据量导出。
+
+    var title_name_cols = [];
+    var title_value_cols = [];
+    for (var i = 0; headers && i < headers.length; i++) {
+        if (headers[i].name == "rn" || headers[i].label == "操作" || headers[i].hidden == true) {
+            continue;
+        }
+        title_name_cols.push(headers[i].label);
+        title_value_cols.push(headers[i].name);
+    }
+    if (export_url) {
+        $.ajax({
+            type : 'POST',
+            url : export_url,
+            datatype : 'json',
+            async : false,
+            data : export_params,
+            success : function(data) {
+                var data = {
+                    "title_name_cols" : title_name_cols,
+                    "title_value_cols" : title_value_cols,
+                    "rows" : data.data
+                };
+                JSONToExcelConvertor(data, filename ? filename : "未命名");
+            }
+        });
+    }
+}
+
 // 通用导出excel的方法
 function export2Excel(export_url, export_params, headers, filename) {
     export_params.rows = 999999999;// 导出excel设定是不分页，所以按照最大支持不超过10亿数据量导出。
