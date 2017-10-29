@@ -709,7 +709,7 @@ public class XCaseControllerNew {
             bean.setCreateBy(user.getYhid());
             bean.setPcr(user.getYhid());
             bean.setPcsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-            bean.setZldj(getZldj(bean.getPcfs()));
+//            bean.setZldj(getZldj(bean.getPcfs()));
 
             String crid = bean.getCrid();
             if (StringUtils.isNotBlank(crid)) {
@@ -836,7 +836,7 @@ public class XCaseControllerNew {
     }
 
     @RequestMapping("/submitjydp")
-    public @ResponseBody String submitjydp(String type,String ccid,String jydp,String zzdf,@SessionScope("user")UserBean user){
+    public @ResponseBody String submitjydp(String type,String ccid,String jydp,String zldj,String zzdf,@SessionScope("user")UserBean user){
         if(user == null){
             return "-1";
         }
@@ -850,7 +850,8 @@ public class XCaseControllerNew {
                         df = Integer.parseInt(zzdf);
                     }catch (Exception ex){ex.printStackTrace();}
                     bean.setZzpcdf(String.valueOf(df));
-                    bean.setZzzldj(getZldj(String.valueOf(df)));
+//                    bean.setZzzldj(getZldj(String.valueOf(df)));
+                    bean.setZzzldj(zldj);
                     bean.setDpr(user.getYhid());
                     bean.setDpsj(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
                     bdCheckCasesMapper.updateByPrimaryKey(bean);
@@ -897,9 +898,9 @@ public class XCaseControllerNew {
         return null;
     }
 
-    private String getZldj(String fs){
-        return bdCheckLevelsMapper.getLevelByScore(fs);
-    }
+//    private String getZldj(String fs){
+//        return bdCheckLevelsMapper.getLevelByScore(fs);
+//    }
 
 
 }

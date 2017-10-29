@@ -19,6 +19,10 @@ $(function () {
     mode = $.getUrlParam("mode");
     ccid = $.getUrlParam("ccid");
     type = $.getUrlParam("type");
+
+    if(type==1){
+        $("#div_level").show();
+    }
     if(mode == 1){
         $("#btn_submit").show();
     }
@@ -86,6 +90,10 @@ $(function () {
             },
             datatype : 'json',
             success : function(data) {
+                if(data.zzzldj){
+                    $("#form_sel_level").val(data.zzzldj);
+                    $("#form_sel_level").attr("disabled","disabled");
+                }
                 $("#tfooter1").append('<tr style="background: #e0e0e0"><td>总分</td><td colspan="'+(3+2*collength)+'"></td><td id="total_avg" style="text-align: right">'+(data.zzpcdf?data.zzpcdf:'-')+'</td></tr>')
             }
         });
@@ -171,6 +179,13 @@ $(function () {
                 layer.msg("尚有组员未完成打分。");
                 return;
             }
+
+            if(!$("#div_level").is(":hidden")){
+                if(!$("#form_sel_level").val()){
+                    layer.msg("请选择质量等级.");
+                    return ;
+                }
+            }
             if($("#form_inp_jydp").val()){
                 $.ajax({
                     type : 'POST',
@@ -180,6 +195,7 @@ $(function () {
                         ccid:ccid,
                         type:type,
                         jydp:$("#form_inp_jydp").val(),
+                        zldj:$("#form_sel_level").val(),
                         zzdf:$("#total_avg").text()
                     },
                     datatype : 'json',

@@ -79,6 +79,15 @@
                         <div class="bmbox_tool"> </div>
                     </div>
                     <div class="bmbox_content clearfix" style="padding-top:10px;">
+                        <div class="form_item wb25 fl" id="div_level" style="display: none">
+                            <select class="form-control input-sm" id="form_sel_level">
+                                <option value="">--请选择质量等级--</option>
+                                <option value="优秀">优秀</option>
+                                <option value="合格">合格</option>
+                                <option value="瑕疵">瑕疵</option>
+                                <option value="差错">差错</option>
+                            </select>
+                        </div>
                         <div class="form_item wb100 fl">
                             <textarea id="form_inp_jydp" class="form-control" style="height:80px" placeholder="请输入合议点评.."></textarea>
                         </div>
