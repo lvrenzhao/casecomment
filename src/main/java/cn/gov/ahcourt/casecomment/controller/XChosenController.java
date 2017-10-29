@@ -471,7 +471,7 @@ public class XChosenController {
                     fbean.setFileid(IdGen.uuid());
                     fbean.setPfileid("0");
                     fbean.setXname(file.getOriginalFilename());
-                    fbean.setXurl(destFile.getAbsoluteFile() + File.separator + fileNameNew);
+                    fbean.setXurl(ggid + File.separator + fileNameNew);
                     fbean.setAjid(ajid);
                     fbean.setXorder(990000000);
                     bdMiddleFileMapper.insert(fbean);

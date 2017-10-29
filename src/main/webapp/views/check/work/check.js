@@ -356,6 +356,9 @@ function selectCd() {
         // console.log(ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename)
         $("#viewer_img").attr("src",ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename);
     }
+    else if(nodes[0].xurl){
+        window.open(ahcourt.ctx+"/upload/"+nodes[0].xurl,'_blank');
+    }
 }
 
 

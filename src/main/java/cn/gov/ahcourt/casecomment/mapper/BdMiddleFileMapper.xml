@@ -65,7 +65,7 @@
   </select>
 
   <select id="selectTree" resultMap="BaseResultMap" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
-    select fileid id,pfileid pId,xname name,remarks open,ftpserver,filename from bd_middle_file
+    select fileid id,pfileid pId,xname name,remarks open,ftpserver,filename,xurl from bd_middle_file
     where 1=1
     <if test="ajid !=null and ajid != '' ">
       and ajid = #{ajid}
