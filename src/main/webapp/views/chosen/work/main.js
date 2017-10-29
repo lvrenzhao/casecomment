@@ -74,7 +74,7 @@ function loadUnCheckGrid() {
         ],
         pager : '#pager1'
         ,viewrecords: true
-    }).jqGrid('setFrozenColumns');;
+    }).jqGrid('setFrozenColumns');
 }
 
 function loadCheckedGrid() {
