@@ -44,6 +44,23 @@
           </a>
         </li>
       </ul>
+      <div class="tabrightmenu">
+        <div class="bmbox_tool active">
+          <button id="btn_export1" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+        <div class="bmbox_tool">
+          <button id="btn_export2" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+        <div class="bmbox_tool">
+          <button id="btn_export3" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+        <div class="bmbox_tool">
+          <button id="btn_export4" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+        <div class="bmbox_tool">
+          <button id="btn_export5" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+      </div>
     </div>
     <div class="bmbox_content">
       <div class="tab-content">
@@ -209,6 +226,50 @@
     var ggid;
     $(function () {
 
+        var firstitem=$(".home-righttab .nav-tabs li");
+        var secitem=$(".tabrightmenu .bmbox_tool");
+        doubletab(firstitem,secitem);
+
+        $("#btn_export1").click(function () {
+            top.export2Excel($("#table1").getGridParam('url'),
+                $("#table1").getGridParam('postData'),
+                $("#table1").getGridParam('colModel'),
+                "professionals");
+        });
+        $("#btn_export2").click(function () {
+            top.export2Excel2(ahcourt.ctx+"/static/checkdatabyggid.do",
+                {type:1,ggid:ggid},
+                [{label:'法院',name:'zzjgmc'},{label:'刑事',name:'c1'},{label:'民事',name:'c2'},
+                    {label:'行政',name:'c3'},{label:'赔偿',name:'c4'},{label:'执行',name:'c5'},
+                    {label:'总计',name:'c6'},{label:'优秀',name:'c7'},{label:'合格',name:'c8'}
+                    ,{label:'瑕疵',name:'c9'},{label:'差错',name:'c10'}],
+                "xz");
+        });
+        $("#btn_export3").click(function () {
+            top.export2Excel2(ahcourt.ctx+"/static/checkdatabyggid.do",
+                {type:2,ggid:ggid},
+                [{label:'法院',name:'zzjgmc'},{label:'抗诉',name:'c1'},{label:'发回改判',name:'c2'},
+                    {label:'再审',name:'c3'},{label:'审理周期一年半以上',name:'c4'},{label:'执行异议复议',name:'c5'},
+                    {label:'总计',name:'c6'},{label:'优秀',name:'c7'},{label:'合格',name:'c8'}
+                    ,{label:'瑕疵',name:'c9'},{label:'差错',name:'c10'}],
+                "lx");
+        });
+        $("#btn_export4").click(function () {
+            top.export2Excel2(ahcourt.ctx+"/static/quality.do",
+                {ggid:ggid},
+                [{label:'评审内容',name:'psnr'},{label:'评分标准',name:'pfbz'},
+                    {label:'分值',name:'fz'},{label:'累计扣分',name:'ljkf'},{label:'扣分案件',name:'kfaj'},
+                    {label:'平均扣分',name:'pjkf'}],
+                "zl");
+        });
+        $("#btn_export5").click(function () {
+            top.export2Excel($("#table5").getGridParam('url'),
+                $("#table5").getGridParam('postData'),
+                $("#table5").getGridParam('colModel'),
+                "cases");
+        });
+
+        
         ggid=$.getUrlParam("ggid");
         //#####此处根据用户所在机构加载所在机构及以下机构。
         $.ajax({

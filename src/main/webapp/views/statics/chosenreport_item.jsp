@@ -29,6 +29,14 @@
           </a>
         </li>
       </ul>
+      <div class="tabrightmenu">
+        <div class="bmbox_tool active">
+          <button id="btn_export1" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+        <div class="bmbox_tool">
+          <button id="btn_export2" class="btn btn-white btn-sm" type="button" style=""><i class="fa fa-file-excel-o"></i> 导出Excel</button>
+        </div>
+      </div>
     </div>
     <div class="bmbox_content">
       <div class="tab-content">
@@ -57,6 +65,25 @@
   <script>
     var ggid;
     $(function () {
+        var firstitem=$(".home-righttab .nav-tabs li");
+        var secitem=$(".tabrightmenu .bmbox_tool");
+        doubletab(firstitem,secitem);
+
+
+        $("#btn_export1").click(function () {
+            top.export2Excel($("#table1").getGridParam('url'),
+                $("#table1").getGridParam('postData'),
+                $("#table1").getGridParam('colModel'),
+                "professionals");
+        });
+        $("#btn_export2").click(function () {
+            top.export2Excel($("#table2").getGridParam('url'),
+                $("#table2").getGridParam('postData'),
+                $("#table2").getGridParam('colModel'),
+                "cases");
+        });
+
+
         ggid = $.getUrlParam("ggid");
         $("#table1").jqGrid({
             url : ahcourt.ctx + '/static/chosenpros.do',

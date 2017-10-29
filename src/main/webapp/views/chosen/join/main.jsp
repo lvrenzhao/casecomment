@@ -59,8 +59,9 @@
               </div>
 
             </div>
-            <div class="form_item wb10 fl">
+            <div class="form_item wb20 fl">
               <button id="btn_query" class="btn btn-primary btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-search"></i> 查询</button>
+              <button id="btn_export" class="btn btn-white btn-sm" type="button" style="margin-top: 30px;"><i class="fa fa-file-excel-o"></i> 导出Excel</button>
             </div>
           </div>
           <div class="clearfix pd10">

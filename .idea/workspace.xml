@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="==">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleFileMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleFileMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,7 +27,38 @@
     <favorites_list name="casecomment" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="checkreport_item.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="261" column="44" lean-forward="false" selection-start-line="261" selection-start-column="44" selection-end-line="261" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XStaticsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-22">
+              <caret line="94" column="25" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsutils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="444" column="22" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,8 +70,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>random</find>
-      <find>getFbsxhByFyCode</find>
       <find>getOneFile</find>
       <find>checkFilesFromWS</find>
       <find>getFilesFromWS</find>
@@ -67,6 +98,8 @@
       <find>form_inp_jydp</find>
       <find>getZldj</find>
       <find>/tbal</find>
+      <find>export2Excel</find>
+      <find>checkdatabyggid</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -95,11 +128,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/reject/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/notice/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/reject/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
@@ -130,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/details.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckCasesMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/check.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/main.js" />
@@ -138,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/comment.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/comment.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/service/userUploadPictureService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/service/UserUploadPictureService.java" />
@@ -146,6 +174,11 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleFileMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
       </list>
     </option>
   </component>
@@ -251,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -310,38 +344,8 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="work" />
+              <option name="myItemId" value="statics" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -370,8 +374,68 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="check" />
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chosen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chosen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="join" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -395,9 +459,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1106,14 +1169,8 @@
       <workItem from="1508722720582" duration="1102000" />
       <workItem from="1508728485283" duration="5644000" />
       <workItem from="1508821707653" duration="171000" />
-      <workItem from="1508899890296" duration="55561000" />
-    </task>
-    <task id="LOCAL-00403" summary="1">
-      <created>1508383413047</created>
-      <option name="number" value="00403" />
-      <option name="presentableId" value="LOCAL-00403" />
-      <option name="project" value="LOCAL" />
-      <updated>1508383413047</updated>
+      <workItem from="1508899890296" duration="56311000" />
+      <workItem from="1509285956367" duration="1659000" />
     </task>
     <task id="LOCAL-00404" summary="1">
       <created>1508386177637</created>
@@ -1451,11 +1508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509282991487</updated>
     </task>
-    <option name="localTasksCounter" value="452" />
+    <task id="LOCAL-00452" summary="==">
+      <created>1509283886975</created>
+      <option name="number" value="00452" />
+      <option name="presentableId" value="LOCAL-00452" />
+      <option name="project" value="LOCAL" />
+      <updated>1509283886975</updated>
+    </task>
+    <option name="localTasksCounter" value="453" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="864044000" />
+    <option name="totallyTimeSpent" value="866453000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1468,6 +1532,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1483,18 +1548,18 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28313252" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28313252" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30240965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24606581" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1534,12 +1599,12 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24606581" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
@@ -1667,46 +1732,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XMindController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="152" column="39" lean-forward="true" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/all/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="185" column="17" lean-forward="false" selection-start-line="185" selection-start-column="17" selection-end-line="185" selection-end-column="65" />
-          <folding>
-            <marker date="1507950890000" expanded="true" signature="3672:4454" ph="update sd_or... " />
-            <marker date="1507950890000" expanded="true" signature="5824:5911" ph="select zzjgi... " />
-            <marker date="1507950890000" expanded="true" signature="6338:6519" ph="DELETE FROM " />
-            <marker date="1507950890000" expanded="true" signature="6394:6518" ph="SELECT a.id zzjgid" />
-            <marker date="1507950890000" expanded="true" signature="6415:6515" ph="SELECT so.zz... sd_organization" />
-            <marker date="1507950890000" expanded="true" signature="6623:6790" ph="update sd_or... " />
-            <marker date="1507950890000" expanded="true" signature="6879:6973" ph="select from sd_organization" />
-            <marker date="1507950890000" expanded="true" signature="7057:7115" ph="select zzjgm... sd_organization" />
-            <marker date="1507950890000" expanded="true" signature="7243:7497" ph="insert INTO sd_organization... " />
-            <marker date="1507950890000" expanded="true" signature="7356:7497" ph="SELECT ##{zzj... sd_organization" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1749,7 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1757,7 +1785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1797,7 +1824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1805,17 +1831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1823">
           <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <marker date="1509178870000" expanded="true" signature="1892:1960" ph="delete from " />
-            <marker date="1509178870000" expanded="true" signature="2062:2908" ph="insert into bd_middle_case... " />
-            <marker date="1509178870000" expanded="true" signature="3022:3980" ph="update bd_mi... " />
-            <marker date="1509178870000" expanded="true" signature="4064:4151" ph="update bd_mi... " />
-            <marker date="1509178870000" expanded="true" signature="4264:4661" ph="select ajid,... bd_middle_case" />
-            <marker date="1509178870000" expanded="true" signature="4794:6874" ph="select ajid,... bd_middle_case" />
-            <marker date="1509178870000" expanded="true" signature="5097:5179" ph="select count... bd_check_cases" />
-            <marker date="1509178870000" expanded="true" signature="7002:9030" ph="select ajid,... bd_middle_case" />
-            <marker date="1509178870000" expanded="true" signature="7305:7387" ph="select count... bd_check_cases" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1823,7 +1838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="140" column="39" lean-forward="false" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1831,17 +1845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
           <caret line="96" column="4" lean-forward="true" selection-start-line="96" selection-start-column="4" selection-end-line="98" selection-end-column="9" />
-          <folding>
-            <marker date="1508951475000" expanded="true" signature="2048:2116" ph="delete from " />
-            <marker date="1508951475000" expanded="true" signature="2213:2988" ph="insert into bd_check... " />
-            <marker date="1508951475000" expanded="true" signature="3097:3907" ph="update bd_ch... " />
-            <marker date="1508951475000" expanded="true" signature="4019:4801" ph="select t.che... bd_check" />
-            <marker date="1508951475000" expanded="true" signature="4603:4691" ph="select count... bd_check_read" />
-            <marker date="1508951475000" expanded="true" signature="4927:6788" ph="select t.che... bd_check" />
-            <marker date="1508951475000" expanded="true" signature="5511:5599" ph="select count... bd_check_read" />
-            <marker date="1508951475000" expanded="true" signature="5613:5708" ph="select count... bd_check_reject_read" />
-            <marker date="1508951475000" expanded="true" signature="6663:6747" ph="select count... bd_check_cases" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1849,28 +1852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2494">
           <caret line="89" column="9" lean-forward="false" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
-          <folding>
-            <marker date="1508953689000" expanded="true" signature="1498:1567" ph="delete from " />
-            <marker date="1508953689000" expanded="true" signature="1670:2370" ph="insert into bd_chosen_cases... " />
-            <marker date="1508953689000" expanded="true" signature="2485:3213" ph="update bd_ch... " />
-            <marker date="1508953689000" expanded="true" signature="3296:3385" ph="update bd_ch... " />
-            <marker date="1508953689000" expanded="true" signature="3471:3552" ph="update bd_ch... " />
-            <marker date="1508953689000" expanded="true" signature="3664:4816" ph="select date_... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="4550:4633" ph="select count... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="4948:8378" ph="select date_... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="5834:5917" ph="select count... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="8513:10735" ph="select r.pcz... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="9436:9519" ph="select count... bd_chosen_cases" />
-            <marker date="1508953689000" expanded="true" signature="10867:12071" ph="select b.bt,... bd_chosen_cases" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="92" column="54" lean-forward="false" selection-start-line="92" selection-start-column="54" selection-end-line="92" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1895,17 +1876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <marker date="1507290111000" expanded="true" signature="1174:1249" ph="delete from " />
-            <marker date="1507290111000" expanded="true" signature="1358:1860" ph="insert into bd_check_distribution... " />
-            <marker date="1507290111000" expanded="true" signature="1981:2504" ph="update bd_ch... " />
-            <marker date="1507290111000" expanded="true" signature="2616:2869" ph="select cdid,... bd_check_distribution" />
-            <marker date="1507290111000" expanded="true" signature="3007:3436" ph="select cdid,... bd_check_distribution" />
-            <marker date="1507290111000" expanded="true" signature="3546:3803" ph="select CONCA... bd_chosen_cases" />
-            <marker date="1507290111000" expanded="true" signature="3602:3667" ph="select count... bd_chosen_cases" />
-            <marker date="1507290111000" expanded="true" signature="3914:4181" ph="select CONCA... bd_chosen_cases" />
-            <marker date="1507290111000" expanded="true" signature="3976:4041" ph="select count... bd_chosen_cases" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1937,21 +1907,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="408" column="26" lean-forward="false" selection-start-line="408" selection-start-column="20" selection-end-line="408" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/all/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="114" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1967,66 +1926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="174" column="23" lean-forward="false" selection-start-line="174" selection-start-column="23" selection-end-line="174" selection-end-column="23" />
-          <folding>
-            <marker date="1509206695000" expanded="true" signature="2818:2886" ph="delete from " />
-            <marker date="1509206695000" expanded="true" signature="2988:3627" ph="insert into bd_check_cases... " />
-            <marker date="1509206695000" expanded="true" signature="3741:4429" ph="update bd_ch... " />
-            <marker date="1509206695000" expanded="true" signature="4541:5713" ph="select b.bt,... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="5409:5491" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="5844:8895" ph="select b.bt,... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="6712:6794" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="9028:11331" ph="select r.pcz... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="9963:10045" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="11465:12676" ph="select b.bt,... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="12783:14550" ph="select zzjgi... sd_organization" />
-            <marker date="1509206695000" expanded="true" signature="12814:12954" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="12966:13106" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13118:13258" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13270:13410" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13422:13562" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13574:13699" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13711:13854" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="13865:14008" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="14019:14162" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="14173:14316" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="14656:16436" ph="select zzjgi... sd_organization" />
-            <marker date="1509206695000" expanded="true" signature="14687:14827" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="14839:14981" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="14993:15133" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15145:15292" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15304:15448" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15460:15585" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15597:15740" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15751:15894" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="15905:16048" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="16059:16202" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="16564:19516" ph="select zzjgi... sd_organization" />
-            <marker date="1509206695000" expanded="true" signature="16595:16875" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="16887:17164" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="17176:17453" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="17465:17742" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="17754:18031" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="18043:18305" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="18318:18598" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="18609:18889" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="18900:19180" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="19191:19471" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="19643:22608" ph="select zzjgi... sd_organization" />
-            <marker date="1509206695000" expanded="true" signature="19674:19954" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="19966:20245" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="20257:20534" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="20546:20830" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="20842:21123" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="21135:21397" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="21410:21690" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="21701:21981" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="21992:22272" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="22283:22563" ph="select count... bd_check_cases" />
-            <marker date="1509206695000" expanded="true" signature="22706:23139" ph="select itemi... bd_check_score" />
-            <marker date="1509206695000" expanded="true" signature="22730:22794" ph="select psnr bd_scoretable_items" />
-            <marker date="1509206695000" expanded="true" signature="22807:22871" ph="select pfbz bd_scoretable_items" />
-            <marker date="1509206695000" expanded="true" signature="22884:22946" ph="select fz fr... bd_scoretable_items" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2042,7 +1941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2050,7 +1948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2058,9 +1955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="788">
           <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tfoot#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2076,12 +1970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="566">
           <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="17" />
-          <folding>
-            <marker date="1508078514000" expanded="true" signature="1294:1365" ph="delete from " />
-            <marker date="1508078514000" expanded="true" signature="1470:2046" ph="insert into bd_chosen_records... " />
-            <marker date="1508078514000" expanded="true" signature="2163:2760" ph="update bd_ch... " />
-            <marker date="1508078514000" expanded="true" signature="2872:3059" ph="select crid,... bd_chosen_records" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2089,12 +1977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-883">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1508078514000" expanded="true" signature="1354:1424" ph="delete from " />
-            <marker date="1508078514000" expanded="true" signature="1528:2133" ph="insert into bd_check_records... " />
-            <marker date="1508078514000" expanded="true" signature="2249:2882" ph="update bd_ch... " />
-            <marker date="1508078514000" expanded="true" signature="2994:3287" ph="select crid,... bd_check_records" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2102,7 +1984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="54" column="14" lean-forward="true" selection-start-line="54" selection-start-column="14" selection-end-line="59" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2125,18 +2006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="91" column="55" lean-forward="false" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#1;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1509267868000" expanded="false" signature="4918:4932" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2154,7 +2023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2162,7 +2030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2174,27 +2041,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="151" column="28" lean-forward="false" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#h5#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2210,17 +2061,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/casecomment/upload/bd17e403c1d549379708282199140bad/20171029202108377.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/casecomment/upload/bd17e403c1d549379708282199140bad/20171029202108377.jpg" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
@@ -2235,15 +2079,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="503">
           <caret line="67" column="80" lean-forward="false" selection-start-line="67" selection-start-column="80" selection-end-line="67" selection-end-column="80" />
-          <folding>
-            <marker date="1509283207000" expanded="true" signature="1302:1374" ph="delete from " />
-            <marker date="1509283207000" expanded="true" signature="1454:1544" ph="delete from " />
-            <marker date="1509283207000" expanded="true" signature="1646:2311" ph="insert into bd_middle_file... " />
-            <marker date="1509283207000" expanded="true" signature="2425:3035" ph="update bd_mi... " />
-            <marker date="1509283207000" expanded="true" signature="3147:3418" ph="select filei... bd_middle_file" />
-            <marker date="1509283207000" expanded="true" signature="3549:3774" ph="select filei... bd_middle_file" />
-            <marker date="1509283207000" expanded="true" signature="3907:4116" ph="select filei... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2259,11 +2094,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
           <caret line="339" column="12" lean-forward="true" selection-start-line="339" selection-start-column="12" selection-end-line="339" selection-end-column="12" />
-          <folding>
-            <marker date="1509283742000" expanded="true" signature="4329:4346" ph="..." />
-            <marker date="1509283742000" expanded="true" signature="4492:4504" ph="..." />
-            <marker date="1509283742000" expanded="true" signature="4650:4662" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="63" column="14" lean-forward="true" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="158" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="79" column="28" lean-forward="false" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/js/jsutils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="444" column="22" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XStaticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="94" column="25" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="261" column="44" lean-forward="false" selection-start-line="261" selection-start-column="44" selection-end-line="261" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>

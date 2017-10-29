@@ -2,6 +2,14 @@ var URL_TABLE1 = ahcourt.ctx+"/chosen/incases.do";
 var URL_TABLE2 = ahcourt.ctx+"/chosen/mysubmit.do";
 
 $(function () {
+
+    $("#btn_export").click(function () {
+        top.export2Excel($("#table2").getGridParam('url'),
+            $("#table2").getGridParam('postData'),
+            $("#table2").getGridParam('colModel'),
+            "tbal");
+    });
+
     //###这里进能显示未截止的评选活动公告
     $("#table1").jqGrid({
         url : URL_TABLE1,
