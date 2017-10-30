@@ -101,6 +101,7 @@ $(function () {
                         if(data == "9"){
                             top.layer.msg("案件填报成功！",{icon:1});
                             parent.reloadGrid1();
+                            parent.reloadGrid();
                             var index = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(index);
                         }else{

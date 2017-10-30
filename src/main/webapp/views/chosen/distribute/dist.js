@@ -46,6 +46,7 @@ $(function () {
                             datatype : 'json',
                             success : function(data) {
                                 layer.close(lo);
+                                top.loadBadges();
                                 top.layer.msg("案件分配成功！",{icon:1});
                                 parent.reloadGrid1();
                                 parent.reloadGrid2();

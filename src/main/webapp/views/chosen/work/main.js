@@ -45,7 +45,7 @@ function loadUnCheckGrid() {
                     if(rowObject.sfzz == "1" && rowObject.pczt == "2"){
                         return '<button class="btn btn-primary btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')"><i class="fa fa-commenting-o"></i> 合议</button>';
                     }else{
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\')"><i class="fa fa-balance-scale"></i> 评查</button>';
+                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')"><i class="fa fa-balance-scale"></i> 评选</button>';
                     }
                 },
                 frozen:true
@@ -98,7 +98,7 @@ function loadCheckedGrid() {
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
                     return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" ><i class="fa fa-info"></i> 评查详情</button>'
-                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ajid + '\',\'' + rowObject.ccid + '\')"><i class="fa fa-dedent"></i> 案件资料</button>';
+                        +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')"><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
             {label : '案号',name : 'ah',frozen : true,sortable:false,width : 150,formatter:function (cellvalue,options,rowObject) {
@@ -153,7 +153,7 @@ function reloadCheckedGrid() {
 }
 
 
-function check(mode,ajid,ccid) {
+function check(mode,ccid,ajid) {
     layer.open({
         type : 2,
         shift : 5,
@@ -161,7 +161,7 @@ function check(mode,ajid,ccid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/check.jsp?type=2&ccid='+ccid+'ajid=' + ajid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/check.jsp?type=2&ccid='+ccid+'&ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }
@@ -176,7 +176,7 @@ function comment(mode,ccid) {
         shadeClose : false,
         shade : 0.3,
         area : [ '90%', '90%' ],
-        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=2&ajid=' + ccid+"&mode="+mode,
+        content : ahcourt.ctx + '/views/check/work/comment.jsp?type=2&ccid=' + ccid+"&mode="+mode,
         cancel : function(index) {
             layer.close(index);
         }

@@ -263,6 +263,7 @@ public class XChosenController {
             return null;
         }
         bean.setZt("1");
+        bean.setSffp("0");
         bean.setJzrq1(DateFormatUtils.ISO_DATE_FORMAT.format(new Date()));
         return bean.toMap(bdChosenMapper.selectAll(bean));
     }

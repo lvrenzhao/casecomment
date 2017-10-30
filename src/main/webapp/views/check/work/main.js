@@ -101,7 +101,7 @@ function loadCheckedGrid() {
             {label : '操作',name : 'fmt',width : 180,align : 'center',sortable : false,frozen:true,
                 formatter : function(cellvalue, options, rowObject) {
                     return '<button class="btn btn-link btn-xs " type="button" onclick="comment(2,\'' + rowObject.ccid + '\')" ><i class="fa fa-info"></i> 评查详情</button>'
-                    +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ccid + '\')" ><i class="fa fa-dedent"></i> 案件资料</button>';
+                    +      '<button class="btn btn-link btn-xs " type="button" onclick="check(3,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" ><i class="fa fa-dedent"></i> 案件资料</button>';
                 }
             },
             {label : '案号',name : 'ah',frozen : true,sortable:false,width : 150,formatter:function (cellvalue,options,rowObject) {

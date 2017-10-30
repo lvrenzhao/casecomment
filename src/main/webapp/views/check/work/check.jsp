@@ -14,7 +14,7 @@
     </style>
 </head>
 <body class="warpslide fullbox" style="overflow: hidden">
-<div class="rightslide_menu">
+<div class="rightslide_menu" style="overflow: auto">
     <div class="fullbox ">
         <div class="">
             <div class="bmbox_layout  clearfix">

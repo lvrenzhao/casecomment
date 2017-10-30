@@ -47,8 +47,8 @@
                         <th class="width50" rowspan="2" style="text-align: center">序号</th>
                         <th class="width150" rowspan="2" style="text-align: center">评审内容</th>
                         <th class="width250" rowspan="2" style="text-align: center">评分标准</th>
-                        <th id="increseColumn" class="width50" rowspan="2" style="text-align: center">分值</th>
-                        <th class="width50"  rowspan="2" style="text-align:center;">平均</th>
+                        <th class="width50" rowspan="2" style="text-align: center">分值</th>
+                        <th id="increseColumn" class="width50"  rowspan="2" style="text-align:center;">平均</th>
                     </tr>
                     <tr style="background: #e0e0e0;" id="increseColumnDetails">
                     </tr>

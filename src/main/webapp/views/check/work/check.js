@@ -5,6 +5,7 @@ var URL_GET = [ahcourt.ctx + "/case/getcheckbyccid.do",ahcourt.ctx + "/case/getc
 var URL_GETDETAILS = ahcourt.ctx + "/case/getscoredetails.do";
 var URL_SUBMIT = [ahcourt.ctx+"/case/submitCheckScore.do",ahcourt.ctx+"/case/submitChosenScore.do"];
 var URL_GETWRITEDSCORE = ahcourt.ctx+"/case/getWritedScores.do";
+var URL_GETWRITEDJYDP = ahcourt.ctx+"/case/getWritedJydp.do";
 
 var ajid , mode,type,ccid,tableid;//type1:评查type2:评选
 var crid;
@@ -14,6 +15,20 @@ var setting = {
     callback: {onClick: selectCd}
 };
 var ah,fydm,fbs;
+
+function hasDaml(rows) {
+    var hasDa = false;
+    if(rows && rows.length>0){
+        for(var i = 0 ; i < rows.length ; i ++){
+            if(rows[i].name == "正卷" || rows[i].name == "副卷"){
+                hasDa =  true;
+                break;
+            }
+        }
+    }
+    return hasDa;
+}
+
 $(function () {
     ajid = $.getUrlParam("ajid");
     type = $.getUrlParam("type");
@@ -51,7 +66,10 @@ $(function () {
             success : function(data) {
                 layer.close(lox);
                 if(data && data.rows){
-                    if(data.rows.length <=2){
+
+                    if(hasDaml(data.rows) == true){
+                        $.fn.zTree.init($("#pTree"), setting, data.rows);
+                    }else{
                         lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
                         $.ajax({
                             type : 'POST',
@@ -72,9 +90,32 @@ $(function () {
                                 }
                             }
                         });
-                    }else{
-                        $.fn.zTree.init($("#pTree"), setting, data.rows);
                     }
+                    //这段逻辑非常不靠谱，已屏蔽。
+                    // if(data.rows.length <=2){
+                    //     lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
+                    //     $.ajax({
+                    //         type : 'POST',
+                    //         url : URL_AJZLWS,
+                    //         data:{
+                    //             ajid:ajid,
+                    //             fbs:fbs,
+                    //             ah:ah,
+                    //             fydm:fydm
+                    //         },
+                    //         datatype : 'json',
+                    //         success : function(data) {
+                    //             layer.close(lot);
+                    //             if (data && data.rows && data.rows.length>0) {
+                    //                 $.fn.zTree.init($("#pTree"), setting, data.rows);
+                    //             }else{
+                    //                 layer.msg("同步成功，但未获取到档案，请联系该案件承办人及时归档。",{icon:5});
+                    //             }
+                    //         }
+                    //     });
+                    // }else{
+                    //     $.fn.zTree.init($("#pTree"), setting, data.rows);
+                    // }
                 }
             }
         });
@@ -131,7 +172,6 @@ $(function () {
                     }
                     _w_table_rowspan("#table_score", 2);
 
-                    getDf();
                 }
             });
         }
@@ -154,6 +194,25 @@ $(function () {
                         $("#kf_"+item.itemid).val(item.kf);
                         $("#kfyy_"+item.itemid).val(item.kfyy);
                     }
+                    getDf();
+                }
+            }
+        });
+
+        //获取已经写过的简要点评
+        $.ajax({
+            type : 'POST',
+            url : URL_GETWRITEDJYDP,
+            data:{
+                ggid:ggid,
+                ajid:ajid,
+                type:type
+            },
+            datatype : 'json',
+            async : false,
+            success : function(data) {
+                if(data){
+                    $("#txt_jydp").val(data);
                 }
             }
         });

@@ -697,8 +697,35 @@ public class XCaseControllerNew {
             List<BdChosenRecords> records = bdChosenRecordsMapper.selectAll(bean);
             if(records != null && records.size() == 1){
                 BdChosenScore scorebean= new BdChosenScore();
-                scorebean.setCrid(bean.getCrid());
+                scorebean.setCrid(records.get(0).getCrid());
                 return scorebean.toMap(bdChosenScoreMapper.selectAll(scorebean));
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping("getWritedJydp")
+    public @ResponseBody String getWritedJydp(String ggid,String ajid,String type,@SessionScope("user")UserBean user){
+        if(user == null){
+            return null;
+        }
+        if("1".equals(type)){
+            BdCheckRecords bean = new BdCheckRecords();
+            bean.setCheckid(ggid);
+            bean.setAjid(ajid);
+            bean.setPcr(user.getYhid());
+            List<BdCheckRecords> records = bdCheckRecordsMapper.selectAll(bean);
+            if(records != null && records.size() == 1){
+                return records.get(0).getRemarks();
+            }
+        }else if ("2".equals(type)){
+            BdChosenRecords bean = new BdChosenRecords();
+            bean.setChosenid(ggid);
+            bean.setAjid(ajid);
+            bean.setPcr(user.getYhid());
+            List<BdChosenRecords> records = bdChosenRecordsMapper.selectAll(bean);
+            if(records != null && records.size() == 1){
+                return records.get(0).getRemarks();
             }
         }
         return null;
@@ -849,11 +876,11 @@ public class XCaseControllerNew {
                 if ("1".equals(type)) {
                     BdCheckCases bean = bdCheckCasesMapper.selectByPrimaryKey(ccid);
                     bean.setJydp(jydp);
-                    int df =0;
-                    try{
-                        df = Integer.parseInt(zzdf);
-                    }catch (Exception ex){ex.printStackTrace();}
-                    bean.setZzpcdf(String.valueOf(df));
+//                    int df =0;
+//                    try{
+//                        df = Integer.parseInt(zzdf);
+//                    }catch (Exception ex){ex.printStackTrace();}
+                    bean.setZzpcdf(zzdf);
 //                    bean.setZzzldj(getZldj(String.valueOf(df)));
                     bean.setZzzldj(zldj);
                     bean.setDpr(user.getYhid());

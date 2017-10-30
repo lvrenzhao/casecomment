@@ -22,7 +22,7 @@
   </delete>
   <delete id="deleteByAjid" parameterType="java.lang.String" >
     delete from bd_middle_file
-    where ajid = #{ajid,jdbcType=VARCHAR} and xorder>=200000000
+    where ajid = #{ajid,jdbcType=VARCHAR} and (xorder>=200000000 and xorder &lt; 990000000)
   </delete>
   <insert id="insert" parameterType="cn.gov.ahcourt.casecomment.bean.BdMiddleFile" >
     insert into bd_middle_file (fileid, pfileid, xname, 

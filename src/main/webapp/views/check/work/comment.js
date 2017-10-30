@@ -67,7 +67,7 @@ $(function () {
                 if(data && data.rows && data.rows.length > 0){
                     pros = data.rows;
                     for(var i  = 0 ; i < data.rows.length ; i ++){
-                        $("#increseColumn").after('<th class="width250" colspan="2" style="text-align:center;">'+data.rows[i].proname+'</th>');
+                        $("#increseColumn").before('<th class="width250" colspan="2" style="text-align:center;">'+data.rows[i].proname+'</th>');
                         $("#increseColumnDetails").append('<th class="width50" style="text-align: center">扣分</th>');
                         $("#increseColumnDetails").append('<th class="width200" style="text-align: center">扣分理由</th>');
                         $("#div_advice").append('<div class="form_item wb100 fl"><label>'+data.rows[i].proname+'：</label><label id="advice_'+data.rows[i].proid+'"></label></div>');
@@ -171,7 +171,9 @@ $(function () {
         });
 
         //计算总平均值
-        $("#total_avg").html(avg_all);
+        if(!isNaN(avg_all)){
+            $("#total_avg").html(avg_all.toFixed(2));
+        }
 
         //提交
         $("#btn_submit").click(function () {
