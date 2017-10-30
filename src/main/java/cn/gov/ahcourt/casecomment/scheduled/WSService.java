@@ -611,13 +611,18 @@ public class WSService {
     }
 
     public List<WsAj> getNeedFetchByPage(String fjm,String begintime,int start,int pagesize){
-        WsAj bean = new WsAj();
-        bean.setBegintime(begintime);
-        bean.setAjztmc("归档");
-        bean.setFjm(fjm);
-        bean.setStart(start);
-        bean.setPagesize(pagesize);
-        return wsAjMapper.selectAll(bean);
+        try {
+            WsAj bean = new WsAj();
+            bean.setBegintime(begintime);
+            bean.setAjztmc("归档");
+            bean.setFjm(fjm);
+            bean.setStart(start);
+            bean.setPagesize(pagesize);
+            return wsAjMapper.selectAll(bean);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     public int insertFile(BdMiddleFile bean){

@@ -414,10 +414,10 @@ public class XCaseControllerNew {
         for(int i = 0 ; cases != null && i < cases.size() ; i++){
             BdMiddleCase cb = cases.get(i);
             if(!"1".equals(cb.getPasscheck())){
-//                Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(),wsService.getFbsxhByFyCode(cb.getFydm()),cb.getAh(),cb.getFydm());
-//                if(b == true){
-//                    cb.setPasscheck("1");
-//                }
+                Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(),wsService.getFbsxhByFyCode(cb.getFydm()),cb.getAh(),cb.getFydm());
+                if(b == true){
+                    cb.setPasscheck("1");
+                }
             }
         }
         return bean.toMap(cases);
@@ -432,9 +432,13 @@ public class XCaseControllerNew {
             for(int i = 0; arr != null && i < arr.length ; i ++){
                 BdMiddleCase cb = bdMiddleCaseMapper.selectByPrimaryKey(arr[i]);
                 if(cb !=null){
-                    Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(),wsService.getFbsxhByFyCode(cb.getFydm()),cb.getAh(),cb.getFydm());
-                    if(b == true){
+                    if("1".equals(cb.getPasscheck())){
                         newStr += arr[i]+";";
+                    }else {
+                        Boolean b = caseFileFetcher.checkFilesFromWS(cb.getAjid(), wsService.getFbsxhByFyCode(cb.getFydm()), cb.getAh(), cb.getFydm());
+                        if (b == true) {
+                            newStr += arr[i] + ";";
+                        }
                     }
                 }
             }

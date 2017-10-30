@@ -44,29 +44,30 @@ public class JobCaseFetcher {
                             bean.setAjid(item.getTdhajid());
                             bean.setPasscheck("0");
                             bean.setCreateDate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
-//                            bean.setRelatedcasecount(0);
                         }else{
                             isNew=false;
                             bean.setUpdateDate(DateFormatUtils.ISO_DATETIME_FORMAT.format(new Date()));
                         }
                         bean.setAh(item.getAh());
-                        bean.setGsfy(getByRegex(item.getXmlbase(),"(?<=<FYDMMS>)\\S+(?=</FYDMMS>)"));
-                        bean.setCbbm(getByRegex(item.getXmlbase(),"(?<=<CBBMMS>)\\S+(?=</CBBMMS>)"));
-                        bean.setCbr(getByRegex(item.getXmlbase(),"(?<=<CBRMS>)\\S+(?=</CBRMS>)"));
+                        if(StringUtils.isNotBlank(item.getXmlbase())){
+                            bean.setGsfy(getByRegex(item.getXmlbase(),"(?<=<FYDMMS>)\\S+(?=</FYDMMS>)"));
+                            bean.setCbbm(getByRegex(item.getXmlbase(),"(?<=<CBBMMS>)\\S+(?=</CBBMMS>)"));
+                            bean.setCbr(getByRegex(item.getXmlbase(),"(?<=<CBRMS>)\\S+(?=</CBRMS>)"));
 
-                        bean.setXz(getXz(item.getXmlbase()));
-                        bean.setAy(getByRegex(item.getXmlbase(),"(?<=<AYMS>)\\S+(?=</AYMS>)"));
-                        bean.setJafs(getByRegex(item.getXmlbase(),"(?<=<JAFSMS>)\\S+(?=</JAFSMS>)"));
-                        if(StringUtils.isNotBlank(item.getJarq()) && StringUtils.isNotBlank(StringUtils.trim(item.getJarq()))) {
-                            bean.setJasj(StringUtils.trim(item.getJarq()));
-                        }
-                        bean.setLx(getLx(item.getXmlbase()));
-                        String ysah = getByRegex(item.getXmlbase(),"(?<=<YSAH>)\\S+(?=</YSAH>)");
-                        if(StringUtils.isNotBlank(ysah)) {
-                            bean.setRelatedcaseid(ysah);//原审案号
-                            bean.setRelatedcasecount(1);
-                        }else{
-                            bean.setRelatedcasecount(0);
+                            bean.setXz(getXz(item.getXmlbase()));
+                            bean.setAy(getByRegex(item.getXmlbase(),"(?<=<AYMS>)\\S+(?=</AYMS>)"));
+                            bean.setJafs(getByRegex(item.getXmlbase(),"(?<=<JAFSMS>)\\S+(?=</JAFSMS>)"));
+                            bean.setLx(getLx(item.getXmlbase()));
+                            String ysah = getByRegex(item.getXmlbase(),"(?<=<YSAH>)\\S+(?=</YSAH>)");
+                            if(StringUtils.isNotBlank(ysah)) {
+                                bean.setRelatedcaseid(ysah);//原审案号
+                                bean.setRelatedcasecount(1);
+                            }else{
+                                bean.setRelatedcasecount(0);
+                            }
+                            if(StringUtils.isNotBlank(item.getJarq()) && StringUtils.isNotBlank(StringUtils.trim(item.getJarq()))) {
+                                bean.setJasj(StringUtils.trim(item.getJarq()));
+                            }
                         }
                         try {
                             if (isNew) {
@@ -86,13 +87,17 @@ public class JobCaseFetcher {
     }
 
     private String getByRegex(String text,String regex){
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(text);
-        if(matcher.find()) {
-            String value = new String(Base64.decodeBase64(matcher.group()));
-            if(StringUtils.isNotBlank(value) && StringUtils.isNotBlank(StringUtils.trim(value))) {
-                return StringUtils.trim(value);
+        try {
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(text);
+            if (matcher.find()) {
+                String value = new String(Base64.decodeBase64(matcher.group()));
+                if (StringUtils.isNotBlank(value) && StringUtils.isNotBlank(StringUtils.trim(value))) {
+                    return StringUtils.trim(value);
+                }
             }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
         return null;
     }

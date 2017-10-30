@@ -117,17 +117,17 @@ function extractSelectedCases(caselist) {
 //随机抽取
 function extractRandomCases(casecount) {
     var lo ;
-    lo = layer.msg("正在抽取案件，请稍后....",{icon:6});
+    lo = layer.msg("正在抽取案件，请稍后....",{icon:6,time:99999999});
     $.ajax({
         type : 'POST',
         url : URL_RANDOM_CASES,
         data:getFromValues(),
         datatype : 'json',
-        async : false,
+        // async : false,
         success : function(data) {
-            layer.close(lo);
             addCases(data.rows);
             reloadGrid1();
+            layer.close(lo);
             layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
         }
     });
@@ -643,16 +643,15 @@ $(function () {
         }, function(index){
             layer.close(index);
             var lo ;
-            lo = layer.msg("正在抽取案件，请稍后....",{icon:6});
+            lo = layer.msg("正在抽取案件，请稍后....",{icon:6,time:99999999});
 
             $.ajax({
                 type : 'POST',
                 url : ahcourt.ctx+"/case/sdcheck.do?ids="+ids.join(";"),
                 datatype : 'json',
-                async : false,
+                // async : false,
                 success : function(data) {
                     var drr = data.split(";");
-                    layer.close(lo);
 
                     var caselist = [];
                     for(var i = 0 ; i< ids.length ; i ++){
@@ -663,6 +662,7 @@ $(function () {
                         caselist.push(rowdata);
                     }
                     extractSelectedCases(caselist);
+                    layer.close(lo);
                     layer.msg("已成功抽取"+ids.length+"条案件",{icon:1});
                 }
             });
