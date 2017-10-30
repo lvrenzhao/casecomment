@@ -572,7 +572,7 @@ public class XCaseControllerNew {
 
 
     @RequestMapping("/filesFromWs")
-    public @ResponseBody Map getDaFromWs(String ajid,int fbs,String ah,String fydm){
+    public @ResponseBody Map getDaFromWs(String ajid,String ah,String fydm){
         try {
             if (StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fydm)) {
                 caseFileFetcher.getFilesFromWS(ajid, wsService.getFbsxhByFyCode(fydm), ah,fydm,false);
@@ -587,7 +587,7 @@ public class XCaseControllerNew {
         return null;
     }
     @RequestMapping("/filesUpdateFromWs")
-    public @ResponseBody Map filesUpdateFromWs(String ajid,int fbs,String ah,String fydm){
+    public @ResponseBody Map filesUpdateFromWs(String ajid,String ah,String fydm){
         try {
             if (StringUtils.isNotBlank(ajid) && StringUtils.isNotBlank(ah) && StringUtils.isNotBlank(fydm)) {
                 caseFileFetcher.getFilesFromWS(ajid, wsService.getFbsxhByFyCode(fydm), ah,fydm,true);
@@ -603,7 +603,7 @@ public class XCaseControllerNew {
     }
 
     @RequestMapping("/getonefile")
-    public void getonefile(int fbs, String fydm, String ftpserver, String filename, HttpServletResponse response){
+    public void getonefile(String fydm, String ftpserver, String filename, HttpServletResponse response){
 //        String path = req.getSession().getServletContext().getRealPath("/files/");//,HttpServletRequest req
 //                    ImageIO.write(tif, "jpg", new File(path+"test.jpg"));
         response.setContentType("image/jpg");

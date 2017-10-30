@@ -4,9 +4,6 @@
     <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="--">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseFetcher.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseFetcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,7 +23,48 @@
     <favorites_list name="casecomment" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="XCaseControllerNew.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="585" column="9" lean-forward="true" selection-start-line="585" selection-start-column="9" selection-end-line="585" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WSService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="466" column="35" lean-forward="false" selection-start-line="466" selection-start-column="29" selection-end-line="466" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaseFileFetcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/CaseFileFetcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getOneFile#0;class#CaseFileFetcher#0" expanded="false" />
+                <element signature="method#convertFilesByXML#0;class#CaseFileFetcher#0" expanded="false" />
+                <element signature="e#13507#13539#0" expanded="false" />
+                <element signature="method#getCtext#0;class#CaseFileFetcher#0" expanded="false" />
+                <marker date="1509069423000" expanded="false" signature="14007:14030" ph="&lt;~&gt;" />
+                <marker date="1509069423000" expanded="true" signature="24123:24345" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,8 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkFilesFromWS</find>
-      <find>getFilesFromWS</find>
       <find>rand</find>
       <find>wsGetOneFileInfo</find>
       <find>/list</find>
@@ -68,6 +104,8 @@
       <find>checkdatabyggid</find>
       <find>extractSelectedCases</find>
       <find>sdcheck</find>
+      <find>/files</find>
+      <find>getonefile</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -137,7 +175,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleFileMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/chosenreport_item.jsp" />
@@ -145,8 +182,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/statics/checkreport_item.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/JobCaseFetcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/start/main.js" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" />
       </list>
     </option>
   </component>
@@ -252,6 +290,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,7 +313,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -288,19 +335,108 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="casecomment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="check" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="check" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="casecomment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1011,14 +1147,8 @@
       <workItem from="1508821707653" duration="171000" />
       <workItem from="1508899890296" duration="56311000" />
       <workItem from="1509285956367" duration="1828000" />
-      <workItem from="1509327940501" duration="3324000" />
-    </task>
-    <task id="LOCAL-00406" summary="1">
-      <created>1508394241683</created>
-      <option name="number" value="00406" />
-      <option name="presentableId" value="LOCAL-00406" />
-      <option name="project" value="LOCAL" />
-      <updated>1508394241684</updated>
+      <workItem from="1509327940501" duration="3391000" />
+      <workItem from="1509342866919" duration="911000" />
     </task>
     <task id="LOCAL-00407" summary="1">
       <created>1508394317105</created>
@@ -1356,11 +1486,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509287750405</updated>
     </task>
-    <option name="localTasksCounter" value="455" />
+    <task id="LOCAL-00455" summary="--">
+      <created>1509333851762</created>
+      <option name="number" value="00455" />
+      <option name="presentableId" value="LOCAL-00455" />
+      <option name="project" value="LOCAL" />
+      <updated>1509333851763</updated>
+    </task>
+    <option name="localTasksCounter" value="456" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="869946000" />
+    <option name="totallyTimeSpent" value="870924000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1373,6 +1510,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1395,11 +1533,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25679544" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1439,12 +1577,12 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975902" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.4841735" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30129242" sideWeight="0.5109983" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
@@ -1567,17 +1705,11 @@
           <properties />
           <option name="timeStamp" value="341" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/CaseFileFetcher.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="343" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="345" />
+      <option name="time" value="352" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1586,13 +1718,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/OrganizationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="185" column="17" lean-forward="false" selection-start-line="185" selection-start-column="17" selection-end-line="185" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/service/OrganizationService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -1761,14 +1886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-          <folding>
-            <marker date="1509268594000" expanded="true" signature="2132:2150" ph="..." />
-            <marker date="1509268594000" expanded="true" signature="2271:2289" ph="..." />
-            <marker date="1509268594000" expanded="true" signature="2389:2407" ph="..." />
-            <marker date="1509268594000" expanded="true" signature="3423:3442" ph="..." />
-            <marker date="1509268594000" expanded="true" signature="3520:3537" ph="..." />
-            <marker date="1509268594000" expanded="true" signature="4222:4239" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1805,7 +1922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1828,9 +1944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="95" column="35" lean-forward="false" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
-          <folding>
-            <marker date="1509280966000" expanded="true" signature="1834:1843" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1849,13 +1962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/check.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="339" column="12" lean-forward="true" selection-start-line="339" selection-start-column="12" selection-end-line="339" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/chosen/join/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -1867,7 +1973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="9" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1905,7 +2010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1913,50 +2017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
           <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="668" column="27" lean-forward="true" selection-start-line="668" selection-start-column="27" selection-end-line="668" selection-end-column="27" />
-          <folding>
-            <marker date="1509331072000" expanded="true" signature="30681:30691" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="31053:31063" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="31303:31318" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="31330:31347" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="31445:31460" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="31472:31486" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="35871:35881" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="36127:36142" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="36154:36171" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="36275:36290" ph="..." />
-            <marker date="1509331072000" expanded="true" signature="36302:36316" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/CaseFileFetcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getOneFile#0;class#CaseFileFetcher#0" expanded="false" />
-            <element signature="method#convertFilesByXML#0;class#CaseFileFetcher#0" expanded="false" />
-            <element signature="e#13507#13539#0" expanded="false" />
-            <element signature="method#getCtext#0;class#CaseFileFetcher#0" expanded="false" />
-            <marker date="1509069423000" expanded="false" signature="14007:14030" ph="&lt;~&gt;" />
-            <marker date="1509069423000" expanded="true" signature="24123:24345" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1987,10 +2047,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/casecomment/views/check/start/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="1067" column="56" lean-forward="false" selection-start-line="1067" selection-start-column="51" selection-end-line="1067" selection-end-column="56" />
+          <folding>
+            <marker date="1509331072000" expanded="true" signature="30681:30691" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="31053:31063" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="31303:31318" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="31330:31347" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="31445:31460" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="31472:31486" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="35871:35881" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="36127:36142" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="36154:36171" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="36275:36290" ph="..." />
+            <marker date="1509331072000" expanded="true" signature="36302:36316" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/check.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7476">
+          <caret line="356" column="77" lean-forward="true" selection-start-line="356" selection-start-column="77" selection-end-line="356" selection-end-column="77" />
+          <folding>
+            <marker date="1509343499000" expanded="true" signature="4329:4346" ph="..." />
+            <marker date="1509343499000" expanded="true" signature="4492:4504" ph="..." />
+            <marker date="1509343499000" expanded="true" signature="4650:4662" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/WSService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="466" column="35" lean-forward="false" selection-start-line="466" selection-start-column="29" selection-end-line="466" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/scheduled/CaseFileFetcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getOneFile#0;class#CaseFileFetcher#0" expanded="false" />
+            <element signature="method#convertFilesByXML#0;class#CaseFileFetcher#0" expanded="false" />
+            <element signature="e#13507#13539#0" expanded="false" />
+            <element signature="method#getCtext#0;class#CaseFileFetcher#0" expanded="false" />
+            <marker date="1509069423000" expanded="false" signature="14007:14030" ph="&lt;~&gt;" />
+            <marker date="1509069423000" expanded="true" signature="24123:24345" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="440" column="25" lean-forward="true" selection-start-line="440" selection-start-column="25" selection-end-line="440" selection-end-column="25" />
+        <state relative-caret-position="245">
+          <caret line="585" column="9" lean-forward="true" selection-start-line="585" selection-start-column="9" selection-end-line="585" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
