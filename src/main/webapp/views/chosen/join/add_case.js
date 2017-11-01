@@ -10,25 +10,27 @@ $(function () {
     ggid = $.getUrlParam("ggid");
 
     $("#form_inp_ah").change(function () {
-        $.ajax({
-            type : 'POST',
-            url : URL_JC,
-            datatype : 'json',
-            data:{
-                ah:$("#form_inp_ah").val(),
-                ggid:ggid
-            },
-            success : function(data) {
-                if(data && data.length > 1){
-                    ajid = data;
-                    $("#btn_submit").removeAttr("disabled");
-                }else{
-                    top.layer.msg(["找不到该案号，请确认案号是否正确。","输入案号查询出多个案件，请确认案号唯一。","案件已在本次评选中被推荐，请勿重复推荐。"][parseInt(data)],{icon:2});
-                    $("#form_inp_ah").val("");
-                    $("#btn_submit").attr("disabled","disabled");
+        if($("#form_inp_ah").val()){
+            $.ajax({
+                type : 'POST',
+                url : URL_JC,
+                datatype : 'json',
+                data:{
+                    ah:$("#form_inp_ah").val(),
+                    ggid:ggid
+                },
+                success : function(data) {
+                    if(data && data.length > 1){
+                        ajid = data;
+                        $("#btn_submit").removeAttr("disabled");
+                    }else{
+                        top.layer.msg(["找不到该案号，请确认案号是否正确。","输入案号查询出多个案件，请确认案号唯一。","案件已在本次评选中被推荐，请勿重复推荐。"][parseInt(data)],{icon:2});
+                        $("#form_inp_ah").val("");
+                        $("#btn_submit").attr("disabled","disabled");
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
     var uploader = WebUploader.create({
