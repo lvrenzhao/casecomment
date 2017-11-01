@@ -160,6 +160,9 @@ public class PageInterceptor implements Interceptor {
 		pageSql = buildSqlByRole(pageSql, page);
 		// 记录总记录数
 		String countSql = "select count(0) from (" + pageSql.toString() + ") as total";
+		if("cn.gov.ahcourt.casecomment.mapper.BdMiddleCaseMapper.selectAll".equals(mappedStatement.getId())){
+			countSql = pageSql.toString().replace("ajid, ah, gsfy, cbbm, cbr, xz, ay, jafs, DATE_FORMAT(jasj, '%Y/%m/%d') jasj, lx, thirdid, create_by, DATE_FORMAT(create_date, '%Y/%m/%d %H:%i:%S') create_date,update_by, DATE_FORMAT(update_date, '%Y/%m/%d %H:%i:%S') update_date, remarks, flag,passcheck,relatedcasecount,relatedcaseid,(select count(1) from bd_check_cases a where a.ajid = t.ajid and a.jydp is not null) pcjl"," count(1) ");
+		}
 		PreparedStatement countStmt = null;
 		ResultSet rs = null;
 		try {
