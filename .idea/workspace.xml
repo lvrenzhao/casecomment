@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/utils/PageInterceptor.class" afterPath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/cn/gov/ahcourt/casecomment/utils/PageInterceptor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/utils/PageInterceptor.class" afterPath="$PROJECT_DIR$/target/classes/cn/gov/ahcourt/casecomment/utils/PageInterceptor.class" />
+    <list default="true" id="e5bde6a6-5c08-42ad-a8ae-8583a892f108" name="Default" comment="``">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/sysconfig.properties" afterPath="$PROJECT_DIR$/target/casecomment/WEB-INF/classes/sysconfig.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sysconfig.properties" afterPath="$PROJECT_DIR$/target/classes/sysconfig.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" afterPath="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,7 +35,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>keyid</find>
       <find>rema</find>
       <find>URL_GET</find>
       <find>form_inp_jydp</find>
@@ -68,6 +64,7 @@
       <find>ccid</find>
       <find>`</find>
       <find>setPageParameter</find>
+      <find>related</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -141,12 +138,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/distribute/dist.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/join/add_case.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/check.js" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/chosen/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/check/work/main.js" />
         <option value="$PROJECT_DIR$/src/main/resources/sysconfig.properties" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/utils/PageInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java" />
       </list>
     </option>
   </component>
@@ -447,36 +444,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="casecomment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1198,14 +1165,7 @@
       <workItem from="1509327940501" duration="3391000" />
       <workItem from="1509342866919" duration="7996000" />
       <workItem from="1509412608624" duration="189000" />
-      <workItem from="1509540437231" duration="2743000" />
-    </task>
-    <task id="LOCAL-00410" summary="1">
-      <created>1508401927550</created>
-      <option name="number" value="00410" />
-      <option name="presentableId" value="LOCAL-00410" />
-      <option name="project" value="LOCAL" />
-      <updated>1508401927550</updated>
+      <workItem from="1509540437231" duration="4352000" />
     </task>
     <task id="LOCAL-00411" summary="1">
       <created>1508401959369</created>
@@ -1543,11 +1503,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509544594071</updated>
     </task>
-    <option name="localTasksCounter" value="459" />
+    <task id="LOCAL-00459" summary="提高查询效率，增加正则匹配查询参数替换为count(0)。">
+      <created>1509544613732</created>
+      <option name="number" value="00459" />
+      <option name="presentableId" value="LOCAL-00459" />
+      <option name="project" value="LOCAL" />
+      <updated>1509544613732</updated>
+    </task>
+    <option name="localTasksCounter" value="460" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="880941000" />
+    <option name="totallyTimeSpent" value="882550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1739,13 +1706,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java</url>
-          <line>631</line>
+          <line>641</line>
           <properties />
           <option name="timeStamp" value="316" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java</url>
-          <line>641</line>
+          <line>651</line>
           <properties />
           <option name="timeStamp" value="317" />
         </line-breakpoint>
@@ -1759,7 +1726,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="363" />
+      <option name="time" value="366" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1773,20 +1740,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdCheckDistributionMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="53" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/details.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="132" column="18" lean-forward="true" selection-start-line="132" selection-start-column="18" selection-end-line="132" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/all/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -2045,13 +1998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="265" column="26" lean-forward="false" selection-start-line="265" selection-start-column="26" selection-end-line="265" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/work/check.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-965">
@@ -2094,16 +2040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-618">
-          <caret line="677" column="0" lean-forward="false" selection-start-line="677" selection-start-column="0" selection-end-line="677" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sysconfig.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -2117,26 +2053,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="87" column="170" lean-forward="false" selection-start-line="87" selection-start-column="170" selection-end-line="87" selection-end-column="170" />
-          <folding>
-            <element signature="e#6681#6685#0" expanded="true" />
-            <element signature="e#6807#6811#0" expanded="true" />
-            <marker date="1509544169000" expanded="true" signature="1892:1960" ph="delete from " />
-            <marker date="1509544169000" expanded="true" signature="2062:2908" ph="insert into bd_middle_case... " />
-            <marker date="1509544169000" expanded="true" signature="3022:3980" ph="update bd_mi... " />
-            <marker date="1509544169000" expanded="true" signature="4064:4151" ph="update bd_mi... " />
-            <marker date="1509544169000" expanded="true" signature="4264:4661" ph="select ajid,... bd_middle_case" />
-            <marker date="1509544169000" expanded="true" signature="4794:6863" ph="select ajid,... bd_middle_case" />
-            <marker date="1509544169000" expanded="true" signature="5086:5168" ph="select count... bd_check_cases" />
-            <marker date="1509544169000" expanded="true" signature="6991:9019" ph="select ajid,... bd_middle_case" />
-            <marker date="1509544169000" expanded="true" signature="7294:7376" ph="select count... bd_check_cases" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2156,6 +2072,61 @@
         <state relative-caret-position="435">
           <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XCaseControllerNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="455" column="29" lean-forward="false" selection-start-line="455" selection-start-column="29" selection-end-line="455" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#16355#16363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/check/start/view_relatedcases.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.6.RELEASE/spring-web-4.1.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="136" column="50" lean-forward="true" selection-start-line="136" selection-start-column="50" selection-end-line="136" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/controller/XChosenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="299" column="45" lean-forward="false" selection-start-line="299" selection-start-column="45" selection-end-line="299" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/gov/ahcourt/casecomment/mapper/BdMiddleCaseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="87" column="170" lean-forward="false" selection-start-line="87" selection-start-column="170" selection-end-line="87" selection-end-column="170" />
+          <folding>
+            <element signature="e#6681#6685#0" expanded="true" />
+            <element signature="e#6807#6811#0" expanded="true" />
+            <marker date="1509544169000" expanded="true" signature="1892:1960" ph="delete from " />
+            <marker date="1509544169000" expanded="true" signature="2062:2908" ph="insert into bd_middle_case... " />
+            <marker date="1509544169000" expanded="true" signature="3022:3980" ph="update bd_mi... " />
+            <marker date="1509544169000" expanded="true" signature="4064:4151" ph="update bd_mi... " />
+            <marker date="1509544169000" expanded="true" signature="4264:4661" ph="select ajid,... bd_middle_case" />
+            <marker date="1509544169000" expanded="true" signature="4794:6863" ph="select ajid,... bd_middle_case" />
+            <marker date="1509544169000" expanded="true" signature="5086:5168" ph="select count... bd_check_cases" />
+            <marker date="1509544169000" expanded="true" signature="6991:9019" ph="select ajid,... bd_middle_case" />
+            <marker date="1509544169000" expanded="true" signature="7294:7376" ph="select count... bd_check_cases" />
+          </folding>
         </state>
       </provider>
     </entry>

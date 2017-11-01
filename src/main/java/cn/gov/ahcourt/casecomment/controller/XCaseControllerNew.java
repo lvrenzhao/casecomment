@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -452,7 +453,16 @@ public class XCaseControllerNew {
             BdMiddleCase item = bdMiddleCaseMapper.selectByPrimaryKey(ajid);
             if(item != null && StringUtils.isNotBlank(item.getRelatedcaseid())){
                 BdMiddleCase bean = new BdMiddleCase();
-                bean.setFormrelatedcaseid(item.getRelatedcaseid().split(";"));
+                List<String> yy = new ArrayList<String>();
+                String[] xx = item.getRelatedcaseid().split(";");
+                for(int i = 0 ; xx !=null && i < xx.length; i++){
+                    yy.add(xx[i]);
+                    String x = xx[i];
+                    x = x.replaceFirst("（","(");
+                    x = x.replaceFirst("）",")");
+                    yy.add(x);
+                }
+                bean.setFormrelatedcaseid(yy.toArray(new String[yy.size()]));
                 return bean.toMap(bdMiddleCaseMapper.selectAll(bean));
             }
         }
