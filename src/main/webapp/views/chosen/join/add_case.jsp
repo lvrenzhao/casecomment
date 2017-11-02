@@ -33,6 +33,7 @@
                         <div class="input-group-btn">
                             <button type="button" id="btn_nf" class="btn btn-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">(2016)</button>
                             <ul class="dropdown-menu">
+                                <li><a href="#">(2015)</a></li>
                                 <li><a href="#">(2016)</a></li>
                                 <li><a href="#">(2017)</a></li>
                                 <li><a href="#">(2018)</a></li>
@@ -40,7 +41,7 @@
                                 <li><a href="#">(2020)</a></li>
                             </ul>
                         </div><!-- /btn-group -->
-                        <input id="form_inp_ah" type="text" placeholder="案件管理系统中的标准案号（年份不用再次输入）" class="form-control" />
+                        <input id="form_inp_ah" type="text" placeholder="与案件管理系统案号一致（年份不用再次输入），例如：皖民终901号" class="form-control" />
                     </div>
                 <%--<input id="form_inp_ah" type="text" class="form-control" placeholder="请输入案号"/>--%>
                 </div>

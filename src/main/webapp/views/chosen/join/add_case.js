@@ -21,7 +21,7 @@ $(function () {
                 url : URL_JC,
                 datatype : 'json',
                 data:{
-                    ah:$("#form_inp_ah").val(),
+                    ah:$("#btn_nf").text()+$("#form_inp_ah").val(),
                     ggid:ggid
                 },
                 success : function(data) {
