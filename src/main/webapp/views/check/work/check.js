@@ -67,30 +67,32 @@ $(function () {
                 layer.close(lox);
                 if(data && data.rows){
 
-                    if(hasDaml(data.rows) == true){
+                    // if(hasDaml(data.rows) == true){
                         $.fn.zTree.init($("#pTree"), setting, data.rows);
-                    }else{
-                        lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
-                        $.ajax({
-                            type : 'POST',
-                            url : URL_AJZLWS,
-                            data:{
-                                ajid:ajid,
-                                fbs:fbs,
-                                ah:ah,
-                                fydm:fydm
-                            },
-                            datatype : 'json',
-                            success : function(data) {
-                                layer.close(lot);
-                                if (data && data.rows && data.rows.length>0) {
-                                    $.fn.zTree.init($("#pTree"), setting, data.rows);
-                                }else{
-                                    layer.msg("同步成功，但未获取到档案，请联系该案件承办人及时归档。",{icon:5});
-                                }
-                            }
-                        });
-                    }
+                    // }else{
+                    //     lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
+                    //     $.ajax({
+                    //         type : 'POST',
+                    //         url : URL_AJZLWS,
+                    //         data:{
+                    //             ajid:ajid,
+                    //             fbs:fbs,
+                    //             ah:ah,
+                    //             fydm:fydm
+                    //         },
+                    //         datatype : 'json',
+                    //         success : function(data) {
+                    //             layer.close(lot);
+                    //             if (data && data.rows && data.rows.length>0) {
+                    //                 $.fn.zTree.init($("#pTree"), setting, data.rows);
+                    //             }else{
+                    //                 layer.msg("同步成功，但未获取到档案，请联系该案件承办人及时归档。",{icon:5});
+                    //             }
+                    //         }
+                    //     });
+                    // }
+
+
                     //这段逻辑非常不靠谱，已屏蔽。
                     // if(data.rows.length <=2){
                     //     lot = layer.msg("首次查看该案件档案，正在从远程服务器下载，可能需要一点时间，请稍等。",{icon:6,time:100000000});
@@ -404,24 +406,34 @@ function getDf() {
 //         }
 //     });
 // }
-var isshowed = false;
 function selectCd() {
-    if(!isshowed){
-        $("#displayOnce").hide();
-        $("#viewframe").show();
-        isshowed = true;
-    }
+    $("#displayOnce").hide();
+    $("#viewer_img").hide();
+    $("#viewframe").hide();
     var treeObj = $.fn.zTree.getZTreeObj("pTree");
     var nodes = treeObj.getSelectedNodes();
     // window.frames["iframe0"].location = "viewer.jsp?fid="+nodes[0].id;
     if(nodes[0].ftpserver&&nodes[0].filename){
         // window.frames["iframe0"].location = ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename;
         layer.msg("加载中....");
+        $("#viewer_img").show();
         // console.log(ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename)
         $("#viewer_img").attr("src",ahcourt.ctx+"/case/getonefile.do?fbs="+fbs+"&fydm="+fydm+"&ftpserver="+nodes[0].ftpserver+"&filename="+nodes[0].filename);
     }
     else if(nodes[0].xurl){
-        window.open(ahcourt.ctx+"/upload/"+nodes[0].xurl,'_blank');
+        $("#viewframe").show();
+        $.ajax({
+            type: 'POST',
+            url: ahcourt.ctx+"/case/watermaker.do?xurl="+ nodes[0].xurl,
+            datatype: 'json',
+            // async: false,
+            success: function (data) {
+                if (data ) {
+                    window.frames["iframe0"].location = ahcourt.ctx+"/upload/"+data;
+                }
+            }
+        });
+        // window.open(ahcourt.ctx+"/upload/"+nodes[0].xurl,'_blank');
     }
 }
 

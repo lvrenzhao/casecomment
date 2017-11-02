@@ -98,8 +98,8 @@
         <div id="displayOnce" style="text-align: center;padding-top: 160px;font-size: 16px;color:#666">
             <p>请选择左侧档案目录后进行查看</p>
         </div>
-        <img id="viewer_img" src="" style="width:100%;" />
-        <%--<iframe id="viewframe" style="display: none;" class="J_iframe" name="iframe0" width="100%" height="100%" frameborder="0" seamless src="viewer.jsp"></iframe>--%>
+        <img id="viewer_img" src="" style="display:none;width:100%;" />
+        <iframe id="viewframe" style="display: none;" class="J_iframe" name="iframe0" width="100%" height="100%" frameborder="0" seamless src="viewer.jsp"></iframe>
     </div>
 </div>
 </body>

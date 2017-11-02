@@ -8,6 +8,9 @@ import cn.gov.ahcourt.casecomment.utils.IdGen;
 import cn.gov.ahcourt.casecomment.utils.SessionScope;
 import cn.gov.ahcourt.casecomment.utils.StringUtils;
 import com.alibaba.fastjson.JSONArray;
+import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.*;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +24,11 @@ import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -939,9 +944,85 @@ public class XCaseControllerNew {
         return null;
     }
 
+
+    @RequestMapping("/watermaker")
+    public @ResponseBody String watermaker(String xurl,HttpServletRequest request,@SessionScope("user")UserBean user){
+        if(StringUtils.isNotBlank(xurl)){
+            try {
+                String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
+                String filename = getFileNameNew()+".pdf";
+                String savedfilename = uploadPath+filename;
+                File f = new File(savedfilename);
+                f.createNewFile();
+                manipulatePdf(uploadPath + xurl, savedfilename,user.getXm());
+                return filename;
+            }catch (Exception ex){
+                return "";
+            }
+        }
+
+        return xurl;
+    }
+
+    public void manipulatePdf(String src, String dest,String username) throws IOException, DocumentException {
+//        PdfReader reader = new PdfReader(src);
+//        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
+//        PdfContentByte under = stamper.getUnderContent(1);
+//        Font f = new Font(BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED), 26);
+//        PdfContentByte over = stamper.getOverContent(1);
+//        Phrase p = new Phrase("安徽省法院案件质量网上双评工作平台", f);
+//        ColumnText.showTextAligned(over, Element.ALIGN_CENTER, p, 297, 450, 45);
+//        p = new Phrase("专家：吕仁钊", f);
+//        ColumnText.showTextAligned(over, Element.ALIGN_CENTER, p, 297, 500, 45);
+//        over.saveState();
+//        PdfGState gs1 = new PdfGState();
+//        gs1.setFillOpacity(0.3f);
+//        over.setGState(gs1);
+//        over.restoreState();
+//        stamper.close();
+//        reader.close();
+
+
+        PdfReader reader = new PdfReader(src);
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
+        int total = reader.getNumberOfPages() + 1;
+        PdfContentByte content;
+        BaseFont base = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        PdfGState gs = new PdfGState();
+        gs.setFillOpacity(0.3f);
+        for (int i = 1; i < total; i++) {
+            content = stamper.getOverContent(i);
+            content.beginText();
+            content.setColorFill(BaseColor.LIGHT_GRAY);
+            content.setFontAndSize(base, 30);
+            content.setTextMatrix(70, 200);
+            content.showTextAligned(Element.ALIGN_CENTER, "安徽省法院案件质量双评平台", 300,350, 45);
+            content.showTextAligned(Element.ALIGN_CENTER, "查看人:"+username+"   查看人:"+username+"   查看人："+username, 250,450, 45);
+
+            content.saveState();
+            content.setGState(gs);
+            content.restoreState();
+
+            content.endText();
+
+        }
+        stamper.close();
+        reader.close();
+
+
+    }
+
+    private String getFileNameNew() {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        return fmt.format(new Date());
+    }
+
 //    private String getZldj(String fs){
 //        return bdCheckLevelsMapper.getLevelByScore(fs);
 //    }
+
+
+    private static final String fontPath = "msyh.ttf";
 
 
 }
