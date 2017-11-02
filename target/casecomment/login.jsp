@@ -7,9 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录到双评工作平台</title>
     <!-- library list = blueimp;bsfileinput;icheck;jqgrid;laydate;layer;steps;ztree -->
-    <jsp:include page="/header.jsp?libs=" />
+    <jsp:include page="/header.jsp?libs=layer" />
 
     <link href="${ctx_assets}/css/login.css" rel="stylesheet">
+    <script>
+
+        $(function () {
+
+            layer.msg("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对不起，您的浏览器版本过低，建议您点击右上角链接【下载360安全浏览器】并使用极速模式访问系统，已获得最佳用户体验。",{time:9999999,icon:5});
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+                var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+                reIE.test(userAgent);
+                var fIEVersion = parseFloat(RegExp["$1"]);
+                if(fIEVersion < 9){
+                }
+            }
+        })
+
+    </script>
 
 </head>
 <body style=" min-height: 600px; overflow: hidden;">
