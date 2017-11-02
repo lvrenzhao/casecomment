@@ -27,9 +27,22 @@
             </div>
             <div class="bmbox_content clearfix">
                 <div class="form_center clearfix" style="padding: 15px 0;">
-                <div class="form_item wb50 fl">
-                <label>案号<span>*</span></label>
-                <input id="form_inp_ah" type="text" class="form-control" placeholder="请输入案号"/>
+                <div class="form_item wb100 fl">
+                <label>案号<span>* </span></label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" id="btn_nf" class="btn btn-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">(2016)</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">(2016)</a></li>
+                                <li><a href="#">(2017)</a></li>
+                                <li><a href="#">(2018)</a></li>
+                                <li><a href="#">(2019)</a></li>
+                                <li><a href="#">(2020)</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                        <input id="form_inp_ah" type="text" placeholder="案件管理系统中的标准案号（年份不用再次输入）" class="form-control" />
+                    </div>
+                <%--<input id="form_inp_ah" type="text" class="form-control" placeholder="请输入案号"/>--%>
                 </div>
                 <div class="form_item wb100 fl">
                 <label>推荐理由<span>*</span></label>
@@ -40,7 +53,7 @@
         </div>
         <div class="bmbox_layout clearfix" style="width:38%;float: right;margin-top: 40px;border: none !important;">
             <div class="bmbox_title">
-                <h5>附件上传<span style="color:darkred">&nbsp;&nbsp;&nbsp;请仔细查看通知是否要求上传文件</span></h5>
+                <h5>附件上传<span style="color:darkred">&nbsp;&nbsp;&nbsp;系统仅支持上传PDF格式的文件</span></h5>
             </div>
             <div class="bmbox_content clearfix" style="padding: 10px;">
                 <div id="uploader" class="wu-example">

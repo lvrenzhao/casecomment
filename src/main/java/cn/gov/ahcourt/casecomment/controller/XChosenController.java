@@ -299,10 +299,10 @@ public class XChosenController {
         @RequestMapping("/tbal")
     public @ResponseBody String tbal(String ah,String tjly,String ggid,@SessionScope("user")UserBean user){
         BdMiddleCase bean = new BdMiddleCase();
-        if(StringUtils.isNotBlank(ah)){
-            ah = ah.replaceFirst("（","(");
-            ah = ah.replaceFirst("）",")");
-        }
+//        if(StringUtils.isNotBlank(ah)){
+//            ah = ah.replaceFirst("（","(");
+//            ah = ah.replaceFirst("）",")");
+//        }
         bean.setAh(ah);
         List<BdMiddleCase> bmcs = bdMiddleCaseMapper.selectAll(bean);
         if(bmcs == null || bmcs.size() == 0 ){

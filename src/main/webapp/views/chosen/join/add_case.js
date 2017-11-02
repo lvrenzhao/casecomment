@@ -7,10 +7,15 @@ var errorcount = 0;
 var baseURL = ahcourt.ctx+'/chosen/upload.do';
 $(function () {
 
+    $(".dropdown-menu li").click(function () {
+        $("#btn_nf").text($(this).text());
+    });
+
     ggid = $.getUrlParam("ggid");
 
     $("#form_inp_ah").change(function () {
         if($("#form_inp_ah").val()){
+            var lo = layer.msg("正在检测案号，请稍等。",{time:999999999})
             $.ajax({
                 type : 'POST',
                 url : URL_JC,
@@ -20,6 +25,7 @@ $(function () {
                     ggid:ggid
                 },
                 success : function(data) {
+                    layer.close(lo);
                     if(data && data.length > 1){
                         ajid = data;
                         $("#btn_submit").removeAttr("disabled");
@@ -37,8 +43,21 @@ $(function () {
         swf: ahcourt.ctx+'/assets/thirdparty/webuploader/Uploader.swf',
         server: baseURL,
         pick: '#picker',
-        resize: true
+        resize: true,
+        accept: {
+            extensions: 'pdf'
+        }
     });
+
+    uploader.on("error",function (type){
+        if(type == "F_DUPLICATE"){
+            layer.msg("请不要重复选择文件！");
+        }else if(type == "Q_TYPE_DENIED"){
+            layer.msg("该文件格式不被支持，仅支持PDF格式文件。");
+        }
+
+    });
+
     var $list = $('#thelist');
 
     uploader.on( 'fileQueued', function( file ) {
@@ -89,13 +108,15 @@ $(function () {
                     layer.msg("上传失败，请联系管理员协助解决。",{icon:2});
                     return;
                 }
+                var newah =$("#btn_nf").text() + $("#form_inp_ah").val();
                 //上传结束代码
                 $.ajax({
                     type : 'POST',
                     url : URL_SUBMIT,
                     datatype : 'json',
                     data:{
-                        ah:$("#form_inp_ah").val(),
+                        // ah:$("#form_inp_ah").val(),
+                        ah:newah,
                         tjly:$("#form_inp_tjly").val(),
                         ggid:ggid
                     },
@@ -119,10 +140,16 @@ $(function () {
 
 
     $("#btn_submit").click(function () {
-        if($("#form_inp_ah").val() && $("#form_inp_tjly").val()){
-            uploader.upload();
-        }else{
-            layer.msg("请填写所有必填项后再提交。");
-        }
+        layer.confirm('案例填报后将不能撤销或修改，确定要填报吗？', {
+            btn : [ '确认', '我再想想' ]
+        }, function(lo) {
+            layer.close(lo);
+            layer.msg("正在提交数据，请稍等.");
+            if($("#form_inp_ah").val() && $("#form_inp_tjly").val()){
+                uploader.upload();
+            }else{
+                layer.msg("请填写所有必填项后再提交。");
+            }
+        });
     });
 });
