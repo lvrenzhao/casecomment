@@ -30,6 +30,9 @@
           <label>案件性质</label>
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
+              <label class="1">
+                <input type="checkbox" id="checkAllAjxz" style="position: absolute; opacity: 0;"> <i></i> 全选
+              </label>
               <label class="default_radio">
                 <input type="checkbox" id="ajxz80401" value="刑事" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 刑事
               </label>
@@ -45,9 +48,9 @@
               <label>
                 <input type="checkbox" id="ajxz80405" value="执行" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 执行
               </label>
-              <label>
-                <input type="checkbox" id="ajxz80406" value="其他" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 其他
-              </label>
+              <%--<label>--%>
+                <%--<input type="checkbox" id="ajxz80406" value="其他" name="ajxz" style="position: absolute; opacity: 0;"> <i></i> 其他--%>
+              <%--</label>--%>
             </div>
           </div>
         </div>
@@ -56,6 +59,9 @@
           <label>案件类型</label>
           <div class="i-checkslayout">
             <div class="checkbox i-checks">
+              <label class="1">
+                <input type="checkbox" id="checkAllAjlx" style="position: absolute; opacity: 0;"> <i></i> 全选
+              </label>
               <label class="default_radio">
                 <input type="checkbox" id="ajlx80601" value="抗诉" name="ajlx" style="position: absolute; opacity: 0;"> <i></i> 抗诉
               </label>
@@ -139,8 +145,8 @@
     <div class="step-content">
       <div class="form_center clearfix" style="padding-bottom: 10px;">
         <button id="btn_extract_checked" class="btn btn-primary fr mr10" type="button" >抽取选中案件</button>
-        <div id="btn-extract-group" class="input-group fr mr10" style="width:200px;">
-          <input type="text" id="txt_random" class="form-control" placeholder="案件数">
+        <div id="btn-extract-group" class="input-group fr mr10" style="width:250px;">
+          <input type="text" id="txt_random" class="form-control" placeholder="抽取案件数" style="border:1px solid #1c84c6;" />
           <span class="input-group-btn">
                   <button class="btn btn-primary" id="btn_extract_random" type="button">系统随机抽取</button>
                 </span>
@@ -184,6 +190,7 @@
               </div>
 
               <div class="form_item wb25 fl" style="text-align: right">
+                <button class="btn btn-warning" type="button" id="btn_deletebatch"><i class="fa fa-trash"></i></button>
                 <button class="btn btn-white" type="button" id="btn_chooseTo"><i class="fa fa-long-arrow-right"></i> 分配</button>
               </div>
 

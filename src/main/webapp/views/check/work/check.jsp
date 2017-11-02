@@ -14,10 +14,10 @@
     </style>
 </head>
 <body class="warpslide fullbox" style="overflow: hidden">
-<div class="rightslide_menu" style="overflow: auto">
+<div class="rightslide_menu" style="">
     <div class="fullbox ">
-        <div class="">
-            <div class="bmbox_layout  clearfix">
+        <div class="fullbox">
+            <div class="bmbox_layout fullbox clearfix">
                 <div class="bmbox_title">
                     <h5>评分表</h5>
                     <div class="bmbox_tool">
@@ -26,8 +26,8 @@
                         <button class="btn btn-white btn-sm btn-smx" id="btn_close_score_table" type="button"><i class="fa fa-hand-o-right"></i> 收起评分表(自动暂存)</button>
                     </div>
                 </div>
-                <div class="bmbox_content clearfix">
-                    <table id="table_score" class="table table-bordered table-hover" style="">
+                <div class="bmbox_content fullbox clearfix" style="overflow: auto;padding-bottom: 40px;">
+                    <table id="table_score" class="fullbox table table-bordered table-hover" style="">
                         <thead>
                         <tr style="background: #e0e0e0">
                             <th class="width50" style="text-align: center">序号</th>

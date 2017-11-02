@@ -117,7 +117,7 @@ function extractSelectedCases(caselist) {
 //随机抽取
 function extractRandomCases(casecount) {
     var lo ;
-    lo = layer.msg("正在抽取案件，请稍后....",{icon:6,time:99999999});
+    lo = layer.msg("正在随机抽取案件，需要一两分钟，请稍后....",{icon:6,time:99999999});
     $.ajax({
         type : 'POST',
         url : URL_RANDOM_CASES,
@@ -128,7 +128,7 @@ function extractRandomCases(casecount) {
             addCases(data.rows);
             reloadGrid1();
             layer.close(lo);
-            layer.msg("已成功随机抽取"+casecount+"条案件",{icon:1});
+            layer.msg("已成功随机抽取"+casecount+"条案件。",{icon:1,time:6000});
         }
     });
 }
@@ -486,6 +486,7 @@ function docheckFiles() {
 
 //============================================================
 $(function () {
+    
     //初始化jquery.step组件，分步骤引导用户发起评查活动
     // var checkFiles = true;
     $("#wizard").steps({
@@ -728,6 +729,35 @@ $(function () {
             }
         });
     });
+
+    $("#btn_deletebatch").click(function () {
+        var ids = $("#table2").jqGrid('getGridParam', 'selarrrow');
+        if(ids.length == 0){
+            layer.msg("请至少选择一个案件后再删除!");
+            return;
+        }
+
+        layer.confirm('确认将选中案件从待分配列表移除吗？', {
+            btn : [ '确认', '取消' ]
+        }, function(lo) {
+            layer.close(lo);
+            layer.msg("案件移除成功!",{icon:1});
+            for(var i =0 ; i <ids.length;i++){
+                var idx = -1;
+                for(var j = 0 ; joinedCases && j < joinedCases.length ; j ++){
+                    if(joinedCases[j].ajid == ids[i]){
+                        idx = j;
+                    }
+                }
+                if(idx > -1){
+                    joinedCases.splice(idx,1);
+                }
+            }
+            reloadTab3();//刷新第三步，将待分配案件数，三个下拉框重置；
+            refreshJoinedCasesGrid();
+        });
+    });
+
     $("#btn_chosenCaseToGroup").click(function () {
         if(!$("#from_sel_groups").val()){
             layer.msg("必须选择一个专家组!");
@@ -825,6 +855,36 @@ $(function () {
             layer.msg("请先选择归属法院");
             setTimeout("$('#chx_sfbhxjfy').iCheck('uncheck')",500)
         }
+    });
+
+    $('#checkAllAjxz').on('ifChecked', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+        $('#ajxz80401').iCheck('check');
+        $('#ajxz80402').iCheck('check');
+        $('#ajxz80403').iCheck('check');
+        $('#ajxz80404').iCheck('check');
+        $('#ajxz80405').iCheck('check');
+    });
+    $('#checkAllAjxz').on('ifUnchecked', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+        $('#ajxz80401').iCheck('uncheck');
+        $('#ajxz80402').iCheck('uncheck');
+        $('#ajxz80403').iCheck('uncheck');
+        $('#ajxz80404').iCheck('uncheck');
+        $('#ajxz80405').iCheck('uncheck');
+    });
+
+    $('#checkAllAjlx').on('ifChecked', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+        $('#ajlx80601').iCheck('check');
+        $('#ajlx80602').iCheck('check');
+        $('#ajlx80603').iCheck('check');
+        $('#ajlx80604').iCheck('check');
+        $('#ajlx80605').iCheck('check');
+    });
+    $('#checkAllAjlx').on('ifUnchecked', function(event){ //ifCreated 事件应该在插件初始化之前绑定
+        $('#ajlx80601').iCheck('uncheck');
+        $('#ajlx80602').iCheck('uncheck');
+        $('#ajlx80603').iCheck('uncheck');
+        $('#ajlx80604').iCheck('uncheck');
+        $('#ajlx80605').iCheck('uncheck');
     });
 });
 
