@@ -495,7 +495,7 @@ $(function () {
             if(currentIndex == 0 && formChanged()){
                 reloadGrid1();
             }
-            if(currentIndex == 2){
+            if(newIndex == 3){
                 $(".subforms").css("cssText","background-color:#1AB394 !important;color:#fff !important");
             }else{
                 $(".subforms").css("cssText","background-color:#eee !important;color:#aaa !important");
