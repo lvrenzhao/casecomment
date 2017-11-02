@@ -48,7 +48,7 @@ function loadUnCheckGrid() {
                     if(rowObject.sfzz == "1" && rowObject.pczt == "2"){
                         return '<button class="btn btn-primary btn-xs " type="button" onclick="comment(1,\'' + rowObject.ccid + '\')" ><i class="fa fa-commenting-o"></i> 合议</button>';
                     }else{
-                        return '<button class="btn btn-link btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" ><i class="fa fa-balance-scale"></i> 评查</button>';
+                        return '<button class="btn btn-white btn-xs " type="button" onclick="check(1,\'' + rowObject.ccid + '\',\'' + rowObject.ajid + '\')" ><i class="fa fa-balance-scale"></i> 评查</button>';
                     }
                 },
                 frozen:true
@@ -168,10 +168,16 @@ function check(mode,ccid,ajid) {
         area : [ '90%', '90%' ],
         content : ahcourt.ctx + '/views/check/work/check.jsp?type=1&ccid='+ccid+'&ajid=' + ajid+"&mode="+mode,
         cancel : function(index) {
-            layer.close(index);
+            // console.log(11)
+            // layer.close(index);
         }
     });
 }
+
+// function closePfb(ck) {
+//     console.log(ck);
+//     // console.log($(".layui-layer-content").find("iframe"))
+// }
 
 function comment(mode,ccid) {
     layer.open({

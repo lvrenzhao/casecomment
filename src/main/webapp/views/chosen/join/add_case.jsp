@@ -15,7 +15,7 @@
 <body>
 <div class="bmbox_layout title_fixed clearfix">
     <div class="bmbox_title">
-        <h5>填报三精案列 ( * 为必填项 )</h5>
+        <h5>填报三精案例 ( * 为必填项 )</h5>
         <div class="bmbox_tool">
             <button id="btn_submit" disabled class="btn btn-primary btn-sm btn-smx" type="button"><i class="fa fa-check"></i> 提交</button>
         </div>

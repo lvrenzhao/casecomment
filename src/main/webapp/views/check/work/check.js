@@ -129,6 +129,11 @@ $(function () {
         $("#btn_submit").show();
         $("#btn_save").show();
 
+        // $(".layui-layer-setwin",window.parent.document).hover(function () {
+        //     $(this).html('<a id="xcloser" class="layui-layer-ico layui-layer-close layui-layer-close1" onclick="console.log(window.name)" href="javascript:;"></a>');
+        // },function () {
+        // });
+
         $.ajax({
             type : 'POST',
             url : URL_GET[type-1],
@@ -347,7 +352,7 @@ function save(xtype) {
             // console.log(data);
             if(data != -1){
                 crid = data;
-                top.layer.msg(xtype==2?"提交成功!":"暂存成功!",{icon:1});
+                top.layer.msg(xtype==2?"提交成功!":"已暂存",{icon:1});
             }else{
                 top.layer.msg("操作失败，请联系管理员协助解决。",{icon:2});
             }
